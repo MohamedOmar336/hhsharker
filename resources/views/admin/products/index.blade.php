@@ -310,7 +310,7 @@
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <button class="btn btn-outline-light btn-sm px-4 ">+ Add New</button>
+                                        <a class="btn btn-outline-light btn-sm px-4" href="{{ route('products.create') }}">+ Add New</a>
                                 </div><!--end col-->
                                 <div class="col-auto">
                                     <nav aria-label="...">

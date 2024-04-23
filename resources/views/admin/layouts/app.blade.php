@@ -15,14 +15,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="assets-admin/images/favicon.ico">
+    <link rel="shortcut icon" href="{{ asset('assets-admin/images/favicon.ico') }}">
 
 
 
     <!-- App css -->
-    <link href="assets-admin/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets-admin/css/icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets-admin/css/app.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets-admin/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets-admin/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets-admin/css/app.min.css') }}" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -48,14 +48,14 @@
     <!-- Javascript  -->
     <!-- vendor js -->
 
-    <script src="assets-admin/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets-admin/libs/simplebar/simplebar.min.js"></script>
-    <script src="assets-admin/libs/feather-icons/feather.min.js"></script>
+    <script src="{{ asset('assets-admin/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/libs/simplebar/simplebar.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/libs/feather-icons/feather.min.js') }}"></script>
 
-    <script src="assets-admin/libs/apexcharts/apexcharts.min.js"></script>
-    <script src="assets-admin/js/pages/analytics-index.init.js"></script>
+    <script src="{{ asset('assets-admin/libs/apexcharts/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/js/pages/analytics-index.init.js') }}"></script>
     <!-- App js -->
-    <script src="assets-admin/js/app.js"></script>
+    <script src="{{ asset('assets-admin/js/app.js') }}"></script>
 
 </body>
 <!--end body-->

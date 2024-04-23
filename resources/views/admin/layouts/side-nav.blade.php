@@ -2,7 +2,7 @@
     <div class="main-icon-menu">
         <a class='logo logo-metrica d-block text-center' href='{{ route('home') }}'>
             <span>
-                <img src="assets-admin/images/logo-sm.png" alt="logo-small" class="logo-sm">
+                <img src="{{ asset('assets-admin/images/logo-sm.png') }}" alt="logo-small" class="logo-sm">
             </span>
         </a>
         <div class="main-icon-menu-body">
@@ -46,7 +46,7 @@
         </div><!--end main-icon-menu-body-->
         <div class="pro-metrica-end">
             <a href="#" class="profile">
-                <img src="assets-admin/images/users/user-4.jpg" alt="profile-user" class="rounded-circle thumb-sm">
+                <img src="{{ asset('assets-admin/images/users/user-4.jpg ') }}" alt="profile-user" class="rounded-circle thumb-sm">
             </a>
         </div><!--end pro-metrica-end-->
     </div>
@@ -57,8 +57,8 @@
         <div class="topbar-left">
             <a class='logo' href='index.html'>
                 <span>
-                    <img src="assets-admin/images/logo-dark.png" alt="logo-large" class="logo-lg logo-dark">
-                    <img src="assets-admin/images/logo.png" alt="logo-large" class="logo-lg logo-light">
+                    <img src="{{ asset('assets-admin/images/logo-dark.png') }}" alt="logo-large" class="logo-lg logo-dark">
+                    <img src="{{ asset('assets-admin/images/logo-dark') }}" alt="logo-large" class="logo-lg logo-light">
                 </span>
             </a><!--end logo-->
         </div><!--end topbar-left-->
@@ -72,25 +72,7 @@
 
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class='nav-link' href='index.html'>Analytics</a>
-                    </li><!--end nav-item-->
-                    <li class="nav-item">
-                        <a class='nav-link' href='crypto-index.html'>Crypto</a>
-                    </li><!--end nav-item-->
-                    <li class="nav-item">
-                        <a class='nav-link' href='crm-index.html'>CRM</a>
-                    </li><!--end nav-item-->
-                    <li class="nav-item">
-                        <a class='nav-link' href='projects-index.html'>Project</a>
-                    </li><!--end nav-item-->
-                    <li class="nav-item">
-                        <a class='nav-link' href='ecommerce-index.html'>Ecommerce</a>
-                    </li><!--end nav-item-->
-                    <li class="nav-item">
-                        <a class='nav-link' href='helpdesk-index.html'>Helpdesk</a>
-                    </li><!--end nav-item-->
-                    <li class="nav-item">
-                        <a class='nav-link' href='hospital-index.html'>Hospital</a>
+                        <a class='nav-link' href="{{ route('home') }}">Analytics</a>
                     </li><!--end nav-item-->
                 </ul><!--end nav-->
             </div><!-- end Dashboards -->
@@ -115,14 +97,7 @@
                                         <a class='nav-link' href='{{ route('products.index') }}'>Product List</a>
                                     </li><!--end nav-item-->
                                     <li class="nav-item">
-                                        <a class='nav-link' href='ecommerce-product-detail.html'>Product
-                                            Detail</a>
-                                    </li><!--end nav-item-->
-                                    <li class="nav-item">
-                                        <a class='nav-link' href='ecommerce-cart.html'>Cart</a>
-                                    </li><!--end nav-item-->
-                                    <li class="nav-item">
-                                        <a class='nav-link' href='ecommerce-checkout.html'>Checkout</a>
+                                        <a class='nav-link' href='{{ route('products.create') }}'>Create Product</a>
                                     </li><!--end nav-item-->
                                 </ul><!--end nav-->
                             </div><!--end sidebarEcommerce-->
