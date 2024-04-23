@@ -14,15 +14,7 @@
     <meta content="" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <!-- App favicon -->
-    <link rel="shortcut icon" href="assets-admin/images/favicon.ico">
-
-
-
-    <!-- App css -->
-    <link href="assets-admin/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets-admin/css/icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets-admin/css/app.min.css" rel="stylesheet" type="text/css" />
+    @include('partials.head')
 
 </head>
 
@@ -41,21 +33,16 @@
     <!-- Top Bar End -->
 
     <div class="page-wrapper">
-        @yield('content')
+    @include('admin.admins.edit_admin')
+    @include('admin.layouts.footer')
     </div>
     <!-- end page-wrapper -->
 
-    <!-- Javascript  -->
-    <!-- vendor js -->
-
-    <script src="assets-admin/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets-admin/libs/simplebar/simplebar.min.js"></script>
-    <script src="assets-admin/libs/feather-icons/feather.min.js"></script>
-
-    <script src="assets-admin/libs/apexcharts/apexcharts.min.js"></script>
-    <script src="assets-admin/js/pages/analytics-index.init.js"></script>
-    <!-- App js -->
-    <script src="assets-admin/js/app.js"></script>
+  
+    <!-- Include JavaScript files -->
+  
+    <!-- Include additional scripts -->
+    @include('partials.scripts')
 
 </body>
 <!--end body-->
