@@ -14,62 +14,63 @@
                                         </li><!--end nav-item-->
                                         <li class="breadcrumb-item"><a href="#">Admins</a>
                                         </li><!--end nav-item-->
-                                        <li class="breadcrumb-item active">Add Admin</li>
+                                        <li class="breadcrumb-item active">Edit Admin</li>
                                     </ol>
                                 </div>
-                                <h4 class="page-title">Add Admin</h4>
+                                <h4 class="page-title">Edit Admin</h4>
                             </div><!--end page-title-box-->
                         </div><!--end col-->
                     </div>
                     <!-- end page title end breadcrumb -->
                     <div class="row">
-                        <div class="col-12 col-lg-8 mx-auto">
+                        <div class="col-12 col-md-8 mx-auto">
                             <div class="card">
                                 <div class="card-body">
                                     <form>
                                         <div class="form-group mb-3">
-                                            <img src="assets/images/users/dr-pro.png" alt="" class="thumb-lg rounded me-2">
+                                            <img src="assets/images/users/dr-1.jpg" alt="" class="thumb-lg rounded me-2">
                                             <label class="btn btn-de-primary btn-sm text-light">
                                                 Add Avatar <input type="file" hidden>
                                             </label>
                                         </div>
-                                        <div class="form-group row">
-                                            <div class="col-md-6 mb-3">
-                                                <input type="text" placeholder="First Name" class="form-control" name="First_Name" id="First_Name">
+                                        <div class="form-group mb-3 row">
+                                            <div class="col-md-6">
+                                                <input type="text" placeholder="First Name" value="Rosa" class="form-control" name="First_Name" id="First_Name">
                                             </div>
-                                            <div class="col-md-6 mb-3">
-                                                <input type="text" placeholder="Last Name" class="form-control" name="Last_Name" id="Last_Name">
+                                            <div class="col-md-6">
+                                                <input type="text" placeholder="Last Name" value="Dodson" class="form-control" name="Last_Name" id="Last_Name">
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <div class="col-md-12 mb-3">
-                                                <input type="email" placeholder="Email" class="form-control" name="Email" id="Email">
+                                        <div class="form-group mb-3 row">
+                                            <div class="col-md-12">
+                                                <input type="email" placeholder="Email" value="dr.example@example.com" class="form-control" name="Email" id="Email">
                                             </div>
-                                           
+                                            
                                         </div>
-                                        
-                                        <div class="form-group row">
-                                            <div class="col-md-6 mb-3">
-                                                <input type="text" placeholder="Date of Birth" class="form-control" name="DOB" id="DOB">
+                                        <div class="form-group mb-3">
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <input type="text" placeholder="Date of Birth" value="11/06/1988" class="form-control" name="DOB" id="DOB">
                                             </div>
-                                            <div class="col-md-6 mb-3">
-                                                <input type="text" placeholder="Speciality" class="form-control" name="Speciality" id="Speciality">
+                                            <div class="col-md-6">
+                                                <input type="text" placeholder="Speciality" value="Orthopaedic" class="form-control" name="Speciality" id="Speciality">
+                                            </div> </div>
+                                            <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <input type="text" placeholder="Phone No" value="+1 234 567 890" class="form-control" name="Phone_No" id="Phone_No">
                                             </div>
-                                            <div class="col-md-6 mb-3">
-                                                <input type="text" placeholder="Phone No" class="form-control" name="Phone_No" id="Phone_No">
-                                            </div>
-                                            <div class="col-md-6 mb-3">
+                                      
+                                            
+                                            <div class="col-md-6">
                                                 <select class="form-select">
                                                     <option>Male</option>
                                                     <option>Female</option>
                                                 </select>
-                                            </div>
+                                            </div> </div>
                                         </div>
-                                        
-                                       
                                         <div class="form-group">
-                                            <textarea rows="5" placeholder="About Me..." class="form-control"></textarea>
-                                            <button class="btn btn-de-primary btn-sm text-light px-4 mt-3 mb-0">Save</button> 
+                                            <textarea rows="5" placeholder="About Me..." class="form-control">There are many variations of passages of Lorem Ipsum available,but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look.</textarea>
+                                            <button class="btn btn-de-primary btn-sm text-light px-4 mt-3 mb-0">Update</button> 
                                             <button class="btn btn-de-danger btn-sm text-light px-4 mt-3 mb-0">Cancel</button>                                                                                           
                                         </div>
                                     </form>
@@ -122,4 +123,4 @@
                 </div>
                 <!--end Rightbar/offcanvas-->
                  <!--end Rightbar-->
-               
+             
