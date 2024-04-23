@@ -1,5 +1,7 @@
 
 
+
+
         <!-- Page Content-->
         <div class="page-content-tab">
 
@@ -12,10 +14,10 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="#">Metrica</a></li>
                                     <li class="breadcrumb-item"><a href="#">Apps</a></li>
-                                    <li class="breadcrumb-item active">Email Read</li>
+                                    <li class="breadcrumb-item active">Inbox</li>
                                 </ol>
                             </div>
-                            <h4 class="page-title">Email Read</h4>
+                            <h4 class="page-title">Inbox</h4>
                         </div>
                         <!--end page-title-box-->
                     </div>
@@ -53,7 +55,7 @@
                                     <p class="text-dark my-4 font-weight-bold">Chat</p>
                                     <div class="">
                                         <a href="#" class="media">
-                                            <img class="d-flex me-2 rounded-circle" src="assets/images/users/user-1.jpg" alt="Generic placeholder image" height="36">
+                                            <img class="d-flex me-3 rounded-circle" src="assets/images/users/user-1.jpg" alt="Generic placeholder image" height="36">
                                             <div class="media-body chat-user-box">
                                                 <p class="user-title m-0">Scott Median</p>
                                                 <p class="text-muted">Hello</p>
@@ -61,7 +63,7 @@
                                         </a>
     
                                         <a href="#" class="media">
-                                            <img class="d-flex me-2 rounded-circle" src="assets/images/users/user-2.jpg" alt="Generic placeholder image" height="36">
+                                            <img class="d-flex me-3 rounded-circle" src="assets/images/users/user-2.jpg" alt="Generic placeholder image" height="36">
                                             <div class="media-body chat-user-box">
                                                 <p class="user-title m-0">Julian Rosa</p>
                                                 <p class="text-muted">What about our next..</p>
@@ -69,7 +71,7 @@
                                         </a>
     
                                         <a href="#" class="media">
-                                            <img class="d-flex me-2 rounded-circle" src="assets/images/users/user-3.jpg" alt="Generic placeholder image" height="36">
+                                            <img class="d-flex me-3 rounded-circle" src="assets/images/users/user-3.jpg" alt="Generic placeholder image" height="36">
                                             <div class="media-body chat-user-box">
                                                 <p class="user-title m-0">David Medina</p>
                                                 <p class="text-muted">Yeah everything is fine</p>
@@ -77,7 +79,7 @@
                                         </a>
     
                                         <a href="#" class="media">
-                                            <img class="d-flex me-2 rounded-circle" src="assets/images/users/user-4.jpg" alt="Generic placeholder image" height="36">
+                                            <img class="d-flex me-3 rounded-circle" src="assets/images/users/user-4.jpg" alt="Generic placeholder image" height="36">
                                             <div class="media-body chat-user-box">
                                                 <p class="user-title m-0">Jay Baker</p>
                                                 <p class="text-muted">Wow that's great</p>
@@ -156,150 +158,82 @@
                             </div><!-- end toolbar -->
 
 
-                            <div class="card mt-3">
-                                <div class="card-body">
-
-                                    <div class="media mb-4">
-                                        <img class="d-flex me-2 rounded-circle thumb-md" src="assets/images/users/user-5.jpg" alt="Generic placeholder image">
-                                        <div class="media-body align-self-center">
-                                            <h5 class="font-14 m-0">Humberto D. Champion</h5>
-                                            <small class="text-muted">support@domain.com</small>
-                                        </div>
-                                    </div>
-
-                                    <h4 class="mt-0 font-15">This Week's Top Stories</h4>
-
-                                    <p>Dear Lorem Ipsum,</p>
-                                    <p>Praesent dui ex, dapibus eget mauris ut, finibus vestibulum enim. Quisque arcu leo, facilisis in fringilla id, luctus in tortor. Nunc vestibulum est quis orci varius viverra. Curabitur dictum volutpat massa vulputate molestie. In at felis ac velit maximus
-                                        convallis.</p>
-                                    <p>Sed elementum turpis eu lorem interdum, 🏆sed porttitor eros commodo. Nam eu venenatis tortor, id lacinia diam. Sed aliquam in dui et porta. Sed bibendum orci non tincidunt ultrices. Vivamus fringilla, mi lacinia dapibus condimentum, ipsum urna lacinia
-                                        lacus, vel tincidunt mi nibh sit amet lorem.</p>
-                                    <p>Sincerly,</p>
-                                    <hr/>
-
-                                    <div class="row">
-                                        <div class="col-auto">
-                                            <div class="card">
-                                                <img class="" src="assets/images/small/sm-1.jpg" alt="Card image cap">
-                                                <div class="py-1 text-center">
-                                                    <a href="" class="text-muted">Download<i class="dripicons-download ms-1"></i></a>
-                                                </div>
+                            <div class="card my-3">
+                                <ul class="message-list">
+                                   
+                                    <li>                                            
+                                        <div class="col-mail col-mail-1">
+                                            <div class="checkbox-wrapper-mail">
+                                                <input type="checkbox" id="chk8">
+                                                <label for="chk8" class="toggle"></label>
                                             </div>
+                                            <a href="">
+                                                <p class="title">Medium</p><span class="star-toggle far fa-star"></span>
+                                            </a>                                                    
                                         </div>
-                                        <div class="col-auto">
-                                            <div class="card">
-                                                <img class="" src="assets/images/small/sm-2.jpg" alt="Card image cap">
-                                                <div class="py-1 text-center">
-                                                    <a href="" class="text-muted">Download<i class="dripicons-download ms-1"></i></a>
-                                                </div>
+                                        <div class="col-mail col-mail-2">
+                                            <a href="" class="subject"><span class="badge-soft-purple badge me-2">Social</span>This Week's Top Stories &nbsp;–&nbsp;
+                                                <span class="teaser">Our top pick for you on Medium this week The Man Who Destroyed America’s Ego</span>
+                                            </a>
+                                            <div class="date">Feb 28</div>
+                                        </div>
+                                    </li>
+                                    <li>                                            
+                                        <div class="col-mail col-mail-1">
+                                            <div class="checkbox-wrapper-mail">
+                                                <input type="checkbox" id="chk9">
+                                                <label for="chk9" class="toggle"></label>
                                             </div>
+                                            <a href="">
+                                                <p class="title">Death to Stock</p><span class="star-toggle far fa-star"></span>
+                                            </a>                                                    
                                         </div>
-                                    </div>
+                                        <div class="col-mail col-mail-2">
+                                            <a href="" class="subject">🎁 Montly High-Res Photos &nbsp;–&nbsp;
+                                                <span class="teaser">To create this month's pack, we hosted a party with local musician Jared Mahone here in Columbus, Ohio.</span>
+                                            </a>
+                                            <div class="date">Feb 28</div>
+                                        </div>
+                                    </li>
+                                    <li>                                           
+                                        <div class="col-mail col-mail-1">
+                                            <div class="checkbox-wrapper-mail">
+                                                <input type="checkbox" checked id="chk3">
+                                                <label for="chk3" class="toggle"></label>
+                                            </div>
+                                            <a href="">
+                                                <p class="title">Randy, me (5)</p><span class="star-toggle fas fa-star text-warning"></span>
+                                            </a>
+                                        </div>
+                                        <div class="col-mail col-mail-2">
+                                            <a href="" class="subject"><span class="badge-soft-success badge me-2">Family</span>Last pic over my village &nbsp;–&nbsp;
+                                                <span class="teaser">Yeah i'd like that! Do you remember the video you showed me of your train ride between Colombo and Kandy? The one with the mountain view? I would love to see that one again!</span>
+                                            </a>
+                                            <div class="date">5:01 am</div>
+                                        </div>
+                                    </li>
+                                  
+                
+                                   
+                                   
+                               
+                                  
+                                </ul>
+                            </div> <!-- panel -->
 
-                                    <a href="#custom-modal" class="btn btn-de-primary btn-sm"   data-bs-toggle="modal" data-animation="bounce" data-bs-target="#compose-modal">
-                                        <i class="mdi mdi-reply"></i> Reply</a>
-                                    <a href="#" class="btn btn-de-primary btn-sm">Forward <i class="mdi mdi-share"></i></a>
-                                </div>
-                            </div> 
+                            <div class="row mb-3">
+                                <div class="col-7 align-self-center">
+                                    Showing 1 - 20 of 1,524
+                                </div><!-- end Col -->
+                                <div class="col-5">
+                                    <div class="btn-group float-end">
+                                        <button type="button" class="btn btn-sm btn-de-secondary waves-effect mb-0"><i class="fa fa-chevron-left"></i></button>
+                                        <button type="button" class="btn btn-sm btn-de-secondary waves-effect mb-0"><i class="fa fa-chevron-right"></i></button>
+                                    </div>
+                                </div><!-- end Col -->
+                            </div> <!--end row-->   
                         </div> <!-- end email-rightbar -->
                     </div><!-- end Col -->
                 </div><!-- End row -->
 
             </div><!-- container -->
-
-            <!--Start Rightbar-->
-            <!--Start Rightbar/offcanvas-->
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="Appearance" aria-labelledby="AppearanceLabel">
-                <div class="offcanvas-header border-bottom">
-                  <h5 class="m-0 font-14" id="AppearanceLabel">Appearance</h5>
-                  <button type="button" class="btn-close text-reset p-0 m-0 align-self-center" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">  
-                    <h6>Account Settings</h6>
-                    <div class="p-2 text-start mt-3">
-                        <div class="form-check form-switch mb-2">
-                            <input class="form-check-input" type="checkbox" id="settings-switch1">
-                            <label class="form-check-label" for="settings-switch1">Auto updates</label>
-                        </div><!--end form-switch-->
-                        <div class="form-check form-switch mb-2">
-                            <input class="form-check-input" type="checkbox" id="settings-switch2" checked>
-                            <label class="form-check-label" for="settings-switch2">Location Permission</label>
-                        </div><!--end form-switch-->
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="settings-switch3">
-                            <label class="form-check-label" for="settings-switch3">Show offline Contacts</label>
-                        </div><!--end form-switch-->
-                    </div><!--end /div-->
-                    <h6>General Settings</h6>
-                    <div class="p-2 text-start mt-3">
-                        <div class="form-check form-switch mb-2">
-                            <input class="form-check-input" type="checkbox" id="settings-switch4">
-                            <label class="form-check-label" for="settings-switch4">Show me Online</label>
-                        </div><!--end form-switch-->
-                        <div class="form-check form-switch mb-2">
-                            <input class="form-check-input" type="checkbox" id="settings-switch5" checked>
-                            <label class="form-check-label" for="settings-switch5">Status visible to all</label>
-                        </div><!--end form-switch-->
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="settings-switch6">
-                            <label class="form-check-label" for="settings-switch6">Notifications Popup</label>
-                        </div><!--end form-switch-->
-                    </div><!--end /div-->               
-                </div><!--end offcanvas-body-->
-            </div>
-            <!--end Rightbar/offcanvas-->
-            <!--end Rightbar-->
-            
-           <!--Start Footer-->
-           <!-- Footer Start -->
-           <footer class="footer text-center text-sm-start">
-               &copy; <script>
-                   document.write(new Date().getFullYear())
-               </script> Metrica <span class="text-muted d-none d-sm-inline-block float-end">Crafted with <i
-                       class="mdi mdi-heart text-danger"></i> by Mannatthemes</span>
-           </footer>
-           <!-- end Footer -->                
-           <!--end footer-->
-        </div>
-        <!-- end page content -->
-    </div>
-    <!-- end page-wrapper -->
-
-    <div class="modal fade bd-example-modal-lg" id="compose-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h6 class="modal-title m-0" id="myLargeModalLabel">Compose Mail</h6>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div><!--end modal-header-->
-                <div class="modal-body">
-                    <form method="post">
-                        <div class="form-group mb-3">
-                            <input type="email" class="form-control" placeholder="To">
-                        </div><!--end form-group-->
-                        <div class="form-group mb-3">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <input type="email" class="form-control" placeholder="Cc">
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="email" class="form-control" placeholder="Bcc">
-                                </div>
-                            </div>
-                        </div><!--end form-group-->
-                        <div class="form-group mb-3">
-                            <input type="text" class="form-control" placeholder="Subject">
-                        </div><!--end form-group-->
-                        <textarea id="basic-conf">Hello, World!</textarea>
-                    </form>                     
-                </div><!--end modal-body-->
-                <div class="modal-footer">
-                    <button class="btn btn-de-primary btn-sm"><span>Send</span> <i class="far fa-paper-plane ms-2"></i></button>
-                    <button type="button" class="btn btn-de-danger btn-sm" data-bs-dismiss="modal"><span>Delete</span><i class="far fa-trash-alt ms-2"></i></button> 
-                </div><!--end modal-footer-->
-            </div><!--end modal-content-->
-        </div><!--end modal-dialog-->
-    </div><!--end modal-->
-
-
-   
