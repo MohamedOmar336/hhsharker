@@ -44,7 +44,7 @@
                                 <div class="card-body">
                                     <div class="ex-page-content text-center">
                                         <img src="assets/images/error.svg" alt="0" class="" height="170">
-                                        <h1 class="mt-5 mb-4">404!</h1>  
+                                        <h1 class="mt-5 mb-4">500!</h1>  
                                         <h5 class="font-16 text-muted mb-5">Somthing went wrong</h5>                                    
                                     </div>          
                                     <a class="btn btn-primary w-100" href="index.html">Back to Dashboard <i class="fas fa-redo ml-1"></i></a>                         
