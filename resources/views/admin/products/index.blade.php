@@ -31,6 +31,7 @@
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
+                                            <th>{{ __('general.attributes.image') }}</th>
                                             <th>{{ __('general.attributes.name_ar') }}</th>
                                             <th>{{ __('general.attributes.name_en') }}</th>
                                             <th>{{ __('general.attributes.description_ar') }}</th>
@@ -38,13 +39,16 @@
                                             <th>{{ __('general.attributes.price') }}</th>
                                             <th>{{ __('general.attributes.qty') }}</th>
                                             <th>{{ __('general.attributes.state') }}</th>
-                                            <th>{{ __('general.attributes.image') }}</th>
                                             <th>{{ __('general.attributes.actions') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($products as $product)
                                             <tr>
+                                                <td>
+                                                    <img src="{{ asset('images/' . $product->image_url) }}"
+                                                        alt="{{ $product->name }}" width="50">
+                                                </td>
                                                 <td>{{ $product->name_ar }}</td>
                                                 <td>{{ $product->name_en }}</td>
                                                 <td>{{ $product->description_ar }}</td>
@@ -52,10 +56,6 @@
                                                 <td>{{ $product->price }}</td>
                                                 <td>{{ $product->quantity }}</td>
                                                 <td>{{ $product->is_available ? 'Yes' : 'No' }}</td>
-                                                <td>
-                                                    <img src="{{ asset('images/' . $product->image_url) }}"
-                                                        alt="{{ $product->name }}" width="50">
-                                                </td>
                                                 <td>
                                                     <a href="{{ route('products.edit', $product->id) }}"
                                                         class="btn btn-sm btn-primary">Edit</a>

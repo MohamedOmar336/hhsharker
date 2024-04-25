@@ -42,7 +42,6 @@ class ProductController extends Controller
             'name_en' => 'required|string',
             'description_ar' => 'required|string',
             'description_en' => 'required|string',
-            'slug' => 'required|string',
             'price' => 'required|numeric',
             'quantity' => 'required|integer',
             'is_available' => 'nullable|boolean',
@@ -84,13 +83,11 @@ class ProductController extends Controller
             'name_en' => 'required|string',
             'description_ar' => 'required|string',
             'description_en' => 'required|string',
-            'slug' => 'required|string',
             'price' => 'required|numeric',
             'quantity' => 'required|integer',
             'is_available' => 'nullable|boolean',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-
         $product->fill($validatedData);
 
         if ($request->hasFile('image')) {

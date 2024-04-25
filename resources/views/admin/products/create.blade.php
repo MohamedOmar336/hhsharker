@@ -1,166 +1,145 @@
 @extends('admin.layouts.app')
 
 @section('content')
-    <div class="page-wrapper">
+    <!-- Page Content-->
+    <div class="page-content-tab">
 
-        <!-- Page Content-->
-        <div class="page-content-tab">
-
-            <div class="container-fluid">
-                <!-- Page-Title -->
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="page-title-box">
-                            <div class="float-end">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Metrica</a></li>
-                                    <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                                    <li class="breadcrumb-item active">Form Elements</li>
-                                </ol>
-                            </div>
-                            <h4 class="page-title">Form Elements</h4>
+        <div class="container-fluid">
+            <!-- Page-Title -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <div class="float-end">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{{ url('/home') }}">Metrica</a>
+                                </li><!--end nav-item-->
+                                <li class="breadcrumb-item"><a href="{{ url('/products') }}">Products</a>
+                                </li><!--end nav-item-->
+                                <li class="breadcrumb-item active">Add</li>
+                            </ol>
                         </div>
-                        <!--end page-title-box-->
-                    </div>
-                    <!--end col-->
-                </div>
-                <!-- end page title end breadcrumb -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">Textual inputs</h4>
-                            </div><!--end card-header-->
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="mb-3 row">
-                                            <label for="example-text-input"
-                                                class="col-sm-2 col-form-label text-end">Text</label>
-                                            <div class="col-sm-10">
-                                                <input class="form-control" type="text" value="Artisanal kale"
-                                                    id="example-text-input">
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 row">
-                                            <label for="example-email-input"
-                                                class="col-sm-2 col-form-label text-end">Email</label>
-                                            <div class="col-sm-10">
-                                                <input class="form-control" type="email" value="bootstrap@example.com"
-                                                    id="example-email-input">
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 row">
-                                            <label for="example-tel-input"
-                                                class="col-sm-2 col-form-label text-end">Telephone</label>
-                                            <div class="col-sm-10">
-                                                <input class="form-control" type="tel" value="1-(555)-555-5555"
-                                                    id="example-tel-input">
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 row">
-                                            <label for="example-password-input"
-                                                class="col-sm-2 col-form-label text-end">Password</label>
-                                            <div class="col-sm-10">
-                                                <input class="form-control" type="password" value="hunter2"
-                                                    id="example-password-input">
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 row">
-                                            <label for="example-number-input"
-                                                class="col-sm-2 col-form-label text-end">Number</label>
-                                            <div class="col-sm-10">
-                                                <input class="form-control" type="number" value="42"
-                                                    id="example-number-input">
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 row">
-                                            <label for="example-datetime-local-input"
-                                                class="col-sm-2 col-form-label text-end">Date and time</label>
-                                            <div class="col-sm-10">
-                                                <input class="form-control" type="datetime-local"
-                                                    value="2011-08-19T13:45:00" id="example-datetime-local-input">
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 row">
-                                            <label class="col-sm-2 col-form-label text-end">Select</label>
-                                            <div class="col-sm-10">
-                                                <select class="form-select" aria-label="Default select example">
-                                                    <option selected>Open this select menu</option>
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-6">
-                                    </div>
-                                </div>
-                            </div><!--end card-body-->
-                        </div><!--end card-->
-                    </div><!--end col-->
-                </div><!--end row-->
-
-            </div><!-- container -->
-
-            <!--Start Rightbar-->
-            <!--Start Rightbar/offcanvas-->
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="Appearance" aria-labelledby="AppearanceLabel">
-                <div class="offcanvas-header border-bottom">
-                    <h5 class="m-0 font-14" id="AppearanceLabel">Appearance</h5>
-                    <button type="button" class="btn-close text-reset p-0 m-0 align-self-center"
-                        data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <h6>Account Settings</h6>
-                    <div class="p-2 text-start mt-3">
-                        <div class="form-check form-switch mb-2">
-                            <input class="form-check-input" type="checkbox" id="settings-switch1">
-                            <label class="form-check-label" for="settings-switch1">Auto updates</label>
-                        </div><!--end form-switch-->
-                        <div class="form-check form-switch mb-2">
-                            <input class="form-check-input" type="checkbox" id="settings-switch2" checked>
-                            <label class="form-check-label" for="settings-switch2">Location Permission</label>
-                        </div><!--end form-switch-->
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="settings-switch3">
-                            <label class="form-check-label" for="settings-switch3">Show offline Contacts</label>
-                        </div><!--end form-switch-->
-                    </div><!--end /div-->
-                    <h6>General Settings</h6>
-                    <div class="p-2 text-start mt-3">
-                        <div class="form-check form-switch mb-2">
-                            <input class="form-check-input" type="checkbox" id="settings-switch4">
-                            <label class="form-check-label" for="settings-switch4">Show me Online</label>
-                        </div><!--end form-switch-->
-                        <div class="form-check form-switch mb-2">
-                            <input class="form-check-input" type="checkbox" id="settings-switch5" checked>
-                            <label class="form-check-label" for="settings-switch5">Status visible to all</label>
-                        </div><!--end form-switch-->
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="settings-switch6">
-                            <label class="form-check-label" for="settings-switch6">Notifications Popup</label>
-                        </div><!--end form-switch-->
-                    </div><!--end /div-->
-                </div><!--end offcanvas-body-->
+                        <h4 class="page-title">Add Product</h4>
+                    </div><!--end page-title-box-->
+                </div><!--end col-->
             </div>
-            <!--end Rightbar/offcanvas-->
-            <!--end Rightbar-->
+            <!-- end page title end breadcrumb -->
+            <div class="row">
+                <div class="col-12 col-lg-8 mx-auto">
+                    <div class="card">
+                        <div class="card-body">
 
-            <!--Start Footer-->
-            <!-- Footer Start -->
-            <footer class="footer text-center text-sm-start">
-                &copy;
-                <script>
-                    document.write(new Date().getFullYear())
-                </script> Metrica <span class="text-muted d-none d-sm-inline-block float-end">Crafted with
-                    <i class="mdi mdi-heart text-danger"></i> by Mannatthemes</span>
-            </footer>
-            <!-- end Footer -->
-            <!--end footer-->
+                            <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data"
+                                class="needs-validation" novalidate>
+                                @csrf
+
+                                <div class="mb-3">
+                                    <label for="name_ar" class="form-label">{{ __('general.attributes.name_ar') }}</label>
+                                    <input id="name_ar" type="text"
+                                        class="form-control @error('name_ar') is-invalid @enderror" name="name_ar"
+                                        value="{{ old('name_ar') }}" required autocomplete="name_ar" autofocus>
+                                    @error('name_ar')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="name_en" class="form-label">{{ __('general.attributes.name_en') }}</label>
+                                    <input id="name_en" type="text"
+                                        class="form-control @error('name_en') is-invalid @enderror" name="name_en"
+                                        value="{{ old('name_en') }}" required autocomplete="name_en">
+                                    @error('name_en')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="description_ar" class="form-label">{{ __('general.attributes.description_ar') }}</label>
+                                    <textarea id="description_ar" class="form-control @error('description_ar') is-invalid @enderror" name="description_ar"
+                                        required autocomplete="description_ar">{{ old('description_ar') }}</textarea>
+                                    @error('description_ar')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="description_en" class="form-label">{{ __('general.attributes.description_ar') }}</label>
+                                    <textarea id="description_en" class="form-control @error('description_en') is-invalid @enderror" name="description_en"
+                                        required autocomplete="description_en">{{ old('description_en') }}</textarea>
+                                    @error('description_en')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="price" class="form-label">{{ __('general.attributes.price') }}</label>
+                                    <input id="price" type="number"
+                                        class="form-control @error('price') is-invalid @enderror" name="price"
+                                        value="{{ old('price') }}" required autocomplete="price">
+                                    @error('price')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="quantity" class="form-label">{{ __('general.attributes.qty') }}</label>
+                                    <input id="quantity" type="number"
+                                        class="form-control @error('quantity') is-invalid @enderror" name="quantity"
+                                        value="{{ old('quantity') }}" required autocomplete="quantity">
+                                    @error('quantity')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="is_available" class="form-label">{{ __('general.attributes.status') }}</label>
+                                    <select id="is_available"
+                                        class="form-control @error('is_available') is-invalid @enderror" name="is_available"
+                                        required autocomplete="is_available">
+                                        <option value="1">{{ __('general.yes') }}</option>
+                                        <option value="0">{{ __('general.no') }}</option>
+                                    </select>
+                                    @error('is_available')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="image" class="form-label">{{ __('general.attributes.image') }}</label>
+                                    <input id="image" type="file"
+                                        class="form-control @error('image') is-invalid @enderror" name="image" required>
+                                    @error('image')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+
+
+                                <div class="form-group mb-0">
+                                    <button type="submit" class="btn btn-primary">
+                                        {{ __('Add Product') }}
+                                    </button>
+                                </div>
+                            </form>
+                        </div> <!--end card-body-->
+                    </div><!--end card-->
+                </div> <!--end col-->
+            </div><!--end row-->
         </div>
-        <!-- end page content -->
-    </div>
+
+    </div><!-- container -->
 @endsection

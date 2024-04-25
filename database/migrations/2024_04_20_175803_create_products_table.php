@@ -25,7 +25,7 @@ return new class extends Migration
             $table->integer('quantity')->default(0);
             $table->boolean('is_available')->default(true);
             $table->string('image_url')->nullable();
-            $table->bigInteger('category_id')->unsigned();
+            $table->unsignedBigInteger('category_id')->nullable();
             $table->integer('status_id')->unsigned()->default(0);
             $table->timestamps();
         });
