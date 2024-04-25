@@ -89,18 +89,35 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#sidebarEcommerce" data-bs-toggle="collapse"
                                 role="button" aria-expanded="false" aria-controls="sidebarEcommerce">
-                                Products
+                                {{ __('general.attributes.product') }}
                             </a>
                             <div class="collapse " id="sidebarEcommerce">
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
-                                        <a class='nav-link' href='{{ route('products.index') }}'>Product List</a>
+                                        <a class='nav-link' href='{{ route('products.index') }}'>{{ __('general.side.products-list') }}</a>
                                     </li><!--end nav-item-->
                                     <li class="nav-item">
-                                        <a class='nav-link' href='{{ route('products.create') }}'>Create Product</a>
+                                        <a class='nav-link' href='{{ route('products.create') }}'>{{ __('general.actions.new') }}</a>
                                     </li><!--end nav-item-->
                                 </ul><!--end nav-->
                             </div><!--end sidebarEcommerce-->
+                        </li><!--end nav-item-->
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#sidebarUsers" data-bs-toggle="collapse"
+                                role="button" aria-expanded="false" aria-controls="sidebarUsers">
+                                {{ __('general.attributes.user') }}
+                            </a>
+                            <div class="collapse " id="sidebarUsers">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class='nav-link' href='{{ route('users.index') }}'>{{ __('general.side.users-list') }}</a>
+                                    </li><!--end nav-item-->
+                                    <li class="nav-item">
+                                        <a class='nav-link' href='{{ route('users.create') }}'>{{ __('general.actions.new') }}</a>
+                                    </li><!--end nav-item-->
+                                </ul><!--end nav-->
+                            </div><!--end sidebarUsers-->
                         </li><!--end nav-item-->
 
                     </ul><!--end navbar-nav--->
