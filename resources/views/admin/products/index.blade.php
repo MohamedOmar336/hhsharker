@@ -3,7 +3,6 @@
 @section('content')
     <!-- Page Content-->
     <div class="page-content-tab">
-
         <div class="container-fluid">
             <!-- Page-Title -->
             <div class="row">
@@ -43,23 +42,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($products as $product)
+                                        @foreach ($records as $record)
                                             <tr>
                                                 <td>
-                                                    <img src="{{ asset('images/' . $product->image_url) }}"
-                                                        alt="{{ $product->name }}" width="50">
+                                                    <img src="{{ asset('images/' . $record->image_url) }}"
+                                                        alt="{{ $record->name }}" width="50">
                                                 </td>
-                                                <td>{{ $product->name_ar }}</td>
-                                                <td>{{ $product->name_en }}</td>
-                                                <td>{{ $product->description_ar }}</td>
-                                                <td>{{ $product->description_en }}</td>
-                                                <td>{{ $product->price }}</td>
-                                                <td>{{ $product->quantity }}</td>
-                                                <td>{{ $product->is_available ? 'Yes' : 'No' }}</td>
+                                                <td>{{ $record->name_ar }}</td>
+                                                <td>{{ $record->name_en }}</td>
+                                                <td>{{ $record->description_ar }}</td>
+                                                <td>{{ $record->description_en }}</td>
+                                                <td>{{ $record->price }}</td>
+                                                <td>{{ $record->quantity }}</td>
+                                                <td>{{ $record->is_available ? 'Yes' : 'No' }}</td>
                                                 <td>
-                                                    <a href="{{ route('products.edit', $product->id) }}"
+                                                    <a href="{{ route('products.edit', $record->id) }}"
                                                         class="btn btn-sm btn-primary">Edit</a>
-                                                    <form action="{{ route('products.destroy', $product->id) }}"
+                                                    <form action="{{ route('products.destroy', $record->id) }}"
                                                         method="POST" style="display: inline;">
                                                         @csrf
                                                         @method('DELETE')
@@ -75,26 +74,11 @@
                             <div class="row">
                                 <div class="col">
                                     <a href="{{ route('products.create') }}" class="btn btn-outline-light btn-sm px-4">+
-                                        Add New</a>
+                                        {{ __('general.actions.new') }}</a>
 
                                 </div><!--end col-->
                                 <div class="col-auto">
-                                    <nav aria-label="...">
-                                        <ul class="pagination pagination-sm mb-0">
-                                            <li class="page-item disabled">
-                                                <a class="page-link" href="#" tabindex="-1">Previous</a>
-                                            </li>
-                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                            <li class="page-item">
-                                                <a class="page-link" href="#">2 <span
-                                                        class="sr-only">(current)</span></a>
-                                            </li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                            <li class="page-item">
-                                                <a class="page-link" href="#">Next</a>
-                                            </li>
-                                        </ul><!--end pagination-->
-                                    </nav><!--end nav-->
+                                    {{ $records->links('admin.pagination.bootstrap') }}
                                 </div> <!--end col-->
                             </div><!--end row-->
                         </div><!--end card-body-->

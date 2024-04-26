@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Enums\EnumsSettings;
 
 class ProductController extends Controller
 {
@@ -15,8 +16,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-        return view('admin.products.index', compact('products'));
+        $records = Product::latest()->paginate(EnumsSettings::Paginate);
+
+        return view('admin.products.index', compact('records'));
     }
 
     /**
@@ -50,11 +52,20 @@ class ProductController extends Controller
 
         $imageName = $this->uploadImage($request->file('image'));
 
+
         $data['image_url'] = $imageName;
 
-        Product::create($data);
+        $record = Product::create($data);
 
-        return redirect()->route('products.index')->with('success', 'Product created successfully.');
+        $slug = slugable($record->name_en);
+
+        $record->update([
+            'slug' => Product::whereSlug($slug)->where('id', '!=', $record->id)->exists() ? slugable($record->name_en, $record->id) : $slug,
+        ]);
+
+        session()->flash('success', __('messages.added_successfully'));
+
+        return redirect()->route('products.index');
     }
 
     /**
@@ -73,11 +84,13 @@ class ProductController extends Controller
      * Update the specified product in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request , $id)
     {
+
+        $record = Product::findOrFail($id);
+
         $validatedData = $request->validate([
             'name_ar' => 'required|string',
             'name_en' => 'required|string',
@@ -88,14 +101,21 @@ class ProductController extends Controller
             'is_available' => 'nullable|boolean',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-        $product->fill($validatedData);
+
+        $record->fill($validatedData);
 
         if ($request->hasFile('image')) {
             $imageName = $this->uploadImage($request->file('image'));
-            $product->image_url = $imageName;
+            $record->image_url = $imageName;
         }
 
-        $product->save();
+        $record->save();
+
+        // Update the slug if necessary
+        $slug = slugable($record->name_en);
+        $record->update([
+            'slug' => Product::whereSlug($slug)->where('id', '!=', $record->id)->exists() ? slugable($record->name_en, $record->id) : $slug,
+        ]);
 
         return redirect()->route('products.index')->with('success', 'Product updated successfully.');
     }

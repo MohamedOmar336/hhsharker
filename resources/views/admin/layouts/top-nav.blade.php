@@ -7,14 +7,14 @@
                         <img src="{{ asset('assets-admin/images/flags/us_flag.jpg ') }}" alt="" class="thumb-xxs rounded-circle">
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#"><img src="{{ asset('assets-admin/images/flags/us_flag.jpg ') }}"
-                                alt="" height="15" class="me-2">English</a>
-                        <a class="dropdown-item" href="#"><img src="{{ asset('assets-admin/images/flags/spain_flag.jpg ') }}"
-                                alt="" height="15" class="me-2">Spanish</a>
-                        <a class="dropdown-item" href="#"><img src="{{ asset('assets-admin/images/flags/germany_flag.jpg ') }}"
-                                alt="" height="15" class="me-2">German</a>
-                        <a class="dropdown-item" href="#"><img src="{{ asset('assets-admin/images/flags/french_flag.jpg ') }}"
-                                alt="" height="15" class="me-2">French</a>
+                        @if(app()->isLocale('ar'))
+                        <a class="dropdown-item" href="{{route('change.lang', 'en')}}"><img src="{{ asset('assets-admin/images/flags/us_flag.jpg ') }}"
+                            alt="" height="15" class="me-2">English</a>
+                        @endif
+                        @if(app()->isLocale('en'))
+                            <a class="dropdown-item" href="{{route('change.lang', 'ar')}}"><img src="{{ asset('assets-admin/images/flags/spain_flag.jpg ') }}"
+                                    alt="" height="15" class="me-2">العربيه</a>
+                        @endif
                     </div>
                 </li><!--end topbar-language-->
 

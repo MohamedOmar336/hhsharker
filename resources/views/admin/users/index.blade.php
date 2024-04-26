@@ -121,7 +121,7 @@
                                 </div><!--end /tableresponsive-->
                                 <div class="row">
                                     <div class="col">
-                                        <a class="btn btn-outline-light btn-sm px-4" href="{{ route('users.create') }}">+ Add New</a>
+                                        <a class="btn btn-outline-light btn-sm px-4" href="{{ route('users.create') }}">{{ __('general.actions.new') }}</a>
                                     </div><!--end col-->
                                     <div class="col-auto">
                                         <nav aria-label="...">

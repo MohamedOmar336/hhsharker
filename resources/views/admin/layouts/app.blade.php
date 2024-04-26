@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="{{app()->getLocale()}}" dir="{{ app()->isLocale('ar') ? 'rtl' : 'ltr' }}">
 
 <!-- Added by HTTrack -->
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
@@ -18,11 +18,16 @@
     <link rel="shortcut icon" href="{{ asset('assets-admin/images/favicon.ico') }}">
 
 
-
-    <!-- App css -->
-    <link href="{{ asset('assets-admin/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets-admin/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets-admin/css/app.min.css') }}" rel="stylesheet" type="text/css" />
+
+
+    @if(app()->isLocale('ar'))
+        <link href="{{ asset('assets-admin/css/app-rtl.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets-admin/css/bootstrap-rtl.min.css') }}" rel="stylesheet" type="text/css" />
+    @else
+        <link href="{{ asset('assets-admin/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets-admin/css/app.min.css') }}" rel="stylesheet" type="text/css" />
+    @endif
 
 </head>
 
@@ -56,6 +61,8 @@
     <script src="{{ asset('assets-admin/js/pages/analytics-index.init.js') }}"></script>
     <!-- App js -->
     <script src="{{ asset('assets-admin/js/app.js') }}"></script>
+
+
 
 </body>
 <!--end body-->
