@@ -1,3 +1,4 @@
+
 @extends('admin.layouts.app')
 
 @section('content')
@@ -15,25 +16,25 @@
                                         </li><!--end nav-item-->
                                         <li class="breadcrumb-item"><a href="{{ url('/products') }}">Products</a>
                                         </li><!--end nav-item-->
-                                        <li class="breadcrumb-item active">Add</li>
+                                        <li class="breadcrumb-item active">Edit</li>
                                     </ol>
                                 </div>
-                                <h4 class="page-title">Add Product</h4>
+                                <h4 class="page-title">Edit Product</h4>
                             </div><!--end page-title-box-->
                         </div><!--end col-->
                     </div>
                     <!-- end page title end breadcrumb -->
                     <div class="row">
-                        <div class="col-12 col-lg-8 mx-auto">
+                        <div class="col-12 col-md-8 mx-auto">
                             <div class="card">
                                 <div class="card-body">
-            
-                                <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data" class="needs-validation" novalidate>
+                                <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
 
                         <div class="mb-3">
                             <label for="name_ar" class="form-label">Name (Arabic)</label>
-                            <input id="name_ar" type="text" class="form-control @error('name_ar') is-invalid @enderror" name="name_ar" value="{{ old('name_ar') }}" required autocomplete="name_ar" autofocus>
+                            <input id="name_ar" type="text" class="form-control" name="name_ar" value="{{ $product->name_ar }}" required>
                             @error('name_ar')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -43,7 +44,7 @@
 
                         <div class="mb-3">
                             <label for="name_en" class="form-label">Name (English)</label>
-                            <input id="name_en" type="text" class="form-control @error('name_en') is-invalid @enderror" name="name_en" value="{{ old('name_en') }}" required autocomplete="name_en">
+                            <input id="name_en" type="text" class="form-control" name="name_en" value="{{ $product->name_en }}" required>
                             @error('name_en')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -53,7 +54,7 @@
 
                         <div class="mb-3">
                             <label for="description_ar" class="form-label">Description (Arabic)</label>
-                            <textarea id="description_ar" class="form-control @error('description_ar') is-invalid @enderror" name="description_ar" required autocomplete="description_ar">{{ old('description_ar') }}</textarea>
+                            <textarea id="description_ar" class="form-control @error('description_ar') is-invalid @enderror" name="description_ar" required>{{ $product->description_ar }}</textarea>
                             @error('description_ar')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -63,7 +64,7 @@
 
                         <div class="mb-3">
                             <label for="description_en" class="form-label">Description (English)</label>
-                            <textarea id="description_en" class="form-control @error('description_en') is-invalid @enderror" name="description_en" required autocomplete="description_en">{{ old('description_en') }}</textarea>
+                            <textarea id="description_en" class="form-control @error('description_en') is-invalid @enderror" name="description_en" required>{{ $product->description_en }}</textarea>
                             @error('description_en')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -72,18 +73,8 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="slug" class="form-label">Slug</label>
-                            <input id="slug" type="text" class="form-control @error('slug') is-invalid @enderror" name="slug" value="{{ old('slug') }}" required autocomplete="slug">
-                            @error('slug')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-
-                        <div class="mb-3">
                             <label for="price" class="form-label">Price</label>
-                            <input id="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" required autocomplete="price">
+                            <input id="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ $product->price }}" required>
                             @error('price')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -93,7 +84,7 @@
 
                         <div class="mb-3">
                             <label for="quantity" class="form-label">Quantity</label>
-                            <input id="quantity" type="number" class="form-control @error('quantity') is-invalid @enderror" name="quantity" value="{{ old('quantity') }}" required autocomplete="quantity">
+                            <input id="quantity" type="number" class="form-control @error('quantity') is-invalid @enderror" name="quantity" value="{{ $product->quantity }}" required>
                             @error('quantity')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -103,9 +94,9 @@
 
                         <div class="mb-3">
                             <label for="is_available" class="form-label">Available</label>
-                            <select id="is_available" class="form-control @error('is_available') is-invalid @enderror" name="is_available" required autocomplete="is_available">
-                                <option value="1" >Yes</option>
-                                <option value="0" >No</option>
+                            <select id="is_available" class="form-control @error('is_available') is-invalid @enderror" name="is_available" required>
+                                <option value="1" @if($product->is_available == 1) selected @endif>Yes</option>
+                                <option value="0" @if($product->is_available == 0) selected @endif>No</option>
                             </select>
                             @error('is_available')
                                 <div class="invalid-feedback">
@@ -114,46 +105,15 @@
                             @enderror
                         </div>
 
-
-
-                 <!--       <div class="form-group">
-                            <label for="category">{{ __('Category') }}</label>
-                            <input id="category" type="text" class="form-control @error('category') is-invalid @enderror" name="category" value="{{ old('category') }}" required autocomplete="category">
-                            @error('category')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="status">{{ __('Status') }}</label>
-                            <select id="status" class="form-control @error('status') is-invalid @enderror" name="status" required autocomplete="status">
-                                <option value="active" >Active</option>
-                                <option value="inactive">Inactive</option>
-                            </select>
-                            @error('status')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>-->
-
-                        
                         <div class="mb-3">
-                            <label for="image" class="form-label">Image</label>
-                            <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" required>
-                            @error('image')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
+                            <label for="image" class="form-label">Current Image</label><br>
+                            <img src="{{ asset('images/' . $product->image_url) }}" alt="{{ $product->name }}" width="100"><br>
+                            <label for="image" class="form-label mt-2">Update Image</label>
+                            <input type="file" class="form-control" id="image" name="image">
                         </div>
 
-                        <div class="form-group mb-0">
-                            <button type="submit" class="btn btn-primary">
-                                {{ __('Add Product') }}
-                            </button>
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </div>
                     </form>
                                 </div> <!--end card-body-->                                           
@@ -162,5 +122,5 @@
                     </div><!--end row-->
 
                 </div><!-- container -->
-
+                </div>
                 @endsection
