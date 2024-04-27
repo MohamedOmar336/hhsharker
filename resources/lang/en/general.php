@@ -206,7 +206,8 @@ return [
         'transaction_id' => 'Transaction Id',
         'color_code' => 'Color',
         'image_link' => 'Image Link',
-
+        'categories' => 'Categories',
+        'categories-list' => 'Categories List',
         // notifications
         'device_type' => 'Device Type',
         'trigger_type' => 'Trigger Type',
