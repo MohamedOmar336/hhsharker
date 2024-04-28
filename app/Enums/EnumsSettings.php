@@ -20,5 +20,7 @@ class EnumsSettings
         'restore' => 'restore',
         'forceDelete' => 'forceDelete',
     ];
-
+    const firebase = [
+        'server_key' => 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+    ];
 }
