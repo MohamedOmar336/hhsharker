@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Enums\EnumsSettings;
+use App\Models\User;
+use App\Notifications\AccountActivated;
 
 class ProductController extends Controller
 {
