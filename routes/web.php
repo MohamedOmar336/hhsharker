@@ -7,7 +7,6 @@ use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\admin\CategoryController;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Admin\CategoryController;
 
 /*
 |--------------------------------------------------------------------------

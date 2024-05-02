@@ -15,7 +15,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
 
-   
+
 
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('assets-admin/images/favicon.ico') }}">
@@ -50,15 +50,16 @@
     <!-- Top Bar End -->
 
     <div class="page-wrapper">
-    @include('admin.admins.edit_admin')
-    @include('admin.layouts.footer')
+        @yield('content')
+        {{-- @include('admin.admins.edit_admin') --}}
+        {{-- @include('admin.layouts.footer') --}}
     </div>
     <!-- end page-wrapper -->
 
 
-  
+
     <!-- Include JavaScript files -->
-  
+
     <!-- Javascript  -->
     <!-- vendor js -->
 

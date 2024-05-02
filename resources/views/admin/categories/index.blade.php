@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="page-wrapper">
-
         <!-- Page Content-->
         <div class="page-content-tab">
             <div class="container-fluid">

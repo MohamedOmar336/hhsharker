@@ -18,17 +18,9 @@ class Product extends Model
         'quantity',
         'is_available',
         'image_url',
-<<<<<<< HEAD
-
-    ];
-
-=======
         'category_id',
         'status_id',
     ];
-<<<<<<< HEAD
->>>>>>> 088d0899d75ec8799ed092a2bc34374d64b41f04
-=======
 
     /**
      * Define a many-to-many relationship between Product and Category models.
@@ -42,5 +34,4 @@ class Product extends Model
         return $this->belongsToMany(Category::class);
     }
 
->>>>>>> 5716ca9a49e1e4481a9ac6a954f2bd5a3d4f1f90
 }
