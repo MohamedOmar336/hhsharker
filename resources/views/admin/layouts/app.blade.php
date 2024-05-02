@@ -14,9 +14,9 @@
     <meta content="" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-<<<<<<< HEAD
-    @include('partials.head')
-=======
+
+   
+
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('assets-admin/images/favicon.ico') }}">
 
@@ -31,7 +31,7 @@
         <link href="{{ asset('assets-admin/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('assets-admin/css/app.min.css') }}" rel="stylesheet" type="text/css" />
     @endif
->>>>>>> 088d0899d75ec8799ed092a2bc34374d64b41f04
+
 
 </head>
 
@@ -55,7 +55,7 @@
     </div>
     <!-- end page-wrapper -->
 
-<<<<<<< HEAD
+
   
     <!-- Include JavaScript files -->
   
@@ -70,7 +70,9 @@
     <script src="{{ asset('assets-admin/js/pages/analytics-index.init.js') }}"></script>
     <!-- App js -->
     <script src="{{ asset('assets-admin/js/app.js') }}"></script>
->>>>>>> 088d0899d75ec8799ed092a2bc34374d64b41f04
+
+
+
 
 
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
