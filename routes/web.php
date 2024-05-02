@@ -19,28 +19,31 @@ use App\Http\Controllers\Admin\CategoryController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/admin', function () {
     return view('auth.login');
 });
 
 Auth::routes(['']);
 
+Route::group(['prefix' => 'admin'], function () {
 
-Route::group(['middleware' => ['auth' , 'Localization']], function () {
+    Route::group(['middleware' => ['auth' , 'Localization']], function () {
 
-    Route::get('/change-lang/{lang}', function ($lang) {
-        App::setLocale($lang);
-        \Illuminate\Support\Facades\Config::set('locale', $lang);
-        \Illuminate\Support\Facades\Session::put('locale', $lang);
-        return redirect()->back();
-    })->name('change.lang');
+        Route::get('/change-lang/{lang}', function ($lang) {
+            App::setLocale($lang);
+            \Illuminate\Support\Facades\Config::set('locale', $lang);
+            \Illuminate\Support\Facades\Session::put('locale', $lang);
+            return redirect()->back();
+        })->name('change.lang');
 
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+        Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-    Route::resource('/products', ProductController::class);
+        Route::resource('/products', ProductController::class);
 
-    Route::resource('/users', UserController::class);
+        Route::resource('/users', UserController::class);
 
-    Route::resource('/categories', CategoryController::class);
+        Route::resource('/categories', CategoryController::class);
+
+    });
 
 });
