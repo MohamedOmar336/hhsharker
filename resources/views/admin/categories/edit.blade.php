@@ -13,12 +13,12 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a>
                                 </li><!--end nav-item-->
-                                <li class="breadcrumb-item"><a href="{{ url('/products') }}">Categories</a>
+                                <li class="breadcrumb-item"><a href="{{ url('/categories') }}">{{ __('general.attributes.categories') }}</a></li>
                                 </li><!--end nav-item-->
                                 <li class="breadcrumb-item active">Edit</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">Edit Category</h4>
+                        <h4 class="page-title">{{ __('general.side.edit').' ' }} {{ __('general.attributes.categories') }} </h4>
                     </div><!--end page-title-box-->
                 </div><!--end col-->
             </div>
@@ -33,7 +33,7 @@
                                 @method('PUT')
 
                                 <div class="mb-3">
-                                    <label for="name_ar" class="form-label">{{ __('Name (Arabic)') }}</label>
+                                    <label for="name_ar" class="form-label">{{ __('general.attributes.name_ar') }}</label>
                                     <input id="name_ar" type="text"
                                         class="form-control @error('name_ar') is-invalid @enderror" name="name_ar"
                                         value="{{ $category->name_ar }}" required autocomplete="name_ar" autofocus>
@@ -45,7 +45,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="name_en" class="form-label">{{ __('Name (English)') }}</label>
+                                    <label for="name_en" class="form-label">{{ __('general.attributes.name_en') }}</label>
                                     <input id="name_en" type="text"
                                         class="form-control @error('name_en') is-invalid @enderror" name="name_en"
                                         value="{{ $category->name_en }}" required autocomplete="name_en">
@@ -58,7 +58,7 @@
 
 
                                 <div class="mb-3">
-                                    <label for="image" class="form-label">Current Image</label><br>
+                                    <label for="image" class="form-label">{{ __('general.attributes.image') }}</label>
                                     <img src="{{ asset('images/' . $category->image) }}" alt="{{ $category->name }}"
                                         width="100"><br>
                                     <label for="image" class="form-label mt-2">Update Image</label>
@@ -72,10 +72,16 @@
 
 
                                 <div class="mb-3">
-                                    <label for="parent_id" class="form-label">{{ __('Parent Category') }}</label>
-                                    <input id="parent_id" type="number"
+                                    <label for="parent_id" class="form-label">{{ __('general.attributes.parent_id') }}</label>
+                                    <select id="parent_id"
                                         class="form-control @error('parent_id') is-invalid @enderror" name="parent_id"
-                                        value="{{ $category->parent_id }}">
+                                        required autocomplete="parent_id">
+                                        <option value="1"> {{ __('general.select.select') .' ' }} {{ __('general.select.perant_category') }}</option>
+                                        @foreach ($records as  $record)
+                                            <option value="{{ $record->id }}" {{ $category->parent_id == $record->id ? 'selected' : null }}>{{ $record->name }}</option>
+                                        @endforeach
+                                    </select>
+
                                     @error('parent_id')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -84,11 +90,11 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="active" class="form-label">{{ __('Active') }}</label>
+                                    <label for="active" class="form-label">{{ __('general.attributes.active') }}</label>
                                     <select id="active" class="form-control @error('active') is-invalid @enderror"
                                         name="active" required autocomplete="active">
-                                        <option value="1" {{ $category->active ? 'selected' : '' }}>Yes</option>
-                                        <option value="0" {{ !$category->active ? 'selected' : '' }}>No</option>
+                                        <option value="1" {{ $record->active ? 'selected' : null }}>{{ __('general.select.yes') }}</option>
+                                        <option value="0">{{ __('general.select.no') }}</option>
                                     </select>
                                     @error('active')
                                         <div class="invalid-feedback">
@@ -99,7 +105,7 @@
 
                                 <div class="mb-3">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Update Category') }}
+                                        {{ __('general.btn.update') }}
                                     </button>
                                 </div>
                             </form>
