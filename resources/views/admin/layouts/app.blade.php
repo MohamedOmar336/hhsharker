@@ -59,9 +59,6 @@
   
     <!-- Include JavaScript files -->
   
-    <!-- Include additional scripts -->
-    @include('partials.scripts')
-=======
     <!-- Javascript  -->
     <!-- vendor js -->
 

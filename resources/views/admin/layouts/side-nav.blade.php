@@ -126,21 +126,6 @@
                             <div class="collapse " id="sidebarAnalytics">
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
-<<<<<<< HEAD
-                                        <a href="{{ url('analytics-customers.html') }}" class="nav-link ">Customers</a>
-                                    </li><!--end nav-item-->
-                                    <li class="nav-item">
-                                        <a href="{{ url('analytics-reports.html') }}" class="nav-link ">Reports</a>
-=======
-                                        <a class='nav-link' href='{{ route('products.index') }}'>{{ __('general.side.products-list') }}</a>
-                                    </li><!--end nav-item-->
-                                    <li class="nav-item">
-                                        <a class='nav-link' href='{{ route('products.create') }}'>{{ __('general.actions.new') }}</a>
->>>>>>> 088d0899d75ec8799ed092a2bc34374d64b41f04
-                                    </li><!--end nav-item-->
-                                </ul><!--end nav-->
-                            </div><!--end sidebarAnalytics-->
-            </li><!--end nav-item-->
 
 <<<<<<< HEAD
             <li class="nav-item">
