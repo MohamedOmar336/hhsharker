@@ -1,13 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\UserController;
+use App\Http\Controllers\admin\CategoryController;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\HomeController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,13 +19,10 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Auth::routes(['']);
 
 
 Route::group(['middleware' => ['auth' , 'Localization']], function () {
@@ -44,5 +40,6 @@ Route::group(['middleware' => ['auth' , 'Localization']], function () {
 
     Route::resource('/users', UserController::class);
 
-});
+    Route::resource('/categories', CategoryController::class);
 
+});
