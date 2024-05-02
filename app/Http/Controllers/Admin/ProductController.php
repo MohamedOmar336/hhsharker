@@ -6,8 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Enums\EnumsSettings;
-use App\Models\User;
-use App\Notifications\AccountActivated;
 
 class ProductController extends Controller
 {
@@ -52,8 +50,7 @@ class ProductController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $imageName = $this->uploadImage($request->file('image'));
-
+        $imageName = uploadImage($request->file('image'));
 
         $data['image_url'] = $imageName;
 
@@ -107,7 +104,7 @@ class ProductController extends Controller
         $record->fill($validatedData);
 
         if ($request->hasFile('image')) {
-            $imageName = $this->uploadImage($request->file('image'));
+            $imageName = uploadImage($request->file('image'));
             $record->image_url = $imageName;
         }
 
@@ -136,16 +133,4 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
     }
 
-    /**
-     * Uploads the image and returns the image name.
-     *
-     * @param  \Illuminate\Http\UploadedFile  $image
-     * @return string
-     */
-    private function uploadImage($image)
-    {
-        $imageName = time() . '.' . $image->getClientOriginalExtension();
-        $image->move(public_path('images'), $imageName);
-        return $imageName;
-    }
 }

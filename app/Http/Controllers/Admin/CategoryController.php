@@ -1,112 +1,131 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $categories = Category::all();
-        return view('admin.categories.index', compact('categories'));
+        // Retrieve all categories from the database
+        $records = Category::all();
+        // Return the view with categories data
+        return view('admin.categories.index', compact('records'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
-        return view('admin.categories.create');
+        $records = Category::select('id', 'id_path', 'name_' . app()->getLocale() . ' as name', 'name_en', 'name_ar')->orderBy('level', 'asc')->get();
+        // Return the view for creating a new category
+        return view('admin.categories.create', compact('records'));
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
-        $request->validate([
-            'name_ar' => 'required|string|max:191',
-            'name_en' => 'required|string|max:191',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        // Validate the incoming request data.
+        $data = $request->validate([
+            'name_ar' => 'required|string',
+            'name_en' => 'required|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'parent_id' => 'nullable|exists:categories,id',
-            'level' => 'integer|min:1',
-            'id_path' => 'string|max:191',
-            'slug' => 'nullable|string|max:191|unique:categories',
+            'level' => 'integer',
+            'id_path' => 'string',
+            'slug' => 'nullable|string',
             'active' => 'boolean',
-
         ]);
+        $data = $request->all();
 
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('images'), $imageName);
-        } else {
-            $imageName = 'default.jpg'; // Provide a default image if no image is uploaded
+        if ($request->has('image')) {
+
+            $imageName = uploadImage($request->file('image'));
+
+            $data['image_url'] = $imageName;
         }
 
-        category::create([
-            'name_ar' => $request->name_ar,
-            'name_en' => $request->name_en,
-            'parent_id' => $request->parent_id ?? 0,
-            'level' => $request->level ?? 1,
-            'id_path' => $request->id_path ?? '1',
-            'slug' => $request->slug,
-            'active' => $request->active ?? true,
-            'image' => $imageName,
+        $record = Category::create($data);
+
+        $slug = slugable($record->name_en);
+
+        $record->update([
+            'slug' => Category::whereSlug($slug)->where('id', '!=', $record->id)->exists() ? slugable($record->name_en, $record->id) : $slug,
         ]);
 
-
-
-
+        session()->flash('success', __('messages.added_successfully'));
+        // Redirect back to the index page with a success message
         return redirect()->route('categories.index')->with('success', 'Category created successfully.');
     }
 
-
-
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Category  $category
+     * @return \Illuminate\Http\Response
+     */
     public function edit(Category $category)
     {
+        // Return the view for editing a category
         return view('admin.categories.edit', compact('category'));
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Category  $category
+     * @return \Illuminate\Http\Response
+     */
     public function update(Request $request, Category $category)
     {
+        // Validate the incoming request data
         $request->validate([
-            'name_ar' => 'required|string|max:191',
-            'name_en' => 'required|string|max:191',
+            'name_ar' => 'required|string',
+            'name_en' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'parent_id' => 'nullable|exists:categories,id',
-            'level' => 'integer|min:1',
-            'id_path' => 'string|max:191',
-            'slug' => 'nullable|string|max:191|unique:categories,slug,'.$category->id,
+            'level' => 'integer',
+            'id_path' => 'string',
+            'slug' => 'nullable|string',
             'active' => 'boolean',
         ]);
 
-        $category->name_ar = $request->name_ar;
-        $category->name_en = $request->name_en;
-        $category->parent_id = $request->parent_id ?? 0;
-        $category->level = $request->level ?? 1;
-        $category->id_path = $request->id_path ?? '1';
-        $category->slug = $request->slug;
-        $category->active = $request->active ?? true;
+        // Update the category record in the database
+        $category->update($request->all());
 
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('images'), $imageName);
-            $category->image = $imageName;
-        } else {
-
-            $imageName = $category->image;
-        }
-
-
-
-        $category->save();
-
+        // Redirect back to the index page with a success message
         return redirect()->route('categories.index')->with('success', 'Category updated successfully.');
     }
 
-    public function destroy($id)
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Category  $category
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Category $category)
     {
-        $category = category::findOrFail($id);
+        // Delete the specified category record from the database
         $category->delete();
+
+        // Redirect back to the index page with a success message
         return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
     }
 }

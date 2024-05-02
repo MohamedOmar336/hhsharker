@@ -370,6 +370,7 @@ return [
         'alahly' => 'Alahly',
         'fawry' => 'Fawry',
         'trade_terms' => 'Trade Terms',
+        'perant_category' => 'Perant Category',
         '' => '',
         '' => '',
         '' => '',

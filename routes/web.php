@@ -6,6 +6,8 @@ use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\UserController;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\CategoryController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,11 +34,13 @@ Route::group(['middleware' => ['auth' , 'Localization']], function () {
         \Illuminate\Support\Facades\Session::put('locale', $lang);
         return redirect()->back();
     })->name('change.lang');
-    
+
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     Route::resource('/products', ProductController::class);
 
     Route::resource('/users', UserController::class);
+
+    Route::resource('/categories', CategoryController::class);
 
 });
