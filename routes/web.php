@@ -45,9 +45,6 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('/categories', CategoryController::class);
 
     });
-
-    Route::resource('/categories', CategoryController::class);
-
 });
 
 
