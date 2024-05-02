@@ -4,7 +4,11 @@
     <div class="main-icon-menu">
         <a href="{{ url('/home') }}" class="logo logo-metrica d-block text-center">
             <span>
+<<<<<<< HEAD
                 <img src="{{ asset('assets/images/logo-sm.png') }}" alt="logo-small" class="logo-sm">
+=======
+                <img src="{{ asset('assets-admin/images/logo-sm.png') }}" alt="logo-small" class="logo-sm">
+>>>>>>> 088d0899d75ec8799ed092a2bc34374d64b41f04
             </span>
         </a>
         <div class="main-icon-menu-body">
@@ -21,6 +25,7 @@
                         </a><!--end nav-link-->
                     </li><!--end nav-item-->
 
+<<<<<<< HEAD
                     <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Pages" data-bs-trigger="hover">
                         <a href="{{ url('#MetricaPages') }}" id="pages-tab" class="nav-link">
                             <i class="ti ti-files menu-icon"></i>
@@ -32,12 +37,19 @@
                             <i class="ti ti-shield-lock menu-icon"></i>
                         </a><!--end nav-link-->
                     </li><!--end nav-item-->
+=======
+>>>>>>> 088d0899d75ec8799ed092a2bc34374d64b41f04
                 </ul><!--end nav-->
             </div><!--end /div-->
         </div><!--end main-icon-menu-body-->
         <div class="pro-metrica-end">
+<<<<<<< HEAD
             <a href="{{ url('') }}" class="profile">
                 <img src="{{ asset('assets/images/users/user-4.jpg') }}" alt="profile-user" class="rounded-circle thumb-sm">
+=======
+            <a href="#" class="profile">
+                <img src="{{ asset('assets-admin/images/users/user-4.jpg ') }}" alt="profile-user" class="rounded-circle thumb-sm">
+>>>>>>> 088d0899d75ec8799ed092a2bc34374d64b41f04
             </a>
         </div><!--end pro-metrica-end-->
     </div>
@@ -46,10 +58,17 @@
     <div class="main-menu-inner">
         <!-- LOGO -->
         <div class="topbar-left">
+<<<<<<< HEAD
             <a href="{{ url('/home') }}" class="logo">
                 <span>
                     <img src="{{ asset('assets/images/logo-dark.png') }}" alt="logo-large" class="logo-lg logo-dark">
                     <img src="{{ asset('assets/images/logo.png') }}" alt="logo-large" class="logo-lg logo-light">
+=======
+            <a class='logo' href='{{ route('home') }}'>
+                <span>
+                    <img src="{{ asset('assets-admin/images/logo-dark.png') }}" alt="logo-large" class="logo-lg logo-dark">
+                    <img src="{{ asset('assets-admin/images/logo-dark') }}" alt="logo-=large" class="logo-lg logo-light">
+>>>>>>> 088d0899d75ec8799ed092a2bc34374d64b41f04
                 </span>
             </a><!--end logo-->
         </div><!--end topbar-left-->
@@ -58,11 +77,12 @@
             <div id="MetricaDashboard" class="main-icon-menu-pane tab-pane" role="tabpanel"
                 aria-labelledby="dasboard-tab">
                 <div class="title-box">
-                    <h6 class="menu-title">Dashboard</h6>
+                    <h6 class="menu-title"></h6>
                 </div>
 
                 <ul class="nav flex-column">
                     <li class="nav-item">
+<<<<<<< HEAD
                         <a class="nav-link" href="{{ url('/home') }}">Analytics</a>
                     </li><!--end nav-item-->
                     <li class="nav-item">
@@ -76,6 +96,9 @@
                     </li><!--end nav-item-->
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('helpdesk-index.html') }}">Helpdesk</a>
+=======
+                        <a class='nav-link' href="{{ route('home') }}">{{ __('general.dashboard') }}</a>
+>>>>>>> 088d0899d75ec8799ed092a2bc34374d64b41f04
                     </li><!--end nav-item-->
                 </ul><!--end nav-->
             </div><!-- end Dashboards -->
@@ -83,29 +106,43 @@
             <div id="MetricaApps" class="main-icon-menu-pane tab-pane" role="tabpanel"
                 aria-labelledby="apps-tab">
                 <div class="title-box">
-                    <h6 class="menu-title">Apps</h6>
+                    <h6 class="menu-title"></h6>
                 </div>
 
                 <div class="collapse navbar-collapse" id="sidebarCollapse">
                     <!-- Navigation -->
                     <ul class="navbar-nav">
                         <li class="nav-item">
+<<<<<<< HEAD
                             <a class="nav-link" href="{{ url('#sidebarAnalytics') }}" data-bs-toggle="collapse" role="button"
                                 aria-expanded="false" aria-controls="sidebarAnalytics">
                                 Analytics
+=======
+                            <a class="nav-link" href="#sidebarEcommerce" data-bs-toggle="collapse"
+                                role="button" aria-expanded="false" aria-controls="sidebarEcommerce">
+                                {{ __('general.attributes.product') }}
+>>>>>>> 088d0899d75ec8799ed092a2bc34374d64b41f04
                             </a>
                             <div class="collapse " id="sidebarAnalytics">
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
+<<<<<<< HEAD
                                         <a href="{{ url('analytics-customers.html') }}" class="nav-link ">Customers</a>
                                     </li><!--end nav-item-->
                                     <li class="nav-item">
                                         <a href="{{ url('analytics-reports.html') }}" class="nav-link ">Reports</a>
+=======
+                                        <a class='nav-link' href='{{ route('products.index') }}'>{{ __('general.side.products-list') }}</a>
+                                    </li><!--end nav-item-->
+                                    <li class="nav-item">
+                                        <a class='nav-link' href='{{ route('products.create') }}'>{{ __('general.actions.new') }}</a>
+>>>>>>> 088d0899d75ec8799ed092a2bc34374d64b41f04
                                     </li><!--end nav-item-->
                                 </ul><!--end nav-->
                             </div><!--end sidebarAnalytics-->
             </li><!--end nav-item-->
 
+<<<<<<< HEAD
             <li class="nav-item">
                 <a class="nav-link" href="{{ url('#sidebarCRM') }}" data-bs-toggle="collapse" role="button"
                     aria-expanded="false" aria-controls="sidebarCRM">
@@ -481,6 +518,46 @@
     </ul><!--end nav-->
 </div><!-- end Authentication-->
 </div><!-- end main-menu-inner-->
+=======
+                        <li class="nav-item">
+                            <a class="nav-link" href="#sidebarUsers" data-bs-toggle="collapse"
+                                role="button" aria-expanded="false" aria-controls="sidebarUsers">
+                                {{ __('general.attributes.user') }}
+                            </a>
+                            <div class="collapse " id="sidebarUsers">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class='nav-link' href='{{ route('users.index') }}'>{{ __('general.side.users-list') }}</a>
+                                    </li><!--end nav-item-->
+                                    <li class="nav-item">
+                                        <a class='nav-link' href='{{ route('users.create') }}'>{{ __('general.actions.new') }}</a>
+                                    </li><!--end nav-item-->
+                                </ul><!--end nav-->
+                            </div><!--end sidebarUsers-->
+                        </li><!--end nav-item-->
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#sidebarCategories" data-bs-toggle="collapse"
+                                role="button" aria-expanded="false" aria-controls="sidebarCategories">
+                                {{ __('general.attributes.categories') }}
+                            </a>
+                            <div class="collapse " id="sidebarCategories">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class='nav-link' href='{{ route('users.index') }}'>{{ __('general.attributes.categories-list') }}</a>
+                                    </li><!--end nav-item-->
+                                    <li class="nav-item">
+                                        <a class='nav-link' href='{{ route('users.create') }}'>{{ __('general.actions.new') }}</a>
+                                    </li><!--end nav-item-->
+                                </ul><!--end nav-->
+                            </div><!--end sidebarCategories-->
+                        </li><!--end nav-item-->
+
+                    </ul><!--end navbar-nav--->
+                </div><!--end sidebarCollapse-->
+            </div><!-- end Crypto -->
+
+>>>>>>> 088d0899d75ec8799ed092a2bc34374d64b41f04
         </div>
         <!-- end leftbar-tab-menu-->
 

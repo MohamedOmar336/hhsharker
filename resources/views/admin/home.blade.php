@@ -300,7 +300,7 @@
                                 <ul class="list-group custom-list-group">
                                     <li class="list-group-item align-items-center d-flex justify-content-between">
                                         <div class="media">
-                                            <img src="assets-admin/images/small/rgb.svg" height="30"
+                                            <img src=" {{ asset('assets-admin/images/small/rgb.svg') }} " height="30"
                                                 class="me-3 align-self-center rounded" alt="...">
                                             <div class="media-body align-self-center">
                                                 <h6 class="m-0">Dastone - Admin Dashboard</h6>
@@ -314,7 +314,7 @@
                                     </li>
                                     <li class="list-group-item align-items-center d-flex justify-content-between">
                                         <div class="media">
-                                            <img src="assets-admin/images/small/cobweb.svg" height="30"
+                                            <img src=" {{ asset('assets-admin/images/small/cobweb.svg') }} " height="30"
                                                 class="me-3 align-self-center rounded" alt="...">
                                             <div class="media-body align-self-center">
                                                 <h6 class="m-0">Metrica Simple- Admin Dashboard</h6>
@@ -328,7 +328,7 @@
                                     </li>
                                     <li class="list-group-item align-items-center d-flex justify-content-between">
                                         <div class="media">
-                                            <img src="assets-admin/images/small/blocks.svg" height="30"
+                                            <img src=" {{ asset('assets-admin/images/small/blocks.svg') }} " height="30"
                                                 class="me-3 align-self-center rounded" alt="...">
                                             <div class="media-body align-self-center">
                                                 <h6 class="m-0">Crovex - Admin Dashboard</h6>
@@ -342,7 +342,7 @@
                                     </li>
                                     <li class="list-group-item align-items-center d-flex justify-content-between">
                                         <div class="media">
-                                            <img src="assets-admin/images/small/atom.svg" height="30"
+                                            <img src=" {{ asset('assets-admin/images/small/atom.svg') }} " height="30"
                                                 class="me-3 align-self-center rounded" alt="...">
                                             <div class="media-body align-self-center">
                                                 <h6 class="m-0">Annex - Admin Dashboard</h6>
@@ -432,7 +432,7 @@
 
                                         <div class="activity-info">
                                             <div class="icon-info-activity">
-                                                <img src="assets-admin/images/users/user-5.jpg" alt=""
+                                                <img src=" {{ asset('assets-admin/images/users/user-5.jpg') }} " alt=""
                                                     class="rounded-circle thumb-sm">
                                             </div>
                                             <div class="activity-info-text">
@@ -476,7 +476,7 @@
                                         </div>
                                         <div class="activity-info">
                                             <div class="icon-info-activity">
-                                                <img src="assets-admin/images/users/user-4.jpg" alt=""
+                                                <img src=" {{ asset('assets-admin/images/users/user-4.jpg') }} " alt=""
                                                     class="rounded-circle thumb-sm">
                                             </div>
                                             <div class="activity-info-text">
@@ -579,35 +579,35 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td><img src="assets-admin/images/logos/chrome.png" alt=""
+                                                <td><img src=" {{ asset('assets-admin/images/logos/chrome.png') }} " alt=""
                                                         height="16" class="me-2">Chrome</td>
                                                 <td>10853<small class="text-muted">(52%)</small></td>
                                                 <td> 52.80%</td>
                                                 <td>566<small class="text-muted">(92%)</small></td>
                                             </tr><!--end tr-->
                                             <tr>
-                                                <td><img src="assets-admin/images/logos/micro-edge.png" alt=""
+                                                <td><img src=" {{ asset('assets-admin/images/logos/micro-edge.png') }} " alt=""
                                                         height="16" class="me-2">Microsoft Edge</td>
                                                 <td>2545<small class="text-muted">(47%)</small></td>
                                                 <td> 47.54%</td>
                                                 <td>498<small class="text-muted">(81%)</small></td>
                                             </tr><!--end tr-->
                                             <tr>
-                                                <td><img src="assets-admin/images/logos/in-explorer.png" alt=""
+                                                <td><img src=" {{ asset('assets-admin/images/logos/in-explorer.png') }} " alt=""
                                                         height="16" class="me-2">Internet-Explorer</td>
                                                 <td>1836<small class="text-muted">(38%)</small></td>
                                                 <td> 41.12%</td>
                                                 <td>455<small class="text-muted">(74%)</small></td>
                                             </tr><!--end tr-->
                                             <tr>
-                                                <td><img src="assets-admin/images/logos/opera.png" alt=""
+                                                <td><img src=" {{ asset('assets-admin/images/logos/opera.png') }} " alt=""
                                                         height="16" class="me-2">Opera</td>
                                                 <td>1958<small class="text-muted">(31%)</small></td>
                                                 <td> 36.82%</td>
                                                 <td>361<small class="text-muted">(61%)</small></td>
                                             </tr><!--end tr-->
                                             <tr>
-                                                <td><img src="assets-admin/images/logos/chrome.png" alt=""
+                                                <td><img src=" {{ asset('assets-admin/images/logos/chrome.png') }} " alt=""
                                                         height="16" class="me-2">Chrome</td>
                                                 <td>10853<small class="text-muted">(52%)</small></td>
                                                 <td> 52.80%</td>
@@ -622,50 +622,6 @@
                 </div><!--end row-->
 
             </div><!-- container -->
-
-            <!--Start Rightbar-->
-            <!--Start Rightbar/offcanvas-->
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="Appearance" aria-labelledby="AppearanceLabel">
-                <div class="offcanvas-header border-bottom">
-                    <h5 class="m-0 font-14" id="AppearanceLabel">Appearance</h5>
-                    <button type="button" class="btn-close text-reset p-0 m-0 align-self-center"
-                        data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <h6>Account Settings</h6>
-                    <div class="p-2 text-start mt-3">
-                        <div class="form-check form-switch mb-2">
-                            <input class="form-check-input" type="checkbox" id="settings-switch1">
-                            <label class="form-check-label" for="settings-switch1">Auto updates</label>
-                        </div><!--end form-switch-->
-                        <div class="form-check form-switch mb-2">
-                            <input class="form-check-input" type="checkbox" id="settings-switch2" checked>
-                            <label class="form-check-label" for="settings-switch2">Location Permission</label>
-                        </div><!--end form-switch-->
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="settings-switch3">
-                            <label class="form-check-label" for="settings-switch3">Show offline Contacts</label>
-                        </div><!--end form-switch-->
-                    </div><!--end /div-->
-                    <h6>General Settings</h6>
-                    <div class="p-2 text-start mt-3">
-                        <div class="form-check form-switch mb-2">
-                            <input class="form-check-input" type="checkbox" id="settings-switch4">
-                            <label class="form-check-label" for="settings-switch4">Show me Online</label>
-                        </div><!--end form-switch-->
-                        <div class="form-check form-switch mb-2">
-                            <input class="form-check-input" type="checkbox" id="settings-switch5" checked>
-                            <label class="form-check-label" for="settings-switch5">Status visible to all</label>
-                        </div><!--end form-switch-->
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="settings-switch6">
-                            <label class="form-check-label" for="settings-switch6">Notifications Popup</label>
-                        </div><!--end form-switch-->
-                    </div><!--end /div-->
-                </div><!--end offcanvas-body-->
-            </div>
-            <!--end Rightbar/offcanvas-->
-            <!--end Rightbar-->
 
             <!--Start Footer-->
             <!-- Footer Start -->
