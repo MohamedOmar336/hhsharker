@@ -1,6 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
+
     <!-- Page Content-->
     <div class="page-content-tab">
 
