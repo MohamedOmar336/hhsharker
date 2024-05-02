@@ -47,3 +47,7 @@ Route::group(['prefix' => 'admin'], function () {
     });
 
 });
+
+
+// Front Routes
+Route::view('/', 'website.home.index');
