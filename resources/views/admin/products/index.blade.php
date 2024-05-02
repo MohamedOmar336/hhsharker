@@ -1,4 +1,3 @@
-
 @extends('admin.layouts.app')
 
 @section('content')
@@ -11,9 +10,9 @@
                     <div class="page-title-box">
                         <div class="float-end">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ url('/home') }}">Metrica</a>
+                                <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a>
                                 </li><!--end nav-item-->
-                                <li class="breadcrumb-item"><a href="{{ url('/products') }}">Products</a>
+                                <li class="breadcrumb-item"><a href="{{ url('/products') }}">{{ __('general.attributes.product') }}</a>
                                 </li><!--end nav-item-->
                                 <li class="breadcrumb-item active">List</li>
                             </ol>
@@ -90,4 +89,3 @@
 
     </div><!-- container -->
 @endsection
-
