@@ -43,6 +43,7 @@
             </a><!--end logo-->
         </div><!--end topbar-left-->
         <!--end logo-->
+
         <div class="menu-body navbar-vertical tab-content" data-simplebar>
             <div id="MetricaDashboard" class="main-icon-menu-pane tab-pane" role="tabpanel"
                 aria-labelledby="dasboard-tab">
