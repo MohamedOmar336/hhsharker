@@ -23,7 +23,7 @@ return new class extends Migration
             $table->foreign('author_id')->references('id')->on('users');
             $table->date('post_date');
             $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('blog_categories');
             $table->string('tags')->nullable();
             $table->timestamps();
         });

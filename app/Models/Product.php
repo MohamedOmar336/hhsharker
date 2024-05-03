@@ -6,11 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-<<<<<<< HEAD
-=======
-    use HasFactory;
 
->>>>>>> 088d0899d75ec8799ed092a2bc34374d64b41f04
+    use HasFactory;
     protected $fillable = [
         'name_ar',
         'name_en',
@@ -21,13 +18,8 @@ class Product extends Model
         'quantity',
         'is_available',
         'image_url',
-<<<<<<< HEAD
-    
-    ];
-
-=======
         'category_id',
         'status_id',
     ];
->>>>>>> 088d0899d75ec8799ed092a2bc34374d64b41f04
+
 }

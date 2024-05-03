@@ -143,5 +143,6 @@
         </div>
 
     </div><!-- container -->
+    </div>
 @endsection
->>>>>>> 088d0899d75ec8799ed092a2bc34374d64b41f04
+

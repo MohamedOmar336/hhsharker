@@ -2,7 +2,7 @@
 <html lang="{{ app()->getLocale() }}" dir="{{ app()->isLocale('ar') ? 'rtl' : 'ltr' }}">
 
 <!-- Added by HTTrack -->
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+ <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!--/Added by HTTrack -->
 
 <head>
 
@@ -13,9 +13,6 @@
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-
-   
 
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('assets-admin/images/favicon.ico') }}">
@@ -31,7 +28,6 @@
         <link href="{{ asset('assets-admin/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('assets-admin/css/app.min.css') }}" rel="stylesheet" type="text/css" />
     @endif
-
 
 </head>
 
@@ -50,15 +46,10 @@
     <!-- Top Bar End -->
 
     <div class="page-wrapper">
-    @include('admin.admins.edit_admin')
-    @include('admin.layouts.footer')
+        @yield('content')
     </div>
     <!-- end page-wrapper -->
 
-
-  
-    <!-- Include JavaScript files -->
-  
     <!-- Javascript  -->
     <!-- vendor js -->
 
@@ -70,9 +61,6 @@
     <script src="{{ asset('assets-admin/js/pages/analytics-index.init.js') }}"></script>
     <!-- App js -->
     <script src="{{ asset('assets-admin/js/app.js') }}"></script>
-
-
-
 
 
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
