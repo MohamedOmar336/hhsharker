@@ -1,4 +1,3 @@
-
 <div class="leftbar-tab-menu">
     <div class="main-icon-menu">
         <a class='logo logo-metrica d-block text-center' href='{{ route('home') }}'>
@@ -92,10 +91,10 @@
                             <div class="collapse " id="sidebarUsers">
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
-                                        <a class='nav-link' href='{{ route('users.index') }}'>{{ __('general.side.users-list') }}</a>
+                                        <a class='nav-link' href="{{ route('users.index') }}">{{ __('general.side.users-list') }}</a>
                                     </li><!--end nav-item-->
                                     <li class="nav-item">
-                                        <a class='nav-link' href='{{ route('users.create') }}'>{{ __('general.actions.new') }}</a>
+                                        <a class='nav-link' href="{{ route('users.create') }}">{{ __('general.actions.new') }}</a>
                                     </li><!--end nav-item-->
                                 </ul><!--end nav-->
                             </div><!--end sidebarUsers-->
@@ -109,10 +108,10 @@
                             <div class="collapse " id="sidebarCategories">
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
-                                        <a class='nav-link' href='{{ route('categories.index') }}'>{{ __('general.attributes.categories-list') }}</a>
+                                        <a class='nav-link' href="{{ route('categories.index') }}">{{ __('general.attributes.categories-list') }}</a>
                                     </li><!--end nav-item-->
                                     <li class="nav-item">
-                                        <a class='nav-link' href='{{ route('categories.create') }}'>{{ __('general.actions.new') }}</a>
+                                        <a class='nav-link' href="{{ route('categories.create') }}">{{ __('general.actions.new') }}</a>
                                     </li><!--end nav-item-->
                                 </ul><!--end nav-->
                             </div><!--end sidebarCategories-->

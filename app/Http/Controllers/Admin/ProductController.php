@@ -17,7 +17,6 @@ class ProductController extends Controller
     public function index()
     {
         $records = Product::latest()->paginate(EnumsSettings::Paginate);
-
         return view('admin.products.index', compact('records'));
     }
 

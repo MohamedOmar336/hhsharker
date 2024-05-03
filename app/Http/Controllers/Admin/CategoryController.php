@@ -58,7 +58,7 @@ class CategoryController extends Controller
 
             $imageName = uploadImage($request->file('image'));
 
-            $data['image_url'] = $imageName;
+            $data['image'] = $imageName;
         }
 
         $record = Category::create($data);
@@ -82,8 +82,10 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
+        $records = Category::select('id', 'id_path', 'name_' . app()->getLocale() . ' as name', 'name_en', 'name_ar')->orderBy('level', 'asc')->get();
+
         // Return the view for editing a category
-        return view('admin.categories.edit', compact('category'));
+        return view('admin.categories.edit', compact('category' , 'records'));
     }
 
     /**
@@ -93,10 +95,11 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Category $record)
     {
+
         // Validate the incoming request data
-        $request->validate([
+        $validatedData =$request->validate([
             'name_ar' => 'required|string',
             'name_en' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -107,8 +110,20 @@ class CategoryController extends Controller
             'active' => 'boolean',
         ]);
 
-        // Update the category record in the database
-        $category->update($request->all());
+        $record->fill($validatedData);
+
+        if ($request->hasFile('image')) {
+            $imageName = uploadImage($request->file('image'));
+            $record->image = $imageName;
+        }
+
+        $record->save();
+
+        // Update the slug if necessary
+        $slug = slugable($record->name_en);
+        $record->update([
+            'slug' => Category::whereSlug($slug)->where('id', '!=', $record->id)->exists() ? slugable($record->name_en, $record->id) : $slug,
+        ]);
 
         // Redirect back to the index page with a success message
         return redirect()->route('categories.index')->with('success', 'Category updated successfully.');

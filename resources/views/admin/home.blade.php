@@ -13,7 +13,7 @@
                         <div class="page-title-box">
                             <div class="float-end">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Metrica</a>
+                                    <li class="breadcrumb-item"><a href="#">{{ __('general.home') }}</a>
                                     </li><!--end nav-item-->
                                     <li class="breadcrumb-item"><a href="#">Dashboard</a>
                                     </li><!--end nav-item-->

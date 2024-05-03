@@ -35,3 +35,19 @@ if (!function_exists('ResponseJson')) {
     }
 }
 
+if (!function_exists('uploadImage')) {
+    /**
+     * Uploads the image and returns the image name.
+     *
+     * @param  \Illuminate\Http\UploadedFile  $image
+     * @return string
+     */
+    function uploadImage($image)
+    {
+        $imageName = time() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('images'), $imageName);
+        return $imageName;
+    }
+
+}
+

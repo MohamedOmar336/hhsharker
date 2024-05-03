@@ -15,7 +15,7 @@
                     <div class="page-title-box">
                         <div class="float-end">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Metrica</a></li>
+                                <li class="breadcrumb-item"><a href="#">{{ __('general.home') }}</a></li>
                                 <li class="breadcrumb-item"><a href="#">Forms</a></li>
                                 <li class="breadcrumb-item active">Validation</li>
                             </ol>

@@ -1,4 +1,3 @@
-
 @extends('admin.layouts.app')
 
 @section('content')
@@ -12,9 +11,9 @@
                     <div class="page-title-box">
                         <div class="float-end">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ url('/home') }}">Metrica</a>
+                                <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a>
                                 </li><!--end nav-item-->
-                                <li class="breadcrumb-item"><a href="{{ url('/products') }}">Products</a>
+                                <li class="breadcrumb-item"><a href="{{ url('/products') }}">{{ __('general.attributes.product') }}</a>
                                 </li><!--end nav-item-->
                                 <li class="breadcrumb-item active">Add</li>
                             </ol>
@@ -108,7 +107,7 @@
                                     <select id="is_available"
                                         class="form-control @error('is_available') is-invalid @enderror" name="is_available"
                                         required autocomplete="is_available">
-                                        <option value="1">{{ __('general.yes') }}</option>
+                                        <option value="1">{{ __('general.select.yes') }}</option>
                                         <option value="0">{{ __('general.no') }}</option>
                                     </select>
                                     @error('is_available')
@@ -143,6 +142,5 @@
         </div>
 
     </div><!-- container -->
-    </div>
 @endsection
-
+>>>>>>> 1f9723ad50d4a3ab1caa04570e7ee88c28089016

@@ -14,6 +14,12 @@
     <meta content="" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 1f9723ad50d4a3ab1caa04570e7ee88c28089016
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('assets-admin/images/favicon.ico') }}">
 
@@ -47,8 +53,14 @@
 
     <div class="page-wrapper">
         @yield('content')
+       
+        {{-- @include('admin.layouts.footer') --}}
     </div>
     <!-- end page-wrapper -->
+
+
+
+    <!-- Include JavaScript files -->
 
     <!-- Javascript  -->
     <!-- vendor js -->
