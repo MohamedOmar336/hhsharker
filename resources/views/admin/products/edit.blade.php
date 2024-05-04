@@ -21,13 +21,17 @@
                         <h4 class="page-title">Edit Product</h4>
                     </div><!--end page-title-box-->
                 </div><!--end col-->
+                <div class="col-md-12">
+                    <a href="{{ URL::previous() }}"
+                    class="btn btn-secondary">{{__('general.btn.back')}}</a>
+                </div>
             </div>
             <!-- end page title end breadcrumb -->
             <div class="row">
                 <div class="col-12 col-md-8 mx-auto">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ route('products.update', $product->id) }}" method="POST"
+                            <form id="quickForm" action="{{ route('products.update', $product->id) }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
@@ -124,7 +128,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <button type="submit" class="btn btn-primary">{{ __('general.update') }}</button>
+                                    <x-btn name="{{ __('general.btn.submit') }}"></x-btn>
                                 </div>
                             </form>
                         </div> <!--end card-body-->

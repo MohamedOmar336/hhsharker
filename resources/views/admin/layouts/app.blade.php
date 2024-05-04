@@ -19,6 +19,7 @@
 
 
     <link href="{{ asset('assets-admin/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets-admin/css/admin.css') }}" rel="stylesheet" type="text/css" />
 
 
     @if (app()->isLocale('ar'))
@@ -77,7 +78,6 @@
             appId: "1:567064391154:web:40574f6824350b17764f6b",
             measurementId: "G-N2VKVTGWMX"
         });
-
         // Retrieve Firebase Messaging object.
         const messaging = firebase.messaging();
 
@@ -95,7 +95,6 @@
                     console.error('Service worker registration failed:', error);
                 });
         }
-
         // Handle incoming messages
         messaging.onMessage((payload) => {
             console.log('Message received:', payload);
@@ -134,6 +133,30 @@
             });
         }
     </script>
+
+    {{-- script to check if the current url in the Edit or create page --}}
+    {{-- <script>
+        $("#quickForm").submit(function () {
+            $(".formSubmitBtn").attr('alert', 1);
+        });
+        let currentURL = '{{ isset(explode('.', \Request::route()->getName())[1]) ? explode('.', \Request::route()->getName())[1]:'' }}';
+        if ((currentURL == 'edit' || currentURL == 'create')) {
+            window.onbeforeunload = function (e) {
+                if ($(".formSubmitBtn").attr('alert') == 0) {
+                    var e = e || window.event;
+                    var msg = "Do you really want to leave this page?"
+
+                    // For IE and Firefox
+                    if (e) {
+                        e.returnValue = msg;
+                    }
+
+                    // For Safari / chrome
+                    return msg;
+                }
+            };
+        }
+    </script> --}}
 </body>
 <!--end body-->
 

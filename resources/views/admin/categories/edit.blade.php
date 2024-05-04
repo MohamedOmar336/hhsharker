@@ -21,13 +21,17 @@
                         <h4 class="page-title">{{ __('general.side.edit').' ' }} {{ __('general.attributes.categories') }} </h4>
                     </div><!--end page-title-box-->
                 </div><!--end col-->
+                <div class="col-md-12">
+                    <a href="{{ URL::previous() }}"
+                    class="btn btn-secondary">{{__('general.btn.back')}}</a>
+                </div>
             </div>
             <!-- end page title end breadcrumb -->
             <div class="row">
                 <div class="col-12 col-md-8 mx-auto">
                     <div class="card">
                         <div class="card-body">
-                            <form method="POST" action="{{ route('categories.update', $category->id) }}"
+                            <form id="quickForm" method="POST" action="{{ route('categories.update', $category->id) }}"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
@@ -104,9 +108,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('general.btn.update') }}
-                                    </button>
+                                    <x-btn name="{{ __('general.btn.update') }}"></x-btn>
                                 </div>
                             </form>
                         </div> <!--end card-body-->

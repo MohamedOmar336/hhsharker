@@ -20,6 +20,10 @@
                         <h4 class="page-title">Product List</h4>
                     </div><!--end page-title-box-->
                 </div><!--end col-->
+                <div class="col-md-12">
+                    <a href="{{ URL::previous() }}"
+                    class="btn btn-secondary">{{__('general.btn.back')}}</a>
+                </div>
             </div>
             <!-- end page title end breadcrumb -->
             <div class="row">
