@@ -22,8 +22,6 @@ return new class extends Migration
             $table->unsignedBigInteger('author_id');
             $table->foreign('author_id')->references('id')->on('users');
             $table->date('post_date');
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('blog_categories');
             $table->string('tags')->nullable();
             $table->timestamps();
         });
