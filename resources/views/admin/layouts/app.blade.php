@@ -21,7 +21,6 @@
     <link href="{{ asset('assets-admin/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets-admin/css/admin.css') }}" rel="stylesheet" type="text/css" />
 
-
     @if (app()->isLocale('ar'))
         <link href="{{ asset('assets-admin/css/app-rtl.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('assets-admin/css/bootstrap-rtl.min.css') }}" rel="stylesheet" type="text/css" />
@@ -53,7 +52,6 @@
 
     <!-- Javascript  -->
     <!-- vendor js -->
-
     <script src="{{ asset('assets-admin/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets-admin/libs/simplebar/simplebar.min.js') }}"></script>
     <script src="{{ asset('assets-admin/libs/feather-icons/feather.min.js') }}"></script>
@@ -62,7 +60,6 @@
     <script src="{{ asset('assets-admin/js/pages/analytics-index.init.js') }}"></script>
     <!-- App js -->
     <script src="{{ asset('assets-admin/js/app.js') }}"></script>
-
 
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-messaging.js"></script>
@@ -133,30 +130,6 @@
             });
         }
     </script>
-
-    {{-- script to check if the current url in the Edit or create page --}}
-    {{-- <script>
-        $("#quickForm").submit(function () {
-            $(".formSubmitBtn").attr('alert', 1);
-        });
-        let currentURL = '{{ isset(explode('.', \Request::route()->getName())[1]) ? explode('.', \Request::route()->getName())[1]:'' }}';
-        if ((currentURL == 'edit' || currentURL == 'create')) {
-            window.onbeforeunload = function (e) {
-                if ($(".formSubmitBtn").attr('alert') == 0) {
-                    var e = e || window.event;
-                    var msg = "Do you really want to leave this page?"
-
-                    // For IE and Firefox
-                    if (e) {
-                        e.returnValue = msg;
-                    }
-
-                    // For Safari / chrome
-                    return msg;
-                }
-            };
-        }
-    </script> --}}
 </body>
 <!--end body-->
 

@@ -25,120 +25,58 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header">
-                                <div class="row align-items-center">
-                                    <div class="col">
-                                        <h4 class="card-title">Our Reguler Users</h4>
-                                    </div><!--end col-->
-                                </div>  <!--end row-->
-                            </div><!--end card-header-->
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-striped">
                                         <thead class="thead-light">
-                                        <tr>
-                                            <th>Users</th>
-                                            <th>Rols</th>
-                                            <th>Email</th>
-                                            <th>Contact No</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
-                                        </tr>
+                                            <tr>
+                                                <th>{{ __('general.attributes.users') }}</th>
+                                                <th>{{ __('general.side.roles') }}</th>
+                                                <th>{{ __('general.attributes.email') }}</th>
+                                                <th>{{ __('general.attributes.phone') }}</th>
+                                                <th>{{ __('general.attributes.status') }}</th>
+                                                <th>{{ __('general.attributes.actions') }}</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td><img src="assets/images/users/user-3.jpg" alt="" class="rounded-circle thumb-sm me-1"> Aaron Poulin</td>
-                                            <td>Agent</td>
-                                            <td>AaronPoulin@example.com</td>
-                                            <td>+21 123456789</td>
-                                            <td><span class="badge badge-soft-success">Active</span></td>
-                                            <td>
-                                                <a href="#"><i class="las la-pen text-secondary font-16"></i></a>
-                                                <a href="#"><i class="las la-trash-alt text-secondary font-16"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="assets/images/users/user-4.jpg" alt="" class="rounded-circle thumb-sm me-1"> Richard Ali</td>
-                                            <td>Administrator</td>
-                                            <td>RichardAli@example.com</td>
-                                            <td>+41 123456789</td>
-                                            <td><span class="badge badge-soft-success">Active</span></td>
-                                            <td>
-                                                <a href="#"><i class="las la-pen text-secondary font-16"></i></a>
-                                                <a href="#"><i class="las la-trash-alt text-secondary font-16"></i></a>
-                                            </td>
-                                        </tr>
+                                            @foreach ($records as $record)
+                                                <tr>
+                                                    <td><img src="{{ $record->image ? $record->image : asset('assets-admin/images/users/user-8.jpg') }}"
+                                                            alt="" class="rounded-circle thumb-sm me-1">
+                                                        {{ $record->user_name }}
+                                                    </td>
+                                                    <td>Administrator</td>
+                                                    <td>{{ $record->email }}</td>
+                                                    <td>{{ $record->phone }}</td>
+                                                    @if ($record->active)
+                                                        <td><span class="badge badge-soft-success">Active</span></td>
+                                                    @else
+                                                        <td><span class="badge badge-soft-danger">Deactivated</span></td>
+                                                    @endif
+                                                    <td>
+                                                        <a href="{{ route('users.edit', $record->id) }}"
+                                                            class="btn btn-sm btn-primary">Edit</a>
+                                                        <form action="{{ route('users.destroy', $record->id) }}"
+                                                            method="POST" style="display: inline;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-sm btn-danger"
+                                                                onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
 
-                                        <tr>
-                                            <td><img src="assets/images/users/user-5.jpg" alt="" class="rounded-circle thumb-sm me-1"> Juan Clark</td>
-                                            <td>Contributor</td>
-                                            <td>JuanClark@example.com</td>
-                                            <td>+65 123456789</td>
-                                            <td><span class="badge badge-soft-success">Active</span></td>
-                                            <td>
-                                                <a href="#"><i class="las la-pen text-secondary font-16"></i></a>
-                                                <a href="#"><i class="las la-trash-alt text-secondary font-16"></i></a>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td><img src="assets/images/users/user-6.jpg" alt="" class="rounded-circle thumb-sm me-1"> Albert Hull</td>
-                                            <td>Agent</td>
-                                            <td>AlbertHull@example.com</td>
-                                            <td>+88 123456789</td>
-                                            <td><span class="badge badge-soft-success">Active</span></td>
-                                            <td>
-                                                <a href="#"><i class="las la-pen text-secondary font-16"></i></a>
-                                                <a href="#"><i class="las la-trash-alt text-secondary font-16"></i></a>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td><img src="assets/images/users/user-7.jpg" alt="" class="rounded-circle thumb-sm me-1"> Crystal Darling</td>
-                                            <td>Contributor</td>
-                                            <td>CrystalDarling@example.com</td>
-                                            <td>+56 123456789</td>
-                                            <td><span class="badge badge-soft-danger">Deactivated</span></td>
-                                            <td>
-                                                <a href="#"><i class="las la-pen text-secondary font-16"></i></a>
-                                                <a href="#"><i class="las la-trash-alt text-secondary font-16"></i></a>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td><img src="assets/images/users/user-8.jpg" alt="" class="rounded-circle thumb-sm me-1"> Thomas Milligan</td>
-                                            <td>Administrator</td>
-                                            <td>homasMilligan@example.com</td>
-                                            <td>+35 123456789</td>
-                                            <td><span class="badge badge-soft-danger">Deactivated</span></td>
-                                            <td>
-                                                <a href="#"><i class="las la-pen text-secondary font-16"></i></a>
-                                                <a href="#"><i class="las la-trash-alt text-secondary font-16"></i></a>
-                                            </td>
-                                        </tr>
                                         </tbody>
                                     </table><!--end /table-->
                                 </div><!--end /tableresponsive-->
                                 <div class="row">
                                     <div class="col">
-                                        <a class="btn btn-outline-light btn-sm px-4" href="{{ route('users.create') }}">{{ __('general.actions.new') }}</a>
+                                        <a class="btn btn-outline-light btn-sm px-4"
+                                            href="{{ route('users.create') }}">{{ __('general.actions.new') }}</a>
                                     </div><!--end col-->
                                     <div class="col-auto">
-                                        <nav aria-label="...">
-                                            <ul class="pagination pagination-sm mb-0">
-                                                <li class="page-item disabled">
-                                                    <a class="page-link" href="#" tabindex="-1">Previous</a>
-                                                </li>
-                                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                                <li class="page-item">
-                                                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                                                </li>
-                                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                <li class="page-item">
-                                                    <a class="page-link" href="#">Next</a>
-                                                </li>
-                                            </ul><!--end pagination-->
-                                        </nav><!--end nav-->
+                                        {{ $records->links('admin.pagination.bootstrap') }}
                                     </div> <!--end col-->
                                 </div><!--end row-->
                             </div><!--end card-body-->
@@ -147,17 +85,6 @@
                 </div><!--end row-->
 
             </div><!-- container -->
-
-            <!--Start Footer-->
-            <!-- Footer Start -->
-            <footer class="footer text-center text-sm-start">
-                &copy; <script>
-                    document.write(new Date().getFullYear())
-                </script> Metrica <span class="text-muted d-none d-sm-inline-block float-end">Crafted with <i
-                        class="mdi mdi-heart text-danger"></i> by Mannatthemes</span>
-            </footer>
-            <!-- end Footer -->
-            <!--end footer-->
         </div>
         <!-- end page content -->
     </div>
