@@ -2,7 +2,7 @@
 <html lang="{{ app()->getLocale() }}" dir="{{ app()->isLocale('ar') ? 'rtl' : 'ltr' }}">
 
 <!-- Added by HTTrack -->
- <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!--/Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!--/Added by HTTrack -->
 
 <head>
 
@@ -14,12 +14,17 @@
     <meta content="" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-<<<<<<< HEAD
-=======
+    <script src="https://cdn.tiny.cloud/1/fbr14ncrkskjd2caqlw65cuk0t0r28y27kzbmlgomzgtkki0/tinymce/7/tinymce.min.js"
+        referrerpolicy="origin"></script>
+
+    <script src="{{ asset('assets-admin/js/script.js') }}"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css">
+<script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
-
->>>>>>> 1f9723ad50d4a3ab1caa04570e7ee88c28089016
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('assets-admin/images/favicon.ico') }}">
 
@@ -53,7 +58,7 @@
 
     <div class="page-wrapper">
         @yield('content')
-       
+
         {{-- @include('admin.layouts.footer') --}}
     </div>
     <!-- end page-wrapper -->
@@ -63,6 +68,10 @@
     <!-- Include JavaScript files -->
 
     <!-- Javascript  -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
     <!-- vendor js -->
 
     <script src="{{ asset('assets-admin/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

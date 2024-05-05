@@ -46,7 +46,7 @@ class CategoryController extends Controller
             'name_ar' => 'required|string',
             'name_en' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'parent_id' => 'nullable|exists:categories,id',
+            'parent_id' => 'nullable|integer',
             'level' => 'integer',
             'id_path' => 'string',
             'slug' => 'nullable|string',
@@ -117,7 +117,7 @@ class CategoryController extends Controller
             $record->image = $imageName;
         }
 
-        $record->save();
+
 
         // Update the slug if necessary
         $slug = slugable($record->name_en);

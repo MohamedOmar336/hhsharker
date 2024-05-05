@@ -7,6 +7,9 @@ use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\admin\CategoryController;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\admin\BlogPostController;
+use App\Http\Controllers\admin\CommentController;
+use App\Http\Controllers\admin\TagController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,6 +45,12 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('/users', UserController::class);
 
         Route::resource('/categories', CategoryController::class);
+
+        Route::resource('/blogposts', BlogPostController::class);
+
+        Route::resource('/comments', CommentController::class);
+
+        Route::resource('/tags', TagController::class);
 
     });
 });

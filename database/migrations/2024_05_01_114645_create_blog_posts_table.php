@@ -22,7 +22,9 @@ return new class extends Migration
             $table->unsignedBigInteger('author_id');
             $table->foreign('author_id')->references('id')->on('users');
             $table->date('post_date');
+            $table->string('image')->nullable(); 
             $table->string('tags')->nullable();
+            $table->string('status')->default('draft');
             $table->timestamps();
         });
     }

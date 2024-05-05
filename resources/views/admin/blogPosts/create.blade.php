@@ -10,10 +10,14 @@
                     <div class="page-title-box">
                         <div class="float-end">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ url('/home') }}">Metrica</a>
-                                </li><!--end nav-item-->
-                                <li class="breadcrumb-item"><a href="{{ url('/products') }}">Products</a>
-                                </li><!--end nav-item-->
+                                <li class="breadcrumb-item">
+                                    <a href="{{ url('/home') }}">{{ __('general.home') }}</a>
+                                </li>
+                                <!--end nav-item-->
+                                <li class="breadcrumb-item">
+                                    <a href="{{ url('/products') }}">{{ __('general.attributes.product') }}</a>
+                                </li>
+                                <!--end nav-item-->
                                 <li class="breadcrumb-item active">Add</li>
                             </ol>
                         </div>
@@ -22,139 +26,102 @@
                 </div><!--end col-->
             </div>
             <!-- end page title end breadcrumb -->
+            <!-- Place the first <script> tag in your HTML's <head> -->
             <div class="row">
-                <div class="col-12 col-lg-8 mx-auto">
+                <div class="col-12 col-lg-11 mx-auto">
                     <div class="card">
                         <div class="card-body">
-
-                        <form method="POST" action="{{ route('blog_posts.store') }}" enctype="multipart/form-data">
-    @csrf
-
-    <div class="mb-3">
-        <label for="title_en" class="form-label">Title (English)</label>
-        <input id="title_en" type="text" class="form-control @error('title_en') is-invalid @enderror" name="title_en" required>
-        @error('title_en')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
-    </div>
-
-    <div class="mb-3">
-        <label for="title_ar" class="form-label">Title (Arabic)</label>
-        <input id="title_ar" type="text" class="form-control @error('title_ar') is-invalid @enderror" name="title_ar" required>
-        @error('title_ar')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
-    </div>
-
-    <div class="mb-3">
-        <label for="content_en" class="form-label">Content (English)</label>
-        <textarea id="content_en" class="form-control @error('content_en') is-invalid @enderror" name="content_en" rows="5" required></textarea>
-        @error('content_en')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
-    </div>
-    <div class="container-fluid">
-			<div class="row">
-				<h2 class="demo-text">A demo of jQuery / Bootstrap based editor</h2>
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-12 nopadding">
-							<textarea id="demo-editor-bootstrap"> 
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-    <div class="mb-3">
-        <label for="content_ar" class="form-label">Content (Arabic)</label>
-        <textarea id="content_ar" class="form-control @error('content_ar') is-invalid @enderror" name="content_ar" rows="5" required></textarea>
-        @error('content_ar')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
-    </div>
-    <div class="container-fluid">
-			<div class="row">
-				<h2 class="demo-text">A demo of jQuery / Bootstrap based editor</h2>
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-12 nopadding">
-							<textarea id="demo-editor-bootstrap"> 
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-    <div class="mb-3">
-        <label for="author_id" class="form-label">Author ID</label>
-        <input id="author_id" type="number" class="form-control @error('author_id') is-invalid @enderror" name="author_id" required>
-        @error('author_id')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
-    </div>
-
-    <div class="mb-3">
-        <label for="post_date" class="form-label">Post Date</label>
-        <input id="post_date" type="date" class="form-control @error('post_date') is-invalid @enderror" name="post_date" required>
-        @error('post_date')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
-    </div>
-
-    <div class="mb-3">
-        <label for="category_id" class="form-label">Category ID</label>
-        <input id="category_id" type="number" class="form-control @error('category_id') is-invalid @enderror" name="category_id" required>
-        @error('category_id')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
-    </div>
-
-    <div class="mb-3">
-        <label for="tags" class="form-label">Tags</label>
-        <input id="tags" type="text" class="form-control @error('tags') is-invalid @enderror" name="tags">
-        @error('tags')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
-    </div>
-
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-
-                        </div> <!--end card-body-->
+                            <form action="{{ route('blogposts.store') }}" method="POST" enctype="multipart/form-data"  class="needs-validation" novalidate>
+                                @csrf
+                                <div class="mb-3">
+                                    <label for="title_en" class="form-label">{{ __('Title (English)') }}</label>
+                                    <input id="title_en" type="text" class="form-control @error('title_en') is-invalid @enderror" name="title_en" value="{{ old('title_en') }}" required autofocus>
+                                    @error('title_en')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label for="title_ar" class="form-label">{{ __('Title (Arabic)') }}</label>
+                                    <input id="title_ar" type="text" class="form-control @error('title_ar') is-invalid @enderror" name="title_ar" value="{{ old('title_ar') }}" required>
+                                    @error('title_ar')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label for="content_en" class="form-label">{{ __('Content (English)') }}</label>
+                                    <textarea id="content_en" class="form-control @error('content_en') is-invalid @enderror" name="content_en" rows="6" required>{{ old('content_en') }}</textarea>
+                                    @error('content_en')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label for="content_ar" class="form-label">{{ __('Content (Arabic)') }}</label>
+                                    <textarea id="content_ar" class="form-control @error('content_ar') is-invalid @enderror" name="content_ar" rows="6" required>{{ old('content_ar') }}</textarea>
+                                    @error('content_ar')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label for="author_id" class="form-label">{{ __('Author') }}</label>
+                                    <select id="author_id" class="form-control @error('author_id') is-invalid @enderror" name="author_id" required>
+                                        <option value="">Select Author</option>
+                                        @foreach ($authors as $author)
+                                            <option value="{{ $author->id }}" {{ old('author_id') == $author->id ? 'selected' : '' }}>
+                                                {{ $author->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('author_id')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label for="image" class="form-label">{{ __('Image') }}</label>
+                                    <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" required>
+                                    @error('image')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                 <div class="form-group">
+            <label for="tags" class="form-label">{{ __('Tags') }}</label>
+          
+<select id="choices-multiple-remove-button" class="form-control" placeholder="Choose ..." multiple name="tags[]">
+        @foreach ($tags as $tag)
+                        <option value="{{ $tag->id }}">{{ $tag->tag_name_en }}</option>
+                    @endforeach
+                </select>   
+                 </div> </div> 
+        
+                                <div class="mb-3">
+                                    <label for="status" class="form-label">{{ __('Status') }}</label>
+                                    <select id="status" class="form-control @error('status') is-invalid @enderror" name="status" required>
+                                        <option value="draft" {{ old('status') == 'draft' ? 'selected' : '' }}>Draft</option>
+                                        <option value="published" {{ old('status') == 'published' ? 'selected' : '' }}>Published</option>
+                                    </select>
+                                    @error('status')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <button type="submit" class="btn btn-primary">Create Post</button>
+                            </form>
+                        </div><!--end card-body-->
                     </div><!--end card-->
-                </div> <!--end col-->
+                </div><!--end col-->
             </div><!--end row-->
-        </div>
 
+<script>
+$(document).ready(function(){
+    
+     var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
+        removeItemButton: true,
+        maxItemCount:100,
+        searchResultLimit:5,
+        renderChoiceLimit:5
+      }); 
+     
+     
+ });</script>
+        </div><!-- container -->
     </div><!-- container -->
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-		<script src="js/editor/editor.js"></script>
-		<script>
-			$(document).ready(function() {
-				$("#demo-editor-bootstrap").Editor();
-			});
-		</script>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-		<link href="css/editor/editor.css" type="text/css" rel="stylesheet"/>
-    </div>
 @endsection
