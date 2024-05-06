@@ -71,9 +71,11 @@
                                 <div class="mb-3">
                                     <label for="parent_id" class="form-label">{{ __('general.attributes.parent_id') }}</label>
                                     <select id="parent_id"
-                                        class="form-control @error('parent_id') is-invalid @enderror" name="parent_id"
-                                        required autocomplete="parent_id">
-                                        <option value="1"> {{ __('general.select.select') .' ' }} {{ __('general.select.perant_category') }}</option>
+                                        class="form-control @error('parent_id') is-invalid @enderror" name="parent_id">
+                                        
+                                        <option value="5"> {{ __('general.select.select') .' ' }} {{ __('general.select.perant_category') }}</option>
+                                        <option value="5">5</option>
+                                        
                                         @foreach ($records as  $record)
                                             <option value="{{ $record->id }}">{{ $record->name }}</option>
                                         @endforeach

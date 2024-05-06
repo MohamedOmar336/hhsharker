@@ -19,14 +19,11 @@ return new class extends Migration
             $table->string('name_en', 191);
             $table->longText('description_ar');
             $table->longText('description_en');
-            $table->text('description')->nullable();
             $table->string('slug', 191)->unique()->nullable();
             $table->decimal('price', 10, 2);
             $table->integer('quantity')->default(0);
             $table->boolean('is_available')->default(true);
             $table->string('image_url')->nullable();
-            $table->unsignedBigInteger('category_id')->nullable();
-            $table->integer('status_id')->unsigned()->default(0);
             $table->timestamps();
         });
     }

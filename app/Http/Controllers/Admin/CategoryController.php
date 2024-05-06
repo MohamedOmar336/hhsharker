@@ -118,7 +118,7 @@ class CategoryController extends Controller
             $record->image = $imageName;
         }
 
-        $record->save();
+
 
         // Update the slug if necessary
         $slug = slugable($record->name_en);

@@ -206,8 +206,7 @@ return [
         'transaction_id' => 'Transaction Id',
         'color_code' => 'Color',
         'image_link' => 'Image Link',
-        'categories' => 'Categories',
-        'categories-list' => 'Categories List',
+
         // notifications
         'device_type' => 'Device Type',
         'trigger_type' => 'Trigger Type',
@@ -222,7 +221,7 @@ return [
         'unPaid' => 'unPaid',
         'image_ar' => 'Image In Arabic',
         'users' => 'Users',
-        '' => '',
+        'parent_category' => 'Parent Category',
         '' => '',
         '' => '',
 
@@ -301,8 +300,9 @@ return [
         'close' => 'Close',
         'send' => 'Send',
         'discard' => 'Discard',
-        '' => '',
-        '' => '',
+        'Previous' => 'Previous',
+        'current' => 'current',
+        'Next' => 'Next',
     ],
     'sendmail' => [
         'send_mail_to' => 'Send Mail To',
@@ -497,6 +497,6 @@ return [
     'chat' => 'Chat',
     'charts' => 'Statistics',
     'payments' => 'Payments',
-    '' => '',
+    'categories' => 'Categories',
     '' => '',
 ];
