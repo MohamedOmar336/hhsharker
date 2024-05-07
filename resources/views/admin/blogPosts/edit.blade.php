@@ -100,12 +100,12 @@
                                   <div class="mb-3">
                                  <div class="form-group">
             <label for="tags" class="form-label">{{ __('Tags') }}</label>
-          
+
 <select id="choices-multiple-remove-button" class="form-control" placeholder="Choose ..." multiple name="tags[]">
         @foreach ($tags as $tag)
-                        <option value="{{ $tag->id }}">{{ $tag->tag_name_en }}</option>
+                        <option value="{{ $tag->id }}">{{ $tag->name_en }}</option>
                     @endforeach
-                </select>   
+                </select>
                  </div> </div>
 
                                 <div class="mb-3">
@@ -132,15 +132,15 @@
         </div>
 <script>
 $(document).ready(function(){
-    
+
      var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
         removeItemButton: true,
         maxItemCount:100,
         searchResultLimit:5,
         renderChoiceLimit:5
-      }); 
-     
-     
+      });
+
+
  });</script>
     </div><!-- container -->
 @endsection

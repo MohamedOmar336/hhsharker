@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->id();
-            $table->string('tag_name_en'); // English tag name
-            $table->string('tag_name_ar'); // Arabic tag name
+            $table->string('name_en'); // English tag name
+            $table->string('name_ar'); // Arabic tag name
             $table->timestamps();
         });
     }

@@ -15,7 +15,7 @@
                                 </li>
                                 <!--end nav-item-->
                                 <li class="breadcrumb-item">
-                                    <a href="{{ url('/products') }}">{{ __('general.attributes.product') }}</a>
+                                    <a href="{{ url('/blogs') }}">{{ __('general.attributes.blog') }}</a>
                                 </li>
                                 <!--end nav-item-->
                                 <li class="breadcrumb-item active">Add</li>
@@ -85,14 +85,14 @@
                                 <div class="mb-3">
                                  <div class="form-group">
             <label for="tags" class="form-label">{{ __('Tags') }}</label>
-          
+
 <select id="choices-multiple-remove-button" class="form-control" placeholder="Choose ..." multiple name="tags[]">
         @foreach ($tags as $tag)
-                        <option value="{{ $tag->id }}">{{ $tag->tag_name_en }}</option>
+                        <option value="{{ $tag->id }}">{{ $tag->name_en }}</option>
                     @endforeach
-                </select>   
-                 </div> </div> 
-        
+                </select>
+                 </div> </div>
+
                                 <div class="mb-3">
                                     <label for="status" class="form-label">{{ __('Status') }}</label>
                                     <select id="status" class="form-control @error('status') is-invalid @enderror" name="status" required>
@@ -112,15 +112,15 @@
 
 <script>
 $(document).ready(function(){
-    
+
      var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
         removeItemButton: true,
         maxItemCount:100,
         searchResultLimit:5,
         renderChoiceLimit:5
-      }); 
-     
-     
+      });
+
+
  });</script>
         </div><!-- container -->
     </div><!-- container -->

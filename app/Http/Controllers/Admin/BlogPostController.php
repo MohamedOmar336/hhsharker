@@ -9,18 +9,44 @@ use App\Models\Tag;
 use App\Models\BlogPostTag; // Include the BlogPostTag model
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Enums\EnumsSettings;
 
 class BlogPostController extends Controller
 {
-    // Other methods remain the same...
+    /**
+     * Display a listing of the blog posts.
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function index()
+    {
+        $records = BlogPost::latest()->paginate(EnumsSettings::Paginate);
+        return view('admin.blogposts.index', compact('records'));
+    }
 
+    /**
+     * Show the form for creating a new blog post.
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function create()
+    {
+        $authors = User::all();
+        $tags = Tag::all();
+        return view('admin.blogposts.create', compact('authors', 'tags'));
+    }
+
+    /**
+     * Store a newly created blog post in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
         $validatedData = $request->validate([
             'title_en' => 'required|string|max:255',
             'title_ar' => 'required|string|max:255',
-            'content_en' => 'required|string',
-            'content_ar' => 'required|string',
             'author_id' => 'required|exists:users,id',
             'status' => 'required|in:draft,published',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -31,29 +57,47 @@ class BlogPostController extends Controller
         $validatedData['image'] = $imageName;
         $validatedData['post_date'] = now();
 
-        // Create the blog post
         $post = BlogPost::create($validatedData);
 
-        // Attach tags
-            foreach ($request->input('tags') as $tagId) {
-                BlogPostTag::create([
-                    'blog_post_id' => $post->id,
-                    'tag_id' => $tagId,
-                ]);
-          
+        foreach ($request->input('tags') as $tagId) {
+            BlogPostTag::create([
+                'blog_post_id' => $post->id,
+                'tag_id' => (int)$tagId,
+            ]);
         }
-
 
         return redirect()->route('blogposts.index')->with('success', 'Post created successfully.');
     }
 
+    /**
+     * Show the form for editing the specified blog post.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function edit($id)
+    {
+        $post = BlogPost::findOrFail($id);
+        $tags = Tag::all();
+        $authors = User::all();
+        $postTags = $post->tags;
+        return view('admin.blogposts.edit', compact('post', 'authors', 'tags', 'postTags'));
+    }
+
+    /**
+     * Update the specified blog post in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(Request $request, $id)
     {
         $request->validate([
             'title_en' => 'required|string|max:255',
             'title_ar' => 'required|string|max:255',
-            'content_en' => 'required|string',
-            'content_ar' => 'required|string',
+            // 'content_en' => 'required|string',
+            // 'content_ar' => 'required|string',
             'author_id' => 'required|exists:users,id',
             'status' => 'required|in:draft,published',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -79,131 +123,21 @@ class BlogPostController extends Controller
 
         $post->save();
 
-        // Sync tags
         if ($request->has('tags')) {
             $post->tags()->sync($request->input('tags'));
         } else {
-            $post->tags()->detach(); // Remove all tags if none are provided
+            $post->tags()->detach();
         }
 
         return redirect()->route('blogposts.index')->with('success', 'Post updated successfully.');
     }
 
-
-    public function index()
-    {
-        $posts = BlogPost::all();
-        return view('admin.blogposts.index', compact('posts'));
-    }
-
-    public function create()
-    {
-        $authors = User::all();
-        $tags = Tag::all();
-        return view('admin.blogposts.create', compact('authors', 'tags'));
-    }
-
- /*   public function store(Request $request)
-{
-    // Validation rules
-    $validatedData = $request->validate([
-        'title_en' => 'required|string|max:255',
-        'title_ar' => 'required|string|max:255',
-        'content_en' => 'required|string',
-        'content_ar' => 'required|string',
-        'author_id' => 'required|exists:users,id',
-        'status' => 'required|in:draft,published',
-        'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-        'tags' => 'nullable|array', // Tags should be submitted as an array
-       
-    ]);
-
-    // Handle image upload
-  //  $image = $request->hasFile('image') ? $request->file('image')->store('images', 'public') : null;
-
-    // Serialize tags array if present
-    $tags = $request->input('tags') ? serialize($request->input('tags')) : null;
-    $validatedData['post_date'] = now();
-
-    // Create the blog post
-   /* $post = BlogPost::create([
-        'title_en' => $validatedData['title_en'],
-        'title_ar' => $validatedData['title_ar'],
-        'content_en' => $validatedData['content_en'],
-        'content_ar' => $validatedData['content_ar'],
-        'author_id' => $validatedData['author_id'],
-        'status' => $validatedData['status'],
-        'image' => $image,
-        'post_date' => now(),
-        'tags' => $tags,
-    ]);*/
- /*   $imageName = uploadImage($request->file('image'));
-
-    $validatedData['image'] = $imageName;
-
-        $record = BlogPost::create($validatedData);
-
-        
-    // Redirect back with success message
-    return redirect()->route('blogposts.index')->with('success', 'Post created successfully.');
-}*/
-    
-public function edit($id)
-{
-    $post = BlogPost::findOrFail($id);
-    $tags = Tag::all();
-    $authors = User::all();
-    $postTags = $post->tags;
-    return view('admin.blogposts.edit', compact('post', 'authors', 'tags', 'postTags'));
-}
-
-/*public function update(Request $request, $id)
-{
-    $request->validate([
-        'title_en' => 'required|string|max:255',
-        'title_ar' => 'required|string|max:255',
-        'content_en' => 'required|string',
-        'content_ar' => 'required|string',
-        'author_id' => 'required|exists:users,id',
-        'status' => 'required|in:draft,published',
-        'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-        'tags' => 'array', // Tags should be submitted as an array
-    ]);
-
-    $post = BlogPost::findOrFail($id);
-
-    $post->title_en = $request->title_en;
-    $post->title_ar = $request->title_ar;
-    $post->content_en = $request->content_en;
-    $post->content_ar = $request->content_ar;
-    $post->author_id = $request->author_id;
-    $post->status = $request->status;
-
-    if ($request->hasFile('image')) {
-        if ($post->image) {
-            Storage::delete($post->image);
-        }
-        $image = $request->file('image')->store('images', 'public');
-        $post->image = $image;
-    }
-
-    // Update the tags
-    $tags = $request->input('tags') ? serialize($request->input('tags')) : null;
-    $post->tags = $tags;
-
-    $post->save();
-
-    return redirect()->route('blogposts.index')->with('success', 'Post updated successfully.');
-}
-*/
-    public function show($id)
-    {
-        $post = BlogPost::findOrFail($id);
-        return view('admin.blogposts.show', compact('post'));
-    }
-    
-
-
+    /**
+     * Remove the specified blog post from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy($id)
     {
         $post = BlogPost::findOrFail($id);
@@ -212,5 +146,17 @@ public function edit($id)
         }
         $post->delete();
         return redirect()->route('blogposts.index')->with('success', 'Post deleted successfully.');
+    }
+
+    /**
+     * Display the specified blog post.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function show($id)
+    {
+        $post = BlogPost::findOrFail($id);
+        return view('admin.blogposts.show', compact('post'));
     }
 }

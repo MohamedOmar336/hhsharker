@@ -104,12 +104,12 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#sidebarCategories" data-bs-toggle="collapse"
                                 role="button" aria-expanded="false" aria-controls="sidebarCategories">
-                                {{ __('general.attributes.categories') }}
+                                {{ __('general.side.categories') }}
                             </a>
                             <div class="collapse " id="sidebarCategories">
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
-                                        <a class='nav-link' href="{{ route('categories.index') }}">{{ __('general.attributes.categories-list') }}</a>
+                                        <a class='nav-link' href="{{ route('categories.index') }}">{{ __('general.side.categories-list') }}</a>
                                     </li><!--end nav-item-->
                                     <li class="nav-item">
                                         <a class='nav-link' href="{{ route('categories.create') }}">{{ __('general.actions.new') }}</a>
@@ -118,6 +118,39 @@
                             </div><!--end sidebarCategories-->
                         </li><!--end nav-item-->
 
+                        <li class="nav-item">
+                            <a class="nav-link" href="#sidebarBlog" data-bs-toggle="collapse"
+                                role="button" aria-expanded="false" aria-controls="sidebarBlog">
+                                {{ __('general.side.tags') }}
+                            </a>
+                            <div class="collapse " id="sidebarBlog">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class='nav-link' href="{{ route('tags.index') }}">{{ __('general.side.tags-list') }}</a>
+                                    </li><!--end nav-item-->
+                                    <li class="nav-item">
+                                        <a class='nav-link' href="{{ route('tags.create') }}">{{ __('general.actions.new') }}</a>
+                                    </li><!--end nav-item-->
+                                </ul><!--end nav-->
+                            </div><!--end sidebarTags-->
+                        </li><!--end nav-item-->
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#sidebarblogposts" data-bs-toggle="collapse"
+                                role="button" aria-expanded="false" aria-controls="sidebarblogposts">
+                                {{ __('general.side.blogs') }}
+                            </a>
+                            <div class="collapse " id="sidebarblogposts">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class='nav-link' href="{{ route('blogposts.index') }}">{{ __('general.side.blogs-list') }}</a>
+                                    </li><!--end nav-item-->
+                                    <li class="nav-item">
+                                        <a class='nav-link' href="{{ route('blogposts.create') }}">{{ __('general.actions.new') }}</a>
+                                    </li><!--end nav-item-->
+                                </ul><!--end nav-->
+                            </div><!--end sidebarblogposts-->
+                        </li><!--end nav-item-->
                     </ul><!--end navbar-nav--->
                 </div><!--end sidebarCollapse-->
             </div><!-- end Crypto -->

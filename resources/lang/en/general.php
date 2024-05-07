@@ -281,6 +281,11 @@ return [
         'payment' => 'Payments',
         'users-list' => 'Users List',
         'products-list' => 'products List',
+        'categories-list' => 'Categories list',
+        'tags-list' => 'Tags list',
+        'blogs-list'=> 'Blogs List',
+        '' => '',
+        '' => '',
         '' => '',
     ],
     'btn' => [

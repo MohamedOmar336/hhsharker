@@ -12,7 +12,7 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a>
                                 </li><!--end nav-item-->
-                                <li class="breadcrumb-item"><a href="{{ url('/products') }}">{{ __('general.attributes.product') }}</a>
+                                <li class="breadcrumb-item"><a href="{{ route('products.index') }}">{{ __('general.attributes.product') }}</a>
                                 </li><!--end nav-item-->
                                 <li class="breadcrumb-item active">List</li>
                             </ol>
@@ -79,7 +79,6 @@
                                 <div class="col">
                                     <a href="{{ route('products.create') }}" class="btn btn-outline-light btn-sm px-4">+
                                         {{ __('general.actions.new') }}</a>
-
                                 </div><!--end col-->
                                 <div class="col-auto">
                                     {{ $records->links('admin.pagination.bootstrap') }}

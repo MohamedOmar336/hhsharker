@@ -35,20 +35,20 @@
                                 @csrf
                                 @method('PUT')
                                 <div class="mb-3">
-                                    <label for="tag_name_en" class="form-label">{{ __('Tag Name (English)') }}</label>
-                                    <input id="tag_name_en" type="text"
-                                        class="form-control @error('tag_name_en') is-invalid @enderror" name="tag_name_en"
-                                        value="{{ old('tag_name_en', $tag->tag_name_en) }}" required autofocus>
-                                    @error('tag_name_en')
+                                    <label for="name_en" class="form-label">{{ __('Tag Name (English)') }}</label>
+                                    <input id="name_en" type="text"
+                                        class="form-control @error('name_en') is-invalid @enderror" name="name_en"
+                                        value="{{ old('name_en', $tag->name_en) }}" required autofocus>
+                                    @error('name_en')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="tag_name_ar" class="form-label">{{ __('Tag Name (Arabic)') }}</label>
-                                    <input id="tag_name_ar" type="text"
-                                        class="form-control @error('tag_name_ar') is-invalid @enderror" name="tag_name_ar"
-                                        value="{{ old('tag_name_ar', $tag->tag_name_ar) }}" required>
-                                    @error('tag_name_ar')
+                                    <label for="name_ar" class="form-label">{{ __('Tag Name (Arabic)') }}</label>
+                                    <input id="name_ar" type="text"
+                                        class="form-control @error('name_ar') is-invalid @enderror" name="name_ar"
+                                        value="{{ old('name_ar', $tag->name_ar) }}" required>
+                                    @error('name_ar')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
