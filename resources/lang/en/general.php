@@ -222,8 +222,18 @@ return [
         'image_ar' => 'Image In Arabic',
         'users' => 'Users',
         'parent_category' => 'Parent Category',
+        'categories' => 'Categories',
+        'contacts' => 'Contacts',
+        'last_interaction' => 'Last Interaction',
+        'segment' => 'Segment',
+        'contact' => 'Contact',
         '' => '',
         '' => '',
+        '' => '',
+        '' => '',
+        '' => '',
+        '' => '',
+        
 
     ],
     'side' => [
@@ -280,8 +290,9 @@ return [
         'interests' => 'Interests',
         'payment' => 'Payments',
         'users-list' => 'Users List',
-        'products-list' => 'products List',
-        '' => '',
+        'products-list' => 'Products List',
+        'categories-list' => 'Categories List',
+        'contacts-list' => 'Contacts List',
     ],
     'btn' => [
         'submit' => 'Submit',

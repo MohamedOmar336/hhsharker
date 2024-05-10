@@ -10,6 +10,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\admin\BlogPostController;
 use App\Http\Controllers\admin\CommentController;
 use App\Http\Controllers\admin\TagController;
+use App\Http\Controllers\admin\ContactController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -51,6 +53,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('/comments', CommentController::class);
 
         Route::resource('/tags', TagController::class);
+
+        Route::resource('/contacts', ContactController::class);
 
     });
 });
