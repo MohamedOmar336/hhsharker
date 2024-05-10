@@ -1,11 +1,12 @@
 <?php
-
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Enums\EnumsSettings;
+use App\Models\Roles;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -27,8 +28,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view("admin.users.create");
-
+        $roles = Roles::all();
+        return view("admin.users.create" , compact("roles"));
     }
 
     /**
@@ -47,7 +48,7 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email',
             'phone' => 'required|string',
             'password' => 'required|string|min:8|confirmed',
-            // 'role_id' => 'nullable|string',
+            'role_id' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'active' => 'boolean',
         ]);
@@ -60,7 +61,6 @@ class UserController extends Controller
 
         // Hash the password
         $validatedData['password'] = bcrypt($request->password);
-
         // Create the user
         $user = User::create($validatedData);
 
@@ -89,7 +89,8 @@ class UserController extends Controller
     public function edit(User $User)
     {
         $record = $User;
-        return view("admin.users.edit" , compact('record'));
+        $roles = Roles::all();
+        return view("admin.users.edit" , compact('record' , 'roles'));
     }
 
     /**
@@ -108,7 +109,7 @@ class UserController extends Controller
             'user_name' => 'required|string|unique:users,user_name,'.$id,
             'email' => 'required|email|unique:users,email,'.$id,
             'phone' => 'required|string',
-            // 'role_id' => 'required|string',
+            'role_id' => 'required|string',
             'active' => 'required|boolean',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);

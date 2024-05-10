@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="page-wrapper">
-
         <!-- Page Content-->
         <div class="page-content-tab">
 
@@ -102,7 +101,7 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="password_confirmation" class="form-label">{{ __('general.attributes.confirm_password') }}</label>
+                                        <label for="password_confirmation" class="form-label">{{ __('general.attributes.confirmation_password') }}</label>
                                         <input id="password_confirmation" type="password"
                                             class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation"
                                             required autocomplete="new-password">
@@ -113,16 +112,21 @@
                                         @enderror
                                     </div>
 
-                                    {{-- <div class="mb-3">
-                                        <label for="role_id" class="form-label">{{ __('general.attributes.role_id') }}</label>
-                                        <input id="role_id" type="text" class="form-control @error('role_id') is-invalid @enderror" name="role_id"
-                                            value="{{ old('role_id') }}">
+                                    <div class="mb-3">
+                                        <label for="role_id" class="form-label">{{ __('general.side.roles') }}</label>
+                                        <select id="role_id" class="form-control @error('role_id') is-invalid @enderror" name="role_id" required
+                                            autocomplete="role_id">
+                                            <option value="0">{{ __('general.select.select') }}</option>
+                                            @foreach ($roles as $role )
+                                                <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                            @endforeach
+                                        </select>
                                         @error('role_id')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
                                         @enderror
-                                    </div> --}}
+                                    </div>
 
                                     <div class="mb-3">
                                         <label for="image" class="form-label">{{ __('general.attributes.image') }}</label>

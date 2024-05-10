@@ -13,14 +13,14 @@
                         <div class="page-title-box">
                             <div class="float-end">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">{{ __('general.home') }}</a>
+                                    <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('general.home') }}</a>
                                     </li><!--end nav-item-->
-                                    <li class="breadcrumb-item"><a href="#">Categories</a>
+                                    <li class="breadcrumb-item"><a href="{{ route('categories.index') }}">{{ __('general.side.categories') }}</a>
                                     </li><!--end nav-item-->
                                     <li class="breadcrumb-item active">List</li>
                                 </ol>
                             </div>
-                            <h4 class="page-title">Category List</h4>
+                            <h4 class="page-title">{{ __('general.side.categories-list') }}</h4>
 
                         </div><!--end page-title-box-->
                     </div><!--end col-->

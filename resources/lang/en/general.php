@@ -284,6 +284,7 @@ return [
         'categories-list' => 'Categories list',
         'tags-list' => 'Tags list',
         'blogs-list'=> 'Blogs List',
+        'roles-list' => 'Roles List',
         '' => '',
         '' => '',
         '' => '',

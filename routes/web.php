@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\App;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\admin\BlogPostController;
 use App\Http\Controllers\admin\CommentController;
+use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\admin\TagController;
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +30,7 @@ Auth::routes(['']);
 
 Route::group(['prefix' => 'admin'], function () {
 
-    Route::group(['middleware' => ['auth' , 'Localization']], function () {
+    Route::group(['middleware' => ['auth' , 'Localization' , 'check.permissions']], function () {
 
         Route::get('/change-lang/{lang}', function ($lang) {
             App::setLocale($lang);
@@ -51,6 +52,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('/comments', CommentController::class);
 
         Route::resource('/tags', TagController::class);
+
+        Route::resource('/roles', RolesController::class);
 
     });
 });

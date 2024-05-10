@@ -68,4 +68,27 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->fcm_token;
     }
+
+    /**
+     * Get the role associated with the user.
+     */
+    public function role()
+    {
+        return $this->belongsTo(Roles::class);
+    }
+
+    /**
+     * Checks if admin has permission to perform certain action.
+     *
+     * @param  String  $permission
+     * @return Boolean
+     */
+    public function hasPermission($permission)
+    {
+        if (! $this->role->permissions) {
+            return false;
+        }
+
+        return in_array($permission, $this->role->permissions);
+    }
 }

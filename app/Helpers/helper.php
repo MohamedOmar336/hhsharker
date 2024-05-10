@@ -50,4 +50,3 @@ if (!function_exists('uploadImage')) {
     }
 
 }
-

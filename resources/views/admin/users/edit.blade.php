@@ -68,13 +68,21 @@
                                     @enderror
                                 </div>
 
-                                {{-- <div class="mb-3">
-                                    <label for="role_id" class="form-label">{{ __('general.attributes.role_id') }}</label>
-                                    <input id="role_id" type="text" class="form-control @error('role_id') is-invalid @enderror" name="role_id" value="{{ $record->role_id }}" required autocomplete="role_id">
+                                <div class="mb-3">
+                                    <label for="role_id" class="form-label">{{ __('general.side.roles') }}</label>
+                                    <select id="role_id" class="form-control @error('role_id') is-invalid @enderror" name="role_id" required
+                                        autocomplete="role_id">
+                                        <option value="0">{{ __('general.select.select') }}</option>
+                                        @foreach ($roles as $role )
+                                            <option value="{{ $role->id }}" {{ $role->id == $record->role_id ? 'selected' : '' }}>{{ $role->name }}</option>
+                                        @endforeach
+                                    </select>
                                     @error('role_id')
-                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
                                     @enderror
-                                </div> --}}
+                                </div>
 
                                 <div class="mb-3">
                                     <label for="active" class="form-label">{{ __('general.attributes.active') }}</label>
