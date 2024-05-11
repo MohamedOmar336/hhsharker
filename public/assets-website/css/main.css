@@ -127,3 +127,37 @@ footer .end h1 {
 }
 /* --------------- End Footer --------------- */
 
+/* --------------- Component - Arrow Button --------------- */
+.arrow-btn {
+    display: flex;
+}
+.arrow-btn .text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 32px;
+    background: #1F2B5A;
+    border-radius: 36px;
+    flex: none;
+    margin: 0px -16px;
+    color: #fff;
+    text-decoration: none;
+}
+.arrow-btn .arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 32px;
+    width: 64px;
+    height: 64px;
+    background: #4AD7AA;
+    border: 1.5px solid #1F2B5A;
+    border-radius: 36px;
+}
+
+.light.arrow-btn .text {
+    background: #fff;
+    color: #1F2B5A;
+}
+/* --------------- End Component - Arrow Button --------------- */
+

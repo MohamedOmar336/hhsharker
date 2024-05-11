@@ -71,9 +71,8 @@
             {{-- Contact --}}
             <div class="col-md-4 col-12 end">
                 <h1>Get In touch With H&H Shaker</h1>
-                <x-arrow-button>Contact Us</x-arrow-button>
+                <x-arrow-button dark_background="false">Contact Us</x-arrow-button>
             </div>
-        </div>
         </div>
     </div>
 </footer>
