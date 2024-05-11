@@ -11,6 +11,7 @@ use App\Http\Controllers\admin\BlogPostController;
 use App\Http\Controllers\admin\CommentController;
 use App\Http\Controllers\admin\TagController;
 use App\Http\Controllers\admin\ContactController;
+use App\Http\Controllers\admin\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,15 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('/tags', TagController::class);
 
         Route::resource('/contacts', ContactController::class);
+
+        
+
+Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
+Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
+Route::get('/profile/change-password', [ProfileController::class, 'showChangePasswordForm'])->name('profile.change_password_form');
+Route::post('/profile/change-password', [ProfileController::class, 'changePassword'])->name('profile.change_password');
+
 
     });
 });

@@ -2,7 +2,7 @@
     <div class="main-icon-menu">
         <a class='logo logo-metrica d-block text-center' href='{{ route('home') }}'>
             <span>
-                <img src="{{ asset('assets-admin/images/logo-sm.png') }}" alt="logo-small" class="logo-sm">
+                <img src="{{ asset('assets-admin/images/IMG_1465.png') }}" alt="logo-small" class="logo-sm">
             </span>
         </a>
         <div class="main-icon-menu-body">
@@ -37,7 +37,7 @@
         <div class="topbar-left">
             <a class='logo' href='{{ route('home') }}'>
                 <span>
-                    <img src="{{ asset('assets-admin/images/logo-dark.png') }}" alt="logo-large" class="logo-lg logo-dark">
+                    <img src="{{ asset('assets-admin/images/IMG_1468.png') }}" alt="logo-large" class="logo-lg logo-dark">
                     <img src="{{ asset('assets-admin/images/logo-dark') }}" alt="logo-=large" class="logo-lg logo-light">
                 </span>
             </a><!--end logo-->
@@ -101,7 +101,7 @@
                             </div><!--end sidebarUsers-->
                         </li><!--end nav-item-->
 
-                        <li class="nav-item">
+                         <li class="nav-item">
                             <a class="nav-link" href="#sidebarCategories" data-bs-toggle="collapse"
                                 role="button" aria-expanded="false" aria-controls="sidebarCategories">
                                 {{ __('general.attributes.categories') }}
@@ -109,10 +109,27 @@
                             <div class="collapse " id="sidebarCategories">
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
-                                        <a class='nav-link' href="{{ route('categories.index') }}">{{ __('general.attributes.categories-list') }}</a>
+                                        <a class='nav-link' href="{{ route('categories.index') }}">{{ __('general.side.categories-list') }}</a>
                                     </li><!--end nav-item-->
                                     <li class="nav-item">
                                         <a class='nav-link' href="{{ route('categories.create') }}">{{ __('general.actions.new') }}</a>
+                                    </li><!--end nav-item-->
+                                </ul><!--end nav-->
+                            </div><!--end sidebarCategories-->
+                        </li><!--end nav-item-->
+
+                         <li class="nav-item">
+                            <a class="nav-link" href="#sidebarContacts" data-bs-toggle="collapse"
+                                role="button" aria-expanded="false" aria-controls="sidebarCategories">
+                                {{ __('general.attributes.contacts') }}
+                            </a>
+                            <div class="collapse " id="sidebarContacts">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class='nav-link' href="{{ route('contacts.index') }}">{{ __('general.side.contacts-list') }}</a>
+                                    </li><!--end nav-item-->
+                                    <li class="nav-item">
+                                        <a class='nav-link' href="{{ route('contacts.create') }}">{{ __('general.actions.new') }}</a>
                                     </li><!--end nav-item-->
                                 </ul><!--end nav-->
                             </div><!--end sidebarCategories-->
