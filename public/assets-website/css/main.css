@@ -1,3 +1,4 @@
+/* --------------- Header navbar --------------- */
 ul.nav.nav-pills {
     padding: 8px;
     height: 80px;
@@ -61,3 +62,68 @@ li.nav-item.contact {
     line-height: 140%;
     color: #98A2B3;
 }
+/* --------------- End Header navbar --------------- */
+
+/* --------------- Footer --------------- */
+footer {
+    background: #1F2B5A;
+}
+footer .start {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+footer .start a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 24px;
+    gap: 8px;
+    width: 149px;
+    height: 64px;
+    background: #F8F9FD;
+    border-radius: 64px;
+}
+footer .start p {
+    width: 294px;
+    font-family: 'Satoshi';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    color: #FFFFFF;
+}
+footer .middle h5 {
+    font-family: 'Satoshi';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 140%;
+    color: #FFFFFF;
+    margin-bottom: 25px;
+}
+footer .middle a {
+    font-family: 'Satoshi';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 140%;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+footer .middle li {
+    margin-top: 10px;
+}
+footer .end h1 {
+    font-family: 'SCHABO';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 120%;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+/* --------------- End Footer --------------- */
+
