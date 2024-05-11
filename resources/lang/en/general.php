@@ -304,20 +304,15 @@ return [
         'interests' => 'Interests',
         'payment' => 'Payments',
         'users-list' => 'Users List',
-<<<<<<< HEAD
         'products-list' => 'Products List',
         'categories-list' => 'Categories List',
         'contacts-list' => 'Contacts List',
-=======
-        'products-list' => 'products List',
-        'categories-list' => 'Categories list',
         'tags-list' => 'Tags list',
         'blogs-list'=> 'Blogs List',
         'roles-list' => 'Roles List',
         '' => '',
         '' => '',
         '' => '',
->>>>>>> e225f28bbd88027a24aaae9146012773afb884e3
     ],
     'btn' => [
         'submit' => 'Submit',

@@ -38,15 +38,8 @@
         <div class="topbar-left">
             <a class='logo' href='{{ route('home') }}'>
                 <span>
-<<<<<<< HEAD
                     <img src="{{ asset('assets-admin/images/IMG_1468.png') }}" alt="logo-large" class="logo-lg logo-dark">
                     <img src="{{ asset('assets-admin/images/logo-dark') }}" alt="logo-=large" class="logo-lg logo-light">
-=======
-                    <img src="{{ asset('assets-admin/images/logo-dark.png') }}" alt="logo-large"
-                        class="logo-lg logo-dark">
-                    <img src="{{ asset('assets-admin/images/logo-dark') }}" alt="logo-=large"
-                        class="logo-lg logo-light">
->>>>>>> e225f28bbd88027a24aaae9146012773afb884e3
                 </span>
             </a><!--end logo-->
         </div><!--end topbar-left-->
@@ -73,7 +66,6 @@
                 <div class="collapse navbar-collapse" id="sidebarCollapse">
                     <!-- Navigation -->
                     <ul class="navbar-nav">
-<<<<<<< HEAD
                         <li class="nav-item">
                             <a class="nav-link" href="#sidebarEcommerce" data-bs-toggle="collapse"
                                 role="button" aria-expanded="false" aria-controls="sidebarEcommerce">
@@ -142,26 +134,6 @@
                             </div><!--end sidebarCategories-->
                         </li><!--end nav-item-->
 
-=======
-                        @foreach ($filteredSideNav as $item)
-                            <li class="nav-item">
-                                <a class="nav-link" href="#{{ $item['link'] }}" data-bs-toggle="collapse" role="button"
-                                    aria-expanded="false" aria-controls="{{ $item['link'] }}">
-                                    {{ $item['title'] }}
-                                </a>
-                                <div class="collapse " id="{{ $item['link'] }}">
-                                    <ul class="nav flex-column">
-                                        @foreach ($item['sub_menu'] as $sub_item)
-                                            <li class="nav-item">
-                                                <a class="nav-link"
-                                                    href="{{ route($sub_item['route']) }}">{{ $sub_item['title'] }}</a>
-                                            </li>
-                                        @endforeach
-                                    </ul><!--end nav-->
-                                </div><!--end sidebarEcommerce-->
-                            </li><!--end nav-item-->
-                        @endforeach
->>>>>>> e225f28bbd88027a24aaae9146012773afb884e3
                     </ul><!--end navbar-nav--->
                 </div><!--end sidebarCollapse-->
             </div><!-- end Crypto -->
