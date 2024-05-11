@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Enums\EnumsSettings;
 
 class CategoryController extends Controller
 {
@@ -16,7 +17,7 @@ class CategoryController extends Controller
     public function index()
     {
         // Retrieve all categories from the database
-        $records = Category::all();
+        $records = Category::latest()->paginate(EnumsSettings::Paginate);
         // Return the view with categories data
         return view('admin.categories.index', compact('records'));
     }
@@ -46,7 +47,7 @@ class CategoryController extends Controller
             'name_ar' => 'required|string',
             'name_en' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'parent_id' => 'nullable|integer',
+            'parent_id' => 'nullable',
             'level' => 'integer',
             'id_path' => 'string',
             'slug' => 'nullable|string',

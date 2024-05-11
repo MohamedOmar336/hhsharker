@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name_ar', 191);
 			$table->string('name_en', 191);
 			$table->string('image', 191)->nullable();
-			$table->bigInteger('parent_id')->unsigned()->default(0);
+			$table->bigInteger('parent_id')->unsigned()->nullable();
 			$table->integer('level')->default(1);
 			$table->string('id_path', 191)->default(1);
 			$table->string('slug', 191)->nullable();

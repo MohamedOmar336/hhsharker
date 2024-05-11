@@ -45,4 +45,16 @@ class Category extends Model
         // This indicates that a category can have multiple products
         return $this->belongsToMany(Product::class);
     }
+
+    /**
+     * Get the parent category associated with the category.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function parentCategory()
+    {
+        // Define a relationship with the Category model to get the parent category
+        // This indicates that a category belongs to another category (parent category)
+        return $this->belongsTo(Category::class, 'parent_id');
+    }
 }

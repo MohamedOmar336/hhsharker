@@ -8,74 +8,83 @@
             <div class="container-fluid">
                 <!-- Page-Title -->
                 <div class="row">
+
                     <div class="col-sm-12">
                         <div class="page-title-box">
                             <div class="float-end">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">{{ __('general.home') }}</a>
+                                    <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('general.home') }}</a>
                                     </li><!--end nav-item-->
-                                    <li class="breadcrumb-item"><a href="#">Categories</a>
+                                    <li class="breadcrumb-item"><a href="{{ route('categories.index') }}">{{ __('general.side.categories') }}</a>
                                     </li><!--end nav-item-->
                                     <li class="breadcrumb-item active">List</li>
                                 </ol>
                             </div>
-                            <h4 class="page-title">Category List</h4>
+                            <h4 class="page-title">{{ __('general.side.categories-list') }}</h4>
+
                         </div><!--end page-title-box-->
                     </div><!--end col-->
+                    <div class="col-md-12">
+                        <a href="{{ URL::previous() }}"
+                        class="btn btn-secondary">{{__('general.btn.back')}}</a>
+                    </div>
                 </div>
                 <!-- end page title end breadcrumb -->
-                <div class="container mt-5">
-                    <div class="row">
-                        @foreach ($records as $record)
-                            <div class="col-md-3">
-                                <div class="card card-body">
-                                    @if ($record->image)
-                                        <img src="{{ asset('images/' . $record->image) }}" alt="{{ $record->name_en }}"
-                                            class="card-img-top d-block mx-auto my-4" style="width: 100%; height: 150px;">
-                                    @endif
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{ $record->name_en }}</h5>
-                                        <p class="card-text">{{ $record->name_ar }}</p>
-                                        <a href="{{ route('categories.edit', $record->id) }}"
-                                            class="btn btn-primary">Edit</a>
-                                        <form action="{{ route('categories.destroy', $record->id) }}" method="POST"
-                                            class="d-inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger"
-                                                onclick="return confirm('Are you sure you want to delete this category?')">Delete</button>
-                                        </form>
-                                    </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>{{ __('general.attributes.image') }}</th>
+                                                <th>{{ __('general.attributes.name_ar') }}</th>
+                                                <th>{{ __('general.attributes.name_en') }}</th>
+                                                <th>{{ __('general.attributes.parent_id') }}</th>
+                                                <th>{{ __('general.attributes.actions') }}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($records as $record)
+                                                <tr>
+                                                    <td>
+                                                        <img src="{{ asset('images/' . $record->image) }}"
+                                                            alt="{{ $record->name }}" width="50">
+                                                    </td>
+                                                    <td>{{ $record->name_ar }}</td>
+                                                    <td>{{ $record->name_en }}</td>
+                                                    <td>{{ $record->parentCategory ? $record->parentCategory['name_en'] : null }}</td>
+                                                    <td>
+                                                        <a href="{{ route('categories.edit', $record->id) }}"
+                                                            class="btn btn-sm btn-primary">Edit</a>
+                                                        <form action="{{ route('categories.destroy', $record->id) }}"
+                                                            method="POST" style="display: inline;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-sm btn-danger"
+                                                                onclick="return confirm('Are you sure you want to delete this category?')">Delete</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
-                            </div>
-                        @endforeach
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <a href="{{ route('categories.create') }}" class="btn btn-outline-light btn-sm px-4">+ Add
-                                New</a>
+                                <div class="row">
+                                    <div class="col">
+                                        <a href="{{ route('categories.create') }}" class="btn btn-outline-light btn-sm px-4">+
+                                            {{ __('general.actions.new') }}</a>
 
-                        </div><!--end col-->
-                        <div class="col-auto">
-                            <nav aria-label="...">
-                                <ul class="pagination pagination-sm mb-0">
-                                    <li class="page-item disabled">
-                                        <a class="page-link" href="#" tabindex="-1">Previous</a>
-                                    </li>
-                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#">Next</a>
-                                    </li>
-                                </ul><!--end pagination-->
-                            </nav><!--end nav-->
-                        </div> <!--end col-->
-                    </div><!--end row-->
-
-                </div>
+                                    </div><!--end col-->
+                                    <div class="col-auto">
+                                        {{ $records->links('admin.pagination.bootstrap') }}
+                                    </div> <!--end col-->
+                                </div><!--end row-->
+                            </div><!--end card-body-->
+                        </div><!--end card-->
+                    </div> <!-- end col -->
+                </div> <!-- end row -->
             </div><!-- container -->
         </div>
     </div>

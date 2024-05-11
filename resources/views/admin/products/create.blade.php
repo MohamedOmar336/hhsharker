@@ -21,6 +21,10 @@
                         <h4 class="page-title">Add Product</h4>
                     </div><!--end page-title-box-->
                 </div><!--end col-->
+                <div class="col-md-12">
+                    <a href="{{ URL::previous() }}"
+                    class="btn btn-secondary">{{__('general.btn.back')}}</a>
+                </div>
             </div>
             <!-- end page title end breadcrumb -->
             <div class="row">
@@ -28,7 +32,7 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data"
+                            <form id="quickForm" method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data"
                                 class="needs-validation" novalidate>
                                 @csrf
 
@@ -130,9 +134,7 @@
 
 
                                 <div class="form-group mb-0">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Add Product') }}
-                                    </button>
+                                    <x-btn name="{{ __('general.btn.submit') }}"></x-btn>
                                 </div>
                             </form>
                         </div> <!--end card-body-->
@@ -143,4 +145,7 @@
 
     </div><!-- container -->
 @endsection
+<<<<<<< HEAD
 
+=======
+>>>>>>> e225f28bbd88027a24aaae9146012773afb884e3

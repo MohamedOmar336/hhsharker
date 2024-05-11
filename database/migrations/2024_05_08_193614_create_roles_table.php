@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tags', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->string('name_en'); // English tag name
-            $table->string('name_ar'); // Arabic tag name
+            $table->string('name');
+            $table->string('description')->nullable();
+            $table->string('permission_type')->nullable();
+            $table->json('permissions')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tags');
+        Schema::dropIfExists('roles');
     }
 };

@@ -1,13 +1,11 @@
 <?php
 
-// app\Models\Tag.php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tag extends Model
+class Roles extends Model
 {
     use HasFactory;
 
@@ -17,14 +15,19 @@ class Tag extends Model
      * @var array
      */
     protected $fillable = [
-        'name_en', 'name_ar',
+        'name',
+        'description',
+        'permission_type',
+        'permissions',
     ];
 
     /**
-     * Get the blog posts associated with the tag.
+     * The attributes that should be cast to native types.
+     *
+     * @var array
      */
-    public function posts()
-    {
-        return $this->belongsToMany(BlogPost::class, 'blog_post_tag');
-    }
+    protected $casts = [
+        'permissions' => 'json',
+    ];
+
 }

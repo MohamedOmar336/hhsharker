@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -18,12 +18,20 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
+        'user_name',
         'email',
         'password',
         'phone',
+<<<<<<< HEAD
         'photo',
         'gender',
+=======
+        'role_id',
+        'image',
+        'active',
+>>>>>>> e225f28bbd88027a24aaae9146012773afb884e3
     ];
 
     /**
@@ -43,7 +51,18 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'active' => 'boolean',
     ];
+
+    /**
+     * Get the user's full name attribute.
+     *
+     * @return string
+     */
+    public function getFullNameAttribute()
+    {
+        return "{$this->first_name} {$this->last_name}";
+    }
 
     /**
      * Specifies the user's FCM token
@@ -53,5 +72,28 @@ class User extends Authenticatable
     public function routeNotificationForFcm()
     {
         return $this->fcm_token;
+    }
+
+    /**
+     * Get the role associated with the user.
+     */
+    public function role()
+    {
+        return $this->belongsTo(Roles::class);
+    }
+
+    /**
+     * Checks if admin has permission to perform certain action.
+     *
+     * @param  String  $permission
+     * @return Boolean
+     */
+    public function hasPermission($permission)
+    {
+        if (! $this->role->permissions) {
+            return false;
+        }
+
+        return in_array($permission, $this->role->permissions);
     }
 }

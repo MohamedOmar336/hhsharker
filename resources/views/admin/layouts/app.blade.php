@@ -18,11 +18,12 @@
         referrerpolicy="origin"></script>
 
     <script src="{{ asset('assets-admin/js/script.js') }}"></script>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css">
-<script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
     <!-- App favicon -->
@@ -30,7 +31,7 @@
 
 
     <link href="{{ asset('assets-admin/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-
+    <link href="{{ asset('assets-admin/css/admin.css') }}" rel="stylesheet" type="text/css" />
 
     @if (app()->isLocale('ar'))
         <link href="{{ asset('assets-admin/css/app-rtl.min.css') }}" rel="stylesheet" type="text/css" />
@@ -73,7 +74,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- vendor js -->
-
     <script src="{{ asset('assets-admin/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets-admin/libs/simplebar/simplebar.min.js') }}"></script>
     <script src="{{ asset('assets-admin/libs/feather-icons/feather.min.js') }}"></script>
@@ -83,11 +83,10 @@
     <!-- App js -->
     <script src="{{ asset('assets-admin/js/app.js') }}"></script>
 
-
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-messaging.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
-
+    @stack('scripts')
     <script>
         firebase.initializeApp({
             apiKey: "AIzaSyDXrOKuqnjDvWm8IZ2r3wM8ZY_fG_QamOg",
@@ -98,7 +97,6 @@
             appId: "1:567064391154:web:40574f6824350b17764f6b",
             measurementId: "G-N2VKVTGWMX"
         });
-
         // Retrieve Firebase Messaging object.
         const messaging = firebase.messaging();
 
@@ -116,7 +114,6 @@
                     console.error('Service worker registration failed:', error);
                 });
         }
-
         // Handle incoming messages
         messaging.onMessage((payload) => {
             console.log('Message received:', payload);

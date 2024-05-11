@@ -1,24 +1,41 @@
 <?php
-// app\Http\Controllers\admin\TagController.php
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use App\Enums\EnumsSettings;
 
 class TagController extends Controller
 {
+    /**
+     * Display a listing of the tags.
+     *
+     * @return \Illuminate\View\View
+     */
     public function index()
     {
-        $tags = Tag::all();
-        return view('admin.tags.index', compact('tags'));
+        $records = Tag::latest()->paginate(EnumsSettings::Paginate);
+        return view('admin.tags.index', compact('records'));
     }
 
+    /**
+     * Show the form for creating a new tag.
+     *
+     * @return \Illuminate\View\View
+     */
     public function create()
     {
         return view('admin.tags.create');
     }
 
+    /**
+     * Store a newly created tag in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
         // Validate the request...
@@ -26,18 +43,37 @@ class TagController extends Controller
         return redirect()->route('tags.index')->with('success', 'Tag created successfully.');
     }
 
+    /**
+     * Display the specified tag.
+     *
+     * @param  int  $id
+     * @return \Illuminate\View\View
+     */
     public function show($id)
     {
         $tag = Tag::findOrFail($id);
         return view('admin.tags.show', compact('tag'));
     }
 
+    /**
+     * Show the form for editing the specified tag.
+     *
+     * @param  int  $id
+     * @return \Illuminate\View\View
+     */
     public function edit($id)
     {
         $tag = Tag::findOrFail($id);
         return view('admin.tags.edit', compact('tag'));
     }
 
+    /**
+     * Update the specified tag in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(Request $request, $id)
     {
         // Validate the request...
@@ -46,6 +82,12 @@ class TagController extends Controller
         return redirect()->route('tags.index')->with('success', 'Tag updated successfully.');
     }
 
+    /**
+     * Remove the specified tag from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy($id)
     {
         $tag = Tag::findOrFail($id);
