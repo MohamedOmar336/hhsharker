@@ -53,7 +53,7 @@
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-sm btn-danger"
                                                             onclick="return confirm('{{ __('general.messages.confirm_delete_role') }}')">
-                                                            {{ __('general.actions.delete') }}</button>
+                                                            {{ __('general.btn.delete') }}</button>
                                                     </form>
                                                 </td>
                                             </tr>

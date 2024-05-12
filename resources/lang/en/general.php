@@ -334,6 +334,7 @@ return [
         'Previous' => 'Previous',
         'current' => 'current',
         'Next' => 'Next',
+        'delete' => 'Delete',
     ],
     'sendmail' => [
         'send_mail_to' => 'Send Mail To',

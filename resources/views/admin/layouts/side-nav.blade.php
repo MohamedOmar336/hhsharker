@@ -66,74 +66,24 @@
                 <div class="collapse navbar-collapse" id="sidebarCollapse">
                     <!-- Navigation -->
                     <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#sidebarEcommerce" data-bs-toggle="collapse"
-                                role="button" aria-expanded="false" aria-controls="sidebarEcommerce">
-                                {{ __('general.attributes.product') }}
-                            </a>
-                            <div class="collapse " id="sidebarEcommerce">
-                                <ul class="nav flex-column">
-                                    <li class="nav-item">
-                                        <a class='nav-link' href='{{ route('products.index') }}'>{{ __('general.side.products-list') }}</a>
-                                    </li><!--end nav-item-->
-                                    <li class="nav-item">
-                                        <a class='nav-link' href='{{ route('products.create') }}'>{{ __('general.actions.new') }}</a>
-                                    </li><!--end nav-item-->
-                                </ul><!--end nav-->
-                            </div><!--end sidebarEcommerce-->
-                        </li><!--end nav-item-->
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#sidebarUsers" data-bs-toggle="collapse"
-                                role="button" aria-expanded="false" aria-controls="sidebarUsers">
-                                {{ __('general.attributes.user') }}
-                            </a>
-                            <div class="collapse " id="sidebarUsers">
-                                <ul class="nav flex-column">
-                                    <li class="nav-item">
-                                        <a class='nav-link' href="{{ route('users.index') }}">{{ __('general.side.users-list') }}</a>
-                                    </li><!--end nav-item-->
-                                    <li class="nav-item">
-                                        <a class='nav-link' href="{{ route('users.create') }}">{{ __('general.actions.new') }}</a>
-                                    </li><!--end nav-item-->
-                                </ul><!--end nav-->
-                            </div><!--end sidebarUsers-->
-                        </li><!--end nav-item-->
-
-                         <li class="nav-item">
-                            <a class="nav-link" href="#sidebarCategories" data-bs-toggle="collapse"
-                                role="button" aria-expanded="false" aria-controls="sidebarCategories">
-                                {{ __('general.attributes.categories') }}
-                            </a>
-                            <div class="collapse " id="sidebarCategories">
-                                <ul class="nav flex-column">
-                                    <li class="nav-item">
-                                        <a class='nav-link' href="{{ route('categories.index') }}">{{ __('general.side.categories-list') }}</a>
-                                    </li><!--end nav-item-->
-                                    <li class="nav-item">
-                                        <a class='nav-link' href="{{ route('categories.create') }}">{{ __('general.actions.new') }}</a>
-                                    </li><!--end nav-item-->
-                                </ul><!--end nav-->
-                            </div><!--end sidebarCategories-->
-                        </li><!--end nav-item-->
-
-                         <li class="nav-item">
-                            <a class="nav-link" href="#sidebarContacts" data-bs-toggle="collapse"
-                                role="button" aria-expanded="false" aria-controls="sidebarCategories">
-                                {{ __('general.attributes.contacts') }}
-                            </a>
-                            <div class="collapse " id="sidebarContacts">
-                                <ul class="nav flex-column">
-                                    <li class="nav-item">
-                                        <a class='nav-link' href="{{ route('contacts.index') }}">{{ __('general.side.contacts-list') }}</a>
-                                    </li><!--end nav-item-->
-                                    <li class="nav-item">
-                                        <a class='nav-link' href="{{ route('contacts.create') }}">{{ __('general.actions.new') }}</a>
-                                    </li><!--end nav-item-->
-                                </ul><!--end nav-->
-                            </div><!--end sidebarCategories-->
-                        </li><!--end nav-item-->
-
+                        @foreach ($filteredSideNav as $item)
+                            <li class="nav-item">
+                                <a class="nav-link" href="#{{ $item['link'] }}" data-bs-toggle="collapse" role="button"
+                                    aria-expanded="false" aria-controls="{{ $item['link'] }}">
+                                    {{ $item['title'] }}
+                                </a>
+                                <div class="collapse " id="{{ $item['link'] }}">
+                                    <ul class="nav flex-column">
+                                        @foreach ($item['sub_menu'] as $sub_item)
+                                            <li class="nav-item">
+                                                <a class="nav-link"
+                                                    href="{{ route($sub_item['route']) }}">{{ $sub_item['title'] }}</a>
+                                            </li>
+                                        @endforeach
+                                    </ul><!--end nav-->
+                                </div><!--end sidebarEcommerce-->
+                            </li><!--end nav-item-->
+                        @endforeach
                     </ul><!--end navbar-nav--->
                 </div><!--end sidebarCollapse-->
             </div><!-- end Crypto -->
