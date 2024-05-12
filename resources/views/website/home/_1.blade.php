@@ -1,6 +1,6 @@
 <section id="intro" class="container-lg">
     <div class="display-4 text-center text-uppercase fw-bolder my-5">Commercial Air Conditioners</div>
-    
+
     <div class="row justify-content-center align-items-center mx-3">
         <div class="col-md-6 text-md-start d-flex flex-column">
             <div class="mb-5">
@@ -19,7 +19,7 @@
         <div class="col-md-6 text-center d-none d-md-block">
             <!-- tooltip -->
             <span class="tt" data-bs-placement="bottom" title="Net Ninja Pro book cover">
-                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/eee95bc0fa66a114dd844b367f0cf554d9d05d32951c71f93280fc80e2c8a88a?apiKey=95e93e0986c543eeab0cc2ed468bab82&" class="img-fluid rounded-4" alt="air conditioner">
+                <img src="{{ asset('assets-website/images/hom1.png') }}" class="img-fluid rounded-4" alt="air conditioner">
             </span>
         </div>
     </div>
