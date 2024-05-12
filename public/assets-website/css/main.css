@@ -1,3 +1,8 @@
+/* add background color  */
+body {
+    background: aliceblue;
+}
+
 /* --------------- Header navbar --------------- */
 ul.nav.nav-pills {
     padding: 8px;
