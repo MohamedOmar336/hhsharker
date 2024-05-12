@@ -112,7 +112,7 @@
                     <a class="nav-link dropdown-toggle nav-user" data-bs-toggle="dropdown" href="#" role="button"
                         aria-haspopup="false" aria-expanded="false">
                         <div class="d-flex align-items-center">
-                            <img src="{{ asset('assets-admin/images/users/user-4.jpg ') }}" alt="profile-user"
+                            <img src="{{ asset('images/' . Auth::user()->photo) }}" alt="profile-user"
                                 class="rounded-circle me-2 thumb-sm" />
                             <div>
                                 <small class="d-none d-md-block font-11">Admin</small>

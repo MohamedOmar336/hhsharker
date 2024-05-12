@@ -26,7 +26,7 @@
         </div><!--end main-icon-menu-body-->
         <div class="pro-metrica-end">
             <a href="#" class="profile">
-                <img src="{{ asset('assets-admin/images/users/user-4.jpg ') }}" alt="profile-user"
+                <img src="{{ asset('images/' . Auth::user()->photo) }}" alt="profile-user"
                     class="rounded-circle thumb-sm">
             </a>
         </div><!--end pro-metrica-end-->
