@@ -98,11 +98,7 @@
                                         <select id="choices-multiple-remove-button" class="form-control"
                                             placeholder="Choose ..." multiple name="tags[]">
                                             @foreach ($tags as $tag)
-<<<<<<< HEAD
                                                 <option value="{{ $tag->id }}">{{ $tag->tag_name_en }}</option>
-=======
-                                                <option value="{{ $tag->id }}">{{ $tag->name_en }}</option>
->>>>>>> e225f28bbd88027a24aaae9146012773afb884e3
                                             @endforeach
                                         </select>
                                     </div>
@@ -130,22 +126,7 @@
                 </div> <!--end col-->
             </div><!--end row-->
         </div>
-<<<<<<< HEAD
-        <script>
-            $(document).ready(function() {
 
-                var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
-                    removeItemButton: true,
-                    maxItemCount: 100,
-                    searchResultLimit: 5,
-                    renderChoiceLimit: 5
-                });
-
-
-            });
-        </script>
-=======
->>>>>>> e225f28bbd88027a24aaae9146012773afb884e3
     </div><!-- container -->
 @endsection
 

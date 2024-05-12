@@ -145,7 +145,3 @@
 
     </div><!-- container -->
 @endsection
-<<<<<<< HEAD
-
-=======
->>>>>>> e225f28bbd88027a24aaae9146012773afb884e3
