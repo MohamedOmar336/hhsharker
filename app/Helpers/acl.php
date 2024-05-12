@@ -120,5 +120,45 @@ return [
         'name' => 'app.acl.delete',
         'route' => 'admin.roles.delete',
         'sort' => 3,
+    ], [
+        'key' => 'blogs',
+        'name' => 'app.users.blogs.title',
+        'route' => 'admin.blogs.index',
+        'sort' => 5,
+    ], [
+        'key' => 'blogs.create',
+        'name' => 'app.acl.create',
+        'route' => 'admin.blogs.create',
+        'sort' => 1,
+    ], [
+        'key' => 'blogs.edit',
+        'name' => 'app.acl.edit',
+        'route' => 'admin.blogs.edit',
+        'sort' => 2,
+    ], [
+        'key' => 'blogs.delete',
+        'name' => 'app.acl.delete',
+        'route' => 'admin.blogs.delete',
+        'sort' => 3,
+    ], [
+        'key' => 'contacts',
+        'name' => 'app.users.contacts.title',
+        'route' => 'admin.contacts.index',
+        'sort' => 5,
+    ], [
+        'key' => 'contacts.create',
+        'name' => 'app.acl.create',
+        'route' => 'admin.contacts.create',
+        'sort' => 1,
+    ], [
+        'key' => 'contacts.edit',
+        'name' => 'app.acl.edit',
+        'route' => 'admin.contacts.edit',
+        'sort' => 2,
+    ], [
+        'key' => 'contacts.delete',
+        'name' => 'app.acl.delete',
+        'route' => 'admin.contacts.delete',
+        'sort' => 3,
     ]
 ];

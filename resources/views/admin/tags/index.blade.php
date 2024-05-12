@@ -43,13 +43,13 @@
                                                 <td>{{ $record->name_ar }}</td>
                                                 <td>
                                                     <a href="{{ route('tags.edit', $record->id) }}"
-                                                        class="btn btn-sm btn-primary">{{ __('Edit') }}</a>
+                                                        class="btn btn-sm btn-primary">{{ __('general.btn.edit') }}</a>
                                                     <form action="{{ route('tags.destroy', $record->id) }}" method="POST"
                                                         style="display: inline;">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-sm btn-danger"
-                                                            onclick="return confirm('{{ __('Are you sure you want to delete this tag?') }}')">{{ __('Delete') }}</button>
+                                                            onclick="return confirm('{{ __('Are you sure you want to delete this tag?') }}')">{{ __('general.btn.delete') }}</button>
                                                     </form>
                                                 </td>
                                             </tr>

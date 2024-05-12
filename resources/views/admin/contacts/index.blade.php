@@ -10,20 +10,17 @@
                     <div class="page-title-box">
                         <div class="float-end">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a>
-                                </li><!--end nav-item-->
-                                <li class="breadcrumb-item"><a href="{{ route('roles.index') }}">{{ __('general.side.roles') }}</a>
-                                </li><!--end nav-item-->
+                                <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('contacts.index') }}">{{ __('general.attributes.contacts') }}</a></li>
+                                <li class="breadcrumb-item active">{{ __('general.side.list') }}</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">{{ __('general.side.roles') }}</h4>
+                        <h4 class="page-title">{{ __('general.side.contacts-list') }}</h4>
                     </div><!--end page-title-box-->
                 </div><!--end col-->
-                <div class="col-md-12">
-                    <a href="{{ URL::previous() }}" class="btn btn-secondary">{{__('general.btn.back')}}</a>
-                </div>
             </div>
-            <!-- end page title end breadcrumb -->
+            <!-- end page title and breadcrumb -->
+
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -33,27 +30,29 @@
                                     <thead>
                                         <tr>
                                             <th>{{ __('general.attributes.name') }}</th>
-                                            <th>{{ __('general.attributes.description') }}</th>
-                                            <th>{{ __('general.attributes.permission_type') }}</th>
+                                            <th>{{ __('general.attributes.email') }}</th>
+                                            <th>{{ __('general.attributes.phone') }}</th>
+                                            <th>{{ __('general.attributes.address') }}</th>
+                                            <th>{{ __('general.attributes.segment') }}</th>
+                                            <th>{{ __('general.attributes.last_interaction') }}</th>
                                             <th>{{ __('general.attributes.actions') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($records as $record)
+                                        @foreach ($contacts as $contact)
                                             <tr>
-                                                <td>{{ $record->name }}</td>
-                                                <td>{{ $record->description }}</td>
-                                                <td>{{ $record->permission_type }}</td>
+                                                <td>{{ $contact->name }}</td>
+                                                <td>{{ $contact->email }}</td>
+                                                <td>{{ $contact->phone }}</td>
+                                                <td>{{ $contact->address }}</td>
+                                                <td>{{ $contact->segment }}</td>
+                                                <td>{{ $contact->last_interaction }}</td>
                                                 <td>
-                                                    <a href="{{ route('roles.edit', $record->id) }}"
-                                                        class="btn btn-sm btn-primary">{{ __('general.actions.edit') }}</a>
-                                                    <form action="{{ route('roles.destroy', $record->id) }}" method="POST"
-                                                        style="display: inline;">
+                                                    <a href="{{ route('contacts.edit', $contact->id) }}" class="btn btn-sm btn-primary">{{ __('general.btn.edit') }}</a>
+                                                    <form action="{{ route('contacts.destroy', $contact->id) }}" method="POST" style="display: inline;">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-sm btn-danger"
-                                                            onclick="return confirm('{{ __('general.messages.confirm_delete_role') }}')">
-                                                            {{ __('general.btn.delete') }}</button>
+                                                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this contact?')">{{ __('general.btn.delete') }}</button>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -63,11 +62,10 @@
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <a href="{{ route('roles.create') }}"
-                                        class="btn btn-outline-light btn-sm px-4">+ {{ __('general.actions.new') }}</a>
+                                    <a href="{{ route('contacts.create') }}" class="btn btn-outline-light btn-sm px-4">+ New Contact</a>
                                 </div><!--end col-->
                                 <div class="col-auto">
-                                    {{ $records->links('admin.pagination.bootstrap') }}
+                                    <!-- Pagination Links -->
                                 </div> <!--end col-->
                             </div><!--end row-->
                         </div><!--end card-body-->

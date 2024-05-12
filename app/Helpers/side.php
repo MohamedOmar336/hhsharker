@@ -97,4 +97,20 @@ return [
             ],
         ],
     ],
+    [
+        'title' => __('general.attributes.contacts'),
+        'link' => 'sidebarContacts',
+        'icon' => 'ti ti-book',
+        'route' => 'contacts.index',
+        'sub_menu' => [
+            [
+                'title' => __('general.side.contacts-list'),
+                'route' => 'contacts.index',
+            ],
+            [
+                'title' => __('general.actions.new'),
+                'route' => 'contacts.create',
+            ],
+        ],
+    ]
 ];
