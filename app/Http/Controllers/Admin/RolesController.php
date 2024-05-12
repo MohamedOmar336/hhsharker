@@ -87,7 +87,7 @@ class RolesController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'permission_type' => 'required|string',
+            'permission_type' => 'nullable|string',
             'permissions' => 'nullable|array',
         ]);
 
