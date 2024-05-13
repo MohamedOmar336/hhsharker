@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -28,28 +29,26 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'user_name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
             'phone' => 'nullable|string|max:20',
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'gender' => 'nullable|in:male,female,other',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $user = Auth::user();
 
-        if ($request->hasFile('photo')) {
-            $photoPath = $request->file('photo')->store('profile-photos', 'public');
-            $user->photo = $photoPath;
-        }
-        if ($request->hasFile('photo')) {
-            $imageName = uploadImage($request->file('photo'));
-            $user->photo = $imageName;
+        if ($request->hasFile('image')) {
+            $imagePath = uploadImage($request->file('image'));
+            $user->image = $imagePath;
         }
 
-        $user->update($request->only(['name', 'email', 'phone', 'gender']));
+        $user->update($request->only(['first_name','last_name','user_name', 'email', 'phone']));
 
         return redirect()->back()->with('success', 'Profile updated successfully!');
     }
+
 
 
     /**
@@ -66,7 +65,7 @@ class ProfileController extends Controller
         ]);
 
         $user = Auth::user();
-        if ($request->current_password!= $user->password) {
+        if ($request->current_password != $user->password) {
             return redirect()->back()->with('error', 'The current password is incorrect.');
         }
 

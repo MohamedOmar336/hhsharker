@@ -19,7 +19,7 @@
                                 <li class="breadcrumb-item active">{{ __('general.side.edit') }}</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">{{ __('general.side.edit').' ' }}{{ __('general.attributes.profile') }}</h4>
+                        <h4 class="page-title">{{ __('general.side.edit') . ' ' }}{{ __('general.attributes.profile') }}</h4>
                     </div><!--end page-title-box-->
                 </div><!--end col-->
             </div>
@@ -33,16 +33,16 @@
                                     <div class="col-lg-4 align-self-center mb-3 mb-lg-0">
                                         <div class="met-profile-main">
                                             <div class="met-profile-main-pic">
-                                                <img src="{{ asset('images/' . Auth::user()->photo) }}"
-                                                            alt="{{ __('general.attributes.name', ['name' => Auth::user()->name]) }}" height="110"
-                                                    class="rounded-circle">
+                                                <img src="{{ asset('images/' . Auth::user()->image) }}"
+                                                    alt="{{ __('general.attributes.name', ['user_name' => Auth::user()->user_name]) }}"
+                                                    height="110" class="rounded-circle">
                                                 <span class="met-profile_main-pic-change">
                                                     <i class="fas fa-camera"></i>
                                                 </span>
                                             </div>
                                             <div class="met-profile_user-detail">
-                                                <h5 class="met-user-name">{{ Auth::user()->name }}</h5>
-                            
+                                                <h5 class="met-user-name">{{ Auth::user()->user_name }}</h5>
+
                                             </div>
                                         </div>
                                     </div><!--end col-->
@@ -51,7 +51,8 @@
                                         <ul class="list-unstyled personal-detail mb-0">
                                             <li class=""><i
                                                     class="las la-phone mr-2 text-secondary font-22 align-middle"></i> <b>
-                                                    {{ __('general.attributes.phone') }} </b> : {{ Auth::user()->phone }}</li>
+                                                    {{ __('general.attributes.phone') }} </b> : {{ Auth::user()->phone }}
+                                            </li>
                                             <li class="mt-2"><i
                                                     class="las la-envelope text-secondary font-22 align-middle mr-2"></i>
                                                 <b> {{ __('general.attributes.email') }} </b> : {{ Auth::user()->email }}
@@ -59,7 +60,7 @@
                                         </ul>
 
                                     </div><!--end col-->
-                                    
+
                                 </div><!--end row-->
                             </div><!--end f_profile-->
                         </div><!--end card-body-->
@@ -71,34 +72,48 @@
                                             <div class="card-header">
                                                 <div class="row align-items-center">
                                                     <div class="col">
-                                                        <h4 class="card-title">{{ __('general.attributes.personal_info') }}</h4>
+                                                        <h4 class="card-title">{{ __('general.attributes.personal_info') }}
+                                                        </h4>
                                                     </div><!--end col-->
                                                 </div> <!--end row-->
                                             </div><!--end card-header-->
                                             <div class="card-body">
-                                                <form action="{{ route('profile.update') }}" method="POST"
+                                        <form action="{{ route('profile.update') }}" method="POST"
                                                     enctype="multipart/form-data">
                                                     @csrf
                                                     @method('PUT')
 
-                                                    <!-- Name -->
+                                                    <!-- First Name -->
                                                     <div class="mb-3">
-                                                        <label for="name" class="form-label">{{ __('general.attributes.name') }}</label>
-                                                        <input type="text" name="name" id="name"
-                                                            class="form-control" value="{{ Auth::user()->name }}">
+                                                        <label for="first_name" class="form-label">{{ __('general.attributes.first_name') }}</label>
+                                                        <input type="text" name="first_name" id="first_name"
+                                                            class="form-control" value="{{ Auth::user()->first_name }}">
                                                     </div>
+
+                                                    <!-- Last Name -->
+                                                    <div class="mb-3">
+                                                        <label for="last_name" class="form-label">{{ __('general.attributes.last_name') }}</label>
+                                                        <input type="text" name="last_name" id="last_name"
+                                                            class="form-control" value="{{ Auth::user()->last_name }}">
+                                                    </div>
+
+                                                    <!-- Username -->
+<div class="mb-3">
+    <label for="user_name" class="form-label">{{ __('general.attributes.username') }}</label>
+    <input type="text" name="user_name" id="user_name" class="form-control" value="{{ Auth::user()->user_name }}">
+</div>
 
 
                                                     <!-- Email -->
                                                     <div class="mb-3">
-                                                        <label for="email" class="form-label">{{ __('general.attributes.email') }}</label>
+                                                        <label for="email" class="form-label">Email</label>
                                                         <input type="email" name="email" id="email"
                                                             class="form-control" value="{{ Auth::user()->email }}">
                                                     </div>
 
                                                     <!-- Phone -->
                                                     <div class="mb-3">
-                                                        <label for="phone" class="form-label">{{ __('general.attributes.phone') }}</label>
+                                                        <label for="phone" class="form-label">Phone</label>
                                                         <input type="text" name="phone" id="phone"
                                                             class="form-control" value="{{ Auth::user()->phone }}">
                                                     </div>
@@ -106,14 +121,14 @@
                                                     <!-- Photo -->
 
                                                     <div class="mb-3">
-                                                        <label for="photo"
-                                                            class="form-label">{{ __('general.attributes.photo') }}</label><br>
-                                                        <img src="{{ asset('images/' . Auth::user()->photo) }}"
-                                                            alt="{{ __('general.attributes.name', ['name' => Auth::user()->name]) }}" width="100"><br>
-                                                        <label for="photo" class="form-label mt-2">{{ __('general.attributes.update_image') }}</label>
-                                                        <input type="file" class="form-control" id="photo"
-                                                            name="photo">
-                                                        @error('photo')
+                                                        <label for="image"
+                                                            class="form-label">{{ __('general.attributes.image') }}</label><br>
+                                                        <img src="{{ asset('images/' . Auth::user()->image) }}"
+                                                            alt="{{ Auth::user()->user_name }}" width="100"><br>
+                                                        <label for="image" class="form-label mt-2">Update Image</label>
+                                                        <input type="file" class="form-control" id="image"
+                                                            name="image">
+                                                        @error('image')
                                                             <div class="invalid-feedback">
                                                                 {{ $message }}
                                                             </div>
@@ -121,18 +136,8 @@
                                                     </div>
 
 
-                                                    <!-- Gender -->
-                                                    <div class="mb-3">
-                                                        <label for="gender" class="form-label">{{ __('general.attributes.gender') }}</label>
-                                                        <select name="gender" id="gender" class="form-control">
-                                                            <option value="male"
-                                                                {{ Auth::user()->gender == 'male' ? 'selected' : '' }}>{{ __('general.select.male') }}</option>
-                                                            <option value="female"
-                                                                {{ Auth::user()->gender == 'female' ? 'selected' : '' }}>{{ __('general.select.female') }}</option>
-                                                        </select>
-                                                    </div>
-
-                                                    <button type="submit" class="btn btn-primary">{{ __('general.btn.update') }}</button>
+                                
+                                                    <button type="submit" class="btn btn-primary">Update Profile</button>
                                                 </form>
 
 

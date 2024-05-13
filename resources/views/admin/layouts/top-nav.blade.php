@@ -112,17 +112,17 @@
                     <a class="nav-link dropdown-toggle nav-user" data-bs-toggle="dropdown" href="#" role="button"
                         aria-haspopup="false" aria-expanded="false">
                         <div class="d-flex align-items-center">
-                            <img src="{{ asset('images/' . Auth::user()->photo) }}" alt="profile-user"
+                            <img src="{{ asset('images/' . Auth::user()->image) }}" alt="profile-user"
                                 class="rounded-circle me-2 thumb-sm" />
                             <div>
                                 <small class="d-none d-md-block font-11">Admin</small>
-                                <span class="d-none d-md-block fw-semibold font-12">{{ Auth()->user()->name }} <i
+                                <span class="d-none d-md-block fw-semibold font-12">{{ Auth()->user()->user_name }} <i
                                         class="mdi mdi-chevron-down"></i></span>
                             </div>
                         </div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end">
-                        <a class="dropdown-item" href="#"><i class="ti ti-user font-16 me-1 align-text-bottom"></i>
+                        <a class="dropdown-item" href="{{route('profile.show')}}"><i class="ti ti-user font-16 me-1 align-text-bottom"></i>
                             Profile</a>
                         <a class="dropdown-item" href="#"><i
                                 class="ti ti-settings font-16 me-1 align-text-bottom"></i>
