@@ -1,11 +1,23 @@
+.btn-primary {
+    background: #1F2B5A;
+    border: 1px solid #1F2B5A;
+}
+.bg-primary {
+    background-color: #1F2B5A !important;
+}
+.btn-outline-primary {
+    color: #1F2B5A;
+    border: 1px solid #1F2B5A;
+}
+
 /* --------------- Header navbar --------------- */
-ul.nav.nav-pills {
+.header ul.nav.nav-pills {
     padding: 8px;
     height: 80px;
     background: #1F2B5A;
     border-radius: 80px;
 }
-.nav .start {
+.header .nav .start {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,7 +31,7 @@ ul.nav.nav-pills {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 64px;
 }
-.nav .middle {
+.header .nav .middle {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -27,14 +39,14 @@ ul.nav.nav-pills {
     gap: 32px;
     margin: 0 auto;
 }
-.nav .end {
+.header .nav .end {
     display: flex;
     flex-direction: row;
     align-items: center;
     padding: 0px;
     gap: 24px;
 }
-li.nav-item.contact {
+.header li.nav-item.contact {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -46,7 +58,7 @@ li.nav-item.contact {
     background: #4AD7AA;
     border-radius: 80px;
 }
-.contact a.nav-link {
+.header .contact a.nav-link {
     font-family: 'Satoshi';
     font-style: normal;
     font-weight: 500;
@@ -54,7 +66,7 @@ li.nav-item.contact {
     line-height: 140%;
     color: #000000;
 }
-.nav-link {
+.header .nav-link {
     font-family: 'Satoshi';
     font-style: normal;
     font-weight: 500;
@@ -205,6 +217,60 @@ footer .end h1 {
     width: 306px;
     height: 160px;
     background: #F0F4FD;
+}
+
+/* Section 3 - tabs */
+#tabs #pills-tab{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 8px;
+    width: 934px;
+    height: 80px;
+    background: #F0F4FD;
+    border-radius: 80px;
+}
+#tabs .tab-pane {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 48px;
+}
+#tabs .nav-pills .nav-link.active {
+    width: 306px;
+    /* height: 64px; */
+    background: #1F2B5A;
+    color: #fff;
+    border-radius: 36px;
+}
+#tabs .nav-pills .nav-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 306px;
+    height: 64px;
+    background: #F0F4FD;
+    color: #000000;
+    border-radius: 36px;
+}
+#tabs .category-card {
+    width: 400px;
+    height: 489px;
+}
+#tabs .category-card img {
+    position: relative;
+    top: 85px;
+}
+#tabs .category-card .content {
+    align-items: flex-start;
+    padding: 30px;
+    gap: 8px;
+    background: #1F2B5A;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 400px;
+    height: 272px;
+    z-index: 1;
 }
 /* --------------- End Homepage --------------- */
 

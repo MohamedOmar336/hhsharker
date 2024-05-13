@@ -1,4 +1,4 @@
-<nav class="m-4">
+<nav class="header m-4">
     <ul class="nav nav-pills mb-5">
         <div class="start">
             <li class="nav-item">
