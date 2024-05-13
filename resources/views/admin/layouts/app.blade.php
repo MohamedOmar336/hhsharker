@@ -8,18 +8,18 @@
 
 
     <meta charset="utf-8" />
-    <title>Metrica - Admin & Dashboard Template</title>
+    <title>HH-shaker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-  
- 
+
+
       <script src="{{ asset('assets-admin/js/tinymce/tinymce.min.js') }}"></script>
       <script src="{{ asset('assets-admin/js/pages/form-editor.init.js') }}"></script>
-  
-    
+
+
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css">
     <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
@@ -34,7 +34,7 @@
 
     <link href="{{ asset('assets-admin/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets-admin/css/admin.css') }}" rel="stylesheet" type="text/css" />
-    
+
 
     @if (app()->isLocale('ar'))
         <link href="{{ asset('assets-admin/css/app-rtl.min.css') }}" rel="stylesheet" type="text/css" />
@@ -63,7 +63,6 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-
         <!-- Add more alert types as needed -->
     </div>
 

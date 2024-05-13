@@ -27,7 +27,7 @@ use App\Http\Controllers\Admin\ProfileController;
 
 Route::get('/admin', function () {
     return view('auth.login');
-});
+})->name('admin.login');
 
 Auth::routes(['']);
 
