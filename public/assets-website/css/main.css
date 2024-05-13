@@ -178,7 +178,7 @@ footer .end h1 {
     gap: 230px;
 }
 #intro .left .info-card {
-    gap: 8px;
+    gap: 1px;
     width: 130px;
     height: 130px;
     background: #F0F4FD;
@@ -198,6 +198,13 @@ footer .end h1 {
     font-size: 12px;
     line-height: 120%;
     color: #677487;
+}
+
+/* Section 2 - brands */
+.brands-container div {
+    width: 306px;
+    height: 160px;
+    background: #F0F4FD;
 }
 /* --------------- End Homepage --------------- */
 
