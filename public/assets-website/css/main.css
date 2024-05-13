@@ -1,8 +1,3 @@
-/* add background color  */
-body {
-    background: aliceblue;
-}
-
 /* --------------- Header navbar --------------- */
 ul.nav.nav-pills {
     padding: 8px;
@@ -165,4 +160,44 @@ footer .end h1 {
     color: #1F2B5A;
 }
 /* --------------- End Component - Arrow Button --------------- */
+
+/* --------------- End Homepage --------------- */
+.secondary-text {
+    font-family: 'Satoshi';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 140%;
+    color: #121212;
+}
+#intro .adv {
+    height: 636px;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+#intro .left {
+    gap: 230px;
+}
+#intro .left .info-card {
+    gap: 8px;
+    width: 130px;
+    height: 130px;
+    background: #F0F4FD;
+}
+#intro .left .info-card .title {
+    font-family: 'SCHABO';
+    font-style: normal;
+    font-size: 35px;
+    line-height: 120%;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #1F2B5A;
+}
+#intro .left .info-card .subtitle {
+    font-family: 'Satoshi';
+    font-style: normal;
+    font-size: 12px;
+    line-height: 120%;
+    color: #677487;
+}
+/* --------------- End Homepage --------------- */
 
