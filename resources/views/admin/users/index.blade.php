@@ -40,7 +40,7 @@
                                         <tbody>
                                             @foreach ($records as $record)
                                                 <tr>
-                                                    <td><img src="{{ $record->photo ? $record->photo : asset('assets-admin/images/users/user-8.jpg') }}"
+                                                    <td><img src="{{ asset('images/' . $record->image) }}"
                                                             alt="" class="rounded-circle thumb-sm me-1">
                                                         {{ $record->user_name }}
                                                     </td>
