@@ -2,17 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\admin\ProductController;
-use App\Http\Controllers\admin\UserController;
-use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\admin\BlogPostController;
-use App\Http\Controllers\admin\CommentController;
+use App\Http\Controllers\Admin\BlogPostController;
+use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\RolesController;
-use App\Http\Controllers\admin\TagController;
-use App\Http\Controllers\admin\ContactController;
-use App\Http\Controllers\admin\ProfileController;
+use App\Http\Controllers\Admin\TagController;
+use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
