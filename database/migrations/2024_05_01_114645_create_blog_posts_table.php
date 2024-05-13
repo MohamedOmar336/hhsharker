@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('title_ar');
             $table->text('content_en');
             $table->text('content_ar');
-            $table->unsignedBigInteger('author_id');
             $table->string('author_id');
             $table->date('post_date');
             $table->string('image')->nullable();
