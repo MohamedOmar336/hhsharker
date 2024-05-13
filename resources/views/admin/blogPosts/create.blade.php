@@ -138,4 +138,8 @@
             });
         });
     </script>
+
+      <script src="{{ asset('assets-admin/js/tinymce/tinymce.min.js') }}"></script>
+   <script src="{{ asset('assets-admin/js/pages/form-editor.init.js') }}"></script>
+  
 @endpush

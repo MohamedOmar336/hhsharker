@@ -1,0 +1,81 @@
+@import url(https://fonts.googleapis.com/css?family=Plus+Jakarta+Sans:700|Roboto:700,400);
+
+/* Reset default font */
+* {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    /* Use Satoshi-Medium as the default font */
+}
+
+/* Heading Styles */
+h1, .h1 {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-weight: 700;
+    font-size: 72px;
+    line-height: 100%;
+}
+
+h2, .h2 {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 130%;
+}
+
+h3, .h3 {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 130%;
+}
+
+h4, .h4 {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 130%;
+}
+
+h5, .h5 {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 150%;
+}
+
+/* Body Text Styles */
+body, p, .body-text {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+}
+
+/* Subheading Styles */
+.subheading, .subheading2 {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 120%;
+}
+
+/* Actions Styles */
+.actions, .actions-small {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: auto;
+}
+
+/* Overline Styles */
+.overline, .overline2 {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 120%;
+    text-transform: uppercase;
+}
+
+/* Actions Small */
+.actions-small {
+    font-size: 14px;
+}
