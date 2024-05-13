@@ -19,17 +19,18 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->truncate();
         User::create([
-            'user_name' => 'mohammedomar',
-            'email' => 'Momar@mail.com',
+            'user_name' => 'super_admin',
+            'email' => 'admin@admin.com',
             'password' => Hash::make('12345678'),
             'active' => 1,
-            'first_name'=> 'Mohammed' ,
-            'last_name'=> 'omar' ,
+            'first_name'=> 'super' ,
+            'last_name'=> 'admin' ,
             'email_verified_at'=> null ,
             'phone'=> '01111847065' ,
             'role_id'=> null,
             'image'=> null,
-            'slug'=> 'mohammedomar',
+            'slug'=> 'super-admin',
+            'gender'=>'mail'
         ]);
     }
 }
