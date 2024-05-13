@@ -92,6 +92,7 @@ class RolesController extends Controller
         ]);
 
         $role->update($validatedData);
+
         return redirect()->route('roles.index')->with('success', 'Role updated successfully.');
     }
 

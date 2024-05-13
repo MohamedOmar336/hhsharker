@@ -49,6 +49,24 @@
 </head>
 
 <body id="body">
+    <div style="position: fixed; top: 20px; right: 20px; z-index: 1000;">
+        @if(session()->has('success'))
+            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <strong>Success:</strong> {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+
+        @if(session()->has('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Error:</strong> {{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+
+        <!-- Add more alert types as needed -->
+    </div>
+
     <!-- leftbar-tab-menu -->
     @include('admin.layouts.side-nav')
 
@@ -92,6 +110,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-messaging.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
     @stack('scripts')
+
     <script>
         firebase.initializeApp({
             apiKey: "AIzaSyDXrOKuqnjDvWm8IZ2r3wM8ZY_fG_QamOg",
