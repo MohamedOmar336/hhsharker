@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
             'role_id'=> null,
             'image'=> null,
             'slug'=> 'super-admin',
-            'gender'=>'mail'
+            'gender'=>'male'
         ]);
     }
 }

@@ -26,6 +26,7 @@ return new class extends Migration
             $table->boolean('active')->default(0);
             $table->string('image', 191)->nullable();
             $table->string('slug', 191)->nullable();
+            $table->string('gender', 191)->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
