@@ -14,10 +14,12 @@
     <meta content="" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <script src="https://cdn.tiny.cloud/1/fbr14ncrkskjd2caqlw65cuk0t0r28y27kzbmlgomzgtkki0/tinymce/7/tinymce.min.js"
-        referrerpolicy="origin"></script>
-
-    <script src="{{ asset('assets-admin/js/script.js') }}"></script>
+  
+ 
+      <script src="{{ asset('assets-admin/js/tinymce/tinymce.min.js') }}"></script>
+      <script src="{{ asset('assets-admin/js/pages/form-editor.init.js') }}"></script>
+  
+    
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css">
     <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
@@ -32,6 +34,7 @@
 
     <link href="{{ asset('assets-admin/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets-admin/css/admin.css') }}" rel="stylesheet" type="text/css" />
+    
 
     @if (app()->isLocale('ar'))
         <link href="{{ asset('assets-admin/css/app-rtl.min.css') }}" rel="stylesheet" type="text/css" />
@@ -40,6 +43,8 @@
         <link href="{{ asset('assets-admin/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('assets-admin/css/app.min.css') }}" rel="stylesheet" type="text/css" />
     @endif
+
+    <link href="{{ asset('assets-admin/css/font.css') }}" rel="stylesheet" type="text/css" />
 
 </head>
 

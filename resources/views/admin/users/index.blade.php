@@ -23,11 +23,11 @@
 
                 <div class="row">
                     <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-striped">
-                                        <thead class="thead-light">
+                       <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
                                             <tr>
                                                 <th>{{ __('general.attributes.users') }}</th>
                                                 <th>{{ __('general.side.roles') }}</th>
@@ -40,7 +40,7 @@
                                         <tbody>
                                             @foreach ($records as $record)
                                                 <tr>
-                                                    <td><img src="{{ $record->image ? $record->image : asset('assets-admin/images/users/user-8.jpg') }}"
+                                                    <td><img src="{{ $record->photo ? $record->photo : asset('assets-admin/images/users/user-8.jpg') }}"
                                                             alt="" class="rounded-circle thumb-sm me-1">
                                                         {{ $record->user_name }}
                                                     </td>

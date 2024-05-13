@@ -49,7 +49,7 @@ class UserController extends Controller
             'phone' => 'required|string',
             'password' => 'required|string|min:8|confirmed',
             'role_id' => 'nullable|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'active' => 'boolean',
         ]);
 
