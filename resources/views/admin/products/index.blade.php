@@ -7,7 +7,7 @@
             <!-- Page-Title -->
             <div class="row">
                 <div class="col-sm-12">
-                <div class="">
+                
                     <div class="page-title-box">
                         <div class="float-end">
                             <ol class="breadcrumb">
@@ -24,7 +24,7 @@
                     class="btn btn-secondary"><span class="fa fa-backward"></a>
                      <h4 class="page-title">Product List</h4>
                 </div>
-                       </div>
+                      
                     </div><!--end page-title-box-->
                 </div><!--end col-->  
             </div>

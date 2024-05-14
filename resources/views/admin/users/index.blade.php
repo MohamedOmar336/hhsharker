@@ -45,11 +45,7 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($records as $record)
-<<<<<<< HEAD
                                                 <tr class="spacer">
-=======
-                                                <tr>
->>>>>>> 54d7d992eaf57452df5d05f7c615fa2c9f65069f
                                                     <td><img src="{{ asset('images/' . $record->image) }}"
                                                             alt="" class="rounded-circle thumb-sm me-1">
                                                         {{ $record->user_name }}
