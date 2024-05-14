@@ -11,16 +11,17 @@
                         <div class="float-end">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a></li>
-                                <li class="breadcrumb-item"><a href="{{ route('contacts.index') }}">{{ __('general.attributes.contacts') }}</a></li>
+                                <li class="breadcrumb-item"><a
+                                        href="{{ route('contacts.index') }}">{{ __('general.attributes.contacts') }}</a>
+                                </li>
                                 <li class="breadcrumb-item active">{{ __('general.side.list') }}</li>
                             </ol>
                         </div>
-                         <div class="col-md-12">
-                    <a href="{{ URL::previous() }}"
-                    class="btn btn-secondary"><span class="fa fa-backward"></a>
-                     <h4 class="page-title">{{ __('general.side.contacts-list') }}</h4>
-                </div>
-                        
+                        <div class="col-md-12">
+                            <a href="{{ URL::previous() }}" class="btn btn-secondary"><span class="fa fa-backward"></a>
+                            <h4 class="page-title">{{ __('general.side.contacts-list') }}</h4>
+                        </div>
+
                     </div><!--end page-title-box-->
                 </div><!--end col-->
             </div>
@@ -29,12 +30,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-body">
-                         <div class="table-responsive browser_users">
-                                        <table class="table mb-0">
-                                      
-						  <thead class="thead-light">
-                                      <tr>
+                        <div class="card-body content-area">
+                            <div class="table-responsive browser_users">
+                                <table class="table mb-0">
+
+                                    <thead class="thead-light">
+                                        <tr>
                                             <th>{{ __('general.attributes.name') }}</th>
                                             <th>{{ __('general.attributes.email') }}</th>
                                             <th>{{ __('general.attributes.phone') }}</th>
@@ -54,11 +55,14 @@
                                                 <td>{{ $contact->segment }}</td>
                                                 <td>{{ $contact->last_interaction }}</td>
                                                 <td>
-                                                    <a href="{{ route('contacts.edit', $contact->id) }}" class="btn btn-sm btn-primary">{{ __('general.btn.edit') }}</a>
-                                                    <form action="{{ route('contacts.destroy', $contact->id) }}" method="POST" style="display: inline;">
+                                                    <a href="{{ route('contacts.edit', $contact->id) }}"
+                                                        class="btn btn-sm btn-primary">{{ __('general.btn.edit') }}</a>
+                                                    <form action="{{ route('contacts.destroy', $contact->id) }}"
+                                                        method="POST" style="display: inline;">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this contact?')">{{ __('general.btn.delete') }}</button>
+                                                        <button type="submit" class="btn btn-sm btn-danger"
+                                                            onclick="return confirm('Are you sure you want to delete this contact?')">{{ __('general.btn.delete') }}</button>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -68,7 +72,8 @@
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <a href="{{ route('contacts.create') }}" class="btn btn-outline-light btn-sm px-4">+ New Contact</a>
+                                    <a href="{{ route('contacts.create') }}" class="btn btn-outline-light btn-sm px-4">+
+                                        New Contact</a>
                                 </div><!--end col-->
                                 <div class="col-auto">
                                     <!-- Pagination Links -->

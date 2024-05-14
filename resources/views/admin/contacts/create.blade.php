@@ -15,7 +15,13 @@
                                 <li class="breadcrumb-item active">{{ __('general.actions.new') }}</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">{{ __('general.actions.new').' ' }}{{ __('general.attributes.contact') }}</h4>
+                          <div class="col-md-12">
+                    <a href="{{ URL::previous() }}"
+                    class="btn btn-secondary"><span class="fa fa-backward"></a>
+                       <h4 class="page-title">{{ __('general.actions.new').' ' }}{{ __('general.attributes.contact') }}</h4>
+                </div>
+                       
+                       
                     </div><!--end page-title-box-->
                 </div><!--end col-->
             </div>
@@ -24,7 +30,7 @@
             <div class="row">
                 <div class="col-12 col-lg-8 mx-auto">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body content-area">
                             <form method="POST" action="{{ route('contacts.store') }}" enctype="multipart/form-data">
                                 @csrf
 

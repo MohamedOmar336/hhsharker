@@ -23,9 +23,9 @@
                              <div class="col-md-12">
                     <a href="{{ URL::previous() }}"
                     class="btn btn-secondary"><span class="fa fa-backward"></a>
-                     <h4 class="page-title">Product List</h4>
+                    <h4 class="page-title">{{ __('general.side.categories-list') }}</h4>
                 </div>
-                            <h4 class="page-title">{{ __('general.side.categories-list') }}</h4>
+                           
 
                         </div><!--end page-title-box-->
                     </div><!--end col-->

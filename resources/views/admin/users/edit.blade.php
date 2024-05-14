@@ -15,7 +15,12 @@
                                 <li class="breadcrumb-item active">Edit</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">Edit User</h4>
+                         <div class="col-md-12">
+                    <a href="{{ URL::previous() }}"
+                    class="btn btn-secondary"><span class="fa fa-backward"></a>
+                     <h4 class="page-title">Edit User</h4>
+                </div>
+                       
                     </div><!--end page-title-box-->
                 </div><!--end col-->
             </div>

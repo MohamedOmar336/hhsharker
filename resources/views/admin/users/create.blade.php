@@ -18,13 +18,16 @@
                                             href="{{ route('users.index') }}">{{ __('general.attributes.users') }}</a></li>
                                 </ol>
                             </div>
-                            <h4 class="page-title">{{ __('general.attributes.users') }}</h4>
+                             <div class="col-md-12">
+                    <a href="{{ URL::previous() }}"
+                    class="btn btn-secondary"><span class="fa fa-backward"></a>
+                    <h4 class="page-title">{{ __('general.attributes.users') }}</h4>
+                </div>
+                          
                         </div>
                         <!--end page-title-box-->
                     </div>
-                    <div class="col-md-12">
-                        <a href="{{ URL::previous() }}" class="btn btn-secondary">{{ __('general.btn.back') }}</a>
-                    </div>
+                   
                     <!--end col-->
                 </div>
                   <div class="row">
