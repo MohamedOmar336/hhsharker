@@ -30,7 +30,7 @@
             <div class="row">
                 <div class="col-12 col-md-8 mx-auto">
                     <div class="card">
-                        <div class="card-body">
+                         <div class="card-body content-area">
                             <form id="quickForm" method="POST" action="{{ route('categories.update', $category->id) }}"
                                 enctype="multipart/form-data">
                                 @csrf

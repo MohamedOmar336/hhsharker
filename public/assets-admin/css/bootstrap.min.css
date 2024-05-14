@@ -5998,7 +5998,7 @@ fieldset:disabled .btn {
     background-color: var(--bs-card-bg);
     background-clip: border-box;
     border: var(--bs-card-border-width) solid var(--bs-card-border-color);
-    border-radius: var(--bs-card-border-radius)
+    border-radius: var(--bs-card-border-radius);
 }
 
 .card>hr {
@@ -6033,7 +6033,10 @@ fieldset:disabled .btn {
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
     padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
-    color: var(--bs-card-color)
+    color: var(--bs-card-color);
+    max-height: fit-content;
+    background-color : #f8f9fb;
+    min-width: fit-content;
 }
 
 .card-title {

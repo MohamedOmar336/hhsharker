@@ -10,7 +10,7 @@
 }
 
 .navbar-custom {
-    background: #fff;
+    background:  #f8f9fb;
     min-height: 60px;
     position: relative;
     border-bottom: 1px solid #eceff5;
@@ -1826,7 +1826,7 @@ body {
     margin: 0;
     overflow-x: hidden !important;
     font-size: .8125rem;
-    background-color: #fff;
+    background-color: #d3d7e9;
     color: #000444;
     letter-spacing: .1px;
     line-height: 1.5;
@@ -6187,7 +6187,8 @@ hr.hr-dashed {
 .page-title-box .page-title {
     font-size: 18px;
     margin: 0;
-    color: #303e67
+    color: #303e67;
+    display :inline-block;
 }
 
 .page-title-box .breadcrumb {

@@ -23,7 +23,7 @@
      <link href="assets-admin/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
      <link href="assets-admin/css/icons.min.css" rel="stylesheet" type="text/css" />
      <link href="assets-admin/css/app.min.css" rel="stylesheet" type="text/css" />
-
+     <link href="{{ asset('assets-admin/css/style.css') }}" rel="stylesheet" type="text/css" />
 </head>
 
 <body id="body" class="auth-page" style="background-image: url('assets-admin/images/p-1.png'); background-size: cover; background-position: center center;">
@@ -31,11 +31,11 @@
     <div class="container-md">
         <div class="row vh-100 d-flex justify-content-center">
             <div class="col-12 align-self-center">
-                <div class="card-body">
+               
                     <div class="row">
                         <div class="col-lg-4 mx-auto">
                             <div class="card">
-                                <div class="card-body pt-0">
+                                <div class="block-body pt-0">
                                     <form class="my-4" method="POST" action="{{ route('login') }}">
                                         @csrf
 

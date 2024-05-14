@@ -30,7 +30,7 @@
                   <div class="row">
                 <div class="col-12 col-lg-8 mx-auto">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body content-area">
                                 <form id="userForm" method="POST" action="{{ route('users.store') }}" enctype="multipart/form-data">
                                     @csrf
 

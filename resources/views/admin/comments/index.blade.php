@@ -27,10 +27,11 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-hover mb-0">
-                                    <thead>
-                                        <tr>
+                           <div class="table-responsive browser_users">
+                                        <table class="table mb-0">
+                                      
+						  <thead class="thead-light">
+                                 <tr>
                                             <th>{{ __('Post Title') }}</th>
                                             <th>{{ __('Commenter') }}</th>
                                             <th>{{ __('Email') }}</th>

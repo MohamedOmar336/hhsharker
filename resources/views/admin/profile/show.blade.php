@@ -19,8 +19,13 @@
                                 <li class="breadcrumb-item active">{{ __('general.side.edit') }}</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">{{ __('general.side.edit') . ' ' }}{{ __('general.attributes.profile') }}</h4>
-                    </div><!--end page-title-box-->
+                           <div class="col-md-12">
+                    <a href="{{ URL::previous() }}"
+                    class="btn btn-secondary"><span class="fa fa-backward"></a>
+                    <h4 class="page-title">{{ __('general.side.edit') . ' ' }}{{ __('general.attributes.profile') }}</h4>
+                    
+                </div>
+                       </div><!--end page-title-box-->
                 </div><!--end col-->
             </div>
             <!-- end page title end breadcrumb -->

@@ -16,7 +16,12 @@
                                 <li class="breadcrumb-item active">List</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">{{ __('general.side.blogs-list') }}</h4>
+                         <div class="col-md-12">
+                    <a href="{{ URL::previous() }}"
+                    class="btn btn-secondary"><span class="fa fa-backward"></a>
+                      <h4 class="page-title">{{ __('general.side.blogs-list') }}</h4>
+                </div>
+                       
                     </div><!--end page-title-box-->
                 </div><!--end col-->
             </div>
@@ -25,10 +30,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered">
-                                    <thead>
+                         <div class="card-body content-area">
+                            <div class="table-responsive browser_users">
+                                        <table class="table mb-0">
+                                      
+						  <thead class="thead-light">
+                            
                                         <tr>
                                             <th>Image</th>
                                             <th>Title (English)</th>

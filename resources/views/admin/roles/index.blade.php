@@ -16,22 +16,27 @@
                                 </li><!--end nav-item-->
                             </ol>
                         </div>
-                        <h4 class="page-title">{{ __('general.side.roles') }}</h4>
+                         <div class="col-md-12">
+                    <a href="{{ URL::previous() }}"
+                    class="btn btn-secondary"><span class="fa fa-backward"></a>
+                     <h4 class="page-title">{{ __('general.side.roles').' ' }} List</h4>
+                </div>
+                       
                     </div><!--end page-title-box-->
                 </div><!--end col-->
                 <div class="col-md-12">
-                    <a href="{{ URL::previous() }}" class="btn btn-secondary">{{__('general.btn.back')}}</a>
-                </div>
+                    </div>
             </div>
             <!-- end page title end breadcrumb -->
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
+                         <div class="card-body content-area">
+                          <div class="table-responsive browser_users">
+                                        <table class="table mb-0">
+                                      
+						  <thead class="thead-light">
+                                   <tr>
                                             <th>{{ __('general.attributes.name') }}</th>
                                             <th>{{ __('general.attributes.description') }}</th>
                                             <th>{{ __('general.attributes.permission_type') }}</th>

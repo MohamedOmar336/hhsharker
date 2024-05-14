@@ -15,7 +15,12 @@
                                 <li class="breadcrumb-item active">{{ __('general.side.list') }}</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">{{ __('general.side.contacts-list') }}</h4>
+                         <div class="col-md-12">
+                    <a href="{{ URL::previous() }}"
+                    class="btn btn-secondary"><span class="fa fa-backward"></a>
+                     <h4 class="page-title">{{ __('general.side.contacts-list') }}</h4>
+                </div>
+                        
                     </div><!--end page-title-box-->
                 </div><!--end col-->
             </div>
@@ -25,10 +30,11 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
+                         <div class="table-responsive browser_users">
+                                        <table class="table mb-0">
+                                      
+						  <thead class="thead-light">
+                                      <tr>
                                             <th>{{ __('general.attributes.name') }}</th>
                                             <th>{{ __('general.attributes.email') }}</th>
                                             <th>{{ __('general.attributes.phone') }}</th>
