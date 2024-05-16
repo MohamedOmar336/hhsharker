@@ -40,12 +40,9 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
-
         if (!$user->active) {
-            auth()->logout();
             return redirect()->route('admin.login')->with('error', 'Your account is inactive.');
         }
-
-        return redirect()->intended($this->redirectPath());
+        return redirect()->route('home')->with('success', 'login successful');
     }
 }

@@ -31,14 +31,13 @@
 <body id="body" class="auth-page"
     style="background-image: url('assets-admin/images/p-1.png'); background-size: cover; background-position: center center;">
     <!-- Log In page -->
-    <div style="position: fixed; top: 20px; right: 20px; z-index: 1000;">
+    <div style="position: fixed; top: 20px; right: 20px; z-index: 1000;" id="popUpAlert" >
         @if (session()->has('success'))
             <div class="alert alert-primary alert-dismissible fade show" role="alert">
                 <strong>Success:</strong> {{ session('success') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-
         @if (session()->has('error'))
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <strong>Error:</strong> {{ session('error') }}
