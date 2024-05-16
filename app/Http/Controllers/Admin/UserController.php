@@ -57,10 +57,7 @@ class UserController extends Controller
     if ($request->hasFile('image')) {
         $imageName = uploadImage($request->file('image'));
         $validatedData['image'] = $imageName;
-    } else {
-        // If no image uploaded, set default image
-        $validatedData['image'] = 'user.png';
-    }
+    } 
 
         // Hash the password
         $validatedData['password'] = bcrypt($request->password);

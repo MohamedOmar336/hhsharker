@@ -52,7 +52,7 @@
                                             @foreach ($records as $record)
                                                 <tr>
                                                     <td>
-                                                        <img src="{{ asset('images/' . $record->image) }}"
+                                                     <img src="{{ $record->image ? asset('images/' . $record->image) : asset('images/no_image.png') }}"
                                                             alt="{{ $record->name }}" width="50">
                                                     </td>
                                                     <td>{{ $record->name_ar }}</td>

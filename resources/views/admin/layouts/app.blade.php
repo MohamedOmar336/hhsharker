@@ -14,7 +14,15 @@
     <meta content="" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-  
+
+    <script src="{{ asset("assets-admin/libs/bootstrap/js/bootstrap.bundle.min.js") }}"></script>
+        <script src="{{ asset("assets-admin/libs/simplebar/simplebar.min.js") }}"></script>
+        <script src="{{ asset("assets-admin/libs/feather-icons/feather.min.js") }}"></script>
+        <script src="{{ asset("assets-admin/libs/litepicker/litepicker.js") }}"></script>
+        <script src="{{ asset("assets-admin/libs/apexcharts/apexcharts.min.js") }}"></script>
+        <script src="{{ asset("assets-admin/js/pages/projects-index.init.js") }}"></script>
+      
+   <link href="{{ asset('assets-admin/libs/litepicker/css/litepicker.css') }}" rel="stylesheet" type="text/css" />
  
       <script src="{{ asset('assets-admin/js/tinymce/tinymce.min.js') }}"></script>
       <script src="{{ asset('assets-admin/js/pages/form-editor.init.js') }}"></script>

@@ -16,9 +16,9 @@
                                 <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a>
                                 </li><!--end nav-item-->
                                 <li class="breadcrumb-item"><a
-                                        href="{{ url('/products') }}">{{ __('general.attributes.product') }}</a>
+                                        href="{{ url('/products') }}">{{ __('general.attributes.blog') }}</a>
                                 </li><!--end nav-item-->
-                                <li class="breadcrumb-item active">Edit</li>
+                                <li class="breadcrumb-item active">{{ __('general.attributes.edit-blog') }}</li>
                             </ol>
                         </div>
                           <div class="col-md-12">

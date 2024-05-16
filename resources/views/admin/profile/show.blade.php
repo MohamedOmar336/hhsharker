@@ -38,7 +38,7 @@
                                     <div class="col-lg-4 align-self-center mb-3 mb-lg-0">
                                         <div class="met-profile-main">
                                             <div class="met-profile-main-pic">
-                                                <img src="{{ asset('images/' . Auth::user()->image) }}"
+                                                <img src="{{ Auth::user()->image ? asset('images/' . Auth::user()->image) : asset('images/user.png') }}"
                                                     alt="{{ __('general.attributes.name', ['user_name' => Auth::user()->user_name]) }}"
                                                     height="110" class="rounded-circle">
                                                 <span class="met-profile_main-pic-change">
@@ -128,7 +128,7 @@
                                                     <div class="mb-3">
                                                         <label for="image"
                                                             class="form-label">{{ __('general.attributes.image') }}</label><br>
-                                                        <img src="{{ asset('images/' . Auth::user()->image) }}"
+                                                        <img src="{{ Auth::user()->image ? asset('images/' . Auth::user()->image) : asset('images/user.png') }}"
                                                             alt="{{ Auth::user()->user_name }}" width="100"><br>
                                                         <label for="image" class="form-label mt-2">Update Image</label>
                                                         <input type="file" class="form-control" id="image"
@@ -173,7 +173,7 @@
                                                             class="form-control @error('current_password') is-invalid @enderror"
                                                             name="current_password" required
                                                             autocomplete="current-password"
-                                                            value="{{ Auth::user()->password }}">
+                                                            value="">
                                                         @error('current_password')
                                                             <div class="invalid-feedback">{{ $message }}</div>
                                                         @enderror

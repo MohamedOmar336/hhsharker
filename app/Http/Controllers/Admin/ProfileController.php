@@ -65,7 +65,7 @@ class ProfileController extends Controller
         ]);
 
         $user = Auth::user();
-        if ($request->current_password != $user->password) {
+        if (!\Hash::check($request->current_password, $user->password)) {
             return redirect()->back()->with('error', 'The current password is incorrect.');
         }
 

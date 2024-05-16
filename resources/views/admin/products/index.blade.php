@@ -7,38 +7,38 @@
             <!-- Page-Title -->
             <div class="row">
                 <div class="col-sm-12">
-                
+
                     <div class="page-title-box">
                         <div class="float-end">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a>
                                 </li><!--end nav-item-->
-                                <li class="breadcrumb-item"><a href="{{ route('products.index') }}">{{ __('general.attributes.product') }}</a>
+                                <li class="breadcrumb-item"><a
+                                        href="{{ route('products.index') }}">{{ __('general.attributes.product') }}</a>
                                 </li><!--end nav-item-->
                                 <li class="breadcrumb-item active">List</li>
                             </ol>
                         </div>
-                        
-                         <div class="col-md-12">
-                    <a href="{{ URL::previous() }}"
-                    class="btn btn-secondary"><span class="fa fa-backward"></a>
-                     <h4 class="page-title">Product List</h4>
-                </div>
-                      
+
+                        <div class="col-md-12">
+                            <a href="{{ URL::previous() }}" class="btn btn-secondary"><span class="fa fa-backward"></a>
+                            <h4 class="page-title">Product List</h4>
+                        </div>
+
                     </div><!--end page-title-box-->
-                </div><!--end col-->  
+                </div><!--end col-->
             </div>
-            
+
             <!-- end page title end breadcrumb -->
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body content-area">
-                        <div class="table-responsive browser_users">
-                                        <table class="table mb-0">
-                                      
-						  <thead class="thead-light">
-                                    
+                            <div class="table-responsive browser_users">
+                                <table class="table mb-0">
+
+                                    <thead class="thead-light">
+
                                         <tr>
                                             <th scope="col">{{ __('general.attributes.image') }}</th>
                                             <th scope="col">{{ __('general.attributes.name_ar') }}</th>
@@ -55,9 +55,10 @@
                                         @foreach ($records as $record)
                                             <tr>
                                                 <td scope="col">
-                                                    <img src="{{ asset('images/' . $record->image_url) }}"
+                                                    <img src="{{ $record->image_url ? asset('images/' . $record->image_url) : asset('images/no_image.png') }}"
                                                         alt="{{ $record->name }}" width="50">
                                                 </td>
+
                                                 <td scope="col">{{ $record->name_ar }}</td>
                                                 <td scope="col">{{ $record->name_en }}</td>
                                                 <td scope="col">{{ $record->description_ar }}</td>
@@ -73,11 +74,11 @@
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-circle btn-sm"
-                                                            onclick="return confirm('Are you sure you want to delete this product?')"><span class="fa la-trash"></button>
+                                                            onclick="return confirm('Are you sure you want to delete this product?')"><span
+                                                                class="fa la-trash"></button>
                                                     </form>
                                                 </td>
                                             </tr>
-                                           
                                         @endforeach
                                     </tbody>
                                 </table>

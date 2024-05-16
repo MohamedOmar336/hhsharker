@@ -24,7 +24,7 @@
                           <div class="col-md-12">
                     <a href="{{ URL::previous() }}"
                     class="btn btn-secondary"><span class="fa fa-backward"></a>
-                        <h4 class="page-title">Add Product</h4>
+                        <h4 class="page-title">{{ __('general.attributes.add-blog') }}</h4>
                 </div>
                        
                       
