@@ -4,21 +4,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Dashboard
-    |--------------------------------------------------------------------------
-    |
-    | All ACLs related to dashboard will be placed here.
-    |
-    */
-    [
-        'key'   => 'dashboard',
-        'name'  => 'app.acl.dashboard',
-        'route' => 'home',
-        'sort'  => 1,
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
     | Products
     |--------------------------------------------------------------------------
     |
@@ -78,87 +63,87 @@ return [
     [
         'key'   => 'users',
         'name'  => 'app.acl.settings',
-        'route' => 'admin.users.index',
+        'route' => 'users.index',
         'sort'  => 8,
     ], [
         'key' => 'users',
         'name' => 'app.items.users',
-        'route' => 'admin.users.index',
+        'route' => 'users.index',
         'sort' => 5,
     ], [
         'key' => 'users.create',
         'name' => 'app.acl.create',
-        'route' => 'admin.users.create',
+        'route' => 'users.create',
         'sort' => 1,
     ], [
         'key' => 'users.edit',
         'name' => 'app.acl.edit',
-        'route' => 'admin.users.edit',
+        'route' => 'users.edit',
         'sort' => 2,
     ], [
         'key' => 'users.delete',
         'name' => 'app.acl.delete',
-        'route' => 'admin.users.delete',
+        'route' => 'users.delete',
         'sort' => 3,
     ], [
         'key' => 'roles',
         'name' => 'app.users.roles.title',
-        'route' => 'admin.roles.index',
+        'route' => 'roles.index',
         'sort' => 5,
     ], [
         'key' => 'roles.create',
         'name' => 'app.acl.create',
-        'route' => 'admin.roles.create',
+        'route' => 'roles.create',
         'sort' => 1,
     ], [
         'key' => 'roles.edit',
         'name' => 'app.acl.edit',
-        'route' => 'admin.roles.edit',
+        'route' => 'roles.edit',
         'sort' => 2,
     ], [
         'key' => 'roles.delete',
         'name' => 'app.acl.delete',
-        'route' => 'admin.roles.delete',
+        'route' => 'roles.delete',
         'sort' => 3,
     ], [
         'key' => 'blogs',
         'name' => 'app.users.blogs.title',
-        'route' => 'admin.blogs.index',
+        'route' => 'blogs.index',
         'sort' => 5,
     ], [
         'key' => 'blogs.create',
         'name' => 'app.acl.create',
-        'route' => 'admin.blogs.create',
+        'route' => 'blogs.create',
         'sort' => 1,
     ], [
         'key' => 'blogs.edit',
         'name' => 'app.acl.edit',
-        'route' => 'admin.blogs.edit',
+        'route' => 'blogs.edit',
         'sort' => 2,
     ], [
         'key' => 'blogs.delete',
         'name' => 'app.acl.delete',
-        'route' => 'admin.blogs.delete',
+        'route' => 'blogs.delete',
         'sort' => 3,
     ], [
         'key' => 'contacts',
         'name' => 'app.users.contacts.title',
-        'route' => 'admin.contacts.index',
+        'route' => 'contacts.index',
         'sort' => 5,
     ], [
         'key' => 'contacts.create',
         'name' => 'app.acl.create',
-        'route' => 'admin.contacts.create',
+        'route' => 'contacts.create',
         'sort' => 1,
     ], [
         'key' => 'contacts.edit',
         'name' => 'app.acl.edit',
-        'route' => 'admin.contacts.edit',
+        'route' => 'contacts.edit',
         'sort' => 2,
     ], [
         'key' => 'contacts.delete',
         'name' => 'app.acl.delete',
-        'route' => 'admin.contacts.delete',
+        'route' => 'contacts.delete',
         'sort' => 3,
     ]
 ];

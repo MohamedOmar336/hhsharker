@@ -8,13 +8,18 @@
 
 
     <meta charset="utf-8" />
+<<<<<<< HEAD
     <title>H & H Shacker</title>
+=======
+    <title>HH-shaker</title>
+>>>>>>> origin/main
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
 
+<<<<<<< HEAD
     <script src="{{ asset("assets-admin/libs/bootstrap/js/bootstrap.bundle.min.js") }}"></script>
         <script src="{{ asset("assets-admin/libs/simplebar/simplebar.min.js") }}"></script>
         <script src="{{ asset("assets-admin/libs/feather-icons/feather.min.js") }}"></script>
@@ -28,6 +33,13 @@
       <script src="{{ asset('assets-admin/js/pages/form-editor.init.js') }}"></script>
   
     
+=======
+
+    <script src="{{ asset('assets-admin/js/tinymce/tinymce.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/js/pages/form-editor.init.js') }}"></script>
+
+
+>>>>>>> origin/main
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css">
     <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
@@ -42,7 +54,7 @@
 
     <link href="{{ asset('assets-admin/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets-admin/css/admin.css') }}" rel="stylesheet" type="text/css" />
-    
+
 
     @if (app()->isLocale('ar'))
         <link href="{{ asset('assets-admin/css/app-rtl.min.css') }}" rel="stylesheet" type="text/css" />
@@ -58,21 +70,19 @@
 </head>
 
 <body id="body">
-    <div style="position: fixed; top: 20px; right: 20px; z-index: 1000;">
-        @if(session()->has('success'))
-            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+    <div style="position: fixed; top: 20px; right: 20px; z-index: 1000;" id="popUpAlert">
+        @if (session()->has('success'))
+            <div class="alert alert-primary alert-dismissible fade show custom-class-for-success" role="alert">
                 <strong>Success:</strong> {{ session('success') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-
-        @if(session()->has('error'))
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @if (session()->has('error'))
+            <div class="alert alert-danger alert-dismissible fade show custom-class-for-error" role="alert">
                 <strong>Error:</strong> {{ session('error') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-
         <!-- Add more alert types as needed -->
     </div>
 
@@ -184,6 +194,22 @@
                 }
             });
         }
+    </script>
+    <script>
+        // Wait for the document to load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Select the pop-up alert
+            var popUpAlert = document.getElementById('popUpAlert');
+
+            // Set timeout to hide the alert after 5 seconds
+            setTimeout(function() {
+                // Check if pop-up alert exists
+                if (popUpAlert) {
+                    // Hide the pop-up alert
+                    popUpAlert.style.display = 'none';
+                }
+            }, 5000);
+        });
     </script>
 </body>
 <!--end body-->

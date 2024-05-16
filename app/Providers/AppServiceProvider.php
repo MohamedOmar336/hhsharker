@@ -41,7 +41,9 @@ class AppServiceProvider extends ServiceProvider
 
             $navArray = include app_path('Helpers/side.php');
 
-            if ($userPermissions) {
+            $currentRouteName = Route::currentRouteName();
+
+            if ($userPermissions ) {
 
                 $permissionType = auth()->user()->role->permission_type;
 

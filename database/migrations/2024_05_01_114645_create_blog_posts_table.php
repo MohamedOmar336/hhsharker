@@ -19,10 +19,9 @@ return new class extends Migration
             $table->string('title_ar');
             $table->text('content_en');
             $table->text('content_ar');
-            $table->unsignedBigInteger('author_id');
-            $table->foreign('author_id')->references('id')->on('users');
+            $table->string('author_id');
             $table->date('post_date');
-            $table->string('image')->nullable(); 
+            $table->string('image')->nullable();
             $table->string('tags')->nullable();
             $table->string('status')->default('draft');
             $table->timestamps();

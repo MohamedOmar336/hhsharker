@@ -27,9 +27,9 @@ use App\Http\Controllers\Admin\ProfileController;
 
 Route::get('/admin', function () {
     return view('auth.login');
-});
+})->name('admin.login');
 
-Auth::routes(['']);
+Auth::routes(['verify' => false]);
 
 Route::group(['prefix' => 'admin'], function () {
 
@@ -58,8 +58,6 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::resource('/contacts', ContactController::class);
 
-
-
         Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
         Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
@@ -71,6 +69,6 @@ Route::group(['prefix' => 'admin'], function () {
     });
 });
 
-
 // Front Routes
 Route::view('/', 'website.home.index');
+
