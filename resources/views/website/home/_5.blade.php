@@ -7,7 +7,7 @@
 
         <img src="{{ asset('assets-website/images/office.jpg') }}" class="img-fluid rounded-4 adv" alt="office space">
 
-        <div class="row mt-3 py-5">
+        <div class="row mt-3">
             <div class="col-9">
                 <p class="small text-secondary">
                     One of the largest companies in the air conditioning and home appliances sector, and the exclusive
