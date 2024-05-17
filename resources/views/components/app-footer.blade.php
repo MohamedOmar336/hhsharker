@@ -3,7 +3,7 @@
         <div class="row">
             {{-- logo --}}
             <div class="col-md-4 col-12 start">
-                <a href="#">
+                <a href="/">
                     <img src=" {{ asset('assets-website/images/logos/logo.jpg') }} " alt="Company Logo">
                 </a>
                 <p>
@@ -17,10 +17,10 @@
                     <h5>Company</h5>
                     <ul class="list-unstyled">
                         <li>
-                            <a href="#">Home</a>
+                            <a href="/">Home</a>
                         </li>
                         <li>
-                            <a href="#">About Us</a>
+                            <a href="{{ route('about') }}">About Us</a>
                         </li>
                         <li>
                             <a href="#">Our Products</a>
@@ -71,7 +71,9 @@
             {{-- Contact --}}
             <div class="col-md-4 col-12 end">
                 <h1>Get In touch With H&H Shaker</h1>
-                <x-arrow-button dark_background="false">Contact Us</x-arrow-button>
+                <div class="m-3">
+                    <x-arrow-button dark_background="false">Contact Us</x-arrow-button>
+                </div>
             </div>
         </div>
     </div>

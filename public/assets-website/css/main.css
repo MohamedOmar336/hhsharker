@@ -1,3 +1,4 @@
+/* --------------- General --------------- */
 .btn-primary {
     background: #1F2B5A;
     border: 1px solid #1F2B5A;
@@ -9,6 +10,15 @@
     color: #1F2B5A;
     border: 1px solid #1F2B5A;
 }
+.info-text {
+    font-family: 'Satoshi';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 150%;
+    color: #677487;
+}
+/* --------------- End General --------------- */
 
 /* --------------- Header navbar --------------- */
 .header ul.nav.nav-pills {
@@ -273,4 +283,30 @@ footer .end h1 {
     z-index: 1;
 }
 /* --------------- End Homepage --------------- */
+
+/* --------------- About --------------- */
+#about .info-section {
+    background: rgb(141, 164, 254);
+    background: linear-gradient(90deg, rgba(141, 164, 254, 1) 0%, rgba(203, 214, 254, 1) 50%, rgba(141, 164, 254, 1) 100%);
+}
+#about .info:first-child,
+#about .info:last-child {
+    padding-inline: 2rem;
+}
+#about .info .title {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: 38px;
+}
+#about .info .subtitle {
+    font-family: 'Satoshi';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 120%;
+    color: #677487;
+}
+
+/* --------------- End About --------------- */
 

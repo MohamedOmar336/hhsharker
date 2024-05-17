@@ -75,4 +75,6 @@ Route::group(['prefix' => 'admin'], function () {
 
 // Front Routes
 Route::view('/', 'website.home.index');
-
+Route::view('/about', 'website.about')->name('about');
+Route::view('/founders', 'website.founders')->name('founders');
+Route::view('/vision', 'website.vision')->name('vision');

@@ -6,6 +6,9 @@
     <!-- main image & intro text -->
     @include('website.home._1')
 
+    <!-- img section separator -->
+    <x-divider />
+
     <!-- trusted brands -->
     @include('website.home._2')
 

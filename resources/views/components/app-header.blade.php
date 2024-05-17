@@ -2,14 +2,14 @@
     <ul class="nav nav-pills mb-5">
         <div class="start">
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/" class="nav-link">
                     <img src=" {{ asset('assets-website/images/logos/logo.jpg') }} " alt="logo">
                 </a>
             </li>
         </div>
         <div class="middle">
             <li class="nav-item">
-                <a href="#" class="nav-link">Home</a>
+                <a href="/" class="nav-link">Home</a>
             </li>
             <li class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Company</a>

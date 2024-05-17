@@ -4,7 +4,9 @@
         <h1 class="align-self-center text-uppercase my-2 fw-bold">
             Your Partner in Comfort and Efficiency
         </h1>
-        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9d497664b9dba861454eca0ce680c4d51b12e6620aa9845ff74932d84ee6720b?apiKey=95e93e0986c543eeab0cc2ed468bab82&" alt="Your Partner in Comfort and Efficiency" class="mt-4" />
+
+        <img src="{{ asset('assets-website/images/office.jpg') }}" class="img-fluid rounded-4 adv" alt="office space">
+
         <div class="row mt-3">
             <div class="col-9">
                 <p class="small text-secondary">
