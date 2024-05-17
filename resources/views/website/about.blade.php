@@ -68,7 +68,7 @@
                 </div>
 
                 <div class="col-md-6 text-center d-none d-md-block">
-                    <img src="{{ asset('assets-website/images/meeting.jpg') }}" class="img-fluid rounded-4 adv" alt="img">
+                    <img src="{{ asset('assets-website/images/meeting.jpg') }}" class="img-fluid rounded-4" alt="img">
                 </div>
             </div>
         </section>
