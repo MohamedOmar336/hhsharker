@@ -20,6 +20,40 @@
 }
 /* --------------- End General --------------- */
 
+/* --------------- Components --------------- */
+#founder-card .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 292px;
+    height: 120px;
+    background: #1F2B5A;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 32px;
+}
+#founder-card img {
+    margin-bottom: -45px;
+}
+#founder-card .info .name {
+    font-family: 'Satoshi';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 130%;
+    text-align: center;
+}
+#founder-card .info .title {
+    font-family: 'Satoshi';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    text-align: center;
+}
+/* --------------- End Components --------------- */
+
 /* --------------- Header navbar --------------- */
 .header ul.nav.nav-pills {
     padding: 8px;
