@@ -1511,10 +1511,5 @@
         </div>
         <!-- end page content -->
 
-        <script src="{{ asset('assets-admin/libs/litepicker/litepicker.js') }}"></script>
-        <script src="{{ asset('assets-admin/libs/apexcharts/apexcharts.min.js') }}"></script>
-        <script src="{{ asset('assets-admin/js/pages/projects-index.init.js') }}"></script>
-
-
     </div>
 @endsection

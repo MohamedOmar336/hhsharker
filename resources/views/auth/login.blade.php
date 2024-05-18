@@ -21,19 +21,11 @@
 
 
 
-<<<<<<< HEAD
      <!-- App css -->
      <link href="assets-admin/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
      <link href="assets-admin/css/icons.min.css" rel="stylesheet" type="text/css" />
      <link href="assets-admin/css/app.min.css" rel="stylesheet" type="text/css" />
      <link href="{{ asset('assets-admin/css/style.css') }}" rel="stylesheet" type="text/css" />
-=======
-    <!-- App css -->
-    <link href="assets-admin/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets-admin/css/icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets-admin/css/app.min.css" rel="stylesheet" type="text/css" />
-
->>>>>>> origin/main
 </head>
 
 <body id="body" class="auth-page"
