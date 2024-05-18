@@ -14,9 +14,19 @@ class ProductController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $records = Product::latest()->paginate(EnumsSettings::Paginate);
+        $query = Product::query();
+
+        if ($request->has('search')) {
+            $query->where('name_ar', 'LIKE', "%{$request->search}%")
+                ->orWhere('name_en', 'LIKE', "%{$request->search}%")
+                ->orWhere('description_ar', 'LIKE', "%{$request->search}%")
+                ->orWhere('description_en', 'LIKE', "%{$request->search}%");
+        }
+
+        $records = $query->paginate(500);
+
         return view('admin.products.index', compact('records'));
     }
 

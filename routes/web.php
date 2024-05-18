@@ -46,9 +46,13 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::resource('/products', ProductController::class);
 
+        Route::get('/products/bulk-delete', [ProductController::class, 'bulkDelete'])->name('products.bulk-delete');
+
         Route::resource('/users', UserController::class);
 
         Route::resource('/categories', CategoryController::class);
+
+        Route::get('/categoriess/bulk-delete', [CategoryController::class, 'bulkDelete'])->name('categories.bulk-delete');
 
         Route::resource('/blogposts', BlogPostController::class);
 

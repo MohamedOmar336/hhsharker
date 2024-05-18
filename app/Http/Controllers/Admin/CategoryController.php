@@ -14,11 +14,17 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        // Retrieve all categories from the database
-        $records = Category::latest()->paginate(EnumsSettings::Paginate);
-        // Return the view with categories data
+        $query = Category::query();
+
+        if ($request->has('search')) {
+            $query->where('name_ar', 'LIKE', "%{$request->search}%")
+                ->orWhere('name_en', 'LIKE', "%{$request->search}%");
+        }
+
+        $records = $query->paginate(500);
+
         return view('admin.categories.index', compact('records'));
     }
 
@@ -144,4 +150,15 @@ class CategoryController extends Controller
         // Redirect back to the index page with a success message
         return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
     }
+
+    public function bulkDelete(Request $request)
+    {
+        $ids = $request->input('ids', []);
+        // Add your bulk update logic here
+        // For example, updating a specific field for all selected records
+        Category::whereIn('id', $ids)->delete();
+
+        return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
+    }
+
 }
