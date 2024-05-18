@@ -57,43 +57,41 @@
         </section>
 
         <!-- Grid -->
-            <div class="container grid-container">
-                <div class="d-flex flex-column-reverse p-2" style="background-image: url('{{ asset('assets-website/images/grid-1.jpg') }}')">
-                    <div class="content-bottom d-flex flex-column gap-2 w-100">
-                        <div class="text-100">100%</div>
-                        <div class="text-satisfied">Satisfied Customer</div>
-                    </div>
+        <div class="container grid-container">
+            <div class="d-flex flex-column-reverse p-2" style="background-image: url('{{ asset('assets-website/images/grid-1.jpg') }}')">
+                <div class="content-bottom d-flex flex-column gap-2 w-100">
+                    <div class="text-100">100%</div>
+                    <div class="text-satisfied">Satisfied Customer</div>
                 </div>
+            </div>
 
-                <div class="item2">
-                    <img src="{{ asset('assets-website/images/grid-2.jpg') }}" />
-                    
-                    <div class="grid-sub-item sub-item2">
-                        <div class="content">
-                            <div class="text-custom-1">Simple & Efficient</div>
-                            <div class="text-custom-2">Communication with customers</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item3">
-                    <div class="content-10y w-100">
-                        <div class="text-10y">10Y</div>
-                        <div class="text-10y-desc">Experiences</div>
-                    </div>
-                    
-                    <img src="{{ asset('assets-website/images/grid-3.jpg') }}" />
-                </div>
-
-                <div class="item4" style="background-image: url('{{ asset('assets-website/images/grid-4.jpg') }}')">
-                    <div class="content-bottom d-flex flex-column gap-2 w-100">
-                        <div class="text-100">100%</div>
-                        <div class="text-satisfied">Satisfied Customer</div>
+            <div class="item2">
+                <img src="{{ asset('assets-website/images/grid-2.jpg') }}" />
+                
+                <div class="grid-sub-item sub-item2">
+                    <div class="content">
+                        <div class="text-custom-1">Simple & Efficient</div>
+                        <div class="text-custom-2">Communication with customers</div>
                     </div>
                 </div>
             </div>
-            
-        </section>
+
+            <div class="item3">
+                <div class="content-10y w-100">
+                    <div class="text-10y">10Y</div>
+                    <div class="text-10y-desc">Experiences</div>
+                </div>
+                
+                <img src="{{ asset('assets-website/images/grid-3.jpg') }}" />
+            </div>
+
+            <div class="item4" style="background-image: url('{{ asset('assets-website/images/grid-4.jpg') }}')">
+                <div class="content-bottom d-flex flex-column gap-2 w-100">
+                    <div class="text-100">100%</div>
+                    <div class="text-satisfied">Satisfied Customer</div>
+                </div>
+            </div>
+        </div>
 
         <!-- faces -->
         <section id="faces" class="align-content-center bg-gradient-top py-5 text-center wrapper">

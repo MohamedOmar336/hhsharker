@@ -1,4 +1,4 @@
-<section class="container-lg">
+<section class="container-lg py-5">
     <div class="row">
         <div class="col-4">
             <x-tag class="d-inline-block">Best Selling Product</x-tag>

@@ -289,6 +289,11 @@ footer .end h1 {
 .homepage .bg-gradient-bottom {
     background: linear-gradient(360deg, #FFFFFF 0%, #AFBFFF 100%), #FFFFFF;
 }
+
+/* testimonials */
+.testimonial-card {
+    background: #b1c1ff20;
+}
 /* --------------- End Homepage --------------- */
 
 /* --------------- About --------------- */
@@ -446,6 +451,7 @@ footer .end h1 {
     border-radius: 20px;
     border: 1px rgba(255, 255, 255, 0.20) solid;
     backdrop-filter: blur(100px);
+    -webkit-backdrop-filter: blur(100px);
     padding: 12px 40px;
     text-align: center;
 }

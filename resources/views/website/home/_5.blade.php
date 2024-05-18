@@ -7,14 +7,14 @@
 
         <img src="{{ asset('assets-website/images/office.jpg') }}" class="img-fluid rounded-4 adv" alt="office space">
 
-        <div class="row mt-3">
+        <div class="row mt-3 py-5">
             <div class="col-9">
                 <p class="small text-secondary">
                     One of the largest companies in the air conditioning and home appliances sector, and the exclusive
                     distributor of MIDEA air conditioners and BEKO home appliances in the Kingdom of Saudi Arabia.
                 </p>
             </div>
-            <div class="col-3">
+            <div class="col-3 d-flex justify-content-end">
                 <x-arrow-button>Watch Video</x-arrow-button>
             </div>
         </div>
