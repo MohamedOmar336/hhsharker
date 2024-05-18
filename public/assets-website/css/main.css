@@ -20,40 +20,6 @@
 }
 /* --------------- End General --------------- */
 
-/* --------------- Components --------------- */
-#founder-card .info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    width: 292px;
-    height: 120px;
-    background: #1F2B5A;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 32px;
-}
-#founder-card img {
-    margin-bottom: -45px;
-}
-#founder-card .info .name {
-    font-family: 'Satoshi';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 28px;
-    line-height: 130%;
-    text-align: center;
-}
-#founder-card .info .title {
-    font-family: 'Satoshi';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 150%;
-    text-align: center;
-}
-/* --------------- End Components --------------- */
-
 /* --------------- Header navbar --------------- */
 .header ul.nav.nav-pills {
     padding: 8px;
@@ -316,6 +282,13 @@ footer .end h1 {
     height: 272px;
     z-index: 1;
 }
+
+.homepage .bg-gradient-top {
+    background: linear-gradient(180deg, #FFFFFF 0%, #AFBFFF 100%), #FFFFFF;
+}
+.homepage .bg-gradient-bottom {
+    background: linear-gradient(360deg, #FFFFFF 0%, #AFBFFF 100%), #FFFFFF;
+}
 /* --------------- End Homepage --------------- */
 
 /* --------------- About --------------- */
@@ -343,6 +316,40 @@ footer .end h1 {
 }
 /* --------------- End About --------------- */
 
+/* --------------- Components - founder-card --------------- */
+#founder-card .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 292px;
+    height: 120px;
+    background: #1F2B5A;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 32px;
+}
+#founder-card img {
+    margin-bottom: -45px;
+}
+#founder-card .info .name {
+    font-family: 'Satoshi';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 130%;
+    text-align: center;
+}
+#founder-card .info .title {
+    font-family: 'Satoshi';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    text-align: center;
+}
+/* --------------- End Components - founder-card --------------- */
+
 /* --------------- Founders --------------- */
 #founders .essay {
     padding: 40px;
@@ -351,3 +358,125 @@ footer .end h1 {
     border-radius: 32px;
 }
 /* --------------- End Founders --------------- */
+
+/* --------------- Vision --------------- */
+#vision .bg-gradient-top {
+    /* background: linear-gradient(180deg, #FFFFFF 0%, #AFBFFF 100%), #FFFFFF; */
+    background-image: url(/assets-website/images/customers.svg);
+    background-position: center;
+    height: 666px;
+}
+#vision .bg-gradient-bottom {
+    background: linear-gradient(360deg, #FFFFFF 0%, #AFBFFF 100%), #FFFFFF;
+}
+#vision .circel-gradient-bg {
+    width: 250px;
+    height: 250px;
+    background: #8da4fe;
+    box-shadow: 650.3704223632812px 650.3704223632812px 650.3704223632812px;
+    border-radius: 9999px;
+    filter: blur(150px);
+    position: absolute;
+    right: 0px;
+}
+#vision .grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    gap: 24px;
+}
+#vision .item2 {
+    display: grid;
+    grid-template-rows: 349px 105px;
+    gap: 24px;
+}
+#vision .sub-item2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #1F936E;
+    border-radius: 28px;
+    border: 1px rgba(255, 255, 255, 0.20) solid;
+    padding: 20px 40px;
+}
+#vision .item3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 24px;
+}
+#vision .content-10y {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #1F936E;
+    border-radius: 28px;
+    border: 1px rgba(255, 255, 255, 0.20) solid;
+    padding: 20px 40px;
+    gap: 20px;
+    height: 105px;
+}
+#vision .text-10y {
+    color: white;
+    font-size: 52px;
+    font-family: SCHABO;
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 62.40px;
+    letter-spacing: 1.04px;
+}
+#vision .text-10y-desc {
+    color: white;
+    font-size: 16px;
+    font-family: Satoshi;
+    font-weight: 400;
+    line-height: 24px;
+}   
+#vision .item4 {
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+#vision .content-bottom {
+    background: rgba(177, 193, 255, 0.20);
+    border-radius: 20px;
+    border: 1px rgba(255, 255, 255, 0.20) solid;
+    backdrop-filter: blur(100px);
+    padding: 12px 40px;
+    text-align: center;
+}
+#vision .text-100 {
+    color: white;
+    font-size: 28px;
+    font-family: Satoshi;
+    font-weight: 500;
+    line-height: 36.40px;
+}
+#vision .text-satisfied {
+    color: white;
+    font-size: 14px;
+    font-family: Satoshi;
+    font-weight: 500;
+    line-height: 19.60px;
+}
+#vision .text-custom-1 {
+    color: white;
+    font-size: 24px;
+    font-family: Satoshi;
+    font-weight: 500;
+    line-height: 36px;
+    text-align: center;
+}
+#vision .text-custom-2 {
+    color: white;
+    font-size: 14px;
+    font-family: Satoshi;
+    font-weight: 400;
+    line-height: 21px;
+    text-align: center;
+}
+/* --------------- End Vision --------------- */

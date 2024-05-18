@@ -4,7 +4,7 @@
             {{-- logo --}}
             <div class="col-md-4 col-12 start">
                 <a href="/">
-                    <img src=" {{ asset('assets-website/images/logos/logo.jpg') }} " alt="Company Logo">
+                    <img src=" {{ asset('assets-website/images/logos/logo.svg') }} " alt="Company Logo">
                 </a>
                 <p>
                     A leading company in the field of air conditioners and home appliances in Saudi Arabia.

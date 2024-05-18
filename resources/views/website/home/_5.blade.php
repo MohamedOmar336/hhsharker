@@ -1,5 +1,5 @@
-<section class="container-lg">
-    <div class="d-flex flex-column">
+<section class="wrapper bg-gradient-bottom">
+    <div class="container d-flex flex-column">
         <x-tag class="align-self-center">About Us</x-tag>
         <h1 class="align-self-center text-uppercase my-2 fw-bold">
             Your Partner in Comfort and Efficiency
