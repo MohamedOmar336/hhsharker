@@ -48,6 +48,9 @@
     height: 80px;
     background: var(--main-color);
     border-radius: 80px;
+    -webkit-border-radius: 80px;
+    -ms-border-radius: 80px;
+    -o-border-radius: 80px;
 }
 .header .nav .start {
     display: flex;
@@ -62,6 +65,9 @@
     background: #F8F9FD;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 64px;
+    -webkit-border-radius: 64px;
+    -ms-border-radius: 64px;
+    -o-border-radius: 64px;
 }
 .header .nav .middle {
     display: flex;
@@ -89,6 +95,9 @@
     height: 64px;
     background: #4AD7AA;
     border-radius: 80px;
+    -webkit-border-radius: 80px;
+    -ms-border-radius: 80px;
+    -o-border-radius: 80px;
 }
 .header .contact a.nav-link {
     font-family: 'Satoshi';
@@ -128,6 +137,9 @@ footer .start a {
     height: 64px;
     background: #F8F9FD;
     border-radius: 64px;
+    -webkit-border-radius: 64px;
+    -ms-border-radius: 64px;
+    -o-border-radius: 64px;
 }
 footer .start p {
     width: 294px;
@@ -180,12 +192,15 @@ footer .end h1 {
     align-items: center;
     padding: 20px 32px;
     background: var(--main-color);
-    border-radius: 36px;
     flex: none;
     margin: 0px -16px;
     color: #fff;
     text-decoration: none;
     font-family: sans-serif;
+    border-radius: 36px;
+    -webkit-border-radius: 36px;
+    -ms-border-radius: 36px;
+    -o-border-radius: 36px;
 }
 .arrow-btn .arrow {
     display: flex;
@@ -197,6 +212,9 @@ footer .end h1 {
     background: #4AD7AA;
     border: 1.5px solid var(--main-color);
     border-radius: 36px;
+    -webkit-border-radius: 36px;
+    -ms-border-radius: 36px;
+    -o-border-radius: 36px;
 }
 
 .light.arrow-btn .text {
@@ -260,6 +278,9 @@ footer .end h1 {
     height: 80px;
     background: var();
     border-radius: 80px;
+    -webkit-border-radius: 80px;
+    -ms-border-radius: 80px;
+    -o-border-radius: 80px;
 }
 #tabs .tab-pane {
     display: flex;
@@ -270,10 +291,13 @@ footer .end h1 {
 }
 #tabs .nav-pills .nav-link.active {
     width: 306px;
-    /* height: 64px; */
-    background: var(--main-color);
+    /*height: 64px;
+    */background: var(--main-color);
     color: #fff;
     border-radius: 36px;
+    -webkit-border-radius: 36px;
+    -ms-border-radius: 36px;
+    -o-border-radius: 36px;
 }
 #tabs .nav-pills .nav-link {
     display: flex;
@@ -284,6 +308,9 @@ footer .end h1 {
     background: var();
     color: #000000;
     border-radius: 36px;
+    -webkit-border-radius: 36px;
+    -ms-border-radius: 36px;
+    -o-border-radius: 36px;
 }
 #tabs .category-card {
     width: 400px;
@@ -354,6 +381,9 @@ footer .end h1 {
     background: var(--main-color);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 32px;
+    -webkit-border-radius: 32px;
+    -ms-border-radius: 32px;
+    -o-border-radius: 32px;
 }
 #founder-card img {
     margin-bottom: -45px;
@@ -382,6 +412,9 @@ footer .end h1 {
     background: linear-gradient(180deg, #F5F7FF 0%, #E2E8FF 100%);
     border: 1px solid var(--text-color);
     border-radius: 32px;
+    -webkit-border-radius: 32px;
+    -ms-border-radius: 32px;
+    -o-border-radius: 32px;
 }
 /* --------------- End Founders --------------- */
 
@@ -400,10 +433,13 @@ footer .end h1 {
     height: 250px;
     background: #8da4fe;
     box-shadow: 650 650 650;
-    border-radius: 9999px;
     filter: blur(150px);
     position: absolute;
     right: 0px;
+    border-radius: 9999px;
+    -webkit-border-radius: 9999px;
+    -ms-border-radius: 9999px;
+    -o-border-radius: 9999px;
 }
 #vision .grid-container {
     display: grid;
@@ -422,9 +458,12 @@ footer .end h1 {
     justify-content: center;
     align-items: center;
     background: #1F936E;
-    border-radius: 28px;
     border: 1px rgba(255, 255, 255, 0.20) solid;
     padding: 20px 40px;
+    border-radius: 28px;
+    -webkit-border-radius: 28px;
+    -ms-border-radius: 28px;
+    -o-border-radius: 28px;
 }
 #vision .item3 {
     display: flex;
@@ -438,11 +477,14 @@ footer .end h1 {
     justify-content: center;
     align-items: center;
     background: #1F936E;
-    border-radius: 28px;
     border: 1px rgba(255, 255, 255, 0.20) solid;
     padding: 20px 40px;
     gap: 20px;
     height: 105px;
+    border-radius: 28px;
+    -webkit-border-radius: 28px;
+    -ms-border-radius: 28px;
+    -o-border-radius: 28px;
 }
 #vision .text-10y {
     color: white;
@@ -468,12 +510,15 @@ footer .end h1 {
 }
 #vision .content-bottom {
     background: rgba(177, 193, 255, 0.20);
-    border-radius: 20px;
     border: 1px rgba(255, 255, 255, 0.20) solid;
     backdrop-filter: blur(100px);
     -webkit-backdrop-filter: blur(100px);
     padding: 12px 40px;
     text-align: center;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
 }
 #vision .text-100 {
     color: white;
@@ -513,7 +558,10 @@ footer .end h1 {
     width: 238px;
     height: 250px;
     background: #F0F4FD;
-    border-radius: 36px;
+    border-radius: 24px;
+    -webkit-border-radius: 24px;
+    -ms-border-radius: 24px;
+    -o-border-radius: 24px;
 }
 #feature .right-circle {
     padding: 4px;
@@ -532,6 +580,9 @@ footer .end h1 {
     height: 178px;
     background: rgba(126, 141, 201, 0.16);
     border-radius: 24px;
+    -webkit-border-radius: 24px;
+    -ms-border-radius: 24px;
+    -o-border-radius: 24px;
 }
 
 #feature-wide {
