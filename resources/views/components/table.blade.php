@@ -28,7 +28,6 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
-            debugger
             $('#{{ $tableId }}').DataTable();
         });
     </script>

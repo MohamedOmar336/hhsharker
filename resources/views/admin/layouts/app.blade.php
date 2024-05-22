@@ -110,6 +110,7 @@
     @stack('scripts')
 
     <script>
+        // Initialize Firebase
         firebase.initializeApp({
             apiKey: "AIzaSyDXrOKuqnjDvWm8IZ2r3wM8ZY_fG_QamOg",
             authDomain: "hhshaker-282b0.firebaseapp.com",
@@ -119,11 +120,13 @@
             appId: "1:567064391154:web:40574f6824350b17764f6b",
             measurementId: "G-N2VKVTGWMX"
         });
+
         // Retrieve Firebase Messaging object.
         const messaging = firebase.messaging();
 
         // Get a reference to the database service
         const database = firebase.database();
+
         // Register your service worker
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('{{ asset('firebase-messaging-sw.js') }}')
@@ -136,11 +139,12 @@
                     console.error('Service worker registration failed:', error);
                 });
         }
+
         // Handle incoming messages
         messaging.onMessage((payload) => {
             console.log('Message received:', payload);
             setTimeout(function() {
-                //newOrderNotification(payload);
+                // newOrderNotification(payload);
             }, 1000);
         });
 
@@ -153,27 +157,33 @@
                     // Inside your web page script
                     navigator.serviceWorker.onmessage = function(event) {
                         console.log('Received a message from the service worker:', event.data);
-                        //window.location.href = event.data.notification.click_action;
+                        // window.location.href = event.data.notification.click_action;
                     };
+
                     // Get registration token
                     messaging.getToken({
                         vapidKey: 'BEvsO2ckiVb_ZqmqRXOUl1hOqlpFVVMnX1s1tIZsQ8btPsvm9iPoFFFErpU4VaZO9eMiJzs4dEixMnyM-jg3PnI'
                     }).then((currentToken) => {
-                        console.log(currentToken);
-                        // if (currentToken) {
-                        //     sendTokenToServer(currentToken);
-                        // } else {
-                        //     console.log('No registration token available.');
-                        // }
+                        if (currentToken) {
+                            console.log('Registration token:', currentToken);
+                            console.log( currentToken);
+
+                            // Send token to server or perform any action with the token
+                        } else {
+                            console.log('No registration token available.');
+                        }
                     }).catch((error) => {
                         console.error('Error getting registration token:', error);
                     });
                 } else {
                     console.log('Unable to get permission to notify.');
                 }
+            }).catch((error) => {
+                console.error('Error requesting permission:', error);
             });
         }
     </script>
+
     <script>
         // Wait for the document to load
         document.addEventListener('DOMContentLoaded', function() {
