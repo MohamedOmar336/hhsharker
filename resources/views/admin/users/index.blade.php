@@ -25,7 +25,6 @@
                 </div>
                 <!-- end page title end breadcrumb -->
 
-
                 <x-table tableId="DataTables">
                     <x-slot name="header">
                         <tr>

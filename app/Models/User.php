@@ -92,4 +92,22 @@ class User extends Authenticatable implements MustVerifyEmail
 
         return in_array($permission, $this->role->permissions);
     }
+
+    public function ticketsCreated()
+    {
+        return $this->hasMany(Ticket::class, 'CreatedBy');
+    }
+
+    public function ticketsAssigned()
+    {
+        return $this->hasMany(Ticket::class, 'AssignedTo');
+    }
+
+    public function ticketHistory()
+    {
+        return $this->hasMany(TicketHistory::class, 'ChangedBy');
+    }
 }
+
+
+

@@ -30,6 +30,8 @@
         <link href="{{ asset('assets-admin/css/app.min.css') }}" rel="stylesheet" type="text/css" />
     @endif
     <link href="{{ asset('assets-admin/css/style.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets-admin/libs/fullcalendar/main.min.css') }}" rel="stylesheet" type="text/css" />
+
 </head>
 
 <body id="body">
@@ -84,15 +86,13 @@
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
     <!-- vendor js -->
-    <script src="{{ asset('assets-admin/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+      <script src="{{ asset('assets-admin/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets-admin/libs/simplebar/simplebar.min.js') }}"></script>
     <script src="{{ asset('assets-admin/libs/feather-icons/feather.min.js') }}"></script>
 
     <script src="{{ asset('assets-admin/libs/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets-admin/js/pages/analytics-index.init.js') }}"></script>
-
-
-
+    <script src="{{ asset('assets-admin/js/pages/helpdesk-index.init.js') }}"></script>
     <script src="{{ asset('assets-admin/libs/litepicker/litepicker.js') }}"></script>
     <script src="{{ asset('assets-admin/js/pages/projects-index.init.js') }}"></script>
 

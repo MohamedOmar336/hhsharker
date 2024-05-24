@@ -14,6 +14,12 @@ use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ChatController;
+use App\Http\Controllers\Admin\TicketPriorityController;
+use App\Http\Controllers\Admin\TicketStatusController;
+use App\Http\Controllers\Admin\TicketController;
+use App\Http\Controllers\Admin\TicketHistoryController;
+use App\Http\Controllers\Admin\AppointmentController;
+use App\Http\Controllers\Admin\CalendarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,6 +84,26 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/chat/check-room', [ChatController::class, 'checkRoom'])->name('chat.checkRoom');
 
         Route::post('/chat/create-room', [ChatController::class, 'create'])->name('chat.create');
+
+        Route::resource('/tickets', TicketController::class);
+
+        Route::Resource('/ticket-priorities', TicketPriorityController::class);
+
+        Route::Resource('/ticket-statuses', TicketStatusController::class);
+
+        Route::Resource('/ticket-histories', TicketHistoryController::class);
+
+        Route::get('/my-tickets', [TicketController::class, 'myTickets'])->name('tickets.my');
+
+        Route::get('/ticket_histories/ticket/{ticketId}', [TicketHistoryController::class, 'showByTicketId'])->name('ticket_histories.show_by_ticket');
+
+        Route::resource('/ticket_histories', TicketHistoryController::class);
+
+        Route::resource('/appointments', AppointmentController::class);
+
+        Route::get('/my-appointments', [AppointmentController::class, 'myAppointments'])->name('appointments.myAppointments');
+
+        Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar.index');
 
     });
 });
