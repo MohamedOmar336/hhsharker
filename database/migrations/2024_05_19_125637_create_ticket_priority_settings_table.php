@@ -9,7 +9,7 @@ class CreateTicketPrioritySettingsTable extends Migration
     public function up()
     {
         Schema::create('ticket_priority_settings', function (Blueprint $table) {
-            $table->id('PriorityID');
+            $table->id(); // Ensures the 'id' column is the primary key
             $table->string('Name_ar')->notNull();
             $table->string('Name_en')->notNull();
             $table->string('Status')->notNull();

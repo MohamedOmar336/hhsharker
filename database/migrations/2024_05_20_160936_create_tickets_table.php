@@ -14,7 +14,7 @@ class CreateTicketsTable extends Migration
     public function up()
     {
         Schema::create('tickets', function (Blueprint $table) {
-            $table->id('TicketID');
+            $table->id(); // Ensures the 'id' column is the primary key
             $table->string('Title')->notNull();
             $table->text('Description')->nullable();
             $table->foreignId('PriorityID')->constrained('ticket_priority_settings')->onDelete('cascade');

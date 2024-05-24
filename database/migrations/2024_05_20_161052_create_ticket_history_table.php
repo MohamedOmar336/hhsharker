@@ -14,7 +14,7 @@ class CreateTicketHistoryTable extends Migration
     public function up()
     {
         Schema::create('ticket_history', function (Blueprint $table) {
-            $table->id('HistoryID');
+            $table->id(); // Ensures the 'id' column is the primary key
             $table->foreignId('TicketID')->constrained('tickets')->onDelete('cascade');
             $table->foreignId('ChangedBy')->constrained('users')->onDelete('cascade'); // assuming 'users' table exists
             $table->text('ChangeDescription')->nullable();
