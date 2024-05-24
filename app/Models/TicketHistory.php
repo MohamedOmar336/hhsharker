@@ -11,7 +11,10 @@ class TicketHistory extends Model
 
     protected $primaryKey = 'HistoryID';
 
+    protected $table = 'ticket_history';
+
     protected $fillable = [
+        'id',
         'TicketID',
         'ChangedBy',
         'ChangeDescription',

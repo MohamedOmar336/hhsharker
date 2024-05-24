@@ -35,7 +35,7 @@ class TicketPriorityController extends Controller
         $priority = TicketPrioritySetting::create($request->all());
 
         // Redirect to the index view with a success message
-        return redirect()->route('admin.ticket-priorities.index')
+        return redirect()->route('ticket-priorities.index')
                          ->with('success', 'Ticket Priority created successfully.');
     }
 
@@ -69,7 +69,7 @@ class TicketPriorityController extends Controller
         $priority->update($request->all());
 
         // Redirect to the show view with a success message
-        return redirect()->route('admin.ticket-priorities.show', $priority->id)
+        return redirect()->route('ticket-priorities.index')
                          ->with('success', 'Ticket Priority updated successfully.');
     }
 
@@ -80,7 +80,7 @@ class TicketPriorityController extends Controller
         $priority->delete();
 
         // Redirect to the index view with a success message
-        return redirect()->route('admin.ticket-priorities.index')
+        return redirect()->route('ticket-priorities.index')
                          ->with('success', 'Ticket Priority deleted successfully.');
     }
 }

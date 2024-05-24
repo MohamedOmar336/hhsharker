@@ -112,5 +112,50 @@ return [
                 'route' => 'contacts.create',
             ],
         ],
+    ],[
+        'title' => __('general.side.tickets'),
+        'link' => 'sidebartickets',
+        'icon' => 'ti ti-book',
+        'route' => 'tickets.index',
+        'sub_menu' => [
+            [
+                'title' => __('general.side.tickets-list'),
+                'route' => 'tickets.index',
+            ],
+            [
+                'title' => __('general.actions.new'),
+                'route' => 'tickets.create',
+            ],
+        ],
+    ],[
+        'title' => __('general.attributes.status'),
+        'link' => 'sidebarstatus',
+        'icon' => 'ti ti-book',
+        'route' => 'ticket-statuses.index',
+        'sub_menu' => [
+            [
+                'title' => __('general.side.status-list'),
+                'route' => 'ticket-statuses.index',
+            ],
+            [
+                'title' => __('general.actions.new'),
+                'route' => 'ticket-statuses.create',
+            ],
+        ],
+    ],[
+        'title' => __('general.attributes.priorities'),
+        'link' => 'sidebarpriorities',
+        'icon' => 'ti ti-book',
+        'route' => 'ticket-priorities.index',
+        'sub_menu' => [
+            [
+                'title' => __('general.side.priorities-list'),
+                'route' => 'ticket-priorities.index',
+            ],
+            [
+                'title' => __('general.actions.new'),
+                'route' => 'ticket-priorities.create',
+            ],
+        ],
     ]
 ];

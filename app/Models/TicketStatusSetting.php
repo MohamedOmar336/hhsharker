@@ -8,9 +8,10 @@ class TicketStatusSetting extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'StatusID';
+    protected $primaryKey = 'id';
 
     protected $fillable = [
+        'id',
         'Name_ar',
         'Name_en',
         'Description_ar',

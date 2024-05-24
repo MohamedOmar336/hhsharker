@@ -1,11 +1,8 @@
-<!-- resources/views/admin/tickets/edit.blade.php -->
-
 @extends('admin.layouts.app')
 
 @section('content')
     <!-- Page Content-->
     <div class="page-content-tab">
-
         <div class="container-fluid">
             <!-- Page-Title -->
             <div class="row">
@@ -25,7 +22,6 @@
                             <a href="{{ URL::previous() }}" class="btn btn-secondary"><span class="fa fa-backward"></a>
                             <h4 class="page-title">Edit ticket</h4>
                         </div>
-
                     </div><!--end page-title-box-->
                 </div><!--end col-->
             </div>
@@ -35,30 +31,38 @@
                     <div class="card">
                         <div class="card-body content-area">
 
-                            <form action="{{ route('tickets.update', $ticket->TicketID) }}" method="POST">
+                            <form action="{{ route('tickets.update', $ticket->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')
+
                                 <div class="mb-3">
-                                    <label for="Title" class="form-label">Title</label>
-                                    <input type="text" class="form-control" id="Title" name="Title"
-                                        value="{{ $ticket->Title }}" required>
+                                    <label for="Title" class="form-label">{{ __('general.attributes.title') }}</label>
+                                    <input id="Title" type="text"
+                                        class="form-control @error('Title') is-invalid @enderror" name="Title"
+                                        value="{{ $ticket->Title }}" required autocomplete="Title">
+                                    @error('Title')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
+
                                 <div class="mb-3">
-                                    <label for="PriorityID" class="form-label">Priority</label>
-                                    <select class="form-control" id="PriorityID" name="PriorityID" required>
+                                    <label for="priority" class="form-label">Priority</label>
+                                    <select class="form-control" id="priority" name="priority" required>
                                         @foreach ($priorities as $priority)
-                                            <option value="{{ $priority->PriorityID }}"
-                                                {{ $ticket->PriorityID == $priority->PriorityID ? 'selected' : '' }}>
+                                            <option value="{{ $priority->id }}"
+                                                {{ $ticket->id == $priority->id ? 'selected' : '' }}>
                                                 {{ $priority->Name_en }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="StatusID" class="form-label">Status</label>
-                                    <select class="form-control" id="StatusID" name="StatusID" required>
+                                    <label for="status" class="form-label">Status</label>
+                                    <select class="form-control" id="status" name="status" required>
                                         @foreach ($statuses as $status)
-                                            <option value="{{ $status->StatusID }}"
-                                                {{ $ticket->StatusID == $status->StatusID ? 'selected' : '' }}>
+                                            <option value="{{ $status->id }}"
+                                                {{ $ticket->id == $status->id ? 'selected' : '' }}>
                                                 {{ $status->Name_en }}</option>
                                         @endforeach
                                     </select>
@@ -74,16 +78,6 @@
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="CreatedBy" class="form-label">Created By</label>
-                                    <select class="form-control" id="CreatedBy" name="CreatedBy" required>
-                                        @foreach ($users as $user)
-                                            <option value="{{ $user->id }}"
-                                                {{ $ticket->CreatedBy == $user->id ? 'selected' : '' }}>
-                                                {{ $user->user_name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                 <div class="mb-3">
                                     <label for="Description" class="form-label">Description</label>
                                     <textarea class="ticket_description form-control" id="Description" name="Description">{{ $ticket->Description }}</textarea>
                                 </div>

@@ -41,18 +41,19 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($tickets as $ticket)
+
                                             <tr>
                                                 <td>{{ $ticket->Title }}</td>
-                                                <td>{{ $ticket->priority->Name_en }}</td>
+                                                <td>{{ isset($ticket->priority->Name_en) ? $ticket->priority->Name_en : null  }}</td>
                                                 <td>{{ $ticket->status->Name_en }}</td>
                                                 <td>{{ $ticket->assignedTo->user_name }}</td>
                                                 <td>{{ $ticket->createdBy->user_name }}</td>
                                                 <td>
-                                                    <a href="{{ route('ticket_histories.show_by_ticket', $ticket->TicketID) }}"
+                                                    <a href="{{ route('ticket_histories.show_by_ticket', $ticket->id) }}"
                                                         class="btn btn-info">History</a>
-                                                    <a href="{{ route('tickets.edit', $ticket->TicketID) }}"
+                                                    <a href="{{ route('tickets.edit', $ticket->id) }}"
                                                         class="btn btn-warning">Edit</a>
-                                                    <form action="{{ route('tickets.destroy', $ticket->TicketID) }}"
+                                                    <form action="{{ route('tickets.destroy', $ticket->id) }}"
                                                         method="POST" style="display:inline-block;">
                                                         @csrf
                                                         @method('DELETE')

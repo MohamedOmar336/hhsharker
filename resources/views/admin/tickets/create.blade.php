@@ -37,37 +37,36 @@
                             <form action="{{ route('tickets.store') }}" method="POST">
                                 @csrf
                                 <div class="mb-3">
-                                    <label for="Title" class="form-label">Title</label>
-                                    <input type="text" class="form-control" id="Title" name="Title" required>
+                                    <label for="Title" class="form-label">{{ __('general.attributes.title') }}</label>
+                                    <input id="Title" type="text"
+                                        class="form-control @error('Title') is-invalid @enderror" name="Title"
+                                       value="{{ old('Title') }}" required autocomplete="Title">
+                                    @error('Title')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
-                               
+
                                 <div class="mb-3">
-                                    <label for="PriorityID" class="form-label">Priority</label>
-                                    <select class="form-control" id="PriorityID" name="PriorityID" required>
+                                    <label for="priority" class="form-label">Priority</label>
+                                    <select class="form-control" id="priority" name="priority" required>
                                         @foreach ($priorities as $priority)
-                                            <option value="{{ $priority->PriorityID }}">{{ $priority->Name_en }}</option>
+                                            <option value="{{ $priority->id }}">{{ $priority->Name_en }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="StatusID" class="form-label">Status</label>
-                                    <select class="form-control" id="StatusID" name="StatusID" required>
+                                    <label for="status" class="form-label">Status</label>
+                                    <select class="form-control" id="status" name="status" required>
                                         @foreach ($statuses as $status)
-                                            <option value="{{ $status->StatusID }}">{{ $status->Name_en }}</option>
+                                            <option value="{{ $status->id }}">{{ $status->Name_en }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="mb-3">
                                     <label for="AssignedTo" class="form-label">Assigned To</label>
                                     <select class="form-control" id="AssignedTo" name="AssignedTo" required>
-                                        @foreach ($users as $user)
-                                            <option value="{{ $user->id }}">{{ $user->user_name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="CreatedBy" class="form-label">Created By</label>
-                                    <select class="form-control" id="CreatedBy" name="CreatedBy" required>
                                         @foreach ($users as $user)
                                             <option value="{{ $user->id }}">{{ $user->user_name }}</option>
                                         @endforeach

@@ -17,7 +17,7 @@ class TicketController extends Controller
     // Display all tickets
     public function index()
     {
-      
+
         $tickets = Ticket::with('priority', 'status', 'assignedTo', 'createdBy')->get();
         return view('admin.tickets.index', compact('tickets'));
     }
@@ -37,23 +37,22 @@ class TicketController extends Controller
         $request->validate([
             'Title' => 'required|string|max:255',
             'Description' => 'nullable|string',
-            'PriorityID' => 'required|exists:ticket_priority_settings,PriorityID',
-            'StatusID' => 'required|exists:ticket_status_settings,StatusID',
+            'priority' => 'required|exists:ticket_priority_settings,id',
+            'status' => 'required|exists:ticket_status_settings,id',
             'AssignedTo' => 'required|exists:users,id',
         ]);
 
         $ticket = Ticket::create([
             'Title' => $request->Title,
             'Description' => $request->Description,
-            'PriorityID' => $request->PriorityID,
-            'StatusID' => $request->StatusID,
+            'PriorityID' => $request->priority,
+            'StatusID' => $request->status,
             'AssignedTo' => $request->AssignedTo,
-            'CreatedBy' => Auth::id(),
+            'CreatedBy' => auth()->user()->id,
         ]);
-
         // Create an entry in the ticket_histories table
         TicketHistory::create([
-            'TicketID' => $ticket->TicketID,
+            'TicketID' => $ticket->id,
             'ChangedBy' => $ticket->CreatedBy,
             'ChangeDescription' => $request->Description,
             'ChangedAt' => now()
@@ -78,27 +77,26 @@ class TicketController extends Controller
         $request->validate([
             'Title' => 'required|string|max:255',
             'Description' => 'nullable|string',
-            'PriorityID' => 'required|exists:ticket_priority_settings,PriorityID',
-            'StatusID' => 'required|exists:ticket_status_settings,StatusID',
+            'priority' => 'required|exists:ticket_priority_settings,id',
+            'status' => 'required|exists:ticket_status_settings,id',
             'AssignedTo' => 'required|exists:users,id',
         ]);
 
         $ticket->update([
             'Title' => $request->Title,
             'Description' => $request->Description,
-            'PriorityID' => $request->PriorityID,
-            'StatusID' => $request->StatusID,
+            'PriorityID' => $request->priority,
+            'StatusID' => $request->status,
             'AssignedTo' => $request->AssignedTo,
         ]);
 
          // Create an entry in the ticket_histories table
-         TicketHistory::create([
-            'TicketID' => $ticket->TicketID,
-            'ChangedBy' => Auth::id(),
+        TicketHistory::create([
+            'TicketID' => $ticket->id,
+            'ChangedBy' => $ticket->CreatedBy,
             'ChangeDescription' => $request->Description,
             'ChangedAt' => now()
         ]);
-
 
         return redirect()->route('tickets.index')->with('success', 'Ticket updated successfully.');
     }
@@ -129,7 +127,7 @@ class TicketController extends Controller
     // Display the tickets created by the logged-in user
     public function myTickets()
     {
-        $tickets = Ticket::where('CreatedBy', Auth::id())->with('priority', 'status', 'assignedTo')->get();
+        $tickets = Ticket::where('assignedTo', Auth::id())->with('priority', 'status', 'assignedTo')->get();
         return view('admin.tickets.myTickets', compact('tickets'));
     }
 }

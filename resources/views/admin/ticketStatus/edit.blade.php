@@ -23,7 +23,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body content-area">
-                            <form action="{{ route('ticket-statuses.update', $status->StatusID) }}" method="POST">
+                            <form action="{{ route('ticket-statuses.update', $status->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')
                                 <div class="mb-3">
