@@ -182,6 +182,40 @@
                 console.error('Error requesting permission:', error);
             });
         }
+
+        function listenForMessages(chatId) {
+            firebase.database().ref('chats/' + chatId).on('child_added', function(snapshot) {
+                const messageData = snapshot.val();
+                displayMessage(messageData);
+            });
+        }
+
+        function displayMessage(messageData) {
+            const messageElement = document.createElement('div');
+            messageElement.textContent = messageData.sender + ': ' + messageData.message;
+            document.getElementById('messages').appendChild(messageElement);
+        }
+
+        function sendMessage(chatId, senderId, message) {
+            firebase.database().ref('chats/' + chatId).push({
+                senderId: senderId,
+                message: message,
+                timestamp: firebase.database.ServerValue.TIMESTAMP
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatId = document.getElementById('chatId').value; // Get the chat ID from the HTML
+            const senderId = '{{ Auth::user()->id }}';
+
+            listenForMessages(chatId);
+
+            document.getElementById('sendButton').addEventListener('click', function() {
+                const message = document.getElementById('messageInput').value;
+                sendMessage(chatId, senderId, message);
+                document.getElementById('messageInput').value = '';
+            });
+        });
     </script>
 
     <script>

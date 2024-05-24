@@ -22,7 +22,7 @@ class CheckPermissions
         $user = Auth::user();
         $currentRouteName = Route::currentRouteName();
         $userPermissions = $user && isset($user->role->permissions) ? $user->role->permissions : null;
-        if ($userPermissions && $currentRouteName != 'home') {
+        if ($userPermissions && $currentRouteName != 'home' && $currentRouteName != 'chat.index' && $currentRouteName != 'chat.checkRoom' && $currentRouteName != 'chat.create') {
 
             if ($userPermissions && !in_array($currentRouteName, $userPermissions)) {
                 Log::warning('User does not have permission for route: ' . $currentRouteName, [

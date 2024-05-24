@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\ChatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,12 +64,20 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('/contacts', ContactController::class);
 
         Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
+
         Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
         Route::get('/profile/change-password', [ProfileController::class, 'showChangePasswordForm'])->name('profile.change_password_form');
+
         Route::post('/profile/change-password', [ProfileController::class, 'changePassword'])->name('profile.change_password');
 
         Route::resource('/roles', RolesController::class);
+
+        Route::get('/chat/{user}', [ChatController::class, 'index'])->name('chat.index');
+
+        Route::post('/chat/check-room', [ChatController::class, 'checkRoom'])->name('chat.checkRoom');
+
+        Route::post('/chat/create-room', [ChatController::class, 'create'])->name('chat.create');
 
     });
 });
