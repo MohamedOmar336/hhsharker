@@ -1,5 +1,5 @@
 tinymce.init({
-    selector: 'textarea#content_en, textarea#content_ar',
+    selector: 'textarea#content_en, textarea#content_ar,textarea.ticket_description',
     width: 1000,
     height: 300,
     plugins:[

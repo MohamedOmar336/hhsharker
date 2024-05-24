@@ -15,12 +15,11 @@
                                     <li class="breadcrumb-item active">{{ __('general.attributes.users') }}</li>
                                 </ol>
                             </div>
-                             <div class="col-md-12">
-                    <a href="{{ URL::previous() }}"
-                    class="btn btn-secondary"><span class="fa fa-backward"></a>
-                     <h4 class="page-title">{{ __('general.attributes.users').' ' }} List</h4>
-                </div>
-                          
+                            <div class="col-md-12">
+                                <a href="{{ URL::previous() }}" class="btn btn-secondary"><span class="fa fa-backward"></a>
+                                <h4 class="page-title">{{ __('general.attributes.users') . ' ' }} List</h4>
+                            </div>
+
                         </div><!--end page-title-box-->
                     </div><!--end col-->
                 </div>
@@ -28,13 +27,14 @@
 
                 <div class="row">
                     <div class="col-12">
-                       <div class="card">
-                         <div class="card-body content-area">
-                           <div class="table-responsive browser_users">
-                                        <table class="table mb-0">
-                                      
-						  <thead class="thead-light">
-                                           <tr>
+                        <div class="card">
+                            <div class="card-body content-area">
+                                <div class="table-responsive browser_users">
+                                    <table class="table mb-0">
+
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col">{{ __('general.attributes.user_image') }}</th>
                                                 <th scope="col">{{ __('general.attributes.users') }}</th>
                                                 <th scope="col">{{ __('general.side.roles') }}</th>
                                                 <th scope="col">{{ __('general.attributes.email') }}</th>
@@ -46,9 +46,10 @@
                                         <tbody>
                                             @foreach ($records as $record)
                                                 <tr class="spacer">
-                                                    <td><img src="{{ asset('images/' . $record->image) }}"
-                                                            alt="" class="rounded-circle thumb-sm me-1">
-                                                        {{ $record->user_name }}
+                                                    <td> <img
+                                                            src="{{ Auth::user()->image ? asset('images/' . Auth::user()->image) : asset('images/user.png') }}"
+                                                            alt="profile-user" class="rounded-circle thumb-sm me-1"> </td>
+                                                    <td> {{ $record->user_name }} </td>
                                                     </td>
                                                     <td>Administrator</td>
                                                     <td>{{ $record->email }}</td>

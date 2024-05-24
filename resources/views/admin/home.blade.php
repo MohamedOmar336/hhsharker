@@ -125,519 +125,29 @@
 
 
 
+
+
+
+
+
+
                 <div class="row">
                     <div class="col-lg-8">
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="row align-items-center">
-                                    <div class="col">
-                                        <h4 class="card-title">Tickets Status</h4>
-                                    </div><!--end col-->
-                                </div> <!--end row-->
-                            </div><!--end card-header-->
-                            <div class="card-body">
-                                <div class="">
-                                    <div id="Tickets_Status" class="apex-charts" style="min-height: 340px;">
-                                        <div id="apexchartsv1mrgaeck"
-                                            class="apexcharts-canvas apexchartsv1mrgaeck apexcharts-theme-light"
-                                            style="width: 668px; height: 325px;"><svg id="SvgjsSvg1367" width="668"
-                                                height="325" xmlns="http://www.w3.org/2000/svg" version="1.1"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev"
-                                                class="apexcharts-svg apexcharts-zoomable hovering-zoom"
-                                                xmlns:data="ApexChartsNS" transform="translate(0, 0)"
-                                                style="background: transparent;">
-                                                <g id="SvgjsG1369" class="apexcharts-inner apexcharts-graphical"
-                                                    transform="translate(45.83535194396973, 30)">
-                                                    <defs id="SvgjsDefs1368">
-                                                        <clipPath id="gridRectMaskv1mrgaeck">
-                                                            <rect id="SvgjsRect1375" width="605.6947259902954"
-                                                                height="259.49519938278195" x="-2.75" y="-0.75"
-                                                                rx="0" ry="0" opacity="1"
-                                                                stroke-width="0" stroke="none" stroke-dasharray="0"
-                                                                fill="#fff"></rect>
-                                                        </clipPath>
-                                                        <clipPath id="forecastMaskv1mrgaeck"></clipPath>
-                                                        <clipPath id="nonForecastMaskv1mrgaeck"></clipPath>
-                                                        <clipPath id="gridRectMarkerMaskv1mrgaeck">
-                                                            <rect id="SvgjsRect1376" width="604.1947259902954"
-                                                                height="261.99519938278195" x="-2" y="-2" rx="0"
-                                                                ry="0" opacity="1" stroke-width="0"
-                                                                stroke="none" stroke-dasharray="0" fill="#fff">
-                                                            </rect>
-                                                        </clipPath>
-                                                        <linearGradient id="SvgjsLinearGradient1381" x1="0"
-                                                            y1="0" x2="0" y2="1">
-                                                            <stop id="SvgjsStop1382" stop-opacity="0.28"
-                                                                stop-color="rgba(103,200,255,0.28)" offset="0.45"></stop>
-                                                            <stop id="SvgjsStop1383" stop-opacity="0.05"
-                                                                stop-color="rgba(255,255,255,0.05)" offset="1"></stop>
-                                                            <stop id="SvgjsStop1384" stop-opacity="0.05"
-                                                                stop-color="rgba(255,255,255,0.05)" offset="1"></stop>
-                                                        </linearGradient>
-                                                        <linearGradient id="SvgjsLinearGradient1390" x1="0"
-                                                            y1="0" x2="0" y2="1">
-                                                            <stop id="SvgjsStop1391" stop-opacity="0.28"
-                                                                stop-color="rgba(109,129,245,0.28)" offset="0.45"></stop>
-                                                            <stop id="SvgjsStop1392" stop-opacity="0.05"
-                                                                stop-color="rgba(255,255,255,0.05)" offset="1"></stop>
-                                                            <stop id="SvgjsStop1393" stop-opacity="0.05"
-                                                                stop-color="rgba(255,255,255,0.05)" offset="1"></stop>
-                                                        </linearGradient>
-                                                    </defs>
-                                                    <line id="SvgjsLine1374" x1="490.56841217387813" y1="0"
-                                                        x2="490.56841217387813" y2="257.99519938278195" stroke="#b6b6b6"
-                                                        stroke-dasharray="3" stroke-linecap="butt"
-                                                        class="apexcharts-xcrosshairs" x="490.56841217387813" y="0"
-                                                        width="1" height="257.99519938278195" fill="#b1b9c4"
-                                                        filter="none" fill-opacity="0.9" stroke-width="1"></line>
-                                                    <g id="SvgjsG1396" class="apexcharts-xaxis"
-                                                        transform="translate(0, 0)">
-                                                        <g id="SvgjsG1397" class="apexcharts-xaxis-texts-g"
-                                                            transform="translate(0, -4)"><text id="SvgjsText1399"
-                                                                font-family="Helvetica, Arial, sans-serif" x="0"
-                                                                y="286.99519938278195" text-anchor="middle"
-                                                                dominant-baseline="auto" font-size="12px"
-                                                                font-weight="400" fill="#373d3f"
-                                                                class="apexcharts-text apexcharts-xaxis-label "
-                                                                style="font-family: Helvetica, Arial, sans-serif;">
-                                                                <tspan id="SvgjsTspan1400">Jan</tspan>
-                                                                <title>Jan</title>
-                                                            </text><text id="SvgjsText1402"
-                                                                font-family="Helvetica, Arial, sans-serif"
-                                                                x="54.56315690820868" y="286.99519938278195"
-                                                                text-anchor="middle" dominant-baseline="auto"
-                                                                font-size="12px" font-weight="400" fill="#373d3f"
-                                                                class="apexcharts-text apexcharts-xaxis-label "
-                                                                style="font-family: Helvetica, Arial, sans-serif;">
-                                                                <tspan id="SvgjsTspan1403">Feb</tspan>
-                                                                <title>Feb</title>
-                                                            </text><text id="SvgjsText1405"
-                                                                font-family="Helvetica, Arial, sans-serif"
-                                                                x="109.12631381641737" y="286.99519938278195"
-                                                                text-anchor="middle" dominant-baseline="auto"
-                                                                font-size="12px" font-weight="400" fill="#373d3f"
-                                                                class="apexcharts-text apexcharts-xaxis-label "
-                                                                style="font-family: Helvetica, Arial, sans-serif;">
-                                                                <tspan id="SvgjsTspan1406">Mar</tspan>
-                                                                <title>Mar</title>
-                                                            </text><text id="SvgjsText1408"
-                                                                font-family="Helvetica, Arial, sans-serif"
-                                                                x="163.68947072462603" y="286.99519938278195"
-                                                                text-anchor="middle" dominant-baseline="auto"
-                                                                font-size="12px" font-weight="400" fill="#373d3f"
-                                                                class="apexcharts-text apexcharts-xaxis-label "
-                                                                style="font-family: Helvetica, Arial, sans-serif;">
-                                                                <tspan id="SvgjsTspan1409">Apr</tspan>
-                                                                <title>Apr</title>
-                                                            </text><text id="SvgjsText1411"
-                                                                font-family="Helvetica, Arial, sans-serif"
-                                                                x="218.2526276328347" y="286.99519938278195"
-                                                                text-anchor="middle" dominant-baseline="auto"
-                                                                font-size="12px" font-weight="400" fill="#373d3f"
-                                                                class="apexcharts-text apexcharts-xaxis-label "
-                                                                style="font-family: Helvetica, Arial, sans-serif;">
-                                                                <tspan id="SvgjsTspan1412">May</tspan>
-                                                                <title>May</title>
-                                                            </text><text id="SvgjsText1414"
-                                                                font-family="Helvetica, Arial, sans-serif"
-                                                                x="272.81578454104334" y="286.99519938278195"
-                                                                text-anchor="middle" dominant-baseline="auto"
-                                                                font-size="12px" font-weight="400" fill="#373d3f"
-                                                                class="apexcharts-text apexcharts-xaxis-label "
-                                                                style="font-family: Helvetica, Arial, sans-serif;">
-                                                                <tspan id="SvgjsTspan1415">Jun</tspan>
-                                                                <title>Jun</title>
-                                                            </text><text id="SvgjsText1417"
-                                                                font-family="Helvetica, Arial, sans-serif"
-                                                                x="327.378941449252" y="286.99519938278195"
-                                                                text-anchor="middle" dominant-baseline="auto"
-                                                                font-size="12px" font-weight="400" fill="#373d3f"
-                                                                class="apexcharts-text apexcharts-xaxis-label "
-                                                                style="font-family: Helvetica, Arial, sans-serif;">
-                                                                <tspan id="SvgjsTspan1418">Jul</tspan>
-                                                                <title>Jul</title>
-                                                            </text><text id="SvgjsText1420"
-                                                                font-family="Helvetica, Arial, sans-serif"
-                                                                x="381.9420983574607" y="286.99519938278195"
-                                                                text-anchor="middle" dominant-baseline="auto"
-                                                                font-size="12px" font-weight="400" fill="#373d3f"
-                                                                class="apexcharts-text apexcharts-xaxis-label "
-                                                                style="font-family: Helvetica, Arial, sans-serif;">
-                                                                <tspan id="SvgjsTspan1421">Aug</tspan>
-                                                                <title>Aug</title>
-                                                            </text><text id="SvgjsText1423"
-                                                                font-family="Helvetica, Arial, sans-serif"
-                                                                x="436.50525526566935" y="286.99519938278195"
-                                                                text-anchor="middle" dominant-baseline="auto"
-                                                                font-size="12px" font-weight="400" fill="#373d3f"
-                                                                class="apexcharts-text apexcharts-xaxis-label "
-                                                                style="font-family: Helvetica, Arial, sans-serif;">
-                                                                <tspan id="SvgjsTspan1424">Sep</tspan>
-                                                                <title>Sep</title>
-                                                            </text><text id="SvgjsText1426"
-                                                                font-family="Helvetica, Arial, sans-serif"
-                                                                x="491.068412173878" y="286.99519938278195"
-                                                                text-anchor="middle" dominant-baseline="auto"
-                                                                font-size="12px" font-weight="400" fill="#373d3f"
-                                                                class="apexcharts-text apexcharts-xaxis-label "
-                                                                style="font-family: Helvetica, Arial, sans-serif;">
-                                                                <tspan id="SvgjsTspan1427">Oct</tspan>
-                                                                <title>Oct</title>
-                                                            </text><text id="SvgjsText1429"
-                                                                font-family="Helvetica, Arial, sans-serif"
-                                                                x="545.6315690820868" y="286.99519938278195"
-                                                                text-anchor="middle" dominant-baseline="auto"
-                                                                font-size="12px" font-weight="400" fill="#373d3f"
-                                                                class="apexcharts-text apexcharts-xaxis-label "
-                                                                style="font-family: Helvetica, Arial, sans-serif;">
-                                                                <tspan id="SvgjsTspan1430">Nov</tspan>
-                                                                <title>Nov</title>
-                                                            </text><text id="SvgjsText1432"
-                                                                font-family="Helvetica, Arial, sans-serif"
-                                                                x="600.1947259902955" y="286.99519938278195"
-                                                                text-anchor="middle" dominant-baseline="auto"
-                                                                font-size="12px" font-weight="400" fill="#373d3f"
-                                                                class="apexcharts-text apexcharts-xaxis-label "
-                                                                style="font-family: Helvetica, Arial, sans-serif;">
-                                                                <tspan id="SvgjsTspan1433">Dec</tspan>
-                                                                <title>Dec</title>
-                                                            </text></g>
-                                                        <line id="SvgjsLine1434" x1="0" y1="258.99519938278195"
-                                                            x2="600.1947259902954" y2="258.99519938278195"
-                                                            stroke="#e0e0e0" stroke-dasharray="0" stroke-width="1"
-                                                            stroke-linecap="butt"></line>
-                                                    </g>
-                                                    <g id="SvgjsG1455" class="apexcharts-grid">
-                                                        <g id="SvgjsG1456" class="apexcharts-gridlines-horizontal"></g>
-                                                        <g id="SvgjsG1457" class="apexcharts-gridlines-vertical">
-                                                            <line id="SvgjsLine1458" x1="0" y1="0"
-                                                                x2="0" y2="257.99519938278195" stroke="#e0e6ed"
-                                                                stroke-dasharray="3" stroke-linecap="butt"
-                                                                class="apexcharts-gridline"></line>
-                                                            <line id="SvgjsLine1460" x1="54.563156908208676"
-                                                                y1="0" x2="54.563156908208676"
-                                                                y2="257.99519938278195" stroke="#e0e6ed"
-                                                                stroke-dasharray="3" stroke-linecap="butt"
-                                                                class="apexcharts-gridline"></line>
-                                                            <line id="SvgjsLine1462" x1="109.12631381641735"
-                                                                y1="0" x2="109.12631381641735"
-                                                                y2="257.99519938278195" stroke="#e0e6ed"
-                                                                stroke-dasharray="3" stroke-linecap="butt"
-                                                                class="apexcharts-gridline"></line>
-                                                            <line id="SvgjsLine1464" x1="163.68947072462603"
-                                                                y1="0" x2="163.68947072462603"
-                                                                y2="257.99519938278195" stroke="#e0e6ed"
-                                                                stroke-dasharray="3" stroke-linecap="butt"
-                                                                class="apexcharts-gridline"></line>
-                                                            <line id="SvgjsLine1466" x1="218.2526276328347"
-                                                                y1="0" x2="218.2526276328347"
-                                                                y2="257.99519938278195" stroke="#e0e6ed"
-                                                                stroke-dasharray="3" stroke-linecap="butt"
-                                                                class="apexcharts-gridline"></line>
-                                                            <line id="SvgjsLine1468" x1="272.8157845410434"
-                                                                y1="0" x2="272.8157845410434"
-                                                                y2="257.99519938278195" stroke="#e0e6ed"
-                                                                stroke-dasharray="3" stroke-linecap="butt"
-                                                                class="apexcharts-gridline"></line>
-                                                            <line id="SvgjsLine1470" x1="327.37894144925207"
-                                                                y1="0" x2="327.37894144925207"
-                                                                y2="257.99519938278195" stroke="#e0e6ed"
-                                                                stroke-dasharray="3" stroke-linecap="butt"
-                                                                class="apexcharts-gridline"></line>
-                                                            <line id="SvgjsLine1472" x1="381.94209835746074"
-                                                                y1="0" x2="381.94209835746074"
-                                                                y2="257.99519938278195" stroke="#e0e6ed"
-                                                                stroke-dasharray="3" stroke-linecap="butt"
-                                                                class="apexcharts-gridline"></line>
-                                                            <line id="SvgjsLine1474" x1="436.5052552656694"
-                                                                y1="0" x2="436.5052552656694"
-                                                                y2="257.99519938278195" stroke="#e0e6ed"
-                                                                stroke-dasharray="3" stroke-linecap="butt"
-                                                                class="apexcharts-gridline"></line>
-                                                            <line id="SvgjsLine1476" x1="491.0684121738781"
-                                                                y1="0" x2="491.0684121738781"
-                                                                y2="257.99519938278195" stroke="#e0e6ed"
-                                                                stroke-dasharray="3" stroke-linecap="butt"
-                                                                class="apexcharts-gridline"></line>
-                                                            <line id="SvgjsLine1478" x1="545.6315690820868"
-                                                                y1="0" x2="545.6315690820868"
-                                                                y2="257.99519938278195" stroke="#e0e6ed"
-                                                                stroke-dasharray="3" stroke-linecap="butt"
-                                                                class="apexcharts-gridline"></line>
-                                                            <line id="SvgjsLine1480" x1="600.1947259902955"
-                                                                y1="0" x2="600.1947259902955"
-                                                                y2="257.99519938278195" stroke="#e0e6ed"
-                                                                stroke-dasharray="3" stroke-linecap="butt"
-                                                                class="apexcharts-gridline"></line>
-                                                        </g>
-                                                        <line id="SvgjsLine1459" x1="0" y1="258.99519938278195"
-                                                            x2="0" y2="264.99519938278195" stroke="#e0e0e0"
-                                                            stroke-dasharray="0" stroke-linecap="butt"
-                                                            class="apexcharts-xaxis-tick"></line>
-                                                        <line id="SvgjsLine1461" x1="54.563156908208676"
-                                                            y1="258.99519938278195" x2="54.563156908208676"
-                                                            y2="264.99519938278195" stroke="#e0e0e0" stroke-dasharray="0"
-                                                            stroke-linecap="butt" class="apexcharts-xaxis-tick"></line>
-                                                        <line id="SvgjsLine1463" x1="109.12631381641735"
-                                                            y1="258.99519938278195" x2="109.12631381641735"
-                                                            y2="264.99519938278195" stroke="#e0e0e0" stroke-dasharray="0"
-                                                            stroke-linecap="butt" class="apexcharts-xaxis-tick"></line>
-                                                        <line id="SvgjsLine1465" x1="163.68947072462603"
-                                                            y1="258.99519938278195" x2="163.68947072462603"
-                                                            y2="264.99519938278195" stroke="#e0e0e0" stroke-dasharray="0"
-                                                            stroke-linecap="butt" class="apexcharts-xaxis-tick"></line>
-                                                        <line id="SvgjsLine1467" x1="218.2526276328347"
-                                                            y1="258.99519938278195" x2="218.2526276328347"
-                                                            y2="264.99519938278195" stroke="#e0e0e0" stroke-dasharray="0"
-                                                            stroke-linecap="butt" class="apexcharts-xaxis-tick"></line>
-                                                        <line id="SvgjsLine1469" x1="272.8157845410434"
-                                                            y1="258.99519938278195" x2="272.8157845410434"
-                                                            y2="264.99519938278195" stroke="#e0e0e0" stroke-dasharray="0"
-                                                            stroke-linecap="butt" class="apexcharts-xaxis-tick"></line>
-                                                        <line id="SvgjsLine1471" x1="327.37894144925207"
-                                                            y1="258.99519938278195" x2="327.37894144925207"
-                                                            y2="264.99519938278195" stroke="#e0e0e0" stroke-dasharray="0"
-                                                            stroke-linecap="butt" class="apexcharts-xaxis-tick"></line>
-                                                        <line id="SvgjsLine1473" x1="381.94209835746074"
-                                                            y1="258.99519938278195" x2="381.94209835746074"
-                                                            y2="264.99519938278195" stroke="#e0e0e0" stroke-dasharray="0"
-                                                            stroke-linecap="butt" class="apexcharts-xaxis-tick"></line>
-                                                        <line id="SvgjsLine1475" x1="436.5052552656694"
-                                                            y1="258.99519938278195" x2="436.5052552656694"
-                                                            y2="264.99519938278195" stroke="#e0e0e0" stroke-dasharray="0"
-                                                            stroke-linecap="butt" class="apexcharts-xaxis-tick"></line>
-                                                        <line id="SvgjsLine1477" x1="491.0684121738781"
-                                                            y1="258.99519938278195" x2="491.0684121738781"
-                                                            y2="264.99519938278195" stroke="#e0e0e0" stroke-dasharray="0"
-                                                            stroke-linecap="butt" class="apexcharts-xaxis-tick"></line>
-                                                        <line id="SvgjsLine1479" x1="545.6315690820868"
-                                                            y1="258.99519938278195" x2="545.6315690820868"
-                                                            y2="264.99519938278195" stroke="#e0e0e0" stroke-dasharray="0"
-                                                            stroke-linecap="butt" class="apexcharts-xaxis-tick"></line>
-                                                        <line id="SvgjsLine1481" x1="600.1947259902955"
-                                                            y1="258.99519938278195" x2="600.1947259902955"
-                                                            y2="264.99519938278195" stroke="#e0e0e0" stroke-dasharray="0"
-                                                            stroke-linecap="butt" class="apexcharts-xaxis-tick"></line>
-                                                        <line id="SvgjsLine1483" x1="0" y1="257.99519938278195"
-                                                            x2="600.1947259902954" y2="257.99519938278195"
-                                                            stroke="transparent" stroke-dasharray="0"
-                                                            stroke-linecap="butt"></line>
-                                                        <line id="SvgjsLine1482" x1="0" y1="1"
-                                                            x2="0" y2="257.99519938278195" stroke="transparent"
-                                                            stroke-dasharray="0" stroke-linecap="butt"></line>
-                                                    </g>
-                                                    <g id="SvgjsG1377"
-                                                        class="apexcharts-area-series apexcharts-plot-series">
-                                                        <g id="SvgjsG1378" class="apexcharts-series" seriesName="Income"
-                                                            data:longestSeries="true" rel="1" data:realIndex="0">
-                                                            <path id="SvgjsPath1385"
-                                                                d="M 0 257.99519938278195L 0 180.59663956794736C 19.097104917873036 180.59663956794736 35.46605199033564 180.59663956794736 54.563156908208676 180.59663956794736C 73.66026182608171 180.59663956794736 90.02920889854431 223.5958394650777 109.12631381641735 223.5958394650777C 128.2234187342904 223.5958394650777 144.592365806753 223.5958394650777 163.68947072462603 223.5958394650777C 182.78657564249906 223.5958394650777 199.15552271496168 223.5958394650777 218.2526276328347 223.5958394650777C 237.34973255070776 223.5958394650777 253.71867962317035 85.99839979426065 272.8157845410434 85.99839979426065C 291.9128894589164 85.99839979426065 308.28183653137904 85.99839979426065 327.37894144925207 85.99839979426065C 346.4760463671251 85.99839979426065 362.8449934395877 85.99839979426065 381.94209835746074 85.99839979426065C 401.03920327533376 85.99839979426065 417.4081503477964 197.7963195267995 436.5052552656694 197.7963195267995C 455.6023601835425 197.7963195267995 471.97130725600505 197.7963195267995 491.06841217387813 197.7963195267995C 510.16551709175116 197.7963195267995 526.5344641642138 120.39775971196491 545.6315690820868 120.39775971196491C 564.7286739999598 120.39775971196491 581.0976210724224 120.39775971196491 600.1947259902954 120.39775971196491C 600.1947259902954 120.39775971196491 600.1947259902954 120.39775971196491 600.1947259902954 257.99519938278195M 600.1947259902954 120.39775971196491z"
-                                                                fill="url(#SvgjsLinearGradient1381)" fill-opacity="1"
-                                                                stroke-opacity="1" stroke-linecap="round"
-                                                                stroke-width="0" stroke-dasharray="0"
-                                                                class="apexcharts-area" index="0"
-                                                                clip-path="url(#gridRectMaskv1mrgaeck)"
-                                                                pathTo="M 0 257.99519938278195L 0 180.59663956794736C 19.097104917873036 180.59663956794736 35.46605199033564 180.59663956794736 54.563156908208676 180.59663956794736C 73.66026182608171 180.59663956794736 90.02920889854431 223.5958394650777 109.12631381641735 223.5958394650777C 128.2234187342904 223.5958394650777 144.592365806753 223.5958394650777 163.68947072462603 223.5958394650777C 182.78657564249906 223.5958394650777 199.15552271496168 223.5958394650777 218.2526276328347 223.5958394650777C 237.34973255070776 223.5958394650777 253.71867962317035 85.99839979426065 272.8157845410434 85.99839979426065C 291.9128894589164 85.99839979426065 308.28183653137904 85.99839979426065 327.37894144925207 85.99839979426065C 346.4760463671251 85.99839979426065 362.8449934395877 85.99839979426065 381.94209835746074 85.99839979426065C 401.03920327533376 85.99839979426065 417.4081503477964 197.7963195267995 436.5052552656694 197.7963195267995C 455.6023601835425 197.7963195267995 471.97130725600505 197.7963195267995 491.06841217387813 197.7963195267995C 510.16551709175116 197.7963195267995 526.5344641642138 120.39775971196491 545.6315690820868 120.39775971196491C 564.7286739999598 120.39775971196491 581.0976210724224 120.39775971196491 600.1947259902954 120.39775971196491C 600.1947259902954 120.39775971196491 600.1947259902954 120.39775971196491 600.1947259902954 257.99519938278195M 600.1947259902954 120.39775971196491z"
-                                                                pathFrom="M -1 257.99519938278195L -1 257.99519938278195L 54.563156908208676 257.99519938278195L 109.12631381641735 257.99519938278195L 163.68947072462603 257.99519938278195L 218.2526276328347 257.99519938278195L 272.8157845410434 257.99519938278195L 327.37894144925207 257.99519938278195L 381.94209835746074 257.99519938278195L 436.5052552656694 257.99519938278195L 491.06841217387813 257.99519938278195L 545.6315690820868 257.99519938278195L 600.1947259902954 257.99519938278195">
-                                                            </path>
-                                                            <path id="SvgjsPath1386"
-                                                                d="M 0 180.59663956794736C 19.097104917873036 180.59663956794736 35.46605199033564 180.59663956794736 54.563156908208676 180.59663956794736C 73.66026182608171 180.59663956794736 90.02920889854431 223.5958394650777 109.12631381641735 223.5958394650777C 128.2234187342904 223.5958394650777 144.592365806753 223.5958394650777 163.68947072462603 223.5958394650777C 182.78657564249906 223.5958394650777 199.15552271496168 223.5958394650777 218.2526276328347 223.5958394650777C 237.34973255070776 223.5958394650777 253.71867962317035 85.99839979426065 272.8157845410434 85.99839979426065C 291.9128894589164 85.99839979426065 308.28183653137904 85.99839979426065 327.37894144925207 85.99839979426065C 346.4760463671251 85.99839979426065 362.8449934395877 85.99839979426065 381.94209835746074 85.99839979426065C 401.03920327533376 85.99839979426065 417.4081503477964 197.7963195267995 436.5052552656694 197.7963195267995C 455.6023601835425 197.7963195267995 471.97130725600505 197.7963195267995 491.06841217387813 197.7963195267995C 510.16551709175116 197.7963195267995 526.5344641642138 120.39775971196491 545.6315690820868 120.39775971196491C 564.7286739999598 120.39775971196491 581.0976210724224 120.39775971196491 600.1947259902954 120.39775971196491"
-                                                                fill="none" fill-opacity="1" stroke="#67c8ff"
-                                                                stroke-opacity="1" stroke-linecap="round"
-                                                                stroke-width="1.5" stroke-dasharray="0"
-                                                                class="apexcharts-area" index="0"
-                                                                clip-path="url(#gridRectMaskv1mrgaeck)"
-                                                                pathTo="M 0 180.59663956794736C 19.097104917873036 180.59663956794736 35.46605199033564 180.59663956794736 54.563156908208676 180.59663956794736C 73.66026182608171 180.59663956794736 90.02920889854431 223.5958394650777 109.12631381641735 223.5958394650777C 128.2234187342904 223.5958394650777 144.592365806753 223.5958394650777 163.68947072462603 223.5958394650777C 182.78657564249906 223.5958394650777 199.15552271496168 223.5958394650777 218.2526276328347 223.5958394650777C 237.34973255070776 223.5958394650777 253.71867962317035 85.99839979426065 272.8157845410434 85.99839979426065C 291.9128894589164 85.99839979426065 308.28183653137904 85.99839979426065 327.37894144925207 85.99839979426065C 346.4760463671251 85.99839979426065 362.8449934395877 85.99839979426065 381.94209835746074 85.99839979426065C 401.03920327533376 85.99839979426065 417.4081503477964 197.7963195267995 436.5052552656694 197.7963195267995C 455.6023601835425 197.7963195267995 471.97130725600505 197.7963195267995 491.06841217387813 197.7963195267995C 510.16551709175116 197.7963195267995 526.5344641642138 120.39775971196491 545.6315690820868 120.39775971196491C 564.7286739999598 120.39775971196491 581.0976210724224 120.39775971196491 600.1947259902954 120.39775971196491"
-                                                                pathFrom="M -1 257.99519938278195L -1 257.99519938278195L 54.563156908208676 257.99519938278195L 109.12631381641735 257.99519938278195L 163.68947072462603 257.99519938278195L 218.2526276328347 257.99519938278195L 272.8157845410434 257.99519938278195L 327.37894144925207 257.99519938278195L 381.94209835746074 257.99519938278195L 436.5052552656694 257.99519938278195L 491.06841217387813 257.99519938278195L 545.6315690820868 257.99519938278195L 600.1947259902954 257.99519938278195">
-                                                            </path>
-                                                            <g id="SvgjsG1379" class="apexcharts-series-markers-wrap"
-                                                                data:realIndex="0">
-                                                                <g class="apexcharts-series-markers">
-                                                                    <circle id="SvgjsCircle1489" r="0"
-                                                                        cx="491.06841217387813" cy="197.7963195267995"
-                                                                        class="apexcharts-marker w7cdq94wk no-pointer-events"
-                                                                        stroke="#ffffff" fill="#67c8ff" fill-opacity="1"
-                                                                        stroke-width="2" stroke-opacity="0.9"
-                                                                        default-marker-size="0"></circle>
-                                                                </g>
-                                                            </g>
-                                                        </g>
-                                                        <g id="SvgjsG1387" class="apexcharts-series"
-                                                            seriesName="Expenses" data:longestSeries="true"
-                                                            rel="2" data:realIndex="1">
-                                                            <path id="SvgjsPath1394"
-                                                                d="M 0 257.99519938278195L 0 257.99519938278195C 19.097104917873036 257.99519938278195 35.46605199033564 206.39615950622556 54.563156908208676 206.39615950622556C 73.66026182608171 206.39615950622556 90.02920889854431 240.79551942392982 109.12631381641735 240.79551942392982C 128.2234187342904 240.79551942392982 144.592365806753 189.19647954737343 163.68947072462603 189.19647954737343C 182.78657564249906 189.19647954737343 199.15552271496168 206.39615950622556 218.2526276328347 206.39615950622556C 237.34973255070776 206.39615950622556 253.71867962317035 154.79711962966917 272.8157845410434 154.79711962966917C 291.9128894589164 154.79711962966917 308.28183653137904 171.9967995885213 327.37894144925207 171.9967995885213C 346.4760463671251 171.9967995885213 362.8449934395877 120.39775971196491 381.94209835746074 120.39775971196491C 401.03920327533376 120.39775971196491 417.4081503477964 137.59743967081704 436.5052552656694 137.59743967081704C 455.6023601835425 137.59743967081704 471.97130725600505 85.99839979426065 491.06841217387813 85.99839979426065C 510.16551709175116 85.99839979426065 526.5344641642138 103.19807975311278 545.6315690820868 103.19807975311278C 564.7286739999598 103.19807975311278 581.0976210724224 34.39935991770426 600.1947259902954 34.39935991770426C 600.1947259902954 34.39935991770426 600.1947259902954 34.39935991770426 600.1947259902954 257.99519938278195M 600.1947259902954 34.39935991770426z"
-                                                                fill="url(#SvgjsLinearGradient1390)" fill-opacity="1"
-                                                                stroke-opacity="1" stroke-linecap="round"
-                                                                stroke-width="0" stroke-dasharray="4"
-                                                                class="apexcharts-area" index="1"
-                                                                clip-path="url(#gridRectMaskv1mrgaeck)"
-                                                                pathTo="M 0 257.99519938278195L 0 257.99519938278195C 19.097104917873036 257.99519938278195 35.46605199033564 206.39615950622556 54.563156908208676 206.39615950622556C 73.66026182608171 206.39615950622556 90.02920889854431 240.79551942392982 109.12631381641735 240.79551942392982C 128.2234187342904 240.79551942392982 144.592365806753 189.19647954737343 163.68947072462603 189.19647954737343C 182.78657564249906 189.19647954737343 199.15552271496168 206.39615950622556 218.2526276328347 206.39615950622556C 237.34973255070776 206.39615950622556 253.71867962317035 154.79711962966917 272.8157845410434 154.79711962966917C 291.9128894589164 154.79711962966917 308.28183653137904 171.9967995885213 327.37894144925207 171.9967995885213C 346.4760463671251 171.9967995885213 362.8449934395877 120.39775971196491 381.94209835746074 120.39775971196491C 401.03920327533376 120.39775971196491 417.4081503477964 137.59743967081704 436.5052552656694 137.59743967081704C 455.6023601835425 137.59743967081704 471.97130725600505 85.99839979426065 491.06841217387813 85.99839979426065C 510.16551709175116 85.99839979426065 526.5344641642138 103.19807975311278 545.6315690820868 103.19807975311278C 564.7286739999598 103.19807975311278 581.0976210724224 34.39935991770426 600.1947259902954 34.39935991770426C 600.1947259902954 34.39935991770426 600.1947259902954 34.39935991770426 600.1947259902954 257.99519938278195M 600.1947259902954 34.39935991770426z"
-                                                                pathFrom="M -1 257.99519938278195L -1 257.99519938278195L 54.563156908208676 257.99519938278195L 109.12631381641735 257.99519938278195L 163.68947072462603 257.99519938278195L 218.2526276328347 257.99519938278195L 272.8157845410434 257.99519938278195L 327.37894144925207 257.99519938278195L 381.94209835746074 257.99519938278195L 436.5052552656694 257.99519938278195L 491.06841217387813 257.99519938278195L 545.6315690820868 257.99519938278195L 600.1947259902954 257.99519938278195">
-                                                            </path>
-                                                            <path id="SvgjsPath1395"
-                                                                d="M 0 257.99519938278195C 19.097104917873036 257.99519938278195 35.46605199033564 206.39615950622556 54.563156908208676 206.39615950622556C 73.66026182608171 206.39615950622556 90.02920889854431 240.79551942392982 109.12631381641735 240.79551942392982C 128.2234187342904 240.79551942392982 144.592365806753 189.19647954737343 163.68947072462603 189.19647954737343C 182.78657564249906 189.19647954737343 199.15552271496168 206.39615950622556 218.2526276328347 206.39615950622556C 237.34973255070776 206.39615950622556 253.71867962317035 154.79711962966917 272.8157845410434 154.79711962966917C 291.9128894589164 154.79711962966917 308.28183653137904 171.9967995885213 327.37894144925207 171.9967995885213C 346.4760463671251 171.9967995885213 362.8449934395877 120.39775971196491 381.94209835746074 120.39775971196491C 401.03920327533376 120.39775971196491 417.4081503477964 137.59743967081704 436.5052552656694 137.59743967081704C 455.6023601835425 137.59743967081704 471.97130725600505 85.99839979426065 491.06841217387813 85.99839979426065C 510.16551709175116 85.99839979426065 526.5344641642138 103.19807975311278 545.6315690820868 103.19807975311278C 564.7286739999598 103.19807975311278 581.0976210724224 34.39935991770426 600.1947259902954 34.39935991770426"
-                                                                fill="none" fill-opacity="1" stroke="#6d81f5"
-                                                                stroke-opacity="1" stroke-linecap="round"
-                                                                stroke-width="1.5" stroke-dasharray="4"
-                                                                class="apexcharts-area" index="1"
-                                                                clip-path="url(#gridRectMaskv1mrgaeck)"
-                                                                pathTo="M 0 257.99519938278195C 19.097104917873036 257.99519938278195 35.46605199033564 206.39615950622556 54.563156908208676 206.39615950622556C 73.66026182608171 206.39615950622556 90.02920889854431 240.79551942392982 109.12631381641735 240.79551942392982C 128.2234187342904 240.79551942392982 144.592365806753 189.19647954737343 163.68947072462603 189.19647954737343C 182.78657564249906 189.19647954737343 199.15552271496168 206.39615950622556 218.2526276328347 206.39615950622556C 237.34973255070776 206.39615950622556 253.71867962317035 154.79711962966917 272.8157845410434 154.79711962966917C 291.9128894589164 154.79711962966917 308.28183653137904 171.9967995885213 327.37894144925207 171.9967995885213C 346.4760463671251 171.9967995885213 362.8449934395877 120.39775971196491 381.94209835746074 120.39775971196491C 401.03920327533376 120.39775971196491 417.4081503477964 137.59743967081704 436.5052552656694 137.59743967081704C 455.6023601835425 137.59743967081704 471.97130725600505 85.99839979426065 491.06841217387813 85.99839979426065C 510.16551709175116 85.99839979426065 526.5344641642138 103.19807975311278 545.6315690820868 103.19807975311278C 564.7286739999598 103.19807975311278 581.0976210724224 34.39935991770426 600.1947259902954 34.39935991770426"
-                                                                pathFrom="M -1 257.99519938278195L -1 257.99519938278195L 54.563156908208676 257.99519938278195L 109.12631381641735 257.99519938278195L 163.68947072462603 257.99519938278195L 218.2526276328347 257.99519938278195L 272.8157845410434 257.99519938278195L 327.37894144925207 257.99519938278195L 381.94209835746074 257.99519938278195L 436.5052552656694 257.99519938278195L 491.06841217387813 257.99519938278195L 545.6315690820868 257.99519938278195L 600.1947259902954 257.99519938278195">
-                                                            </path>
-                                                            <g id="SvgjsG1388" class="apexcharts-series-markers-wrap"
-                                                                data:realIndex="1">
-                                                                <g class="apexcharts-series-markers">
-                                                                    <circle id="SvgjsCircle1490" r="0"
-                                                                        cx="491.06841217387813" cy="85.99839979426065"
-                                                                        class="apexcharts-marker w2sapmq8gf no-pointer-events"
-                                                                        stroke="#ffffff" fill="#6d81f5" fill-opacity="1"
-                                                                        stroke-width="2" stroke-opacity="0.9"
-                                                                        default-marker-size="0"></circle>
-                                                                </g>
-                                                            </g>
-                                                        </g>
-                                                        <g id="SvgjsG1380" class="apexcharts-datalabels"
-                                                            data:realIndex="0"></g>
-                                                        <g id="SvgjsG1389" class="apexcharts-datalabels"
-                                                            data:realIndex="1"></g>
-                                                    </g>
-                                                    <line id="SvgjsLine1484" x1="0" y1="0"
-                                                        x2="600.1947259902954" y2="0" stroke="#b6b6b6"
-                                                        stroke-dasharray="0" stroke-width="1" stroke-linecap="butt"
-                                                        class="apexcharts-ycrosshairs"></line>
-                                                    <line id="SvgjsLine1485" x1="0" y1="0"
-                                                        x2="600.1947259902954" y2="0" stroke-dasharray="0"
-                                                        stroke-width="0" stroke-linecap="butt"
-                                                        class="apexcharts-ycrosshairs-hidden"></line>
-                                                    <g id="SvgjsG1486" class="apexcharts-yaxis-annotations"></g>
-                                                    <g id="SvgjsG1487" class="apexcharts-xaxis-annotations"></g>
-                                                    <g id="SvgjsG1488" class="apexcharts-point-annotations"></g>
-                                                    <rect id="SvgjsRect1491" width="0" height="0" x="0" y="0"
-                                                        rx="0" ry="0" opacity="1" stroke-width="0"
-                                                        stroke="none" stroke-dasharray="0" fill="#fefefe"
-                                                        class="apexcharts-zoom-rect"></rect>
-                                                    <rect id="SvgjsRect1492" width="0" height="0" x="0" y="0"
-                                                        rx="0" ry="0" opacity="1" stroke-width="0"
-                                                        stroke="none" stroke-dasharray="0" fill="#fefefe"
-                                                        class="apexcharts-selection-rect"></rect>
-                                                </g>
-                                                <rect id="SvgjsRect1373" width="0" height="0" x="0" y="0"
-                                                    rx="0" ry="0" opacity="1" stroke-width="0"
-                                                    stroke="none" stroke-dasharray="0" fill="#fefefe"></rect>
-                                                <g id="SvgjsG1435" class="apexcharts-yaxis" rel="0"
-                                                    transform="translate(3.8353519439697266, 0)">
-                                                    <g id="SvgjsG1436" class="apexcharts-yaxis-texts-g"><text
-                                                            id="SvgjsText1438" font-family="Helvetica, Arial, sans-serif"
-                                                            x="20" y="31.5" text-anchor="end" dominant-baseline="auto"
-                                                            font-size="11px" font-weight="400" fill="#373d3f"
-                                                            class="apexcharts-text apexcharts-yaxis-label "
-                                                            style="font-family: Helvetica, Arial, sans-serif;">
-                                                            <tspan id="SvgjsTspan1439">150</tspan>
-                                                            <title>150</title>
-                                                        </text><text id="SvgjsText1441"
-                                                            font-family="Helvetica, Arial, sans-serif" x="20"
-                                                            y="83.09903987655639" text-anchor="end"
-                                                            dominant-baseline="auto" font-size="11px" font-weight="400"
-                                                            fill="#373d3f" class="apexcharts-text apexcharts-yaxis-label "
-                                                            style="font-family: Helvetica, Arial, sans-serif;">
-                                                            <tspan id="SvgjsTspan1442">120</tspan>
-                                                            <title>120</title>
-                                                        </text><text id="SvgjsText1444"
-                                                            font-family="Helvetica, Arial, sans-serif" x="20"
-                                                            y="134.69807975311278" text-anchor="end"
-                                                            dominant-baseline="auto" font-size="11px" font-weight="400"
-                                                            fill="#373d3f" class="apexcharts-text apexcharts-yaxis-label "
-                                                            style="font-family: Helvetica, Arial, sans-serif;">
-                                                            <tspan id="SvgjsTspan1445">90</tspan>
-                                                            <title>90</title>
-                                                        </text><text id="SvgjsText1447"
-                                                            font-family="Helvetica, Arial, sans-serif" x="20"
-                                                            y="186.29711962966917" text-anchor="end"
-                                                            dominant-baseline="auto" font-size="11px" font-weight="400"
-                                                            fill="#373d3f" class="apexcharts-text apexcharts-yaxis-label "
-                                                            style="font-family: Helvetica, Arial, sans-serif;">
-                                                            <tspan id="SvgjsTspan1448">60</tspan>
-                                                            <title>60</title>
-                                                        </text><text id="SvgjsText1450"
-                                                            font-family="Helvetica, Arial, sans-serif" x="20"
-                                                            y="237.89615950622556" text-anchor="end"
-                                                            dominant-baseline="auto" font-size="11px" font-weight="400"
-                                                            fill="#373d3f" class="apexcharts-text apexcharts-yaxis-label "
-                                                            style="font-family: Helvetica, Arial, sans-serif;">
-                                                            <tspan id="SvgjsTspan1451">30</tspan>
-                                                            <title>30</title>
-                                                        </text><text id="SvgjsText1453"
-                                                            font-family="Helvetica, Arial, sans-serif" x="20"
-                                                            y="289.49519938278195" text-anchor="end"
-                                                            dominant-baseline="auto" font-size="11px" font-weight="400"
-                                                            fill="#373d3f" class="apexcharts-text apexcharts-yaxis-label "
-                                                            style="font-family: Helvetica, Arial, sans-serif;">
-                                                            <tspan id="SvgjsTspan1454">0</tspan>
-                                                            <title>0</title>
-                                                        </text></g>
-                                                </g>
-                                                <g id="SvgjsG1370" class="apexcharts-annotations"></g>
-                                            </svg>
-                                            <div class="apexcharts-legend" style="max-height: 162.5px;"></div>
-                                            <div class="apexcharts-tooltip apexcharts-theme-light"
-                                                style="left: 402.604px; top: 200.796px;">
-                                                <div class="apexcharts-tooltip-title"
-                                                    style="font-family: Helvetica, Arial, sans-serif; font-size: 12px;">Oct
-                                                </div>
-                                                <div class="apexcharts-tooltip-series-group apexcharts-active"
-                                                    style="order: 1; display: flex;"><span
-                                                        class="apexcharts-tooltip-marker"
-                                                        style="background-color: rgb(103, 200, 255);"></span>
-                                                    <div class="apexcharts-tooltip-text"
-                                                        style="font-family: Helvetica, Arial, sans-serif; font-size: 12px;">
-                                                        <div class="apexcharts-tooltip-y-group"><span
-                                                                class="apexcharts-tooltip-text-y-label">Income:
-                                                            </span><span class="apexcharts-tooltip-text-y-value">35</span>
-                                                        </div>
-                                                        <div class="apexcharts-tooltip-goals-group"><span
-                                                                class="apexcharts-tooltip-text-goals-label"></span><span
-                                                                class="apexcharts-tooltip-text-goals-value"></span></div>
-                                                        <div class="apexcharts-tooltip-z-group"><span
-                                                                class="apexcharts-tooltip-text-z-label"></span><span
-                                                                class="apexcharts-tooltip-text-z-value"></span></div>
-                                                    </div>
-                                                </div>
-                                                <div class="apexcharts-tooltip-series-group apexcharts-active"
-                                                    style="order: 2; display: flex;"><span
-                                                        class="apexcharts-tooltip-marker"
-                                                        style="background-color: rgb(109, 129, 245);"></span>
-                                                    <div class="apexcharts-tooltip-text"
-                                                        style="font-family: Helvetica, Arial, sans-serif; font-size: 12px;">
-                                                        <div class="apexcharts-tooltip-y-group"><span
-                                                                class="apexcharts-tooltip-text-y-label">Expenses:
-                                                            </span><span class="apexcharts-tooltip-text-y-value">100</span>
-                                                        </div>
-                                                        <div class="apexcharts-tooltip-goals-group"><span
-                                                                class="apexcharts-tooltip-text-goals-label"></span><span
-                                                                class="apexcharts-tooltip-text-goals-value"></span></div>
-                                                        <div class="apexcharts-tooltip-z-group"><span
-                                                                class="apexcharts-tooltip-text-z-label"></span><span
-                                                                class="apexcharts-tooltip-text-z-value"></span></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="apexcharts-xaxistooltip apexcharts-xaxistooltip-bottom apexcharts-theme-light"
-                                                style="left: 516.116px; top: 289.995px;">
-                                                <div class="apexcharts-xaxistooltip-text"
-                                                    style="font-family: Helvetica, Arial, sans-serif; font-size: 12px; min-width: 18.2562px;">
-                                                    Oct</div>
-                                            </div>
-                                            <div
-                                                class="apexcharts-yaxistooltip apexcharts-yaxistooltip-0 apexcharts-yaxistooltip-left apexcharts-theme-light">
-                                                <div class="apexcharts-yaxistooltip-text"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!--end card-body-->
-                        </div><!--end card-->
-                    </div> <!--end col-->
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="row align-items-center">
+                                        <div class="col">                      
+                                            <h4 class="card-title">Tickets Status</h4>                      
+                                        </div><!--end col-->                                        
+                                    </div>  <!--end row-->                                  
+                                </div><!--end card-header-->
+                                <div class="card-body">                                                                 
+                                    <div class="">
+                                        <div id="Tickets_Status" class="apex-charts"></div>
+                                    </div>  
+                                </div><!--end card-body-->                                
+                            </div><!--end card-->   
+                        </div> <!--end col-->
                     <div class="col-lg-4">
                         <div class="card">
                             <div class="card-header">
@@ -684,6 +194,19 @@
                         </div><!--end card-->
                     </div><!--end col-->
                 </div><!--end row-->
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1506,8 +1029,8 @@
                     </div><!--end card-->
                 </div><!--end col-->
             </div><!--end row-->
-
-
+   
+ 
         </div>
         <!-- end page content -->
 

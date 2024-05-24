@@ -43,6 +43,7 @@
 
 
     <link href="{{ asset('assets-admin/css/style.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets-admin/libs/fullcalendar/main.min.css') }}" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -93,13 +94,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- vendor js -->
-    <script src="{{ asset('assets-admin/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+      <script src="{{ asset('assets-admin/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets-admin/libs/simplebar/simplebar.min.js') }}"></script>
     <script src="{{ asset('assets-admin/libs/feather-icons/feather.min.js') }}"></script>
 
     <script src="{{ asset('assets-admin/libs/apexcharts/apexcharts.min.js') }}"></script>
-    <script src="{{ asset('assets-admin/js/pages/analytics-index.init.js') }}"></script>
-
+   
+    <script src="{{ asset('assets-admin/js/pages/helpdesk-index.init.js') }}"></script>
    
     
     <script src="{{ asset('assets-admin/libs/litepicker/litepicker.js') }}"></script>
