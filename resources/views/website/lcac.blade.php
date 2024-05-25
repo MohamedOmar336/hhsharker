@@ -8,9 +8,8 @@
         <section class="container pt-2 pb-5">
             <div class="row align-items-center pb-5">
                 <div class="col-md-7 d-flex flex-column gap-5">                        
-                    <h2 class="mt-3 text-uppercase display-1 fw-bolder">
-                        Light Commercial air conditioner
-                    </h2>
+                    <x-section-header>Light Commercial air conditioner</x-section-header>
+
                     <div class="ms-3">
                         <x-arrow-button class="px-3">Contact Us</x-arrow-button>
                     </div>
@@ -48,10 +47,8 @@
         <section class="container py-5">
             <div class="text-center">
                 <x-tag class="align-self-center figure">LCAC</x-tag>
-            
-                <h1 class="align-self-center text-uppercase my-2 fw-bold display-1">
-                    Your Partner in Comfort and Efficiency
-                </h1>
+                
+                <x-section-header class="medium">Your Partner in Comfort and Efficiency</x-section-header>
             </div>
 
             <div class="d-flex flex-column gap-5 py-5">

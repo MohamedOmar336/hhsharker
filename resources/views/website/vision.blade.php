@@ -9,10 +9,8 @@
             <div class="row align-items-center pb-5">
                 <div class="col-md-6">
                     <x-tag class="figure">Values and vision</x-tag>
-                        
-                    <h2 class="mt-3 text-uppercase display-4 fw-bolder">
-                        Values and vision
-                    </h2>
+                    
+                    <x-section-header class="mt-3 medium">Values and vision</x-section-header>
                 </div>
                 <div class="col-md-6">
                     <p class="info-text">
@@ -37,10 +35,8 @@
             <div class="row align-items-center pb-5">
                 <div class="col-md-6">
                     <x-tag class="figure">Value</x-tag>
-                        
-                    <h2 class="mt-3 text-uppercase display-2 fw-bolder">
-                        H&h Shaker Value
-                    </h2>
+                    
+                    <x-section-header class="mt-3">H&H Shaker Value</x-section-header>
                 </div>
                 <div class="col-md-6">
                     <p class="info-text">
@@ -96,12 +92,8 @@
         <!-- faces -->
         <section id="faces" class="align-content-center bg-gradient-top py-5 text-center wrapper">
             <div class="container"> 
-                <h2 class="mt-3 text-uppercase display-4 fw-bolder">
-                    We are committed to help
-                </h2>
-                <h2 class="mt-3 text-uppercase display-4 fw-bolder">
-                    our customer
-                </h2>
+                <x-section-header class="medium">We are committed to help</x-section-header>
+                <x-section-header class="medium">our customer</x-section-header>
             </div>
         </section>
 
@@ -111,10 +103,8 @@
                 <div class="row align-items-center pb-5 gap-3">
                     <div class="col-md-4">
                         <x-tag class="figure">Vision</x-tag>
-                            
-                        <h2 class="mt-3 text-uppercase display-2 fw-bolder">
-                            H&h Shaker Vision
-                        </h2>
+                        
+                        <x-section-header class="medium">H&H Shaker Vision</x-section-header>
                     </div>
                     <div class="col-md-7">
                         <img src="{{ asset('assets-website/images/team-wide.jpg') }}" class="img-fluid rounded-5" alt="img">

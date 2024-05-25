@@ -4,7 +4,7 @@
 <div id="feature-wide" class="row">
     <div class="col-md-6 d-flex flex-column">
         <div>
-            <h1 class="text-uppercase font-bold display-1">{{ $title }}</h1>
+            <x-section-header class="small">{{ $title }}</x-section-header>
             <p class="description">{{ $description }}</p>
         </div>
 

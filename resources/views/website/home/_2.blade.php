@@ -3,9 +3,7 @@
         <div class="col-6">
             <x-tag class="figure">Quick Access</x-tag>
             
-            <h2 class="mt-3 text-uppercase display-6 fw-bolder">
-                OUR TRUSTED BRANDS
-            </h2>
+            <x-section-header class="mt-3 small">{{ __('OUR TRUSTED BRANDS') }}</x-section-header>
         </div>
         <div class="brands-container col-6 col-6 d-flex justify-content-between gap-3">
             <div class="align-items-center border d-flex justify-content-center px-4 py-3 rounded-5">

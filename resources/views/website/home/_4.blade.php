@@ -2,12 +2,9 @@
     <div class="container text-center mx-auto">
         <div>
             <x-tag class="figure">Best Selling Product</x-tag>
-            <h1 class="mt-2 display-3 text-uppercase fw-bold">
-                Our Best
-            </h1>
-            <h1 class="display-3 text-uppercase fw-bold">
-                Selling Product
-            </h1>
+            
+            <x-section-header class="mt-2">Our Best</x-section-header>
+            <x-section-header>Selling Product</x-section-header>
         </div>
 
         <div class="d-flex justify-content-around my-5">

@@ -1,14 +1,14 @@
 :root {
-    --main-color: #011d32;
+    --main-color: #1F2B5A;
     --secondary-color: #1F936E;
     --text-color: #fff;
     --gray-color: var();
 }
 
 /* --------------- General --------------- */
-* {
+/* * {
     font-family: 'SCHABO', sans-serif;
-}
+} */
 *::selection {
     background: var(--main-color);
     color: var(--text-color);
@@ -41,6 +41,25 @@
     color: #677487;
 }
 /* --------------- End General --------------- */
+
+/* --------------- Components - Section Header --------------- */
+.section-header {
+    font-family: 'SCHABO';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 120px;
+    line-height: 120%;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #121212;
+}
+.section-header.medium {
+    font-size: 100px;
+}
+.section-header.small {
+    font-size: 80px;
+}
+/* --------------- End Components - Section Header --------------- */
 
 /* --------------- Header navbar --------------- */
 .header ul.nav.nav-pills {
@@ -341,6 +360,22 @@ footer .end h1 {
 /* testimonials */
 .testimonial-card {
     background: #b1c1ff20;
+    width: 416px;
+    height: 373px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.testimonial-text {
+    font-family: 'SCHABO';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 200px;
+    line-height: 120%;
+    text-align: center;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #1F2B5A;
 }
 /* --------------- End Homepage --------------- */
 
@@ -487,6 +522,9 @@ footer .end h1 {
     -o-border-radius: 28px;
 }
 #vision .text-10y {
+    font-family: 'SCHABO';
+    font-style: normal;
+    font-weight: 400;
     color: white;
     font-size: 52px;
     font-weight: 400;
@@ -554,6 +592,12 @@ footer .end h1 {
 
 /* --------------- LCAC --------------- */
 #feature {
+    font-family: 'SCHABO';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: 0.02em;
     padding: 12px;
     width: 238px;
     height: 250px;
