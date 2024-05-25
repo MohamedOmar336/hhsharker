@@ -1,12 +1,9 @@
 <section id="tabs" class="container-lg py-5">
     <div class="text-center mx-auto">
         <x-tag class="figure">Quick Access</x-tag>
-        <h1 class="mt-2 text-uppercase fw-bold">
-            Find Your Perfect Solution
-        </h1>
-        <h1 class="text-uppercase fw-bold">
-            Explore Our Wide Range of Products.
-        </h1>
+
+        <x-section-header class="mt-2 small">{{ __('Find Your Perfect Solution') }}</x-section-header>
+        <x-section-header class="small">{{ __('Explore Our Wide Range of Products.') }}</x-section-header>
     </div>
 
     <ul class="nav nav-pills mx-auto mt-4" id="pills-tab" role="tablist">

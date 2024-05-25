@@ -3,9 +3,7 @@
         <div class="col-4">
             <x-tag class="d-inline-block">Best Selling Product</x-tag>
 
-            <h1 class="my-5 text-uppercase fw-bold display-5">
-                Our Best Commercial Devices
-            </h1>
+            <x-section-header class="my-5 small">Our Best Commercial Devices</x-section-header>
 
             <x-arrow-button>See All Products</x-arrow-button>
         </div>

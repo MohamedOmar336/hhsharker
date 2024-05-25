@@ -4,9 +4,7 @@
             <header class="d-flex flex-column w-50">
                 <x-tag>Testimonials</x-tag>
 
-                <h1 class="fw-bold text-uppercase display-3">
-                    What they Say about us
-                </h1>
+                <x-section-header>What they Say about us</x-section-header>
             </header>
             <div class="d-flex flex-column ml-3 w-50 justify-content-around">
                 <div class="d-flex flex-column flex-grow">
@@ -20,14 +18,11 @@
             </div>
         </div>
     </div>
-    <div class="d-flex z-10 gap-3 mt-5 font-medium text-dark ">
+    <div class="d-flex z-10 justify-content-between">
         <div class="d-flex flex-column w-33">
             <x-testimonial-card title='Amazing Product!' description='"Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed."' name='John David'>
                 <img src="{{ asset('assets-website/images/face.jpg') }}" alt="John David" class="rounded-circle w-25">
             </x-testimonial-card>
-        </div>
-        <div class="d-flex flex-column w-33">
-            
         </div>
         
         <div class="d-flex flex-column w-33">
@@ -37,11 +32,11 @@
         </div>
     </div>
     
-    <h2 class="text-center text-uppercase display-1 fw-bolder">
+    <div class="testimonial-text">
         Testimonials
-    </h2>
+    </div>
     
-    <div class="d-flex gap-3">
+    <div class="d-flex justify-content-between">
         <div class="d-flex flex-column w-33">
             <x-testimonial-card title='Amazing Product!' description='"Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed."' name='John David'>
                 <img src="{{ asset('assets-website/images/face.jpg') }}" alt="John David" class="rounded-circle w-25">

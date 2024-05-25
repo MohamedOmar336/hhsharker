@@ -119,3 +119,4 @@ Route::view('/', 'website.home.index');
 Route::view('/about', 'website.about')->name('about');
 Route::view('/founders', 'website.founders')->name('founders');
 Route::view('/vision', 'website.vision')->name('vision');
+Route::view('/lcac', 'website.lcac')->name('lcac');

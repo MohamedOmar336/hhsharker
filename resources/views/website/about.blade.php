@@ -13,9 +13,7 @@
                 <div class="left col-md-6 text-md-start d-flex flex-column">
                     <x-tag class="figure">About Us</x-tag>
                     
-                    <h2 class="mt-3 text-uppercase display-1 fw-bolder">
-                        who we are?
-                    </h2>
+                    <x-section-header class="my-3">who we are?</x-section-header>
                     <p class="info-text mt-3">
                         HH Shaker Company is one of the leading companies in the field of air conditioners and home appliances in the Kingdom of Saudi Arabia.
                     </p>
@@ -56,9 +54,8 @@
         <section class="container py-5">
             <div class="row justify-content-center align-items-center mx-3">
                 <div class="left col-md-6 text-md-start d-flex flex-column">
-                    <h2 class="mt-3 text-uppercase display-2 fw-bolder">
-                        100% Satisfied customer
-                    </h2>
+                    <x-section-header secondary="true" class="mt-3">100% Satisfied customer</x-section-header>
+                    
                     <p class="info-text mt-3">
                         We offer a wide variety of home appliances, including air conditioners, refrigerators, washing machines, televisions, and others. In addition to delivery, installation and maintenance services.
                     </p>

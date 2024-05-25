@@ -8,10 +8,8 @@
         <section class="container py-5">
             <div class="text-center">
                 <x-tag class="figure">Founders</x-tag>
-                    
-                <h2 class="mt-3 text-uppercase display-1 fw-bolder">
-                    Company founders
-                </h2>
+                
+                <x-section-header class="mt-3">Company founders</x-section-header>
             </div>
             <div class="row justify-content-center align-items-center mx-3">
                 <x-founder-card name="Hassan Shaker" title="CEO H&H Shaker">
@@ -30,8 +28,9 @@
         <section class="container py-5">
             <div class="row">
                 <div class="col-md-4 col-12">
-                    <h2 class="display-2 fw-bolder text-uppercase lh-base">Founders</h2>
+                    <x-section-header>Founders</x-section-header>
                 </div>
+                
                 <div class="col-md-8 col-12 essay">
                     <p class="info-text">
                         Hussein & Al-Hassan G. Shaker Bros. Modern Trading Co. LTD., was established as a true representation of a long history and a distinguished reputation held by the Shaker family. Since its establishment in 1950 by Sheikh Ibrahim Shaker.

@@ -1,5 +1,5 @@
 <section id="intro" class="container-lg mb-5">
-    <div class="display-4 text-center text-uppercase fw-bolder my-5">Commercial Air Conditioners</div>
+    <x-section-header class="text-center my-4">Commercial Air Conditioners</x-section-header>
 
     <div class="row justify-content-center align-items-center mx-3">
         <div class="left col-md-6 text-md-start d-flex flex-column">
