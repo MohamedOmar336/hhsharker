@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\TicketHistoryController;
 use App\Http\Controllers\Admin\AppointmentController;
 use App\Http\Controllers\Admin\CalendarController;
 use App\Http\Controllers\Admin\ActivityLogController;
+use App\Http\Controllers\Admin\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -107,6 +108,9 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar.index');
 
         Route::get('/activitylogs', [ActivityLogController::class, 'index'])->name('activitylogs.index');
+
+        Route::patch('/notifications/{id}/read', [NotificationController::class, 'markAsRead'])->name('notifications.markAsRead');
+
     });
 });
 

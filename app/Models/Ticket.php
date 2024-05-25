@@ -73,6 +73,7 @@ class Ticket extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-        ->setDescriptionForEvent(fn(string $eventName) => isset(auth()->guard('admin')->user()->name) ? auth()->guard('admin')->user()->name : 'first action');
+            ->logOnly(['name', 'text'])
+            ->setDescriptionForEvent(fn(string $eventName) => "This model has been {$eventName}");
     }
 }

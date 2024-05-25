@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Notification;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Room;
 use App\Models\RoomMessage;
@@ -29,6 +30,14 @@ class ChatController extends Controller
         $room = Room::create([
             'admin_id_one' => $userId,
             'admin_id_two' => $otherUserId,
+        ]);
+
+        // Create a new notification without specifying the id
+        Notification::create([
+            'type' => 'App\Notifications\NewChatMessage',
+            'data' => ['message' => 'new chat has been created', 'link' => route('chat.index', ['user' => $otherUserId])],
+            'notifiable_id' => $otherUserId, // Replace with the appropriate notifiable ID
+            'notifiable_type' => 'App\Models\User', // Replace with the appropriate notifiable type
         ]);
 
         // You can return the new room ID in the response
@@ -68,5 +77,6 @@ class ChatController extends Controller
             ]);
         }
     }
+
 
 }
