@@ -3,10 +3,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory , LogsActivity;
 
     protected $fillable = [
         'name_ar',
@@ -34,4 +36,13 @@ class Product extends Model
         return $this->belongsToMany(Category::class);
     }
 
+    /**
+     * Activity Log
+     */
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['name', 'text'])
+            ->setDescriptionForEvent(fn(string $eventName) => "This model has been {$eventName}");
+    }
 }

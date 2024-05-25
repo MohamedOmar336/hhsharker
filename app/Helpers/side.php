@@ -154,8 +154,19 @@ return [
             ],
             [
                 'title' => __('general.actions.new'),
-                'route' => 'ticket-priorities.create',
+                'route' => 'ticket-statuses.create',
             ],
+        ],
+    ],[
+        'title' => __('general.side.logs'),
+        'link' => 'sidebarLogs',
+        'icon' => 'ti ti-book',
+        'route' => 'activitylogs.index',
+        'sub_menu' => [
+            [
+                'title' => __('general.side.logs-list'),
+                'route' => 'activitylogs.index',
+            ]
         ],
     ]
 ];

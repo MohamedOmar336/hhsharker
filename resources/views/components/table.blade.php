@@ -13,10 +13,12 @@
                 </table>
             </div>
             <div class="row">
-                <div class="col">
-                    <button class="btn btn-outline-light btn-sm px-4" id="bulk-update-btn">Bulk Update</button>
-                    {{ $createButton }}
-                </div>
+                @if(isset($createButton))
+                    <div class="col">
+                        <button class="btn btn-outline-light btn-sm px-4" id="bulk-update-btn">Bulk Update</button>
+                        {{ $createButton }}
+                    </div>
+                @endif
                 {{-- <div class="col-auto">
                     {{ $pagination }}
                 </div> --}}
