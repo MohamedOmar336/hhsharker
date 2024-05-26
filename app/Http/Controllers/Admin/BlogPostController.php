@@ -47,6 +47,8 @@ class BlogPostController extends Controller
         $validatedData = $request->validate([
             'title_en' => 'required|string|max:255',
             'title_ar' => 'required|string|max:255',
+            'content_en' => 'required|string',
+            'content_ar' => 'required|string',
             'author_id' => 'required|exists:users,id',
             'status' => 'required|in:draft,published',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -62,7 +64,7 @@ class BlogPostController extends Controller
         foreach ($request->input('tags') as $tagId) {
             BlogPostTag::create([
                 'blog_post_id' => $post->id,
-                'tag_id' => (int)$tagId,
+                'tag_id' => (int) $tagId,
             ]);
         }
 
@@ -96,8 +98,8 @@ class BlogPostController extends Controller
         $request->validate([
             'title_en' => 'required|string|max:255',
             'title_ar' => 'required|string|max:255',
-            // 'content_en' => 'required|string',
-            // 'content_ar' => 'required|string',
+            'content_en' => 'required|string',
+            'content_ar' => 'required|string',
             'author_id' => 'required|exists:users,id',
             'status' => 'required|in:draft,published',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',

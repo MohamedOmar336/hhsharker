@@ -68,14 +68,13 @@
                                                 <td scope="col">{{ $record->is_available ? 'Yes' : 'No' }}</td>
                                                 <td scope="col">
                                                     <a href="{{ route('products.edit', $record->id) }}"
-                                                        class="btn btn-circle btn-sm"><span class="fa fa-edit"></a>
+                                                        class="btn btn-sm btn-primary"><span class="fa fa-edit">Edit</a>
                                                     <form action="{{ route('products.destroy', $record->id) }}"
                                                         method="POST" style="display: inline;">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-circle btn-sm"
-                                                            onclick="return confirm('Are you sure you want to delete this product?')"><span
-                                                                class="fa la-trash"></button>
+                                                        <button type="submit" class="btn btn-sm btn-danger"
+                                                            onclick="return confirm('Are you sure you want to delete this product?')">Delete</button>
                                                     </form>
                                                 </td>
                                             </tr>

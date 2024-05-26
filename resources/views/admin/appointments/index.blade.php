@@ -60,12 +60,12 @@
                                                 <td>{{ $appointment->status }}</td>
                                                 <td>{{ $appointment->notes }}</td>
                                                 <td>
-                                                    <a href="{{ route('appointments.show', $appointment) }}" class="btn btn-info">View</a>
-                                                    <a href="{{ route('appointments.edit', $appointment) }}" class="btn btn-warning">Edit</a>
+                                                    <a href="{{ route('appointments.show', $appointment) }}" class="btn btn-sm btn-info">View</a>
+                                                    <a href="{{ route('appointments.edit', $appointment) }}" class="btn btn-sm btn-primary">Edit</a>
                                                     <form action="{{ route('appointments.destroy', $appointment) }}" method="POST" style="display:inline-block;">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                                                     </form>
                                                 </td>
                                             </tr>

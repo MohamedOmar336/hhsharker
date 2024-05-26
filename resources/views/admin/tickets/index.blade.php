@@ -49,14 +49,14 @@
                                                 <td>{{ $ticket->createdBy->user_name }}</td>
                                                 <td>
                                                     <a href="{{ route('ticket_histories.show_by_ticket', $ticket->TicketID) }}"
-                                                        class="btn btn-info">History</a>
+                                                        class="btn btn-sm btn-info">History</a>
                                                     <a href="{{ route('tickets.edit', $ticket->TicketID) }}"
-                                                        class="btn btn-warning">Edit</a>
+                                                        class="btn btn-sm btn-primary">Edit</a>
                                                     <form action="{{ route('tickets.destroy', $ticket->TicketID) }}"
                                                         method="POST" style="display:inline-block;">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
 
                                                 </td>
                                             </tr>
