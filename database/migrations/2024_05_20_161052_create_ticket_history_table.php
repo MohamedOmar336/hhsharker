@@ -18,7 +18,8 @@ class CreateTicketHistoryTable extends Migration
             $table->foreignId('TicketID')->constrained('tickets')->onDelete('cascade');
             $table->foreignId('ChangedBy')->constrained('users')->onDelete('cascade'); // assuming 'users' table exists
             $table->text('ChangeDescription')->nullable();
-            $table->timestamp('ChangedAt')->useCurrent();
+            $table->date('ChangedAt')->nullable();
+            $table->timestamps();
         });
     }
 

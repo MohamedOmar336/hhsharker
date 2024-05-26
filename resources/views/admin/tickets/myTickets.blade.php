@@ -42,17 +42,25 @@
                                     <tbody>
                                         @foreach ($tickets as $ticket)
                                             <tr>
-                                                <td>{{ $ticket->TicketID }}</td>
+                                                <td>{{ $ticket->id }}</td>
                                                 <td>{{ $ticket->Title }}</td>
                                                 <td>{{ $ticket->priority->Name_en }}</td>
                                                 <td>{{ $ticket->status->Name_en }}</td>
                                                 <td>{{ $ticket->assignedTo->user_name }}</td>
                                                 <td>
+<<<<<<< HEAD
                                                     <a href="{{ route('ticket_histories.show_by_ticket', $ticket->TicketID) }}"
                                                         class="btn btn-sm btn-info">History</a>
                                                     <a href="{{ route('tickets.edit', $ticket->TicketID) }}"
                                                         class="btn btn-sm btn-primary">Edit</a>
                                                     <form action="{{ route('tickets.destroy', $ticket->TicketID) }}"
+=======
+                                                    <a href="{{ route('ticket_histories.show_by_ticket', $ticket->id) }}"
+                                                        class="btn btn-info">History</a>
+                                                    <a href="{{ route('tickets.edit', $ticket->id) }}"
+                                                        class="btn btn-warning">Edit</a>
+                                                    <form action="{{ route('tickets.destroy', $ticket->id) }}"
+>>>>>>> 998f35fc1fae53a4a72d4a33e6cf7b9c88c32131
                                                         method="POST" style="display:inline-block;">
                                                         @csrf
                                                         @method('DELETE')

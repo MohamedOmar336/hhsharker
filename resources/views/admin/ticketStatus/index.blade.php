@@ -42,8 +42,8 @@
                                                 <td>{{ $status->Description_ar }}</td>
                                                 <td>{{ $status->Description_en }}</td>
                                                 <td>
-                                                    <a href="{{ route('ticket-statuses.edit', $status->StatusID) }}" class="btn btn-sm btn-primary">{{ __('general.actions.edit') }}</a>
-                                                    <form action="{{ route('ticket-statuses.destroy', $status->StatusID) }}" method="POST" style="display:inline-block;">
+                                                    <a href="{{ route('ticket-statuses.edit', $status->id) }}" class="btn btn-sm btn-primary">{{ __('general.actions.edit') }}</a>
+                                                    <form action="{{ route('ticket-statuses.destroy', $status->id) }}" method="POST" style="display:inline-block;">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('{{ __('general.confirm_delete') }}')">{{ __('general.actions.delete') }}</button>

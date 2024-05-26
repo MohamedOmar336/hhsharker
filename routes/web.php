@@ -65,26 +65,32 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('/contacts', ContactController::class);
 
         Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
+
         Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
         Route::get('/profile/change-password', [ProfileController::class, 'showChangePasswordForm'])->name('profile.change_password_form');
+
         Route::post('/profile/change-password', [ProfileController::class, 'changePassword'])->name('profile.change_password');
 
         Route::resource('/roles', RolesController::class);
 
+        Route::resource('/tickets', TicketController::class);
 
         Route::Resource('/ticket-priorities', TicketPriorityController::class);
+
         Route::Resource('/ticket-statuses', TicketStatusController::class);
+
         Route::Resource('/ticket-histories', TicketHistoryController::class);
-        Route::resource('/tickets', TicketController::class);
+
         Route::get('/my-tickets', [TicketController::class, 'myTickets'])->name('tickets.my');
+
         Route::get('/ticket_histories/ticket/{ticketId}', [TicketHistoryController::class, 'showByTicketId'])->name('ticket_histories.show_by_ticket');
+
         Route::resource('/ticket_histories', TicketHistoryController::class);
 
         Route::resource('/appointments', AppointmentController::class);
+
         Route::get('/my-appointments', [AppointmentController::class, 'myAppointments'])->name('appointments.myAppointments');
-
-
 
         Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar.index');
 

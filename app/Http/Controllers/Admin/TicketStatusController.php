@@ -36,7 +36,7 @@ class TicketStatusController extends Controller
         $status = TicketStatusSetting::create($request->all());
 
         // Redirect to the index view with a success message
-        return redirect()->route('admin.ticketstatus.index')
+        return redirect()->route('ticket-statuses.index')
                          ->with('success', 'Ticket Status created successfully.');
     }
 
@@ -71,7 +71,7 @@ class TicketStatusController extends Controller
         $status->update($request->all());
 
         // Redirect to the show view with a success message
-        return redirect()->route('admin.ticket-statuses.show', $status->id)
+        return redirect()->route('ticket-statuses.index')
                          ->with('success', 'Ticket Status updated successfully.');
     }
 
@@ -82,7 +82,6 @@ class TicketStatusController extends Controller
         $status->delete();
 
         // Redirect to the index view with a success message
-        return redirect()->route('admin.ticket-statuses.index')
-                         ->with('success', 'Ticket Status deleted successfully.');
+        return redirect()->route('ticket-statuses.index')->with('success', 'Ticket Status deleted successfully.');
     }
 }

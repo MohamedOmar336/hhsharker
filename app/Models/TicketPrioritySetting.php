@@ -8,9 +8,10 @@ class TicketPrioritySetting extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'PriorityID';
+    protected $primaryKey = 'id';
 
     protected $fillable = [
+        'id',
         'Name_ar',
         'Name_en',
         'Status',

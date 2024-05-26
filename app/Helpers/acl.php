@@ -145,5 +145,25 @@ return [
         'name' => 'app.acl.delete',
         'route' => 'contacts.delete',
         'sort' => 3,
+    ], [
+        'key' => 'tickets',
+        'name' => 'app.users.tickets.title',
+        'route' => 'tickets.index',
+        'sort' => 5,
+    ], [
+        'key' => 'tickets.create',
+        'name' => 'app.acl.create',
+        'route' => 'tickets.create',
+        'sort' => 1,
+    ], [
+        'key' => 'tickets.edit',
+        'name' => 'app.acl.edit',
+        'route' => 'tickets.edit',
+        'sort' => 2,
+    ], [
+        'key' => 'tickets.delete',
+        'name' => 'app.acl.delete',
+        'route' => 'tickets.delete',
+        'sort' => 3,
     ]
 ];

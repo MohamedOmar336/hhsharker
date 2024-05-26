@@ -35,41 +35,41 @@
                     <div class="card">
                         <div class="card-body content-area">
 
-                            <form action="{{ route('ticket-priorities.update', $priority->PriorityID) }}" method="POST">
+                            <form action="{{ route('ticket-priorities.update', $priority->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')
                                 <div class="mb-3">
-                                    <label for="name_en" class="form-label">{{ __('Priority Name (English)') }}</label>
-                                    <input id="name_en" type="text"
-                                        class="form-control @error('name_en') is-invalid @enderror" name="name_en"
-                                        value="{{ old('name_en', $priority->Name_en) }}" required autofocus>
-                                    @error('name_en')
+                                    <label for="Name_en" class="form-label">{{ __('Priority Name (English)') }}</label>
+                                    <input id="Name_en" type="text"
+                                        class="form-control @error('Name_en') is-invalid @enderror" name="Name_en"
+                                        value="{{ old('Name_en', $priority->Name_en) }}" required autofocus>
+                                    @error('Name_en')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="name_ar" class="form-label">{{ __('Priority Name (Arabic)') }}</label>
-                                    <input id="name_ar" type="text"
-                                        class="form-control @error('name_ar') is-invalid @enderror" name="name_ar"
-                                        value="{{ old('name_ar', $priority->Name_ar) }}" required>
-                                    @error('name_ar')
+                                    <label for="Name_ar" class="form-label">{{ __('Priority Name (Arabic)') }}</label>
+                                    <input id="Name_ar" type="text"
+                                        class="form-control @error('Name_ar') is-invalid @enderror" name="Name_ar"
+                                        value="{{ old('Name_ar', $priority->Name_ar) }}" required>
+                                    @error('Name_ar')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="status" class="form-label">{{ __('Status') }}</label>
-                                    <select id="status" class="form-control @error('status') is-invalid @enderror"
-                                        name="status" required>
+                                    <label for="Status" class="form-label">{{ __('Status') }}</label>
+                                    <select id="Status" class="form-control @error('Status') is-invalid @enderror"
+                                        name="Status" required>
                                         <option value="Active"
-                                            {{ old('status', $priority->Status) == 'Active' ? 'selected' : '' }}>
+                                            {{ old('Status', $priority->Status) == 'Active' ? 'selected' : '' }}>
                                             {{ __('Active') }}</option>
                                         <option value="Inactive"
-                                            {{ old('status', $priority->Status) == 'Inactive' ? 'selected' : '' }}>
+                                            {{ old('Status', $priority->Status) == 'Inactive' ? 'selected' : '' }}>
                                             {{ __('Inactive') }}</option>
                                     </select>
-                                    @error('status')
+                                    @error('Status')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>

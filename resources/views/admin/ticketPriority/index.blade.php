@@ -43,8 +43,8 @@
                                                 <td>{{ $priority->Name_en }}</td>
                                                 <td>{{ $priority->Status }}</td>
                                                 <td>
-                                                    <a href="{{ route('ticket-priorities.edit', $priority->PriorityID) }}" class="btn btn-sm btn-primary">{{ __('general.actions.edit') }}</a>
-                                                    <form action="{{ route('ticket-priorities.destroy', $priority->PriorityID) }}" method="POST" style="display:inline-block;">
+                                                    <a href="{{ route('ticket-priorities.edit', $priority->id) }}" class="btn btn-sm btn-primary">{{ __('general.actions.edit') }}</a>
+                                                    <form action="{{ route('ticket-priorities.destroy', $priority->id) }}" method="POST" style="display:inline-block;">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('{{ __('general.confirm_delete') }}')">{{ __('general.actions.delete') }}</button>
