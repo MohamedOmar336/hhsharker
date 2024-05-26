@@ -11,7 +11,7 @@ class TicketPriorityController extends Controller
     public function index()
     {
         // Retrieve all TicketPriorities
-        $priorities = TicketPrioritySetting::all();
+        $priorities = TicketPrioritySetting::latest()->paginate(EnumsSettings::Paginate);
         // Return a view with the data
         return view('admin.ticketPriority.index', compact('priorities'));
     }

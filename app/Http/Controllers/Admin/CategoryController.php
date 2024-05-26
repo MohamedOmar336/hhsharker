@@ -14,13 +14,23 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        // Retrieve all categories from the database
-        $records = Category::latest()->paginate(EnumsSettings::Paginate);
-        // Return the view with categories data
+        $query = Category::query();
+    
+        if ($request->has('search')) {
+            $searchTerm = $request->search;
+            $query->where('name_ar', 'LIKE', "%{$searchTerm}%")
+                  ->orWhere('name_en', 'LIKE', "%{$searchTerm}%")
+                  ->orWhere('slug', 'LIKE', "%{$searchTerm}%")
+                  ->orWhere('id_path', 'LIKE', "%{$searchTerm}%");
+        }
+    
+        $records = $query->latest()->paginate(EnumsSettings::Paginate);
+    
         return view('admin.categories.index', compact('records'));
     }
+    
 
     /**
      * Show the form for creating a new resource.

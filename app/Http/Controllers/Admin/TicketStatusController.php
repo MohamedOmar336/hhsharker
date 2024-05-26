@@ -11,7 +11,7 @@ class TicketStatusController extends Controller
     public function index()
     {
         // Retrieve all TicketStatuses
-        $statuses = TicketStatusSetting::all();
+        $statuses = TicketStatusSetting::latest()->paginate(EnumsSettings::Paginate);
         // Return a view with the data
         return view('admin.ticketstatus.index', compact('statuses'));
     }

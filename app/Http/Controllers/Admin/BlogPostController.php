@@ -18,11 +18,22 @@ class BlogPostController extends Controller
      *
      * @return \Illuminate\Contracts\View\View
      */
-    public function index()
-    {
-        $records = BlogPost::latest()->paginate(EnumsSettings::Paginate);
-        return view('admin.blogposts.index', compact('records'));
+    public function index(Request $request)
+{
+    $query = BlogPost::query();
+
+    if ($request->has('search')) {
+        $searchTerm = $request->search;
+        $query->where('title_en', 'LIKE', "%{$searchTerm}%")
+              ->orWhere('title_ar', 'LIKE', "%{$searchTerm}%")
+              ->orWhere('content_en', 'LIKE', "%{$searchTerm}%")
+              ->orWhere('content_ar', 'LIKE', "%{$searchTerm}%");
     }
+
+    $records = $query->latest()->paginate(EnumsSettings::Paginate);
+
+    return view('admin.blogposts.index', compact('records'));
+}
 
     /**
      * Show the form for creating a new blog post.
@@ -32,7 +43,7 @@ class BlogPostController extends Controller
     public function create()
     {
         $authors = User::all();
-        $tags = Tag::all();
+        $tags = Tag::latest()->paginate(EnumsSettings::Paginate);;
         return view('admin.blogposts.create', compact('authors', 'tags'));
     }
 
