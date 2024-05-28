@@ -23,11 +23,11 @@
                     class="btn btn-secondary"><span class="fa fa-backward"></a>
                        <h4 class="page-title">Add Product</h4>
                 </div>
-                       
-                       
+
+
                     </div><!--end page-title-box-->
                 </div><!--end col-->
-               
+
             </div>
             <!-- end page title end breadcrumb -->
             <div class="row">
@@ -74,7 +74,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="description_en" class="form-label">{{ __('general.attributes.description_ar') }}</label>
+                                    <label for="description_en" class="form-label">{{ __('general.attributes.description_en') }}</label>
                                     <textarea id="description_en" class="form-control @error('description_en') is-invalid @enderror" name="description_en"
                                         required autocomplete="description_en">{{ old('description_en') }}</textarea>
                                     @error('description_en')

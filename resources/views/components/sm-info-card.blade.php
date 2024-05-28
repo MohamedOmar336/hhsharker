@@ -1,7 +1,7 @@
-@props(['main', 'sub'])
+@props(['main', 'sub', 'bg_transparent' => false])
 
 
-<div class="border d-flex flex-column info-card justify-content-center m-auto rounded-5 text-center">
+<div class="{{ $bg_transparent ? 'info' : 'border d-flex flex-column info-card justify-content-center m-auto rounded-5 text-center'}}">
     <p class="fw-bolder title">
         {{ $main }}
     </p>

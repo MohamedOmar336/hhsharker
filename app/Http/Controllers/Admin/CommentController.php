@@ -11,8 +11,8 @@ class CommentController extends Controller
 {
     public function index()
     {
-        $comments = Comment::with('post')->get();
-        return view('admin.comments.index', compact('comments'));
+        $records = Comment::with('post')->get();
+        return view('admin.comments.index', compact('records'));
     }
 
     public function create()

@@ -26,9 +26,8 @@ class ContactController extends Controller
                   ->orWhere('segment', 'LIKE', "%{$searchTerm}%");
         }
     
-        $contacts = $query->latest()->paginate(EnumsSettings::Paginate);
-    
-        return view('admin.contacts.index', compact('contacts'));
+        $records = $query->latest()->paginate(500);
+        return view('admin.contacts.index', compact('records'));
     }
     
 

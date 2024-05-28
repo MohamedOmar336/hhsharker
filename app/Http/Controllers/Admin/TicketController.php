@@ -11,16 +11,29 @@ use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Notification;
 
 class TicketController extends Controller
 {
     // Display all tickets
-    public function index()
-    {
+    public function index(Request $request)
+{
+    $query = Ticket::with('priority', 'status', 'assignedTo', 'createdBy');
 
-        $tickets = Ticket::with('priority', 'status', 'assignedTo', 'createdBy')->get();
-        return view('admin.tickets.index', compact('tickets'));
+    if ($request->has('search')) {
+        $search = $request->input('search');
+        $query->where('title', 'LIKE', "%{$search}%")
+              ->orWhere('description', 'LIKE', "%{$search}%")
+              ->orWhere('priority', 'LIKE', "%{$search}%")
+              ->orWhere('status', 'LIKE', "%{$search}%")
+              ->orWhere('assignedTo', 'LIKE', "%{$search}%")
+              ->orWhere('createdBy', 'LIKE', "%{$search}%");
     }
+
+    $records = $query->paginate(500);
+
+    return view('admin.tickets.index', compact('records'));
+}
 
     // Display form for creating a new ticket
     public function create()
@@ -57,7 +70,13 @@ class TicketController extends Controller
             'ChangeDescription' => $request->Description,
             'ChangedAt' => now()
         ]);
-
+        // Create a new notification without specifying the id
+        Notification::create([
+            'type' => 'App\Models\Ticket',
+            'data' => ['message' => 'new ticket has been created', 'link' => route('tickets.my')],
+            'notifiable_id' => $request->AssignedTo, // Replace with the appropriate notifiable ID
+            'notifiable_type' => 'App\Models\User', // Replace with the appropriate notifiable type
+        ]);
 
         return redirect()->route('tickets.index')->with('success', 'Ticket created successfully.');
     }
@@ -96,6 +115,14 @@ class TicketController extends Controller
             'ChangedBy' => $ticket->CreatedBy,
             'ChangeDescription' => $request->Description,
             'ChangedAt' => now()
+        ]);
+
+        // Create a new notification without specifying the id
+        Notification::create([
+            'type' => 'App\Models\Ticket',
+            'data' => ['message' => 'ticket has been updated', 'link' => route('tickets.my')],
+            'notifiable_id' => $request->AssignedTo, // Replace with the appropriate notifiable ID
+            'notifiable_type' => 'App\Models\User', // Replace with the appropriate notifiable type
         ]);
 
         return redirect()->route('tickets.index')->with('success', 'Ticket updated successfully.');

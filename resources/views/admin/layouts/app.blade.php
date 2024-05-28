@@ -15,24 +15,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <link href="{{ asset('assets-admin/libs/litepicker/css/litepicker.css') }}" rel="stylesheet" type="text/css" />
-
-
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css">
-    <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css">
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('assets-admin/images/favicon.ico') }}">
-
-
+    <link rel="shortcut icon" href="{{ asset('assets-admin/images/IMG_1465.png') }}">
     <link href="{{ asset('assets-admin/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets-admin/css/admin.css') }}" rel="stylesheet" type="text/css" />
-
-
     @if (app()->isLocale('ar'))
         <link href="{{ asset('assets-admin/css/app-rtl.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('assets-admin/css/bootstrap-rtl.min.css') }}" rel="stylesheet" type="text/css" />
@@ -40,8 +29,6 @@
         <link href="{{ asset('assets-admin/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('assets-admin/css/app.min.css') }}" rel="stylesheet" type="text/css" />
     @endif
-
-
     <link href="{{ asset('assets-admin/css/style.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets-admin/libs/fullcalendar/main.min.css') }}" rel="stylesheet" type="text/css" />
 
@@ -92,6 +79,11 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
     <!-- vendor js -->
       <script src="{{ asset('assets-admin/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -101,8 +93,6 @@
     <script src="{{ asset('assets-admin/libs/apexcharts/apexcharts.min.js') }}"></script>
    
     <script src="{{ asset('assets-admin/js/pages/helpdesk-index.init.js') }}"></script>
-   
-    
     <script src="{{ asset('assets-admin/libs/litepicker/litepicker.js') }}"></script>
     <script src="{{ asset('assets-admin/js/pages/projects-index.init.js') }}"></script>
 
@@ -120,6 +110,7 @@
     @stack('scripts')
 
     <script>
+        // Initialize Firebase
         firebase.initializeApp({
             apiKey: "AIzaSyDXrOKuqnjDvWm8IZ2r3wM8ZY_fG_QamOg",
             authDomain: "hhshaker-282b0.firebaseapp.com",
@@ -129,11 +120,13 @@
             appId: "1:567064391154:web:40574f6824350b17764f6b",
             measurementId: "G-N2VKVTGWMX"
         });
+
         // Retrieve Firebase Messaging object.
         const messaging = firebase.messaging();
 
         // Get a reference to the database service
         const database = firebase.database();
+
         // Register your service worker
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('{{ asset('firebase-messaging-sw.js') }}')
@@ -146,11 +139,12 @@
                     console.error('Service worker registration failed:', error);
                 });
         }
+
         // Handle incoming messages
         messaging.onMessage((payload) => {
             console.log('Message received:', payload);
             setTimeout(function() {
-                //newOrderNotification(payload);
+                // newOrderNotification(payload);
             }, 1000);
         });
 
@@ -163,27 +157,67 @@
                     // Inside your web page script
                     navigator.serviceWorker.onmessage = function(event) {
                         console.log('Received a message from the service worker:', event.data);
-                        //window.location.href = event.data.notification.click_action;
+                        // window.location.href = event.data.notification.click_action;
                     };
+
                     // Get registration token
                     messaging.getToken({
                         vapidKey: 'BEvsO2ckiVb_ZqmqRXOUl1hOqlpFVVMnX1s1tIZsQ8btPsvm9iPoFFFErpU4VaZO9eMiJzs4dEixMnyM-jg3PnI'
                     }).then((currentToken) => {
-                        console.log(currentToken);
-                        // if (currentToken) {
-                        //     sendTokenToServer(currentToken);
-                        // } else {
-                        //     console.log('No registration token available.');
-                        // }
+                        if (currentToken) {
+                            console.log('Registration token:', currentToken);
+                            console.log( currentToken);
+
+                            // Send token to server or perform any action with the token
+                        } else {
+                            console.log('No registration token available.');
+                        }
                     }).catch((error) => {
                         console.error('Error getting registration token:', error);
                     });
                 } else {
                     console.log('Unable to get permission to notify.');
                 }
+            }).catch((error) => {
+                console.error('Error requesting permission:', error);
             });
         }
+
+        function listenForMessages(chatId) {
+            firebase.database().ref('chats/' + chatId).on('child_added', function(snapshot) {
+                const messageData = snapshot.val();
+                displayMessage(messageData);
+            });
+        }
+
+        function displayMessage(messageData) {
+            const messageElement = document.createElement('div');
+            messageElement.textContent = messageData.sender + ': ' + messageData.message;
+            document.getElementById('messages').appendChild(messageElement);
+        }
+
+        function sendMessage(chatId, senderId, message) {
+            firebase.database().ref('chats/' + chatId).push({
+                senderId: senderId,
+                message: message,
+                timestamp: firebase.database.ServerValue.TIMESTAMP
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatId = document.getElementById('chatId').value; // Get the chat ID from the HTML
+            const senderId = '{{ Auth::user()->id }}';
+
+            listenForMessages(chatId);
+
+            document.getElementById('sendButton').addEventListener('click', function() {
+                const message = document.getElementById('messageInput').value;
+                sendMessage(chatId, senderId, message);
+                document.getElementById('messageInput').value = '';
+            });
+        });
     </script>
+
     <script>
         // Wait for the document to load
         document.addEventListener('DOMContentLoaded', function() {

@@ -14,9 +14,16 @@ class RolesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $records = Roles::latest()->paginate(EnumsSettings::Paginate);
+        $query = Roles::query();
+
+        if ($request->has('search')) {
+            $query->where('name', 'LIKE', "%{$request->search}%")
+                ->orWhere('description', 'LIKE', "%{$request->search}%");
+        }
+
+        $records = $query->paginate(500);
         return view('admin.roles.index', compact('records'));
     }
 

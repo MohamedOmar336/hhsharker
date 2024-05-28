@@ -26,9 +26,14 @@ return [
         'route' => 'products.edit',
         'sort'  => 3,
     ], [
-        'key'   => 'products.delete',
-        'name'  => 'app.acl.delete',
-        'route' => 'products.delete',
+        'key'   => 'products.destroy',
+        'name'  => 'app.acl.destroy',
+        'route' => 'products.destroy',
+        'sort'  => 4,
+    ], [
+        'key'   => 'products.store',
+        'name'  => 'app.acl.store',
+        'route' => 'products.store',
         'sort'  => 4,
     ], [
         'key'   => 'categories',
@@ -50,6 +55,11 @@ return [
         'name'  => 'app.acl.delete',
         'route' => 'categories.delete',
         'sort'  => 3,
+    ],[
+        'key'   => 'categories.store',
+        'name'  => 'app.acl.store',
+        'route' => 'categories.store',
+        'sort'  => 4,
     ],
 
     /*
@@ -85,7 +95,14 @@ return [
         'name' => 'app.acl.delete',
         'route' => 'users.delete',
         'sort' => 3,
-    ], [
+    ],
+    [
+        'key'   => 'users.store',
+        'name'  => 'app.acl.store',
+        'route' => 'users.store',
+        'sort'  => 4,
+    ],
+    [
         'key' => 'roles',
         'name' => 'app.users.roles.title',
         'route' => 'roles.index',

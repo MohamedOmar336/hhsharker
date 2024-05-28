@@ -3,8 +3,8 @@
         <div class="row">
             {{-- logo --}}
             <div class="col-md-4 col-12 start">
-                <a href="#">
-                    <img src=" {{ asset('assets-website/images/logos/logo.jpg') }} " alt="Company Logo">
+                <a href="/">
+                    <img src=" {{ asset('assets-website/images/logos/logo.svg') }} " alt="Company Logo">
                 </a>
                 <p>
                     A leading company in the field of air conditioners and home appliances in Saudi Arabia.
@@ -17,10 +17,10 @@
                     <h5>Company</h5>
                     <ul class="list-unstyled">
                         <li>
-                            <a href="#">Home</a>
+                            <a href="/">Home</a>
                         </li>
                         <li>
-                            <a href="#">About Us</a>
+                            <a href="{{ route('about') }}">About Us</a>
                         </li>
                         <li>
                             <a href="#">Our Products</a>
@@ -32,16 +32,16 @@
                 </div>
 
                 <div>
-                    <h5>Follow Us</h5>
+                    <h5>{{ __('Pages') }}</h5>
                     <ul class="list-unstyled">
                         <li>
-                            <a href="#">Instagram</a>
+                            <a href="{{ route('founders') }}">{{ __('Founders') }}</a>
                         </li>
                         <li>
-                            <a href="#">YouTube</a>
+                            <a href="{{ route('vision') }}">{{ __('Vision') }}</a>
                         </li>
                         <li>
-                            <a href="#">TikTok</a>
+                            <a href="{{ route('lcac') }}">{{ __('LCAC') }}</a>
                         </li>
                         <li>
                             <a href="#">X</a>
@@ -70,8 +70,10 @@
 
             {{-- Contact --}}
             <div class="col-md-4 col-12 end">
-                <h1>Get In touch With H&H Shaker</h1>
-                <x-arrow-button dark_background="false">Contact Us</x-arrow-button>
+                <x-section-header class="text-white medium">Get In touch With H&H Shaker</x-section-header>
+                <div class="m-3">
+                    <x-arrow-button dark_background="false">Contact Us</x-arrow-button>
+                </div>
             </div>
         </div>
     </div>

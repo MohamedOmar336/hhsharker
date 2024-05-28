@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class Ticket extends Model
 {
-    use HasFactory;
+    use HasFactory , LogsActivity;
 
     // protected $primaryKey = 'TicketID';
 
@@ -63,5 +65,15 @@ class Ticket extends Model
     public function history()
     {
         return $this->hasMany(TicketHistory::class, 'TicketID');
+    }
+
+    /**
+     * Activity Log
+     */
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['name', 'text'])
+            ->setDescriptionForEvent(fn(string $eventName) => "This model has been {$eventName}");
     }
 }

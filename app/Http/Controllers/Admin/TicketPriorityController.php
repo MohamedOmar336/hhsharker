@@ -8,13 +8,24 @@ use App\Http\Controllers\Controller;
 
 class TicketPriorityController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        // Retrieve all TicketPriorities
-        $priorities = TicketPrioritySetting::latest()->paginate(EnumsSettings::Paginate);
-        // Return a view with the data
-        return view('admin.ticketPriority.index', compact('priorities'));
+        $query = TicketPrioritySetting::query();
+    
+        // If there's a search query, add where clauses
+        if ($request->has('search')) {
+            $query->where('name_ar', 'LIKE', "%{$request->search}%")
+                  ->orWhere('name_en', 'LIKE', "%{$request->search}%")
+                  ->orWhere('status', 'LIKE', "%{$request->search}%");
+        }
+    
+        // Paginate the results
+        $records = $query->latest()->paginate(500);
+    
+        // Return the view with the data
+        return view('admin.ticketPriority.index', compact('records'));
     }
+    
 
     public function create()
     {

@@ -28,9 +28,9 @@ class AppointmentController extends Controller
                 ->orWhere('notes', 'LIKE', "%{$searchTerm}%");
         }
     
-        $appointments = $query->paginate(500);
+        $records = $query->paginate(500);
     
-        return view('admin.appointments.index', compact('appointments'));
+        return view('admin.appointments.index', compact('records'));
     }
     
 

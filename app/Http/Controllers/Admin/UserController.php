@@ -15,9 +15,19 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $records = User::latest()->paginate(EnumsSettings::Paginate);
+        $query = User::query();
+
+        if ($request->has('search')) {
+            $query->where('name_ar', 'LIKE', "%{$request->search}%")
+                ->orWhere('name_en', 'LIKE', "%{$request->search}%")
+                ->orWhere('description_ar', 'LIKE', "%{$request->search}%")
+                ->orWhere('description_en', 'LIKE', "%{$request->search}%");
+        }
+
+        $records = $query->paginate(500);
+
         return view("admin.users.index", compact("records"));
     }
 
@@ -57,7 +67,7 @@ class UserController extends Controller
     if ($request->hasFile('image')) {
         $imageName = uploadImage($request->file('image'));
         $validatedData['image'] = $imageName;
-    } 
+    }
 
         // Hash the password
         $validatedData['password'] = bcrypt($request->password);

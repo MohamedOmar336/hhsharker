@@ -13,12 +13,16 @@ use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\ChatController;
 use App\Http\Controllers\Admin\TicketPriorityController;
 use App\Http\Controllers\Admin\TicketStatusController;
 use App\Http\Controllers\Admin\TicketController;
 use App\Http\Controllers\Admin\TicketHistoryController;
 use App\Http\Controllers\Admin\AppointmentController;
 use App\Http\Controllers\Admin\CalendarController;
+use App\Http\Controllers\Admin\ActivityLogController;
+use App\Http\Controllers\Admin\NotificationController;
+use App\Http\Controllers\Admin\MailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,9 +56,13 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::resource('/products', ProductController::class);
 
+        Route::get('/products/bulk-delete', [ProductController::class, 'bulkDelete'])->name('products.bulk-delete');
+
         Route::resource('/users', UserController::class);
 
         Route::resource('/categories', CategoryController::class);
+
+        Route::get('/categoriess/bulk-delete', [CategoryController::class, 'bulkDelete'])->name('categories.bulk-delete');
 
         Route::resource('/blogposts', BlogPostController::class);
 
@@ -73,6 +81,12 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/profile/change-password', [ProfileController::class, 'changePassword'])->name('profile.change_password');
 
         Route::resource('/roles', RolesController::class);
+
+        Route::get('/chat/{user}', [ChatController::class, 'index'])->name('chat.index');
+
+        Route::post('/chat/check-room', [ChatController::class, 'checkRoom'])->name('chat.checkRoom');
+
+        Route::post('/chat/create-room', [ChatController::class, 'create'])->name('chat.create');
 
         Route::resource('/tickets', TicketController::class);
 
@@ -94,8 +108,31 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar.index');
 
+        Route::get('/activitylogs', [ActivityLogController::class, 'index'])->name('activitylogs.index');
+
+        Route::patch('/notifications/{id}/read', [NotificationController::class, 'markAsRead'])->name('notifications.markAsRead');
+
+
+        Route::get('/mails', [MailController::class, 'index'])->name('mails.index');
+        Route::get('/mails/index', [MailController::class, 'index'])->name('mails.index');
+        Route::get('/mails/compose', [MailController::class, 'compose'])->name('mails.compose');
+        Route::post('/mails/send', [MailController::class, 'send'])->name('mails.send');
+        Route::get('/mails/{mail}', [MailController::class, 'show'])->name('mails.show');
+
+        Route::get('/mails/{id}/reply', [MailController::class, 'reply'])->name('mails.reply');
+        Route::post('/mails/{id}/sendReply', [MailController::class, 'sendReply'])->name('mails.sendReply');
+
+
+
     });
 });
 
+
+
+
 // Front Routes
 Route::view('/', 'website.home.index');
+Route::view('/about', 'website.about')->name('about');
+Route::view('/founders', 'website.founders')->name('founders');
+Route::view('/vision', 'website.vision')->name('vision');
+Route::view('/lcac', 'website.lcac')->name('lcac');

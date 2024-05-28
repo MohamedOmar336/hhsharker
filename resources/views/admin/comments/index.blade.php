@@ -29,15 +29,10 @@
                 </div><!--end col-->
             </div>
             <!-- end page title end breadcrumb -->
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                           <div class="table-responsive browser_users">
-                                        <table class="table mb-0">
-                                      
-						  <thead class="thead-light">
-                                 <tr>
+            <x-table tableId="DataTables">
+                <x-slot name="header">
+                    <tr>
+                        <th><input type="checkbox" id="select-all"></th>
                                             <th>{{ __('Post Title') }}</th>
                                             <th>{{ __('Commenter') }}</th>
                                             <th>{{ __('Email') }}</th>
@@ -45,19 +40,20 @@
                                             <th>{{ __('Comment Date') }}</th>
                                             <th>{{ __('Actions') }}</th>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($comments as $comment)
-                                            <tr>
-                                                <td>{{ optional($comment->post)->title_en }}</td>
-                                                <td>{{ $comment->commenter }}</td>
-                                                <td>{{ $comment->email }}</td>
-                                                <td>{{ $comment->comment }}</td>
-                                                <td>{{ $comment->comment_date }}</td>
+                                    </x-slot>
+                                    @foreach ($records as $record)
+                                    <tr>
+                                        <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
+                
+                                                <td>{{ optional($record->post)->title_en }}</td>
+                                                <td>{{ $record->commenter }}</td>
+                                                <td>{{ $record->email }}</td>
+                                                <td>{{ $record->comment }}</td>
+                                                <td>{{ $record->comment_date }}</td>
                                                 <td>
-                                                    <a href="{{ route('comments.edit', $comment->id) }}"
+                                                    <a href="{{ route('comments.edit', $record->id) }}"
                                                         class="btn btn-sm btn-primary">{{ __('Edit') }}</a>
-                                                    <form action="{{ route('comments.destroy', $comment->id) }}"
+                                                    <form action="{{ route('comments.destroy', $record->id) }}"
                                                         method="POST" style="display: inline;">
                                                         @csrf
                                                         @method('DELETE')
@@ -65,15 +61,17 @@
                                                             onclick="return confirm('{{ __('Are you sure you want to delete this comment?') }}')">{{ __('Delete') }}</button>
                                                     </form>
                                                 </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div><!--end table-responsive-->
-                        </div> <!--end card-body-->
-                    </div><!--end card-->
-                </div> <!--end col-->
-            </div><!--end row-->
+                                                @endforeach
+
+                                                <x-slot name="createButton">
+                                                    <a href="{{ route('products.create') }}" class="btn btn-outline-light btn-sm px-4">+
+                                                        {{ __('general.actions.new') }}</a>
+                                                </x-slot>
+                            
+                                                <x-slot name="pagination">
+                                                    {{ $records->links('admin.pagination.bootstrap') }}
+                                                </x-slot>
+                                            </x-table>
         </div>
 
     </div><!-- container -->
