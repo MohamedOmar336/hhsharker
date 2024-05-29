@@ -22,6 +22,8 @@ use App\Http\Controllers\Admin\AppointmentController;
 use App\Http\Controllers\Admin\CalendarController;
 use App\Http\Controllers\Admin\ActivityLogController;
 use App\Http\Controllers\Admin\NotificationController;
+use App\Http\Controllers\Admin\MessageController;
+use App\Http\Controllers\Admin\GroupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -110,6 +112,12 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/activitylogs', [ActivityLogController::class, 'index'])->name('activitylogs.index');
 
         Route::patch('/notifications/{id}/read', [NotificationController::class, 'markAsRead'])->name('notifications.markAsRead');
+
+        Route::resource('groups', GroupController::class);
+
+        Route::post('messages', [MessageController::class, 'store'])->name('messages.store');
+
+        Route::delete('messages/{message}', [MessageController::class, 'destroy'])->name('messages.destroy');
 
     });
 });
