@@ -39,14 +39,14 @@ class MailController extends Controller
     }
 
     public function send(Request $request)
-    {
-        $request->validate([
+    {  //  dd($request->all());
+        $validatedData = $request->validate([
             'recipient_id' => 'required|exists:users,id',
             'subject' => 'required|string|max:255',
             'body' => 'required|string',
             // 'received_at' => 'required|date',
         ]);
-
+       
 
         Mail::create([
             'sender_id' => auth()->user()->id,
@@ -67,7 +67,7 @@ class MailController extends Controller
     }
 
     public function sendReply(Request $request, $id)
-    {
+    {   dd($request->all());
         $mail = Mail::findOrFail($id);
         $request->validate([
             'body' => 'required|string',

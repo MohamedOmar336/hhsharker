@@ -32,7 +32,8 @@
                 <div class="col-12 col-lg-10 mx-auto">
                     <div class="card">
                         <div class="card-body content-area">
-                            <form action="{{ route('mails.send') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('mails.send') }}" method="POST"  enctype="multipart/form-data"
+                            class="needs-validation" novalidate>
                                 @csrf
                                 <div class="mb-3">
                                     <label for="recipient_id" class="form-label">{{ __('general.recipient') }}</label>
@@ -54,14 +55,15 @@
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <div class="mb-3">
+                                 <div class="mb-3">
                                     <label for="body" class="form-label">{{ __('general.body') }}</label>
-                                    <textarea id="body" class="form-control @error('body') is-invalid @enderror"
-                                        name="body" rows="5" required>{{ old('body') }}</textarea>
-                                    @error('body')
+                                    <textarea id="body" class="form-control @error('body') is-invalid @enderror"  name="body"
+                                        rows="6" required>{{ old('body') }}</textarea>
+                                        @error('body')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
+                                
                                 
                                 <button type="submit" class="btn btn-primary">{{ __('general.actions.send') }}</button>
                             </form>

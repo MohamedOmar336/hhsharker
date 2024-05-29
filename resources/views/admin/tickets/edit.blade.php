@@ -31,7 +31,8 @@
                     <div class="card">
                         <div class="card-body content-area">
 
-                            <form action="{{ route('tickets.update', $ticket->id) }}" method="POST">
+                            <form action="{{ route('tickets.update', $ticket->id) }}" method="POST" enctype="multipart/form-data"
+                                class="needs-validation" novalidate>
                                 @csrf
                                 @method('PUT')
 
