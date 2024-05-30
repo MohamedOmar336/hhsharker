@@ -285,6 +285,15 @@ return [
         'link' => 'profile',
         'icon' => 'ti ti-user',
         'route' => 'profile.show',
-        'sub_menu' => []
+        'sub_menu' => [
+            [
+                'title' => 'Profile',
+                'route' => 'profile.show'
+            ],
+            [
+                'title' => 'Chang Password',
+                'route' => 'profile.show'
+            ]
+        ]
     ]
 ];

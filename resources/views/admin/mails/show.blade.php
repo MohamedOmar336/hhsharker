@@ -67,7 +67,7 @@
 
                                 <h4 class="mt-0 font-15">{{ $mail->subject }}</h4>
 
-                                <p>{!! nl2br(e($mail->body)) !!}</p>
+                                <p>{!! nl2br($mail->body) !!}</p>
 
                                 <hr />
 

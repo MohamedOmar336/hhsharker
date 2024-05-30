@@ -21,7 +21,7 @@
         </div><!--end main-icon-menu-body-->
         <div class="pro-metrica-end">
             <a href="#" class="profile">
-                <img src="{{ Auth::user()->image ? asset('images/' . Auth::user()->image) : asset('images/user.png') }}"
+                <img src="{{ Auth::user()->image ? asset('images/' . Auth::user()->image) : asset('assets-admin/images/user.png') }}"
                     alt="profile-user" class="rounded-circle thumb-sm">
             </a>
         </div><!--end pro-metrica-end-->
@@ -42,26 +42,6 @@
         </div><!--end topbar-left-->
         <!--end logo-->
 
-        {{-- <div class="menu-body navbar-vertical tab-content" data-simplebar>
-            <div id="MetricaDashboard" class="main-icon-menu-pane tab-pane" role="tabpanel"
-                aria-labelledby="dasboard-tab">
-                <div class="title-box">
-                    <h6 class="menu-title"></h6>
-                </div>
-
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class='nav-link' href="{{ route('home') }}">{{ __('general.dashboard') }}</a>
-                    </li><!--end nav-item-->
-                </ul><!--end nav-->
-
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class='nav-link'
-                            href="{{ route('chat.index', Auth()->user()) }}">{{ __('general.chat') }}</a>
-                    </li><!--end nav-item-->
-                </ul><!--end nav-->
-            </div><!-- end Dashboards --> --}}
             <div class="menu-body navbar-vertical tab-content" data-simplebar>
                 @foreach ($filteredSideNav as $item)
 

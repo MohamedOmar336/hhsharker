@@ -44,7 +44,7 @@
                     <tr>
                         <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
 
-                        <td><img src="{{ $record->image ? asset('images/' . $record->image) : asset('images/no_image.png') }}"
+                        <td><img src="{{ $record->image ? asset('images/' . $record->image) : asset('assets-admin/images/no_image.png') }}"
                                 alt="{{ $record->name }}" width="50"></td>
                         <td>{{ $record->name_ar }}</td>
                         <td>{{ $record->name_en }}</td>
