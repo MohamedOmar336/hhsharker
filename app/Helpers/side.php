@@ -50,6 +50,22 @@ return [
         ],
     ],
     [
+        'title' => __('general.attributes.groups'),
+        'link' => 'sidebargroups',
+        'icon' => 'ti ti-shopping-cart',
+        'route' => 'groups.index',
+        'sub_menu' => [
+            [
+                'title' => __('general.side.groups-list'),
+                'route' => 'groups.index',
+            ],
+            [
+                'title' => __('general.actions.new'),
+                'route' => 'groups.create',
+            ],
+        ],
+    ],
+    [
         'title' => __('general.side.tags'),
         'link' => 'sidebarTags',
         'icon' => 'ti ti-tag',
