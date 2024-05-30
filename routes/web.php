@@ -24,6 +24,7 @@ use App\Http\Controllers\Admin\ActivityLogController;
 use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\GroupController;
+use App\Http\Controllers\Admin\MailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -119,8 +120,22 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::delete('messages/{message}', [MessageController::class, 'destroy'])->name('messages.destroy');
 
+        Route::get('/mails', [MailController::class, 'index'])->name('mails.index');
+        Route::get('/mails/index', [MailController::class, 'index'])->name('mails.index');
+        Route::get('/mails/compose', [MailController::class, 'compose'])->name('mails.compose');
+        Route::post('/mails/send', [MailController::class, 'send'])->name('mails.send');
+        Route::get('/mails/{mail}', [MailController::class, 'show'])->name('mails.show');
+
+        Route::get('/mails/{id}/reply', [MailController::class, 'reply'])->name('mails.reply');
+        Route::post('/mails/{id}/sendReply', [MailController::class, 'sendReply'])->name('mails.sendReply');
+
+
+
     });
 });
+
+
+
 
 // Front Routes
 Route::view('/', 'website.home.index');

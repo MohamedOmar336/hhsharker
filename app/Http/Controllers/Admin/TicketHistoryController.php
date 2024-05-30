@@ -12,8 +12,8 @@ class TicketHistoryController extends Controller
     // Display all ticket histories
     public function index()
     {
-        $histories = TicketHistory::with('ticket', 'changedBy')->get();
-        return view('admin.ticket_histories.index', compact('histories'));
+        $records = TicketHistory::with('ticket', 'changedBy')->get();
+        return view('admin.ticket_histories.index', compact('records'));
     }
 
     // Display the ticket history for a specific ticket by TicketID

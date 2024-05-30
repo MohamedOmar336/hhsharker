@@ -27,14 +27,10 @@
             </div>
             <!-- end page title end breadcrumb -->
 
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="table-responsive browser_users">
-                                <table class="table mb-0">
-                                    <thead class="thead-light">
-                                        <tr>
+            <x-table tableId="DataTables">
+                <x-slot name="header">
+                    <tr>
+                        <th><input type="checkbox" id="select-all"></th>
                                             <th>ID</th>
                                             <th>Title</th>
                                             <th>Creator</th>
@@ -45,36 +41,40 @@
                                             <th>Notes</th>
                                             <th>Actions</th>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($appointments as $appointment)
-                                            <tr>
-                                                <td>{{ $appointment->id }}</td>
-                                                <td>{{ $appointment->title }}</td>
-                                                <td>{{ $appointment->user->user_name }}</td>
-                                                <td>{{ $appointment->withUser->user_name }}</td>
-                                                <td>{{ $appointment->start_time }}</td>
-                                                <td>{{ $appointment->finish_time }}</td>
-                                                <td>{{ $appointment->status }}</td>
-                                                <td>{{ $appointment->notes }}</td>
+                                    </x-slot>
+                                    @foreach ($records as $record)
+                                    <tr>
+                                        <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
+                
+                                        <td>{{ $record->id }}</td>
+                                        <td>{{ $record->title }}</td>
+                                        <td>{{ $record->user->user_name }}</td>
+                                        <td>{{ $record->withUser->user_name }}</td>
+                                        <td>{{ $record->start_time }}</td>
+                                        <td>{{ $record->finish_time }}</td>
+                                        <td>{{ $record->status }}</td>
+                                        <td>{{ $record->notes }}</td>
                                                 <td>
-                                                    <a href="{{ route('appointments.show', $appointment) }}" class="btn btn-info">View</a>
-                                                    <a href="{{ route('appointments.edit', $appointment) }}" class="btn btn-warning">Edit</a>
-                                                    <form action="{{ route('appointments.destroy', $appointment) }}" method="POST" style="display:inline-block;">
+                                                    <a href="{{ route('appointments.show', $record->id) }}" class="btn btn-sm btn-info">View</a>
+                                                    <a href="{{ route('appointments.edit',  $record->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                                                    <form action="{{ route('appointments.destroy',  $record->id) }}" method="POST" style="display:inline-block;">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                                                     </form>
                                                 </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div><!--end table-responsive-->
-                        </div> <!--end card-body-->
-                    </div><!--end card-->
-                </div> <!--end col-->
-            </div><!--end row-->
+                                                @endforeach
+
+                                                <x-slot name="createButton">
+                                                    <a href="{{ route('products.create') }}" class="btn btn-outline-light btn-sm px-4">+
+                                                        {{ __('general.actions.new') }}</a>
+                                                </x-slot>
+                            
+                                                <x-slot name="pagination">
+                                                    {{ $records->links('admin.pagination.bootstrap') }}
+                                                </x-slot>
+                                            </x-table>
+                            
         </div>
     </div><!-- container -->
 @endsection

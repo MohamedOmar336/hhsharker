@@ -15,11 +15,24 @@ class AppointmentController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $appointments = Appointment::with(['user', 'withUser'])->get();
-        return view('admin.appointments.index', compact('appointments'));
+        $query = Appointment::with(['user', 'withUser']);
+    
+        if ($request->has('search')) {
+            $searchTerm = $request->search;
+            $query->where('user', 'LIKE', "%{$searchTerm}%") 
+                ->orWhere('withUser', 'LIKE', "%{$searchTerm}%")
+                ->orWhere('title', 'LIKE', "%{$searchTerm}%")
+                ->orWhere('status', 'LIKE', "%{$searchTerm}%")
+                ->orWhere('notes', 'LIKE', "%{$searchTerm}%");
+        }
+    
+        $records = $query->paginate(500);
+    
+        return view('admin.appointments.index', compact('records'));
     }
+    
 
     /**
      * Display a listing of the authenticated user's appointments.

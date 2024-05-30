@@ -8,12 +8,21 @@ use App\Http\Controllers\Controller;
 
 class TicketStatusController extends Controller
 {
-    public function index()
+
+    public function index(Request $request)
     {
-        // Retrieve all TicketStatuses
-        $statuses = TicketStatusSetting::all();
-        // Return a view with the data
-        return view('admin.ticketstatus.index', compact('statuses'));
+        $query = TicketStatusSetting::query();
+
+        if ($request->has('search')) {
+            $query->where('name_ar', 'LIKE', "%{$request->search}%")
+                ->orWhere('name_en', 'LIKE', "%{$request->search}%")
+                ->orWhere('description_ar', 'LIKE', "%{$request->search}%")
+                ->orWhere('description_en', 'LIKE', "%{$request->search}%");
+        }
+
+        $records = $query->paginate(500);
+
+        return view('admin.ticketstatus.index', compact('records'));
     }
 
     public function create()

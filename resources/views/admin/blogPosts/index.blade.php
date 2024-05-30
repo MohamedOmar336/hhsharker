@@ -26,17 +26,10 @@
                 </div><!--end col-->
             </div>
             <!-- end page title and breadcrumb -->
-
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                         <div class="card-body content-area">
-                            <div class="table-responsive browser_users">
-                                        <table class="table mb-0">
-                                      
-						  <thead class="thead-light">
-                            
-                                        <tr>
+            <x-table tableId="DataTables">
+                <x-slot name="header">
+                    <tr>
+                        <th><input type="checkbox" id="select-all"></th>
                                             <th>Image</th>
                                             <th>Title (English)</th>
                                             <th>Title (Arabic)</th>
@@ -44,10 +37,11 @@
                                             <th>Status</th>
                                             <th>Actions</th>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($records as $record)
-                                            <tr>
+                                    </x-slot>
+                                    @foreach ($records as $record)
+                                    <tr>
+                                        <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
+                
                                                 <td>
                                                     <img src="{{ asset('images/' . $record->image) }}"
                                                         alt="{{ $record->title_en }}" width="50">
@@ -70,9 +64,18 @@
                                                     </form>
                                                 </td>
                                             </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                                            @endforeach
+
+                                            <x-slot name="createButton">
+                                                <a href="{{ route('products.create') }}" class="btn btn-outline-light btn-sm px-4">+
+                                                    {{ __('general.actions.new') }}</a>
+                                            </x-slot>
+                        
+                                            <x-slot name="pagination">
+                                                {{ $records->links('admin.pagination.bootstrap') }}
+                                            </x-slot>
+                                        </x-table>
+                        
                             </div>
                             <!-- Modals -->
                             @foreach ($records as $record)

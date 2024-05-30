@@ -34,7 +34,8 @@
                     <div class="card">
                         <div class="card-body content-area">
 
-                            <form action="{{ route('tickets.store') }}" method="POST">
+                            <form action="{{ route('tickets.store') }}" method="POST"  enctype="multipart/form-data"
+                            class="needs-validation" novalidate>
                                 @csrf
                                 <div class="mb-3">
                                     <label for="Title" class="form-label">{{ __('general.attributes.title') }}</label>

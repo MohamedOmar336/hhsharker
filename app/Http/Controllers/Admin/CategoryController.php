@@ -27,6 +27,7 @@ class CategoryController extends Controller
 
         return view('admin.categories.index', compact('records'));
     }
+    
 
     /**
      * Show the form for creating a new resource.

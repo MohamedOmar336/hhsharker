@@ -16,12 +16,24 @@ use App\Models\Notification;
 class TicketController extends Controller
 {
     // Display all tickets
-    public function index()
-    {
+    public function index(Request $request)
+{
+    $query = Ticket::with('priority', 'status', 'assignedTo', 'createdBy');
 
-        $tickets = Ticket::with('priority', 'status', 'assignedTo', 'createdBy')->get();
-        return view('admin.tickets.index', compact('tickets'));
+    if ($request->has('search')) {
+        $search = $request->input('search');
+        $query->where('title', 'LIKE', "%{$search}%")
+              ->orWhere('description', 'LIKE', "%{$search}%")
+              ->orWhere('priority', 'LIKE', "%{$search}%")
+              ->orWhere('status', 'LIKE', "%{$search}%")
+              ->orWhere('assignedTo', 'LIKE', "%{$search}%")
+              ->orWhere('createdBy', 'LIKE', "%{$search}%");
     }
+
+    $records = $query->paginate(500);
+
+    return view('admin.tickets.index', compact('records'));
+}
 
     // Display form for creating a new ticket
     public function create()

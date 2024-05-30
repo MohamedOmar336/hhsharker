@@ -13,11 +13,23 @@ class ContactController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $contacts = Contact::all();
-        return view('admin.contacts.index', compact('contacts'));
+        $query = Contact::query();
+    
+        if ($request->has('search')) {
+            $searchTerm = $request->search;
+            $query->where('name', 'LIKE', "%{$searchTerm}%")
+                  ->orWhere('email', 'LIKE', "%{$searchTerm}%")
+                  ->orWhere('phone', 'LIKE', "%{$searchTerm}%")
+                  ->orWhere('address', 'LIKE', "%{$searchTerm}%")
+                  ->orWhere('segment', 'LIKE', "%{$searchTerm}%");
+        }
+    
+        $records = $query->latest()->paginate(500);
+        return view('admin.contacts.index', compact('records'));
     }
+    
 
     /**
      * Show the form for creating a new resource.

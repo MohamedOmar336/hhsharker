@@ -82,7 +82,7 @@
                                         @foreach ($authors as $author)
                                             <option value="{{ $author->id }}"
                                                 {{ old('author_id', $post->author_id) == $author->id ? 'selected' : '' }}>
-                                                {{ $author->name }}</option>
+                                                {{ $author->user_name }}</option>
                                         @endforeach
                                     </select>
                                     @error('author_id')

@@ -23,14 +23,10 @@
             </div>
             <!-- end page title end breadcrumb -->
 
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table mb-0">
-                                    <thead class="thead-light">
-                                        <tr>
+            <x-table tableId="DataTables">
+                <x-slot name="header">
+                    <tr>
+                        <th><input type="checkbox" id="select-all"></th>
                                             <th>ID</th>
                                             <th>Title</th>
                                             <th>Priority</th>
@@ -38,37 +34,41 @@
                                             <th>Assigned To</th>
                                             <th>Actions</th>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($tickets as $ticket)
-                                            <tr>
-                                                <td>{{ $ticket->id }}</td>
-                                                <td>{{ $ticket->Title }}</td>
-                                                <td>{{ $ticket->priority->Name_en }}</td>
-                                                <td>{{ $ticket->status->Name_en }}</td>
-                                                <td>{{ $ticket->assignedTo->user_name }}</td>
+                                    </x-slot>
+                                    @foreach ($records as $record)
+                                    <tr>
+                                        <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
+                
+                                                <td>{{ $record->id }}</td>
+                                                <td>{{ $record->Title }}</td>
+                                                <td>{{ $record->priority->Name_en }}</td>
+                                                <td>{{ $record->status->Name_en }}</td>
+                                                <td>{{ $record->assignedTo->user_name }}</td>
                                                 <td>
-                                                    <a href="{{ route('ticket_histories.show_by_ticket', $ticket->id) }}"
-                                                        class="btn btn-info">History</a>
-                                                    <a href="{{ route('tickets.edit', $ticket->id) }}"
-                                                        class="btn btn-warning">Edit</a>
-                                                    <form action="{{ route('tickets.destroy', $ticket->id) }}"
+                                                    <a href="{{ route('ticket_histories.show_by_ticket', $record->id) }}"
+                                                        class="btn btn-sm btn-info">History</a>
+                                                    <a href="{{ route('tickets.edit', $record->id) }}"
+                                                        class="btn btn-sm btn-primary">Edit</a>
+                                                    <form action="{{ route('tickets.destroy', $record->id) }}"
                                                         method="POST" style="display:inline-block;">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
 
                                                     </form>
                                                 </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div><!--end table-responsive-->
-                        </div> <!--end card-body-->
-                    </div><!--end card-->
-                </div> <!--end col-->
-            </div><!--end row-->
+                                                @endforeach
+
+                                                <x-slot name="createButton">
+                                                    <a href="{{ route('products.create') }}" class="btn btn-outline-light btn-sm px-4">+
+                                                        {{ __('general.actions.new') }}</a>
+                                                </x-slot>
+                            
+                                                <x-slot name="pagination">
+                                                    {{ $records->links('admin.pagination.bootstrap') }}
+                                                </x-slot>
+                                            </x-table>
+                            
         </div>
     </div><!-- container -->
 @endsection

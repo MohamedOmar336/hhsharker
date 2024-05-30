@@ -285,6 +285,11 @@ return [
         'name'  => 'app.acl.change_password',
         'route' => 'profile.change_password',
         'sort'  => 3,
+    ],[
+        'key'   => 'categories.store',
+        'name'  => 'app.acl.store',
+        'route' => 'categories.store',
+        'sort'  => 4,
     ],
 
     /*
