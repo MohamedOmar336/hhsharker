@@ -29,8 +29,11 @@
                                 <a class="nav-link active"id="general_chat_tab" data-bs-toggle="tab" href="#general_chat"
                                     role="tab">General</a>
                             </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="group_chat_tab" data-bs-toggle="tab" href="#group_chat"
+                                    role="tab">Groups</a>
+                            </li>
                         </ul>
-
                         <div class="chat-body-left" data-simplebar>
                             <div class="tab-content chat-list" id="pills-tabContent">
                                 <div class="tab-pane fade show active" id="general_chat">
@@ -38,10 +41,12 @@
                                         <a href="#" class="media user" data-user-id="{{ $user->id }}">
                                             <div class="media-left">
                                                 @if (isset($user->image) && $user->image)
-                                                    <img src="{{ asset('images/') . '/' . $user->image }}" data-user-image="{{ asset('images/') . '/' . $user->image }}" alt="user"
-                                                        class="rounded-circle thumb-md" id="imageUser">
+                                                    <img src="{{ asset('images/') . '/' . $user->image }}"
+                                                        data-user-image="{{ asset('images/') . '/' . $user->image }}"
+                                                        alt="user" class="rounded-circle thumb-md" id="imageUser">
                                                 @else
-                                                    <img src="{{ asset('assets-admin\images\users\user-vector.png') }}" data-user-image="{{ asset('assets-admin\images\users\user-vector.png') }}"
+                                                    <img src="{{ asset('assets-admin\images\users\user-vector.png') }}"
+                                                        data-user-image="{{ asset('assets-admin\images\users\user-vector.png') }}"
                                                         alt="user" class="rounded-circle thumb-md" id="imageUser">
                                                 @endif
                                                 <span class="round-10 bg-success"></span>
@@ -56,8 +61,26 @@
                                             </div><!-- end media-body -->
                                         </a> <!--end media-->
                                     @endforeach
-
                                 </div><!--end general chat-->
+
+                                <div class="tab-pane fade" id="group_chat">
+                                    @foreach ($groups as $group)
+                                        <a href="#" class="media group" data-group-id="{{ $group->id }}">
+                                            <div class="media-left">
+                                                <div class="avatar-box thumb-md align-self-center me-2">
+                                                    <span class="thumb-md justify-content-center d-flex align-items-center bg-soft-info rounded-circle me-2">
+                                                        <i class="fas fa-globe"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="media-body">
+                                                <h6>{{ $group->name }}</h6>
+                                                <h6>{!! $group->description !!}</h6>
+                                            </div>
+                                        </a>
+                                    @endforeach
+                                </div>
+
                             </div><!--end tab-content-->
                         </div>
                     </div><!--end chat-box-left -->
@@ -84,7 +107,6 @@
                         <div class="chat-body" data-simplebar>
                             <div class="chat-detail">
 
-
                             </div> <!-- end chat-detail -->
                         </div><!-- end chat-body -->
 
@@ -93,7 +115,7 @@
                                 <div class="col-12 col-md-9">
                                     <input type="text" class="form-control" id="messageInput"
                                         placeholder="Type something here...">
-                                    <button id="sendButton">Send</button>
+                                    <button id="sendButton" class="custom-send-button">Send</button>
                                 </div><!-- col-8 -->
                             </div><!-- end row -->
                         </div><!-- end chat-footer -->
@@ -155,12 +177,11 @@
     <script>
         $(document).ready(function() {
             var authenticatedUserId = '{{ auth()->id() }}';
-            var otherUserId = null; // Declare a global variable to store the clicked user ID
-            var currentUserImage = '{{ isset(auth()->user()->image) ? asset('images/' . auth()->user()->image) : asset('assets-admin/images/users/user-vector.png') }}';
+            var currentUserImage =
+                '{{ isset(auth()->user()->image) ? asset('images/' . auth()->user()->image) : asset('assets-admin/images/users/user-vector.png') }}';
 
             $('.user').click(function(e) {
                 e.preventDefault();
-
                 var otherUserId = $(this).data('user-id');
                 var chatHeader = $('.chat-header');
                 var chatBody = $('.chat-detail');
@@ -182,7 +203,6 @@
                             var messages = response.messages;
                             var roomId = response.room_id;
                             listenForMessages(roomId);
-                            console.log(roomId);
                             displayMessages(chatBody, messages);
                         } else {
                             createRoom(otherUserId, chatBody);
@@ -241,33 +261,34 @@
             function displayMessage(chatBody, message) {
                 var mediaClass = message.sender_id === authenticatedUserId ? 'reverse' : '';
                 var otherUserImage = $('#imageUser').data('user-image');
+                var messageStatus = message.seen ? '' : '<span class="badge bg-primary">New</span>';
                 console.log(chatBody, message);
 
-                if(message.sender_id !== authenticatedUserId){
-                    var media = `
-                        <div class="media">
-                            <div class="media-img">
-                                <img src="${otherUserImage}" alt="user" class="rounded-circle thumb-sm">
-                            </div>
-                            <div class="media-body">
-                                <div class="chat-msg">
-                                    <p>${message.message}</p>
-                                </div>
-                            </div>
-                        </div>`;
-                        chatBody.append(media);
-                }else{
+                if (message.sender_id !== authenticatedUserId) {
                     var media = `
                     <div class="media">
-                        <div class="media-body reverse">
-                            <div class="chat-msg">
-                                <p>${message.message}</p>
-                            </div>
-                        </div><!--end media-body-->
                         <div class="media-img">
-                            <img src="${currentUserImage}" alt="user" class="rounded-circle thumb-sm">
+                            <img src="${otherUserImage}" alt="user" class="rounded-circle thumb-sm">
                         </div>
-                    </div><!--end media--> `;
+                        <div class="media-body">
+                            <div class="chat-msg">
+                                <p>${message.message} ${messageStatus}</p>
+                            </div>
+                        </div>
+                    </div>`;
+                    chatBody.append(media);
+                } else {
+                    var media = `
+                <div class="media">
+                    <div class="media-body reverse">
+                        <div class="chat-msg">
+                            <p>${message.message} ${messageStatus}</p>
+                        </div>
+                    </div><!--end media-body-->
+                    <div class="media-img">
+                        <img src="${currentUserImage}" alt="user" class="rounded-circle thumb-sm">
+                    </div>
+                </div><!--end media--> `;
                     chatBody.append(media);
                 }
             }
@@ -280,15 +301,61 @@
                 $('#messageInput').val(''); // Clear the input field
             });
 
+            $('#messageInput').keypress(function(event) {
+                if (event.which === 13) { // Check if the pressed key is Enter (key code 13)
+                    event.preventDefault(); // Prevent the default behavior of the Enter key
+                    $('#sendButton').click(); // Trigger the sendButton click event
+                }
+            });
+
             function sendMessage(roomId, messageText) {
                 var messagesRef = firebase.database().ref('chatrooms/' + roomId + '/messages');
                 var newMessageRef = messagesRef.push();
                 newMessageRef.set({
                     sender_id: authenticatedUserId,
                     message: messageText,
-                    timestamp: firebase.database.ServerValue.TIMESTAMP
+                    timestamp: firebase.database.ServerValue.TIMESTAMP,
+                    seen: false // Default to false
                 });
             }
+
+            // Mark message as seen when the user reads it
+            function markMessageAsSeen(messageId) {
+                $.ajax({
+                    url: '{{ route('chat.markAsSeen') }}',
+                    method: 'POST',
+                    data: {
+                        message_id: messageId,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        console.log('Message marked as seen');
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error marking message as seen:', error);
+                    }
+                });
+            }
+
+            // Call this function when user opens the chat window
+            $('.user').click(function() {
+                var otherUserId = $(this).data('user-id');
+                var receiver_id_value = $('#receiver_id').val();
+                var roomId = generateRoomId(authenticatedUserId, receiver_id_value);
+                var messagesRef = firebase.database().ref('chatrooms/' + roomId + '/messages');
+
+                messagesRef.once('value', function(snapshot) {
+                    snapshot.forEach(function(childSnapshot) {
+                        var message = childSnapshot.val();
+                        if (message.sender_id !== authenticatedUserId && !message.seen) {
+                            markMessageAsSeen(childSnapshot.key);
+                            messagesRef.child(childSnapshot.key).update({
+                                seen: true
+                            });
+                        }
+                    });
+                });
+            });
         });
     </script>
 @endpush

@@ -9,20 +9,25 @@ class Room extends Model
 {
     use HasFactory;
 
+    // Define the table associated with the model
     protected $table = 'room';
 
-    protected $fillable = array( 'admin_id_one', 'admin_id_two');
+    // Define the fillable attributes for mass assignment
+    protected $fillable = array('admin_id_one', 'admin_id_two');
 
+    // Define the relationship with the first admin user
     public function adminIdOne()
     {
         return $this->belongsTo(User::class, 'admin_id_one');
     }
 
+    // Define the relationship with the second admin user
     public function adminIdTwo()
     {
         return $this->belongsTo(User::class, 'admin_id_two');
     }
 
+    // Define the relationship with messages in the room
     public function messages()
     {
         return $this->hasMany(RoomMessage::class, 'room_id')->with('sender');

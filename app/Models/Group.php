@@ -30,4 +30,13 @@ class Group extends Model
     {
         return $this->hasMany(EngagementMetric::class);
     }
+
+    /**
+     * The users that belong to the group.
+     */
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'group_members', 'group_id', 'user_id')
+                    ->withTimestamps();
+    }
 }

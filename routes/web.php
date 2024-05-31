@@ -90,6 +90,8 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::post('/chat/create-room', [ChatController::class, 'create'])->name('chat.create');
 
+        Route::post('/chat/markAsSeen', [ChatController::class, 'markAsSeen'])->name('chat.markAsSeen');
+
         Route::resource('/tickets', TicketController::class);
 
         Route::Resource('/ticket-priorities', TicketPriorityController::class);
