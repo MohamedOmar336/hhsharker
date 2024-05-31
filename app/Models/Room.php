@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 class Room extends Model
 {
-    use HasFactory;
+    use HasFactory , LogsActivity;
 
     // Define the table associated with the model
     protected $table = 'room';
@@ -32,4 +33,16 @@ class Room extends Model
     {
         return $this->hasMany(RoomMessage::class, 'room_id')->with('sender');
     }
+
+
+    /**
+     * Activity Log
+     */
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['name', 'text'])
+            ->setDescriptionForEvent(fn(string $eventName) => "This model has been {$eventName}");
+    }
+
 }

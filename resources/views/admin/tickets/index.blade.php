@@ -11,13 +11,13 @@
                         <div class="float-end">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a></li>
-                                <li class="breadcrumb-item active">{{ __('general.side.tags') }}</li>
+                                <li class="breadcrumb-item active">{{ __('general.side.tickets') }}</li>
                             </ol>
                         </div>
                         <div class="col-md-12">
                             <a href="{{ URL::previous() }}" class="btn btn-secondary"><span
                                     class="fa fa-backward"></span></a>
-                            <h4 class="page-title">{{ __('general.side.tags') . ' ' }} List</h4>
+                            <h4 class="page-title">{{ __('general.side.tickets') . ' ' }} List</h4>
                         </div>
                     </div><!--end page-title-box-->
                 </div><!--end col-->
@@ -27,48 +27,48 @@
                 <x-slot name="header">
                     <tr>
                         <th><input type="checkbox" id="select-all"></th>
-                                            <th>Title</th>
-                                            <th>Priority</th>
-                                            <th>Status</th>
-                                            <th>Assigned To</th>
-                                            <th>Created By</th>
-                                        </tr>
-                                    </x-slot>
-                                    @foreach ($records as $record)
-                                    <tr>
-                                        <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
-                
-                                        <td>{{ $record->id }}</td>
-                                        <td>{{ $record->Title }}</td>
-                                        <td>{{ $record->priority->Name_en }}</td>
-                                        <td>{{ $record->status->Name_en }}</td>
-                                        <td>{{ $record->assignedTo->user_name }}</td>
-                                     
-                                                <td>
-                                                    <a href="{{ route('ticket_histories.show_by_ticket', $record->id) }}"
-                                                        class="btn btn-sm btn-info">History</a>
-                                                    <a href="{{ route('tickets.edit', $record->id) }}"
-                                                        class="btn btn-sm btn-primary">Edit</a>
-                                                    <form action="{{ route('tickets.destroy',$record->id) }}"
-                                                        method="POST" style="display:inline-block;">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                        <th>Title</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                        <th>Assigned To</th>
+                        <th>Created By</th>
+                        <th scope="col">{{ __('general.attributes.actions') }}</th>
+                    </tr>
+                </x-slot>
+                @foreach ($records as $record)
+                    <tr>
+                        <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
 
-                                                </td>
-                                            </tr>
-                                            @endforeach
+                        <td>{{ $record->id }}</td>
+                        <td>{{ $record->Title }}</td>
+                        <td>{{ $record->priority->Name_en }}</td>
+                        <td>{{ $record->status->Name_en }}</td>
+                        <td>{{ $record->assignedTo->user_name }}</td>
 
-                                            <x-slot name="createButton">
-                                                <a href="{{ route('products.create') }}" class="btn btn-outline-light btn-sm px-4">+
-                                                    {{ __('general.actions.new') }}</a>
-                                            </x-slot>
-                        
-                                            <x-slot name="pagination">
-                                                {{ $records->links('admin.pagination.bootstrap') }}
-                                            </x-slot>
-                                        </x-table>
-                        
+                        <td>
+                            <a href="{{ route('ticket_histories.show_by_ticket', $record->id) }}"
+                                class="btn btn-sm btn-info">History</a>
+                            <a href="{{ route('tickets.edit', $record->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                            <form action="{{ route('tickets.destroy', $record->id) }}" method="POST"
+                                style="display:inline-block;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+
+                        </td>
+                    </tr>
+                @endforeach
+
+                <x-slot name="createButton">
+                    <a href="{{ route('products.create') }}" class="btn btn-outline-light btn-sm px-4">+
+                        {{ __('general.actions.new') }}</a>
+                </x-slot>
+
+                <x-slot name="pagination">
+                    {{ $records->links('admin.pagination.bootstrap') }}
+                </x-slot>
+            </x-table>
+
         </div>
     </div><!-- container -->
 @endsection

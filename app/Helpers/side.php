@@ -141,7 +141,10 @@ return [
             [
                 'title' => __('general.actions.new'),
                 'route' => 'tickets.create',
-            ],
+            ],[
+                'title' => __('general.side.my-tickets'),
+                'route' => 'tickets.my',
+            ]
         ],
     ],[
         'title' => __('general.attributes.status'),
@@ -171,6 +174,24 @@ return [
             [
                 'title' => __('general.actions.new'),
                 'route' => 'ticket-statuses.create',
+            ],
+        ],
+    ],[
+        'title' => __('general.attributes.appointments'),
+        'link' => 'sidebarappointments',
+        'icon' => 'ti ti-book',
+        'route' => 'appointments.index',
+        'sub_menu' => [
+            [
+                'title' => __('general.side.appointments-list'),
+                'route' => 'appointments.index',
+            ],
+            [
+                'title' => __('general.actions.new'),
+                'route' => 'appointments.create',
+            ],[
+                'title' => __('general.side.my-appointments'),
+                'route' => 'appointments.myAppointments',
             ],
         ],
     ],[

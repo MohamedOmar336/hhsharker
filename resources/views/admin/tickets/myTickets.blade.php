@@ -27,48 +27,47 @@
                 <x-slot name="header">
                     <tr>
                         <th><input type="checkbox" id="select-all"></th>
-                                            <th>ID</th>
-                                            <th>Title</th>
-                                            <th>Priority</th>
-                                            <th>Status</th>
-                                            <th>Assigned To</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </x-slot>
-                                    @foreach ($records as $record)
-                                    <tr>
-                                        <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
-                
-                                                <td>{{ $record->id }}</td>
-                                                <td>{{ $record->Title }}</td>
-                                                <td>{{ $record->priority->Name_en }}</td>
-                                                <td>{{ $record->status->Name_en }}</td>
-                                                <td>{{ $record->assignedTo->user_name }}</td>
-                                                <td>
-                                                    <a href="{{ route('ticket_histories.show_by_ticket', $record->id) }}"
-                                                        class="btn btn-sm btn-info">History</a>
-                                                    <a href="{{ route('tickets.edit', $record->id) }}"
-                                                        class="btn btn-sm btn-primary">Edit</a>
-                                                    <form action="{{ route('tickets.destroy', $record->id) }}"
-                                                        method="POST" style="display:inline-block;">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                        <th>Assigned To</th>
+                        <th>Actions</th>
+                    </tr>
+                </x-slot>
+                @foreach ($records as $record)
+                    <tr>
+                        <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
 
-                                                    </form>
-                                                </td>
-                                                @endforeach
+                        <td>{{ $record->id }}</td>
+                        <td>{{ $record->Title }}</td>
+                        <td>{{ $record->priority->Name_en }}</td>
+                        <td>{{ $record->status->Name_en }}</td>
+                        <td>{{ $record->assignedTo->user_name }}</td>
+                        <td>
+                            <a href="{{ route('ticket_histories.show_by_ticket', $record->id) }}"
+                                class="btn btn-sm btn-info">History</a>
+                            <a href="{{ route('tickets.edit', $record->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                            <form action="{{ route('tickets.destroy', $record->id) }}" method="POST"
+                                style="display:inline-block;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
 
-                                                <x-slot name="createButton">
-                                                    <a href="{{ route('products.create') }}" class="btn btn-outline-light btn-sm px-4">+
-                                                        {{ __('general.actions.new') }}</a>
-                                                </x-slot>
-                            
-                                                <x-slot name="pagination">
-                                                    {{ $records->links('admin.pagination.bootstrap') }}
-                                                </x-slot>
-                                            </x-table>
-                            
+                            </form>
+                        </td>
+                @endforeach
+
+                <x-slot name="createButton">
+                    <a href="{{ route('products.create') }}" class="btn btn-outline-light btn-sm px-4">+
+                        {{ __('general.actions.new') }}</a>
+                </x-slot>
+
+                <x-slot name="pagination">
+                    {{ $records->links('admin.pagination.bootstrap') }}
+                </x-slot>
+            </x-table>
+
         </div>
     </div><!-- container -->
 @endsection

@@ -33,51 +33,52 @@
                 <x-slot name="header">
                     <tr>
                         <th><input type="checkbox" id="select-all"></th>
-                                            <th>ID</th>
-                                            <th>Creator</th>
-                                            <th>Title</th>
-                                            <th>With</th>
-                                            <th>Start Time</th>
-                                            <th>Finish Time</th>
-                                            <th>Status</th>
-                                            <th>Notes</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </x-slot>
-                                    @foreach ($records as $record)
-                                    <tr>
-                                        <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
-                >
-                                                <td>{{ $record->id }}</td>
-                                                <td>{{ $record->title }}</td>
-                                                <td>{{ $record->user->user_name }}</td>
-                                                <td>{{ $record->withUser->user_name }}</td>
-                                                <td>{{ $record->start_time }}</td>
-                                                <td>{{ $record->finish_time }}</td>
-                                                <td>{{ $record->status }}</td>
-                                                <td>{{ $record->notes }}</td>
-                                                <td>
-                                                    <a href="{{ route('appointments.show',  $record->id) }}" class="btn btn-sm btn-info">View</a>
-                                                    <a href="{{ route('appointments.edit', $record->id) }}" class="btn btn-sm btn-primary">Edit</a>
-                                                    <form action="{{ route('appointments.destroy', $record->id) }}" method="POST" style="display:inline-block;">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                            @endforeach
+                        <th>ID</th>
+                        <th>Creator</th>
+                        <th>Title</th>
+                        <th>With</th>
+                        <th>Start Time</th>
+                        <th>Finish Time</th>
+                        <th>Status</th>
+                        <th>Notes</th>
+                        <th>Actions</th>
+                    </tr>
+                </x-slot>
+                @foreach ($records as $record)
+                    <tr>
+                        <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
+                        >
+                        <td>{{ $record->id }}</td>
+                        <td>{{ $record->title }}</td>
+                        <td>{{ $record->user->user_name }}</td>
+                        <td>{{ $record->withUser->user_name }}</td>
+                        <td>{{ $record->start_time }}</td>
+                        <td>{{ $record->finish_time }}</td>
+                        <td>{{ $record->status }}</td>
+                        <td>{{ $record->notes }}</td>
+                        <td>
+                            <a href="{{ route('appointments.show', $record->id) }}" class="btn btn-sm btn-info">View</a>
+                            <a href="{{ route('appointments.edit', $record->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                            <form action="{{ route('appointments.destroy', $record->id) }}" method="POST"
+                                style="display:inline-block;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
 
-                                            <x-slot name="createButton">
-                                                <a href="{{ route('products.create') }}" class="btn btn-outline-light btn-sm px-4">+
-                                                    {{ __('general.actions.new') }}</a>
-                                            </x-slot>
-                        
-                                            <x-slot name="pagination">
-                                                {{ $records->links('admin.pagination.bootstrap') }}
-                                            </x-slot>
-                                        </x-table>
-                        
+                <x-slot name="createButton">
+                    <a href="{{ route('appointments.create') }}" class="btn btn-outline-light btn-sm px-4">+
+                        {{ __('general.actions.new') }}</a>
+                </x-slot>
+
+                <x-slot name="pagination">
+                    {{ $records->links('admin.pagination.bootstrap') }}
+                </x-slot>
+            </x-table>
+
         </div>
     </div><!-- container -->
 @endsection
