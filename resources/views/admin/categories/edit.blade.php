@@ -67,7 +67,7 @@
 
                                 <div class="mb-3">
                                     <label for="image" class="form-label">{{ __('general.attributes.image') }}</label>
-                                    <img src="{{ $record->image ? asset('images/' . $record->image) : asset('images/no_image.png') }}" alt="{{ $category->name }}"
+                                    <img src="{{ $record->image ? asset('images/' . $record->image) : asset('assets-admin/images/no_image.png') }}" alt="{{ $category->name }}"
                                         width="100"><br>
                                     <label for="image" class="form-label mt-2">Update Image</label>
                                     <input type="file" class="form-control" id="image" name="image">

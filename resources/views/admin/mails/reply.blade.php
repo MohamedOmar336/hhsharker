@@ -34,7 +34,7 @@
                                 @csrf
                                 <div class="mb-3">
                                     <label for="recipient_id" class="form-label">{{ __('general.recipient') }}</label>
-                                    <input type="text" id="recipient_id" class="form-control" value="{{ $mail->sender->user_name }}" readonly>
+                                    <input type="text" id="recipient_id" class="form-control" value="{{ $mail->sender->email }}" readonly>
                                 </div>
                                 <div class="mb-3">
                                     <label for="subject" class="form-label">{{ __('general.subject') }}</label>

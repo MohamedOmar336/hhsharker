@@ -9,7 +9,9 @@
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link href="https://fonts.cdnfonts.com/css/schabo" rel="stylesheet">
     <link href="{{ asset('assets-website/css/main.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="{{ asset('assets-admin/images/IMG_1465.png') }}">
     </head>
+
 
 <body>
     <!-- navbar -->

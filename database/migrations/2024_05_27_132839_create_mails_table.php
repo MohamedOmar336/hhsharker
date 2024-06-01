@@ -15,6 +15,8 @@ class CreateMailsTable extends Migration
             $table->string('subject');
             $table->text('body');
             $table->timestamp('received_at')->nullable();
+            $table->boolean('is_starred')->default(false);
+            $table->enum('label', ['inbox', 'starred', 'important', 'draft', 'sent', 'trash'])->default('inbox');
             $table->timestamps();
             
             // Foreign key constraints

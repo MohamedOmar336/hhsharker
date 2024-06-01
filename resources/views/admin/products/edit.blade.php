@@ -131,7 +131,7 @@
                                 <div class="mb-3">
                                     <label for="image"
                                         class="form-label">{{ __('general.attributes.current_image') }}</label><br>
-                                    <img src="{{ isset($record->image_url) ? asset('images/' . $record->image_url) : asset('images/no_image.png') }}"
+                                    <img src="{{ isset($record->image_url) ? asset('images/' . $record->image_url) : asset('assets-admin/images/no_image.png') }}"
                                         alt="{{ $product->name }}" width="100"><br>
                                     <label for="image"
                                         class="form-label mt-2">{{ __('general.attributes.update_image') }}</label>
