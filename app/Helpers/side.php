@@ -79,7 +79,7 @@ return [
                 'title' => __('general.actions.compose'),
                 'route' => 'mails.compose',
             ],
-           
+
         ],
     ],
     [
