@@ -15,8 +15,11 @@ class Mail extends Model
         'subject',
         'body',
         'received_at',
+        'is_starred',
+        'label',
     ];
 
+    // Define relationships if needed
     public function sender()
     {
         return $this->belongsTo(User::class, 'sender_id');
@@ -27,4 +30,3 @@ class Mail extends Model
         return $this->belongsTo(User::class, 'recipient_id');
     }
 }
-

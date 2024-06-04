@@ -18,7 +18,7 @@
                         </div>
                         <div class="col-md-12">
                             <a href="{{ URL::previous() }}" class="btn btn-secondary">
-                                <span class="fa fa-backward"></span>
+                                <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
                             </a>
                             <h4 class="page-title">{{ __('general.attributes.appointments') }}</h4>
                         </div>
@@ -31,15 +31,15 @@
                 <x-slot name="header">
                     <tr>
                         <th><input type="checkbox" id="select-all"></th>
-                        <th>ID</th>
-                        <th>Title</th>
-                        <th>Creator</th>
-                        <th>With</th>
-                        <th>Start Time</th>
-                        <th>Finish Time</th>
-                        <th>Status</th>
-                        <th>Notes</th>
-                        <th>Actions</th>
+                        <th>{{ __('general.attributes.id') }}</th>
+                        <th>{{ __('general.attributes.creator') }}</th>
+                        <th>{{ __('general.attributes.title') }}</th>
+                        <th>{{ __('general.attributes.with') }}</th>
+                        <th>{{ __('general.attributes.start_time') }}</th>
+                        <th>{{ __('general.attributes.finish_time') }}</th>
+                        <th>{{ __('general.attributes.status') }}</th>
+                        <th>{{ __('general.attributes.notes') }}</th>
+                        <th>{{ __('general.attributes.actions') }}</th>
                     </tr>
                 </x-slot>
                 @foreach ($records as $record)

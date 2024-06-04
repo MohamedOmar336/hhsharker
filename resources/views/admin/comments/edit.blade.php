@@ -18,16 +18,15 @@
                                 <li class="breadcrumb-item"><a
                                         href="{{ url('/comments') }}">{{ __('general.attributes.comments') }}</a>
                                 </li><!--end nav-item-->
-                                <li class="breadcrumb-item active">Edit</li>
+                                <li class="breadcrumb-item active">{{ __('general.actions.edit') }}</li>
                             </ol>
                         </div>
                           <div class="col-md-12">
-                    <a href="{{ URL::previous() }}"
-                    class="btn btn-secondary"><span class="fa fa-backward"></a>
-                         <h4 class="page-title">Edit Comment</h4>
-                </div>
-                       
-                     
+                              <a href="{{ URL::previous() }}" class="btn btn-secondary">
+                                  <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
+                              </a>
+                              <h4 class="page-title">{{ __('general.actions.edit_comment') }}</h4>
+                          </div>
                     </div><!--end page-title-box-->
                 </div><!--end col-->
             </div>
@@ -41,7 +40,7 @@
                                 @csrf
                                 @method('PUT')
                                 <div class="mb-3">
-                                    <label for="commenter" class="form-label">{{ __('Commenter') }}</label>
+                                    <label for="commenter" class="form-label">{{ __('general.attributes.commenter') }}</label>
                                     <input id="commenter" type="text"
                                         class="form-control @error('commenter') is-invalid @enderror" name="commenter"
                                         value="{{ old('commenter', $comment->commenter) }}" required autofocus>
@@ -50,7 +49,7 @@
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="email" class="form-label">{{ __('Email') }}</label>
+                                    <label for="email" class="form-label">{{ __('general.attributes.email') }}</label>
                                     <input id="email" type="email"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
                                         value="{{ old('email', $comment->email) }}" required>
@@ -59,7 +58,7 @@
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="comment" class="form-label">{{ __('Comment') }}</label>
+                                    <label for="comment" class="form-label">{{ __('general.attributes.comment') }}</label>
                                     <textarea id="comment" class="form-control @error('comment') is-invalid @enderror"
                                         name="comment" rows="6" required>{{ old('comment', $comment->comment) }}</textarea>
                                     @error('comment')
@@ -68,7 +67,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="comment_date"
-                                        class="form-label">{{ __('Comment Date') }}</label>
+                                        class="form-label">{{ __('general.attributes.comment_date') }}</label>
                                     <input id="comment_date" type="date"
                                         class="form-control @error('comment_date') is-invalid @enderror" name="comment_date"
                                         value="{{ old('comment_date', $comment->comment_date) }}" required>
@@ -76,7 +75,7 @@
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <button type="submit" class="btn btn-primary">Update Comment</button>
+                                <button type="submit" class="btn btn-primary">{{ __('general.actions.update_comment') }}</button>
                             </form>
                         </div> <!--end card-body-->
                     </div><!--end card-->

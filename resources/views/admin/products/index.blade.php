@@ -19,7 +19,9 @@
                             </ol>
                         </div>
                         <div class="col-md-12">
-                            <a href="{{ URL::previous() }}" class="btn btn-secondary"><span class="fa fa-backward"></a>
+                            <a href="{{ URL::previous() }}" class="btn btn-secondary">
+                                <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
+                            </a>
                             <h4 class="page-title">Product List</h4>
                         </div>
                     </div><!--end page-title-box-->
@@ -48,7 +50,7 @@
                         <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
 
                         <td scope="col">
-                            <img src="{{ $record->image_url ? asset('images/' . $record->image_url) : asset('images/no_image.png') }}"
+                            <img src="{{ $record->image_url ? asset('images/' . $record->image_url) : asset('assets-admin/images/no_image.png') }}"
                                 alt="{{ $record->name }}" width="50">
                         </td>
 

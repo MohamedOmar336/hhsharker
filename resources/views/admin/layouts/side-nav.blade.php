@@ -20,14 +20,32 @@
                             <i class="ti ti-apps menu-icon"></i>
                         </a><!--end nav-link-->
                     </li><!--end nav-item-->
+                    <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="External"
+                        data-bs-trigger="hover">
+                        <a href="#MetricaInternal" id="Internal-tab" class="nav-link">
+                            <i class="ti ti-planet menu-icon"></i>
+                        </a><!--end nav-link-->
+                    </li><!--end nav-item-->
+                    <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="SystemSettings"
+                        data-bs-trigger="hover">
+                        <a href="#MetricaSettings" id="Settings-tab" class="nav-link">
+                            <i class="ti ti-settings menu-icon"></i>
+                        </a><!--end nav-link-->
+                    </li><!--end nav-item-->
+                    <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Profile"
+                        data-bs-trigger="hover">
+                        <a href="#MetricaProfile" id="Profile-tab" class="nav-link">
+                            <i class="ti ti-user menu-icon"></i>
+                        </a><!--end nav-link-->
+                    </li><!--end nav-item-->
 
                 </ul><!--end nav-->
             </div><!--end /div-->
         </div><!--end main-icon-menu-body-->
         <div class="pro-metrica-end">
             <a href="#" class="profile">
-                 <img src="{{ Auth::user()->image ? asset('images/' . Auth::user()->image) : asset('images/user.png') }}" alt="profile-user"
-                    class="rounded-circle thumb-sm">
+                <img src="{{ Auth::user()->image ? asset('images/' . Auth::user()->image) : asset('assets-admin/images/user.png') }}"
+                    alt="profile-user" class="rounded-circle thumb-sm">
             </a>
         </div><!--end pro-metrica-end-->
     </div>
@@ -38,8 +56,10 @@
         <div class="topbar-left">
             <a class='logo' href='{{ route('home') }}'>
                 <span>
-                    <img src="{{ asset('assets-admin/images/IMG_1468.png') }}" alt="logo-large" class="logo-lg logo-dark">
-                    <img src="{{ asset('assets-admin/images/logo-dark') }}" alt="logo-=large" class="logo-lg logo-light">
+                    <img src="{{ asset('assets-admin/images/IMG_1468.png') }}" alt="logo-large"
+                        class="logo-lg logo-dark">
+                    <img src="{{ asset('assets-admin/images/logo-dark') }}" alt="logo-=large"
+                        class="logo-lg logo-light">
                 </span>
             </a><!--end logo-->
         </div><!--end topbar-left-->
@@ -60,7 +80,8 @@
 
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class='nav-link' href="{{ route('chat.index' , Auth()->user()) }}">{{ __('general.chat') }}</a>
+                        <a class='nav-link'
+                            href="{{ route('chat.index', Auth()->user()) }}">{{ __('general.chat') }}</a>
                     </li><!--end nav-item-->
                 </ul><!--end nav-->
 
@@ -81,8 +102,8 @@
                     <ul class="navbar-nav">
                         @foreach ($filteredSideNav as $item)
                             <li class="nav-item">
-                                <a class="nav-link" href="#{{ $item['link'] }}" data-bs-toggle="collapse" role="button"
-                                    aria-expanded="false" aria-controls="{{ $item['link'] }}">
+                                <a class="nav-link" href="#{{ $item['link'] }}" data-bs-toggle="collapse"
+                                    role="button" aria-expanded="false" aria-controls="{{ $item['link'] }}">
                                     {{ $item['title'] }}
                                 </a>
                                 <div class="collapse " id="{{ $item['link'] }}">

@@ -131,6 +131,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/mails/{id}/reply', [MailController::class, 'reply'])->name('mails.reply');
         Route::post('/mails/{id}/sendReply', [MailController::class, 'sendReply'])->name('mails.sendReply');
 
+        Route::post('/mails/bulk-action', [MailController::class, 'bulkAction'])->name('mails.bulkAction');
 
 
     });

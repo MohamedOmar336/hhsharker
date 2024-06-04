@@ -20,8 +20,9 @@
                             </ol>
                         </div>
                            <div class="col-md-12">
-                    <a href="{{ URL::previous() }}"
-                    class="btn btn-secondary"><span class="fa fa-backward"></a>
+                            <a href="{{ URL::previous() }}" class="btn btn-secondary">
+                                <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
+                            </a>
                     <h4 class="page-title">{{ __('general.side.edit') . ' ' }}{{ __('general.attributes.profile') }}</h4>
                     
                 </div>
@@ -38,7 +39,7 @@
                                     <div class="col-lg-4 align-self-center mb-3 mb-lg-0">
                                         <div class="met-profile-main">
                                             <div class="met-profile-main-pic">
-                                                <img src="{{ Auth::user()->image ? asset('images/' . Auth::user()->image) : asset('images/user.png') }}"
+                                                <img src="{{ Auth::user()->image ? asset('images/' . Auth::user()->image) : asset('assets-admin/images/user.png') }}"
                                                     alt="{{ __('general.attributes.name', ['user_name' => Auth::user()->user_name]) }}"
                                                     height="110" class="rounded-circle">
                                                 <span class="met-profile_main-pic-change">
@@ -111,14 +112,14 @@
 
                                                     <!-- Email -->
                                                     <div class="mb-3">
-                                                        <label for="email" class="form-label">Email</label>
+                                                        <label for="email" class="form-label">{{ __('general.attributes.email') }}</label>
                                                         <input type="email" name="email" id="email"
                                                             class="form-control" value="{{ Auth::user()->email }}">
                                                     </div>
 
                                                     <!-- Phone -->
                                                     <div class="mb-3">
-                                                        <label for="phone" class="form-label">Phone</label>
+                                                        <label for="phone" class="form-label"> {{ __('general.attributes.phone') }}</label>
                                                         <input type="text" name="phone" id="phone"
                                                             class="form-control" value="{{ Auth::user()->phone }}">
                                                     </div>
@@ -128,7 +129,7 @@
                                                     <div class="mb-3">
                                                         <label for="image"
                                                             class="form-label">{{ __('general.attributes.image') }}</label><br>
-                                                        <img src="{{ Auth::user()->image ? asset('images/' . Auth::user()->image) : asset('images/user.png') }}"
+                                                        <img src="{{ Auth::user()->image ? asset('images/' . Auth::user()->image) : asset('assets-admin/images/user.png') }}"
                                                             alt="{{ Auth::user()->user_name }}" width="100"><br>
                                                         <label for="image" class="form-label mt-2">Update Image</label>
                                                         <input type="file" class="form-control" id="image"

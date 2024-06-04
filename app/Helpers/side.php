@@ -82,6 +82,23 @@ return [
         ],
     ],
     [
+        'title' => __('general.side.mails'),
+        'link' => 'sidebarMails',
+        'icon' => 'ti ti-mail',
+        'route' => 'mails.index',
+        'sub_menu' => [
+            [
+                'title' => __('general.side.inbox'),
+                'route' => 'mails.index',
+            ],
+            [
+                'title' => __('general.actions.compose'),
+                'route' => 'mails.compose',
+            ],
+
+        ],
+    ],
+    [
         'title' => __('general.side.blogs'),
         'link' => 'sidebarBlogs',
         'icon' => 'ti ti-book',
@@ -173,7 +190,25 @@ return [
             ],
             [
                 'title' => __('general.actions.new'),
-                'route' => 'ticket-statuses.create',
+                'route' => 'ticket-priorities.create',
+            ],
+        ],
+    ],[
+        'title' => __('general.attributes.appointments'),
+        'link' => 'sidebarappointments',
+        'icon' => 'ti ti-book',
+        'route' => 'appointments.index',
+        'sub_menu' => [
+            [
+                'title' => __('general.side.appointments-list'),
+                'route' => 'appointments.index',
+            ],
+            [
+                'title' => __('general.actions.new'),
+                'route' => 'appointments.create',
+            ],[
+                'title' => __('general.side.my-appointments'),
+                'route' => 'appointments.myAppointments',
             ],
         ],
     ],[

@@ -10,14 +10,14 @@
 
 
     <meta charset="utf-8" />
-    <title>Metrica - Admin & Dashboard Template</title>
+    <title>HH-shaker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="assets-admin/images/favicon.ico">
+    <link rel="shortcut icon" href="{{ asset('assets-admin/images/IMG_1465.png') }}">
 
 
 
@@ -93,28 +93,7 @@
                                             </div><!--end col-->
                                         </div> <!--end form-group-->
                                     </form><!--end form-->
-                                    <div class="m-3 text-center text-muted">
-                                        <p class="mb-0">Don't have an account ? <a class='text-primary ms-2'
-                                                href='auth-register.html'>Free Resister</a></p>
-                                    </div>
-                                    <hr class="hr-dashed mt-4">
-                                    <div class="text-center mt-n5">
-                                        <h6 class="card-bg px-3 my-4 d-inline-block">Or Login With</h6>
-                                    </div>
-                                    <div class="d-flex justify-content-center mb-1">
-                                        <a href="#"
-                                            class="d-flex justify-content-center align-items-center thumb-sm bg-soft-primary rounded-circle me-2">
-                                            <i class="fab fa-facebook align-self-center"></i>
-                                        </a>
-                                        <a href="#"
-                                            class="d-flex justify-content-center align-items-center thumb-sm bg-soft-info rounded-circle me-2">
-                                            <i class="fab fa-twitter align-self-center"></i>
-                                        </a>
-                                        <a href="#"
-                                            class="d-flex justify-content-center align-items-center thumb-sm bg-soft-danger rounded-circle">
-                                            <i class="fab fa-google align-self-center"></i>
-                                        </a>
-                                    </div>
+                                
                                 </div><!--end card-body-->
                             </div><!--end card-->
                         </div><!--end col-->

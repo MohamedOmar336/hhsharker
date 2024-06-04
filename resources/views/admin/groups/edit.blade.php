@@ -17,7 +17,7 @@
                         </div>
                         <div class="col-md-12">
                             <a href="{{ URL::previous() }}" class="btn btn-secondary">
-                                <span class="fa fa-backward"></span>
+                                <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
                             </a>
                             <h4 class="page-title">{{ __('general.actions.edit').' ' }}{{ __('general.attributes.groups') }}</h4>
                         </div>
@@ -27,7 +27,7 @@
             <!-- end page title and breadcrumb -->
 
             <div class="row">
-                <div class="col-12 col-lg-8 mx-auto">
+                <div class="col-12 col-lg-10 mx-auto">
                     <div class="card">
                         <div class="card-body content-area">
                             <form method="POST" action="{{ route('groups.update', $group->id) }}" enctype="multipart/form-data">

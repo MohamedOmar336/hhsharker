@@ -1,5 +1,3 @@
-<!-- resources/views/admin/tags/create.blade.php -->
-
 @extends('admin.layouts.app')
 
 @section('content')
@@ -17,14 +15,15 @@
                                 <li class="breadcrumb-item"><a
                                         href="{{ url('/tags') }}">{{ __('general.attributes.tags') }}</a>
                                 </li><!--end nav-item-->
-                                <li class="breadcrumb-item active">Add</li>
+                                <li class="breadcrumb-item active">{{ __('general.actions.add') }}</li>
                             </ol>
                         </div>
                          <div class="col-md-12">
-                    <a href="{{ URL::previous() }}"
-                    class="btn btn-secondary"><span class="fa fa-backward"></a>
-                   <h4 class="page-title">Add Tag</h4>
-                </div>
+                            <a href="{{ URL::previous() }}" class="btn btn-secondary">
+                                <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
+                            </a>
+                            <h4 class="page-title">{{ __('general.attributes.add_tag') }}</h4>
+                        </div>
                         
                     </div><!--end page-title-box-->
                 </div><!--end col-->
@@ -38,7 +37,7 @@
                             <form action="{{ route('tags.store') }}" method="POST">
                                 @csrf
                                 <div class="mb-3">
-                                    <label for="name_en" class="form-label">{{ __('Tag Name (English)') }}</label>
+                                    <label for="name_en" class="form-label"> <th>{{ __('general.attributes.tag_name_english') }}</th></label>
                                     <input id="name_en" type="text"
                                         class="form-control @error('name_en') is-invalid @enderror" name="name_en"
                                         value="{{ old('name_en') }}" required autofocus>
@@ -47,7 +46,7 @@
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="name_ar" class="form-label">{{ __('Tag Name (Arabic)') }}</label>
+                                    <label for="name_ar" class="form-label">{{ __('general.attributes.tag_name_arabic') }}</label>
                                     <input id="name_ar" type="text"
                                         class="form-control @error('name_ar') is-invalid @enderror" name="name_ar"
                                         value="{{ old('name_ar') }}" required>
@@ -55,7 +54,7 @@
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <button type="submit" class="btn btn-primary">Create Tag</button>
+                                <button type="submit" class="btn btn-primary">{{ __('general.actions.create_tag') }}</button>
                             </form>
                         </div> <!--end card-body-->
                     </div><!--end card-->
