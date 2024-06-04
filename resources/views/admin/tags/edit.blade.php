@@ -22,8 +22,9 @@
                             </ol>
                         </div>
                          <div class="col-md-12">
-                    <a href="{{ URL::previous() }}"
-                    class="btn btn-secondary"><span class="fa fa-backward"></a>
+                            <a href="{{ URL::previous() }}" class="btn btn-secondary">
+                                <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
+                            </a>
                     <h4 class="page-title">Edit Tag</h4>
                 </div>
                         
@@ -40,7 +41,7 @@
                                 @csrf
                                 @method('PUT')
                                 <div class="mb-3">
-                                    <label for="name_en" class="form-label">{{ __('Tag Name (English)') }}</label>
+                                    <label for="name_en" class="form-label"> <th>{{ __('general.attributes.tag_name_english') }}</th></label>
                                     <input id="name_en" type="text"
                                         class="form-control @error('name_en') is-invalid @enderror" name="name_en"
                                         value="{{ old('name_en', $tag->name_en) }}" required autofocus>
@@ -49,7 +50,7 @@
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="name_ar" class="form-label">{{ __('Tag Name (Arabic)') }}</label>
+                                    <label for="name_ar" class="form-label">{{ __('general.attributes.tag_name_arabic') }}</label>
                                     <input id="name_ar" type="text"
                                         class="form-control @error('name_ar') is-invalid @enderror" name="name_ar"
                                         value="{{ old('name_ar', $tag->name_ar) }}" required>

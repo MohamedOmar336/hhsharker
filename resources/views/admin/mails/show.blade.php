@@ -16,10 +16,10 @@
                                 <li class="breadcrumb-item"><a
                                         href="{{ url('/mails') }}">{{ __('general.attributes.mails') }}</a>
                                 </li><!--end nav-item-->
-                                <li class="breadcrumb-item active">Show</li>
+                                <li class="breadcrumb-item active">{{ __('general.actions.show') }}</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">Show</h4>
+                        <h4 class="page-title">{{ __('general.actions.show') }}</h4>
                     </div>
                     <!--end page-title-box-->
                 </div>
@@ -32,7 +32,7 @@
                     <div class="email-leftbar">
 
                         <a href="{{ route('mails.compose') }}" type="button" class="btn btn-primary btn-sm w-100 ">
-                            <i class="fas fa-feather-alt me-2"></i>Compose
+                            <i class="fas fa-feather-alt me-2"></i>{{ __('general.btn.compose') }}
                         </a>
 
                         <div class="card mt-3">
@@ -40,27 +40,28 @@
                                 <div class="mail-list">
                                     <a href="{{ route('mails.index') }}"
                                         class="{{ request('label') === null ? 'active' : '' }}">
-                                        <i class="las la-inbox font-15 me-1"></i>Inbox
+                                        <i class="las la-inbox font-15 me-1"></i>{{ __('general.labels.inbox') }}
                                     </a>
                                     <a href="{{ route('mails.index', ['label' => 'starred']) }}"
                                         class="{{ request('label') === 'starred' ? 'active' : '' }}">
-                                        <i class="las la-star font-15 me-1"></i>Starred
+                                        <i class="las la-star font-15 me-1"></i>{{ __('general.labels.starred') }}
                                     </a>
                                     <a href="{{ route('mails.index', ['label' => 'important']) }}"
                                         class="{{ request('label') === 'important' ? 'active' : '' }}">
-                                        <i class="las la-tag font-15 me-1"></i>Important
+                                        <i class="las la-tag font-15 me-1"></i>{{ __('general.labels.important') }}
                                     </a>
                                     <a href="{{ route('mails.index', ['label' => 'draft']) }}"
                                         class="{{ request('label') === 'draft' ? 'active' : '' }}">
-                                        <i class="las la-file-alt font-15 me-1"></i>Draft
+                                        <i class="las la-file-alt font-15 me-1"></i>{{ __('general.labels.draft') }}
                                     </a>
                                     <a href="{{ route('mails.index', ['label' => 'sent']) }}"
                                         class="{{ request('label') === 'sent' ? 'active' : '' }}">
-                                        <i class="las la-paper-plane font-15 me-1"></i>Sent Mail
+                                        <i class="las la-paper-plane font-15 me-1"></i>{{ __('general.labels.sent') }}
+                                        {{ __('general.attributes.mail') }}
                                     </a>
                                     <a href="{{ route('mails.index', ['label' => 'trash']) }}"
                                         class="{{ request('label') === 'trash' ? 'active' : '' }}">
-                                        <i class="las la-trash-alt font-15 me-1"></i>Trash
+                                        <i class="las la-trash-alt font-15 me-1"></i>{{ __('general.labels.trash') }}
                                     </a>
                                 </div>
                             </div><!-- end card-body -->
@@ -80,49 +81,46 @@
                             <div class="btn-group ms-1">
                                 <button type="button" class="btn btn-sm btn-de-secondary dropdown-toggle"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                    More<i class="mdi mdi-chevron-down ms-1"></i>
+                                    {{ __('general.btn.more') }}<i class="mdi mdi-chevron-down ms-1"></i>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#" onclick="submitBulkAction('mark_starred')">Mark
-                                        as Starred</a>
-                                    <a class="dropdown-item" href="#"
-                                        onclick="submitBulkAction('mark_important')">Mark as Important</a>
-                                    <a class="dropdown-item" href="#" onclick="submitBulkAction('mark_draft')">Add to
-                                        Draft</a>
+                                    <a class="dropdown-item"
+                                        href="#">{{ __('general.btn.mark_starred') }}</a>
+                                    <a class="dropdown-item"
+                                        href="#">{{ __('general.btn.mark_important') }}</a>
+                                    <a class="dropdown-item"
+                                        href="#">{{ __('general.btn.mark_draft') }}</a>
                                 </div>
                             </div>
                         </div><!-- end toolbar -->
 
+                        <div class="card mt-3">
+                            <div class="card-body">
 
-
-                            <div class="card mt-3">
-                                <div class="card-body">
-
-                                    <div class="media mb-4">
-                                        <img class="d-flex me-2 rounded-circle thumb-md"
-                                            src="{{ $mail->sender->image ? asset('images/' . $mail->sender->image) : asset('assets-admin/images/user.png') }}"
-                                            alt="Generic placeholder image">
-                                        <div class="media-body align-self-center">
-                                            <h5 class="font-14 m-0">{{ $mail->sender->getFullNameAttribute() }}</h5>
-                                            <small class="text-muted">{{ $mail->sender->email }}</small>
-                                        </div>
+                                <div class="media mb-4">
+                                    <img class="d-flex me-2 rounded-circle thumb-md"
+                                        src="{{ $mail->sender->image ? asset('images/' . $mail->sender->image) : asset('assets-admin/images/user.png') }}"
+                                        alt="Generic placeholder image">
+                                    <div class="media-body align-self-center">
+                                        <h5 class="font-14 m-0">{{ $mail->sender->getFullNameAttribute() }}</h5>
+                                        <small class="text-muted">{{ $mail->sender->email }}</small>
                                     </div>
-
-                                    <h4 class="mt-0 font-15">{{ $mail->subject }}</h4>
-
-                                    <p>{!! nl2br($mail->body) !!}</p>
-
-                                    <hr />
-
-
-                                    <a href="{{ route('mails.reply', $mail->id) }}" class="btn btn-de-primary btn-sm"
-                                        method="GET">
-                                        <i class="mdi mdi-reply"></i> Reply</a>
                                 </div>
+
+                                <h4 class="mt-0 font-15">{{ $mail->subject }}</h4>
+
+                                <p>{!! nl2br($mail->body) !!}</p>
+
+                                <hr />
+
+                                <a href="{{ route('mails.reply', $mail->id) }}"
+                                    class="btn btn-de-primary btn-sm" method="GET">
+                                    <i class="mdi mdi-reply"></i> {{ __('general.btn.reply') }}</a>
                             </div>
-                        </div> <!-- end email-rightbar -->
-                    </div><!-- end Col -->
-                </div><!-- End row -->
-            </div><!-- container -->
-        </div>
-    @endsection
+                        </div>
+                    </div> <!-- end email-rightbar -->
+                </div><!-- End col -->
+            </div><!-- End row -->
+        </div><!-- container -->
+    </div>
+@endsection

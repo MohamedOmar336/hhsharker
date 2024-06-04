@@ -20,8 +20,9 @@
                             </ol>
                         </div>
                            <div class="col-md-12">
-                    <a href="{{ URL::previous() }}"
-                    class="btn btn-secondary"><span class="fa fa-backward"></a>
+                            <a href="{{ URL::previous() }}" class="btn btn-secondary">
+                                <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
+                            </a>
                     <h4 class="page-title">{{ __('general.side.edit') . ' ' }}{{ __('general.attributes.profile') }}</h4>
                     
                 </div>
@@ -111,14 +112,14 @@
 
                                                     <!-- Email -->
                                                     <div class="mb-3">
-                                                        <label for="email" class="form-label">Email</label>
+                                                        <label for="email" class="form-label">{{ __('general.attributes.email') }}</label>
                                                         <input type="email" name="email" id="email"
                                                             class="form-control" value="{{ Auth::user()->email }}">
                                                     </div>
 
                                                     <!-- Phone -->
                                                     <div class="mb-3">
-                                                        <label for="phone" class="form-label">Phone</label>
+                                                        <label for="phone" class="form-label"> {{ __('general.attributes.phone') }}</label>
                                                         <input type="text" name="phone" id="phone"
                                                             class="form-control" value="{{ Auth::user()->phone }}">
                                                     </div>

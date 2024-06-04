@@ -50,6 +50,22 @@ return [
         ],
     ],
     [
+        'title' => __('general.attributes.groups'),
+        'link' => 'sidebargroups',
+        'icon' => 'ti ti-shopping-cart',
+        'route' => 'groups.index',
+        'sub_menu' => [
+            [
+                'title' => __('general.side.groups-list'),
+                'route' => 'groups.index',
+            ],
+            [
+                'title' => __('general.actions.new'),
+                'route' => 'groups.create',
+            ],
+        ],
+    ],
+    [
         'title' => __('general.side.tags'),
         'link' => 'sidebarTags',
         'icon' => 'ti ti-tag',
@@ -142,7 +158,10 @@ return [
             [
                 'title' => __('general.actions.new'),
                 'route' => 'tickets.create',
-            ],
+            ],[
+                'title' => __('general.side.my-tickets'),
+                'route' => 'tickets.my',
+            ]
         ],
     ],[
         'title' => __('general.attributes.status'),
@@ -171,7 +190,25 @@ return [
             ],
             [
                 'title' => __('general.actions.new'),
-                'route' => 'ticket-statuses.create',
+                'route' => 'ticket-priorities.create',
+            ],
+        ],
+    ],[
+        'title' => __('general.attributes.appointments'),
+        'link' => 'sidebarappointments',
+        'icon' => 'ti ti-book',
+        'route' => 'appointments.index',
+        'sub_menu' => [
+            [
+                'title' => __('general.side.appointments-list'),
+                'route' => 'appointments.index',
+            ],
+            [
+                'title' => __('general.actions.new'),
+                'route' => 'appointments.create',
+            ],[
+                'title' => __('general.side.my-appointments'),
+                'route' => 'appointments.myAppointments',
             ],
         ],
     ],[

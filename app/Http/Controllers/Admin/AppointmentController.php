@@ -18,33 +18,45 @@ class AppointmentController extends Controller
     public function index(Request $request)
     {
         $query = Appointment::with(['user', 'withUser']);
-    
+
         if ($request->has('search')) {
             $searchTerm = $request->search;
-            $query->where('user', 'LIKE', "%{$searchTerm}%") 
+            $query->where('user', 'LIKE', "%{$searchTerm}%")
                 ->orWhere('withUser', 'LIKE', "%{$searchTerm}%")
                 ->orWhere('title', 'LIKE', "%{$searchTerm}%")
                 ->orWhere('status', 'LIKE', "%{$searchTerm}%")
                 ->orWhere('notes', 'LIKE', "%{$searchTerm}%");
         }
-    
+
         $records = $query->paginate(500);
-    
+
         return view('admin.appointments.index', compact('records'));
     }
-    
+
 
     /**
      * Display a listing of the authenticated user's appointments.
      *
      * @return \Illuminate\View\View
      */
-    public function myAppointments()
+    public function myAppointments(Request $request)
     {
-        $appointments = Appointment::with(['user', 'withUser'])
-            ->where('user_id', Auth::id())
-            ->get();
-        return view('admin.appointments.myAppointments', compact('appointments'));
+        $query = Appointment::with(['user', 'withUser'])
+            ->where('user_id', Auth::id());
+
+
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('title', 'LIKE', "%{$search}%")
+                ->orWhere('description', 'LIKE', "%{$search}%")
+                ->orWhere('priority', 'LIKE', "%{$search}%")
+                ->orWhere('status', 'LIKE', "%{$search}%")
+                ->orWhere('assignedTo', 'LIKE', "%{$search}%")
+                ->orWhere('createdBy', 'LIKE', "%{$search}%");
+        }
+
+        $records = $query->paginate(500);
+        return view('admin.appointments.myAppointments', compact('records'));
     }
 
     /**
@@ -67,7 +79,7 @@ class AppointmentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'=> 'required|string',
+            'title' => 'required|string',
             'with_user_id' => 'required|exists:users,id',
             'start_time' => 'required|date',
             'finish_time' => 'required|date|after:start_time',

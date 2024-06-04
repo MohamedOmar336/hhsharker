@@ -84,6 +84,13 @@
                             href="{{ route('chat.index', Auth()->user()) }}">{{ __('general.chat') }}</a>
                     </li><!--end nav-item-->
                 </ul><!--end nav-->
+
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class='nav-link' href="{{ route("calendar.index") }}">{{ __('general.attributes.calendar') }}</a>
+                    </li><!--end nav-item-->
+                </ul><!--end nav-->
+
             </div><!-- end Dashboards -->
             <div id="MetricaApps" class="main-icon-menu-pane tab-pane" role="tabpanel" aria-labelledby="apps-tab">
                 <div class="title-box">

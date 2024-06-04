@@ -22,6 +22,8 @@ use App\Http\Controllers\Admin\AppointmentController;
 use App\Http\Controllers\Admin\CalendarController;
 use App\Http\Controllers\Admin\ActivityLogController;
 use App\Http\Controllers\Admin\NotificationController;
+use App\Http\Controllers\Admin\MessageController;
+use App\Http\Controllers\Admin\GroupController;
 use App\Http\Controllers\Admin\MailController;
 
 /*
@@ -88,6 +90,8 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::post('/chat/create-room', [ChatController::class, 'create'])->name('chat.create');
 
+        Route::post('/chat/markAsSeen', [ChatController::class, 'markAsSeen'])->name('chat.markAsSeen');
+
         Route::resource('/tickets', TicketController::class);
 
         Route::Resource('/ticket-priorities', TicketPriorityController::class);
@@ -112,6 +116,11 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::patch('/notifications/{id}/read', [NotificationController::class, 'markAsRead'])->name('notifications.markAsRead');
 
+        Route::resource('groups', GroupController::class);
+
+        Route::post('messages', [MessageController::class, 'store'])->name('messages.store');
+
+        Route::delete('messages/{message}', [MessageController::class, 'destroy'])->name('messages.destroy');
 
         Route::get('/mails', [MailController::class, 'index'])->name('mails.index');
         Route::get('/mails/index', [MailController::class, 'index'])->name('mails.index');

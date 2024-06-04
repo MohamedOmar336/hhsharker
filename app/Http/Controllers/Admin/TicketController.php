@@ -17,31 +17,32 @@ class TicketController extends Controller
 {
     // Display all tickets
     public function index(Request $request)
-{
-    $query = Ticket::with('priority', 'status', 'assignedTo', 'createdBy');
+    {
+        $query = Ticket::with('priority', 'status', 'assignedTo', 'createdBy');
 
-    if ($request->has('search')) {
-        $search = $request->input('search');
-        $query->where('title', 'LIKE', "%{$search}%")
-              ->orWhere('description', 'LIKE', "%{$search}%")
-              ->orWhere('priority', 'LIKE', "%{$search}%")
-              ->orWhere('status', 'LIKE', "%{$search}%")
-              ->orWhere('assignedTo', 'LIKE', "%{$search}%")
-              ->orWhere('createdBy', 'LIKE', "%{$search}%");
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('title', 'LIKE', "%{$search}%")
+                ->orWhere('description', 'LIKE', "%{$search}%")
+                ->orWhere('priority', 'LIKE', "%{$search}%")
+                ->orWhere('status', 'LIKE', "%{$search}%")
+                ->orWhere('assignedTo', 'LIKE', "%{$search}%")
+                ->orWhere('createdBy', 'LIKE', "%{$search}%");
+        }
+
+        $records = $query->paginate(500);
+
+        return view('admin.tickets.index', compact('records'));
     }
-
-    $records = $query->paginate(500);
-
-    return view('admin.tickets.index', compact('records'));
-}
 
     // Display form for creating a new ticket
     public function create()
-    {   $tags = Tag::all();
+    {
+        $tags = Tag::all();
         $users = User::all();
         $priorities = TicketPrioritySetting::all();
         $statuses = TicketStatusSetting::all();
-        return view('admin.tickets.create', compact('users','priorities','statuses','tags'));
+        return view('admin.tickets.create', compact('users', 'priorities', 'statuses', 'tags'));
     }
 
     // Store a newly created ticket in the database
@@ -87,7 +88,7 @@ class TicketController extends Controller
         $users = User::all();
         $priorities = TicketPrioritySetting::all();
         $statuses = TicketStatusSetting::all();
-        return view('admin.tickets.edit', compact('ticket','users','priorities','statuses'));
+        return view('admin.tickets.edit', compact('ticket', 'users', 'priorities', 'statuses'));
     }
 
     // Update the specified ticket in the database
@@ -109,7 +110,7 @@ class TicketController extends Controller
             'AssignedTo' => $request->AssignedTo,
         ]);
 
-         // Create an entry in the ticket_histories table
+        // Create an entry in the ticket_histories table
         TicketHistory::create([
             'TicketID' => $ticket->id,
             'ChangedBy' => $ticket->CreatedBy,
@@ -134,7 +135,7 @@ class TicketController extends Controller
         return view('admin.tickets.show', compact('ticket'));
     }
     // Display the ticket history
-   /* public function show(Ticket $ticket)
+    /* public function show(Ticket $ticket)
     {
         $history = TicketHistory::where('TicketID', $ticket->TicketID)->with('changedBy')->get();
         return view('admin.tickets.show', compact('ticket', 'history'));
@@ -148,13 +149,26 @@ class TicketController extends Controller
 
         // Redirect to the index view with a success message
         return redirect()->route('tickets.index')
-                         ->with('success', 'Ticket deleted successfully.');
+            ->with('success', 'Ticket deleted successfully.');
     }
 
     // Display the tickets created by the logged-in user
-    public function myTickets()
+    public function myTickets(Request $request)
     {
-        $tickets = Ticket::where('assignedTo', Auth::id())->with('priority', 'status', 'assignedTo')->get();
-        return view('admin.tickets.myTickets', compact('tickets'));
+        $query = Ticket::where('assignedTo', Auth::id())->with('priority', 'status', 'assignedTo');
+
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('title', 'LIKE', "%{$search}%")
+                ->orWhere('description', 'LIKE', "%{$search}%")
+                ->orWhere('priority', 'LIKE', "%{$search}%")
+                ->orWhere('status', 'LIKE', "%{$search}%")
+                ->orWhere('assignedTo', 'LIKE', "%{$search}%")
+                ->orWhere('createdBy', 'LIKE', "%{$search}%");
+        }
+
+        $records = $query->paginate(500);
+
+        return view('admin.tickets.myTickets', compact('records'));
     }
 }

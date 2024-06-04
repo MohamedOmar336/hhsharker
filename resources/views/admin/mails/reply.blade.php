@@ -18,7 +18,9 @@
                             </ol>
                         </div>
                         <div class="col-md-12">
-                            <a href="{{ URL::previous() }}" class="btn btn-secondary"><span class="fa fa-backward"></span></a>
+                            <a href="{{ URL::previous() }}" class="btn btn-secondary">
+                                <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
+                            </a>
                             <h4 class="page-title">{{ __('general.actions.reply') }}</h4>
                         </div>
                     </div><!--end page-title-box-->
@@ -38,7 +40,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="subject" class="form-label">{{ __('general.subject') }}</label>
-                                    <input id="subject" type="text" class="form-control" value="Re: {{ $mail->subject }}" readonly>
+                                    <input id="subject" type="text" class="form-control" value="{{ __('general.subject_prefix.reply') }} {{ $mail->subject }}" readonly>
                                 </div>
                                 <div class="mb-3">
                                     <label for="body" class="form-label">{{ __('general.body') }}</label>
@@ -55,6 +57,5 @@
                 </div> <!--end col-->
             </div><!--end row-->
         </div>
-
     </div><!-- container -->
 @endsection

@@ -11,12 +11,11 @@
                     <div class="page-title-box">
                         <div class="float-end">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Metrica</a></li>
-                                <li class="breadcrumb-item"><a href="#">Apps</a></li>
-                                <li class="breadcrumb-item active">Calendar</li>
+                                <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a></li>
+                                <li class="breadcrumb-item active">{{ __('general.calendar') }}</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">Calendar</h4>
+                        <h4 class="page-title">{{ __('general.calendar') }}</h4>
                     </div><!--end page-title-box-->
                 </div><!--end col-->
             </div>
@@ -38,7 +37,7 @@
             document.addEventListener("DOMContentLoaded", function() {
                 var calendarEl = document.getElementById("calendar");
                 var events = @json($events);
-                
+
                 // Get the current date
                 var today = new Date();
                 var currentMonth = today.toISOString().split('T')[0]; // Format to YYYY-MM-DD

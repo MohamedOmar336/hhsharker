@@ -93,11 +93,7 @@
                                             </div><!--end col-->
                                         </div> <!--end form-group-->
                                     </form><!--end form-->
-                                    <div class="m-3 text-center text-muted">
-                                        <p class="mb-0">Don't have an account ? <a class='text-primary ms-2'
-                                                href='auth-register.html'>Free Resister</a></p>
-                                    </div>
-                                    
+                                
                                 </div><!--end card-body-->
                             </div><!--end card-->
                         </div><!--end col-->

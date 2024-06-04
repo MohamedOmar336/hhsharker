@@ -127,7 +127,7 @@ h2 {
   opacity: .2;
   border: 2px solid #007bff; }
 .content-area{
-  min-height: 70vh;
+  min-height: fit-content;
 }
 
 .block-body{

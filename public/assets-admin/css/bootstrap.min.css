@@ -3717,8 +3717,8 @@ textarea.form-control-lg {
     white-space: nowrap;
     pointer-events: none;
     border: 1px solid transparent;
-    -webkit-transform-origin: 0 0;
-    transform-origin: 0 0;
+    -webkit-transform-origin: 0% 0;
+    transform-origin: 0% 0;
     -webkit-transition: opacity .1s ease-in-out, -webkit-transform .1s ease-in-out;
     transition: opacity .1s ease-in-out, -webkit-transform .1s ease-in-out;
     transition: opacity .1s ease-in-out, transform .1s ease-in-out;
@@ -3795,12 +3795,12 @@ textarea.form-control-lg {
 
 .form-floating>.form-control:not(:-moz-placeholder-shown)~label {
     opacity: .65;
-    transform: scale(.85) translateY(-.5rem) translateX(.15rem)
+    transform: scale(.85) translateY(-.5rem) translateX(0.15rem)
 }
 
 .form-floating>.form-control:not(:-ms-input-placeholder)~label {
     opacity: .65;
-    transform: scale(.85) translateY(-.5rem) translateX(.15rem)
+    transform: scale(.85) translateY(-.5rem) translateX(0.15rem)
 }
 
 .form-floating>.form-control-plaintext~label,
@@ -3808,14 +3808,14 @@ textarea.form-control-lg {
 .form-floating>.form-control:not(:placeholder-shown)~label,
 .form-floating>.form-select~label {
     opacity: .65;
-    -webkit-transform: scale(.85) translateY(-.5rem) translateX(.15rem);
-    transform: scale(.85) translateY(-.5rem) translateX(.15rem)
+    -webkit-transform: scale(.85) translateY(-.5rem) translateX(0.15rem);
+    transform: scale(.85) translateY(-.5rem) translateX(0.15rem)
 }
 
 .form-floating>.form-control:-webkit-autofill~label {
     opacity: .65;
-    -webkit-transform: scale(.85) translateY(-.5rem) translateX(.15rem);
-    transform: scale(.85) translateY(-.5rem) translateX(.15rem)
+    -webkit-transform: scale(.85) translateY(-.5rem) translateX(0.15rem);
+    transform: scale(.85) translateY(-.5rem) translateX(0.15rem)
 }
 
 .form-floating>.form-control-plaintext~label {
@@ -5263,7 +5263,7 @@ fieldset:disabled .btn {
 
 .nav-tabs .nav-link {
     margin-bottom: calc(-1 * var(--bs-nav-tabs-border-width));
-    background: 0 0;
+    background: 0% 0;
     border: var(--bs-nav-tabs-border-width) solid transparent;
     border-top-left-radius: var(--bs-nav-tabs-border-radius);
     border-top-right-radius: var(--bs-nav-tabs-border-radius)
@@ -5302,7 +5302,7 @@ fieldset:disabled .btn {
 }
 
 .nav-pills .nav-link {
-    background: 0 0;
+    background: 0% 0;
     border: 0;
     border-radius: var(--bs-nav-pills-border-radius)
 }
@@ -8136,7 +8136,7 @@ fieldset:disabled .btn {
     padding: 0;
     color: #fff;
     text-align: center;
-    background: 0 0;
+    background: 0% 0;
     border: 0;
     opacity: .5;
     -webkit-transition: opacity .15s ease;
@@ -15871,5 +15871,3 @@ li.L9 {
 .text-dark-alt {
     color: #000777 !important
 }
-
-/*# sourceMappingURL=bootstrap.min.css.map */

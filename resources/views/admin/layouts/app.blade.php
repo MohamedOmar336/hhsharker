@@ -91,7 +91,7 @@
     <script src="{{ asset('assets-admin/libs/feather-icons/feather.min.js') }}"></script>
 
     <script src="{{ asset('assets-admin/libs/apexcharts/apexcharts.min.js') }}"></script>
-   
+    <script src="{{ asset('assets-admin/js/pages/analytics-index.init.js') }}"></script>
     <script src="{{ asset('assets-admin/js/pages/helpdesk-index.init.js') }}"></script>
     <script src="{{ asset('assets-admin/libs/litepicker/litepicker.js') }}"></script>
     <script src="{{ asset('assets-admin/js/pages/projects-index.init.js') }}"></script>

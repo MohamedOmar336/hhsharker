@@ -19,8 +19,9 @@
                             </ol>
                         </div>
                           <div class="col-md-12">
-                    <a href="{{ URL::previous() }}"
-                    class="btn btn-secondary"><span class="fa fa-backward"></a>
+                            <a href="{{ URL::previous() }}" class="btn btn-secondary">
+                                <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
+                            </a>
                       <h4 class="page-title">{{ __('general.attributes.comments') }}</h4>
                 </div>
                        
@@ -33,45 +34,43 @@
                 <x-slot name="header">
                     <tr>
                         <th><input type="checkbox" id="select-all"></th>
-                                            <th>{{ __('Post Title') }}</th>
-                                            <th>{{ __('Commenter') }}</th>
-                                            <th>{{ __('Email') }}</th>
-                                            <th>{{ __('Comment') }}</th>
-                                            <th>{{ __('Comment Date') }}</th>
-                                            <th>{{ __('Actions') }}</th>
-                                        </tr>
-                                    </x-slot>
-                                    @foreach ($records as $record)
-                                    <tr>
-                                        <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
-                
-                                                <td>{{ optional($record->post)->title_en }}</td>
-                                                <td>{{ $record->commenter }}</td>
-                                                <td>{{ $record->email }}</td>
-                                                <td>{{ $record->comment }}</td>
-                                                <td>{{ $record->comment_date }}</td>
-                                                <td>
-                                                    <a href="{{ route('comments.edit', $record->id) }}"
-                                                        class="btn btn-sm btn-primary">{{ __('Edit') }}</a>
-                                                    <form action="{{ route('comments.destroy', $record->id) }}"
-                                                        method="POST" style="display: inline;">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-sm btn-danger"
-                                                            onclick="return confirm('{{ __('Are you sure you want to delete this comment?') }}')">{{ __('Delete') }}</button>
-                                                    </form>
-                                                </td>
-                                                @endforeach
-
-                                                <x-slot name="createButton">
-                                                    <a href="{{ route('products.create') }}" class="btn btn-outline-light btn-sm px-4">+
-                                                        {{ __('general.actions.new') }}</a>
-                                                </x-slot>
-                            
-                                                <x-slot name="pagination">
-                                                    {{ $records->links('admin.pagination.bootstrap') }}
-                                                </x-slot>
-                                            </x-table>
+                        <th>{{ __('general.attributes.post_title') }}</th>
+                        <th>{{ __('general.attributes.commenter') }}</th>
+                        <th>{{ __('general.attributes.email') }}</th>
+                        <th>{{ __('general.attributes.comment') }}</th>
+                        <th>{{ __('general.attributes.comment_date') }}</th>
+                        <th>{{ __('general.actions.actions') }}</th>
+                    </tr>
+                </x-slot>
+                @foreach ($records as $record)
+                    <tr>
+                        <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
+                        <td>{{ optional($record->post)->title_en }}</td>
+                        <td>{{ $record->commenter }}</td>
+                        <td>{{ $record->email }}</td>
+                        <td>{{ $record->comment }}</td>
+                        <td>{{ $record->comment_date }}</td>
+                        <td>
+                            <a href="{{ route('comments.edit', $record->id) }}"
+                                class="btn btn-sm btn-primary">{{ __('general.actions.edit') }}</a>
+                            <form action="{{ route('comments.destroy', $record->id) }}" method="POST"
+                                style="display: inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-danger"
+                                    onclick="return confirm('{{ __('general.actions.confirm_delete') }}')">{{ __('general.actions.delete') }}</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+                <x-slot name="createButton">
+                    <a href="{{ route('products.create') }}"
+                        class="btn btn-outline-light btn-sm px-4">{{ __('general.actions.new') }}</a>
+                </x-slot>
+                <x-slot name="pagination">
+                    {{ $records->links('admin.pagination.bootstrap') }}
+                </x-slot>
+            </x-table>
         </div>
 
     </div><!-- container -->

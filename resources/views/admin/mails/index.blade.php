@@ -15,10 +15,10 @@
                                 </li><!--end nav-item-->
                                 <li class="breadcrumb-item"><a href="{{ url('/mails') }}">{{ __('general.attributes.mails') }}</a>
                                 </li><!--end nav-item-->
-                                <li class="breadcrumb-item active">Inbox</li>
+                                <li class="breadcrumb-item active">{{ __('general.labels.inbox') }}</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">Inbox</h4>
+                        <h4 class="page-title">{{ __('general.labels.inbox') }}</h4>
                     </div>
                     <!--end page-title-box-->
                 </div>
@@ -31,29 +31,29 @@
                     <div class="email-leftbar">
                         
                         <a href="{{ route('mails.compose') }}" type="button" class="btn btn-primary btn-sm w-100 ">
-                            <i class="fas fa-feather-alt me-2"></i>Compose
+                            <i class="fas fa-feather-alt me-2"></i>{{ __('general.btn.compose') }}
                         </a>
 
                         <div class="card mt-3">
                             <div class="card-body">
                                 <div class="mail-list">
                                     <a href="{{ route('mails.index') }}" class="{{ request('label') === null ? 'active' : '' }}">
-                                        <i class="las la-inbox font-15 me-1"></i>Inbox 
+                                        <i class="las la-inbox font-15 me-1"></i>{{ __('general.labels.inbox') }}
                                     </a>
                                     <a href="{{ route('mails.index', ['label' => 'starred']) }}" class="{{ request('label') === 'starred' ? 'active' : '' }}">
-                                        <i class="las la-star font-15 me-1"></i>Starred
+                                        <i class="las la-star font-15 me-1"></i>{{ __('general.labels.starred') }}
                                     </a>
                                     <a href="{{ route('mails.index', ['label' => 'important']) }}" class="{{ request('label') === 'important' ? 'active' : '' }}">
-                                        <i class="las la-tag font-15 me-1"></i>Important
+                                        <i class="las la-tag font-15 me-1"></i>{{ __('general.labels.important') }}
                                     </a>
                                     <a href="{{ route('mails.index', ['label' => 'draft']) }}" class="{{ request('label') === 'draft' ? 'active' : '' }}">
-                                        <i class="las la-file-alt font-15 me-1"></i>Draft
+                                        <i class="las la-file-alt font-15 me-1"></i>{{ __('general.labels.draft') }}
                                     </a>
                                     <a href="{{ route('mails.index', ['label' => 'sent']) }}" class="{{ request('label') === 'sent' ? 'active' : '' }}">
-                                        <i class="las la-paper-plane font-15 me-1"></i>Sent Mail
+                                        <i class="las la-paper-plane font-15 me-1"></i>{{ __('general.labels.sent') }}
                                     </a>
                                     <a href="{{ route('mails.index', ['label' => 'trash']) }}" class="{{ request('label') === 'trash' ? 'active' : '' }}">
-                                        <i class="las la-trash-alt font-15 me-1"></i>Trash
+                                        <i class="las la-trash-alt font-15 me-1"></i>{{ __('general.labels.trash') }}
                                     </a>
                                 </div>
                             </div><!-- end card-body -->
@@ -64,18 +64,18 @@
                     <div class="email-rightbar">
                         <div class="btn-toolbar" role="toolbar">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-de-secondary" onclick="submitBulkAction('mark_as_read')"><i class="fas fa-inbox"></i></button>
-                                <button type="button" class="btn btn-sm btn-de-secondary" onclick="submitBulkAction('move_trash')"><i class="fas fa-trash"></i></button>
+                                <button type="button" class="btn btn-sm btn-de-secondary" onclick="submitBulkAction('mark_as_read')"><i class="fas fa-inbox"></i>{{ __('general.btn.mark_as_read') }}</button>
+                                <button type="button" class="btn btn-sm btn-de-secondary" onclick="submitBulkAction('move_trash')"><i class="fas fa-trash"></i>{{ __('general.btn.move_trash') }}</button>
                             </div>
                     
                             <div class="btn-group ms-1">
                                 <button type="button" class="btn btn-sm btn-de-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                    More<i class="mdi mdi-chevron-down ms-1"></i>
+                                    {{ __('general.btn.more') }}<i class="mdi mdi-chevron-down ms-1"></i>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#" onclick="submitBulkAction('mark_starred')">Mark as Starred</a>
-                                    <a class="dropdown-item" href="#" onclick="submitBulkAction('mark_important')">Mark as Important</a>
-                                    <a class="dropdown-item" href="#" onclick="submitBulkAction('mark_draft')">Add to Draft</a>
+                                    <a class="dropdown-item" href="#" onclick="submitBulkAction('mark_starred')">{{ __('general.btn.mark_starred') }}</a>
+                                    <a class="dropdown-item" href="#" onclick="submitBulkAction('mark_important')">{{ __('general.btn.mark_important') }}</a>
+                                    <a class="dropdown-item" href="#" onclick="submitBulkAction('mark_draft')">{{ __('general.btn.mark_draft') }}</a>
                                 </div>
                             </div>
                         </div><!-- end toolbar -->
@@ -114,7 +114,7 @@
                                     @empty
                                         <li>
                                             <div class="col-12">
-                                                <p class="text-center">No emails found.</p>
+                                                <p class="text-center">{{ __('general.placeholders.no_emails') }}</p>
                                             </div>
                                         </li>
                                     @endforelse
