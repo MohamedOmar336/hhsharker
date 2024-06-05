@@ -212,24 +212,6 @@ return [
             ],
         ],
     ],[
-        'title' => __('general.attributes.appointments'),
-        'link' => 'sidebarappointments',
-        'icon' => 'ti ti-book',
-        'route' => 'appointments.index',
-        'sub_menu' => [
-            [
-                'title' => __('general.side.appointments-list'),
-                'route' => 'appointments.index',
-            ],
-            [
-                'title' => __('general.actions.new'),
-                'route' => 'appointments.create',
-            ],[
-                'title' => __('general.side.my-appointments'),
-                'route' => 'appointments.myAppointments',
-            ],
-        ],
-    ],[
         'title' => __('general.side.logs'),
         'link' => 'sidebarLogs',
         'icon' => 'ti ti-book',

@@ -68,7 +68,7 @@
                 @endforeach
 
                 <x-slot name="createButton">
-                    <a href="{{ route('products.create') }}" class="btn btn-outline-light btn-sm px-4">+
+                    <a href="{{ route('appointments.create') }}" class="btn btn-outline-light btn-sm px-4">+
                         {{ __('general.actions.new') }}</a>
                 </x-slot>
 

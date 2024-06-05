@@ -44,7 +44,7 @@
                                     @foreach ($records as $record)
                                     <tr>
                                         <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
-                
+
                                                 <td>{{ $record->name }}</td>
                                                 <td>{{ $record->email }}</td>
                                                 <td>{{ $record->phone }}</td>
@@ -66,10 +66,10 @@
                                             @endforeach
 
                                             <x-slot name="createButton">
-                                                <a href="{{ route('products.create') }}" class="btn btn-outline-light btn-sm px-4">+
+                                                <a href="{{ route('contacts.create') }}" class="btn btn-outline-light btn-sm px-4">+
                                                     {{ __('general.actions.new') }}</a>
                                             </x-slot>
-                        
+
                                             <x-slot name="pagination">
                                                 {{ $records->links('admin.pagination.bootstrap') }}
                                             </x-slot>

@@ -22,7 +22,7 @@
                             </a>
                      <h4 class="page-title">{{ __('general.side.roles').' ' }} List</h4>
                 </div>
-                       
+
                     </div><!--end page-title-box-->
                 </div><!--end col-->
                 <div class="col-md-12">
@@ -42,7 +42,7 @@
                                     @foreach ($records as $record)
                                     <tr>
                                         <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
-                
+
                                                 <td>{{ $record->name }}</td>
                                                 <td>{{ $record->description }}</td>
                                                 <td>{{ $record->permission_type }}</td>
@@ -62,15 +62,15 @@
                                             @endforeach
 
                                             <x-slot name="createButton">
-                                                <a href="{{ route('products.create') }}" class="btn btn-outline-light btn-sm px-4">+
+                                                <a href="{{ route('roles.create') }}" class="btn btn-outline-light btn-sm px-4">+
                                                     {{ __('general.actions.new') }}</a>
                                             </x-slot>
-                        
+
                                             <x-slot name="pagination">
                                                 {{ $records->links('admin.pagination.bootstrap') }}
                                             </x-slot>
                                         </x-table>
-                        
+
                             <div class="row">
                                 <div class="col">
                                     <a href="{{ route('roles.create') }}"
