@@ -43,7 +43,7 @@
                     @foreach ($records as $record)
                         <tr>
                             <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
-                            <td><img src="{{ asset('images/' . $record->image) }}" alt=""
+                            <td><img src="{{ isset($record->image) ? asset('images/' . $record->image) : asset('assets-admin/images/user.png') }}" alt=""
                                     class="rounded-circle thumb-sm me-1">
                                 {{ $record->user_name }}
                             </td>
