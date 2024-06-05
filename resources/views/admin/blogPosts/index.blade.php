@@ -51,7 +51,7 @@
                             <form action="{{ route('blogposts.destroy', $record->id) }}" method="POST" style="display: inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger" onclick="executeExample('rtl')">{{ __('general.btn.delete') }}</button>
+                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('{{ __('general.confirm.delete') }}')">{{ __('general.btn.delete') }}</button>
                             </form>
                         </td>
                     </tr>
