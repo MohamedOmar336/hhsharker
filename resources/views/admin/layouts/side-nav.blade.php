@@ -2,6 +2,7 @@
     <div class="main-icon-menu">
         <a class='logo logo-metrica d-block text-center' href='{{ route('home') }}'>
             <span>
+
                 <img src="{{ asset('assets-admin/images/IMG_1465.png') }}" alt="logo-small" class="logo-sm">
             </span>
         </a>
@@ -56,8 +57,15 @@
         <div class="topbar-left">
             <a class='logo' href='{{ route('home') }}'>
                 <span>
-                    <img src="{{ asset('assets-admin/images/IMG_1468.png') }}" alt="logo-large"
-                        class="logo-lg logo-dark">
+                    @if (app()->isLocale('ar'))
+                        <img src="{{ asset('assets-admin/images/IMG_1521.png') }}" alt="logo-large"
+                            class="logo-lg logo-dark">
+                    @endif
+                    @if (app()->isLocale('en'))
+                        <img src="{{ asset('assets-admin/images/IMG_1468.png') }}" alt="logo-large"
+                            class="logo-lg logo-dark">
+                    @endif
+
                     <img src="{{ asset('assets-admin/images/logo-dark') }}" alt="logo-=large"
                         class="logo-lg logo-light">
                 </span>
@@ -87,7 +95,8 @@
 
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class='nav-link' href="{{ route("calendar.index") }}">{{ __('general.attributes.calendar') }}</a>
+                        <a class='nav-link'
+                            href="{{ route('calendar.index') }}">{{ __('general.attributes.calendar') }}</a>
                     </li><!--end nav-item-->
                 </ul><!--end nav-->
 
