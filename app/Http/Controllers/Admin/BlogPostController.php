@@ -71,14 +71,13 @@ class BlogPostController extends Controller
         $validatedData['post_date'] = now();
 
         $post = BlogPost::create($validatedData);
-
+       /*
         foreach ($request->input('tags') as $tagId) {
             BlogPostTag::create([
                 'blog_post_id' => $post->id,
                 'tag_id' => (int) $tagId,
             ]);
-        }
-
+        }*/
         return redirect()->route('blogposts.index')->with('success', 'Post created successfully.');
     }
 

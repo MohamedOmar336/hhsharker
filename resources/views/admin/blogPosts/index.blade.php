@@ -43,7 +43,7 @@
                         <td><img src="{{ asset('images/' . $record->image) }}" alt="{{ $record->title_en }}" width="50"></td>
                         <td>{{ $record->title_en }}</td>
                         <td>{{ $record->title_ar }}</td>
-                        <td>{{ $record->author->name }}</td>
+                        <td>{{ $record->author->user_name }}</td>
                         <td>{{ $record->status }}</td>
                         <td>
                             <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#postModal{{ $record->id }}">{{ __('general.actions.view') }}</button>
@@ -51,7 +51,7 @@
                             <form action="{{ route('blogposts.destroy', $record->id) }}" method="POST" style="display: inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('{{ __('general.confirm.delete') }}')">{{ __('general.actions.delete') }}</button>
+                                <button type="submit" class="btn btn-sm btn-danger" onclick="executeExample('rtl')">{{ __('general.btn.delete') }}</button>
                             </form>
                         </td>
                     </tr>

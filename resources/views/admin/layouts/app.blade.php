@@ -22,6 +22,10 @@
     <link rel="shortcut icon" href="{{ asset('assets-admin/images/IMG_1465.png') }}">
     <link href="{{ asset('assets-admin/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets-admin/css/admin.css') }}" rel="stylesheet" type="text/css" />
+
+    <link href="{{ asset('assets-admin/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets-admin/libs/animate.css/animate.min.css') }}" rel="stylesheet" type="text/css" />
+    
     @if (app()->isLocale('ar'))
         <link href="{{ asset('assets-admin/css/app-rtl.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('assets-admin/css/bootstrap-rtl.min.css') }}" rel="stylesheet" type="text/css" />
@@ -95,6 +99,10 @@
     <script src="{{ asset('assets-admin/js/pages/helpdesk-index.init.js') }}"></script>
     <script src="{{ asset('assets-admin/libs/litepicker/litepicker.js') }}"></script>
     <script src="{{ asset('assets-admin/js/pages/projects-index.init.js') }}"></script>
+
+
+    <script src="{{ asset('assets-admin/libs/sweetalert2/sweetalert2.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/js/pages/sweet-alert.init.js') }}"></script>
 
 
 
