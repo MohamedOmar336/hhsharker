@@ -19,14 +19,15 @@
                                 <li class="breadcrumb-item active">{{ __('general.side.edit') }}</li>
                             </ol>
                         </div>
-                           <div class="col-md-12">
+                        <div class="col-md-12">
                             <a href="{{ URL::previous() }}" class="btn btn-secondary">
                                 <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
                             </a>
-                    <h4 class="page-title">{{ __('general.side.edit') . ' ' }}{{ __('general.attributes.profile') }}</h4>
-                    
-                </div>
-                       </div><!--end page-title-box-->
+                            <h4 class="page-title">{{ __('general.side.edit') . ' ' }}{{ __('general.attributes.profile') }}
+                            </h4>
+
+                        </div>
+                    </div><!--end page-title-box-->
                 </div><!--end col-->
             </div>
             <!-- end page title end breadcrumb -->
@@ -84,42 +85,48 @@
                                                 </div> <!--end row-->
                                             </div><!--end card-header-->
                                             <div class="card-body">
-                                        <form action="{{ route('profile.update') }}" method="POST"
+                                                <form action="{{ route('profile.update') }}" method="POST"
                                                     enctype="multipart/form-data">
                                                     @csrf
                                                     @method('PUT')
 
                                                     <!-- First Name -->
                                                     <div class="mb-3">
-                                                        <label for="first_name" class="form-label">{{ __('general.attributes.first_name') }}</label>
+                                                        <label for="first_name"
+                                                            class="form-label">{{ __('general.attributes.first_name') }}</label>
                                                         <input type="text" name="first_name" id="first_name"
                                                             class="form-control" value="{{ Auth::user()->first_name }}">
                                                     </div>
 
                                                     <!-- Last Name -->
                                                     <div class="mb-3">
-                                                        <label for="last_name" class="form-label">{{ __('general.attributes.last_name') }}</label>
+                                                        <label for="last_name"
+                                                            class="form-label">{{ __('general.attributes.last_name') }}</label>
                                                         <input type="text" name="last_name" id="last_name"
                                                             class="form-control" value="{{ Auth::user()->last_name }}">
                                                     </div>
 
                                                     <!-- Username -->
-<div class="mb-3">
-    <label for="user_name" class="form-label">{{ __('general.attributes.username') }}</label>
-    <input type="text" name="user_name" id="user_name" class="form-control" value="{{ Auth::user()->user_name }}">
-</div>
+                                                    <div class="mb-3">
+                                                        <label for="user_name"
+                                                            class="form-label">{{ __('general.attributes.username') }}</label>
+                                                        <input type="text" name="user_name" id="user_name"
+                                                            class="form-control" value="{{ Auth::user()->user_name }}">
+                                                    </div>
 
 
                                                     <!-- Email -->
                                                     <div class="mb-3">
-                                                        <label for="email" class="form-label">{{ __('general.attributes.email') }}</label>
+                                                        <label for="email"
+                                                            class="form-label">{{ __('general.attributes.email') }}</label>
                                                         <input type="email" name="email" id="email"
                                                             class="form-control" value="{{ Auth::user()->email }}">
                                                     </div>
 
                                                     <!-- Phone -->
                                                     <div class="mb-3">
-                                                        <label for="phone" class="form-label"> {{ __('general.attributes.phone') }}</label>
+                                                        <label for="phone" class="form-label">
+                                                            {{ __('general.attributes.phone') }}</label>
                                                         <input type="text" name="phone" id="phone"
                                                             class="form-control" value="{{ Auth::user()->phone }}">
                                                     </div>
@@ -142,7 +149,7 @@
                                                     </div>
 
 
-                                
+
                                                     <button type="submit" class="btn btn-primary">Update Profile</button>
                                                 </form>
 
@@ -173,8 +180,7 @@
                                                         <input id="current_password" type="password"
                                                             class="form-control @error('current_password') is-invalid @enderror"
                                                             name="current_password" required
-                                                            autocomplete="current-password"
-                                                            value="">
+                                                            autocomplete="current-password" value="">
                                                         @error('current_password')
                                                             <div class="invalid-feedback">{{ $message }}</div>
                                                         @enderror

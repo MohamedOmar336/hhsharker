@@ -21,7 +21,6 @@ class Product extends Model
         'is_available',
         'image_url',
         'category_id',
-        'status_id',
     ];
 
     /**
@@ -29,12 +28,12 @@ class Product extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function categories()
-    {
-        // Define a many-to-many relationship with the Category model
-        // This indicates that a product belongs to one or more categories
-        return $this->belongsToMany(Category::class);
-    }
+ 
+    public function category()
+{
+    return $this->belongsTo(Category::class);
+}
+
 
     /**
      * Activity Log
@@ -45,4 +44,5 @@ class Product extends Model
             ->logOnly(['name', 'text'])
             ->setDescriptionForEvent(fn(string $eventName) => "This model has been {$eventName}");
     }
+
 }

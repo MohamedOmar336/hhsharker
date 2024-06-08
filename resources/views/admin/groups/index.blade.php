@@ -23,8 +23,6 @@
                             </a>
                             <h4 class="page-title">{{ __('general.side.groups-list') }}</h4>
                         </div>
-                        
-
                     </div><!--end page-title-box-->
                 </div><!--end col-->
             </div>

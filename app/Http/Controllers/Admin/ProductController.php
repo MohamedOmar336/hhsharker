@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Category;
 use App\Enums\EnumsSettings;
 
 class ProductController extends Controller
@@ -16,6 +17,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
+        $categories = Category::all();
         $query = Product::query();
 
         if ($request->has('search')) {
@@ -27,7 +29,7 @@ class ProductController extends Controller
 
         $records = $query->paginate(500);
 
-        return view('admin.products.index', compact('records'));
+        return view('admin.products.index', compact('records','categories'));
     }
 
     /**
@@ -37,7 +39,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.products.create');
+        $categories = Category::all();
+        return view('admin.products.create', compact('categories'));
     }
 
     /**
@@ -57,6 +60,7 @@ class ProductController extends Controller
             'quantity' => 'required|integer',
             'is_available' => 'nullable|boolean',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'category_id' => 'nullable|exists:categories,id',
         ]);
 
         $imageName = uploadImage($request->file('image'));
@@ -85,18 +89,19 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::findOrFail($id);
-        return view('admin.products.edit', compact('product'));
+        $categories = Category::all();
+        return view('admin.products.edit', compact('product', 'categories'));
     }
 
     /**
      * Update the specified product in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request , $id)
+    public function update(Request $request, $id)
     {
-
         $record = Product::findOrFail($id);
 
         $validatedData = $request->validate([
@@ -108,6 +113,7 @@ class ProductController extends Controller
             'quantity' => 'required|integer',
             'is_available' => 'nullable|boolean',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'category_id' => 'nullable|exists:categories,id',
         ]);
 
         $record->fill($validatedData);
@@ -141,5 +147,4 @@ class ProductController extends Controller
 
         return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
     }
-
 }
