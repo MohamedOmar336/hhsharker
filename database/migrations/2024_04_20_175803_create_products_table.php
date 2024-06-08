@@ -28,13 +28,6 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Add foreign key constraint after the table is created
-        Schema::table('products', function (Blueprint $table) {
-            $table->foreign('category_id')
-                  ->references('id')
-                  ->on('categories')
-                  ->onDelete('set null');
-        });
     }
 
     /**

@@ -18,7 +18,7 @@
                             </ol>
                         </div>
                         <div class="col-md-12">
-                            <a href="{{ URL::previous() }}" class="btn btn-secondary">
+                            <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
                                 <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
                             </a>
                             <h4 class="page-title">{{ __('general.actions.reply') }}</h4>
@@ -49,7 +49,7 @@
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                
+
                                 <button type="submit" class="btn btn-primary">{{ __('general.actions.send') }}</button>
                             </form>
                         </div> <!--end card-body-->

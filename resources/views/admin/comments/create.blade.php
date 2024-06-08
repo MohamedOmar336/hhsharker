@@ -20,13 +20,13 @@
                             </ol>
                         </div>
                           <div class="col-md-12">
-                            <a href="{{ URL::previous() }}" class="btn btn-secondary">
+                            <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
                                 <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
                             </a>
                        <h4 class="page-title">Add Product</h4>
                 </div>
-                       
-                       
+
+
                     </div><!--end page-title-box-->
                 </div><!--end col-->
             </div>
@@ -74,7 +74,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-12 nopadding">
-							<textarea id="demo-editor-bootstrap"> 
+							<textarea id="demo-editor-bootstrap">
 						</div>
 					</div>
 				</div>
@@ -96,7 +96,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-12 nopadding">
-							<textarea id="demo-editor-bootstrap"> 
+							<textarea id="demo-editor-bootstrap">
 						</div>
 					</div>
 				</div>

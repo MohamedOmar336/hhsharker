@@ -16,7 +16,7 @@
                             </ol>
                         </div>
                         <div class="col-md-12">
-                            <a href="{{ URL::previous() }}" class="btn btn-secondary">
+                            <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
                                 <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
                             </a>
                             <h4 class="page-title">{{ __('general.side.blogs-list') }}</h4>
@@ -91,7 +91,7 @@
                                 <!-- Add other post details here -->
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('general.actions.close') }}</button>
+                                <button type="button" class="btn btn-xs btn-primary" data-dismiss="modal">{{ __('general.actions.close') }}</button>
                             </div>
                         </div>
                     </div>

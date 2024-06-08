@@ -22,7 +22,7 @@
                             </ol>
                         </div>
                         <div class="col-md-12">
-                            <a href="{{ URL::previous() }}" class="btn btn-secondary">
+                            <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
                                 <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
                             </a>
                             <h4 class="page-title">
@@ -32,7 +32,7 @@
                     </div>
                 </div>
             </div>
-          </div> 
+          </div>
 
             <div class="row">
                 <div class="col-12">
@@ -43,7 +43,7 @@
                                 <div class="row">
                                     <div class="col-md-4 align-self-center">
                                         <div class="media">
-                                           
+
                                             <div class="media-body align-self-center">
                                                 <h3 class="m-0 font-20">Appointment Title :</Title></h3>
                                             </div>
@@ -51,8 +51,8 @@
                                         <p class="mt-2 mb-0 text-muted">{{ $appointment->title }}.</p>
                                     </div><!--end col-->
                                     <div class="col-md-8">
-                                     
-                                           
+
+
                                         </ul>
                                     </div><!--end col-->
                                 </div><!--end row-->
@@ -70,16 +70,16 @@
                                     <div class="col-md-3 d-print-flex mb-3">
                                         <h6 class="m-0"><b>Appointment Status :</b> {{ $appointment->status }}</h6>
                                         <h6 class="mb-0"><b>Appointment Notes :</b> {{ $appointment->notes }}</h6>
-                                        
+
                                     </div> <!--end col-->
                                 </div><!--end row-->
-            
+
                                 <div class="row d-flex justify-content-center">
                                   <div class="col-lg-12 col-xl-4 ms-auto align-self-center">
                                       <div class="text-center"><small class="font-12"></small></div>
                                   </div><!--end col-->
                                   <div class="col-lg-12 col-xl-4">
-                                      <div class="float-end d-print-none mt-2 mt-md-0"> 
+                                      <div class="float-end d-print-none mt-2 mt-md-0">
                                         <a href="{{ route('appointments.edit', $appointment) }}" class="btn btn-sm btn-primary">
                                           {{ __('general.btn.edit') }}
                                       </a>
@@ -94,15 +94,15 @@
                                       </div>
                                   </div><!--end col-->
                               </div><!--end row-->
-            
+
                             </div><!--end card-body-->
                         </div><!--end card-->
                     </div><!--end col-->
                 </div><!--end row-->
-            
+
             </div>
         </div>
     </div>
-    
+
     </div><!-- container -->
 @endsection

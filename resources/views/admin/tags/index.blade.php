@@ -15,7 +15,7 @@
                             </ol>
                         </div>
                         <div class="col-md-12">
-                            <a href="{{ URL::previous() }}" class="btn btn-secondary">
+                            <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
                                 <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
                             </a>
                             <h4 class="page-title">{{ __('general.side.tags') }} {{ __('general.list') }}</h4>
@@ -24,7 +24,7 @@
                 </div><!--end col-->
             </div>
             <!-- end page title end breadcrumb -->
-            
+
             <x-table tableId="DataTables">
                 <x-slot name="header">
                     <tr>

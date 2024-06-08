@@ -17,17 +17,17 @@
                             </ol>
                         </div>
                           <div class="col-md-12">
-                            <a href="{{ URL::previous() }}" class="btn btn-secondary">
+                            <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
                                 <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
                             </a>
                      <h4 class="page-title">{{ __('Add Category') }}</h4>
                 </div>
-                       
-                        
+
+
 
                     </div><!--end page-title-box-->
                 </div><!--end col-->
-              
+
             </div>
             <!-- end page title end breadcrumb -->
             <div class="row">
@@ -76,10 +76,10 @@
                                     <label for="parent_id" class="form-label">{{ __('general.attributes.parent_id') }}</label>
                                     <select id="parent_id"
                                         class="form-control @error('parent_id') is-invalid @enderror" name="parent_id">
-                                        
+
                                         <option value="5"> {{ __('general.select.select') .' ' }} {{ __('general.select.perant_category') }}</option>
                                         <option value="5">5</option>
-                                        
+
                                         @foreach ($records as  $record)
                                             <option value="{{ $record->id }}">{{ $record->name }}</option>
                                         @endforeach
