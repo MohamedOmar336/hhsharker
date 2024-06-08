@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
@@ -8,41 +7,56 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
+    // Uses Laravel's built-in trait to handle user authentication logic.
     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
+    // Redirect users after login to the admin home page.
     protected $redirectTo = '/admin/home';
 
     /**
      * Create a new controller instance.
-     *
-     * @return void
+     * Apply guest middleware to all methods except 'logout',
+     * preventing logged-in users from accessing auth methods.
      */
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
     }
 
+    /**
+     * Validate the user login request.
+     *
+     * This method adds additional validation rules to the login request,
+     * specifically checking for the username, password, and CAPTCHA response.
+     *
+     * @param  Request  $request
+     */
+    protected function validateLogin(Request $request)
+    {
+        $request->validate([
+            $this->username() => 'required|string', // Validate username is required and of type string
+            'password' => 'required|string', // Validate password is required and of type string
+            'g-recaptcha-response' => 'required|captcha' // Validate the Google reCAPTCHA response
+        ]);
+    }
+
+    /**
+     * The user has been authenticated.
+     *
+     * This method is called after the user is authenticated.
+     * Check if the user account is active, if not, log out and redirect to the login page.
+     * If active, redirect to the home page.
+     *
+     * @param  Request  $request
+     * @param  mixed  $user  Authenticated user object.
+     * @return \Illuminate\Http\RedirectResponse
+     */
     protected function authenticated(Request $request, $user)
     {
         if (!$user->active) {
+            auth()->logout(); // Log out from the application
             return redirect()->route('admin.login')->with('error', 'Your account is inactive.');
         }
-        return redirect()->route('home')->with('success', 'login successful');
+        return redirect()->route('home')->with('success', 'login successful'); // Redirect to home if active
     }
 }
