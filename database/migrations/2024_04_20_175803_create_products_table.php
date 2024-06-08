@@ -24,7 +24,16 @@ return new class extends Migration
             $table->integer('quantity')->default(0);
             $table->boolean('is_available')->default(true);
             $table->string('image_url')->nullable();
+            $table->unsignedBigInteger('category_id')->nullable();
             $table->timestamps();
+        });
+
+        // Add foreign key constraint after the table is created
+        Schema::table('products', function (Blueprint $table) {
+            $table->foreign('category_id')
+                  ->references('id')
+                  ->on('categories')
+                  ->onDelete('set null');
         });
     }
 
@@ -37,4 +46,5 @@ return new class extends Migration
     {
         Schema::dropIfExists('products');
     }
+
 };
