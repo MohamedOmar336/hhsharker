@@ -25,7 +25,7 @@
 
     <link href="{{ asset('assets-admin/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets-admin/libs/animate.css/animate.min.css') }}" rel="stylesheet" type="text/css" />
-    
+
     @if (app()->isLocale('ar'))
         <link href="{{ asset('assets-admin/css/app-rtl.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('assets-admin/css/bootstrap-rtl.min.css') }}" rel="stylesheet" type="text/css" />

@@ -35,7 +35,6 @@
                         <th><input type="checkbox" id="select-all"></th>
                                             <th>{{ __('general.attributes.name') }}</th>
                                             <th>{{ __('general.attributes.description') }}</th>
-                                            <th>{{ __('general.attributes.permission_type') }}</th>
                                             <th>{{ __('general.attributes.actions') }}</th>
                                         </tr>
                                     </x-slot>
@@ -45,7 +44,6 @@
 
                                                 <td>{{ $record->name }}</td>
                                                 <td>{{ $record->description }}</td>
-                                                <td>{{ $record->permission_type }}</td>
                                                 <td>
                                                     <a href="{{ route('roles.edit', $record->id) }}"
                                                         class="btn btn-sm btn-primary">{{ __('general.actions.edit') }}</a>

@@ -50,7 +50,7 @@
               <form action="{{ route('tickets.destroy', $record->id) }}" method="POST" style="display:inline-block;">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-sm btn-danger">{{ __('general.actions.delete') }}</button>
+                <button type="submit" class="btn btn-sm btn-danger">{{ __('general.btn.delete') }}</button>
               </form>
             </td>
           </tr>

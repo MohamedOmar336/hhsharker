@@ -562,6 +562,7 @@ return [
         'reply' => 'Reply',
         'show' => 'Show',
         'send' => 'Send',
+        'history'=>'History',
         '' => '',
         '' => '',
         '' => '',
