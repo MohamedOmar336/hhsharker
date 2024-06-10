@@ -13,11 +13,11 @@
                 </li>
                 <li class="breadcrumb-item">
                   <a href="{{ route('ticket-statuses.index') }}">
-                    {{ __('general.side.ticket_statuses') }}
+                    {{ __('general.attributes.statuses') }}
                   </a>
                 </li>
                 <li class="breadcrumb-item active">
-                  {{ __('general.actions.edit') }} {{ __('general.side.ticket_status') }}
+                  {{ __('general.attributes.edit-status') }}
                 </li>
               </ol>
             </div>
@@ -26,7 +26,7 @@
                 <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
               </a>
               <h4 class="page-title">
-                {{ __('general.actions.edit') }} {{ __('general.side.ticket_status') }}
+                {{ __('general.side.edit-status') }}
               </h4>
             </div>
           </div>
@@ -81,9 +81,9 @@
                   @enderror
                 </div>
 
-                <button type="submit" class="btn btn-primary">
-                  {{ __('general.actions.update') }}
-                </button>
+                <div class="mb-3">
+                  <button type="submit" class="btn btn-primary">{{ __('general.btn.edit') }}</button>
+              </div>
               </form>
                         </div>
                     </div>

@@ -34,7 +34,7 @@
                         <th>{{ __('general.attributes.title_ar') }}</th>
                         <th>{{ __('general.attributes.author') }}</th>
                         <th>{{ __('general.attributes.status') }}</th>
-                        <th>{{ __('general.actions.actions') }}</th>
+                        <th>{{ __('general.attributes.actions') }}</th>
                     </tr>
                 </x-slot>
                 @foreach ($records as $record)
@@ -46,8 +46,8 @@
                         <td>{{ $record->author->user_name }}</td>
                         <td>{{ $record->status }}</td>
                         <td>
-                            <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#postModal{{ $record->id }}">{{ __('general.actions.view') }}</button>
-                            <a href="{{ route('blogposts.edit', $record->id) }}" class="btn btn-sm btn-primary">{{ __('general.actions.edit') }}</a>
+                            <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#postModal{{ $record->id }}">{{ __('general.btn.view') }}</button>
+                            <a href="{{ route('blogposts.edit', $record->id) }}" class="btn btn-sm btn-primary">{{ __('general.btn.edit') }}</a>
                             <form action="{{ route('blogposts.destroy', $record->id) }}" method="POST" style="display: inline;">
                                 @csrf
                                 @method('DELETE')

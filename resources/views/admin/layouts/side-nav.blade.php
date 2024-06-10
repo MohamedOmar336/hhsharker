@@ -2,8 +2,14 @@
     <div class="main-icon-menu">
         <a class='logo logo-metrica d-block text-center' href='{{ route('home') }}'>
             <span>
-
+                @if (app()->isLocale('ar'))
+                <img src="{{ asset('assets-admin/images/IMG_1520.png') }}" alt="logo-small" class="logo-sm">
+                @endif
+                @if (app()->isLocale('en'))
                 <img src="{{ asset('assets-admin/images/IMG_1465.png') }}" alt="logo-small" class="logo-sm">
+                @endif
+
+                
             </span>
         </a>
         <div class="main-icon-menu-body">
@@ -20,7 +26,7 @@
                     <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Ticket"
                         data-bs-trigger="hover">
                         <a href="#MetricaTicket" id="ticket-tab" class="nav-link">
-                            <i class="mdi mdi-ticket"></i>
+                            <i class="ti ti-ticket menu-icon"></i>
                         </a><!--end nav-link-->
                     </li><!--end nav-item-->
 

@@ -13,9 +13,9 @@
                         <div class="page-title-box">
                             <div class="float-end">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">{{ __('general.home') }}</a>
+                                    <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a>
                                     </li><!--end nav-item-->
-                                    <li class="breadcrumb-item"><a href="#">Dashboard</a>
+                                    <li class="breadcrumb-item"><a href="{{ url('/home') }}">Dashboard</a>
                                     </li><!--end nav-item-->
                                     <li class="breadcrumb-item active">Analytics</li>
                                 </ol>
@@ -208,7 +208,7 @@
 
 
 
-
+{{-- 
 
                 <div class="row">
                     <div class="col-lg-4">
@@ -699,7 +699,7 @@
 
 
 
-
+ --}}
 
 
 

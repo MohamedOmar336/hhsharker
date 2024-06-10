@@ -18,7 +18,7 @@
                                     <a href="{{ url('/blogs') }}">{{ __('general.attributes.blog') }}</a>
                                 </li>
                                 <!--end nav-item-->
-                                <li class="breadcrumb-item active">{{ __('general.actions.add') }}</li>
+                                <li class="breadcrumb-item active">{{ __('general.attributes.add-blog') }}</li>
                             </ol>
                         </div>
                         <div class="col-md-12">
@@ -123,7 +123,7 @@
                                     <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <button type="submit" class="btn btn-primary">{{ __('general.btn.create_post') }}</button>
+                                <button type="submit" class="btn btn-primary">{{ __('general.btn.create') }}</button>
                             </form>
                         </div><!--end card-body-->
                     </div><!--end card-->

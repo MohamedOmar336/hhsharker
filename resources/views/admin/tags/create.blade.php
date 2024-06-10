@@ -15,14 +15,14 @@
                                 <li class="breadcrumb-item"><a
                                         href="{{ url('/tags') }}">{{ __('general.attributes.tags') }}</a>
                                 </li><!--end nav-item-->
-                                <li class="breadcrumb-item active">{{ __('general.actions.add') }}</li>
+                                <li class="breadcrumb-item active">{{ __('general.side.add-tag') }}</li>
                             </ol>
                         </div>
                          <div class="col-md-12">
                             <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
                                 <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
                             </a>
-                            <h4 class="page-title">{{ __('general.attributes.add_tag') }}</h4>
+                            <h4 class="page-title">{{ __('general.side.add-tag') }}</h4>
                         </div>
 
                     </div><!--end page-title-box-->
@@ -54,8 +54,9 @@
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <button type="submit" class="btn btn-primary">{{ __('general.actions.create_tag') }}</button>
-                            </form>
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-primary">{{ __('general.btn.create') }}</button>
+                                </div>          </form>
                         </div> <!--end card-body-->
                     </div><!--end card-->
                 </div> <!--end col-->

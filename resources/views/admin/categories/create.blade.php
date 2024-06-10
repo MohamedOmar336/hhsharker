@@ -13,14 +13,14 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a></a></li>
                                 <li class="breadcrumb-item"><a href="{{ url('/categories') }}">{{ __('general.attributes.categories') }}</a></li>
-                                <li class="breadcrumb-item active">{{ __('Add') }}</li>
+                                <li class="breadcrumb-item active">{{ __('general.attributes.add-category') }}</li>
                             </ol>
                         </div>
                           <div class="col-md-12">
                             <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
                                 <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
                             </a>
-                     <h4 class="page-title">{{ __('Add Category') }}</h4>
+                            <h4 class="page-title">{{ __('general.attributes.add-category') }}</h4>
                 </div>
 
 
@@ -104,9 +104,8 @@
                                         </div>
                                     @enderror
                                 </div>
-
                                 <div class="mb-3">
-                                    <x-btn name="{{ __('general.btn.submit') }}"></x-btn>
+                                    <button type="submit" class="btn btn-primary">{{ __('general.btn.create') }}</button>
                                 </div>
                             </form>
                         </div> <!--end card-body-->

@@ -49,9 +49,11 @@
                                 </div><!--end col-->
                                 <div class="col-md-3 d-print-flex mb-3">
                                     <h6 class="mt-0"><b>{{ __('general.attributes.priority') }}:</b>
-                                        {{ $ticket->priority->Name_en }}</h6>
+                                        {{ app()->isLocale('ar') ? $ticket->priority->Name_ar : $ticket->priority->Name_en }}
+                                       </h6>
                                     <h6 class="m-0"><b>{{ __('general.attributes.status') }}:</b>
-                                        {{ $ticket->status->Name_en }}</h6>
+                                        {{ app()->isLocale('ar') ? $ticket->status->Name_ar : $ticket->status->Name_en }}
+                                       </h6>
                                 </div><!--end col-->
                                 <div class="col-md-3 d-print-flex mb-3">
                                     <h6 class="m-0">

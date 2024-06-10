@@ -18,14 +18,14 @@
                                 <li class="breadcrumb-item"><a
                                         href="{{ url('/tags') }}">{{ __('general.attributes.tags') }}</a>
                                 </li><!--end nav-item-->
-                                <li class="breadcrumb-item active">Edit</li>
+                                <li class="breadcrumb-item active">{{ __('general.attributes.edit-tag') }}</li>
                             </ol>
                         </div>
                          <div class="col-md-12">
                             <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
                                 <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
                             </a>
-                    <h4 class="page-title">Edit Tag</h4>
+                    <h4 class="page-title">{{ __('general.attributes.edit-tag') }}</h4>
                 </div>
 
                     </div><!--end page-title-box-->
@@ -58,7 +58,10 @@
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <button type="submit" class="btn btn-primary">Update Tag</button>
+
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-primary">{{ __('general.btn.edit') }}</button>
+                                </div>
                             </form>
                         </div> <!--end card-body-->
                     </div><!--end card-->

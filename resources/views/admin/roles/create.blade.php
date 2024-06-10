@@ -15,14 +15,14 @@
                                 </li><!--end nav-item-->
                                 <li class="breadcrumb-item"><a href="{{ route('roles.index') }}">{{ __('general.side.roles') }}</a>
                                 </li><!--end nav-item-->
-                                <li class="breadcrumb-item active">Add</li>
+                                <li class="breadcrumb-item active">{{ __('general.attributes.add-role') }}</li>
                             </ol>
                         </div>
                          <div class="col-md-12">
                             <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
                                 <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
                             </a>
-                   <h4 class="page-title">{{ __('general.side.roles-list') }}</h4>
+                   <h4 class="page-title">{{ __('general.attributes.add-role') }}</h4>
                 </div>
 
                     </div><!--end page-title-box-->
@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <div class="form-group">
-                                        <label for="permissions" class="form-label">{{ __('genral.attributes.permissions') }}</label>
+                                        <label for="permissions" class="form-label">{{ __('general.attributes.permissions') }}</label>
                                         <select id="choices-multiple-remove-button" class="form-control"
                                             placeholder="Choose ..." multiple name="permissions[]">
                                             @foreach ($acls as $acl)
@@ -74,8 +74,8 @@
                                 </div>
 
 
-                                <div class="form-group mb-0">
-                                    <x-btn name="{{ __('general.btn.submit') }}"></x-btn>
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-primary">{{ __('general.btn.create') }}</button>
                                 </div>
                             </form>
                         </div> <!--end card-body-->

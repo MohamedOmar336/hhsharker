@@ -14,7 +14,7 @@
                                 <li class="breadcrumb-item"><a
                                         href="{{ route('categories.index') }}">{{ __('general.side.categories') }}</a>
                                 </li><!--end nav-item-->
-                                <li class="breadcrumb-item active">List</li>
+                                <li class="breadcrumb-item active">{{ __('general.list') }}</li>
                             </ol>
                         </div>
                         <div class="col-md-12">
@@ -52,7 +52,7 @@
                         <td>{{ $record->name_en }}</td>
                         <td>{{ $record->parentCategory ? $record->parentCategory['name_en'] : null }}</td>
                         <td>
-                            <a href="{{ route('categories.edit', $record->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                            <a href="{{ route('categories.edit', $record->id) }}" class="btn btn-sm btn-primary">{{ __('general.btn.edit') }}</a>
                             <form action="{{ route('categories.destroy', $record->id) }}" method="POST"
                                 style="display: inline;">
                                 @csrf

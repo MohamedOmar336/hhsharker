@@ -10,7 +10,7 @@
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a></li>
                 <li class="breadcrumb-item"><a href="{{ url('/ticket-priorities') }}">{{ __('general.attributes.priorities') }}</a></li>
-                <li class="breadcrumb-item active">{{ __('general.actions.new') }}</li>
+                <li class="breadcrumb-item active">{{ __('general.attributes.add-priority') }}</li>
               </ol>
             </div>
             <div class="col-md-12">
@@ -18,7 +18,7 @@
                 <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
               </a>
               <h4 class="page-title">
-                {{ __('general.actions.new') }} {{ __('general.attributes.priority') }}
+                {{ __('general.attributes.add-priority') }}
               </h4>
             </div>
           </div></div></div><div class="row">
@@ -53,7 +53,8 @@
                     <span class="invalid-feedback">{{ $message }}</span>
                   @enderror
                 </div>
-
-                <button type="submit" class="btn btn-primary">{{ __('general.btn.create') }}</button>
+                <div class="mb-3">
+                  <button type="submit" class="btn btn-primary">{{ __('general.btn.create') }}</button>
+              </div>
               </form>
             </div></div></div></div></div></div>@endsection

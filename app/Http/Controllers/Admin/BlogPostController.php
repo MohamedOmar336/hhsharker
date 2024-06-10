@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\BlogPost;
 use App\Models\User;
 use App\Models\Tag;
-use App\Models\BlogPostTag; // Include the BlogPostTag model
+//use App\Models\BlogPostTag; // Include the BlogPostTag model
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Enums\EnumsSettings;
@@ -105,7 +105,7 @@ class BlogPostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'title_en' => 'required|string|max:255',
             'title_ar' => 'required|string|max:255',
             'content_en' => 'required|string',
@@ -132,14 +132,15 @@ class BlogPostController extends Controller
             $image = $request->file('image')->store('images', 'public');
             $post->image = $image;
         }
+        // if ($request->has('tags')) {
+        //     $post->tags()->sync($request->tags);
+        // } else {
+        //     $post->tags()->sync([]); // Clear tags if none are provided
+        // }
 
-        $post->save();
-
-        if ($request->has('tags')) {
-            $post->tags()->sync($request->input('tags'));
-        } else {
-            $post->tags()->detach();
-        }
+       // $post->save();
+       $post->update($validatedData);
+       
 
         return redirect()->route('blogposts.index')->with('success', 'Post updated successfully.');
     }

@@ -14,6 +14,9 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a></li>
                                 <li class="breadcrumb-item active">{{ __('general.attributes.appointments') }}</li>
+                               
+                                    <li class="breadcrumb-item active">{{ __('general.list') }}</li>
+                                
                             </ol>
                         </div>
                         <div class="col-md-12">
@@ -32,8 +35,8 @@
                     <tr>
                         <th><input type="checkbox" id="select-all"></th>
                         <th>{{ __('general.attributes.id') }}</th>
-                        <th>{{ __('general.attributes.creator') }}</th>
                         <th>{{ __('general.attributes.title') }}</th>
+                        <th>{{ __('general.attributes.creator') }}</th>
                         <th>{{ __('general.attributes.with') }}</th>
                         <th>{{ __('general.attributes.start_time') }}</th>
                         <th>{{ __('general.attributes.finish_time') }}</th>
@@ -55,16 +58,20 @@
                         <td>{{ $record->status }}</td>
                         <td>{{ $record->notes }}</td>
                         <td>
-                            <a href="{{ route('appointments.show', $record->id) }}" class="btn btn-sm btn-info">View</a>
-                            <a href="{{ route('appointments.edit', $record->id) }}"
-                                class="btn btn-sm btn-primary">Edit</a>
-                            <form action="{{ route('appointments.destroy', $record->id) }}" method="POST"
-                                style="display:inline-block;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                            <a href="{{ route('appointments.show', $record->id) }}" class="btn btn-sm btn-info">
+                              {{ __('general.btn.view') }}
+                            </a>
+                            <a href="{{ route('appointments.edit', $record->id) }}" class="btn btn-sm btn-primary">
+                              {{ __('general.btn.edit') }}
+                            </a>
+                            <form action="{{ route('appointments.destroy', $record->id) }}" method="POST" style="display:inline-block;">
+                              @csrf
+                              @method('DELETE')
+                              <button type="submit" class="btn btn-sm btn-danger">
+                                {{ __('general.btn.delete') }}
+                              </button>
                             </form>
-                        </td>
+                          </td>
                 @endforeach
 
                 <x-slot name="createButton">

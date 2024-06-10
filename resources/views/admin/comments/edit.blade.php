@@ -18,14 +18,14 @@
                                 <li class="breadcrumb-item"><a
                                         href="{{ url('/comments') }}">{{ __('general.attributes.comments') }}</a>
                                 </li><!--end nav-item-->
-                                <li class="breadcrumb-item active">{{ __('general.actions.edit') }}</li>
+                                <li class="breadcrumb-item active">{{ __('general.attributes.edit_comment') }}</li>
                             </ol>
                         </div>
                           <div class="col-md-12">
                               <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
                                   <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
                               </a>
-                              <h4 class="page-title">{{ __('general.actions.edit_comment') }}</h4>
+                              <h4 class="page-title">{{ __('general.attributes.edit_comment') }}</h4>
                           </div>
                     </div><!--end page-title-box-->
                 </div><!--end col-->
@@ -75,8 +75,9 @@
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <button type="submit" class="btn btn-primary">{{ __('general.actions.update_comment') }}</button>
-                            </form>
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-primary">{{ __('general.btn.edit') }}</button>
+                                </div>     </form>
                         </div> <!--end card-body-->
                     </div><!--end card-->
                 </div> <!--end col-->

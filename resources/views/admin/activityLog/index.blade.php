@@ -12,13 +12,16 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a>
                                 </li><!--end nav-item-->
-                                <li class="breadcrumb-item active">List</li>
+                                <li class="breadcrumb-item active">{{ __('general.list') }}</li>
                             </ol>
                         </div>
                         <div class="col-md-12">
-                            <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary"><span class="fa fa-backward"></a>
-                            <h4 class="page-title">Product List</h4>
+                            <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
+                                <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'back-backward' }}"></span>
+                            </a>
+                            <h4 class="page-title">{{ __('general.list') }}</h4>
                         </div>
+                        
                     </div><!--end page-title-box-->
                 </div><!--end col-->
             </div>

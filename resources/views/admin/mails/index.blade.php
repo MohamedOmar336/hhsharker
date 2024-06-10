@@ -64,7 +64,7 @@
                     <div class="email-rightbar">
                         <div class="btn-toolbar" role="toolbar">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-de-secondary" onclick="submitBulkAction('mark_as_read')"><i class="fas fa-inbox"></i>{{ __('general.btn.mark_as_read') }}</button>
+    
                                 <button type="button" class="btn btn-sm btn-de-secondary" onclick="submitBulkAction('move_trash')"><i class="fas fa-trash"></i>{{ __('general.btn.move_trash') }}</button>
                             </div>
                     

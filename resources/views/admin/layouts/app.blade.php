@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css">
+
+    
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('assets-admin/images/IMG_1465.png') }}">
     <link href="{{ asset('assets-admin/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
@@ -33,6 +35,7 @@
         <link href="{{ asset('assets-admin/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('assets-admin/css/app.min.css') }}" rel="stylesheet" type="text/css" />
     @endif
+
     <link href="{{ asset('assets-admin/css/style.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets-admin/libs/fullcalendar/main.min.css') }}" rel="stylesheet" type="text/css" />
 
@@ -101,8 +104,8 @@
     <script src="{{ asset('assets-admin/js/pages/projects-index.init.js') }}"></script>
 
 
-    <script src="{{ asset('assets-admin/libs/sweetalert2/sweetalert2.min.js') }}"></script>
-    <script src="{{ asset('assets-admin/js/pages/sweet-alert.init.js') }}"></script>
+        <script src="{{ asset('assets-admin/libs/sweetalert2/sweetalert2.min.js') }}"></script>
+        <script src="{{ asset('assets-admin/js/pages/sweet-alert.init.js') }}"></script>
 
 
 

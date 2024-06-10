@@ -31,21 +31,21 @@
             <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
             <td>{{ $record->id }}</td>
             <td>{{ $record->Title }}</td>
-            <td>{{ $record->priority->Name_en }}</td>
-            <td>{{ $record->status->Name_en }}</td>
+            <td>{{ app()->isLocale('ar') ? $record->priority->Name_ar : $record->priority->Name_en }}</td>
+            <td>{{ app()->isLocale('ar') ?  $record->status->Name_ar  : $record->status->Name_en  }}</td>
             <td>{{ $record->assignedTo->user_name }}</td>
             <td>
               <a href="{{ route('ticket_histories.show_by_ticket', $record->id) }}" class="btn btn-sm btn-info">
-                {{ __('general.actions.history') }}
+                {{ __('general.btn.history') }}
               </a>
               <a href="{{ route('tickets.edit', $record->id) }}" class="btn btn-sm btn-primary">
-                {{ __('general.actions.edit') }}
+                {{ __('general.btn.edit') }}
               </a>
               <form action="{{ route('tickets.destroy', $record->id) }}" method="POST" style="display:inline-block;">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-sm btn-danger">
-                  {{ __('general.actions.delete') }}
+                  {{ __('general.btn.delete') }}
                 </button>
               </form>
             </td>

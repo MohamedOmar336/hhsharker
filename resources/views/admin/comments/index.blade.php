@@ -16,6 +16,7 @@
                                 <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a>
                                 </li><!--end nav-item-->
                                 <li class="breadcrumb-item active">{{ __('general.attributes.comments') }}</li>
+                                <li class="breadcrumb-item active">{{ __('general.list') }}</li>
                             </ol>
                         </div>
                           <div class="col-md-12">
@@ -39,7 +40,7 @@
                         <th>{{ __('general.attributes.email') }}</th>
                         <th>{{ __('general.attributes.comment') }}</th>
                         <th>{{ __('general.attributes.comment_date') }}</th>
-                        <th>{{ __('general.actions.actions') }}</th>
+                        <th>{{ __('general.attributes.actions') }}</th>
                     </tr>
                 </x-slot>
                 @foreach ($records as $record)
@@ -52,13 +53,13 @@
                         <td>{{ $record->comment_date }}</td>
                         <td>
                             <a href="{{ route('comments.edit', $record->id) }}"
-                                class="btn btn-sm btn-primary">{{ __('general.actions.edit') }}</a>
+                                class="btn btn-sm btn-primary">{{ __('general.btn.edit') }}</a>
                             <form action="{{ route('comments.destroy', $record->id) }}" method="POST"
                                 style="display: inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-sm btn-danger"
-                                    onclick="return confirm('{{ __('general.actions.confirm_delete') }}')">{{ __('general.actions.delete') }}</button>
+                                    onclick="return confirm('{{ __('general.actions.confirm_delete') }}')">{{ __('general.btn.delete') }}</button>
                             </form>
                         </td>
                     </tr>
