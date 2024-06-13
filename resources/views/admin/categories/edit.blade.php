@@ -85,7 +85,7 @@
                                     <select id="parent_id"
                                         class="form-control @error('parent_id') is-invalid @enderror" name="parent_id"
                                         required autocomplete="parent_id">
-                                        <option value="1"> {{ __('general.select.select') .' ' }} {{ __('general.select.perant_category') }}</option>
+                                        <option value="1"> {{ __('general.select.select') .' ' }}</option>
                                         @foreach ($records as  $record)
                                             <option value="{{ $record->id }}" {{ $category->parent_id == $record->id ? 'selected' : null }}>{{ $record->name }}</option>
                                         @endforeach
@@ -97,7 +97,7 @@
                                         </div>
                                     @enderror
                                 </div>
-
+                                
                                 <div class="mb-3">
                                     <label for="active" class="form-label">{{ __('general.attributes.active') }}</label>
                                     <select id="active" class="form-control @error('active') is-invalid @enderror"

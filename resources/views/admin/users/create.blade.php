@@ -16,7 +16,7 @@
                                     </li>
                                     <li class="breadcrumb-item"><a
                                             href="{{ route('users.index') }}">{{ __('general.attributes.users') }}</a></li>
-                                            <li class="breadcrumb-item active">{{ __('general.attributes.add-user') }}}</li>
+                                            <li class="breadcrumb-item active">{{ __('general.attributes.add-user') }}</li>
                                 </ol>
                             </div>
                              <div class="col-md-12">

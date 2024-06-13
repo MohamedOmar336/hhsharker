@@ -57,4 +57,9 @@ class Category extends Model
         // This indicates that a category belongs to another category (parent category)
         return $this->belongsTo(Category::class, 'parent_id');
     }
+    public function children()
+    {
+        return $this->hasMany(Category::class, 'parent_id');
+    }
+
 }

@@ -29,12 +29,14 @@
     <link href="{{ asset('assets-admin/libs/animate.css/animate.min.css') }}" rel="stylesheet" type="text/css" />
 
     @if (app()->isLocale('ar'))
-        <link href="{{ asset('assets-admin/css/app-rtl.min.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('assets-admin/css/bootstrap-rtl.min.css') }}" rel="stylesheet" type="text/css" />
-    @else
-        <link href="{{ asset('assets-admin/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('assets-admin/css/app.min.css') }}" rel="stylesheet" type="text/css" />
-    @endif
+    <link href="{{ asset('assets-admin/css/bootstrap-rtl.min.css') }}" rel="stylesheet" type="text/css" id="bootstrapStylesheet" />
+    <link href="{{ asset('assets-admin/css/app-rtl.min.css') }}" rel="stylesheet" type="text/css" id="appStylesheet" />
+@else
+    <link href="{{ asset('assets-admin/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrapStylesheet" />
+    <link href="{{ asset('assets-admin/css/app.min.css') }}" rel="stylesheet" type="text/css" id="appStylesheet" />
+@endif
+
+
 
     <link href="{{ asset('assets-admin/css/style.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets-admin/libs/fullcalendar/main.min.css') }}" rel="stylesheet" type="text/css" />
@@ -119,7 +121,54 @@
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-messaging.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
     @stack('scripts')
-
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const darkModeToggle = document.getElementById("darkModeToggle");
+            const body = document.body;
+            const darkModeIcon = document.getElementById("darkModeIcon");
+            const lightModeIcon = document.getElementById("lightModeIcon");
+            const appStylesheet = document.getElementById("appStylesheet");
+            const bootstrapStylesheet = document.getElementById("bootstrapStylesheet");
+    
+            // Define the light and dark mode stylesheet URLs
+            const lightModeStylesheetURL1 = "{{ app()->isLocale('ar') ? asset('assets-admin/css/app-rtl.min.css') : asset('assets-admin/css/app.min.css') }}";
+            const lightModeStylesheetURL2 = "{{ app()->isLocale('ar') ? asset('assets-admin/css/bootstrap-rtl.min.css') : asset('assets-admin/css/bootstrap.min.css') }}";
+    
+            const darkModeStylesheetURL1 = "{{ app()->isLocale('ar') ? asset('assets-admin/css/app-dark-rtl.min.css') : asset('assets-admin/css/app-dark.min.css') }}";
+            const darkModeStylesheetURL2 = "{{ app()->isLocale('ar') ? asset('assets-admin/css/bootstrap-dark-rtl.min.css') : asset('assets-admin/css/bootstrap-dark.min.css') }}";
+    
+            // Check if the user has a saved preference
+            const savedDarkMode = localStorage.getItem("dark-mode");
+            if (savedDarkMode && savedDarkMode === "enabled") {
+                body.classList.add("dark-mode");
+                darkModeIcon.classList.add("d-none");
+                lightModeIcon.classList.remove("d-none");
+                appStylesheet.href = darkModeStylesheetURL1;
+                bootstrapStylesheet.href = darkModeStylesheetURL2;
+            }
+    
+            darkModeToggle.addEventListener("click", function() {
+                body.classList.toggle("dark-mode");
+    
+                // Toggle icons
+                darkModeIcon.classList.toggle("d-none");
+                lightModeIcon.classList.toggle("d-none");
+    
+                // Toggle stylesheets
+                if (body.classList.contains("dark-mode")) {
+                    appStylesheet.href = darkModeStylesheetURL1;
+                    bootstrapStylesheet.href = darkModeStylesheetURL2;
+                    localStorage.setItem("dark-mode", "enabled");
+                } else {
+                    appStylesheet.href = lightModeStylesheetURL1;
+                    bootstrapStylesheet.href = lightModeStylesheetURL2;
+                    localStorage.removeItem("dark-mode");
+                }
+            });
+        });
+    </script>
+    
+    
     <script>
         // Initialize Firebase
         firebase.initializeApp({

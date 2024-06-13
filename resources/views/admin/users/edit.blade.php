@@ -12,14 +12,14 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a></li>
                                 <li class="breadcrumb-item"><a href="{{ url('/users') }}"> {{ __('general.attributes.users') }}</a></li>
-                                <li class="breadcrumb-item active"> {{ __('general.attributes.edit-user') }}</li>
+                                <li class="breadcrumb-item active">{{ __('general.attributes.edit-user') }}</li>
                             </ol>
                         </div>
                          <div class="col-md-12">
                             <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
                                 <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
                             </a>
-                     <h4 class="page-title"> {{ __('general.attributes.edit-user') }}</h4>
+                     <h4 class="page-title">{{ __('general.attributes.edit-user') }}</h4>
                 </div>
 
                     </div><!--end page-title-box-->

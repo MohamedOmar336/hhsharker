@@ -90,7 +90,6 @@
                                         </div>
                                     @enderror
                                 </div>
-
                                 <div class="mb-3">
                                     <label for="active" class="form-label">{{ __('general.attributes.active') }}</label>
                                     <select id="active" class="form-control @error('active') is-invalid @enderror"

@@ -82,9 +82,16 @@
                                                 </div>
                                             </div><!--end col-->
                                             <div class="col-sm-6 text-end">
+                                                @if (Route::has('password.request'))
+                                                    <a href="{{ route('password.request') }}" class="text-muted font-13">
+                                                        <i class="dripicons-lock"></i> {{ __('Forgot password?') }}
+                                                    </a>
+                                                @endif                                    
+                                            </div>
+                                            {{-- <div class="col-sm-6 text-end">
                                                 <a class='text-muted font-13' href='auth-recover-pw.html'><i
-                                                        class="dripicons-lock"></i> Forgot password?</a>
-                                            </div><!--end col-->
+                                                        class="dripicons-lock"></i>  {{ __('Forgot password?') }}</a>
+                                            </div><!--end col--> --}}
                                         </div><!--end form-group-->
                                         {!! app('captcha')->display() !!}
 

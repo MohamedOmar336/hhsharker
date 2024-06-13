@@ -27,6 +27,7 @@ return [
         'edit-ticket' => 'تحرير التذكرة',
         'edit-status' => 'تحرير الحالة',
         'add-status' => 'إضافة حالة',
+        'add-user' => 'إضافة المستخدم',
         'edit-user' => 'تحرير المستخدم',
         'users' => 'المستخدمون',
         'comments' => 'التعليقات',
@@ -94,6 +95,7 @@ return [
         'source_propose' => 'اقتراح المصدر',
         'icon' => 'الأيقونة',
         'parent_id' => 'القسم الرئيسي',
+        'children_categories' => 'الأقسام الفرعية',
         'option_id' => 'اختيار',
         'from' => 'من',
         'to' => 'الى',
@@ -463,6 +465,7 @@ return [
         'mark_starred' => 'وضع علامة كمميزة',
         'mark_important' => 'وضع علامة كمهمة',
         'mark_draft' => 'إضافة إلى المسودة',
+        'compose' => 'إنشاء',
 
 
     ],

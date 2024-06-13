@@ -28,6 +28,7 @@ return [
         'edit-status' => 'Edit Status',
         'add-status' => 'Add Status',
         'edit-user' => 'Edit User',
+        'add-user' => 'Add User',
         'users' => 'Users',
         'comments' => 'Comments',
         'appointments' => 'Appointments',
@@ -94,6 +95,7 @@ return [
         'source_propose' => 'Source Propose',
         'icon' => 'Icon',
         'parent_id' => 'Parent Category',
+        'children_categories'=>'Children Categories',
         'option_id' => 'Option',
         'from' => 'From',
         'to' => 'To',
@@ -474,6 +476,7 @@ return [
         'mark_starred' => 'Mark as Starred',
         'mark_important' => 'Mark as Important',
         'mark_draft' => 'Add to Draft',
+        'compose' => 'Compose',
     ],
     'confirmation' => [
         'delete_comment' => 'Are you sure you want to delete this comment?',

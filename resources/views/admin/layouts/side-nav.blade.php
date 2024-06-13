@@ -98,9 +98,6 @@
                         <img src="{{ asset('assets-admin/images/IMG_1468.png') }}" alt="logo-large"
                             class="logo-lg logo-dark">
                     @endif
-
-                    <img src="{{ asset('assets-admin/images/logo-dark') }}" alt="logo-=large"
-                        class="logo-lg logo-light">
                 </span>
             </a><!--end logo-->
         </div><!--end topbar-left-->
