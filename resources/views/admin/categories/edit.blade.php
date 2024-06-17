@@ -15,7 +15,7 @@
                                 </li><!--end nav-item-->
                                 <li class="breadcrumb-item"><a href="{{ url('/categories') }}">{{ __('general.attributes.categories') }}</a></li>
                                 </li><!--end nav-item-->
-                                <li class="breadcrumb-item active">{{ __('general.attributes.edit-category') }}</li>
+                                <li class="breadcrumb-item active">{{ __('general.attributes.edit') }}</li>
                             </ol>
                         </div>
 
@@ -23,7 +23,7 @@
                             <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
                                 <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
                             </a>
-                      <h4 class="page-title">{{ __('general.attributes.edit-category') }} </h4>
+                      <h4 class="page-title">{{ __('general.attributes.edit') }} - {{ __('general.attributes.categories') }}</h4>
                 </div>
 
 
@@ -33,7 +33,7 @@
             </div>
             <!-- end page title end breadcrumb -->
             <div class="row">
-                <div class="col-12 col-md-8 mx-auto">
+                <div class="col-12 col-md-11 mx-auto">
                     <div class="card">
                          <div class="card-body content-area">
                             <form id="quickForm" method="POST" action="{{ route('categories.update', $category->id) }}"
@@ -68,7 +68,7 @@
 
                                 <div class="mb-3">
                                     <label for="image" class="form-label">{{ __('general.attributes.image') }}</label>
-                                    <img src="{{ $record->image ? asset('images/' . $record->image) : asset('assets-admin/images/no_image.png') }}" alt="{{ $category->name }}"
+                                    <img src="{{ isset($category->image) ? asset('images/' . $category->image) : asset('assets-admin/images/no_image.png') }}" alt="{{ $category->name }}"
                                         width="100"><br>
                                     <label for="image" class="form-label mt-2">Update Image</label>
                                     <input type="file" class="form-control" id="image" name="image">
@@ -97,7 +97,7 @@
                                         </div>
                                     @enderror
                                 </div>
-                                
+
                                 <div class="mb-3">
                                     <label for="active" class="form-label">{{ __('general.attributes.active') }}</label>
                                     <select id="active" class="form-control @error('active') is-invalid @enderror"

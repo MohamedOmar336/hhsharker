@@ -9,7 +9,7 @@
                 <img src="{{ asset('assets-admin/images/IMG_1465.png') }}" alt="logo-small" class="logo-sm">
                 @endif
 
-                
+
             </span>
         </a>
         <div class="main-icon-menu-body">
@@ -126,7 +126,7 @@
                     <!-- Navigation -->
                     <ul class="navbar-nav">
                         @foreach ($filteredSideNav as $item)
-                            @if ($item['link'] != 'sidebartickets' && $item['link'] != 'sidebarContacts' && $item['link'] != 'sidebargroups' && $item['link'] !=        'sidebarMails' && $item['link'] != 'sidebarappointments')
+                            @if ($item['link'] != 'sidebartickets' && $item['link'] != 'sidebarContacts' && $item['link'] != 'sidebargroups' && $item['link'] != 'sidebarMails' && $item['link'] != 'sidebarappointments')
                                 <li class="nav-item">
                                     <a class="nav-link" href="#{{ $item['link'] }}" data-bs-toggle="collapse"
                                         role="button" aria-expanded="false" aria-controls="{{ $item['link'] }}">
@@ -230,17 +230,9 @@
                 <div class="title-box">
                     <h6 class="menu-title"></h6>
                 </div>
-
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class='nav-link'
-                            href="{{ route('chat.index', Auth()->user()) }}">{{ __('general.chat') }}</a>
-                    </li><!--end nav-item-->
-                </ul><!--end nav-->
-
                 <ul class="navbar-nav">
                     @foreach ($filteredSideNav as $item)
-                            @if ($item['link'] == 'sidebargroups' || $item['link'] == 'sidebarMails' || $item['link'] == 'sidebarappointments')
+                            @if ( $item['link'] == 'sidebarMails' || $item['link'] == 'sidebarappointments')
                                 <li class="nav-item">
                                 <a class="nav-link" href="#{{ $item['link'] }}" data-bs-toggle="collapse"
                                     role="button" aria-expanded="false" aria-controls="{{ $item['link'] }}">

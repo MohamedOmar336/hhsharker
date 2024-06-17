@@ -26,7 +26,7 @@
             </div>
             <!-- end page title end breadcrumb -->
             <div class="row">
-                <div class="col-12 col-md-8 mx-auto">
+                <div class="col-12 col-md-11 mx-auto">
                     <div class="card">
                         <div class="card-body content-area">
                             <form id="quickForm" action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data">

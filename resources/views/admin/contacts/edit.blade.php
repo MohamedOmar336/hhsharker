@@ -29,7 +29,7 @@
             <!-- end page title and breadcrumb -->
 
             <div class="row">
-                <div class="col-12 col-md-8 mx-auto">
+                <div class="col-12 col-md-11 mx-auto">
                     <div class="card">
                         <div class="card-body content-area">
                             <form method="POST" action="{{ route('contacts.update', $contact->id) }}" enctype="multipart/form-data">
