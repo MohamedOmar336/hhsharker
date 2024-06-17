@@ -3,7 +3,6 @@
 @section('content')
     <!-- Page Content-->
     <div class="page-content-tab">
-
         <div class="container-fluid">
             <!-- Page-Title -->
             <div class="row">
@@ -16,12 +15,7 @@
                                 <li class="breadcrumb-item active">Edit</li>
                             </ol>
                         </div>
-                        <div class="col-md-12">
-                            <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
-                                <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
-                            </a>
-                            <h4 class="page-title">Edit Product</h4>
-                        </div>
+                        <h4 class="page-title">Edit Product</h4>
                     </div><!--end page-title-box-->
                 </div><!--end col-->
             </div>
@@ -55,6 +49,30 @@
                                 </div>
 
                                 <div class="mb-3">
+                                    <label for="model_number" class="form-label">{{ __('general.attributes.model_number') }}</label>
+                                    <input id="model_number" type="text" class="form-control @error('model_number') is-invalid @enderror" name="model_number" value="{{ old('model_number', $product->model_number) }}">
+                                    @error('model_number')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="power_supply" class="form-label">{{ __('general.attributes.power_supply') }}</label>
+                                    <input id="power_supply" type="text" class="form-control @error('power_supply') is-invalid @enderror" name="power_supply" value="{{ old('power_supply', $product->power_supply) }}">
+                                    @error('power_supply')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="type_of_freon" class="form-label">{{ __('general.attributes.type_of_freon') }}</label>
+                                    <input id="type_of_freon" type="text" class="form-control @error('type_of_freon') is-invalid @enderror" name="type_of_freon" value="{{ old('type_of_freon', $product->type_of_freon) }}">
+                                    @error('type_of_freon')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
                                     <label for="description_ar" class="form-label">{{ __('general.attributes.description_ar') }}</label>
                                     <textarea id="description_ar" class="form-control @error('description_ar') is-invalid @enderror" name="description_ar" required>{{ $product->description_ar }}</textarea>
                                     @error('description_ar')
@@ -71,6 +89,38 @@
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="characteristics_en" class="form-label">{{ __('general.attributes.characteristics_en') }}</label>
+                                    <textarea id="characteristics_en" class="form-control @error('characteristics_en') is-invalid @enderror" name="characteristics_en">{{ old('characteristics_en', $product->characteristics_en) }}</textarea>
+                                    @error('characteristics_en')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="characteristics_ar" class="form-label">{{ __('general.attributes.characteristics_ar') }}</label>
+                                    <textarea id="characteristics_ar" class="form-control @error('characteristics_ar') is-invalid @enderror" name="characteristics_ar">{{ old('characteristics_ar', $product->characteristics_ar) }}</textarea>
+                                    @error('characteristics_ar')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="optional_features_en" class="form-label">{{ __('general.attributes.optional_features_en') }}</label>
+                                    <textarea id="optional_features_en" class="form-control @error('optional_features_en') is-invalid @enderror" name="optional_features_en">{{ old('optional_features_en', $product->optional_features_en) }}</textarea>
+                                    @error('optional_features_en')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="optional_features_ar" class="form-label">{{ __('general.attributes.optional_features_ar') }}</label>
+                                    <textarea id="optional_features_ar" class="form-control @error('optional_features_ar') is-invalid @enderror" name="optional_features_ar">{{ old('optional_features_ar', $product->optional_features_ar) }}</textarea>
+                                    @error('optional_features_ar')
+                                    <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
@@ -98,7 +148,7 @@
                                     <label for="is_available" class="form-label">{{ __('general.attributes.is_available') }}</label>
                                     <select id="is_available" class="form-control @error('is_available') is-invalid @enderror" name="is_available" required>
                                         <option value="1" @if ($product->is_available == 1) selected @endif>{{ __('general.select.yes') }}</option>
-                                        <option value="0" @if ($product->is_available == 0) selected @endif>{{ __('general.no') }}</option>
+                                        <option value="0" @if ($product->is_available == 0) selected @endif>{{ __('general.select.no') }}</option>
                                     </select>
                                     @error('is_available')
                                         <div class="invalid-feedback">
@@ -124,7 +174,7 @@
 
                                 <div class="mb-3">
                                     <label for="image" class="form-label">{{ __('general.attributes.current_image') }}</label><br>
-                                    <img src="{{ isset($product->image_url) ? asset('images/' . $product->image_url) : asset('assets-admin/images/no_image.png') }}" alt="{{ $product->name }}" width="100"><br>
+                                    <img src="{{ isset($product->image_url) ? asset('storage/' . $product->image_url) : asset('assets-admin/images/no_image.png') }}" alt="{{ $product->name }}" width="100"><br>
                                     <label for="image" class="form-label mt-2">{{ __('general.attributes.update_image') }}</label>
                                     <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image">
                                     @error('image')

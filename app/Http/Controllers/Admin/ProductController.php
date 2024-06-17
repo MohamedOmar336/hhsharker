@@ -56,6 +56,13 @@ class ProductController extends Controller
             'name_en' => 'required|string',
             'description_ar' => 'required|string',
             'description_en' => 'required|string',
+            'model_number' => 'nullable|string',
+            'power_supply' => 'nullable|string',
+            'type_of_freon' => 'nullable|string',
+            'characteristics_en' => 'nullable|string',
+            'characteristics_ar' => 'nullable|string',
+            'optional_features_en' => 'nullable|string',
+            'optional_features_ar' => 'nullable|string',
             'price' => 'required|numeric',
             'quantity' => 'required|integer',
             'is_available' => 'nullable|boolean',
@@ -64,13 +71,11 @@ class ProductController extends Controller
         ]);
 
         $imageName = uploadImage($request->file('image'));
-
         $data['image_url'] = $imageName;
 
         $record = Product::create($data);
 
         $slug = slugable($record->name_en);
-
         $record->update([
             'slug' => Product::whereSlug($slug)->where('id', '!=', $record->id)->exists() ? slugable($record->name_en, $record->id) : $slug,
         ]);
@@ -79,6 +84,7 @@ class ProductController extends Controller
 
         return redirect()->route('products.index');
     }
+
 
     /**
      * Show the form for editing the specified product.
@@ -109,6 +115,13 @@ class ProductController extends Controller
             'name_en' => 'required|string',
             'description_ar' => 'required|string',
             'description_en' => 'required|string',
+            'model_number' => 'nullable|string',
+            'power_supply' => 'nullable|string',
+            'type_of_freon' => 'nullable|string',
+            'characteristics_en' => 'nullable|string',
+            'characteristics_ar' => 'nullable|string',
+            'optional_features_en' => 'nullable|string',
+            'optional_features_ar' => 'nullable|string',
             'price' => 'required|numeric',
             'quantity' => 'required|integer',
             'is_available' => 'nullable|boolean',
