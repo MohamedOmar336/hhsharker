@@ -17,10 +17,10 @@
             </div>
             <div class="col-md-12">
               <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
-                <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
+                <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'back-backward' }}"></span>
               </a>
               <h4 class="page-title">
-                {{ __('general.attributes.priorities') }} {{ __('general.list') }}
+                {{ __('general.list') }}
               </h4>
             </div>
           </div></div></div>
@@ -43,13 +43,13 @@
             <td>{{ $record->Status }}</td>
             <td>
               <a href="{{ route('ticket-priorities.edit', $record->id) }}" class="btn btn-sm btn-primary">
-                {{ __('general.actions.edit') }}
+                {{ __('general.btn.edit') }}
               </a>
               <form action="{{ route('ticket-priorities.destroy', $record->id) }}" method="POST" style="display:inline-block;">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('{{ __('general.confirm_delete') }}')">
-                  {{ __('general.actions.delete') }}
+                  {{ __('general.btn.delete') }}
                 </button>
               </form>
             </td>

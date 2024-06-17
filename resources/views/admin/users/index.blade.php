@@ -12,14 +12,20 @@
                         <div class="page-title-box">
                             <div class="float-end">
                                 <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">
+                                        <a href="{{ url('/home') }}">{{ __('general.home') }}</a>
+                                    </li>
                                     <li class="breadcrumb-item active">{{ __('general.attributes.users') }}</li>
+                                    <li class="breadcrumb-item active">{{ __('general.list') }}</li>
                                 </ol>
                             </div>
                             <div class="col-md-12">
                                 <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
                                     <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
                                 </a>
-                                <h4 class="page-title">{{ __('general.attributes.users') . ' ' }} List</h4>
+                                <h4 class="page-title">
+                                       {{ __('general.list') }}
+                                </h4>
                             </div>
 
                         </div><!--end page-title-box-->
@@ -43,8 +49,8 @@
                     @foreach ($records as $record)
                         <tr>
                             <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
-                            <td><img src="{{ isset($record->image) ? asset('images/' . $record->image) : asset('assets-admin/images/user.png') }}" alt=""
-                                    class="rounded-circle thumb-sm me-1">
+                            <td><img src="{{ isset($record->image) ? asset('images/' . $record->image) : asset('assets-admin/images/user.png') }}"
+                                    alt="" class="rounded-circle thumb-sm me-1">
                                 {{ $record->user_name }}
                             </td>
                             <td>Administrator</td>
@@ -56,7 +62,7 @@
                                 <td><span class="badge badge-soft-danger">Deactivated</span></td>
                             @endif
                             <td>
-                                <a href="{{ route('users.edit', $record->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                                <a href="{{ route('users.edit', $record->id) }}" class="btn btn-sm btn-primary">{{ __('general.btn.edit') }}</a>
                                 <form action="{{ route('users.destroy', $record->id) }}" method="POST"
                                     style="display: inline;">
                                     @csrf

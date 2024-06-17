@@ -13,9 +13,9 @@
                         <div class="page-title-box">
                             <div class="float-end">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">{{ __('general.home') }}</a>
+                                    <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a>
                                     </li><!--end nav-item-->
-                                    <li class="breadcrumb-item"><a href="#">Dashboard</a>
+                                    <li class="breadcrumb-item"><a href="{{ url('/home') }}">Dashboard</a>
                                     </li><!--end nav-item-->
                                     <li class="breadcrumb-item active">Analytics</li>
                                 </ol>
@@ -133,21 +133,21 @@
 
                 <div class="row">
                     <div class="col-lg-8">
-                            <div class="card">
-                                <div class="card-header">
-                                    <div class="row align-items-center">
-                                        <div class="col">                      
-                                            <h4 class="card-title">Tickets Status</h4>                      
-                                        </div><!--end col-->                                        
-                                    </div>  <!--end row-->                                  
-                                </div><!--end card-header-->
-                                <div class="card-body">                                                                 
-                                    <div class="">
-                                        <div id="Tickets_Status" class="apex-charts"></div>
-                                    </div>  
-                                </div><!--end card-body-->                                
-                            </div><!--end card-->   
-                        </div> <!--end col-->
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <h4 class="card-title">Tickets Status</h4>
+                                    </div><!--end col-->
+                                </div> <!--end row-->
+                            </div><!--end card-header-->
+                            <div class="card-body">
+                                <div class="">
+                                    <div id="Tickets_Status" class="apex-charts"></div>
+                                </div>
+                            </div><!--end card-body-->
+                        </div><!--end card-->
+                    </div> <!--end col-->
                     <div class="col-lg-4">
                         <div class="card">
                             <div class="card-header">
@@ -385,10 +385,9 @@
                                             </div><!--end col-->
                                             <div class="col-md-auto">
                                                 <div class="d-flex">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                        height="24" viewBox="0 0 24 24" fill="none"
-                                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round"
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                                         class="feather feather-headphones align-self-center text-secondary icon-sm">
                                                         <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
                                                         <path
@@ -413,8 +412,8 @@
                                                     <div class="media-body align-self-center text-truncate ms-3">
 
                                                         <h4 class="m-0 fw-semibold text-dark font-16">Banking</h4>
-                                                        <p class="text-muted  mb-0 font-13"><span
-                                                                class="text-dark">Client : </span>Hyman M. Cross</p>
+                                                        <p class="text-muted  mb-0 font-13"><span class="text-dark">Client
+                                                                : </span>Hyman M. Cross</p>
                                                     </div><!--end media-body-->
                                                 </div>
                                             </div><!--end col-->
@@ -508,10 +507,9 @@
                                         <div class="row mt-3">
                                             <div class="col-md">
                                                 <div class="d-flex mb-2 mb-lg-0">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                        height="24" viewBox="0 0 24 24" fill="none"
-                                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round"
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                                         class="feather feather-headphones align-self-center text-secondary icon-sm">
                                                         <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
                                                         <path
@@ -526,10 +524,9 @@
                                             </div><!--end col-->
                                             <div class="col-md-auto">
                                                 <div class="d-flex">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                        height="24" viewBox="0 0 24 24" fill="none"
-                                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round"
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                                         class="feather feather-headphones align-self-center text-secondary icon-sm">
                                                         <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
                                                         <path
@@ -554,8 +551,8 @@
                                                     <div class="media-body align-self-center text-truncate ms-3">
 
                                                         <h4 class="m-0 fw-semibold text-dark font-16">Transfer Money</h4>
-                                                        <p class="text-muted  mb-0 font-13"><span
-                                                                class="text-dark">Client : </span>Kevin J. Heal</p>
+                                                        <p class="text-muted  mb-0 font-13"><span class="text-dark">Client
+                                                                : </span>Kevin J. Heal</p>
                                                     </div><!--end media-body-->
                                                 </div>
                                             </div><!--end col-->
@@ -649,10 +646,9 @@
                                         <div class="row mt-3">
                                             <div class="col-md">
                                                 <div class="d-flex  mb-2 mb-lg-0">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                        height="24" viewBox="0 0 24 24" fill="none"
-                                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round"
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                                         class="feather feather-headphones align-self-center text-secondary icon-sm">
                                                         <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
                                                         <path
@@ -667,10 +663,9 @@
                                             </div><!--end col-->
                                             <div class="col-md-auto">
                                                 <div class="d-flex">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                        height="24" viewBox="0 0 24 24" fill="none"
-                                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round"
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                                         class="feather feather-headphones align-self-center text-secondary icon-sm">
                                                         <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
                                                         <path
@@ -691,11 +686,6 @@
                     </div><!--end col-->
 
                 </div>
-
-
-
-
-
 
 
 
@@ -1009,30 +999,30 @@
                             </div>
                         </div><!--end card-body-->
                     </div><!--end card-->
-                <!--end col-->
+                    <!--end col-->
 
-                <div class="col-lg-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="row align-items-center">
-                                <div class="col">
-                                    <h4 class="card-title">Calendar</h4>
-                                </div><!--end col-->
-                            </div> <!--end row-->
-                        </div><!--end card-header-->
-                        <div class="card-body">
-                            <div class="dash-datepick">
-                                <input type="hidden" id="light_datepicker" />
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <h4 class="card-title">Calendar</h4>
+                                    </div><!--end col-->
+                                </div> <!--end row-->
+                            </div><!--end card-header-->
+                            <div class="card-body">
+                                <div class="dash-datepick">
+                                    <input type="hidden" id="light_datepicker" />
 
-                            </div>
-                        </div><!--end card-body-->
-                    </div><!--end card-->
-                </div><!--end col-->
-            </div><!--end row-->
-   
- 
+                                </div>
+                            </div><!--end card-body-->
+                        </div><!--end card-->
+                    </div><!--end col-->
+                </div><!--end row-->
+
+
+            </div>
+            <!-- end page content -->
+
         </div>
-        <!-- end page content -->
-
-    </div>
-@endsection
+    @endsection

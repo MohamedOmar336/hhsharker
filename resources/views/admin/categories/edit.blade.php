@@ -15,7 +15,7 @@
                                 </li><!--end nav-item-->
                                 <li class="breadcrumb-item"><a href="{{ url('/categories') }}">{{ __('general.attributes.categories') }}</a></li>
                                 </li><!--end nav-item-->
-                                <li class="breadcrumb-item active">Edit</li>
+                                <li class="breadcrumb-item active">{{ __('general.attributes.edit-category') }}</li>
                             </ol>
                         </div>
 
@@ -23,7 +23,7 @@
                             <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
                                 <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
                             </a>
-                      <h4 class="page-title">{{ __('general.side.edit').' ' }} {{ __('general.attributes.categories') }} </h4>
+                      <h4 class="page-title">{{ __('general.attributes.edit-category') }} </h4>
                 </div>
 
 
@@ -85,7 +85,7 @@
                                     <select id="parent_id"
                                         class="form-control @error('parent_id') is-invalid @enderror" name="parent_id"
                                         required autocomplete="parent_id">
-                                        <option value="1"> {{ __('general.select.select') .' ' }} {{ __('general.select.perant_category') }}</option>
+                                        <option value="1"> {{ __('general.select.select') .' ' }}</option>
                                         @foreach ($records as  $record)
                                             <option value="{{ $record->id }}" {{ $category->parent_id == $record->id ? 'selected' : null }}>{{ $record->name }}</option>
                                         @endforeach
@@ -97,7 +97,7 @@
                                         </div>
                                     @enderror
                                 </div>
-
+                                
                                 <div class="mb-3">
                                     <label for="active" class="form-label">{{ __('general.attributes.active') }}</label>
                                     <select id="active" class="form-control @error('active') is-invalid @enderror"
@@ -113,7 +113,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <x-btn name="{{ __('general.btn.update') }}"></x-btn>
+                                    <button type="submit" class="btn btn-primary">{{ __('general.btn.edit') }}</button>
                                 </div>
                             </form>
                         </div> <!--end card-body-->

@@ -18,14 +18,14 @@
                                 <li class="breadcrumb-item">
                                     <a href="{{ url('/appointments') }}">{{ __('general.attributes.appointments') }}</a>
                                 </li>
-                                <li class="breadcrumb-item active">Edit</li>
+                                <li class="breadcrumb-item active">{{ __('general.attributes.edit-appointment') }}</li>
                             </ol>
                         </div>
                         <div class="col-md-12">
                             <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
                                 <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
                             </a>
-                            <h4 class="page-title">Edit Appointment</h4>
+                            <h4 class="page-title">{{ __('general.attributes.edit-appointment') }}</h4>
                         </div>
                     </div><!--end page-title-box-->
                 </div><!--end col-->
@@ -41,7 +41,7 @@
                                 @method('PUT')
 
                                 <div class="mb-3">
-                                    <label for="title" class="form-label">Title</label>
+                                    <label for="title" class="form-label">{{ __('general.attributes.title') }}</label>
                                     <input id="title" type="text"
                                         class="form-control @error('title') is-invalid @enderror" name="title"
                                         value="{{ old('title', $appointment->title ) }}" required>
@@ -53,9 +53,9 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="with_user_id" class="form-label">With User</label>
+                                    <label for="with_user_id" class="form-label">{{ __('general.attributes.with') }}</label>
                                     <select id="with_user_id" class="form-control @error('with_user_id') is-invalid @enderror" name="with_user_id" required>
-                                        <option value="">Select User</option>
+                                        <option value="">{{ __('general.attributes.select_user') }}</option>
                                         @foreach ($users as $user)
                                             <option value="{{ $user->id }}" {{ old('with_user_id', $appointment->with_user_id) == $user->id ? 'selected' : '' }}>
                                                 {{ $user->user_name }}
@@ -70,7 +70,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="start_time" class="form-label">Start Time</label>
+                                    <label for="start_time" class="form-label">{{ __('general.attributes.start_time') }}</label>
                                     <input id="start_time" type="datetime-local" class="form-control @error('start_time') is-invalid @enderror" name="start_time" value="{{ old('start_time', $appointment->start_time->format('Y-m-d\TH:i')) }}" required>
                                     @error('start_time')
                                         <div class="invalid-feedback">
@@ -80,7 +80,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="finish_time" class="form-label">Finish Time</label>
+                                    <label for="finish_time" class="form-label">{{ __('general.attributes.finish_time') }}</label>
                                     <input id="finish_time" type="datetime-local" class="form-control @error('finish_time') is-invalid @enderror" name="finish_time" value="{{ old('finish_time', $appointment->finish_time->format('Y-m-d\TH:i')) }}" required>
                                     @error('finish_time')
                                         <div class="invalid-feedback">
@@ -90,7 +90,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="status" class="form-label">Status</label>
+                                    <label for="status" class="form-label">{{ __('general.attributes.status') }}</label>
                                     <input id="status" type="text" class="form-control @error('status') is-invalid @enderror" name="status" value="{{ old('status', $appointment->status) }}" required>
                                     @error('status')
                                         <div class="invalid-feedback">
@@ -100,7 +100,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="notes" class="form-label">Notes</label>
+                                    <label for="notes" class="form-label">{{ __('general.attributes.notes') }}</label>
                                     <textarea id="notes" class="form-control @error('notes') is-invalid @enderror" name="notes">{{ old('notes', $appointment->notes) }}</textarea>
                                     @error('notes')
                                         <div class="invalid-feedback">
@@ -108,8 +108,9 @@
                                         </div>
                                     @enderror
                                 </div>
-
-                                <button type="submit" class="btn btn-primary">Update Appointment</button>
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-primary">{{ __('general.btn.edit') }}</button>
+                                </div>
                             </form>
                         </div><!--end card-body-->
                     </div><!--end card-->

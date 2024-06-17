@@ -10,14 +10,14 @@
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a></li>
                 <li class="breadcrumb-item"><a href="{{ url('/tickets') }}">{{ __('general.side.tickets') }}</a></li>
-                <li class="breadcrumb-item active">{{ __('general.actions.edit') }}</li>
+                <li class="breadcrumb-item active">{{ __('general.attributes.edit-ticket') }}</li>
               </ol>
             </div>
             <div class="col-md-12">
               <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
                 <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
               </a>
-              <h4 class="page-title">{{ __('general.actions.edit') }} {{ __('general.attributes.ticket') }}</h4>
+              <h4 class="page-title">{{ __('general.attributes.edit-ticket') }}</h4>
             </div>
           </div>
         </div>
@@ -47,7 +47,7 @@
                   <select class="form-control" id="priority" name="priority" required>
                     @foreach ($priorities as $priority)
                       <option value="{{ $priority->id }}" {{ $ticket->priority_id == $priority->id ? 'selected' : '' }}>
-                        {{ $priority->Name_en }}
+                        {{ app()->isLocale('ar') ? $priority->Name_ar : $priority->Name_en }}
                       </option>
                     @endforeach
                   </select>
@@ -58,7 +58,7 @@
                   <select class="form-control" id="status" name="status" required>
                     @foreach ($statuses as $status)
                       <option value="{{ $status->id }}" {{ $ticket->status_id == $status->id ? 'selected' : '' }}>
-                        {{ $status->Name_en }}
+                        {{ app()->isLocale('ar') ? $status->Name_ar : $status->Name_en }}
                       </option>
                     @endforeach
                   </select>
@@ -79,8 +79,9 @@
                   <label for="Description" class="form-label">{{ __('general.attributes.description') }}</label>
                   <textarea class="ticket_description form-control" id="Description" name="Description">{{ $ticket->Description }}</textarea>
                 </div>
-
-                <button type="submit" class="btn btn-primary">{{ __('general.actions.update') }}</button>
+                <div class="mb-3">
+                  <button type="submit" class="btn btn-primary">{{ __('general.btn.edit') }}</button>
+              </div>
               </form>
             </div> </div>
                 </div> <!--end col-->

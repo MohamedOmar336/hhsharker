@@ -10,16 +10,16 @@
                     <div class="page-title-box">
                         <div class="float-end">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ url('/home') }}">Metrica</a></li>
-                                <li class="breadcrumb-item"><a href="{{ url('/users') }}">Users</a></li>
-                                <li class="breadcrumb-item active">Edit</li>
+                                <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a></li>
+                                <li class="breadcrumb-item"><a href="{{ url('/users') }}"> {{ __('general.attributes.users') }}</a></li>
+                                <li class="breadcrumb-item active">{{ __('general.attributes.edit-user') }}</li>
                             </ol>
                         </div>
                          <div class="col-md-12">
                             <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
                                 <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
                             </a>
-                     <h4 class="page-title">Edit User</h4>
+                     <h4 class="page-title">{{ __('general.attributes.edit-user') }}</h4>
                 </div>
 
                     </div><!--end page-title-box-->
@@ -110,7 +110,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <x-btn name="{{ __('general.btn.submit') }}"></x-btn>
+                                    <button type="submit" class="btn btn-primary">{{ __('general.btn.edit') }}</button>
                                 </div>
                             </form>
                         </div> <!--end card-body-->

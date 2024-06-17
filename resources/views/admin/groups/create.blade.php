@@ -12,14 +12,14 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a></li>
                                 <li class="breadcrumb-item"><a href="{{ route('groups.index') }}">{{ __('general.attributes.groups') }}</a></li>
-                                <li class="breadcrumb-item active">{{ __('general.actions.new') }}</li>
+                                <li class="breadcrumb-item active">{{ __('general.attributes.add-group') }}</li>
                             </ol>
                         </div>
                         <div class="col-md-12">
                             <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
                                 <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
                             </a>
-                            <h4 class="page-title">{{ __('general.actions.new').' ' }}{{ __('general.attributes.groups') }}</h4>
+                            <h4 class="page-title">{{ __('general.attributes.add-group') }}</h4>
                         </div>
                     </div><!--end page-title-box-->
                 </div><!--end col-->
@@ -42,7 +42,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="Description" class="form-label">Description</label>
+                                    <label for="Description" class="form-label">{{ __('general.attributes.description') }}</label>
                                     <textarea class="ticket_description form-control" id="Description" name="description">{{ old('description') }}</textarea>
                                 </div>
 
@@ -59,7 +59,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <button type="submit" class="btn btn-primary">{{ __('general.btn.submit') }}</button>
+                                    <button type="submit" class="btn btn-primary">{{ __('general.btn.create') }}</button>
                                 </div>
                             </form>
                         </div> <!--end card-body-->

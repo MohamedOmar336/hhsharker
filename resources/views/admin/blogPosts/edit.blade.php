@@ -84,9 +84,10 @@
                                         <label for="tags" class="form-label">{{ __('general.attributes.tags') }}</label>
                                         <select id="choices-multiple-remove-button" class="form-control" placeholder="{{ __('general.select.choose') }}" multiple name="tags[]">
                                             @foreach ($tags as $tag)
-                                                <option value="{{ $tag->id }}" {{ in_array($tag->id, $post->tags->pluck('id')->toArray()) ? 'selected' : '' }}>{{ $tag->name_en }}</option>
+                                                <option value="{{ $tag->id }}" {{is_array($postTags) && in_array($tag->id, $postTags) ? 'selected' : '' }}>{{ $tag->name_en }}</option>
                                             @endforeach
                                         </select>
+                                        
                                     </div>
                                 </div>
                                 <div class="mb-3">
@@ -98,9 +99,9 @@
                                     @error('status')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
-                                </div>
-                                <button type="submit" class="btn btn-primary">{{ __('general.btn.update_post') }}</button>
-                            </form>
+                                </div> <div class="mb-3">
+                                    <button type="submit" class="btn btn-primary">{{ __('general.btn.edit') }}</button>
+                                </div>   </form>
                         </div><!--end card-body-->
                     </div><!--end card-->
                 </div><!--end col-->

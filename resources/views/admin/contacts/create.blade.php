@@ -12,14 +12,14 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a></li>
                                 <li class="breadcrumb-item"><a href="{{ route('contacts.index') }}">{{ __('general.attributes.contacts') }}</a></li>
-                                <li class="breadcrumb-item active">{{ __('general.actions.new') }}</li>
+                                <li class="breadcrumb-item active">{{ __('general.attributes.add-contact') }}</li>
                             </ol>
                         </div>
                           <div class="col-md-12">
                             <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
                                 <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
                             </a>
-                       <h4 class="page-title">{{ __('general.actions.new').' ' }}{{ __('general.attributes.contact') }}</h4>
+                       <h4 class="page-title">{{ __('general.attributes.add-contact') }}</h4>
                 </div>
 
 
@@ -84,7 +84,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <button type="submit" class="btn btn-primary">{{ __('general.btn.submit') }}</button>
+                                    <button type="submit" class="btn btn-primary">{{ __('general.btn.create') }}</button>
                                 </div>
                             </form>
                         </div> <!--end card-body-->

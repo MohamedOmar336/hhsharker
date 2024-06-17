@@ -15,19 +15,18 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {
-        $query = Category::query();
+{
+    $query = Category::query()->with('children');
 
-        if ($request->has('search')) {
-            $query->where('name_ar', 'LIKE', "%{$request->search}%")
-                ->orWhere('name_en', 'LIKE', "%{$request->search}%");
-        }
-
-        $records = $query->paginate(500);
-
-        return view('admin.categories.index', compact('records'));
+    if ($request->has('search')) {
+        $query->where('name_ar', 'LIKE', "%{$request->search}%")
+            ->orWhere('name_en', 'LIKE', "%{$request->search}%");
     }
-    
+
+    $records = $query->paginate(500);
+
+    return view('admin.categories.index', compact('records'));
+}
 
     /**
      * Show the form for creating a new resource.

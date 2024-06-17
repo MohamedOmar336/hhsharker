@@ -1,6 +1,6 @@
 body {
   font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  background-color: #e6e9f4;
+   /* background-color: #252f56;  */
   font-weight: 300; }
 
 p {
@@ -147,3 +147,12 @@ h2 {
   margin: 20px;
 
 }*/
+.page-title-box .page-title {
+  display: inline-block;
+}
+
+.leftbar-tab-menu .main-menu-inner .topbar-left .logo .logo-lg {
+  height: 75px;
+  margin-right: 13px;
+  display: inline-block;
+}

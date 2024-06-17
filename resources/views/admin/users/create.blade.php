@@ -16,13 +16,14 @@
                                     </li>
                                     <li class="breadcrumb-item"><a
                                             href="{{ route('users.index') }}">{{ __('general.attributes.users') }}</a></li>
+                                            <li class="breadcrumb-item active">{{ __('general.attributes.add-user') }}</li>
                                 </ol>
                             </div>
                              <div class="col-md-12">
                                 <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
                                     <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
                                 </a>
-                    <h4 class="page-title">{{ __('general.attributes.users') }}</h4>
+                    <h4 class="page-title">{{ __('general.attributes.add-user') }}</li></h4>
                 </div>
 
                         </div>
@@ -96,14 +97,13 @@
                                     <div class="mb-3">
                                         <label for="password" class="form-label">{{ __('general.attributes.password') }}</label>
                                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
-                                            name="password" required autocomplete="new-password">
+                                            name="password" required  autocomplete="new-password">
                                         @error('password')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
                                         @enderror
                                     </div>
-
                                     <div class="mb-3">
                                         <label for="password_confirmation" class="form-label">{{ __('general.attributes.confirmation_password') }}</label>
                                         <input id="password_confirmation" type="password"
@@ -157,7 +157,7 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <x-btn name="{{ __('general.btn.submit') }}"></x-btn>
+                                        <button type="submit" class="btn btn-primary">{{ __('general.btn.create') }}</button>
                                     </div>
                                 </form>
 

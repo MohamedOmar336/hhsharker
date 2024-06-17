@@ -11,11 +11,16 @@
                         <div class="float-end">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a></li>
-                                <li class="breadcrumb-item"><a href="{{ route('products.index') }}">{{ __('general.attributes.product') }}</a></li>
-                                <li class="breadcrumb-item active">Add</li>
+                                <li class="breadcrumb-item"><a href="{{ route('products.index') }}">{{ __('general.attributes.products') }}</a></li>
+                                <li class="breadcrumb-item active">{{ __('general.attributes.add-product') }}</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">Add Product</h4>
+                        <div class="col-md-12">
+                            <a href="{{ URL::previous() }}" class="btn btn-sm btn-primary">
+                                <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
+                            </a>
+                            <h4 class="page-title">{{ __('general.attributes.add-product') }}</h4>
+                        </div>
                     </div><!--end page-title-box-->
                 </div><!--end col-->
             </div>
@@ -183,8 +188,28 @@
                                     @enderror
                                 </div>
 
+<<<<<<< HEAD
                                 <div class="form-group mb-0">
                                     <x-btn name="{{ __('general.btn.submit') }}"></x-btn>
+=======
+                                <div class="mb-3">
+                                    <label for="category_id" class="form-label">{{ __('general.attributes.category') }}</label>
+                                    <select id="category_id" class="form-control @error('category_id') is-invalid @enderror" name="category_id" required>
+                                        <option value="">{{ __('general.select.category') }}</option>
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name_en }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('category_id')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-primary">{{ __('general.btn.create') }}</button>
+>>>>>>> 4e0b96d8b33558e50b67fb5775d711594a70797f
                                 </div>
                             </form>
                         </div> <!--end card-body-->

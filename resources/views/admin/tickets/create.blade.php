@@ -10,14 +10,14 @@
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a></li>
                 <li class="breadcrumb-item"><a href="{{ url('/tickets') }}">{{ __('general.side.tickets') }}</a></li>
-                <li class="breadcrumb-item active">{{ __('general.actions.new') }}</li>
+                <li class="breadcrumb-item active">{{ __('general.attributes.add-ticket') }}</li>
               </ol>
             </div>
             <div class="col-md-12">
               <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
                 <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
               </a>
-              <h4 class="page-title">{{ __('general.actions.new') }} {{ __('general.attributes.ticket') }}</h4>
+              <h4 class="page-title">{{ __('general.attributes.add-ticket') }}</h4>
             </div>
           </div>
         </div>
@@ -43,7 +43,8 @@
                   <label for="priority" class="form-label">{{ __('general.attributes.priority') }}</label>
                   <select class="form-control" id="priority" name="priority" required>
                     @foreach ($priorities as $priority)
-                      <option value="{{ $priority->id }}">{{ $priority->Name_en }}</option>
+                      <option value="{{ $priority->id }}">{{ app()->isLocale('ar') ? $priority->Name_ar : $priority->Name_en }}
+                       </option>
                     @endforeach
                   </select>
                 </div>
@@ -52,7 +53,8 @@
                   <label for="status" class="form-label">{{ __('general.attributes.status') }}</label>
                   <select class="form-control" id="status" name="status" required>
                     @foreach ($statuses as $status)
-                      <option value="{{ $status->id }}">{{ $status->Name_en }}</option>
+                      <option value="{{ $status->id }}">
+                        {{ app()->isLocale('ar') ?  $status->Name_ar  : $status->Name_en  }}</option>
                     @endforeach
                   </select>
                 </div>
@@ -70,9 +72,9 @@
                   <label for="Description" class="form-label">{{ __('general.attributes.description') }}</label>
                   <textarea class="ticket_description form-control" id="Description" name="Description"></textarea>
                 </div>
-
-                <button type="submit" class="btn btn-primary">{{ __('general.actions.create') }} {{ __('general.attributes.ticket') }}</button>
-              </form>
+                <div class="mb-3">
+                  <button type="submit" class="btn btn-primary">{{ __('general.btn.create') }}</button>
+              </div> </form>
             </div>
           </div>
         </div>

@@ -14,7 +14,7 @@
                                 <li class="breadcrumb-item"><a
                                         href="{{ route('groups.index') }}">{{ __('general.attributes.groups') }}</a>
                                 </li>
-                                <li class="breadcrumb-item active">{{ __('general.side.list') }}</li>
+                                <li class="breadcrumb-item active">{{ __('general.list') }}</li>
                             </ol>
                         </div>
                         <div class="col-md-12">
