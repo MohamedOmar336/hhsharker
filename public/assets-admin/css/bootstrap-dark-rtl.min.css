@@ -268,7 +268,7 @@ th{
 tbody,td,tfoot,th,thead,tr{
     border-color:inherit;
     border-style:solid;
-    border-width:0
+    border-width:0;
 }
 label{
     display:inline-block
@@ -2172,7 +2172,7 @@ progress{
 }
 .table{
     --bs-table-color:#d4d6d9;
-    --bs-table-bg:transparent;
+    --bs-table-bg:#111628;
     --bs-table-border-color:#333a4e;
     --bs-table-accent-bg:transparent;
     --bs-table-striped-color:#d4d6d9;
