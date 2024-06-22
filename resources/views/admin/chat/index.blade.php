@@ -30,6 +30,10 @@
                                 <a class="nav-link" id="group_chat_tab" data-bs-toggle="tab" href="#group_chat"
                                     role="tab">Groups</a>
                             </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="group_chat_tab" data-bs-toggle="tab" href="#group_chat"
+                                    role="tab">Whatsapp business</a>
+                            </li>
                         </ul>
                         <div class="chat-body-left" data-simplebar>
                             <div class="tab-content chat-list" id="pills-tabContent">
