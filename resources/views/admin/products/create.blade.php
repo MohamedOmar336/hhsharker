@@ -187,11 +187,6 @@
                                     </div>
                                     @enderror
                                 </div>
-
-<<<<<<< HEAD
-                                <div class="form-group mb-0">
-                                    <x-btn name="{{ __('general.btn.submit') }}"></x-btn>
-=======
                                 <div class="mb-3">
                                     <label for="category_id" class="form-label">{{ __('general.attributes.category') }}</label>
                                     <select id="category_id" class="form-control @error('category_id') is-invalid @enderror" name="category_id" required>
@@ -209,7 +204,6 @@
 
                                 <div class="mb-3">
                                     <button type="submit" class="btn btn-primary">{{ __('general.btn.create') }}</button>
->>>>>>> 4e0b96d8b33558e50b67fb5775d711594a70797f
                                 </div>
                             </form>
                         </div> <!--end card-body-->
