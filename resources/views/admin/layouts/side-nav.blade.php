@@ -6,7 +6,7 @@
                 <img src="{{ asset('assets-admin/images/IMG_1520.png') }}" alt="logo-small" class="logo-sm">
                 @endif
                 @if (app()->isLocale('en'))
-                <img src="{{ asset('assets-admin/images/IMG_1465.png') }}" alt="logo-small" class="logo-sm">
+                <img src="{{ asset('assets-admin/images/IMG_1520.png') }}" alt="logo-small" class="logo-sm">
                 @endif
 
 
