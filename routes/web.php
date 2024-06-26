@@ -1,30 +1,31 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\CategoryController;
-use Illuminate\Support\Facades\App;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\ActivityLogController;
+use App\Http\Controllers\Admin\AppointmentController;
 use App\Http\Controllers\Admin\BlogPostController;
+use App\Http\Controllers\Admin\CalendarController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ChatController;
 use App\Http\Controllers\Admin\CommentController;
+use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\GroupController;
+use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\MailController;
+use App\Http\Controllers\Admin\MessageController;
+use App\Http\Controllers\Admin\NotificationController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\TagController;
-use App\Http\Controllers\Admin\ContactController;
-use App\Http\Controllers\Admin\ProfileController;
-use App\Http\Controllers\Admin\ChatController;
-use App\Http\Controllers\Admin\TicketPriorityController;
-use App\Http\Controllers\Admin\TicketStatusController;
 use App\Http\Controllers\Admin\TicketController;
 use App\Http\Controllers\Admin\TicketHistoryController;
-use App\Http\Controllers\Admin\AppointmentController;
-use App\Http\Controllers\Admin\CalendarController;
-use App\Http\Controllers\Admin\ActivityLogController;
-use App\Http\Controllers\Admin\NotificationController;
-use App\Http\Controllers\Admin\MessageController;
-use App\Http\Controllers\Admin\GroupController;
-use App\Http\Controllers\Admin\MailController;
+use App\Http\Controllers\Admin\TicketPriorityController;
+use App\Http\Controllers\Admin\TicketStatusController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\TicketCategoryController;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,7 +56,7 @@ Route::group(['prefix' => 'admin'], function () {
         })->name('change.lang');
 
         Route::get('/home', [HomeController::class, 'index'])->name('home');
-
+        
         Route::resource('/products', ProductController::class);
 
         Route::get('/products/bulk-delete', [ProductController::class, 'bulkDelete'])->name('products.bulk-delete');
@@ -133,6 +134,9 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::post('/mails/bulk-action', [MailController::class, 'bulkAction'])->name('mails.bulkAction');
 
+        Route::resource('/ticket_categories', TicketCategoryController::class);
+
+        Route::put('/tickets/{id}/update/{field}', [TicketController::class, 'updateField'])->name('tickets.update_field');
 
     });
 });

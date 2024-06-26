@@ -434,6 +434,8 @@ return [
         'contacts-list' => 'قائمة جهات الاتصال',
         'blogs-list' => 'قائمة المدونات',
         'tickets-list' => 'قائمة التذاكر',
+        'tickets-overview' => 'نظرة عامة على التذاكر',
+        'overview' => 'نظرة عامة',
         'tickets' => 'التذاكر',
         'status-list' => 'قائمة الحالات',
         'priorities-list' => 'قائمة الأولويات',

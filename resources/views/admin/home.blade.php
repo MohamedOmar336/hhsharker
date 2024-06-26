@@ -36,7 +36,7 @@
                                             <div class="col">
                                                 <div class="media">
                                                     <div
-                                                        class="bg-light-alt d-flex justify-content-center align-items-center thumb-md  rounded-circle">
+                                                        class="bg-light-alt d-flex justify-content-center align-items-center thumb-md rounded-circle">
                                                         <i data-feather="tag"
                                                             class="align-self-center text-muted icon-sm"></i>
                                                     </div>
@@ -47,7 +47,7 @@
                                                 </div><!--end media-->
                                             </div><!--end col-->
                                             <div class="col-auto align-self-center">
-                                                <h4 class="my-1">155</h4>
+                                                <h4 class="my-1">{{ $newTicketsCount }}</h4>
                                             </div><!--end col-->
                                         </div><!--end row-->
                                     </div><!--end card-body-->
@@ -58,7 +58,7 @@
                                             <div class="col">
                                                 <div class="media">
                                                     <div
-                                                        class="bg-light-alt d-flex justify-content-center align-items-center thumb-md  rounded-circle">
+                                                        class="bg-light-alt d-flex justify-content-center align-items-center thumb-md rounded-circle">
                                                         <i data-feather="package"
                                                             class="align-self-center text-muted icon-sm"></i>
                                                     </div>
@@ -69,7 +69,7 @@
                                                 </div><!--end media-->
                                             </div><!--end col-->
                                             <div class="col-auto align-self-center">
-                                                <h4 class="my-1">102</h4>
+                                                <h4 class="my-1">{{ $openTicketsCount }}</h4>
                                             </div><!--end col-->
                                         </div><!--end row-->
                                     </div><!--end card-body-->
@@ -80,7 +80,7 @@
                                             <div class="col">
                                                 <div class="media">
                                                     <div
-                                                        class="bg-light-alt d-flex justify-content-center align-items-center thumb-md  rounded-circle">
+                                                        class="bg-light-alt d-flex justify-content-center align-items-center thumb-md rounded-circle">
                                                         <i data-feather="zap"
                                                             class="align-self-center text-muted icon-sm"></i>
                                                     </div>
@@ -91,7 +91,7 @@
                                                 </div><!--end media-->
                                             </div><!--end col-->
                                             <div class="col-auto align-self-center">
-                                                <h4 class="my-1">14</h4>
+                                                <h4 class="my-1">{{ $onHoldTicketsCount }}</h4>
                                             </div><!--end col-->
                                         </div><!--end row-->
                                     </div><!--end card-body-->
@@ -102,7 +102,7 @@
                                             <div class="col">
                                                 <div class="media">
                                                     <div
-                                                        class="bg-light-alt d-flex justify-content-center align-items-center thumb-md  rounded-circle">
+                                                        class="bg-light-alt d-flex justify-content-center align-items-center thumb-md rounded-circle">
                                                         <i data-feather="lock"
                                                             class="align-self-center text-muted icon-sm"></i>
                                                     </div>
@@ -113,7 +113,7 @@
                                                 </div><!--end media-->
                                             </div><!--end col-->
                                             <div class="col-auto align-self-center">
-                                                <h4 class="my-1">75</h4>
+                                                <h4 class="my-1">{{ $unassignedTicketsCount }}</h4>
                                             </div><!--end col-->
                                         </div><!--end row-->
                                     </div><!--end card-body-->
@@ -122,8 +122,6 @@
                         </div><!--end card-->
                     </div><!--end col-->
                 </div><!--end row-->
-
-
 
 
 
@@ -148,6 +146,14 @@
                             </div><!--end card-body-->
                         </div><!--end card-->
                     </div> <!--end col-->
+                    {{-- @push('scripts')
+                        <script>
+                            var options1 = @json($options1); // Assuming $options1 is passed from the controller
+                            var chart1 = new ApexCharts(document.querySelector("#Tickets_Status"), options1);
+                            chart1.render();
+                        </script>
+                    @endpush --}}
+
                     <div class="col-lg-4">
                         <div class="card">
                             <div class="card-header">
@@ -704,7 +710,10 @@
                                         <h4 class="card-title">All Tickets</h4>
                                     </div><!--end col-->
                                     <div class="col-auto">
-                                        <button class="btn btn-sm btn-de-primary">Create Ticket</button>
+                                        <form action="{{ route('tickets.create') }}"  method="GET">
+                                        <button
+                                            class="btn btn-sm btn-de-primary">
+                                                {{ __('general.actions.new') }}</button></form>
                                     </div><!--end col-->
                                 </div> <!--end row-->
                             </div><!--end card-header-->
@@ -713,106 +722,27 @@
                                     <table class="table">
                                         <thead class="thead-light">
                                             <tr>
-                                                <th style="max-width: 95px;">
-                                                    <input class="form-check-input" type="checkbox" id="checkbox1"
-                                                        value="" aria-label="...">
-                                                </th>
-                                                <th>ID</th>
-                                                <th>Customers</th>
-                                                <th>Subject</th>
-                                                <th>Priority</th>
-                                                <th>Status</th>
-                                                <th>Respose Time</th>
+                                                <th>{{ __('general.attributes.id') }}</th>
+                                                <th>{{ __('general.attributes.title') }}</th>
+                                                <th>{{ __('general.attributes.priority') }}</th>
+                                                <th>{{ __('general.attributes.status') }}</th>
+                                                <th>{{ __('general.attributes.assigned_to') }}</th>
+                                                {{-- <th scope="col">{{ __('general.attributes.actions') }}</th> --}}
                                             </tr><!--end tr-->
                                         </thead>
 
                                         <tbody>
-                                            <tr>
-                                                <td>
-                                                    <input class="form-check-input" type="checkbox" id="checkbox2"
-                                                        value="" aria-label="...">
-                                                </td>
-                                                <td>#1236</td>
-                                                <td><img src="assets/images/users/user-10.jpg" alt=""
-                                                        class="thumb-sm rounded-circle me-2">
-                                                    Donald Gardner</td>
-                                                <td>Bug-report simply dummy text of the printing and typesetting</td>
-                                                <td>Medium</td>
-                                                <td><span class="badge badge-soft-warning p-2">New</span></td>
-                                                <td>14 min</td>
-                                            </tr><!--end tr-->
-                                            <tr>
-                                                <td>
-                                                    <input class="form-check-input" type="checkbox" id="checkbox3"
-                                                        value="" aria-label="...">
-                                                </td>
-                                                <td>#3569</td>
-                                                <td><img src="assets/images/users/user-9.jpg" alt=""
-                                                        class="thumb-sm rounded-circle me-2">
-                                                    Kevin J. Heal</td>
-                                                <td>The application continuous is a long established fact that a reader.
-                                                </td>
-                                                <td class="text-danger">Critical</td>
-                                                <td><span class="badge badge-soft-success p-2">Solved</span></td>
-                                                <td>45 min</td>
-                                            </tr><!--end tr-->
-                                            <tr>
-                                                <td>
-                                                    <input class="form-check-input" type="checkbox" id="checkbox4"
-                                                        value="" aria-label="...">
-                                                </td>
-                                                <td>#9874</td>
-                                                <td><img src="assets/images/users/user-8.jpg" alt=""
-                                                        class="thumb-sm rounded-circle me-2">
-                                                    Frank M. Lyons</td>
-                                                <td>See how it work start are many variations of passages of Lorem Ipsum
-                                                    available.</td>
-                                                <td>Low</td>
-                                                <td><span class="badge badge-soft-primary p-2">Open</span></td>
-                                                <td>1 houur</td>
-                                            </tr><!--end tr-->
-                                            <tr>
-                                                <td>
-                                                    <input class="form-check-input" type="checkbox" id="checkbox5"
-                                                        value="" aria-label="...">
-                                                </td>
-                                                <td>#5412</td>
-                                                <td><img src="assets/images/users/user-7.jpg" alt=""
-                                                        class="thumb-sm rounded-circle me-2">
-                                                    Robert C. Golding</td>
-                                                <td>I can't upload file first line of Ipsum lorem ipsum dolor sit amet.</td>
-                                                <td>Medium</td>
-                                                <td><span class="badge badge-soft-warning p-2">New</span></td>
-                                                <td>2 houur</td>
-                                            </tr><!--end tr-->
-                                            <tr>
-                                                <td>
-                                                    <input class="form-check-input" type="checkbox" id="checkbox6"
-                                                        value="" aria-label="...">
-                                                </td>
-                                                <td>#3258</td>
-                                                <td><img src="assets/images/users/user-6.jpg" alt=""
-                                                        class="thumb-sm rounded-circle me-2">
-                                                    Hyman M. Cross</td>
-                                                <td>How do i upgrade my profile?</td>
-                                                <td>Low</td>
-                                                <td><span class="badge badge-soft-success p-2">Solved</span></td>
-                                                <td>4 houur</td>
-                                            </tr><!--end tr-->
-                                            <tr>
-                                                <td>
-                                                    <input class="form-check-input" type="checkbox" id="checkbox7"
-                                                        value="" aria-label="...">
-                                                </td>
-                                                <td>#6636</td>
-                                                <td><img src="assets/images/users/user-5.jpg" alt=""
-                                                        class="thumb-sm rounded-circle me-2">
-                                                    Phillip T. Morse</td>
-                                                <td>Can i help you in this project?</td>
-                                                <td class="text-danger">Critical</td>
-                                                <td><span class="badge badge-soft-primary p-2">Opan</span></td>
-                                                <td>4 houur</td>
-                                            </tr><!--end tr-->
+                                            @foreach ($tickets as $ticket)
+                                                <tr>
+                                                    <td>{{ $ticket->id }}</td>
+                                                    <td>{{ $ticket->Title }}</td>
+                                                    <td>{{ app()->isLocale('ar') ? $ticket->priority->Name_ar : $ticket->priority->Name_en }}
+                                                    </td>
+                                                    <td>{{ app()->isLocale('ar') ? $ticket->status->Name_ar : $ticket->status->Name_en }}
+                                                    </td>
+                                                    <td>{{ $ticket->assignedTo->user_name }}</td>
+                                                </tr><!--end tr-->
+                                                @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -827,110 +757,42 @@
 
 
 
-
                 <div class="row">
+
                     <div class="col-lg-4">
                         <div class="card">
                             <div class="card-header">
                                 <div class="row align-items-center">
                                     <div class="col">
-                                        <h4 class="card-title">Activity</h4>
-                                    </div><!--end col-->
-                                    <div class="col-auto">
-                                        <div class="dropdown">
-                                            <a href="#" class="btn btn-sm btn-outline-light dropdown-toggle"
-                                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                All<i class="las la-angle-down ms-1"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-end">
-                                                <a class="dropdown-item" href="#">Purchases</a>
-                                                <a class="dropdown-item" href="#">Emails</a>
-                                            </div>
-                                        </div>
+                                        <h4 class="card-title">Notifications</h4>
                                     </div><!--end col-->
                                 </div> <!--end row-->
                             </div><!--end card-header-->
-                            <div class="card-bodyp-0">
-                                <div class="p-3" data-simplebar style="height: 400px;">
-                                    <div class="activity">
-                                        <div class="activity-info">
-                                            <div class="icon-info-activity">
-                                                <i class="las la-user-clock bg-soft-primary"></i>
-                                            </div>
-                                            <div class="activity-info-text">
-                                                <div class="d-flex justify-content-between align-items-center">
-                                                    <p class="text-muted mb-0 font-13 w-75"><span>Donald</span>
-                                                        updated the status of <a href="#">Refund #1234</a> to
-                                                        awaiting customer response
-                                                    </p>
-                                                    <small class="text-muted">10 Min ago</small>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="activity-info">
-                                            <div class="icon-info-activity">
-                                                <i class="mdi mdi-timer-off bg-soft-primary"></i>
-                                            </div>
-                                            <div class="activity-info-text">
-                                                <div class="d-flex justify-content-between align-items-center">
-                                                    <p class="text-muted mb-0 font-13 w-75"><span>Lucy Peterson</span>
-                                                        was added to the group, group name is <a
-                                                            href="#">Overtake</a>
-                                                    </p>
-                                                    <small class="text-muted">50 Min ago</small>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="activity-info">
-                                            <div class="icon-info-activity">
-                                                <img src=" {{ asset('assets-admin/images/users/user-5.jpg') }} "
-                                                    alt="" class="rounded-circle thumb-sm">
-                                            </div>
-                                            <div class="activity-info-text">
-                                                <div class="d-flex justify-content-between align-items-center">
-                                                    <p class="text-muted mb-0 font-13 w-75"><span>Joseph Rust</span>
-                                                        opened new showcase <a href="#">Mannat #112233</a> with
-                                                        theme
-                                                        market
-                                                    </p>
-                                                    <small class="text-muted">10 hours ago</small>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="activity-info">
-                                            <div class="icon-info-activity">
-                                                <i class="mdi mdi-clock-outline bg-soft-primary"></i>
-                                            </div>
-                                            <div class="activity-info-text">
-                                                <div class="d-flex justify-content-between align-items-center">
-                                                    <p class="text-muted mb-0 font-13 w-75"><span>Donald</span>
-                                                        updated the status of <a href="#">Refund #1234</a> to
-                                                        awaiting customer response
-                                                    </p>
-                                                    <small class="text-muted">Yesterday</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="activity-info">
-                                            <div class="icon-info-activity">
-                                                <i class="mdi mdi-alert-outline bg-soft-primary"></i>
-                                            </div>
-                                            <div class="activity-info-text">
-                                                <div class="d-flex justify-content-between align-items-center">
-                                                    <p class="text-muted mb-0 font-13 w-75"><span>Lucy Peterson</span>
-                                                        was added to the group, group name is <a
-                                                            href="#">Overtake</a>
-                                                    </p>
-                                                    <small class="text-muted">14 Nov 2019</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div><!--end activity-->
-                                </div><!--end analytics-dash-activity-->
-                            </div> <!--end card-body-->
+                            <div class="card-body">
+                                <ul class="list-group">
+                                    @forelse($notifications as $notification)
+                                        <li class="list-group-item align-items-center d-flex">
+                                            <a href="{{ $notification->data['link'] }}" class="dropdown-item py-3">
+                                                <small
+                                                    class="float-end text-muted ps-2">{{ $notification->created_at->diffForHumans() }}</small>
+                                                <div class="media">
+                                                    <div class="avatar-md bg-soft-primary">
+                                                        <i class="ti ti-chart-arcs"></i>
+                                                    </div>
+                                                    <div class="media-body align-self-center ms-2 text-truncate">
+                                                        <h6 class="my-0 fw-normal text-dark">
+                                                            {{ $notification->data['message'] }}</h6>
+                                                        <small
+                                                            class="text-muted mb-0">{{ $notification->data['message'] }}</small>
+                                                    </div><!--end media-body-->
+                                                </div><!--end media-->
+                                            </a><!--end-item-->
+                                        </li>
+                                    @empty
+                                        <li class="list-group-item">No new notifications</li>
+                                    @endforelse
+                                </ul>
+                            </div><!--end card-body-->
                         </div><!--end card-->
                     </div><!--end col-->
 
@@ -945,61 +807,23 @@
                             </div><!--end card-header-->
                             <div class="card-body">
                                 <ul class="list-group">
-                                    <li class="list-group-item align-items-center d-flex">
-                                        <div class="media">
-                                            <img src="assets/images/small/project-1.jpg"
-                                                class="me-3 thumb-sm align-self-center rounded-circle" alt="...">
-                                            <div class="media-body align-self-center">
-                                                <h6 class="mt-0 mb-1">Meeting with UI/UX Designers</h6>
-                                                <p class="text-muted mb-0">Today 07:30 AM</p>
-                                            </div><!--end media body-->
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item align-items-center ">
-                                        <div class="media">
-                                            <img src="assets/images/users/user-5.jpg"
-                                                class="me-3 thumb-sm align-self-center rounded-circle" alt="...">
-                                            <div class="media-body align-self-center">
-                                                <h6 class="mt-0 mb-1">Lunch with my friend</h6>
-                                                <p class="text-muted mb-0">Today 12:30 PM</p>
-                                            </div><!--end media body-->
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item align-items-center">
-                                        <div class="media">
-                                            <img src="assets/images/small/project-3.jpg"
-                                                class="me-3 thumb-sm align-self-center rounded-circle" alt="...">
-                                            <div class="media-body align-self-center">
-                                                <h6 class="mt-0 mb-1">Call for payment Project ID : #254136</h6>
-                                                <p class="text-muted mb-0">Tomorrow 10:30 AM</p>
-                                            </div><!--end media body-->
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item align-items-center ">
-                                        <div class="media">
-                                            <img src="assets/images/users/user-4.jpg"
-                                                class="me-3 thumb-sm align-self-center rounded-circle" alt="...">
-                                            <div class="media-body align-self-center">
-                                                <h6 class="mt-0 mb-1">Picnic with my Family</h6>
-                                                <p class="text-muted mb-0">01 June 2019 - 09:30 AM</p>
-                                            </div><!--end media body-->
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item align-items-center">
-                                        <div class="media">
-                                            <img src="assets/images/small/project-4.jpg"
-                                                class="me-3 thumb-sm align-self-center rounded-circle" alt="...">
-                                            <div class="media-body align-self-center">
-                                                <h6 class="mt-0 mb-1">Meeting with Developers</h6>
-                                                <p class="text-muted mb-0">04 June 2019 - 07:30 AM</p>
-                                            </div><!--end media body-->
-                                        </div>
-                                    </li>
+                                    @foreach ($appointments as $appointment)
+                                        <li class="list-group-item align-items-center d-flex">
+                                            <div class="media">
+                                                <img src="{{ asset('assets/images/users/' . $appointment->user->image) }}"
+                                                    class="me-3 thumb-sm align-self-center rounded-circle" alt="...">
+                                                <div class="media-body align-self-center">
+                                                    <h6 class="mt-0 mb-1">{{ $appointment->title }}</h6>
+                                                    <p class="text-muted mb-0">
+                                                        {{ $appointment->start_time->format('d M Y - h:i A') }}</p>
+                                                </div><!--end media body-->
+                                            </div>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div><!--end card-body-->
                     </div><!--end card-->
-                    <!--end col-->
 
                     <div class="col-lg-4">
                         <div class="card">
