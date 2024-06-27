@@ -187,10 +187,6 @@
                                     </div>
                                     @enderror
                                 </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> c2649364ad9083eef204b3133161a9ecc1f43201
                                 <div class="mb-3">
                                     <label for="category_id" class="form-label">{{ __('general.attributes.category') }}</label>
                                     <select id="category_id" class="form-control @error('category_id') is-invalid @enderror" name="category_id" required>
