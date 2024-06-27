@@ -152,7 +152,7 @@ return [
         'route' => 'tickets.index',
         'sub_menu' => [
             [
-                'title' => __('general.side.tickets-list'),
+                'title' => __('general.side.tickets-overview'),
                 'route' => 'tickets.index',
             ],
             [

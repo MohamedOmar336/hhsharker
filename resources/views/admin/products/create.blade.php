@@ -11,7 +11,9 @@
                         <div class="float-end">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a></li>
-                                <li class="breadcrumb-item"><a href="{{ route('products.index') }}">{{ __('general.attributes.products') }}</a></li>
+                                <li class="breadcrumb-item"><a
+                                        href="{{ route('products.index') }}">{{ __('general.attributes.products') }}</a>
+                                </li>
                                 <li class="breadcrumb-item active">{{ __('general.attributes.add-product') }}</li>
                             </ol>
                         </div>
@@ -29,111 +31,132 @@
                 <div class="col-12 col-lg-11 mx-auto">
                     <div class="card">
                         <div class="card-body content-area">
-                            <form id="quickForm" method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data"
-                                  class="needs-validation" novalidate>
+                            <form id="quickForm" method="POST" action="{{ route('products.store') }}"
+                                enctype="multipart/form-data" class="needs-validation" novalidate>
                                 @csrf
                                 <!-- Basic product information -->
                                 <div class="mb-3">
                                     <label for="name_ar" class="form-label">{{ __('general.attributes.name_ar') }}</label>
                                     <input id="name_ar" type="text"
-                                           class="form-control @error('name_ar') is-invalid @enderror" name="name_ar"
-                                           value="{{ old('name_ar') }}" required autocomplete="name_ar" autofocus>
+                                        class="form-control @error('name_ar') is-invalid @enderror" name="name_ar"
+                                        value="{{ old('name_ar') }}" required autocomplete="name_ar" autofocus>
                                     @error('name_ar')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
                                     @enderror
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="name_en" class="form-label">{{ __('general.attributes.name_en') }}</label>
                                     <input id="name_en" type="text"
-                                           class="form-control @error('name_en') is-invalid @enderror" name="name_en"
-                                           value="{{ old('name_en') }}" required autocomplete="name_en">
+                                        class="form-control @error('name_en') is-invalid @enderror" name="name_en"
+                                        value="{{ old('name_en') }}" required autocomplete="name_en">
                                     @error('name_en')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
                                     @enderror
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="model_number" class="form-label">{{ __('general.attributes.model_number') }}</label>
-                                    <input id="model_number" type="text" class="form-control @error('model_number') is-invalid @enderror" name="model_number" value="{{ old('model_number') }}">
+                                    <label for="model_number"
+                                        class="form-label">{{ __('general.attributes.model_number') }}</label>
+                                    <input id="model_number" type="text"
+                                        class="form-control @error('model_number') is-invalid @enderror" name="model_number"
+                                        value="{{ old('model_number') }}">
                                     @error('model_number')
-                                    <div class="invalid-feedback">{{ $message }}</div>
+                                        <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="power_supply" class="form-label">{{ __('general.attributes.power_supply') }}</label>
-                                    <input id="power_supply" type="text" class="form-control @error('power_supply') is-invalid @enderror" name="power_supply" value="{{ old('power_supply') }}">
+                                    <label for="power_supply"
+                                        class="form-label">{{ __('general.attributes.power_supply') }}</label>
+                                    <input id="power_supply" type="text"
+                                        class="form-control @error('power_supply') is-invalid @enderror" name="power_supply"
+                                        value="{{ old('power_supply') }}">
                                     @error('power_supply')
-                                    <div class="invalid-feedback">{{ $message }}</div>
+                                        <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="type_of_freon" class="form-label">{{ __('general.attributes.type_of_freon') }}</label>
-                                    <input id="type_of_freon" type="text" class="form-control @error('type_of_freon') is-invalid @enderror" name="type_of_freon" value="{{ old('type_of_freon') }}">
+                                    <label for="type_of_freon"
+                                        class="form-label">{{ __('general.attributes.type_of_freon') }}</label>
+                                    <input id="type_of_freon" type="text"
+                                        class="form-control @error('type_of_freon') is-invalid @enderror"
+                                        name="type_of_freon" value="{{ old('type_of_freon') }}">
                                     @error('type_of_freon')
-                                    <div class="invalid-feedback">{{ $message }}</div>
+                                        <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
                                 <!-- Descriptions -->
                                 <div class="mb-3">
-                                    <label for="description_ar" class="form-label">{{ __('general.attributes.description_ar') }}</label>
+                                    <label for="description_ar"
+                                        class="form-label">{{ __('general.attributes.description_ar') }}</label>
                                     <textarea id="description_ar" class="form-control @error('description_ar') is-invalid @enderror" name="description_ar"
-                                              required autocomplete="description_ar">{{ old('description_ar') }}</textarea>
+                                        required autocomplete="description_ar">{{ old('description_ar') }}</textarea>
                                     @error('description_ar')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
                                     @enderror
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="description_en" class="form-label">{{ __('general.attributes.description_en') }}</label>
+                                    <label for="description_en"
+                                        class="form-label">{{ __('general.attributes.description_en') }}</label>
                                     <textarea id="description_en" class="form-control @error('description_en') is-invalid @enderror" name="description_en"
-                                              required autocomplete="description_en">{{ old('description_en') }}</textarea>
+                                        required autocomplete="description_en">{{ old('description_en') }}</textarea>
                                     @error('description_en')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
                                     @enderror
                                 </div>
 
                                 <!-- Additional Features -->
                                 <div class="mb-3">
-                                    <label for="characteristics_en" class="form-label">{{ __('general.attributes.characteristics_en') }}</label>
-                                    <textarea id="characteristics_en" class="form-control @error('characteristics_en') is-invalid @enderror" name="characteristics_en">{{ old('characteristics_en') }}</textarea>
+                                    <label for="characteristics_en"
+                                        class="form-label">{{ __('general.attributes.characteristics_en') }}</label>
+                                    <input id="characteristics_en" type="text"
+                                        class="form-control icp icp-auto @error('characteristics_en') is-invalid @enderror"
+                                        name="characteristics_en" value="{{ old('characteristics_en') }}">
                                     @error('characteristics_en')
-                                    <div class="invalid-feedback">{{ $message }}</div>
+                                        <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="characteristics_ar" class="form-label">{{ __('general.attributes.characteristics_ar') }}</label>
-                                    <textarea id="characteristics_ar" class="form-control @error('characteristics_ar') is-invalid @enderror" name="characteristics_ar">{{ old('characteristics_ar') }}</textarea>
+                                    <label for="characteristics_ar"
+                                        class="form-label">{{ __('general.attributes.characteristics_ar') }}</label>
+                                    <input id="characteristics_ar" type="text"
+                                        class="form-control icp icp-auto @error('characteristics_ar') is-invalid @enderror"
+                                        name="characteristics_ar" value="{{ old('characteristics_ar') }}">
                                     @error('characteristics_ar')
-                                    <div class="invalid-feedback">{{ $message }}</div>
+                                        <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="optional_features_en" class="form-label">{{ __('general.attributes.optional_features_en') }}</label>
-                                    <textarea id="optional_features_en" class="form-control @error('optional_features_en') is-invalid @enderror" name="optional_features_en">{{ old('optional_features_en') }}</textarea>
+                                    <label for="optional_features_en"
+                                        class="form-label">{{ __('general.attributes.optional_features_en') }}</label>
+                                    <textarea id="optional_features_en" class="form-control @error('optional_features_en') is-invalid @enderror"
+                                        name="optional_features_en">{{ old('optional_features_en') }}</textarea>
                                     @error('optional_features_en')
-                                    <div class="invalid-feedback">{{ $message }}</div>
+                                        <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="optional_features_ar" class="form-label">{{ __('general.attributes.optional_features_ar') }}</label>
-                                    <textarea id="optional_features_ar" class="form-control @error('optional_features_ar') is-invalid @enderror" name="optional_features_ar">{{ old('optional_features_ar') }}</textarea>
+                                    <label for="optional_features_ar"
+                                        class="form-label">{{ __('general.attributes.optional_features_ar') }}</label>
+                                    <textarea id="optional_features_ar" class="form-control @error('optional_features_ar') is-invalid @enderror"
+                                        name="optional_features_ar">{{ old('optional_features_ar') }}</textarea>
                                     @error('optional_features_ar')
-                                    <div class="invalid-feedback">{{ $message }}</div>
+                                        <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
@@ -141,69 +164,75 @@
                                 <div class="mb-3">
                                     <label for="price" class="form-label">{{ __('general.attributes.price') }}</label>
                                     <input id="price" type="number"
-                                           class="form-control @error('price') is-invalid @enderror" name="price"
-                                           value="{{ old('price') }}" required autocomplete="price">
+                                        class="form-control @error('price') is-invalid @enderror" name="price"
+                                        value="{{ old('price') }}" required autocomplete="price">
                                     @error('price')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
                                     @enderror
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="quantity" class="form-label">{{ __('general.attributes.qty') }}</label>
                                     <input id="quantity" type="number"
-                                           class="form-control @error('quantity') is-invalid @enderror" name="quantity"
-                                           value="{{ old('quantity') }}" required autocomplete="quantity">
+                                        class="form-control @error('quantity') is-invalid @enderror" name="quantity"
+                                        value="{{ old('quantity') }}" required autocomplete="quantity">
                                     @error('quantity')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
                                     @enderror
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="is_available" class="form-label">{{ __('general.attributes.status') }}</label>
+                                    <label for="is_available"
+                                        class="form-label">{{ __('general.attributes.status') }}</label>
                                     <select id="is_available"
-                                            class="form-control @error('is_available') is-invalid @enderror" name="is_available"
-                                            required autocomplete="is_available">
+                                        class="form-control @error('is_available') is-invalid @enderror"
+                                        name="is_available" required autocomplete="is_available">
                                         <option value="1">{{ __('general.select.yes') }}</option>
                                         <option value="0">{{ __('general.no') }}</option>
                                     </select>
                                     @error('is_available')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
                                     @enderror
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="image" class="form-label">{{ __('general.attributes.image') }}</label>
                                     <input id="image" type="file"
-                                           class="form-control @error('image') is-invalid @enderror" name="image" required>
+                                        class="form-control @error('image') is-invalid @enderror" name="image"
+                                        required>
                                     @error('image')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="category_id" class="form-label">{{ __('general.attributes.category') }}</label>
-                                    <select id="category_id" class="form-control @error('category_id') is-invalid @enderror" name="category_id" required>
+                                    <label for="category_id"
+                                        class="form-label">{{ __('general.attributes.category') }}</label>
+                                    <select id="category_id"
+                                        class="form-control @error('category_id') is-invalid @enderror"
+                                        name="category_id" required>
                                         <option value="">{{ __('general.select.category') }}</option>
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}">{{ $category->name_en }}</option>
                                         @endforeach
                                     </select>
                                     @error('category_id')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
                                     @enderror
                                 </div>
 
                                 <div class="mb-3">
-                                    <button type="submit" class="btn btn-primary">{{ __('general.btn.create') }}</button>
+                                    <button type="submit"
+                                        class="btn btn-primary">{{ __('general.btn.create') }}</button>
                                 </div>
                             </form>
                         </div> <!--end card-body-->
@@ -213,3 +242,28 @@
         </div>
     </div><!-- container -->
 @endsection
+
+@push('styles')
+    <link rel="stylesheet" href="https://itsjavi.com/fontawesome-iconpicker/dist/css/fontawesome-iconpicker.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+@endpush
+
+@push('scripts')
+<script src='https://code.jquery.com/jquery-2.2.1.min.js'></script>
+    <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+    <script src='https://itsjavi.com/fontawesome-iconpicker/dist/js/fontawesome-iconpicker.js'></script>
+    <script>
+        $(document).ready(function() {
+            console.log('Document is ready');
+            // Ensure that the icon picker is applied to the correct elements
+            if ($('.icp-auto').length) {
+                console.log('Found icon picker elements');
+                $('.icp-auto').iconpicker();
+                console.log('Icon picker initialized');
+            } else {
+                console.log('Icon picker elements not found');
+            }
+        });
+    </script>
+@endpush
+

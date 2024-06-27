@@ -15,14 +15,12 @@
                                 <li class="breadcrumb-item active">{{ __('general.attributes.edit-contact') }}</li>
                             </ol>
                         </div>
-                          <div class="col-md-12">
+                        <div class="col-md-12">
                             <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
                                 <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
                             </a>
-                     <h4 class="page-title">{{ __('general.attributes.edit-contact') }} </h4>
-                </div>
-
-
+                            <h4 class="page-title">{{ __('general.attributes.edit-contact') }} </h4>
+                        </div>
                     </div><!--end page-title-box-->
                 </div><!--end col-->
             </div>
@@ -77,6 +75,19 @@
                                 </div>
 
                                 <div class="mb-3">
+                                    <div class="form-group">
+                                        <label for="groups" class="form-label">{{ __('general.attributes.groups') }}</label>
+                                        <select id="choices-multiple-remove-button" class="form-control" multiple name="groups[]">
+                                            @foreach($groups as $group)
+                                                <option value="{{ $group->id }}" {{ in_array($group->id, $contactGroups) ? 'selected' : '' }}>
+                                                    {{ $group->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
                                     <label for="last_interaction" class="form-label">{{ __('general.attributes.last_interaction') }}</label>
                                     <input id="last_interaction" type="datetime-local" class="form-control @error('last_interaction') is-invalid @enderror" name="last_interaction" value="{{ $contact->last_interaction ? \Carbon\Carbon::parse($contact->last_interaction)->format('Y-m-d\TH:i') : '' }}">
                                     @error('last_interaction')
@@ -95,3 +106,16 @@
         </div><!-- container -->
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function(){
+            var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
+                removeItemButton: true,
+                maxItemCount:100,
+                searchResultLimit:5,
+                renderChoiceLimit:5
+            });
+        });
+    </script>
+@endpush

@@ -31,8 +31,12 @@ class TicketController extends Controller
         }
 
         $records = $query->paginate(500);
+        $priorities = TicketPrioritySetting::all();
+        $statuses = TicketStatusSetting::all();
+        $users = User::all();
 
-        return view('admin.tickets.index', compact('records'));
+        return view('admin.tickets.index', compact('records', 'priorities', 'statuses', 'users'));
+
     }
 
     // Display form for creating a new ticket
@@ -171,4 +175,28 @@ class TicketController extends Controller
 
         return view('admin.tickets.myTickets', compact('records'));
     }
+    public function updateField(Request $request, $id, $field)
+    {
+        $ticket = Ticket::findOrFail($id);
+    
+        switch ($field) {
+            case 'priority':
+                $ticket->PriorityID = $request->input('priority_id');
+                break;
+            case 'status':
+                $ticket->StatusID = $request->input('status_id');
+                break;
+            case 'assigned_to':
+                $ticket->AssignedTo = $request->input('assigned_to');
+                break;
+            default:
+                return redirect()->back()->with('error', 'Invalid field');
+        }
+    
+        $ticket->save();
+    
+        return redirect()->back()->with('success', 'Ticket updated successfully');
+    }
+    
+    
 }

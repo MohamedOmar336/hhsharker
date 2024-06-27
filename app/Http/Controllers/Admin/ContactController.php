@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
+use App\Models\Group;
+use App\Models\GroupContact;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -14,22 +16,25 @@ class ContactController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {
-        $query = Contact::query();
-    
-        if ($request->has('search')) {
-            $searchTerm = $request->search;
-            $query->where('name', 'LIKE', "%{$searchTerm}%")
-                  ->orWhere('email', 'LIKE', "%{$searchTerm}%")
-                  ->orWhere('phone', 'LIKE', "%{$searchTerm}%")
-                  ->orWhere('address', 'LIKE', "%{$searchTerm}%")
-                  ->orWhere('segment', 'LIKE', "%{$searchTerm}%");
-        }
-    
-        $records = $query->latest()->paginate(500);
-        return view('admin.contacts.index', compact('records'));
+{
+    $query = Contact::with('groups'); // Eager load groups with contacts
+
+    if ($request->has('search')) {
+        $searchTerm = $request->search;
+        $query->where(function ($q) use ($searchTerm) {
+            $q->where('name', 'LIKE', "%{$searchTerm}%")
+              ->orWhere('email', 'LIKE', "%{$searchTerm}%")
+              ->orWhere('phone', 'LIKE', "%{$searchTerm}%")
+              ->orWhere('address', 'LIKE', "%{$searchTerm}%")
+              ->orWhere('segment', 'LIKE', "%{$searchTerm}%");
+        });
     }
-    
+
+    $records = $query->latest()->paginate(10);
+
+    return view('admin.contacts.index', compact('records'));
+}
+
 
     /**
      * Show the form for creating a new resource.
@@ -38,7 +43,9 @@ class ContactController extends Controller
      */
     public function create()
     {
-        return view('admin.contacts.create');
+        $groups = Group::all(); // Fetch all groups
+
+        return view('admin.contacts.create', compact('groups'));
     }
 
     /**
@@ -56,16 +63,28 @@ class ContactController extends Controller
             'address' => 'nullable|string|max:255',
             'segment' => 'nullable|string|max:255',
             'last_interaction' => 'nullable|date',
+            'groups' => 'array', // Ensure 'groups' is an array
         ]);
 
-        Contact::create($request->all());
+        $contact = Contact::create($request->only('name', 'email', 'phone', 'address', 'segment', 'last_interaction'));
+
+        // Attach groups to the contact
+        if ($request->has('groups')) {
+            foreach ($request->groups as $groupId) {
+                GroupContact::create([
+                    'group_id' => $groupId,
+                    'contact_id' => $contact->id,
+                ]);
+            }
+        }
+
         return redirect()->route('contacts.index')->with('success', 'Contact created successfully.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
     public function show(Contact $contact)
@@ -76,21 +95,19 @@ class ContactController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
     public function edit(Contact $contact)
     {
-        return view('admin.contacts.edit', compact('contact'));
+        $groups = Group::all(); // Fetch all groups
+        $contactGroups = $contact->groups->map(function ($group) {
+            return $group->id;
+        })->toArray(); // Get IDs of groups associated with the contact
+
+        return view('admin.contacts.edit', compact('contact', 'groups', 'contactGroups'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Contact $contact)
     {
         $request->validate([
@@ -100,21 +117,40 @@ class ContactController extends Controller
             'address' => 'nullable|string|max:255',
             'segment' => 'nullable|string|max:255',
             'last_interaction' => 'nullable|date',
+            'groups' => 'array', // Ensure 'groups' is an array
         ]);
 
-        $contact->update($request->all());
+        // Update contact details
+        $contact->update($request->only('name', 'email', 'phone', 'address', 'segment', 'last_interaction'));
+
+        // Sync groups with contact
+        if ($request->has('groups')) {
+            $groupIds = $request->groups;
+        } else {
+            $groupIds = []; // If no groups are selected, set an empty array
+        }
+
+        // Sync the group contacts for the contact
+        $contact->groups()->sync($groupIds);
+
         return redirect()->route('contacts.index')->with('success', 'Contact updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
     public function destroy(Contact $contact)
     {
+        // Detach all groups associated with the contact before deleting
+        $contact->groups()->detach();
+
+        // Delete the contact
         $contact->delete();
+
         return redirect()->route('contacts.index')->with('success', 'Contact deleted successfully.');
     }
 }
+
