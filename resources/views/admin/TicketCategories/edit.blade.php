@@ -29,7 +29,7 @@
                 <div class="col-12 col-md-11 mx-auto">
                     <div class="card">
                         <div class="card-body content-area">
-                            <form action="{{ route('ticket_categories.update', ['ticket_category' => $ticket_category->id]) }}" method="POST">
+                            <form action="{{ route('ticket_categories.update', ['ticket_category' => $ticket_category->id]) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
 
@@ -67,7 +67,7 @@
 
                                 <div class="mb-3">
                                     <label for="parent_id" class="form-label">{{ __('general.attributes.parent_id') }}</label>
-                                    <select id="parent_id" class="form-control @error('parent_id') is-invalid @enderror" name="parent_id" required autocomplete="parent_id">
+                                    <select id="parent_id" class="form-control @error('parent_id') is-invalid @enderror" name="parent_id" autocomplete="parent_id">
                                         <option value="">{{ __('general.select.select') .' ' . __('general.select.parent_category') }}</option>
                                         @foreach ($ticketCategories as $cat)
                                             <option value="{{ $cat->id }}" {{  $ticket_category->parent_id == $cat->id ? 'selected' : '' }}>{{ $cat->name_en }}</option>

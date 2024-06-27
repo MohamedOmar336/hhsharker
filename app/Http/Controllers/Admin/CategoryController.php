@@ -81,61 +81,48 @@ class CategoryController extends Controller
         return redirect()->route('categories.index')->with('success', 'Category created successfully.');
     }
 
+    public function edit(Category $category)
+{
+    $records = Category::select('id', 'name_' . app()->getLocale() . ' as name')->orderBy('id', 'asc')->get();
+
+    // Return the view for editing a category
+    return view('admin.categories.edit', compact('category', 'records'));
+}
+
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function update(Request $request, Category $category)
     {
-        $records = Category::select('id', 'id_path', 'name_' . app()->getLocale() . ' as name', 'name_en', 'name_ar')->orderBy('level', 'asc')->get();
-
-        // Return the view for editing a category
-        return view('admin.categories.edit', compact('category' , 'records'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Category $record)
-    {
-
         // Validate the incoming request data
-        $validatedData =$request->validate([
+        $validatedData = $request->validate([
             'name_ar' => 'required|string',
             'name_en' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'parent_id' => 'nullable|exists:categories,id',
-            'level' => 'integer',
-            'id_path' => 'string',
-            'slug' => 'nullable|string',
             'active' => 'boolean',
         ]);
-
-        $record->fill($validatedData);
-
+    
+        $category->fill($validatedData);
+    
         if ($request->hasFile('image')) {
             $imageName = uploadImage($request->file('image'));
-            $record->image = $imageName;
+            $category->image = $imageName;
         }
-
-
-
+    
         // Update the slug if necessary
-        $slug = slugable($record->name_en);
-        $record->update([
-            'slug' => Category::whereSlug($slug)->where('id', '!=', $record->id)->exists() ? slugable($record->name_en, $record->id) : $slug,
-        ]);
-
+        $slug = slugable($category->name_en);
+        $category->slug = Category::where('slug', $slug)->where('id', '!=', $category->id)->exists() ? slugable($category->name_en, $category->id) : $slug;
+    
+        $category->save();
+    
         // Redirect back to the index page with a success message
         return redirect()->route('categories.index')->with('success', 'Category updated successfully.');
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *

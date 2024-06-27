@@ -37,6 +37,7 @@
                         <th>{{ __('general.attributes.phone') }}</th>
                         <th>{{ __('general.attributes.address') }}</th>
                         <th>{{ __('general.attributes.segment') }}</th>
+                        <th>{{ __('general.attributes.groups') }}</th>
                         <th>{{ __('general.attributes.last_interaction') }}</th>
                         <th>{{ __('general.attributes.actions') }}</th>
                     </tr>
@@ -50,6 +51,11 @@
                         <td>{{ $record->phone }}</td>
                         <td>{{ $record->address }}</td>
                         <td>{{ $record->segment }}</td>
+                        <td>
+                            @foreach($record->groups as $group)
+                                <span class="badge bg-primary">{{ $group->name }}</span>
+                            @endforeach
+                        </td>
                         <td>{{ $record->last_interaction }}</td>
                         <td>
                             <a href="{{ route('contacts.edit', $record->id) }}"

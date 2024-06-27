@@ -45,11 +45,11 @@
                         <td>{{ $ticketCategory->name_en }}</td>
                         <td>
                             @if ($ticketCategory->children->isNotEmpty())
-                                <ul>
+                               
                                     @foreach ($ticketCategory->children as $child)
-                                        <li>{{ $child->name_en }}</li>
+                                    <span class="badge bg-primary">{{ $child->name_en }}</span>
                                     @endforeach
-                                </ul>
+                                
                             @else
                                 {{ __('No children categories') }}
                             @endif

@@ -16,22 +16,25 @@ class ContactController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {
-        $query = Contact::query();
+{
+    $query = Contact::with('groups'); // Eager load groups with contacts
 
-        if ($request->has('search')) {
-            $searchTerm = $request->search;
-            $query->where('name', 'LIKE', "%{$searchTerm}%")
-                ->orWhere('email', 'LIKE', "%{$searchTerm}%")
-                ->orWhere('phone', 'LIKE', "%{$searchTerm}%")
-                ->orWhere('address', 'LIKE', "%{$searchTerm}%")
-                ->orWhere('segment', 'LIKE', "%{$searchTerm}%");
-        }
-
-        $records = $query->latest()->paginate(10);
-
-        return view('admin.contacts.index', compact('records'));
+    if ($request->has('search')) {
+        $searchTerm = $request->search;
+        $query->where(function ($q) use ($searchTerm) {
+            $q->where('name', 'LIKE', "%{$searchTerm}%")
+              ->orWhere('email', 'LIKE', "%{$searchTerm}%")
+              ->orWhere('phone', 'LIKE', "%{$searchTerm}%")
+              ->orWhere('address', 'LIKE', "%{$searchTerm}%")
+              ->orWhere('segment', 'LIKE', "%{$searchTerm}%");
+        });
     }
+
+    $records = $query->latest()->paginate(10);
+
+    return view('admin.contacts.index', compact('records'));
+}
+
 
     /**
      * Show the form for creating a new resource.
@@ -96,22 +99,15 @@ class ContactController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Contact $contact)
-{
-    $groups = Group::all(); // Fetch all groups
-    $contactGroups = $contact->groups->map(function ($group) {
-        return $group->id;
-    })->toArray(); // Get IDs of groups associated with the contact
+    {
+        $groups = Group::all(); // Fetch all groups
+        $contactGroups = $contact->groups->map(function ($group) {
+            return $group->id;
+        })->toArray(); // Get IDs of groups associated with the contact
 
-    return view('admin.contacts.edit', compact('contact', 'groups', 'contactGroups'));
-}
+        return view('admin.contacts.edit', compact('contact', 'groups', 'contactGroups'));
+    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Contact  $contact
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Contact $contact)
     {
         $request->validate([
