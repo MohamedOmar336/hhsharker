@@ -198,4 +198,5 @@ class TicketController extends Controller
         return redirect()->back()->with('success', 'Ticket updated successfully');
     }
     
+    
 }

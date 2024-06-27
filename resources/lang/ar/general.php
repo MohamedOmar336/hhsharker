@@ -2,6 +2,11 @@
 
 return [
     'attributes' => [
+        "add_ticket_category"=> "إضافة فئة تذكرة",
+        "ticket_categories"=> "فئات التذكرة",
+        "changed_by"=> "تم التغيير بواسطة",
+        "change_description"=> "وصف التغيير",
+        "changed_at"=> "تم التغيير في",
         'permissions'=>'أذونات',
         'edit-blog' => 'تحرير المدونة',
         'add-blog' => 'إضافة مدونة',
@@ -378,6 +383,8 @@ return [
         'trash' => 'سلة المحذوفات',
     ],
     'side' => [
+        "ticket_categories_list"=> "قائمة فئات التذاكر",
+        "ticket_categories"=> "فئات التذاكر",
         'dashboard' => 'لوحة التحكم الرئيسية',
         'products' => 'المنتجات',
         'list' => 'قائمة',

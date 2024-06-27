@@ -17,9 +17,7 @@
                             <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
                                 <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
                             </a>
-                            <h4 class="page-title">
-                                {{__('general.side.tickets-overview') }}
-                            </h4>
+                            <h4 class="page-title">{{ __('general.side.tickets-overview') }}</h4>
                         </div>
                     </div>
                 </div>
@@ -34,7 +32,7 @@
                         <th>{{ __('general.attributes.priority') }}</th>
                         <th>{{ __('general.attributes.status') }}</th>
                         <th>{{ __('general.attributes.assigned_to') }}</th>
-                        <th scope="col">{{ __('general.attributes.actions') }}</th>
+                        <th>{{ __('general.attributes.actions') }}</th>
                     </tr>
                 </x-slot>
                 @foreach ($records as $record)
@@ -55,6 +53,7 @@
                                 </select>
                             </form>
                         </td>
+                        
                         <td>
                             <form action="{{ route('tickets.update_field', ['id' => $record->id, 'field' => 'status']) }}" method="POST">
                                 @csrf
@@ -82,31 +81,25 @@
                             </form>
                         </td>
                         <td>
-                            <a href="{{ route('ticket_histories.show_by_ticket', $record->id) }}"
-                                class="btn btn-sm btn-info">{{ __('general.btn.history') }}</a>
-                            <a href="{{ route('tickets.edit', $record->id) }}"
-                                class="btn btn-sm btn-primary">{{ __('general.btn.edit') }}</a>
-                            <form action="{{ route('tickets.destroy', $record->id) }}" method="POST"
-                                style="display:inline-block;">
+                            <a href="{{ route('ticket_histories.show_by_ticket', $record->id) }}" class="btn btn-sm btn-info">{{ __('general.btn.history') }}</a>
+                            <a href="{{ route('tickets.edit', $record->id) }}" class="btn btn-sm btn-primary">{{ __('general.btn.edit') }}</a>
+                            <form action="{{ route('tickets.destroy', $record->id) }}" method="POST" style="display:inline-block;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit"
-                                    class="btn btn-sm btn-danger">{{ __('general.btn.delete') }}</button>
+                                <button type="submit" class="btn btn-sm btn-danger">{{ __('general.btn.delete') }}</button>
                             </form>
                         </td>
                     </tr>
                 @endforeach
 
                 <x-slot name="createButton">
-                    <a href="{{ route('tickets.create') }}" class="btn btn-outline-light btn-sm px-4">+
-                        {{ __('general.actions.new') }}</a>
+                    <a href="{{ route('tickets.create') }}" class="btn btn-outline-light btn-sm px-4">+ {{ __('general.actions.new') }}</a>
                 </x-slot>
 
                 <x-slot name="pagination">
                     {{ $records->links('admin.pagination.bootstrap') }}
                 </x-slot>
             </x-table>
-
         </div>
     </div>
 @endsection

@@ -124,7 +124,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::delete('messages/{message}', [MessageController::class, 'destroy'])->name('messages.destroy');
 
         Route::get('/mails', [MailController::class, 'index'])->name('mails.index');
-        Route::get('/mails/index', [MailController::class, 'index'])->name('mails.index');
+      //  Route::get('/mails/index', [MailController::class, 'index'])->name('mails.index');
         Route::get('/mails/compose', [MailController::class, 'compose'])->name('mails.compose');
         Route::post('/mails/send', [MailController::class, 'send'])->name('mails.send');
         Route::get('/mails/{mail}', [MailController::class, 'show'])->name('mails.show');
