@@ -77,6 +77,32 @@
                                 </div>
 
                                 <div class="mb-3">
+                                    <label for="categories" class="form-label">{{ __('general.attributes.categories') }}</label>
+                                    <select id="categories" name="categories[]" class="form-control @error('members') is-invalid @enderror" multiple>
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}" {{ in_array($category->id, old('categories', [])) ? 'selected' : '' }}>
+                                                {{ app()->isLocale('ar') ? $category->name_ar : $category->name_en }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('categories')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="Note" class="form-label">{{ __('general.attributes.notes') }}</label>
+                                    <textarea class="form-control @error('Note') is-invalid @enderror" id="Note" name="Note" rows="4">{{ old('Note') }}</textarea>
+                                    @error('Note')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
                                     <label for="Description"
                                         class="form-label">{{ __('general.attributes.description') }}</label>
                                     <textarea class="ticket_description form-control" id="Description" name="Description"></textarea>
@@ -84,6 +110,7 @@
                                 <div class="mb-3">
                                     <button type="submit" class="btn btn-primary">{{ __('general.btn.create') }}</button>
                                 </div>
+
                             </form>
                         </div>
                     </div>
@@ -92,3 +119,16 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function(){
+            var multipleCancelButton = new Choices('#categories', {
+                removeItemButton: true,
+                maxItemCount:100,
+                searchResultLimit:5,
+                renderChoiceLimit:5
+            });
+        });
+    </script>
+@endpush

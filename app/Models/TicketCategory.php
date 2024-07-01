@@ -36,4 +36,9 @@ class TicketCategory extends Model
     {
         return $this->hasMany(TicketCategory::class, 'parent_id');
     }
+
+    public function tickets()
+    {
+        return $this->belongsToMany(Ticket::class, 'ticket_ticket_category', 'ticket_category_id', 'ticket_id');
+    }
 }

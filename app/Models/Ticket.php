@@ -21,6 +21,7 @@ class Ticket extends Model
         'StatusID',
         'AssignedTo',
         'CreatedBy',
+        'note',
     ];
 
     public function priority()
@@ -75,5 +76,10 @@ class Ticket extends Model
         return LogOptions::defaults()
             ->logOnly(['name', 'text'])
             ->setDescriptionForEvent(fn(string $eventName) => "This model has been {$eventName}");
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany(TicketCategory::class, 'ticket_ticket_category', 'ticket_id', 'ticket_category_id');
     }
 }

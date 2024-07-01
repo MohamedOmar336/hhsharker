@@ -7,6 +7,7 @@ use App\Models\Ticket;
 use App\Models\TicketHistory;
 use App\Models\TicketPrioritySetting;
 use App\Models\TicketStatusSetting;
+use App\Models\TicketCategory;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -15,7 +16,13 @@ use App\Models\Notification;
 
 class TicketController extends Controller
 {
-    // Display all tickets
+
+    /**
+     * Display a listing of all tickets with optional search.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\View\View
+     */
     public function index(Request $request)
     {
         $query = Ticket::with('priority', 'status', 'assignedTo', 'createdBy');
@@ -36,109 +43,154 @@ class TicketController extends Controller
         $users = User::all();
 
         return view('admin.tickets.index', compact('records', 'priorities', 'statuses', 'users'));
-
     }
 
-    // Display form for creating a new ticket
+
+    /**
+     * Show the form for creating a new ticket.
+     *
+     * @return \Illuminate\View\View
+     */
     public function create()
     {
         $tags = Tag::all();
         $users = User::all();
         $priorities = TicketPrioritySetting::all();
         $statuses = TicketStatusSetting::all();
-        return view('admin.tickets.create', compact('users', 'priorities', 'statuses', 'tags'));
+        $categories = TicketCategory::all(); // Ensure this line is added
+        return view('admin.tickets.create', compact('users', 'priorities', 'statuses', 'tags', 'categories'));
     }
 
-    // Store a newly created ticket in the database
+    /**
+     * Store a newly created ticket in the database.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
         $request->validate([
             'Title' => 'required|string|max:255',
             'Description' => 'nullable|string',
+            'Note' => 'nullable|string', // Validation for note
             'priority' => 'required|exists:ticket_priority_settings,id',
             'status' => 'required|exists:ticket_status_settings,id',
             'AssignedTo' => 'required|exists:users,id',
+            'categories' => 'required|array', // Validation for categories
+            'categories.*' => 'exists:ticket_categories,id',
         ]);
 
         $ticket = Ticket::create([
             'Title' => $request->Title,
             'Description' => $request->Description,
+            'Note' => $request->Note, // Storing the note
             'PriorityID' => $request->priority,
             'StatusID' => $request->status,
             'AssignedTo' => $request->AssignedTo,
             'CreatedBy' => auth()->user()->id,
         ]);
-        // Create an entry in the ticket_histories table
+
+        $ticket->categories()->attach($request->categories); // Associating categories
+
         TicketHistory::create([
             'TicketID' => $ticket->id,
             'ChangedBy' => $ticket->CreatedBy,
-            'ChangeDescription' => $request->Description,
+            'ChangeDescription' => 'Ticket created',
             'ChangedAt' => now()
         ]);
-        // Create a new notification without specifying the id
+
         Notification::create([
             'type' => 'App\Models\Ticket',
             'data' => ['message' => 'new ticket has been created', 'link' => route('tickets.my')],
-            'notifiable_id' => $request->AssignedTo, // Replace with the appropriate notifiable ID
-            'notifiable_type' => 'App\Models\User', // Replace with the appropriate notifiable type
+            'notifiable_id' => $request->AssignedTo,
+            'notifiable_type' => 'App\Models\User',
         ]);
 
         return redirect()->route('tickets.index')->with('success', 'Ticket created successfully.');
     }
 
-    // Display form for editing a ticket
+    /**
+     * Show the form for editing the specified ticket.
+     *
+     * @param  Ticket  $ticket
+     * @return \Illuminate\View\View
+     */
     public function edit(Ticket $ticket)
     {
         $users = User::all();
         $priorities = TicketPrioritySetting::all();
         $statuses = TicketStatusSetting::all();
-        return view('admin.tickets.edit', compact('ticket', 'users', 'priorities', 'statuses'));
+        $categories = TicketCategory::all(); // Ensure this line is added
+        return view('admin.tickets.edit', compact('ticket', 'users', 'priorities', 'statuses', 'categories'));
     }
 
-    // Update the specified ticket in the database
+
+    /**
+     * Update the specified ticket in the database.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  Ticket  $ticket
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(Request $request, Ticket $ticket)
     {
         $request->validate([
             'Title' => 'required|string|max:255',
             'Description' => 'nullable|string',
+            'Note' => 'nullable|string', // Validation for note
             'priority' => 'required|exists:ticket_priority_settings,id',
             'status' => 'required|exists:ticket_status_settings,id',
             'AssignedTo' => 'required|exists:users,id',
+            'categories' => 'required|array', // Validation for categories
+            'categories.*' => 'exists:ticket_categories,id',
         ]);
 
         $ticket->update([
             'Title' => $request->Title,
             'Description' => $request->Description,
+            'Note' => $request->Note, // Updating the note
             'PriorityID' => $request->priority,
             'StatusID' => $request->status,
             'AssignedTo' => $request->AssignedTo,
         ]);
 
-        // Create an entry in the ticket_histories table
+        $ticket->categories()->sync($request->categories); // Updating categories
+
         TicketHistory::create([
             'TicketID' => $ticket->id,
             'ChangedBy' => $ticket->CreatedBy,
-            'ChangeDescription' => $request->Description,
+            'ChangeDescription' => 'Ticket updated',
             'ChangedAt' => now()
         ]);
 
-        // Create a new notification without specifying the id
         Notification::create([
             'type' => 'App\Models\Ticket',
             'data' => ['message' => 'ticket has been updated', 'link' => route('tickets.my')],
-            'notifiable_id' => $request->AssignedTo, // Replace with the appropriate notifiable ID
-            'notifiable_type' => 'App\Models\User', // Replace with the appropriate notifiable type
+            'notifiable_id' => $request->AssignedTo,
+            'notifiable_type' => 'App\Models\User',
         ]);
 
         return redirect()->route('tickets.index')->with('success', 'Ticket updated successfully.');
     }
 
+    /**
+     * Display a specific ticket along with its history.
+     *
+     * @param  int  $id
+     * @return \Illuminate\View\View
+     */
     public function show($id)
     {
         $ticket = Ticket::with('history')->findOrFail($id);
         return view('admin.tickets.show', compact('ticket'));
     }
 
+    /**
+     * Remove the specified ticket from the database.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy($id)
     {
         // Retrieve and delete the TicketStatus
@@ -150,7 +202,13 @@ class TicketController extends Controller
             ->with('success', 'Ticket deleted successfully.');
     }
 
-    // Display the tickets created by the logged-in user
+
+    /**
+     * Display tickets assigned to the logged-in user.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\View\View
+     */
     public function myTickets(Request $request)
     {
         $query = Ticket::where('assignedTo', Auth::id())->with('priority', 'status', 'assignedTo');
@@ -169,6 +227,15 @@ class TicketController extends Controller
 
         return view('admin.tickets.myTickets', compact('records'));
     }
+
+    /**
+     * Update a specific field of a ticket.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @param  string  $field
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function updateField(Request $request, $id, $field)
     {
         $ticket = Ticket::findOrFail($id);
@@ -196,7 +263,7 @@ class TicketController extends Controller
      * Mass Delete the products.
      *
      * @return \Illuminate\Http\Response
-    **/
+     **/
     public function massDestroy()
     {
         $recordIds = request()->input('ids');
