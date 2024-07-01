@@ -587,4 +587,31 @@ return [
         'sort'  => 2,
     ],
 
+
+    [
+        'key'   => 'category-ticket',
+        'name'  => 'app.acl.category-ticket',
+        'route' => 'ticket-priorities.index',
+        'sort'  => 2,
+    ], [
+        'key'   => 'category-ticket.create',
+        'name'  => 'app.acl.create',
+        'route' => 'ticket-priorities.create',
+        'sort'  => 1,
+    ], [
+        'key'   => 'category-ticket.edit',
+        'name'  => 'app.acl.edit',
+        'route' => 'ticket-priorities.edit',
+        'sort'  => 2,
+    ], [
+        'key'   => 'category-ticket.destroy',
+        'name'  => 'app.acl.destroy',
+        'route' => 'ticket-priorities.destroy',
+        'sort'  => 3,
+    ],[
+        'key'   => 'category-ticket.store',
+        'name'  => 'app.acl.store',
+        'route' => 'ticket-priorities.store',
+        'sort'  => 4,
+    ],
 ];

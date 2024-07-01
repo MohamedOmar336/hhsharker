@@ -126,7 +126,7 @@
                     <!-- Navigation -->
                     <ul class="navbar-nav">
                         @foreach ($filteredSideNav as $item)
-                            @if ($item['link'] != 'sidebartickets' && $item['link'] != 'sidebarContacts' && $item['link'] != 'sidebargroups' && $item['link'] != 'sidebarMails' && $item['link'] != 'sidebarappointments')
+                            @if ($item['link'] != 'sidebartickets' && $item['link'] != 'sidebarContacts' && $item['link'] != 'sidebargroups' && $item['link'] != 'sidebarMails' && $item['link'] != 'sidebarappointments' && $item['link'] != 'sidebarCategoryTicket')
                                 <li class="nav-item">
                                     <a class="nav-link" href="#{{ $item['link'] }}" data-bs-toggle="collapse"
                                         role="button" aria-expanded="false" aria-controls="{{ $item['link'] }}">
@@ -157,7 +157,7 @@
 
                 <ul class="navbar-nav">
                     @foreach ($filteredSideNav as $item)
-                            @if ($item['link'] == 'sidebartickets')
+                            @if ($item['link'] == 'sidebartickets' || $item['link'] == 'sidebarCategoryTicket')
                                 <li class="nav-item">
                                 <a class="nav-link" href="#{{ $item['link'] }}" data-bs-toggle="collapse"
                                     role="button" aria-expanded="false" aria-controls="{{ $item['link'] }}">

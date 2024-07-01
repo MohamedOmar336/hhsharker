@@ -222,5 +222,20 @@ return [
                 'route' => 'activitylogs.index',
             ]
         ],
-    ]
+    ],[
+        'title' => __('general.attributes.category-ticket'),
+        'link' => 'sidebarCategoryTicket',
+        'icon' => 'ti ti-book',
+        'route' => 'ticket_categories.index',
+        'sub_menu' => [
+            [
+                'title' => __('general.attributes.category-ticket-list'),
+                'route' => 'ticket_categories.index',
+            ],
+            [
+                'title' => __('general.actions.new'),
+                'route' => 'ticket_categories.create',
+            ],
+        ],
+    ],
 ];

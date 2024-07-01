@@ -365,10 +365,15 @@ return [
         'category' => 'Category',
         'current_image' => 'Current Image',
         'update_image' => 'Update Image',
-        '' => '',
-        '' => '',
-
-
+        'category-ticket' => 'tickets Category',
+        'category-ticket-list' => 'Category Ticket List',
+        ''  => '',
+        ''  => '',
+        ''  => '',
+        ''  => '',
+        ''  => '',
+        ''  => '',
+        ''  => '',
     ],
     'placeholders' => [
         'no_emails' => 'No emails found.',

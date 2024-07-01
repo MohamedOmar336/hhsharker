@@ -359,6 +359,8 @@ return [
         'category' => 'الفئة',
         'current_image' => 'الصورة الحالية',
         'update_image' => 'تحديث الصورة',
+        'category-ticket' => 'تصنيف التذاكر',
+        'category-ticket-list' => 'قائمة تصنيف التذاكر',
         '' => '',
         '' => '',
         '' => '',
