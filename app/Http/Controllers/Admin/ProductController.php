@@ -160,4 +160,25 @@ class ProductController extends Controller
 
         return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
     }
+
+
+    /**
+     * Mass Delete the products.
+     *
+     * @return \Illuminate\Http\Response
+    **/
+    public function massDestroy()
+    {
+        $recordIds = request()->input('ids');
+
+        foreach ($recordIds as $recordId) {
+            $record = Product::find($recordId);
+
+            if (isset($record)) {
+                $record->delete($recordId);
+            }
+        }
+        return redirect()->route('products.index')
+            ->with('success', 'Products deleted successfully.');
+    }
 }

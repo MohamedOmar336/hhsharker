@@ -53,7 +53,7 @@
                                 </select>
                             </form>
                         </td>
-                        
+
                         <td>
                             <form action="{{ route('tickets.update_field', ['id' => $record->id, 'field' => 'status']) }}" method="POST">
                                 @csrf
@@ -92,7 +92,7 @@
                     </tr>
                 @endforeach
 
-                <x-slot name="createButton">
+                <x-slot name="createButton" action="{{ route('tickets.bulkDelete') }}">
                     <a href="{{ route('tickets.create') }}" class="btn btn-outline-light btn-sm px-4">+ {{ __('general.actions.new') }}</a>
                 </x-slot>
 

@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-body content-area">
-        <form id="bulk-update-form" method="get" action="{{ route('categories.bulk-delete') }}">
+        <form id="bulk-delete-form" method="get" action="{{ isset($createButton->attributes['action'] ) ?  $createButton->attributes['action'] : null }}">
             @csrf
             <div class="table-responsive">
                 <table class="table mb-0" id="{{ $tableId }}">
@@ -15,7 +15,7 @@
             <div class="row">
                 @if(isset($createButton))
                     <div class="col">
-                        <button class="btn btn-outline-light btn-sm px-4" id="bulk-update-btn">Bulk Update</button>
+                        <button class="btn btn-outline-light btn-sm px-4" id="bulk-delete-btn">{{ __('general.bulk-delete') }}</button>
                         {{ $createButton }}
                     </div>
                 @endif
@@ -41,8 +41,8 @@
             }
         });
 
-        document.getElementById('bulk-update-form').addEventListener('submit', function(event) {
-            if (!confirm('Are you sure you want to update selected records?')) {
+        document.getElementById('bulk-delete-form').addEventListener('submit', function(event) {
+            if (!confirm('Are you sure you want to delete selected records?')) {
                 event.preventDefault();
             }
         });

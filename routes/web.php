@@ -56,12 +56,14 @@ Route::group(['prefix' => 'admin'], function () {
         })->name('change.lang');
 
         Route::get('/home', [HomeController::class, 'index'])->name('home');
-        
+
         Route::resource('/products', ProductController::class);
 
-        Route::get('/products/bulk-delete', [ProductController::class, 'bulkDelete'])->name('products.bulk-delete');
+        Route::get('/products/bulk-delete', [ProductController::class, 'bulkDelete'])->name('products.bulkdelete');
 
         Route::resource('/users', UserController::class);
+
+        Route::get('/user/bulk-delete', [UserController::class  , 'massDestroy'])->name('users.bulkDelete');
 
         Route::resource('/categories', CategoryController::class);
 
@@ -94,6 +96,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/chat/markAsSeen', [ChatController::class, 'markAsSeen'])->name('chat.markAsSeen');
 
         Route::resource('/tickets', TicketController::class);
+
+        Route::get('/ticket/bulk-delete', [TicketController::class  , 'massDestroy'])->name('tickets.bulkDelete');
 
         Route::Resource('/ticket-priorities', TicketPriorityController::class);
 

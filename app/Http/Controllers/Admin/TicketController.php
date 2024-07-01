@@ -138,12 +138,6 @@ class TicketController extends Controller
         $ticket = Ticket::with('history')->findOrFail($id);
         return view('admin.tickets.show', compact('ticket'));
     }
-    // Display the ticket history
-    /* public function show(Ticket $ticket)
-    {
-        $history = TicketHistory::where('TicketID', $ticket->TicketID)->with('changedBy')->get();
-        return view('admin.tickets.show', compact('ticket', 'history'));
-    }*/
 
     public function destroy($id)
     {
@@ -178,7 +172,7 @@ class TicketController extends Controller
     public function updateField(Request $request, $id, $field)
     {
         $ticket = Ticket::findOrFail($id);
-    
+
         switch ($field) {
             case 'priority':
                 $ticket->PriorityID = $request->input('priority_id');
@@ -192,11 +186,29 @@ class TicketController extends Controller
             default:
                 return redirect()->back()->with('error', 'Invalid field');
         }
-    
+
         $ticket->save();
-    
+
         return redirect()->back()->with('success', 'Ticket updated successfully');
     }
-    
-    
+
+    /**
+     * Mass Delete the products.
+     *
+     * @return \Illuminate\Http\Response
+    **/
+    public function massDestroy()
+    {
+        $recordIds = request()->input('ids');
+
+        foreach ($recordIds as $recordId) {
+            $record = Ticket::find($recordId);
+
+            if (isset($product)) {
+                $record->delete($recordId);
+            }
+        }
+        return redirect()->route('tickets.index')
+            ->with('success', 'Ticket deleted successfully.');
+    }
 }

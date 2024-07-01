@@ -74,7 +74,7 @@
                         </tr>
                     @endforeach
 
-                    <x-slot name="createButton">
+                    <x-slot name="createButton" action="{{ route('users.bulkDelete') }}">
                         <a href="{{ route('users.create') }}" class="btn btn-outline-light btn-sm px-4">+
                             {{ __('general.actions.new') }}</a>
                     </x-slot>

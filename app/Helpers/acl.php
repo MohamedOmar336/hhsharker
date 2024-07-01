@@ -38,7 +38,7 @@ return [
     ], [
         'key'   => 'products.bulk_delete',
         'name'  => 'app.acl.bulk_delete',
-        'route' => 'products.bulk-delete',
+        'route' => 'products.bulkdelete',
         'sort'  => 5,
     ],
 

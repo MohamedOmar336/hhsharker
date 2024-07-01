@@ -123,8 +123,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function groups()
     {
-        return $this->belongsToMany(Group::class)
-                    ->withTimestamps();
+        return $this->belongsToMany(Group::class, 'group_members', 'user_id', 'group_id')->withTimestamps();
     }
 }
 

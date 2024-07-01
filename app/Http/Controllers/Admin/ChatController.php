@@ -24,7 +24,7 @@ class ChatController extends Controller
         // Retrieve active users excluding the authenticated user
         $users = User::where('active', 1)->where('id', '!=', auth()->id())->get();
 
-        $groups = Auth::user()->groups;
+        $groups = isset(Auth::user()->groups) ? Auth::user()->groups : null;
 
         // Pass users data to the chat index view
         return view('admin.chat.index', compact('users' , 'groups'));

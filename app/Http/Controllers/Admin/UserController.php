@@ -163,4 +163,24 @@ class UserController extends Controller
         // Redirect back to the index page with a success message
         return redirect()->route('users.index')->with('success', __('messages.deleted_successfully'));
     }
+
+    /**
+     * Mass Delete the users.
+     *
+     * @return \Illuminate\Http\Response
+    **/
+    public function massDestroy()
+    {
+        $recordIds = request()->input('ids');
+
+        foreach ($recordIds as $recordId) {
+            $record = User::find($recordId);
+
+            if (isset($record)) {
+                $record->delete($recordId);
+            }
+        }
+        return redirect()->route('users.index')
+            ->with('success', 'Users deleted successfully.');
+    }
 }
