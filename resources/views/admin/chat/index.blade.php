@@ -23,15 +23,16 @@
                     <div class="chat-box-left">
                         <ul class="nav nav-tabs mb-3 nav-justified" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link active"id="general_chat_tab" data-bs-toggle="tab" href="#general_chat"
+                                <a class="nav-link active" id="general_chat_tab" data-bs-toggle="tab" href="#general_chat"
                                     role="tab">General</a>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <a class="nav-link" id="group_chat_tab" data-bs-toggle="tab" href="#group_chat"
                                     role="tab">Groups</a>
                             </li>
+                            <!-- Remove the duplicate ID and fix the Whatsapp tab if needed -->
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link" id="group_chat_tab" data-bs-toggle="tab" href="#group_chat"
+                                <a class="nav-link" id="whatsapp_chat_tab" data-bs-toggle="tab" href="#whatsapp_chat"
                                     role="tab">Whatsapp business</a>
                             </li>
                         </ul>
@@ -63,13 +64,13 @@
                                         </a> <!--end media-->
                                     @endforeach
                                 </div><!--end general chat-->
-
                                 <div class="tab-pane fade" id="group_chat">
                                     @foreach ($groups as $group)
                                         <a href="#" class="media group" data-group-id="{{ $group->id }}">
                                             <div class="media-left">
                                                 <div class="avatar-box thumb-md align-self-center me-2">
-                                                    <span class="thumb-md justify-content-center d-flex align-items-center bg-soft-info rounded-circle me-2">
+                                                    <span
+                                                        class="thumb-md justify-content-center d-flex align-items-center bg-soft-info rounded-circle me-2">
                                                         <i class="fas fa-globe"></i>
                                                     </span>
                                                 </div>
@@ -116,7 +117,10 @@
                                 <div class="col-12 col-md-9">
                                     <input type="text" class="form-control" id="messageInput"
                                         placeholder="Type something here...">
-                                    <button id="sendButton" class="custom-send-button">{{ __('general.btn.send') }}</button>
+                                    <button id="sendUserMessageButton"
+                                        class="custom-send-button">{{ __('general.btn.send') }}</button>
+                                    <button id="sendGroupMessageButton"
+                                        class="custom-send-button d-none">{{ __('general.btn.send') }}</button>
                                 </div><!-- col-8 -->
                             </div><!-- end row -->
                         </div><!-- end chat-footer -->
@@ -130,7 +134,6 @@
     </div>
 @endsection
 
-
 @push('scripts')
     <script>
         $(document).ready(function() {
@@ -140,10 +143,21 @@
 
             $('.user').click(function(e) {
                 e.preventDefault();
-                var otherUserId = $(this).data('user-id');
+                handleUserChat($(this).data('user-id'));
+            });
+
+            $('.group').click(function(e) {
+                e.preventDefault();
+                handleGroupChat($(this).data('group-id'), $(this).find('.media-body h6').text());
+            });
+
+            function handleUserChat(otherUserId) {
                 var chatHeader = $('.chat-header');
                 var chatBody = $('.chat-detail');
                 $('#receiver_id').val(otherUserId);
+
+                $('#sendUserMessageButton').removeClass('d-none');
+                $('#sendGroupMessageButton').addClass('d-none');
 
                 $.ajax({
                     url: '{{ route('chat.checkRoom') }}',
@@ -153,8 +167,7 @@
                         _token: '{{ csrf_token() }}'
                     },
                     success: function(response) {
-                        chatHeader.find('h6').text(response.user.first_name + ' ' + response
-                            .user.last_name);
+                        chatHeader.find('h6').text(response.user.first_name + ' ' + response.user.last_name);
                         chatHeader.find('.media-left img').attr('src', response.image);
 
                         if (response.room_exists) {
@@ -170,7 +183,22 @@
                         console.error('Error checking room:', error);
                     }
                 });
-            });
+            }
+
+            function handleGroupChat(groupId, groupName) {
+                var chatHeader = $('.chat-header');
+                var chatBody = $('.chat-detail');
+                $('#receiver_id').val(groupId);
+                chatBody.empty();
+
+                $('#sendGroupMessageButton').removeClass('d-none');
+                $('#sendUserMessageButton').addClass('d-none');
+
+                chatHeader.find('h6').text(groupName);
+                chatHeader.find('.media-left img').remove(); // Remove user image for group chat
+
+                listenForGroupMessages(groupId);
+            }
 
             function createRoom(otherUserId, chatBody) {
                 $.ajax({
@@ -209,65 +237,107 @@
                 });
             }
 
-            function displayMessages(chatBody, messages) {
-                chatBody.empty();
-                messages.forEach(function(message) {
-                    displayMessage(chatBody, message);
+            function listenForGroupMessages(groupId) {
+                var chatBody = $('.chat-detail');
+                var messagesRef = firebase.database().ref('grouprooms/' + groupId + '/messages');
+
+                messagesRef.off(); // Remove any existing listeners
+
+                messagesRef.on('child_added', function(snapshot) {
+                    var message = snapshot.val();
+                    displayMessage(chatBody, message, true);
                 });
             }
 
-            function displayMessage(chatBody, message) {
+            function displayMessages(chatBody, messages, isGroup = false) {
+                chatBody.empty();
+                messages.forEach(function(message) {
+                    displayMessage(chatBody, message, isGroup);
+                });
+            }
+
+            function displayMessage(chatBody, message, isGroup = false) {
                 var mediaClass = message.sender_id === authenticatedUserId ? 'reverse' : '';
                 var otherUserImage = $('#imageUser').data('user-image');
                 var messageStatus = message.seen ? '' : '<span class="badge bg-primary">New</span>';
-                console.log(chatBody, message);
+                var senderImage = isGroup ? getUserImage(message.sender_id) : otherUserImage;
+                var senderName = isGroup ? getUserName(message.sender_id) : '';
 
-                if (message.sender_id !== authenticatedUserId) {
-                    var media = `
+                var media = `
                     <div class="media">
+                        ${message.sender_id !== authenticatedUserId ? `
                         <div class="media-img">
-                            <img src="${otherUserImage}" alt="user" class="rounded-circle thumb-sm">
+                            <img src="${senderImage}" alt="user" class="rounded-circle thumb-sm">
                         </div>
-                        <div class="media-body">
+                        ` : ''}
+                        <div class="media-body ${mediaClass}">
                             <div class="chat-msg">
+                                ${isGroup ? `<p><strong>${senderName}</strong></p>` : ''}
                                 <p>${message.message} ${messageStatus}</p>
                             </div>
                         </div>
-                    </div>`;
-                    chatBody.append(media);
-                } else {
-                    var media = `
-                <div class="media">
-                    <div class="media-body reverse">
-                        <div class="chat-msg">
-                            <p>${message.message} ${messageStatus}</p>
+                        ${message.sender_id === authenticatedUserId ? `
+                        <div class="media-img">
+                            <img src="${currentUserImage}" alt="user" class="rounded-circle thumb-sm">
                         </div>
-                    </div><!--end media-body-->
-                    <div class="media-img">
-                        <img src="${currentUserImage}" alt="user" class="rounded-circle thumb-sm">
-                    </div>
-                </div><!--end media--> `;
-                    chatBody.append(media);
-                }
+                        ` : ''}
+                    </div>`;
+                chatBody.append(media);
             }
 
-            $('#sendButton').click(function() {
+            // Placeholder function to get user image (implement this based on your user data structure)
+            function getUserImage(userId) {
+                return '{{ asset('assets-admin/images/IMG_1520.png') }}';
+            }
+
+            // Placeholder function to get user name (implement this based on your user data structure)
+            function getUserName(userId) {
+                var userName = '';
+                @foreach ($users as $user)
+                    if (userId == {{ $user->id }}) {
+                        userName = '{{ $user->first_name . ' ' . $user->last_name }}';
+                    }
+                @endforeach
+                return userName;
+            }
+
+            // Handle send message button click for user chat
+            $('#sendUserMessageButton').click(function() {
                 var messageText = $('#messageInput').val();
-                var receiver_id_value = $('#receiver_id').val();
-                var roomId = generateRoomId(authenticatedUserId, receiver_id_value);
+                if (!messageText.trim()) {
+                    return; // Do not send empty messages
+                }
+                var receiverIdValue = $('#receiver_id').val();
+                var roomId = generateRoomId(authenticatedUserId, receiverIdValue);
                 sendMessage(roomId, messageText);
                 $('#messageInput').val(''); // Clear the input field
             });
 
+            // Handle send message button click for group chat
+            $('#sendGroupMessageButton').click(function() {
+                var messageText = $('#messageInput').val();
+                if (!messageText.trim()) {
+                    return; // Do not send empty messages
+                }
+                var groupId = $('#receiver_id').val();
+                sendMessage(groupId, messageText, true); // true indicates group message
+                $('#messageInput').val(''); // Clear the input field
+            });
+
+            // Handle pressing Enter key to send message
             $('#messageInput').keypress(function(event) {
                 if (event.which === 13) { // Check if the pressed key is Enter (key code 13)
                     event.preventDefault(); // Prevent the default behavior of the Enter key
-                    $('#sendButton').click(); // Trigger the sendButton click event
+                    if (!$('#sendGroupMessageButton').hasClass('d-none')) {
+                        $('#sendGroupMessageButton').click(); // Trigger the sendGroupMessageButton click event
+                    } else {
+                        $('#sendUserMessageButton').click(); // Trigger the sendUserMessageButton click event
+                    }
                 }
             });
 
-            function sendMessage(roomId, messageText) {
-                var messagesRef = firebase.database().ref('chatrooms/' + roomId + '/messages');
+            function sendMessage(roomId, messageText, isGroup = false) {
+                var messagesRef = firebase.database().ref((isGroup ? 'grouprooms/' : 'chatrooms/') + roomId + '/messages');
                 var newMessageRef = messagesRef.push();
                 newMessageRef.set({
                     sender_id: authenticatedUserId,
