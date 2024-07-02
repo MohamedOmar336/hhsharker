@@ -5,7 +5,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle nav-icon" href="#" id="quickViewDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="mdi mdi-tools"></i>
+                        <i class="ti ti-plus"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li><a class="dropdown-item" href="{{ route('tickets.create') }}"><i class="ti ti-ticket"></i>
