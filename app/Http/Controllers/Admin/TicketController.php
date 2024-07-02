@@ -76,7 +76,7 @@ class TicketController extends Controller
             'priority' => 'required|exists:ticket_priority_settings,id',
             'status' => 'required|exists:ticket_status_settings,id',
             'AssignedTo' => 'required|exists:users,id',
-            'categories' => 'required|array', // Validation for categories
+            'categories' => 'array', // Validation for categories
             'categories.*' => 'exists:ticket_categories,id',
         ]);
 
@@ -141,7 +141,7 @@ class TicketController extends Controller
             'priority' => 'required|exists:ticket_priority_settings,id',
             'status' => 'required|exists:ticket_status_settings,id',
             'AssignedTo' => 'required|exists:users,id',
-            'categories' => 'required|array', // Validation for categories
+            'categories' => 'array', // Validation for categories
             'categories.*' => 'exists:ticket_categories,id',
         ]);
 
@@ -211,6 +211,11 @@ class TicketController extends Controller
      */
     public function myTickets(Request $request)
     {
+
+        $users = User::all();
+        $priorities = TicketPrioritySetting::all();
+        $statuses = TicketStatusSetting::all();
+        $categories = TicketCategory::all(); // Ensure this line is added
         $query = Ticket::where('assignedTo', Auth::id())->with('priority', 'status', 'assignedTo');
 
         if ($request->has('search')) {
@@ -225,7 +230,7 @@ class TicketController extends Controller
 
         $records = $query->paginate(500);
 
-        return view('admin.tickets.myTickets', compact('records'));
+        return view('admin.tickets.myTickets', compact('records', 'users', 'priorities', 'statuses', 'categories'));
     }
 
     /**
@@ -241,6 +246,9 @@ class TicketController extends Controller
         $ticket = Ticket::findOrFail($id);
 
         switch ($field) {
+            case 'title':
+                $ticket->Title = $request->input('title');
+                break;
             case 'priority':
                 $ticket->PriorityID = $request->input('priority_id');
                 break;

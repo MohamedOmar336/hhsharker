@@ -39,7 +39,11 @@
                     <tr>
                         <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
                         <td>{{ $record->id }}</td>
-                        <td>{{ $record->Title }}</td>
+                        <td>
+                            <form action="{{ route('tickets.update_field', ['id' => $record->id, 'field' => 'Title']) }}" method="POST">
+                            {{ $record->Title }}
+                        </form>
+                        </td>
                         <td>
                             <form action="{{ route('tickets.update_field', ['id' => $record->id, 'field' => 'priority']) }}" method="POST">
                                 @csrf

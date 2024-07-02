@@ -35,19 +35,22 @@ class GroupController extends Controller
             'name' => 'required',
             'description' => 'nullable',
             'created_by' => 'required|exists:users,id',
-            'members' => 'required|array',
+            'members' => 'array|nullable',
             'members.*' => 'exists:users,id',
         ]);
-
+        
         $group = Group::create($request->all());
-
-        foreach ($request->members as $userId) {
-            GroupMember::create([
-                'group_id' => $group->id,
-                'user_id' => $userId,
-                'role' => 'member'
-            ]);
+        
+        if ($request->members) {
+            foreach ($request->members as $userId) {
+                GroupMember::create([
+                    'group_id' => $group->id,
+                    'user_id' => $userId,
+                    'role' => 'member'
+                ]);
+            }
         }
+        
 
         return redirect()->route('groups.index')->with('success', 'Group created successfully.');
     }
