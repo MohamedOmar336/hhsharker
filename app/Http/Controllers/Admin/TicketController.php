@@ -279,7 +279,7 @@ class TicketController extends Controller
         foreach ($recordIds as $recordId) {
             $record = Ticket::find($recordId);
 
-            if (isset($product)) {
+            if (isset($record)) {
                 $record->delete($recordId);
             }
         }

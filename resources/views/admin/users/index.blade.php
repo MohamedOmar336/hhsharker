@@ -74,10 +74,10 @@
                         </tr>
                     @endforeach
 
-                    {{-- <x-slot name="createButton" action="{{ route('users.bulkDelete') }}">
+                    <x-slot name="createButton" action="{{ route('users.bulkDelete') }}">
                         <a href="{{ route('users.create') }}" class="btn btn-outline-light btn-sm px-4">+
                             {{ __('general.actions.new') }}</a>
-                    </x-slot> --}}
+                    </x-slot>
 
                     <x-slot name="pagination">
                         {{ $records->links('admin.pagination.bootstrap') }}
