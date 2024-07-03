@@ -68,7 +68,7 @@
                                 <div class="mb-3">
                                     <label for="parent_id" class="form-label">{{ __('general.attributes.parent_id') }}</label>
                                     <select id="parent_id" class="form-control @error('parent_id') is-invalid @enderror" name="parent_id" autocomplete="parent_id">
-                                        <option value="">{{ __('general.select.select') .' ' . __('general.select.parent_category') }}</option>
+                                        <option value="">{{ __('general.select.select') }}</option>
                                         @foreach ($ticketCategories as $cat)
                                             <option value="{{ $cat->id }}" {{  $ticket_category->parent_id == $cat->id ? 'selected' : '' }}>{{ $cat->name_en }}</option>
                                         @endforeach
