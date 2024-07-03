@@ -90,28 +90,31 @@
                         <img src="{{ Auth::user()->image ? asset('images/' . Auth::user()->image) : asset('assets-admin/images/user.png') }}"
                             alt="profile-user" class="rounded-circle me-2 thumb-sm" />
                         <div>
-                            <small class="d-none d-md-block font-11">Admin</small>
+                            {{-- <small class="d-none d-md-block font-11">Admin</small> --}}
                             <span class="d-none d-md-block fw-semibold font-12">{{ Auth()->user()->user_name }} <i
                                     class="mdi mdi-chevron-down"></i></span>
                         </div>
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
-                    <a class="dropdown-item" href="{{ route('profile.show') }}"><i
-                            class="ti ti-user font-16 me-1 align-text-bottom"></i>
-                        Profile</a>
-                    <a class="dropdown-item" href="#"><i
-                            class="ti ti-settings font-16 me-1 align-text-bottom"></i>
-                        Settings</a>
+                    <a class="dropdown-item" href="{{ route('profile.show') }}">
+                        <i class="ti ti-user font-16 me-1 align-text-bottom"></i>
+                        {{ __('general.actions.profile') }}
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <i class="ti ti-settings font-16 me-1 align-text-bottom"></i>
+                        {{ __('general.actions.settings') }}
+                    </a>
                     <div class="dropdown-divider mb-0"></div>
                     <a href="{{ route('logout') }}" class="dropdown-item text-danger"
                         onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
-                        <i class="fas fa-sign-out-alt m-2"></i>{{ __('Logout') }}
+                        <i class="fas fa-sign-out-alt m-2"></i>{{ __('general.actions.logout') }}
                     </a>
                 </div>
+                
             </li><!--end topbar-profile-->
 
         </ul><!--end topbar-nav-->
