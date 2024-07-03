@@ -92,7 +92,7 @@
                             <input type="hidden" name="receiver_id" id="receiver_id">
                             <a href="#" class="media">
                                 <div class="media-left">
-                                    <img src="assets/images/users/user-4.jpg" alt="user"
+                                    <img src="{{ asset('assets-admin/images/users/user-vector.png') }}" alt="user"
                                         class="rounded-circle thumb-sm">
                                 </div><!-- media-left -->
                                 <div class="media-body">

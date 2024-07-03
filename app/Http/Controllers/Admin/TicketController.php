@@ -275,12 +275,13 @@ class TicketController extends Controller
     public function massDestroy()
     {
         $recordIds = request()->input('ids');
+        if(count($recordIds)){
+            foreach ($recordIds as $recordId) {
+                $record = Ticket::find($recordId);
 
-        foreach ($recordIds as $recordId) {
-            $record = Ticket::find($recordId);
-
-            if (isset($record)) {
-                $record->delete($recordId);
+                if (isset($record)) {
+                    $record->delete($recordId);
+                }
             }
         }
         return redirect()->route('tickets.index')

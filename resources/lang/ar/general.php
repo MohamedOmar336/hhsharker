@@ -361,6 +361,7 @@ return [
         'update_image' => 'تحديث الصورة',
         'category-ticket' => 'تصنيف التذاكر',
         'category-ticket-list' => 'قائمة تصنيف التذاكر',
+        'created_by'=>'انشأ من قبل',
         '' => '',
         '' => '',
         '' => '',

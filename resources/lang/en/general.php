@@ -367,6 +367,7 @@ return [
         'update_image' => 'Update Image',
         'category-ticket' => 'tickets Category',
         'category-ticket-list' => 'Category Ticket List',
+        'created_by'=>'Created By',
         ''  => '',
         ''  => '',
         ''  => '',

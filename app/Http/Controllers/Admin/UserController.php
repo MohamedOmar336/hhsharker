@@ -172,12 +172,13 @@ class UserController extends Controller
     public function massDestroy()
     {
         $recordIds = request()->input('ids');
+        if(count($recordIds)){
+            foreach ($recordIds as $recordId) {
+                $record = User::find($recordId);
 
-        foreach ($recordIds as $recordId) {
-            $record = User::find($recordId);
-
-            if (isset($record)) {
-                $record->delete($recordId);
+                if (isset($record)) {
+                    $record->delete($recordId);
+                }
             }
         }
         return redirect()->route('users.index')
