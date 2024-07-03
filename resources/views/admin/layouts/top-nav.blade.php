@@ -1,22 +1,26 @@
 <div class="topbar">
     <nav class="navbar-custom" id="navbar-custom">
         <ul class="list-unstyled topbar-nav float-end mb-0">
-            <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle nav-icon" href="#" id="quickViewDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="ti ti-plus"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="{{ route('tickets.create') }}"><i class="ti ti-ticket"></i>
-                            {{ __('general.attributes.add-ticket') }}</a></li>
-                        <li><a class="dropdown-item" href="{{ route('appointments.create') }}"><i class="ti ti-calendar"></i>
-                            {{ __('general.attributes.add-appointment') }}</a></li>
-                        <li><a class="dropdown-item" href="{{ route('contacts.create') }}"><i class="ti ti-user"></i>
-                            {{ __('general.attributes.add-contact') }}</a></li>
-                    </ul>
-                </li>
-            </ul>
+
+            <li class="dropdown">
+                <a class="nav-link dropdown-toggle arrow-none nav-icon" data-bs-toggle="dropdown" href="#"
+                    role="button" aria-haspopup="false" aria-expanded="false">
+                    <i class="ti ti-plus"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end">
+                    <a class="dropdown-item" href="{{ route('tickets.create') }}"><i
+                            class="ti ti-ticket font-16 me-1 align-text-bottom"></i>
+                        {{ __('general.attributes.add-ticket') }}</a>
+                    <a class="dropdown-item" href="{{ route('appointments.create') }}"><i
+                            class="ti ti-calendar font-16 me-1 align-text-bottom"></i>
+                        {{ __('general.attributes.add-appointment') }}</a>
+                    <a class="dropdown-item" href="{{ route('contacts.create') }}"><i
+                            class="ti ti-user font-16 me-1 align-text-bottom"></i>
+                        {{ __('general.attributes.add-contact') }}</a>
+
+                </div>
+
+            </li><!--end topbar-profile-->
 
             <li class="dropdown">
                 <a class="nav-link dropdown-toggle arrow-none nav-icon" data-bs-toggle="dropdown" href="#"
@@ -114,7 +118,7 @@
                         <i class="fas fa-sign-out-alt m-2"></i>{{ __('general.actions.logout') }}
                     </a>
                 </div>
-                
+
             </li><!--end topbar-profile-->
 
         </ul><!--end topbar-nav-->
