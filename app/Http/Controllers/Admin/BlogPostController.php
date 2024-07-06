@@ -140,7 +140,7 @@ class BlogPostController extends Controller
 
        // $post->save();
        $post->update($validatedData);
-       
+
 
         return redirect()->route('blogposts.index')->with('success', 'Post updated successfully.');
     }

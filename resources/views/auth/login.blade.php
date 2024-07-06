@@ -18,7 +18,11 @@
 
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('assets-admin/images/IMG_1465.png') }}">
-
+    <style>
+        .grecaptcha-badge{
+            display: none !important;
+        }
+    </style>
 
 
      <!-- App css -->
@@ -86,7 +90,7 @@
                                                     <a href="{{ route('password.request') }}" class="text-muted font-13">
                                                         <i class="dripicons-lock"></i> {{ __('Forgot password?') }}
                                                     </a>
-                                                @endif                                    
+                                                @endif
                                             </div>
                                             {{-- <div class="col-sm-6 text-end">
                                                 <a class='text-muted font-13' href='auth-recover-pw.html'><i
