@@ -48,13 +48,13 @@
                         <td>{{ $record->name_en }}</td>
                         <td>
                             @if ($record->children->isNotEmpty())
-                               
+
                                     @foreach ($record->children as $child)
                                     <span class="badge bg-primary">{{ $child->name_en }}</span>
                                     @endforeach
-                                
+
                             @else
-                                {{ __('No children categories') }}
+                                {{ __('No child categories') }}
                             @endif
                         </td>
                         <td>
