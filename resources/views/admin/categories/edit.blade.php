@@ -51,7 +51,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="image" class="form-label">{{ __('general.attributes.image') }}</label>
+                                    <label for="image" class="form-label">{{ __('general.attributes.image') }}</label><br>
                                     <img src="{{ $category->image ? asset('images/' . $category->image) : asset('assets-admin/images/no_image.png') }}" alt="{{ $category->name }}" width="100"><br>
                                     <label for="image" class="form-label mt-2">Update Image</label>
                                     <input type="file" class="form-control" id="image" name="image">

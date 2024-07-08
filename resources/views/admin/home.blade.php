@@ -34,7 +34,7 @@
                                             <div class="col">
                                                 <div class="media">
                                                     <div class="bg-light-alt d-flex justify-content-center align-items-center thumb-md rounded-circle">
-                                                        <i data-feather="tag" class="align-self-center text-muted icon-sm"></i>
+                                                        <i data-feather="tag" class="ti ti-arrow-up"></i>
                                                     </div>
                                                     <div class="media-body align-self-center ms-2">
                                                         <p class="text-dark mb-1 fw-semibold">{{ __('general.new_tickets') }}</p>
@@ -54,7 +54,7 @@
                                             <div class="col">
                                                 <div class="media">
                                                     <div class="bg-light-alt d-flex justify-content-center align-items-center thumb-md rounded-circle">
-                                                        <i data-feather="package" class="align-self-center text-muted icon-sm"></i>
+                                                        <i data-feather="package" class="fas fa-ticket-alt "></i>
                                                     </div>
                                                     <div class="media-body align-self-center ms-2">
                                                         <p class="text-dark mb-1 fw-semibold">{{ __('general.open_tickets') }}</p>
@@ -74,7 +74,7 @@
                                             <div class="col">
                                                 <div class="media">
                                                     <div class="bg-light-alt d-flex justify-content-center align-items-center thumb-md rounded-circle">
-                                                        <i data-feather="zap" class="align-self-center text-muted icon-sm"></i>
+                                                        <i data-feather="zap" class="ti ti-player-pause"></i>
                                                     </div>
                                                     <div class="media-body align-self-center ms-2">
                                                         <p class="text-dark mb-1 fw-semibold">{{ __('general.on_hold') }}</p>
@@ -94,7 +94,7 @@
                                             <div class="col">
                                                 <div class="media">
                                                     <div class="bg-light-alt d-flex justify-content-center align-items-center thumb-md rounded-circle">
-                                                        <i data-feather="lock" class="align-self-center text-muted icon-sm"></i>
+                                                        <i data-feather="lock" class="ti ti-user-exclamation"></i>
                                                     </div>
                                                     <div class="media-body align-self-center ms-2">
                                                         <p class="text-dark mb-1 fw-semibold">{{ __('general.unassigned') }}</p>
@@ -128,7 +128,7 @@
                                     </div><!--end col-->
                                 </div> <!--end row-->
                             </div><!--end card-header-->
-                            <div class="card-body">
+                            <div class="card-body home-card">
                                 <div class="">
                                     <div id="Tickets_Status" class="apex-charts"></div>
                                 </div>
@@ -153,7 +153,7 @@
                                     </div><!--end col-->
                                 </div> <!--end row-->
                             </div><!--end card-header-->
-                            <div class="card-body">
+                            <div class="card-body home-card">
                                 <div class="position-absolute bottom-50 start-50 translate-middle mb-n2">
                                     <h3 class="mb-0">94.5%</h3>
                                     <p class="mb-0 text-uppercase fw-semibold text-muted">{{ __('general.happiness') }}</p>

@@ -45,7 +45,7 @@
                     </tr>
                 </x-slot>
                 @foreach ($records as $record)
-                    <tr>
+                    <tr class="table-body">
                         <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
                         <td>{{ $record->id }}</td>
                         <td>{{ $record->title }}</td>
@@ -56,18 +56,18 @@
                         <td>{{ $record->status }}</td>
                         <td>{{ $record->notes }}</td>
                         <td>
-                            <a href="{{ route('appointments.show', $record->id) }}" class="btn btn-sm btn-info">
+                            <a href="{{ route('appointments.show', $record->id) }}" >
                                 {{ __('general.btn.view') }}
                             </a>
-                            <a href="{{ route('appointments.edit', $record->id) }}" class="btn btn-sm btn-primary">
-                                {{ __('general.btn.edit') }}
+                            <a href="{{ route('appointments.edit', $record->id) }}">
+                                <i data-feather="edit"></i>
                             </a>
                             <form action="{{ route('appointments.destroy', $record->id) }}" method="POST"
-                                style="display:inline-block;">
+                                style="display:inline-block;" class="delete-form">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger">
-                                    {{ __('general.btn.delete') }}
+                                <button type="submit" class="btn delete-form">
+                                    <i data-feather="trash"></i>
                                 </button>
                             </form>
                         </td>

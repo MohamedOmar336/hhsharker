@@ -11,9 +11,7 @@
                         <div class="float-end">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a></li>
-                                <li class="breadcrumb-item"><a
-                                        href="{{ route('groups.index') }}">{{ __('general.attributes.groups') }}</a>
-                                </li>
+                                <li class="breadcrumb-item active">{{ __('general.side.characteristics') }}</li>
                                 <li class="breadcrumb-item active">{{ __('general.list') }}</li>
                             </ol>
                         </div>
@@ -21,52 +19,59 @@
                             <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
                                 <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
                             </a>
-                            <h4 class="page-title">{{ __('general.side.groups-list') }}</h4>
+                            <h4 class="page-title">{{ __('general.side.characteristics') }} {{ __('general.list') }}</h4>
                         </div>
-
-
                     </div><!--end page-title-box-->
                 </div><!--end col-->
             </div>
-            <!-- end page title and breadcrumb -->
+            <!-- end page title end breadcrumb -->
+
             <x-table tableId="DataTables">
                 <x-slot name="header">
                     <tr>
                         <th><input type="checkbox" id="select-all"></th>
-                        <th>{{ __('general.attributes.name') }}</th>
-                        <th scope="col">{{ __('general.attributes.description') }}</th>
+                        <th>{{ __('general.attributes.image') }}</th>
+                        <th>{{ __('general.attributes.name_english') }}</th>
+                        <th>{{ __('general.attributes.name_arabic') }}</th>
                         <th>{{ __('general.attributes.actions') }}</th>
                     </tr>
                 </x-slot>
-                @foreach ($records as $record)
+                @foreach ($characteristics as $characteristic)
                     <tr class="table-body">
-                        <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
-
-                        <td>{{ $record->name }}</td>
-                        <td>{!! $record->description !!}</td>
-                        <td>
-                            <a href="{{ route('groups.edit', $record->id) }}"
-                                ><i data-feather="edit"></i></a>
-                            <form action="{{ route('groups.destroy', $record->id) }}" method="POST"
+                        <td><input type="checkbox" name="ids[]" value="{{ $characteristic->id }}"></td>
+                        {{-- <td>
+                            @if ($characteristic->image)
+                                <img src="{{ asset('images/' . $characteristic->image) }}" alt="{{ $characteristic->name_en }}" width="50">
+                            @endif
+                        </td> --}}
+                        <td><img src="{{ $characteristic->image ? asset('images/' . $characteristic->image) : asset('assets-admin/images/no_image.png') }}"
+                            alt="{{ $characteristic->name_en }}" width="50"></td>
+                        <td>{{ $characteristic->name_en }}</td>
+                        <td>{{ $characteristic->name_ar }}</td>
+                      
+                            <td>
+                            <a href="{{ route('characteristics.edit', $characteristic->id) }}"
+                               ><i data-feather="edit"></i></a>
+                            <form action="{{ route('characteristics.destroy', $characteristic->id) }}" method="POST"
                                 style="display: inline;" class="delete-form">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn delete-form"
-                                    onclick="return confirm('Are you sure you want to delete this contact?')"><i data-feather="trash"></i></button>
+                                    onclick="return confirm('{{ __('general.confirm_delete_characteristic') }}')"><i data-feather="trash"></i></button>
                             </form>
                         </td>
                     </tr>
                 @endforeach
 
                 <x-slot name="createButton">
-                    <a href="{{ route('groups.create') }}" class="btn btn-outline-light btn-sm px-4">+
+                    <a href="{{ route('characteristics.create') }}" class="btn btn-outline-light btn-sm px-4">+
                         {{ __('general.actions.new') }}</a>
                 </x-slot>
 
                 <x-slot name="pagination">
-                    {{ $records->links('admin.pagination.bootstrap') }}
+                    {{ $characteristics->links('admin.pagination.bootstrap') }}
                 </x-slot>
             </x-table>
-        </div><!-- container -->
+        </div>
     </div><!-- container -->
 @endsection

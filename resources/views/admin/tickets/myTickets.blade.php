@@ -36,7 +36,7 @@
                         </tr>
                     </x-slot>
                     @foreach ($records as $record)
-                        <tr>
+                        <tr class="table-body">
                             <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
                             <td>{{ $record->id }}</td>
                             <td>
@@ -86,18 +86,18 @@
                             </td>
                             <td>
                                 <a href="{{ route('ticket_histories.show_by_ticket', $record->id) }}"
-                                    class="btn btn-sm btn-info">
-                                    {{ __('general.btn.history') }}
+                                    >
+                                    <i data-feather="rotate-ccw"></i>
                                 </a>
-                                <a href="{{ route('tickets.edit', $record->id) }}" class="btn btn-sm btn-primary">
-                                    {{ __('general.btn.edit') }}
+                                <a href="{{ route('tickets.edit', $record->id) }}">
+                                    <i data-feather="edit"></i>
                                 </a>
                                 <form action="{{ route('tickets.destroy', $record->id) }}" method="POST"
-                                    style="display:inline-block;">
+                                    style="display:inline-block;" class="delete-form">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger">
-                                        {{ __('general.btn.delete') }}
+                                    <button type="submit" class="btn delete-form" >
+                                        <i data-feather="trash"></i>
                                     </button>
                                 </form>
                             </td>

@@ -18,44 +18,44 @@
 
                     <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Dashboard"
                         data-bs-trigger="hover">
-                        <a href="#MetricaDashboard" id="dashboard-tab" class="nav-link">
-                            <i class="ti ti-smart-home menu-icon"></i>
+                        <a href="{{ route('home') }}" id="dashboard-tab" class="nav-link">
+                            <i class="ti ti-dashboard menu-icon"></i>
                         </a><!--end nav-link-->
                     </li><!--end nav-item-->
 
-                    <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Ticket"
+                    <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="External"
                         data-bs-trigger="hover">
-                        <a href="#MetricaTicket" id="ticket-tab" class="nav-link">
-                            <i class="ti ti-ticket menu-icon"></i>
+                        <a href="#MetricaExternal" id="External-tab" class="nav-link">
+                            <i class="ti ti-folder menu-icon"></i>
                         </a><!--end nav-link-->
                     </li><!--end nav-item-->
 
-
-                    <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Customer Interaction"
+                    <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Internal"
                         data-bs-trigger="hover">
-                        <a href="#MetricaProfile" id="Profile-tab" class="nav-link">
-                            <i class="ti ti-user menu-icon"></i>
-                        </a><!--end nav-link-->
-                    </li><!--end nav-item-->
-
-                    <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Contacts"
-                        data-bs-trigger="hover">
-                        <a href="#MetricaContacts" id="Contacts-tab" class="nav-link">
-                            <i class="mdi mdi-contacts menu-icon"></i>
-                        </a><!--end nav-link-->
-                    </li><!--end nav-item-->
-
-                    <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Chat"
-                        data-bs-trigger="hover">
-                        <a href="#MetricaChat" id="chat-tab" class="nav-link">
-                            <i class="mdi mdi-chat menu-icon"></i>
-                        </a><!--end nav-link-->
-                    </li><!--end nav-item-->
-
-                    <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Products details"
-                        data-bs-trigger="hover">
-                        <a href="#MetricaApps" id="apps-tab" class="nav-link">
+                        <a href="#MetricaInternal" id="Internal-tab" class="nav-link">
                             <i class="ti ti-apps menu-icon"></i>
+                        </a><!--end nav-link-->
+                    </li><!--end nav-item-->
+
+
+                    <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Website"
+                        data-bs-trigger="hover">
+                        <a href="#MetricaWebsite" id="Website-tab" class="nav-link">
+                            <i class="ti ti-world menu-icon"></i>
+                        </a><!--end nav-link-->
+                    </li><!--end nav-item-->
+
+                    <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="System"
+                        data-bs-trigger="hover">
+                        <a href="#MetricaSystem" id="System-tab" class="nav-link">
+                            <i class="ti ti-settings menu-icon"></i>
+                        </a><!--end nav-link-->
+                    </li><!--end nav-item-->
+
+                    <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Profile"
+                        data-bs-trigger="hover">
+                        <a href='{{ route('profile.show') }}' id="Profile-tab" class="nav-link">
+                            <i class="ti ti-user menu-icon"></i>
                         </a><!--end nav-link-->
                     </li><!--end nav-item-->
 
@@ -84,7 +84,6 @@
         </div><!--end pro-metrica-end-->
     </div>
     <!--end main-icon-menu-->
-
     <div class="main-menu-inner">
         <!-- LOGO -->
         <div class="topbar-left">
@@ -117,7 +116,7 @@
                 </ul><!--end nav-->
             </div><!-- end Dashboards -->
 
-            <div id="MetricaApps" class="main-icon-menu-pane tab-pane" role="tabpanel" aria-labelledby="apps-tab">
+            <div id="MetricaExternal" class="main-icon-menu-pane tab-pane" role="tabpanel" aria-labelledby="External-tab">
                 <div class="title-box">
                     <h6 class="menu-title"></h6>
                 </div>
@@ -126,7 +125,8 @@
                     <!-- Navigation -->
                     <ul class="navbar-nav">
                         @foreach ($filteredSideNav as $item)
-                            @if ($item['link'] != 'sidebartickets' && $item['link'] != 'sidebarContacts' && $item['link'] != 'sidebargroups' && $item['link'] != 'sidebarMails' && $item['link'] != 'sidebarappointments' && $item['link'] != 'sidebarCategoryTicket')
+                        @if ($item['link'] == 'sidebarContacts' || $item['link'] == 'sidebarGroups'||$item['link'] == 'sidebarTickets' ||$item['link'] == 'sidebarCustomerInteraction' ||$item['link'] == 'sidebarCustomerInteraction')
+                        @if ($item['link'] != 'sidebarContacts' && $item['link'] != 'sidebarGroups')
                                 <li class="nav-item">
                                     <a class="nav-link" href="#{{ $item['link'] }}" data-bs-toggle="collapse"
                                         role="button" aria-expanded="false" aria-controls="{{ $item['link'] }}">
@@ -134,30 +134,66 @@
                                     </a>
                                     <div class="collapse " id="{{ $item['link'] }}">
                                         <ul class="nav flex-column">
-                                            @foreach ($item['sub_menu'] as $sub_item)
-                                                <li class="nav-item">
-                                                    <a class="nav-link"
-                                                        href="{{ route($sub_item['route']) }}">{{ $sub_item['title'] }}</a>
-                                                </li>
-                                            @endforeach
+                                            @if (isset($item['sub_menu']) )
+                                                @foreach ($item['sub_menu'] as $sub_item)
+                                                    <li class="nav-item">
+                                                        <a class="nav-link"
+                                                        href="{{$sub_item['route'] == 'chat.index' ? route($sub_item['route'] , Auth()->user()) : route($sub_item['route']) }}">{{ $sub_item['title'] }}</a>
+                                                    </li>
+                                                @endforeach
+                                            @endif
                                         </ul><!--end nav-->
                                     </div><!--end sidebarEcommerce-->
                                 </li><!--end nav-item-->
-                            @endif
+                                @endif @endif
                         @endforeach
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="#sidebarHospital" data-bs-toggle="collapse" role="button"
+                                aria-expanded="false" aria-controls="sidebarHospital">
+                                Contacts
+                            </a>
+                            <div class="collapse " id="sidebarHospital">
+                                <ul class="nav flex-column">
+                                    @foreach ($filteredSideNav as $item)
+                                    @if(isset($item['level']))
+                                   
+                                        <li class="nav-item">
+                                            <a href="#sidebarAppointments " class="nav-link" data-bs-toggle="collapse"
+                                                role="button" aria-expanded="false" aria-controls="sidebarAppointments">
+                                                {{ $item['title'] }}
+                                            </a>
+                                            <div class="collapse " id="sidebarAppointments">
+                                                <ul class="nav flex-column">
+                                                    @foreach ($item['sub_menu'] as $item1)
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="{{$sub_item['route']}}">{{ $item1['title'] }}</a>
+                                                    </li><!--end nav-item-->
+                                                    @endforeach
+                                                </ul><!--end nav-->
+                                            </div><!--end sidebarAppointments-->
+                                        </li><!--end nav-item-->
+                                        
+                                        @endif
+                                    @endforeach
+                                    
+                                  
+                                </ul><!--end nav-->
+                            </div><!--end sidebarHospital-->
+                        </li><!--end nav-item-->
                     </ul><!--end navbar-nav--->
                 </div><!--end sidebarCollapse-->
             </div><!-- end Crypto -->
 
-            <div id="MetricaTicket" class="main-icon-menu-pane tab-pane" role="tabpanel"
-                aria-labelledby="ticket-tab">
+             <div id="MetricaInternal" class="main-icon-menu-pane tab-pane" role="tabpanel"
+                aria-labelledby="Internal-tab">
                 <div class="title-box">
                     <h6 class="menu-title"></h6>
                 </div>
 
                 <ul class="navbar-nav">
                     @foreach ($filteredSideNav as $item)
-                            @if ($item['link'] == 'sidebartickets' || $item['link'] == 'sidebarCategoryTicket')
+                            @if ($item['link'] == 'sidebarStatusSettings' || $item['link'] == 'sidebarPrioritySettings')
                                 <li class="nav-item">
                                 <a class="nav-link" href="#{{ $item['link'] }}" data-bs-toggle="collapse"
                                     role="button" aria-expanded="false" aria-controls="{{ $item['link'] }}">
@@ -179,7 +215,7 @@
                 </ul><!--end navbar-nav--->
             </div><!-- end Dashboards -->
 
-            <div id="MetricaContacts" class="main-icon-menu-pane tab-pane" role="tabpanel"
+          {{--  <div id="MetricaContacts" class="main-icon-menu-pane tab-pane" role="tabpanel"
                 aria-labelledby="contact-tab">
                 <div class="title-box">
                     <h6 class="menu-title"></h6>
@@ -207,25 +243,41 @@
                         @endif
                     @endforeach
                 </ul><!--end navbar-nav--->
-            </div><!-- end Dashboards -->
+            </div><!-- end Dashboards -->--}}
 
 
-            <div id="MetricaChat" class="main-icon-menu-pane tab-pane" role="tabpanel"
+            {{-- <div id="MetricaChat" class="main-icon-menu-pane tab-pane" role="tabpanel"
                 aria-labelledby="chat-tab">
                 <div class="title-box">
                     <h6 class="menu-title"></h6>
                 </div>
 
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class='nav-link'
-                            href="{{ route('chat.index', Auth()->user()) }}">{{ __('general.chat') }}</a>
-                    </li><!--end nav-item-->
-                </ul><!--end nav-->
+                <ul class="navbar-nav">
+                    @foreach ($filteredSideNav as $item)
+                            @if ( $item['link'] == 'sidebarEmailConfiguration' || $item['link'] == 'sidebarAPI' || $item['link'] == 'sidebarWhatsAppSettings' || $item['link'] == 'sidebarAuthKeySettings' )
+                                <li class="nav-item">
+                                <a class="nav-link" href="#{{ $item['link'] }}" data-bs-toggle="collapse"
+                                    role="button" aria-expanded="false" aria-controls="{{ $item['link'] }}">
+                                    {{ $item['title'] }}
+                                </a>
+                                <div class="collapse " id="{{ $item['link'] }}">
+                                    <ul class="nav flex-column">
+                                        @foreach ($item['sub_menu'] as $sub_item)
+                                            <li class="nav-item">
+                                                <a class="nav-link"
+                                                    href="{{ route($sub_item['route']) }}">{{ $sub_item['title'] }}</a>
+                                            </li>
+                                        @endforeach
+                                    </ul><!--end nav-->
+                                </div><!--end sidebarEcommerce-->
+                            </li><!--end nav-item-->
+                        @endif
+                    @endforeach
+                </ul><!--end navbar-nav---> --}}
 
             </div><!-- end Dashboards -->
 
-            <div id="MetricaProfile" class="main-icon-menu-pane tab-pane" role="tabpanel"
+            {{--  <div id="MetricaProfile" class="main-icon-menu-pane tab-pane" role="tabpanel"
                 aria-labelledby="profile-tab">
                 <div class="title-box">
                     <h6 class="menu-title"></h6>
@@ -260,8 +312,35 @@
                             href="{{ route('calendar.index') }}">{{ __('general.attributes.calendar') }}</a>
                     </li><!--end nav-item-->
                 </ul><!--end nav-->
+                <li class="nav-item">
+                    <a class="nav-link" href="#sidebarHospital" data-bs-toggle="collapse" role="button"
+                        aria-expanded="false" aria-controls="sidebarHospital">
+                        Hospital
+                    </a>
+                    <div class="collapse " id="sidebarHospital">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a href="#sidebarAppointments " class="nav-link" data-bs-toggle="collapse"
+                                    role="button" aria-expanded="false" aria-controls="sidebarAppointments">
+                                    Appointments 
+                                </a>
+                                <div class="collapse " id="sidebarAppointments">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="hospital-doctor-shedule.html">Dr. Shedule</a>
+                                        </li><!--end nav-item-->
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="hospital-all-appointments.html">All Appointments</a>
+                                        </li><!--end nav-item-->
+                                    </ul><!--end nav-->
+                                </div><!--end sidebarAppointments-->sad
+                            </li><!--end nav-item-->
+                          
+                        </ul><!--end nav-->
+                    </div><!--end sidebarHospital-->
+                </li><!--end nav-item-->
 
-            </div><!-- end Dashboards -->
+            </div><!-- end Dashboards --> --}}
         </div>
         <!--end menu-body-->
     </div><!-- end main-menu-inner-->

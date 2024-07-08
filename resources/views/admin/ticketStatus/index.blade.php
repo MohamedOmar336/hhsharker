@@ -42,23 +42,23 @@
                 </x-slot>
 
                 @foreach ($records as $record)
-                    <tr>
+                    <tr class="table-body">
                         <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
                         <td>{{ $record->Name_ar }}</td>
                         <td>{{ $record->Name_en }}</td>
                         <td>{{ $record->Description_ar }}</td>
                         <td>{{ $record->Description_en }}</td>
                         <td>
-                            <a href="{{ route('ticket-statuses.edit', $record->id) }}" class="btn btn-sm btn-primary">
-                                {{ __('general.btn.edit') }}
+                            <a href="{{ route('ticket-statuses.edit', $record->id) }}">
+                                <i data-feather="edit"></i>
                             </a>
                             <form action="{{ route('ticket-statuses.destroy', $record->id) }}" method="POST"
-                                style="display:inline-block;">
+                                style="display:inline-block;" class="delete-form">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger"
+                                <button type="submit" class="btn delete-form"
                                     onclick="return confirm('{{ __('general.confirm_delete') }}')">
-                                    {{ __('general.btn.delete') }}
+                                    <i data-feather="trash"></i>
                                 </button>
                             </form>
                         </td>

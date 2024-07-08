@@ -1,241 +1,354 @@
 <?php
-
 return [
     [
-        'title' => __('general.attributes.product'),
-        'link' => 'sidebarEcommerce',
-        'icon' => 'ti ti-shopping-cart',
-        'route' => 'products.index',
+        'title' => __('Tickets'),
+        'link' => 'sidebarTickets',
+        'icon' => 'ti ti-book',
+        'route' => 'tickets.index',
         'sub_menu' => [
             [
-                'title' => __('general.side.products-list'),
-                'route' => 'products.index',
+                'title' => __('Tickets Overview'),
+                'route' => 'tickets.index',
             ],
             [
-                'title' => __('general.actions.new'),
-                'route' => 'products.create',
+                'title' => __('Add New'),
+                'route' => 'tickets.create',
+            ],
+            [
+                'title' => __('My Tickets'),
+                'route' => 'tickets.my',
             ],
         ],
     ],
     [
-        'title' => __('general.side.categories'),
-        'link' => 'sidebarCategories',
-        'icon' => 'ti ti-categories',
-        'route' => 'categories.index',
+        'title' => __('Customer Interaction'),
+        'link' => 'sidebarCustomerInteraction',
+        'icon' => 'ti ti-comment',
+        'route' => 'chat.index',
         'sub_menu' => [
             [
-                'title' => __('general.side.categories-list'),
-                'route' => 'categories.index',
+                'title' => __('Chat'),
+                'route' => 'chat.index',
             ],
             [
-                'title' => __('general.actions.new'),
-                'route' => 'categories.create',
+                'title' => __('Group Chat'),
+                'route' => 'chat.index',
             ],
+            [
+                'title' => __('Bulk Messages'),
+                'route' => 'chat.index',
+            ],
+            [
+                'title' => __('Templates and Buttons'),
+                'route' => 'chat.index',
+            ],
+            [
+                'title' => __('Appointments List'),
+                'route' => 'appointments.index',
+            ],
+            [
+                'title' => __('Add New Appointment'),
+                'route' => 'appointments.create',
+            ],
+            [
+                'title' => __('My Appointments'),
+                'route' => 'appointments.myAppointments',
+            ],
+            [
+                'title' => __('Email'),
+                'route' => 'mails.index',
+            ],
+
         ],
+
     ],
     [
-        'title' => __('general.attributes.user'),
-        'link' => 'sidebarUsers',
+        'title' => __('Contacts'),
+        'link' => 'sidebarContacts',
         'icon' => 'ti ti-user',
-        'route' => 'users.index',
+        'level' => 3,
         'sub_menu' => [
             [
-                'title' => __('general.side.users-list'),
-                'route' => 'users.index',
+                'title' => __('Contact List'),
+                'route' => 'contacts.index',
             ],
             [
-                'title' => __('general.actions.new'),
-                'route' => 'users.create',
+                'title' => __('Add New Contact'),
+                'route' => 'contacts.create',
             ],
         ],
     ],
     [
-        'title' => __('general.attributes.groups'),
-        'link' => 'sidebargroups',
-        'icon' => 'ti ti-shopping-cart',
-        'route' => 'groups.index',
+        'title' => __('Groups'),
+        'link' => 'sidebarGroups',
+        'icon' => 'ti ti-layout-grid2-alt',
+        'level' => 3,
         'sub_menu' => [
             [
-                'title' => __('general.side.groups-list'),
+                'title' => __('Group List'),
                 'route' => 'groups.index',
             ],
             [
-                'title' => __('general.actions.new'),
+                'title' => __('Add New Group'),
                 'route' => 'groups.create',
             ],
         ],
     ],
     [
-        'title' => __('general.side.tags'),
-        'link' => 'sidebarTags',
-        'icon' => 'ti ti-tag',
-        'route' => 'tags.index',
+        'title' => __('Team Settings'),
+        'link' => 'sidebarTeamSettings',
+        'icon' => 'ti ti-settings',
+        'route' => 'groups.index',
         'sub_menu' => [
             [
-                'title' => __('general.side.tags-list'),
-                'route' => 'tags.index',
+                'title' => __('Members'),
+                'route' => 'groups.index',
             ],
             [
-                'title' => __('general.actions.new'),
-                'route' => 'tags.create',
+                'title' => __('Roles & Permissions'),
+                'route' => 'groups.index',
             ],
         ],
     ],
     [
-        'title' => __('general.side.mails'),
-        'link' => 'sidebarMails',
-        'icon' => 'ti ti-mail',
-        'route' => 'mails.index',
-        'sub_menu' => [
-            [
-                'title' => __('general.side.inbox'),
-                'route' => 'mails.index',
-            ],
-            [
-                'title' => __('general.actions.compose'),
-                'route' => 'mails.compose',
-            ],
-
-        ],
+        'title' => __('Activity Logs'),
+        'link' => 'sidebarActivityLogs',
+        'icon' => 'ti ti-file-text',
+        'route' => 'activity.logs',
     ],
     [
-        'title' => __('general.side.blogs'),
-        'link' => 'sidebarBlogs',
-        'icon' => 'ti ti-book',
-        'route' => 'tags.index',
-        'sub_menu' => [
-            [
-                'title' => __('general.side.blogs-list'),
-                'route' => 'blogposts.index',
-            ],
-            [
-                'title' => __('general.actions.new'),
-                'route' => 'blogposts.create',
-            ],
-        ],
-    ],
-    [
-        'title' => __('general.side.roles'),
-        'link' => 'sidebarRoles',
-        'icon' => 'ti ti-book',
-        'route' => 'roles.index',
-        'sub_menu' => [
-            [
-                'title' => __('general.side.roles-list'),
-                'route' => 'roles.index',
-            ],
-            [
-                'title' => __('general.actions.new'),
-                'route' => 'roles.create',
-            ],
-        ],
-    ],
-    [
-        'title' => __('general.attributes.contacts'),
-        'link' => 'sidebarContacts',
-        'icon' => 'ti ti-book',
-        'route' => 'contacts.index',
-        'sub_menu' => [
-            [
-                'title' => __('general.side.contacts-list'),
-                'route' => 'contacts.index',
-            ],
-            [
-                'title' => __('general.actions.new'),
-                'route' => 'contacts.create',
-            ],
-        ],
-    ],[
-        'title' => __('general.side.tickets'),
-        'link' => 'sidebartickets',
-        'icon' => 'ti ti-book',
-        'route' => 'tickets.index',
-        'sub_menu' => [
-            [
-                'title' => __('general.side.tickets-overview'),
-                'route' => 'tickets.index',
-            ],
-            [
-                'title' => __('general.actions.new'),
-                'route' => 'tickets.create',
-            ],[
-                'title' => __('general.side.my-tickets'),
-                'route' => 'tickets.my',
-            ]
-        ],
-    ],[
-        'title' => __('general.attributes.status'),
-        'link' => 'sidebarstatus',
-        'icon' => 'ti ti-book',
+        'title' => __('Status Settings'),
+        'link' => 'sidebarStatusSettings',
+        'icon' => 'ti ti-menu-alt',
         'route' => 'ticket-statuses.index',
         'sub_menu' => [
             [
-                'title' => __('general.side.status-list'),
+                'title' => __('Status List'),
                 'route' => 'ticket-statuses.index',
             ],
             [
-                'title' => __('general.actions.new'),
+                'title' => __('Add New Status'),
                 'route' => 'ticket-statuses.create',
             ],
         ],
-    ],[
-        'title' => __('general.attributes.priorities'),
-        'link' => 'sidebarpriorities',
-        'icon' => 'ti ti-book',
+    ],
+    [
+        'title' => __('Priority Settings'),
+        'link' => 'sidebarPrioritySettings',
+        'icon' => 'ti ti-menu-alt',
         'route' => 'ticket-priorities.index',
         'sub_menu' => [
             [
-                'title' => __('general.side.priorities-list'),
+                'title' => __('Priority List'),
                 'route' => 'ticket-priorities.index',
+
             ],
             [
-                'title' => __('general.actions.new'),
+                'title' => __('Add New Priority'),
                 'route' => 'ticket-priorities.create',
             ],
         ],
-    ],[
-        'title' => __('general.attributes.appointments'),
-        'link' => 'sidebarappointments',
-        'icon' => 'ti ti-book',
-        'route' => 'appointments.index',
-        'sub_menu' => [
-            [
-                'title' => __('general.side.appointments-list'),
-                'route' => 'appointments.index',
-            ],
-            [
-                'title' => __('general.actions.new'),
-                'route' => 'appointments.create',
-            ],[
-                'title' => __('general.side.my-appointments'),
-                'route' => 'appointments.myAppointments',
-            ],
-        ],
-    ],[
-        'title' => __('general.side.logs'),
-        'link' => 'sidebarLogs',
-        'icon' => 'ti ti-book',
-        'route' => 'activitylogs.index',
-        'sub_menu' => [
-            [
-                'title' => __('general.side.logs-list'),
-                'route' => 'activitylogs.index',
-            ]
-        ],
-    ],[
-        'title' => __('general.attributes.category-ticket'),
-        'link' => 'sidebarCategoryTicket',
-        'icon' => 'ti ti-book',
-        'route' => 'ticket_categories.index',
-        'sub_menu' => [
-            [
-                'title' => __('general.attributes.category-ticket-list'),
-                'route' => 'ticket_categories.index',
-            ],
-            [
-                'title' => __('general.actions.new'),
-                'route' => 'ticket_categories.create',
-            ],
-        ],
     ],
+
+
+
+
+
+
+    //     [
+//         'title' => __('Logs / Customer History Panel'),
+//         'link' => 'sidebarLogs',
+//         'icon' => 'ti ti-file',
+//         'route' => 'logs.index',
+//     ],
+//     [
+//         'title' => __('Appointment / Calendar'),
+//         'link' => 'sidebarAppointment',
+//         'icon' => 'ti ti-calendar',
+//         'route' => 'appointments.index',
+//         'sub_menu' => [
+//             [
+//                 'title' => __('Appointments List'),
+//                 'route' => 'appointments.index',
+//             ],
+//             [
+//                 'title' => __('Add New Appointment'),
+//                 'route' => 'appointments.create',
+//             ],
+//             [
+//                 'title' => __('My Appointments'),
+//                 'route' => 'appointments.myAppointments',
+//             ],
+//         ],
+//     ],
+//     [
+//         'title' => __('Contacts'),
+//         'link' => 'sidebarContacts',
+//         'icon' => 'ti ti-user',
+//         'sub_menu' => [
+//             [
+//                 'title' => __('Contact List'),
+//                 'route' => 'contacts.index',
+//             ],
+//             [
+//                 'title' => __('Add New Contact'),
+//                 'route' => 'contacts.create',
+//             ],
+//         ],
+//     ],
+//     [
+//         'title' => __('Groups'),
+//         'link' => 'sidebarGroups',
+//         'icon' => 'ti ti-layout-grid2-alt',
+//         'sub_menu' => [
+//             [
+//                 'title' => __('Group List'),
+//                 'route' => 'groups.index',
+//             ],
+//             [
+//                 'title' => __('Add New Group'),
+//                 'route' => 'groups.create',
+//             ],
+//         ],
+//     ],
+//     [
+//         'title' => __('Reports and Analytics'),
+//         'route' => 'internal.reports',
+//     ],
+//     [
+//         'title' => __('Team Settings'),
+//         'link' => 'sidebarTeamSettings',
+//         'icon' => 'ti ti-settings',
+//         'sub_menu' => [
+//             [
+//                 'title' => __('Members'),
+//                 'route' => 'team.members',
+//             ],
+//             [
+//                 'title' => __('Roles & Permissions'),
+//                 'route' => 'team.roles_permissions',
+//             ],
+//         ],
+//     ],
+//     [
+//         'title' => __('Activity Logs'),
+//         'link' => 'sidebarActivityLogs',
+//         'icon' => 'ti ti-file-text',
+//         'route' => 'activity.logs',
+//     ],
+//     [
+//         'title' => __('Status Settings'),
+//         'link' => 'sidebarStatusSettings',
+//         'icon' => 'ti ti-menu-alt',
+//         'sub_menu' => [
+//             [
+//                 'title' => __('Status List'),
+//                 'route' => 'ticket.statuses.index',
+//             ],
+//             [
+//                 'title' => __('Add New Status'),
+//                 'route' => 'ticket.statuses.create',
+//             ],
+//         ],
+//     ],
+//     [
+//         'title' => __('Priority Settings'),
+//         'link' => 'sidebarPrioritySettings',
+//         'icon' => 'ti ti-menu-alt',
+//         'sub_menu' => [
+//             [
+//                 'title' => __('Priority List'),
+//                 'route' => 'ticket.priorities.index',
+// 
+//             [
+//                 'title' => __('Add New Priority'),
+//                 'route' => 'ticket.priorities.create',
+//             ],
+//         ],
+//     ],
+//     [
+//         'title' => __('Blog'),
+//         'link' => 'sidebarBlog',
+//         'icon' => 'ti ti-layout-grid2',
+//         'sub_menu' => [
+//             [
+//                 'title' => __('Blog List'),
+//                 'route' => 'blogs.index',
+//             ],
+//             [
+//                 'title' => __('Add New Blog'),
+//                 'route' => 'blogs.create',
+//             ],
+//             [
+//                 'title' => __('Tags'),
+//                 'link' => 'sidebarBlogTags',
+//                 'icon' => 'ti ti-tag',
+//                 'sub_menu' => [
+//                     [
+//                         'title' => __('Tags List'),
+//                         'route' => 'tags.index',
+//                     ],
+//                     [
+//                         'title' => __('Add New Tag'),
+//                         'route' => 'tags.create',
+//                     ],
+//                 ],
+//             ],
+//         ],
+//     ],
+//     [
+//         'title' => __('Products'),
+//         'link' => 'sidebarProducts',
+//         'icon' => 'ti ti-bag',
+//         'sub_menu' => [
+//             [
+//                 'title' => __('Product List'),
+//                 'route' => 'products.index',
+//             ],
+//             [
+//                 'title' => __('Add New Product'),
+//                 'route' => 'products.create',
+//             ],
+//         ],
+//     ],
+//     [
+//         'title' => __('Category'),
+//         'link' => 'sidebarCategory',
+//         'icon' => 'ti ti-menu-alt',
+//         'sub_menu' => [
+//             [
+//                 'title' => __('Category List'),
+//                 'route' => 'categories.index',
+//             ],
+//             // [
+//             //     'title' => __('Sub-category'),
+//             //     'route' => 'categories.subcategories',
+//             // ],
+//             [
+//                 'title' => __('Add New Category'),
+//                 'route' => 'categories.create',
+//             ],
+//         ],
+//     ],
+[
+    'title' => __('Email Configuration'),
+    'link' => 'sidebarEmailConfiguration',
+    'route' => 'smtp-settings',
+],
+[
+    'title' => __('API'),
+    'link' => 'sidebarAPI',
+    'route' => 'smtp-settings',
+],
+[
+    'title' => __('WhatsApp Settings'),
+    'link' => 'sidebarWhatsAppSettings',
+    'route' => 'smtp-settings',
+],
+[
+    'title' => __('Auth Key Settings'),
+    'link' => 'sidebarAuthKeySettings',
+    'route' => 'smtp-settings',
+],
+
 ];

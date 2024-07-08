@@ -3142,7 +3142,8 @@ progress {
     -webkit-transition: border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
     transition: border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out, -webkit-box-shadow .15s ease-in-out
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+    border-radius: 32px;
 }
 
 @media (prefers-reduced-motion:reduce) {
@@ -6037,6 +6038,7 @@ fieldset:disabled .btn {
     max-height: fit-content;
     background-color : #f8f9fb;
     min-width: fit-content;
+    border-radius: 32px 32px 32px 32px;
 }
 
 .card-title {

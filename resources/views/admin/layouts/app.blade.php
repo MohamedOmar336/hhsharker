@@ -15,7 +15,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <link href="{{ asset('assets-admin/libs/litepicker/css/litepicker.css') }}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    {{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"> --}}
+    <link href="{{ asset('assets-admin/css/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css">
 {{--     
@@ -99,7 +100,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    {{-- <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script> --}}
 
 
     <!-- vendor js -->
@@ -128,7 +129,8 @@
 
     <!-- App js -->
     <script src="{{ asset('assets-admin/js/app.js') }}"></script>
-
+    <!-- App js -->
+    <script src="{{ asset('assets-admin/js/jquery.dataTables.min.js') }}"></script>
 
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-messaging.js"></script>

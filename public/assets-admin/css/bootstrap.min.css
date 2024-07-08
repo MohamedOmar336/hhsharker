@@ -1331,7 +1331,7 @@ progress {
 .col {
     -webkit-box-flex: 1;
     -ms-flex: 1 0 0%;
-    flex: 1 0 0%
+    flex: 1 0 0%;
 }
 
 .row-cols-auto>* {
@@ -3142,7 +3142,10 @@ progress {
     -webkit-transition: border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
     transition: border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out, -webkit-box-shadow .15s ease-in-out
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+    border-radius: 32px;
+    max-width: fit-content;
+    /* margin-left: -9px; */
 }
 
 @media (prefers-reduced-motion:reduce) {
@@ -4664,8 +4667,8 @@ fieldset:disabled .btn {
 .btn-group-sm>.btn,
 .btn-sm {
     --bs-btn-padding-y: 0.25rem;
-    --bs-btn-padding-x: 0.5rem;
-    --bs-btn-font-size: 0.7109375rem;
+    /* --bs-btn-padding-x: 0.5rem;
+    --bs-btn-font-size: 0.7109375rem; */
     --bs-btn-border-radius: 0.25rem
 }
 
@@ -6037,6 +6040,8 @@ fieldset:disabled .btn {
     max-height: fit-content;
     background-color : #f8f9fb;
     min-width: fit-content;
+    border-radius: 32px 32px 32px 32px;
+    margin: 10px;
 }
 
 .card-title {
@@ -6745,7 +6750,7 @@ fieldset:disabled .btn {
 
 .list-group {
     --bs-list-group-color: #000444;
-    --bs-list-group-bg: #ffffff;
+    /* --bs-list-group-bg: #ffffff; */
     --bs-list-group-border-color: #eceff5;
     --bs-list-group-border-width: 1px;
     --bs-list-group-border-radius: 0.25rem;

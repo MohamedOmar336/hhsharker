@@ -38,7 +38,7 @@
                     </tr>
                 </x-slot>
                 @foreach ($records as $record)
-                    <tr>
+                    <tr class="table-body">
                         <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
                         <td><img src="{{ asset('images/' . $record->image) }}" alt="{{ $record->title_en }}" width="50"></td>
                         <td>{{ $record->title_en }}</td>
@@ -47,11 +47,11 @@
                         <td>{{ $record->status }}</td>
                         <td>
                             <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#postModal{{ $record->id }}">{{ __('general.btn.view') }}</button>
-                            <a href="{{ route('blogposts.edit', $record->id) }}" class="btn btn-sm btn-primary">{{ __('general.btn.edit') }}</a>
-                            <form action="{{ route('blogposts.destroy', $record->id) }}" method="POST" style="display: inline;">
+                            <a href="{{ route('blogposts.edit', $record->id) }}"><i data-feather="edit"></i></a>
+                            <form action="{{ route('blogposts.destroy', $record->id) }}" method="POST" style="display: inline;" class="delete-form">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('{{ __('general.confirm.delete') }}')">{{ __('general.btn.delete') }}</button>
+                                <button type="submit" class="btn delete-form" onclick="return confirm('{{ __('general.confirm.delete') }}')"><i data-feather="trash"></i></button>
                             </form>
                         </td>
                     </tr>

@@ -273,7 +273,7 @@ body.dark-topbar .app-search form .form-control:focus {
     -ms-flex-align: center;
     align-items: center;
     padding: 16px 0;
-    background-color: #111628;
+    background-color: #1F2B5A;
     height: 100% !important;
     z-index: 1001;
     position: fixed;
@@ -340,14 +340,14 @@ body.dark-topbar .app-search form .form-control:focus {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
-    background-color: #111628;
+    background-color: #1F2B5A;
     border-radius: 5px;
     font-weight: 500
 }
 
 .leftbar-tab-menu .main-icon-menu .main-icon-menu-body .nav.nav-tabs .nav-link.active,
 .leftbar-tab-menu .main-icon-menu .main-icon-menu-body .nav.nav-tabs .nav-link:focus {
-    background-color: #111628;
+    background-color: #1F2B5A;
     border-color: transparent;
     color: #fff
 }
@@ -2153,7 +2153,7 @@ mark {
 }
 
 .card .card-header:first-child {
-    border-radius: calc(.5rem - 1px) calc(.5rem - 1px) 0 0
+    border-radius: 32px 32px 32px 32px
 }
 
 .card .card-footer {
@@ -9580,7 +9580,7 @@ ul.steppedprogress li:first-child:after {
 
 .custom-send-button {
     /* Add your custom styles here */
-    background-color: #111628; /* Green */
+    background-color: #1F2B5A; /* Green */
     border: none;
     color: white;
     padding: 10px 20px;

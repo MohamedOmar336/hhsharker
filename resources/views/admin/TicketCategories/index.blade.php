@@ -36,7 +36,7 @@
                 </x-slot>
 
                 @foreach ($ticketCategories as $ticketCategory)
-                    <tr>
+                    <tr class="table-body">
                         <td><input type="checkbox" name="ids[]" value="{{ $ticketCategory->id }}"></td>
                         <td>
                             <img src="{{ $ticketCategory->image ? asset('images/' . $ticketCategory->image) : asset('assets-admin/images/no_image.png') }}" alt="{{ $ticketCategory->name }}" width="50">
@@ -55,11 +55,11 @@
                             @endif
                         </td>
                         <td>
-                            <a href="{{ route('ticket_categories.edit', $ticketCategory->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                        <form action="{{ route('ticket_categories.destroy', $ticketCategory->id) }}" method="POST" style="display:inline-block;">
+                            <a href="{{ route('ticket_categories.edit', $ticketCategory->id) }}"><i data-feather="edit"></i></a>
+                        <form action="{{ route('ticket_categories.destroy', $ticketCategory->id) }}" method="POST" style="display:inline-block;" class="delete-form">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this category?')">Delete</button>
+                            <button type="submit" class="btn delete-form" onclick="return confirm('Are you sure you want to delete this category?')"><i data-feather="trash"></i></button>
                         </form>
                         </td>
                     </tr>
