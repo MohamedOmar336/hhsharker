@@ -39,7 +39,7 @@ return [
                 'route' => 'chat.index',
             ],
             [
-                'title' => __('Templates and Buttons'),
+                'title' => __('Templates & Buttons'),
                 'route' => 'chat.index',
             ],
             [
@@ -47,7 +47,7 @@ return [
                 'route' => 'appointments.index',
             ],
             [
-                'title' => __('Add New Appointment'),
+                'title' => __('Add New'),
                 'route' => 'appointments.create',
             ],
             [
@@ -73,7 +73,7 @@ return [
                 'route' => 'contacts.index',
             ],
             [
-                'title' => __('Add New Contact'),
+                'title' => __('Add New '),
                 'route' => 'contacts.create',
             ],
         ],
@@ -89,7 +89,7 @@ return [
                 'route' => 'groups.index',
             ],
             [
-                'title' => __('Add New Group'),
+                'title' => __('Add New '),
                 'route' => 'groups.create',
             ],
         ],

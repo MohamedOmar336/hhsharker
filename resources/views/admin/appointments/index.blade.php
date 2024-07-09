@@ -18,9 +18,13 @@
                             </ol>
                         </div>
                         <div class="col-md-12">
-                            <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
-                                <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
-                            </a>
+                            <a href="{{ URL::previous() }}">
+                            @if (app()->isLocale('ar'))
+                                <i data-feather="arrow-right-circle"></i> <!-- Arabic locale -->
+                            @else
+                                <i data-feather="arrow-left-circle"></i> <!-- Default locale -->
+                            @endif
+                        </a>
                             <h4 class="page-title">
                                 {{ __('general.attributes.appointments') }}
                             </h4>
@@ -31,17 +35,17 @@
             <x-table tableId="DataTables">
                 <x-slot name="header">
                     <tr>
-                        <th><input type="checkbox" id="select-all"></th>
-                        <th>{{ __('general.attributes.id') }}</th>
+                        <th style="width: 2%;"><input type="checkbox" id="select-all"></th>
+                        <th style="width: 2%;">{{ __('general.attributes.id') }}</th>
 
-                        <th>{{ __('general.attributes.title') }}</th>
+                        <th style="width: 25%;" >{{ __('general.attributes.title') }}</th>
                         <th>{{ __('general.attributes.creator') }}</th>
                         <th>{{ __('general.attributes.with') }}</th>
                         <th>{{ __('general.attributes.start_time') }}</th>
                         <th>{{ __('general.attributes.finish_time') }}</th>
                         <th>{{ __('general.attributes.status') }}</th>
                         <th>{{ __('general.attributes.notes') }}</th>
-                        <th>{{ __('general.attributes.actions') }}</th>
+                        <th style="width: 15%;">{{ __('general.attributes.actions') }}</th>
                     </tr>
                 </x-slot>
                 @foreach ($records as $record)
