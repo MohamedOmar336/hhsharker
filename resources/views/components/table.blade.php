@@ -5,7 +5,7 @@
             @csrf
             @if(isset($createButton))
             <div class="col col-3">
-                <button class="btn btn-sm btn-de-primary" id="bulk-delete-btn">{{ __('general.bulk-delete') }}</button>
+                <button class="btn btn-outline-light btn-sm px-4" id="bulk-delete-btn">{{ __('general.bulk-delete') }}</button>
                 {{ $createButton }}
             </div>
         @endif
