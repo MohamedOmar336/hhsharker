@@ -18,12 +18,6 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css">
-{{--     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fontawesome-iconpicker/3.2.0/css/fontawesome-iconpicker.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fontawesome-iconpicker/3.2.0/js/fontawesome-iconpicker.min.js"></script> --}}
-  
-
 
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('assets-admin/images/IMG_1465.png') }}">
@@ -34,12 +28,12 @@
     <link href="{{ asset('assets-admin/libs/animate.css/animate.min.css') }}" rel="stylesheet" type="text/css" />
 
     @if (app()->isLocale('ar'))
-    <link href="{{ asset('assets-admin/css/bootstrap-rtl.min.css') }}" rel="stylesheet" type="text/css" id="bootstrapStylesheet" />
-    <link href="{{ asset('assets-admin/css/app-rtl.min.css') }}" rel="stylesheet" type="text/css" id="appStylesheet" />
-@else
-    <link href="{{ asset('assets-admin/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrapStylesheet" />
-    <link href="{{ asset('assets-admin/css/app.min.css') }}" rel="stylesheet" type="text/css" id="appStylesheet" />
-@endif
+        <link href="{{  asset('assets-admin/css/bootstrap-rtl.min.css') }}" rel="stylesheet" type="text/css" id="bootstrapStylesheet" />
+        <link href="{{ asset('assets-admin/css/app-rtl.min.css') }}" rel="stylesheet" type="text/css" id="appStylesheet" />
+    @else
+        <link href="{{ asset('assets-admin/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrapStylesheet" />
+        <link href="{{ asset('assets-admin/css/app.min.css') }}" rel="stylesheet" type="text/css" id="appStylesheet" />
+    @endif
 
 
 
@@ -142,14 +136,14 @@
             const lightModeIcon = document.getElementById("lightModeIcon");
             const appStylesheet = document.getElementById("appStylesheet");
             const bootstrapStylesheet = document.getElementById("bootstrapStylesheet");
-    
+
             // Define the light and dark mode stylesheet URLs
             const lightModeStylesheetURL1 = "{{ app()->isLocale('ar') ? asset('assets-admin/css/app-rtl.min.css') : asset('assets-admin/css/app.min.css') }}";
             const lightModeStylesheetURL2 = "{{ app()->isLocale('ar') ? asset('assets-admin/css/bootstrap-rtl.min.css') : asset('assets-admin/css/bootstrap.min.css') }}";
-    
+
             const darkModeStylesheetURL1 = "{{ app()->isLocale('ar') ? asset('assets-admin/css/app-dark-rtl.min.css') : asset('assets-admin/css/app-dark.min.css') }}";
             const darkModeStylesheetURL2 = "{{ app()->isLocale('ar') ? asset('assets-admin/css/bootstrap-dark-rtl.min.css') : asset('assets-admin/css/bootstrap-dark.min.css') }}";
-    
+
             // Check if the user has a saved preference
             const savedDarkMode = localStorage.getItem("dark-mode");
             if (savedDarkMode && savedDarkMode === "enabled") {
@@ -159,14 +153,14 @@
                 appStylesheet.href = darkModeStylesheetURL1;
                 bootstrapStylesheet.href = darkModeStylesheetURL2;
             }
-    
+
             darkModeToggle.addEventListener("click", function() {
                 body.classList.toggle("dark-mode");
-    
+
                 // Toggle icons
                 darkModeIcon.classList.toggle("d-none");
                 lightModeIcon.classList.toggle("d-none");
-    
+
                 // Toggle stylesheets
                 if (body.classList.contains("dark-mode")) {
                     appStylesheet.href = darkModeStylesheetURL1;
@@ -180,8 +174,8 @@
             });
         });
     </script>
-    
-    
+
+
     <script>
         // Initialize Firebase
         firebase.initializeApp({

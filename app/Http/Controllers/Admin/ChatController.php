@@ -10,6 +10,8 @@ use App\Models\Notification;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Room;
 use App\Models\RoomMessage;
+use App\Models\WhatsAppContact;
+use App\Models\WhatsAppMessage;
 
 class ChatController extends Controller
 {
@@ -26,8 +28,10 @@ class ChatController extends Controller
 
         $groups = isset(Auth::user()->groups) ? Auth::user()->groups : null;
 
+        $whatsapps = WhatsAppContact::with('messages')->get();
+
         // Pass users data to the chat index view
-        return view('admin.chat.index', compact('users' , 'groups'));
+        return view('admin.chat.index', compact('users' , 'groups' , 'whatsapps'));
     }
 
     /**

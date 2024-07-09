@@ -26,6 +26,7 @@ use App\Http\Controllers\Admin\TicketCategoryController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\WhatsAppController;
 
 /*
 |--------------------------------------------------------------------------
@@ -142,6 +143,15 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::put('/tickets/{id}/update/{field}', [TicketController::class, 'updateField'])->name('tickets.update_field');
 
+        Route::post('/send-whatsapp-message', [WhatsAppController::class, 'sendMessage'])->name('send-whatsapp-message');
+
+        Route::post('/receive-whatsapp-message', [WhatsAppController::class , 'receiveMessage']);
+
+        Route::get('/whatsApp/room', [WhatsAppController::class, 'roomMessages'])->name('whatsapp.room');
+
+        Route::get('/whatsApp', [WhatsAppController::class, 'index'] )->name('whatsapp.chat');
+
+        Route::get('/whatsApp-chat', [WhatsAppController::class, 'chat'] )->name('whatsapp.index');
     });
 });
 

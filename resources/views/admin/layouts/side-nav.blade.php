@@ -221,6 +221,10 @@
                         <a class='nav-link'
                             href="{{ route('chat.index', Auth()->user()) }}">{{ __('general.chat') }}</a>
                     </li><!--end nav-item-->
+                    <li class="nav-item">
+                        <a class='nav-link'
+                            href="{{ route('whatsapp.chat') }}">whatsApp</a>
+                    </li><!--end nav-item-->
                 </ul><!--end nav-->
 
             </div><!-- end Dashboards -->

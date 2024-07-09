@@ -82,7 +82,23 @@
                                         </a>
                                     @endforeach
                                 </div>
-
+                                <div class="tab-pane fade" id="whatsapp_chat">
+                                    @foreach ($whatsapps as $whatsapp)
+                                        <a href="#" class="media whatsapp" data-whatsapp-id="{{ $whatsapp->id }}">
+                                            <div class="media-left">
+                                                <div class="avatar-box thumb-md align-self-center me-2">
+                                                    <span
+                                                        class="thumb-md justify-content-center d-flex align-items-center bg-soft-info rounded-circle me-2">
+                                                        <i class="fas fa-globe"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="media-body">
+                                                <h6>{{ $whatsapp->phone_number }}</h6>
+                                            </div>
+                                        </a>
+                                    @endforeach
+                                </div>
                             </div><!--end tab-content-->
                         </div>
                     </div><!--end chat-box-left -->
@@ -121,6 +137,8 @@
                                         class="custom-send-button">{{ __('general.btn.send') }}</button>
                                     <button id="sendGroupMessageButton"
                                         class="custom-send-button d-none">{{ __('general.btn.send') }}</button>
+                                    <button id="sendWhatsappMessageButton"
+                                        class="custom-send-button d-none">{{ __('general.btn.send') }}</button>
                                 </div><!-- col-8 -->
                             </div><!-- end row -->
                         </div><!-- end chat-footer -->
@@ -138,8 +156,10 @@
     <script>
         $(document).ready(function() {
             var authenticatedUserId = '{{ auth()->id() }}';
-            var currentUserImage =
-                '{{ isset(auth()->user()->image) ? asset('images/' . auth()->user()->image) : asset('assets-admin/images/users/user-vector.png') }}';
+
+            var currentUserImage = '{{ isset(auth()->user()->image) ? asset('images/' . auth()->user()->image) : asset('assets-admin/images/users/user-vector.png') }}';
+
+            var phoneNumber = null;
 
             $('.user').click(function(e) {
                 e.preventDefault();
@@ -151,6 +171,11 @@
                 handleGroupChat($(this).data('group-id'), $(this).find('.media-body h6').text());
             });
 
+            $('.whatsapp').click(function(e) {
+                e.preventDefault();
+                handleWhatsAppChat($(this).data('whatsapp-id'), $(this).find('.media-body h6').text());
+            });
+
             function handleUserChat(otherUserId) {
                 var chatHeader = $('.chat-header');
                 var chatBody = $('.chat-detail');
@@ -158,6 +183,7 @@
 
                 $('#sendUserMessageButton').removeClass('d-none');
                 $('#sendGroupMessageButton').addClass('d-none');
+                $('#sendWhatsappMessageButton').addClass('d-none');
 
                 $.ajax({
                     url: '{{ route('chat.checkRoom') }}',
@@ -193,6 +219,7 @@
 
                 $('#sendGroupMessageButton').removeClass('d-none');
                 $('#sendUserMessageButton').addClass('d-none');
+                $('#sendWhatsappMessageButton').addClass('d-none');
 
                 chatHeader.find('h6').text(groupName);
                 chatHeader.find('.media-left img').remove(); // Remove user image for group chat
@@ -384,6 +411,110 @@
                     });
                 });
             });
+
+            function sendwhatsapp(messageText) {
+                $.ajax({
+                    url: '{{ route('send-whatsapp-message') }}',
+                    method: 'POST',
+                    data: {
+                        phone: this.phoneNumber,
+                        message : messageText,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        var chatBody = $('.chat-detail');
+                        console.log(response);
+                        var media = `
+                            <div class="media reverse ">
+                                <div class="media-body">
+                                    <div class="chat-msg">
+                                        ${`<p><strong>${this.phoneNumber}</strong></p>`}
+                                        <p>${response.message.message}</p>
+                                    </div>
+                                </div>
+                            </div>`;
+                        chatBody.append(media); // Append each message as it's created
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error creating room:', error);
+                    }
+                });
+            }
+
+            function handleWhatsAppChat(whatsAppRoomId, groupName) {
+                // assign the phone number to the chat room
+                this.phoneNumber = groupName;
+
+                var chatHeader = $('.chat-header');
+                var chatBody = $('.chat-detail');
+                $('#receiver_id').val(whatsAppRoomId);
+                chatBody.empty();
+
+                $('#sendWhatsappMessageButton').removeClass('d-none');
+                $('#sendUserMessageButton').addClass('d-none');
+                $('#sendGroupMessageButton').addClass('d-none');
+
+                chatHeader.find('h6').text(groupName);
+                chatHeader.find('.media-left img').remove(); // Remove user image for group chat
+
+                listenForWhatsAppMessages(whatsAppRoomId , groupName);
+            }
+
+            function listenForWhatsAppMessages(roomId){
+                $.ajax({
+                    url: '{{ route('whatsapp.room') }}', // Ensure this route is correctly defined in your Laravel routes
+                    method: 'GET',
+                    data: {
+                        roomId: roomId,
+                        _token: '{{ csrf_token() }}' // Correct way to include CSRF token in a Laravel project
+                    },
+                    success: function(response) {
+                        console.log(response.message);
+                        var chatBody = $('.chat-detail');
+                        var messages = response.message.messages;
+                        var otherUserImage = $('#imageUser').data('user-image');
+
+                        messages.forEach(function(message) {
+                            var mediaClass = message.direction === 'outgoing' ? 'reverse' : '';
+                            var media = `
+                                <div class="media ${mediaClass}">
+                                    ${message.direction !== 'outgoing' ? `
+                                    <div class="media-img">
+                                        <img src="${otherUserImage}" alt="user" class="rounded-circle thumb-sm">
+                                    </div>
+                                    ` :  ''}
+                                    <div class="media-body">
+                                        <div class="chat-msg">
+                                            ${`<p><strong>${response.message.phone_number}</strong></p>`}
+                                            <p>${message.message}</p>
+                                        </div>
+                                    </div>
+                                    ${message.sender_id !== 'outgoing' ? `
+                                    <div class="media-img">
+                                        <img src="${currentUserImage}" alt="user" class="rounded-circle thumb-sm">
+                                    </div>
+                                    ` : ''}
+                                </div>`;
+                            chatBody.append(media); // Append each message as it's created
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error creating room:', error);
+                    }
+                });
+
+            }
+
+            // Handle send message button click for user chat
+            $('#sendWhatsappMessageButton').click(function() {
+                var messageText = $('#messageInput').val();
+                if (!messageText.trim()) {
+                    return; // Do not send empty messages
+                }
+                sendwhatsapp(messageText);
+                $('#messageInput').val(''); // Clear the input field
+            });
+
         });
     </script>
 @endpush
