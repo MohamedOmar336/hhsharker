@@ -152,6 +152,9 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/whatsApp', [WhatsAppController::class, 'index'] )->name('whatsapp.chat');
 
         Route::get('/whatsApp-chat', [WhatsAppController::class, 'chat'] )->name('whatsapp.index');
+
+        Route::post('/whatsApp-template', [WhatsAppController::class, 'sendTemplate'] )->name('whatsapp.template');
+
     });
 });
 

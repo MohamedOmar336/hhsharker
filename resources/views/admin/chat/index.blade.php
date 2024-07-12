@@ -31,10 +31,10 @@
                                     role="tab">Groups</a>
                             </li>
                             <!-- Remove the duplicate ID and fix the Whatsapp tab if needed -->
-                            <li class="nav-item" role="presentation">
+                            {{-- <li class="nav-item" role="presentation">
                                 <a class="nav-link" id="whatsapp_chat_tab" data-bs-toggle="tab" href="#whatsapp_chat"
                                     role="tab">Whatsapp business</a>
-                            </li>
+                            </li> --}}
                         </ul>
                         <div class="chat-body-left" data-simplebar>
                             <div class="tab-content chat-list" id="pills-tabContent">
