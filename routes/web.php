@@ -60,6 +60,8 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::resource('/products', ProductController::class);
 
+        Route::get('/product/export', [ProductController::class, 'export'])->name('products.exports');
+
         Route::get('/products/bulk-delete', [ProductController::class, 'bulkDelete'])->name('products.bulkdelete');
 
         Route::resource('/users', UserController::class);
@@ -154,6 +156,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/whatsApp-chat', [WhatsAppController::class, 'chat'] )->name('whatsapp.index');
 
         Route::post('/whatsApp-template', [WhatsAppController::class, 'sendTemplate'] )->name('whatsapp.template');
+
+        Route::get('/contact/exports', [ContactController::class, 'export'])->name('contacts.export');
 
     });
 });

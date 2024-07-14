@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use App\Enums\EnumsSettings;
+use App\Exports\ProductsExport;
+use Maatwebsite\Excel\Facades\Excel;
+
+use function Psy\debug;
 
 class ProductController extends Controller
 {
@@ -181,4 +185,10 @@ class ProductController extends Controller
         return redirect()->route('products.index')
             ->with('success', 'Products deleted successfully.');
     }
+
+    public function export()
+    {
+        return Excel::download(new ProductsExport, 'products.xlsx');
+    }
+
 }

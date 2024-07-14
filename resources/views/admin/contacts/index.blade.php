@@ -10,6 +10,13 @@
                     <div class="page-title-box">
                         <div class="float-end">
                             <ol class="breadcrumb">
+
+                                <div class="col-5">
+                                    <a href="{{ route('contacts.export') }}" class="btn btn-xs btn-primary" style="margin-right: 20px; margin-bottom: 10px;">
+                                    <i class="ti ti-file-download"></i>
+                                        {{ __('general.attributes.export') }}
+                                    </a>
+                                </div>
                                 <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a></li>
                                 <li class="breadcrumb-item"><a
                                         href="{{ route('contacts.index') }}">{{ __('general.attributes.contacts') }}</a>
@@ -18,7 +25,7 @@
                             </ol>
                         </div>
                         <div class="col-md-12">
-                            <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
+                            <a href="{{ route('contacts.export') }}" class="btn btn-xs btn-primary">
                                 <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
                             </a>
                             <h4 class="page-title">{{ __('general.side.contacts-list') }}</h4>
