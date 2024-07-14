@@ -43,7 +43,7 @@
                         <th>{{ __('general.attributes.segment') }}</th>
                         <th>{{ __('general.attributes.groups') }}</th>
                         <th>{{ __('general.attributes.last_interaction') }}</th>
-                        <th>{{ __('general.attributes.actions') }}</th>
+                        <th style="width: 15%;">{{ __('general.attributes.actions') }}</th>
                     </tr>
                 </x-slot>
                 @foreach ($records as $record)

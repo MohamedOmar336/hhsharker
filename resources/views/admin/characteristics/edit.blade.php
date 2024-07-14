@@ -67,20 +67,9 @@
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
-                                {{-- <div class="mb-3">
-                                    <label for="image" class="form-label">{{ __('general.attributes.image') }}</label>
-                                    <input id="image" type="file"
-                                        class="form-control @error('image') is-invalid @enderror" name="image" accept=".svg,.png">
-                                    @error('image')
-                                        <span class="invalid-feedback">{{ $message }}</span>
-                                    @enderror
-                                    @if ($characteristic->image)
-                                        <img src="{{ asset('storage/' . $characteristic->image) }}" alt="{{ $characteristic->name_en }}" width="100">
-                                    @endif
-                                </div> --}}
 
                                 <div class="mb-3">
-                                    <button type="submit" class="btn btn-primary">{{ __('general.btn.edit') }}</button>
+                                    <button type="submit" class="btn btn-sm btn-de-primary">{{ __('general.btn.edit') }}</button>
                                 </div>
                             </form>
                         </div> <!--end card-body-->

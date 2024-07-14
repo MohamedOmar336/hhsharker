@@ -58,7 +58,7 @@
                   @enderror
                 </div>
                 <div class="mb-3">
-                  <button type="submit" class="btn btn-primary">{{ __('general.btn.create') }}</button>
+                  <button type="submit" class="btn btn-sm btn-de-primary">{{ __('general.btn.create') }}</button>
               </div>
               </form>
             </div></div></div></div></div></div>@endsection

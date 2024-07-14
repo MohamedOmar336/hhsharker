@@ -15940,5 +15940,9 @@ li.L9 {
     }
     .col-3{
       position: absolute;
-      right: 700px;
+      left: 657px;
     }
+
+    .table-body:first-child td:last-child .delete-form{   
+        margin: -19px; 
+ }

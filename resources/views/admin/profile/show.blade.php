@@ -154,7 +154,7 @@
 
 
 
-                                                    <button type="submit" class="btn btn-primary">Update Profile</button>
+                                                    <button type="submit" class="btn btn-sm btn-de-primary">Update Profile</button>
                                                 </form>
 
 
@@ -211,7 +211,7 @@
 
 
                                                     <button type="submit"
-                                                        class="btn btn-primary">{{ __('general.btn.update') }}</button>
+                                                        class="btn btn-sm btn-de-primary">{{ __('general.btn.update') }}</button>
 
 
                                                 </form>

@@ -84,14 +84,14 @@
                                   </div><!--end col-->
                                   <div class="col-lg-12 col-xl-4">
                                       <div class="float-end d-print-none mt-2 mt-md-0">
-                                        <a href="{{ route('appointments.edit', $appointment) }}" class="btn btn-sm btn-primary">
+                                        <a href="{{ route('appointments.edit', $appointment) }}" class="btn btn-sm btn-de-primary">
                                           {{ __('general.btn.edit') }}
                                       </a>
                                       <form action="{{ route('appointments.destroy', $appointment) }}" method="POST"
                                           style="display:inline-block;">
                                           @csrf
                                           @method('DELETE')
-                                          <button type="submit" class="btn btn-sm btn-danger">
+                                          <button type="submit" class="btn btn-sm btn-de-primary">
                                               {{ __('general.btn.delete') }}
                                           </button>
                                       </form>

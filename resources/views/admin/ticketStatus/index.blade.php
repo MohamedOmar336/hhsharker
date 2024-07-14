@@ -41,7 +41,7 @@
                         <th>{{ __('general.attributes.name_english') }}</th>
                         <th>{{ __('general.attributes.description_arabic') }}</th>
                         <th>{{ __('general.attributes.description_english') }}</th>
-                        <th>{{ __('general.attributes.actions') }}</th>
+                        <th style="width: 15%;">{{ __('general.attributes.actions') }}</th>
                     </tr>
                 </x-slot>
 

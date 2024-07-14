@@ -11,27 +11,33 @@ class Product extends Model
     use HasFactory, LogsActivity;
 
     protected $fillable = [
-        'name_ar',
-        'name_en',
-        'description_ar',
-        'description_en',
-        'slug',
-        'price',
-        'quantity',
-        'is_available',
-        'image_url',
-        'category_id',
+        'type',
+        'product_name_ar',
+        'product_name_en',
         'model_number',
         'power_supply',
-        'type_of_freon',
-        'characteristics_en',
+        'type_freon',
+        'product_description_ar',
+        'product_description_en',
         'characteristics_ar',
-        'optional_features_en',
+        'characteristics_en',
         'optional_features_ar',
-        'catalog_url',
-        'color'
+        'optional_features_en',
+        'price',
+        'status',
+        'image',
+        'catalog',
+        'category',
+        'color',
+        'dimensions_volume_en',
+        'dimensions_volume_ar',
     ];
 
+    protected $casts = [
+        'characteristics_ar' => 'json',
+        'characteristics_en' => 'json',
+        'color' => 'json',
+    ];
     /**
      * Defines a belongs-to relationship between Product and Category models.
      *
@@ -48,7 +54,7 @@ class Product extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-            ->logOnly(['name_ar', 'name_en', 'price', 'is_available']) // Update this as needed based on what you want to log
+            ->logOnly(['product_name_ar', 'product_name_en', 'price', 'is_available']) // Update this as needed based on what you want to log
             ->setDescriptionForEvent(fn(string $eventName) => "This model has been {$eventName}");
     }
 }

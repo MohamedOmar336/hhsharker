@@ -53,7 +53,7 @@
                         <th scope="col">{{ __('general.attributes.qty') }}</th>
                         <th scope="col">{{ __('general.attributes.state') }}</th>
                         <th scope="col">{{ __('general.attributes.category') }}</th>
-                        <th scope="col">{{ __('general.attributes.actions') }}</th>
+                        <th style="width: 10%;">{{ __('general.attributes.actions') }}</th>
                     </tr>
                 </x-slot>
 
@@ -73,8 +73,7 @@
                         <td scope="col">{{ $record->is_available ? 'Yes' : 'No' }}</td>
                         <td scope="col">{{ $record->category ? $record->category->name_en : 'Uncategorized' }}</td>
                         <td scope="col">
-                            <a href="{{ route('products.edit', $record->id) }}"
-                                ><i data-feather="edit"></i></a>
+                            <a href="{{ route('products.edit', $record->id) }}"><i data-feather="edit"></i></a>
 
                             <form action="{{ route('products.destroy', $record->id) }}" method="POST"
                                 style="display: inline;" class="delete-form">

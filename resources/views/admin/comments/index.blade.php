@@ -44,7 +44,7 @@
                         <th>{{ __('general.attributes.email') }}</th>
                         <th>{{ __('general.attributes.comment') }}</th>
                         <th>{{ __('general.attributes.comment_date') }}</th>
-                        <th>{{ __('general.attributes.actions') }}</th>
+                        <th style="width: 15%;">{{ __('general.attributes.actions') }}</th>
                     </tr>
                 </x-slot>
                 @foreach ($records as $record)

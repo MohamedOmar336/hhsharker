@@ -39,7 +39,7 @@ return [
                 'route' => 'chat.index',
             ],
             [
-                'title' => __('Templates & Buttons'),
+                'title' => __('Templates and Buttons'),
                 'route' => 'chat.index',
             ],
             [
@@ -47,7 +47,7 @@ return [
                 'route' => 'appointments.index',
             ],
             [
-                'title' => __('Add New'),
+                'title' => __('Add New Appointment'),
                 'route' => 'appointments.create',
             ],
             [
@@ -73,7 +73,7 @@ return [
                 'route' => 'contacts.index',
             ],
             [
-                'title' => __('Add New '),
+                'title' => __('Add New Contact'),
                 'route' => 'contacts.create',
             ],
         ],
@@ -89,7 +89,7 @@ return [
                 'route' => 'groups.index',
             ],
             [
-                'title' => __('Add New '),
+                'title' => __('Add New Group'),
                 'route' => 'groups.create',
             ],
         ],
@@ -98,15 +98,23 @@ return [
         'title' => __('Team Settings'),
         'link' => 'sidebarTeamSettings',
         'icon' => 'ti ti-settings',
-        'route' => 'groups.index',
+        'route' => 'users.index',
         'sub_menu' => [
             [
                 'title' => __('Members'),
-                'route' => 'groups.index',
+                'route' => 'users.index',
+            ],
+            [
+                'title' => __('Add New Members'),
+                'route' => 'users.create',
             ],
             [
                 'title' => __('Roles & Permissions'),
-                'route' => 'groups.index',
+                'route' => 'roles.index',
+            ],
+            [
+                'title' => __('Add New Roles'),
+                'route' => 'roles.create',
             ],
         ],
     ],
@@ -121,6 +129,7 @@ return [
         'link' => 'sidebarStatusSettings',
         'icon' => 'ti ti-menu-alt',
         'route' => 'ticket-statuses.index',
+        'level' => 3,
         'sub_menu' => [
             [
                 'title' => __('Status List'),
@@ -137,6 +146,7 @@ return [
         'link' => 'sidebarPrioritySettings',
         'icon' => 'ti ti-menu-alt',
         'route' => 'ticket-priorities.index',
+        'level' => 3,
         'sub_menu' => [
             [
                 'title' => __('Priority List'),
@@ -149,6 +159,40 @@ return [
             ],
         ],
     ],
+   
+    [
+        'title' => __('Blog'),
+        'link' => 'sidebarBlog',
+        'icon' => 'ti ti-menu-alt',
+        'route' => 'ticket-statuses.index',
+        'sub_menu' => [
+            [
+                'title' => __('Blog List'),
+                'route' => 'blogposts.index',
+            ],
+            [
+                'title' => __('Add New'),
+                'route' => 'blogposts.create',
+            ],
+        ],
+    ],
+    [
+        'title' => __('Tags'),
+        'link' => 'sidebarTags',
+        'icon' => 'ti ti-tags',
+        'route' => 'ticket-priorities.index',
+        'sub_menu' => [
+            [
+                'title' => __('Tags List'),
+                'route' => 'tags.index',
+            ],
+            [
+                'title' => __('Add New'),
+                'route' => 'tags.create',
+            ],
+        ],
+    ],
+
 
 
 
@@ -296,59 +340,69 @@ return [
 //             ],
 //         ],
 //     ],
-//     [
-//         'title' => __('Products'),
-//         'link' => 'sidebarProducts',
-//         'icon' => 'ti ti-bag',
-//         'sub_menu' => [
-//             [
-//                 'title' => __('Product List'),
-//                 'route' => 'products.index',
-//             ],
-//             [
-//                 'title' => __('Add New Product'),
-//                 'route' => 'products.create',
-//             ],
-//         ],
-//     ],
-//     [
-//         'title' => __('Category'),
-//         'link' => 'sidebarCategory',
-//         'icon' => 'ti ti-menu-alt',
-//         'sub_menu' => [
-//             [
-//                 'title' => __('Category List'),
-//                 'route' => 'categories.index',
-//             ],
-//             // [
-//             //     'title' => __('Sub-category'),
-//             //     'route' => 'categories.subcategories',
-//             // ],
-//             [
-//                 'title' => __('Add New Category'),
-//                 'route' => 'categories.create',
-//             ],
-//         ],
-//     ],
-[
-    'title' => __('Email Configuration'),
-    'link' => 'sidebarEmailConfiguration',
-    'route' => 'smtp-settings',
-],
-[
-    'title' => __('API'),
-    'link' => 'sidebarAPI',
-    'route' => 'smtp-settings',
-],
-[
-    'title' => __('WhatsApp Settings'),
-    'link' => 'sidebarWhatsAppSettings',
-    'route' => 'smtp-settings',
-],
-[
-    'title' => __('Auth Key Settings'),
-    'link' => 'sidebarAuthKeySettings',
-    'route' => 'smtp-settings',
-],
+    [
+        'title' => __('Products'),
+        'link' => 'sidebarProducts',
+        'icon' => 'ti ti-bag',
+        'sub_menu' => [
+            [
+                'title' => __('Product List'),
+                'route' => 'products.index',
+            ],
+            [
+                'title' => __('Add New Product'),
+                'route' => 'products.create',
+            ],
+        ],
+    ],
+    [
+        'title' => __('Category'),
+        'link' => 'sidebarCategory',
+        'icon' => 'ti ti-menu-alt',
+        'sub_menu' => [
+            [
+                'title' => __('Category List'),
+                'route' => 'categories.index',
+            ],
+            // [
+            //     'title' => __('Sub-category'),
+            //     'route' => 'categories.subcategories',
+            // ],
+            [
+                'title' => __('Add New Category'),
+                'route' => 'categories.create',
+            ],
+        ],
+    ],
+    [
+        'title' => __('Email Configuration'),
+        'link' => 'sidebarEmailConfiguration',
+        'route' => 'smtp-settings.edit',
+    ],
+    [
+        'title' => __('API'),
+        'link' => 'sidebarAPI',
+        'route' => 'smtp-settings.edit',
+    ],
+    [
+        'title' => __('WhatsApp Settings'),
+        'link' => 'sidebarWhatsAppSettings',
+        'route' => 'smtp-settings.edit',
+    ],
+    [
+        'title' => __('Auth Key Settings'),
+        'link' => 'sidebarAuthKeySettings',
+        'route' => 'smtp-settings.edit',
+    ],
+    [
+        'title' => __('Profile'),
+        'link' => 'sidebarProfile',
+        'route' => 'profile.show',
+    ],
+    [
+        'title' => __('Change Password'),
+        'link' => 'sidebarChangePassword',
+        'route' => 'profile.show',
+    ],
 
 ];

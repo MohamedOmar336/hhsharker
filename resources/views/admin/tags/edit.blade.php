@@ -64,7 +64,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <button type="submit" class="btn btn-primary">{{ __('general.btn.edit') }}</button>
+                                    <button type="submit" class="btn btn-sm btn-de-primary">{{ __('general.btn.edit') }}</button>
                                 </div>
                             </form>
                         </div> <!--end card-body-->

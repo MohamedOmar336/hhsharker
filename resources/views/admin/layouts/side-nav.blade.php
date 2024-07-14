@@ -3,10 +3,10 @@
         <a class='logo logo-metrica d-block text-center' href='{{ route('home') }}'>
             <span>
                 @if (app()->isLocale('ar'))
-                <img src="{{ asset('assets-admin/images/IMG_1520.png') }}" alt="logo-small" class="logo-sm">
+                    <img src="{{ asset('assets-admin/images/IMG_1520.png') }}" alt="logo-small" class="logo-sm">
                 @endif
                 @if (app()->isLocale('en'))
-                <img src="{{ asset('assets-admin/images/IMG_1520.png') }}" alt="logo-small" class="logo-sm">
+                    <img src="{{ asset('assets-admin/images/IMG_1520.png') }}" alt="logo-small" class="logo-sm">
                 @endif
 
 
@@ -18,7 +18,7 @@
 
                     <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Dashboard"
                         data-bs-trigger="hover">
-                        <a href="{{ route('home') }}" id="dashboard-tab" class="nav-link">
+                        <a href="#MetricaDashboard" id="dashboard-tab" class="nav-link">
                             <i class="ti ti-dashboard menu-icon"></i>
                         </a><!--end nav-link-->
                     </li><!--end nav-item-->
@@ -54,7 +54,7 @@
 
                     <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Profile"
                         data-bs-trigger="hover">
-                        <a href='{{ route('profile.show') }}' id="Profile-tab" class="nav-link">
+                        <a href='#MetricaProfile' id="Profile-tab" class="nav-link">
                             <i class="ti ti-user menu-icon"></i>
                         </a><!--end nav-link-->
                     </li><!--end nav-item-->
@@ -116,7 +116,8 @@
                 </ul><!--end nav-->
             </div><!-- end Dashboards -->
 
-            <div id="MetricaExternal" class="main-icon-menu-pane tab-pane" role="tabpanel" aria-labelledby="External-tab">
+            <div id="MetricaExternal" class="main-icon-menu-pane tab-pane" role="tabpanel"
+                aria-labelledby="External-tab">
                 <div class="title-box">
                     <h6 class="menu-title"></h6>
                 </div>
@@ -125,8 +126,7 @@
                     <!-- Navigation -->
                     <ul class="navbar-nav">
                         @foreach ($filteredSideNav as $item)
-                        @if ($item['link'] == 'sidebarContacts' || $item['link'] == 'sidebarGroups'||$item['link'] == 'sidebarTickets' ||$item['link'] == 'sidebarCustomerInteraction' ||$item['link'] == 'sidebarCustomerInteraction')
-                        @if ($item['link'] != 'sidebarContacts' && $item['link'] != 'sidebarGroups')
+                            @if ($item['link'] == 'sidebarTickets' || $item['link'] == 'sidebarCustomerInteraction')
                                 <li class="nav-item">
                                     <a class="nav-link" href="#{{ $item['link'] }}" data-bs-toggle="collapse"
                                         role="button" aria-expanded="false" aria-controls="{{ $item['link'] }}">
@@ -134,20 +134,20 @@
                                     </a>
                                     <div class="collapse " id="{{ $item['link'] }}">
                                         <ul class="nav flex-column">
-                                            @if (isset($item['sub_menu']) )
+                                            @if (isset($item['sub_menu']))
                                                 @foreach ($item['sub_menu'] as $sub_item)
                                                     <li class="nav-item">
                                                         <a class="nav-link"
-                                                        href="{{$sub_item['route'] == 'chat.index' ? route($sub_item['route'] , Auth()->user()) : route($sub_item['route']) }}">{{ $sub_item['title'] }}</a>
+                                                            href="{{ $sub_item['route'] == 'chat.index' ? route($sub_item['route'], Auth()->user()) : route($sub_item['route']) }}">{{ $sub_item['title'] }}</a>
                                                     </li>
                                                 @endforeach
                                             @endif
                                         </ul><!--end nav-->
                                     </div><!--end sidebarEcommerce-->
                                 </li><!--end nav-item-->
-                                @endif @endif
+                            @endif
                         @endforeach
-                        
+
                         <li class="nav-item">
                             <a class="nav-link" href="#sidebarHospital" data-bs-toggle="collapse" role="button"
                                 aria-expanded="false" aria-controls="sidebarHospital">
@@ -156,28 +156,30 @@
                             <div class="collapse " id="sidebarHospital">
                                 <ul class="nav flex-column">
                                     @foreach ($filteredSideNav as $item)
-                                    @if(isset($item['level']))
-                                   
-                                        <li class="nav-item">
-                                            <a href="#sidebarAppointments " class="nav-link" data-bs-toggle="collapse"
-                                                role="button" aria-expanded="false" aria-controls="sidebarAppointments">
-                                                {{ $item['title'] }}
-                                            </a>
-                                            <div class="collapse " id="sidebarAppointments">
-                                                <ul class="nav flex-column">
-                                                    @foreach ($item['sub_menu'] as $item1)
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="{{$sub_item['route']}}">{{ $item1['title'] }}</a>
-                                                    </li><!--end nav-item-->
-                                                    @endforeach
-                                                </ul><!--end nav-->
-                                            </div><!--end sidebarAppointments-->
-                                        </li><!--end nav-item-->
-                                        
+                                        @if ($item['link'] == 'sidebarContacts' || $item['link'] == 'sidebarGroups')
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#{{ $item['link'] }}"
+                                                    data-bs-toggle="collapse" role="button" aria-expanded="false"
+                                                    aria-controls="{{ $item['link'] }}">
+                                                    {{ $item['title'] }}
+                                                </a>
+                                                <div class="collapse " id="{{ $item['link'] }}">
+                                                    <ul class="nav flex-column">
+                                                        @if (isset($item['sub_menu']))
+                                                            @foreach ($item['sub_menu'] as $sub_item)
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link"
+                                                                        href="{{ $sub_item['route'] == 'chat.index' ? route($sub_item['route'], Auth()->user()) : route($sub_item['route']) }}">{{ $sub_item['title'] }}</a>
+                                                                </li>
+                                                            @endforeach
+                                                        @endif
+                                                    </ul><!--end nav-->
+                                                </div><!--end sidebarEcommerce-->
+                                            </li><!--end nav-item-->
                                         @endif
+
                                     @endforeach
-                                    
-                                  
+
                                 </ul><!--end nav-->
                             </div><!--end sidebarHospital-->
                         </li><!--end nav-item-->
@@ -185,65 +187,159 @@
                 </div><!--end sidebarCollapse-->
             </div><!-- end Crypto -->
 
-             <div id="MetricaInternal" class="main-icon-menu-pane tab-pane" role="tabpanel"
+            <div id="MetricaInternal" class="main-icon-menu-pane tab-pane" role="tabpanel"
                 aria-labelledby="Internal-tab">
+                <div class="title-box">
+                    <h6 class="menu-title"></h6>
+                </div>
+
+                <div class="collapse navbar-collapse" id="sidebarCollapse">
+                    <!-- Navigation -->
+                    <ul class="navbar-nav">
+                        @foreach ($filteredSideNav as $item)
+                            @if ($item['link'] == 'sidebarTeamSettings')
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#{{ $item['link'] }}" data-bs-toggle="collapse"
+                                        role="button" aria-expanded="false" aria-controls="{{ $item['link'] }}">
+                                        {{ $item['title'] }}
+                                    </a>
+                                    <div class="collapse " id="{{ $item['link'] }}">
+                                        <ul class="nav flex-column">
+                                            @if (isset($item['sub_menu']))
+                                                @foreach ($item['sub_menu'] as $sub_item)
+                                                    <li class="nav-item">
+                                                        <a class="nav-link"
+                                                            href="{{ $sub_item['route'] == 'chat.index' ? route($sub_item['route'], Auth()->user()) : route($sub_item['route']) }}">{{ $sub_item['title'] }}</a>
+                                                    </li>
+                                                @endforeach
+                                            @endif
+                                        </ul><!--end nav-->
+                                    </div><!--end sidebarEcommerce-->
+                                </li><!--end nav-item-->
+                            @endif
+
+                        @endforeach
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#sidebarHospital" data-bs-toggle="collapse" role="button"
+                                aria-expanded="false" aria-controls="sidebarHospital">
+                                Tickets Settings
+                            </a>
+                            <div class="collapse " id="sidebarHospital">
+                                <ul class="nav flex-column">
+                                    @foreach ($filteredSideNav as $item)
+                                        {{-- @if ($item['link'] == 'sidebarContacts' || $item['link'] == 'sidebarGroups' || $item['link'] == 'sidebarTickets' || $item['link'] == 'sidebarCustomerInteraction' || $item['link'] == 'sidebarCustomerInteraction') --}}
+                                        @if ($item['link'] == 'sidebarStatusSettings' || $item['link'] == 'sidebarPrioritySettings')
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#{{ $item['link'] }}"
+                                                    data-bs-toggle="collapse" role="button" aria-expanded="false"
+                                                    aria-controls="{{ $item['link'] }}">
+                                                    {{ $item['title'] }}
+                                                </a>
+                                                <div class="collapse " id="{{ $item['link'] }}">
+                                                    <ul class="nav flex-column">
+                                                        @if (isset($item['sub_menu']))
+                                                            @foreach ($item['sub_menu'] as $sub_item)
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link"
+                                                                        href="{{ $sub_item['route'] == 'chat.index' ? route($sub_item['route'], Auth()->user()) : route($sub_item['route']) }}">{{ $sub_item['title'] }}</a>
+                                                                </li>
+                                                            @endforeach
+                                                        @endif
+                                                    </ul><!--end nav-->
+                                                </div><!--end sidebarEcommerce-->
+                                            </li><!--end nav-item-->
+                                        @endif
+
+                                    @endforeach
+
+                                </ul><!--end nav-->
+                            </div><!--end sidebarHospital-->
+                        </li><!--end nav-item-->
+                    </ul><!--end navbar-nav--->
+                </div><!--end sidebarCollapse-->
+            </div><!-- end Crypto -->
+
+            <div id="MetricaWebsite" class="main-icon-menu-pane tab-pane" role="tabpanel"
+                aria-labelledby="Website-tab">
+                <div class="title-box">
+                    <h6 class="menu-title"></h6>
+                </div>
+
+                <div class="collapse navbar-collapse" id="sidebarCollapse">
+                    <!-- Navigation -->
+                    <ul class="navbar-nav">
+                        @foreach ($filteredSideNav as $item)
+                            @if (
+                                $item['link'] == 'sidebarBlog' ||
+                                    $item['link'] == 'sidebarTags' ||
+                                    $item['link'] == 'sidebarProducts' ||
+                                    $item['link'] == 'sidebarCategory')
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#{{ $item['link'] }}" data-bs-toggle="collapse"
+                                        role="button" aria-expanded="false" aria-controls="{{ $item['link'] }}">
+                                        {{ $item['title'] }}
+                                    </a>
+                                    <div class="collapse " id="{{ $item['link'] }}">
+                                        <ul class="nav flex-column">
+                                            @if (isset($item['sub_menu']))
+                                                @foreach ($item['sub_menu'] as $sub_item)
+                                                    <li class="nav-item">
+                                                        <a class="nav-link"
+                                                            href="{{ $sub_item['route'] == 'chat.index' ? route($sub_item['route'], Auth()->user()) : route($sub_item['route']) }}">{{ $sub_item['title'] }}</a>
+                                                    </li>
+                                                @endforeach
+                                            @endif
+                                        </ul><!--end nav-->
+                                    </div><!--end sidebarEcommerce-->
+                                </li><!--end nav-item-->
+                            @endif
+                        @endforeach
+                    </ul><!--end navbar-nav--->
+                </div><!--end sidebarCollapse-->
+            </div><!-- end Crypto -->
+
+            <div id="MetricaSystem" class="main-icon-menu-pane tab-pane" role="tabpanel"
+                aria-labelledby="System-tab">
                 <div class="title-box">
                     <h6 class="menu-title"></h6>
                 </div>
 
                 <ul class="navbar-nav">
                     @foreach ($filteredSideNav as $item)
-                            @if ($item['link'] == 'sidebarStatusSettings' || $item['link'] == 'sidebarPrioritySettings')
-                                <li class="nav-item">
-                                <a class="nav-link" href="#{{ $item['link'] }}" data-bs-toggle="collapse"
-                                    role="button" aria-expanded="false" aria-controls="{{ $item['link'] }}">
+                        @if (
+                            $item['link'] == 'sidebarEmailConfiguration' ||
+                                $item['link'] == 'sidebarAPI' ||
+                                $item['link'] == 'sidebarWhatsAppSettings' ||
+                                $item['link'] == 'sidebarAuthKeySettings')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route($item['route']) }}">
                                     {{ $item['title'] }}
                                 </a>
-                                <div class="collapse " id="{{ $item['link'] }}">
-                                    <ul class="nav flex-column">
-                                        @foreach ($item['sub_menu'] as $sub_item)
-                                            <li class="nav-item">
-                                                <a class="nav-link"
-                                                    href="{{ route($sub_item['route']) }}">{{ $sub_item['title'] }}</a>
-                                            </li>
-                                        @endforeach
-                                    </ul><!--end nav-->
-                                </div><!--end sidebarEcommerce-->
                             </li><!--end nav-item-->
                         @endif
                     @endforeach
                 </ul><!--end navbar-nav--->
             </div><!-- end Dashboards -->
 
-          {{--  <div id="MetricaContacts" class="main-icon-menu-pane tab-pane" role="tabpanel"
-                aria-labelledby="contact-tab">
+            <div id="MetricaProfile" class="main-icon-menu-pane tab-pane" role="tabpanel"
+                aria-labelledby="Profile-tab">
                 <div class="title-box">
                     <h6 class="menu-title"></h6>
                 </div>
 
                 <ul class="navbar-nav">
                     @foreach ($filteredSideNav as $item)
-                            @if ($item['link'] == 'sidebarContacts' || $item['link'] == 'sidebargroups')
-                                <li class="nav-item">
-                                <a class="nav-link" href="#{{ $item['link'] }}" data-bs-toggle="collapse"
-                                    role="button" aria-expanded="false" aria-controls="{{ $item['link'] }}">
+                        @if ($item['link'] == 'sidebarProfile' || $item['link'] == 'sidebarChangePassword')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route($item['route']) }}">
                                     {{ $item['title'] }}
                                 </a>
-                                <div class="collapse " id="{{ $item['link'] }}">
-                                    <ul class="nav flex-column">
-                                        @foreach ($item['sub_menu'] as $sub_item)
-                                            <li class="nav-item">
-                                                <a class="nav-link"
-                                                    href="{{ route($sub_item['route']) }}">{{ $sub_item['title'] }}</a>
-                                            </li>
-                                        @endforeach
-                                    </ul><!--end nav-->
-                                </div><!--end sidebarEcommerce-->
                             </li><!--end nav-item-->
                         @endif
                     @endforeach
                 </ul><!--end navbar-nav--->
-            </div><!-- end Dashboards -->--}}
+            </div><!-- end Dashboards -->
 
 
             {{-- <div id="MetricaChat" class="main-icon-menu-pane tab-pane" role="tabpanel"
@@ -254,7 +350,7 @@
 
                 <ul class="navbar-nav">
                     @foreach ($filteredSideNav as $item)
-                            @if ( $item['link'] == 'sidebarEmailConfiguration' || $item['link'] == 'sidebarAPI' || $item['link'] == 'sidebarWhatsAppSettings' || $item['link'] == 'sidebarAuthKeySettings' )
+                            @if ($item['link'] == 'sidebarEmailConfiguration' || $item['link'] == 'sidebarAPI' || $item['link'] == 'sidebarWhatsAppSettings' || $item['link'] == 'sidebarAuthKeySettings')
                                 <li class="nav-item">
                                 <a class="nav-link" href="#{{ $item['link'] }}" data-bs-toggle="collapse"
                                     role="button" aria-expanded="false" aria-controls="{{ $item['link'] }}">
@@ -275,16 +371,16 @@
                     @endforeach
                 </ul><!--end navbar-nav---> --}}
 
-            </div><!-- end Dashboards -->
+        </div><!-- end Dashboards -->
 
-            {{--  <div id="MetricaProfile" class="main-icon-menu-pane tab-pane" role="tabpanel"
+        {{--  <div id="MetricaProfile" class="main-icon-menu-pane tab-pane" role="tabpanel"
                 aria-labelledby="profile-tab">
                 <div class="title-box">
                     <h6 class="menu-title"></h6>
                 </div>
                 <ul class="navbar-nav">
                     @foreach ($filteredSideNav as $item)
-                            @if ( $item['link'] == 'sidebarMails' || $item['link'] == 'sidebarappointments')
+                            @if ($item['link'] == 'sidebarMails' || $item['link'] == 'sidebarappointments')
                                 <li class="nav-item">
                                 <a class="nav-link" href="#{{ $item['link'] }}" data-bs-toggle="collapse"
                                     role="button" aria-expanded="false" aria-controls="{{ $item['link'] }}">
@@ -341,7 +437,7 @@
                 </li><!--end nav-item-->
 
             </div><!-- end Dashboards --> --}}
-        </div>
-        <!--end menu-body-->
-    </div><!-- end main-menu-inner-->
+    </div>
+    <!--end menu-body-->
+</div><!-- end main-menu-inner-->
 </div>

@@ -130,7 +130,7 @@
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <button type="submit" class="btn btn-primary">{{ __('general.btn.create') }}</button>
+                                <button type="submit" class="btn btn-sm btn-de-primary">{{ __('general.btn.create') }}</button>
                             </form>
                         </div><!--end card-body-->
                     </div><!--end card-->

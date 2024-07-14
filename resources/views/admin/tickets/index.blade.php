@@ -36,7 +36,7 @@
                     <th>{{ __('general.attributes.priority') }}</th>
                     <th>{{ __('general.attributes.status') }}</th>
                     <th>{{ __('general.attributes.assigned_to') }}</th>
-                    <th>{{ __('general.attributes.actions') }}</th>
+                    <th style="width: 15%;">{{ __('general.attributes.actions') }}</th>
                 </tr>
             </x-slot>
             @foreach ($records as $record)
@@ -91,7 +91,7 @@
                 <td>
                     <a href="{{ route('ticket_histories.show_by_ticket', $record->id) }}"><i data-feather="rotate-ccw"></i></a>
                     <a href="{{ route('tickets.edit', $record->id) }}"><i data-feather="edit"></i></a>
-                    <form action="{{ route('tickets.destroy', $record->id) }}" method="POST" class="delete-form" style="display:inline-block;" class="delete-form">
+                    <form action="{{ route('tickets.destroy', $record->id) }}" method="POST" class="delete-form" style="display:inline-block; margin: -2px;" class="delete-form">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn delete-form"><i data-feather="trash"></i></button>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Characteristic;
 use App\Enums\EnumsSettings;
 
 class ProductController extends Controller
@@ -17,6 +18,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
+        $Characteristics = Characteristic::all();
         $categories = Category::all();
         $query = Product::query();
 
@@ -39,8 +41,9 @@ class ProductController extends Controller
      */
     public function create()
     {
+        $Characteristics = Characteristic::all();
         $categories = Category::all();
-        return view('admin.products.create', compact('categories'));
+        return view('admin.products.create', compact('categories','Characteristics'));
     }
 
     /**

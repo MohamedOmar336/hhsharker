@@ -14,8 +14,12 @@
                             </ol>
                         </div>
                         <div class="col-md-12">
-                            <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
-                                <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
+                            <a href="{{ URL::previous() }}">
+                                @if (app()->isLocale('ar'))
+                                    <i data-feather="arrow-right-circle"></i> <!-- Arabic locale -->
+                                @else
+                                    <i data-feather="arrow-left-circle"></i> <!-- Default locale -->
+                                @endif
                             </a>
                             <h4 class="page-title">
                                 {{ __('general.side.tickets') }} {{ __('general.list') }}
@@ -32,7 +36,7 @@
                             <th>{{ __('general.attributes.priority') }}</th>
                             <th>{{ __('general.attributes.status') }}</th>
                             <th>{{ __('general.attributes.assigned_to') }}</th>
-                            <th>{{ __('general.attributes.actions') }}</th>
+                            <th style="width: 15%;">{{ __('general.attributes.actions') }}</th>
                         </tr>
                     </x-slot>
                     @foreach ($records as $record)
@@ -93,7 +97,7 @@
                                     <i data-feather="edit"></i>
                                 </a>
                                 <form action="{{ route('tickets.destroy', $record->id) }}" method="POST"
-                                    style="display:inline-block;" class="delete-form">
+                                    style="display:inline-block; margin: -10px;" class="delete-form">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn delete-form" >

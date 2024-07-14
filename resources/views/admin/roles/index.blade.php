@@ -41,7 +41,7 @@
                         <th><input type="checkbox" id="select-all"></th>
                         <th>{{ __('general.attributes.name') }}</th>
                         <th>{{ __('general.attributes.description') }}</th>
-                        <th>{{ __('general.attributes.actions') }}</th>
+                        <th style="width: 15%;">{{ __('general.attributes.actions') }}</th>
                     </tr>
                 </x-slot>
                 @foreach ($records as $record)

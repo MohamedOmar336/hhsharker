@@ -136,20 +136,42 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::delete('messages/{message}', [MessageController::class, 'destroy'])->name('messages.destroy');
 
-        Route::get('/mails', [MailController::class, 'index'])->name('mails.index');
-      //  Route::get('/mails/index', [MailController::class, 'index'])->name('mails.index');
-        Route::get('/mails/compose', [MailController::class, 'compose'])->name('mails.compose');
-        Route::post('/mails/send', [MailController::class, 'send'])->name('mails.send');
-        Route::get('/mails/{mail}', [MailController::class, 'show'])->name('mails.show');
+    //     Route::get('/mails', [MailController::class, 'index'])->name('mails.index');
+    //   //  Route::get('/mails/index', [MailController::class, 'index'])->name('mails.index');
+    //     Route::get('/mails/compose', [MailController::class, 'compose'])->name('mails.compose');
+    //     Route::post('/mails/send', [MailController::class, 'send'])->name('mails.send');
+    //     Route::get('/mails/{mail}', [MailController::class, 'show'])->name('mails.show');
 
-        Route::get('/mails/{id}/reply', [MailController::class, 'reply'])->name('mails.reply');
-        Route::post('/mails/{id}/sendReply', [MailController::class, 'sendReply'])->name('mails.sendReply');
+    //     Route::get('/mails/{id}/reply', [MailController::class, 'reply'])->name('mails.reply');
+    //     Route::post('/mails/{id}/sendReply', [MailController::class, 'sendReply'])->name('mails.sendReply');
 
-        Route::post('/mails/bulk-action', [MailController::class, 'bulkAction'])->name('mails.bulkAction');
+    //     Route::post('/mails/bulk-action', [MailController::class, 'bulkAction'])->name('mails.bulkAction');
 
-        Route::resource('/ticket_categories', TicketCategoryController::class);
+    //     Route::resource('/ticket_categories', TicketCategoryController::class);
 
-        Route::put('/tickets/{id}/update/{field}', [TicketController::class, 'updateField'])->name('tickets.update_field');
+    //     Route::put('/tickets/{id}/update/{field}', [TicketController::class, 'updateField'])->name('tickets.update_field');
+
+
+    Route::get('/mails/inbox', [MailController::class, 'inbox'])->name('mails.inbox');
+    Route::get('/mails/starred', [MailController::class, 'starred'])->name('mails.starred');
+    Route::get('/mails/important', [MailController::class, 'important'])->name('mails.important');
+    Route::get('/mails/drafts', [MailController::class, 'drafts'])->name('mails.drafts');
+    Route::get('/mails/sent', [MailController::class, 'sent'])->name('mails.sent');
+    Route::get('/mails/trash', [MailController::class, 'trash'])->name('mails.trash');
+
+    Route::get('/mails/compose', [MailController::class, 'compose'])->name('mails.compose');
+    Route::post('/mails/send', [MailController::class, 'send'])->name('mails.send');
+
+    Route::get('/mails/forward/{id}', [MailController::class, 'forward'])->name('mails.forward');
+    Route::get('/mails/reply/{id}', [MailController::class, 'reply'])->name('mails.reply');
+
+    Route::post('/mails/send-reply/{mail}', [MailController::class, 'sendReply'])->name('mails.sendReply');
+
+    Route::patch('/mails/{mail}/star', [MailController::class, 'markStarred'])->name('mails.markStarred');
+    Route::patch('/mails/{mail}/important', [MailController::class, 'markImportant'])->name('mails.markImportant');
+    Route::patch('/mails/{mail}/trash', [MailController::class, 'moveTrash'])->name('mails.moveTrash');
+
+    Route::post('/mails/bulk-action', [MailController::class, 'bulkAction'])->name('mails.bulkAction');
 
         
 

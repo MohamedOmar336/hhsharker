@@ -46,7 +46,7 @@
                             <th scope="col">{{ __('general.attributes.email') }}</th>
                             <th scope="col">{{ __('general.attributes.phone') }}</th>
                             <th scope="col">{{ __('general.attributes.status') }}</th>
-                            <th scope="col">{{ __('general.attributes.actions') }}</th>
+                            <th style="width: 10%;">{{ __('general.attributes.actions') }}</th>
                         </tr>
                     </x-slot>
 

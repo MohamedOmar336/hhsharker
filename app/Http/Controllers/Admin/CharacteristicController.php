@@ -36,28 +36,20 @@ class CharacteristicController extends Controller
             'name_ar' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:svg,png|max:2048',
         ]);
-
-        $imagePath = null;
-        // if ($request->hasFile('image')) {
-        //     $imagePath = $request->file('image')->store('images', 'public');
-        // }
-        if ($request->has('image')) {
-
-            $imageName = uploadImage($request->file('image'));
-
-            $imagePath = $imageName;
+    
+        $characteristic = new Characteristic;
+        $characteristic->name_en = $request->name_en;
+        $characteristic->name_ar = $request->name_ar;
+    
+        if ($request->hasFile('image')) {
+            $characteristic->image = $request->file('image')->store('characteristics');
         }
-
-        Characteristic::create([
-            'name_en' => $request->name_en,
-            'name_ar' => $request->name_ar,
-            'image' => $imagePath,
-            'image_type' => $request->file('image')->getClientOriginalExtension(),
-        ]);
-
-        return redirect()->route('characteristics.index')->with('success', 'Characteristic created successfully.');
+    
+        $characteristic->save();
+    
+        return response()->json(['success' => true, 'characteristic' => $characteristic]);
     }
-
+    
     public function show(Characteristic $characteristic)
     {
         return view('characteristics.show', compact('characteristic'));
