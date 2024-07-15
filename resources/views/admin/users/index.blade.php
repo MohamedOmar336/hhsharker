@@ -20,9 +20,13 @@
                                 </ol>
                             </div>
                             <div class="col-md-12">
-                                <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
-                                    <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
-                                </a>
+                                <a href="{{ URL::previous() }}">
+                            @if (app()->isLocale('ar'))
+                                <i data-feather="arrow-right-circle"></i> <!-- Arabic locale -->
+                            @else
+                                <i data-feather="arrow-left-circle"></i> <!-- Default locale -->
+                            @endif
+                        </a>
                                 <h4 class="page-title">
                                        {{ __('general.list') }}
                                 </h4>
@@ -42,12 +46,12 @@
                             <th scope="col">{{ __('general.attributes.email') }}</th>
                             <th scope="col">{{ __('general.attributes.phone') }}</th>
                             <th scope="col">{{ __('general.attributes.status') }}</th>
-                            <th scope="col">{{ __('general.attributes.actions') }}</th>
+                            <th style="width: 10%;">{{ __('general.attributes.actions') }}</th>
                         </tr>
                     </x-slot>
 
                     @foreach ($records as $record)
-                        <tr>
+                        <tr class="table-body">
                             <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
                             <td><img src="{{ isset($record->image) ? asset('images/' . $record->image) : asset('assets-admin/images/user.png') }}"
                                     alt="" class="rounded-circle thumb-sm me-1">
@@ -62,13 +66,13 @@
                                 <td><span class="badge badge-soft-danger">Deactivated</span></td>
                             @endif
                             <td>
-                                <a href="{{ route('users.edit', $record->id) }}" class="btn btn-sm btn-primary">{{ __('general.btn.edit') }}</a>
-                                <form action="{{ route('users.destroy', $record->id) }}" method="POST"
+                                <a href="{{ route('users.edit', $record->id) }}"><i data-feather="edit"></i></a>
+                                <form action="{{ route('users.destroy', $record->id) }}" method="POST" class="delete-form"
                                     style="display: inline;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger"
-                                        onclick="return confirm('Are you sure you want to delete this user?')">{{ __('general.btn.delete') }}</button>
+                                    <button type="submit" class="btn delete-form"
+                                        onclick="return confirm('Are you sure you want to delete this user?')"><i data-feather="trash"></i></button>
                                 </form>
                             </td>
                         </tr>

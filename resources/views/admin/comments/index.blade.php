@@ -20,9 +20,13 @@
                             </ol>
                         </div>
                           <div class="col-md-12">
-                            <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
-                                <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
-                            </a>
+                            <a href="{{ URL::previous() }}">
+                            @if (app()->isLocale('ar'))
+                                <i data-feather="arrow-right-circle"></i> <!-- Arabic locale -->
+                            @else
+                                <i data-feather="arrow-left-circle"></i> <!-- Default locale -->
+                            @endif
+                        </a>
                       <h4 class="page-title">{{ __('general.attributes.comments') }}</h4>
                 </div>
 
@@ -40,11 +44,11 @@
                         <th>{{ __('general.attributes.email') }}</th>
                         <th>{{ __('general.attributes.comment') }}</th>
                         <th>{{ __('general.attributes.comment_date') }}</th>
-                        <th>{{ __('general.attributes.actions') }}</th>
+                        <th style="width: 15%;">{{ __('general.attributes.actions') }}</th>
                     </tr>
                 </x-slot>
                 @foreach ($records as $record)
-                    <tr>
+                    <tr class="table-body">
                         <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
                         <td>{{ optional($record->post)->title_en }}</td>
                         <td>{{ $record->commenter }}</td>
@@ -53,13 +57,13 @@
                         <td>{{ $record->comment_date }}</td>
                         <td>
                             <a href="{{ route('comments.edit', $record->id) }}"
-                                class="btn btn-sm btn-primary">{{ __('general.btn.edit') }}</a>
+                               ><i data-feather="edit"></i></a>
                             <form action="{{ route('comments.destroy', $record->id) }}" method="POST"
-                                style="display: inline;">
+                                style="display: inline;" class="delete-form">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger"
-                                    onclick="return confirm('{{ __('general.actions.confirm_delete') }}')">{{ __('general.btn.delete') }}</button>
+                                <button type="submit" class="btn delete-form"
+                                    onclick="return confirm('{{ __('general.actions.confirm_delete') }}')"><i data-feather="trash"></i></button>
                             </form>
                         </td>
                     </tr>

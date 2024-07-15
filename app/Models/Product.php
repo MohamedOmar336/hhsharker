@@ -1,54 +1,57 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Activitylog\Traits\LogsActivity;
-use Spatie\Activitylog\LogOptions;
 
 class Product extends Model
 {
-    use HasFactory, LogsActivity;
+    use HasFactory;
 
     protected $fillable = [
-        'name_ar',
-        'name_en',
-        'description_ar',
-        'description_en',
-        'slug',
-        'price',
-        'quantity',
-        'is_available',
-        'image_url',
+        'type',
+        'product_name_ar',
+        'product_name_en',
+        'product_description_ar',
+        'product_description_en',
         'category_id',
+        'subcategory_id',
         'model_number',
-        'power_supply',
-        'type_of_freon',
+        'status',
+        'catalog',
+        'image',
         'characteristics_en',
         'characteristics_ar',
-        'optional_features_en',
         'optional_features_ar',
-        'catalog_url',
-        'color'
+        'optional_features_en',
+        'best_selling',
+        'featured',
+        'recommended',
+        'hp_dimensions_volume_en',
+        'hp_dimensions_volume_ar',
+        'color',
+        'power_supply',
+        'type_freon',
+        'technical_specifications',
+        'saso_certificate',
     ];
 
-    /**
-     * Defines a belongs-to relationship between Product and Category models.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
+    protected $casts = [
+        'characteristics_en' => 'json',
+        'characteristics_ar' => 'json',
+        'best_selling' => 'boolean',
+        'featured' => 'boolean',
+        'recommended' => 'boolean',
+    ];
+
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
-    /**
-     * Configures the ActivityLog settings for the Product model.
-     */
-    public function getActivitylogOptions(): LogOptions
+    public function subcategory()
     {
-        return LogOptions::defaults()
-            ->logOnly(['name_ar', 'name_en', 'price', 'is_available']) // Update this as needed based on what you want to log
-            ->setDescriptionForEvent(fn(string $eventName) => "This model has been {$eventName}");
+        return $this->belongsTo(Category::class, 'subcategory_id');
     }
 }

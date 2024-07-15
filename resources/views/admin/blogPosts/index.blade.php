@@ -16,9 +16,13 @@
                             </ol>
                         </div>
                         <div class="col-md-12">
-                            <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
-                                <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
-                            </a>
+                            <a href="{{ URL::previous() }}">
+                            @if (app()->isLocale('ar'))
+                                <i data-feather="arrow-right-circle"></i> <!-- Arabic locale -->
+                            @else
+                                <i data-feather="arrow-left-circle"></i> <!-- Default locale -->
+                            @endif
+                        </a>
                             <h4 class="page-title">{{ __('general.side.blogs-list') }}</h4>
                         </div>
                     </div><!--end page-title-box-->
@@ -34,11 +38,11 @@
                         <th>{{ __('general.attributes.title_ar') }}</th>
                         <th>{{ __('general.attributes.author') }}</th>
                         <th>{{ __('general.attributes.status') }}</th>
-                        <th>{{ __('general.attributes.actions') }}</th>
+                        <th style="width: 10%;">{{ __('general.attributes.actions') }}</th>
                     </tr>
                 </x-slot>
                 @foreach ($records as $record)
-                    <tr>
+                    <tr class="table-body">
                         <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
                         <td><img src="{{ asset('images/' . $record->image) }}" alt="{{ $record->title_en }}" width="50"></td>
                         <td>{{ $record->title_en }}</td>
@@ -46,12 +50,11 @@
                         <td>{{ $record->author->user_name }}</td>
                         <td>{{ $record->status }}</td>
                         <td>
-                            <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#postModal{{ $record->id }}">{{ __('general.btn.view') }}</button>
-                            <a href="{{ route('blogposts.edit', $record->id) }}" class="btn btn-sm btn-primary">{{ __('general.btn.edit') }}</a>
-                            <form action="{{ route('blogposts.destroy', $record->id) }}" method="POST" style="display: inline;">
+                               <a href="{{ route('blogposts.edit', $record->id) }}"><i data-feather="edit"></i></a>
+                            <form action="{{ route('blogposts.destroy', $record->id) }}" method="POST" style="display: inline;" class="delete-form">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('{{ __('general.confirm.delete') }}')">{{ __('general.btn.delete') }}</button>
+                                <button type="submit" class="btn delete-form" onclick="return confirm('{{ __('general.confirm.delete') }}')"><i data-feather="trash"></i></button>
                             </form>
                         </td>
                     </tr>
@@ -67,36 +70,7 @@
             </x-table>
 
             <!-- Modals -->
-            @foreach ($records as $record)
-                <div class="modal fade" id="postModal{{ $record->id }}" tabindex="-1" role="dialog" aria-labelledby="postModal{{ $record->title_en }}Label" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="postModal{{ $record->id }}Label">{{ $record->title_en }}</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <p><strong>{{ __('general.attributes.title_en') }}:</strong> {{ $record->title_en }}</p>
-                                <p><strong>{{ __('general.attributes.title_ar') }}:</strong> {{ $record->title_ar }}</p>
-                                <p><strong>{{ __('general.attributes.content_en') }}:</strong></p>
-                                <p>{{ $record->content_en }}</p>
-                                <p><strong>{{ __('general.attributes.content_ar') }}:</strong></p>
-                                <p>{{ $record->content_ar }}</p>
-                                <p><strong>{{ __('general.attributes.author') }}:</strong> {{ $record->author->name }}</p>
-                                <p><strong>{{ __('general.attributes.status') }}:</strong> {{ $record->status }}</p>
-                                <p><strong>{{ __('general.attributes.post_date') }}:</strong> {{ $record->post_date }}</p>
-                                <img src="{{ asset('images/' . $record->image) }}" alt="{{ $record->title_en }}" width="50">
-                                <!-- Add other post details here -->
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-xs btn-primary" data-dismiss="modal">{{ __('general.actions.close') }}</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
+          
         </div><!-- container -->
     </div><!-- container -->
 @endsection

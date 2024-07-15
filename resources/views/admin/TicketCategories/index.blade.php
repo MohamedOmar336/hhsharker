@@ -14,8 +14,12 @@
                             </ol>
                         </div>
                         <div class="col-md-12">
-                            <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
-                                <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
+                            <a href="{{ URL::previous() }}">
+                                @if (app()->isLocale('ar'))
+                                    <i data-feather="arrow-right-circle"></i> <!-- Arabic locale -->
+                                @else
+                                    <i data-feather="arrow-left-circle"></i> <!-- Default locale -->
+                                @endif
                             </a>
                             <h4 class="page-title">{{ __('general.side.ticket_categories_list') }}</h4>
                         </div>
@@ -31,12 +35,12 @@
                         <th>{{ __('general.attributes.name_ar') }}</th>
                         <th>{{ __('general.attributes.name_en') }}</th>
                         <th>{{ __('general.attributes.children_categories') }}</th>
-                        <th>{{ __('general.attributes.actions') }}</th>
+                        <th style="width: 15%;">{{ __('general.attributes.actions') }}</th>
                     </tr>
                 </x-slot>
 
                 @foreach ($ticketCategories as $ticketCategory)
-                    <tr>
+                    <tr class="table-body">
                         <td><input type="checkbox" name="ids[]" value="{{ $ticketCategory->id }}"></td>
                         <td>
                             <img src="{{ $ticketCategory->image ? asset('images/' . $ticketCategory->image) : asset('assets-admin/images/no_image.png') }}" alt="{{ $ticketCategory->name }}" width="50">
@@ -55,11 +59,11 @@
                             @endif
                         </td>
                         <td>
-                            <a href="{{ route('ticket_categories.edit', $ticketCategory->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                        <form action="{{ route('ticket_categories.destroy', $ticketCategory->id) }}" method="POST" style="display:inline-block;">
+                            <a href="{{ route('ticket_categories.edit', $ticketCategory->id) }}"><i data-feather="edit"></i></a>
+                        <form action="{{ route('ticket_categories.destroy', $ticketCategory->id) }}" method="POST" style="display:inline-block;" class="delete-form">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this category?')">Delete</button>
+                            <button type="submit" class="btn delete-form" onclick="return confirm('Are you sure you want to delete this category?')"><i data-feather="trash"></i></button>
                         </form>
                         </td>
                     </tr>

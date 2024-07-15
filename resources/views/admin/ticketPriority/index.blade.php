@@ -16,9 +16,13 @@
               </ol>
             </div>
             <div class="col-md-12">
-              <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
-                <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'back-backward' }}"></span>
-              </a>
+              <a href="{{ URL::previous() }}">
+                @if (app()->isLocale('ar'))
+                    <i data-feather="arrow-right-circle"></i> <!-- Arabic locale -->
+                @else
+                    <i data-feather="arrow-left-circle"></i> <!-- Default locale -->
+                @endif
+            </a>
               <h4 class="page-title">
                 {{ __('general.list') }}
               </h4>
@@ -31,25 +35,25 @@
             <th>{{ __('general.attributes.name_arabic') }}</th>
             <th>{{ __('general.attributes.name_english') }}</th>
             <th>{{ __('general.attributes.status') }}</th>
-            <th>{{ __('general.attributes.actions') }}</th>
+            <th style="width: 15%;">{{ __('general.attributes.actions') }}</th>
           </tr>
         </x-slot>
 
         @foreach ($records as $record)
-          <tr>
+          <tr class="table-body">
             <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
             <td>{{ $record->Name_ar }}</td>
             <td>{{ $record->Name_en }}</td>
             <td>{{ $record->Status }}</td>
             <td>
-              <a href="{{ route('ticket-priorities.edit', $record->id) }}" class="btn btn-sm btn-primary">
-                {{ __('general.btn.edit') }}
+              <a href="{{ route('ticket-priorities.edit', $record->id) }}">
+                <i data-feather="edit"></i>
               </a>
               <form action="{{ route('ticket-priorities.destroy', $record->id) }}" method="POST" style="display:inline-block;">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('{{ __('general.confirm_delete') }}')">
-                  {{ __('general.btn.delete') }}
+                <button type="submit" class="btn delete-form" onclick="return confirm('{{ __('general.confirm_delete') }}')" class="delete-form">
+                  <i data-feather="trash"></i>
                 </button>
               </form>
             </td>

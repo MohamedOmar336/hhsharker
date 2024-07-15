@@ -15,9 +15,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <link href="{{ asset('assets-admin/libs/litepicker/css/litepicker.css') }}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    {{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"> --}}
+    <link href="{{ asset('assets-admin/css/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css">
+    <link href="{{ asset('assets-admin/css/choices.min.css') }}" rel="stylesheet" type="text/css" />
+{{--
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fontawesome-iconpicker/3.2.0/css/fontawesome-iconpicker.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fontawesome-iconpicker/3.2.0/js/fontawesome-iconpicker.min.js"></script> --}}
+
+
 
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('assets-admin/images/IMG_1465.png') }}">
@@ -93,13 +101,14 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    {{-- <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script> --}}
 
 
     <!-- vendor js -->
       <script src="{{ asset('assets-admin/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets-admin/libs/simplebar/simplebar.min.js') }}"></script>
     <script src="{{ asset('assets-admin/libs/feather-icons/feather.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/js/pages/form-wizard.js') }}"></script>
 
     <script src="{{ asset('assets-admin/libs/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets-admin/js/pages/analytics-index.init.js') }}"></script>
@@ -122,7 +131,8 @@
 
     <!-- App js -->
     <script src="{{ asset('assets-admin/js/app.js') }}"></script>
-
+    <!-- App js -->
+    <script src="{{ asset('assets-admin/js/jquery.dataTables.min.js') }}"></script>
 
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-messaging.js"></script>

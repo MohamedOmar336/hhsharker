@@ -18,8 +18,12 @@
                             </ol>
                         </div>
                         <div class="col-md-12">
-                            <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
-                                <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
+                            <a href="{{ URL::previous() }}">
+                                @if (app()->isLocale('ar'))
+                                    <i data-feather="arrow-right-circle"></i> <!-- Arabic locale -->
+                                @else
+                                    <i data-feather="arrow-left-circle"></i> <!-- Default locale -->
+                                @endif
                             </a>
                             <h4 class="page-title">{{ __('general.side.groups-list') }}</h4>
                         </div>
@@ -35,24 +39,24 @@
                         <th><input type="checkbox" id="select-all"></th>
                         <th>{{ __('general.attributes.name') }}</th>
                         <th scope="col">{{ __('general.attributes.description') }}</th>
-                        <th>{{ __('general.attributes.actions') }}</th>
+                        <th style="width: 15%;">{{ __('general.attributes.actions') }}</th>
                     </tr>
                 </x-slot>
                 @foreach ($records as $record)
-                    <tr>
+                    <tr class="table-body">
                         <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
 
                         <td>{{ $record->name }}</td>
                         <td>{!! $record->description !!}</td>
                         <td>
                             <a href="{{ route('groups.edit', $record->id) }}"
-                                class="btn btn-sm btn-primary">{{ __('general.btn.edit') }}</a>
+                                ><i data-feather="edit"></i></a>
                             <form action="{{ route('groups.destroy', $record->id) }}" method="POST"
-                                style="display: inline;">
+                                style="display: inline;" class="delete-form">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger"
-                                    onclick="return confirm('Are you sure you want to delete this contact?')">{{ __('general.btn.delete') }}</button>
+                                <button type="submit" class="btn delete-form"
+                                    onclick="return confirm('Are you sure you want to delete this contact?')"><i data-feather="trash"></i></button>
                             </form>
                         </td>
                     </tr>

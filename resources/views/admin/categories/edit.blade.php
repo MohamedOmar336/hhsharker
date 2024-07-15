@@ -16,9 +16,13 @@
                             </ol>
                         </div>
                         <div class="col-md-12">
-                            <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
-                                <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
-                            </a>
+                            <a href="{{ URL::previous() }}">
+                            @if (app()->isLocale('ar'))
+                                <i data-feather="arrow-right-circle"></i> <!-- Arabic locale -->
+                            @else
+                                <i data-feather="arrow-left-circle"></i> <!-- Default locale -->
+                            @endif
+                        </a>
                             <h4 class="page-title">{{ __('general.attributes.edit') }} - {{ __('general.attributes.categories') }}</h4>
                         </div>
                     </div><!--end page-title-box-->
@@ -51,7 +55,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="image" class="form-label">{{ __('general.attributes.image') }}</label>
+                                    <label for="image" class="form-label">{{ __('general.attributes.image') }}</label><br>
                                     <img src="{{ $category->image ? asset('images/' . $category->image) : asset('assets-admin/images/no_image.png') }}" alt="{{ $category->name }}" width="100"><br>
                                     <label for="image" class="form-label mt-2">Update Image</label>
                                     <input type="file" class="form-control" id="image" name="image">
@@ -85,7 +89,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <button type="submit" class="btn btn-primary">{{ __('general.btn.edit') }}</button>
+                                    <button type="submit" class="btn btn-sm btn-de-primary">{{ __('general.btn.edit') }}</button>
                                 </div>
                             </form>
                         </div> <!--end card-body-->

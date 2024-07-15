@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\MailboxController;
 use App\Http\Controllers\Admin\ActivityLogController;
 use App\Http\Controllers\Admin\AppointmentController;
 use App\Http\Controllers\Admin\BlogPostController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\RolesController;
+use App\Http\Controllers\Admin\SmtpSettingsController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\TicketController;
 use App\Http\Controllers\Admin\TicketHistoryController;
@@ -23,10 +25,13 @@ use App\Http\Controllers\Admin\TicketPriorityController;
 use App\Http\Controllers\Admin\TicketStatusController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\TicketCategoryController;
+use App\Http\Controllers\Admin\CharacteristicController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\WhatsAppController;
+use App\Http\Controllers\ContactUsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +62,12 @@ Route::group(['prefix' => 'admin'], function () {
         })->name('change.lang');
 
         Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+        Route::resource('/characteristics', CharacteristicController::class);
+
+        Route::get('/smtp-settings', [SmtpSettingsController::class, 'edit'])->name('smtp-settings.edit');
+        
+        Route::post('/smtp-settings', [SmtpSettingsController::class, 'update'])->name('smtp-settings.update');
 
         Route::resource('/products', ProductController::class);
 
@@ -159,10 +170,32 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::get('/contact/exports', [ContactController::class, 'export'])->name('contacts.export');
 
+
+    Route::get('/mails/inbox', [MailController::class, 'inbox'])->name('mails.inbox');
+    Route::get('/mails/starred', [MailController::class, 'starred'])->name('mails.starred');
+    Route::get('/mails/important', [MailController::class, 'important'])->name('mails.important');
+    Route::get('/mails/drafts', [MailController::class, 'drafts'])->name('mails.drafts');
+    Route::get('/mails/sent', [MailController::class, 'sent'])->name('mails.sent');
+    Route::get('/mails/trash', [MailController::class, 'trash'])->name('mails.trash');
+
+    Route::get('/mails/compose', [MailController::class, 'compose'])->name('mails.compose');
+    Route::post('/mails/send', [MailController::class, 'send'])->name('mails.send');
+
+    // Route::get('/mails/forward/{id}', [MailController::class, 'forward'])->name('mails.forward');
+    // Route::get('/mails/reply/{id}', [MailController::class, 'reply'])->name('mails.reply');
+
+    // Route::post('/mails/send-reply/{mail}', [MailController::class, 'sendReply'])->name('mails.sendReply');
+
+    Route::patch('/mails/{mail}/star', [MailController::class, 'markStarred'])->name('mails.markStarred');
+    Route::patch('/mails/{mail}/important', [MailController::class, 'markImportant'])->name('mails.markImportant');
+    Route::patch('/mails/{mail}/trash', [MailController::class, 'moveTrash'])->name('mails.moveTrash');
+
+    Route::post('/mails/bulk-action', [MailController::class, 'bulkAction'])->name('mails.bulkAction');
+
+
+
     });
 });
-
-
 
 
 // Front Routes
@@ -171,3 +204,7 @@ Route::view('/about', 'website.about')->name('about');
 Route::view('/founders', 'website.founders')->name('founders');
 Route::view('/vision', 'website.vision')->name('vision');
 Route::view('/lcac', 'website.lcac')->name('lcac');
+
+
+Route::get('/test/create', [ContactUsController::class, 'create'])->name('test.create');
+Route::post('/test', [ContactUsController::class, 'store'])->name('test.store');

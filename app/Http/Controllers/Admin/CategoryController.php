@@ -81,6 +81,8 @@ class CategoryController extends Controller
         return redirect()->route('categories.index')->with('success', 'Category created successfully.');
     }
 
+
+
     public function edit(Category $category)
 {
     $records = Category::select('id', 'name_' . app()->getLocale() . ' as name')->orderBy('id', 'asc')->get();
@@ -105,24 +107,24 @@ class CategoryController extends Controller
             'parent_id' => 'nullable|exists:categories,id',
             'active' => 'boolean',
         ]);
-    
+
         $category->fill($validatedData);
-    
+
         if ($request->hasFile('image')) {
             $imageName = uploadImage($request->file('image'));
             $category->image = $imageName;
         }
-    
+
         // Update the slug if necessary
         $slug = slugable($category->name_en);
         $category->slug = Category::where('slug', $slug)->where('id', '!=', $category->id)->exists() ? slugable($category->name_en, $category->id) : $slug;
-    
+
         $category->save();
-    
+
         // Redirect back to the index page with a success message
         return redirect()->route('categories.index')->with('success', 'Category updated successfully.');
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *

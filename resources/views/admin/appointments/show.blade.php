@@ -22,9 +22,13 @@
                             </ol>
                         </div>
                         <div class="col-md-12">
-                            <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
-                                <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
-                            </a>
+                            <a href="{{ URL::previous() }}">
+                            @if (app()->isLocale('ar'))
+                                <i data-feather="arrow-right-circle"></i> <!-- Arabic locale -->
+                            @else
+                                <i data-feather="arrow-left-circle"></i> <!-- Default locale -->
+                            @endif
+                        </a>
                             <h4 class="page-title">
                                 {{ __('general.attributes.appointment') }} - {{ $appointment->id }}
                             </h4>
@@ -80,14 +84,14 @@
                                   </div><!--end col-->
                                   <div class="col-lg-12 col-xl-4">
                                       <div class="float-end d-print-none mt-2 mt-md-0">
-                                        <a href="{{ route('appointments.edit', $appointment) }}" class="btn btn-sm btn-primary">
+                                        <a href="{{ route('appointments.edit', $appointment) }}" class="btn btn-sm btn-de-primary">
                                           {{ __('general.btn.edit') }}
                                       </a>
                                       <form action="{{ route('appointments.destroy', $appointment) }}" method="POST"
                                           style="display:inline-block;">
                                           @csrf
                                           @method('DELETE')
-                                          <button type="submit" class="btn btn-sm btn-danger">
+                                          <button type="submit" class="btn btn-sm btn-de-primary">
                                               {{ __('general.btn.delete') }}
                                           </button>
                                       </form>

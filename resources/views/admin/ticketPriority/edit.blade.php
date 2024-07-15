@@ -14,9 +14,13 @@
               </ol>
             </div>
             <div class="col-md-12">
-              <a href="{{ URL::previous() }}" class="btn btn-xs btn-primary">
-                <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
-              </a>
+              <a href="{{ URL::previous() }}">
+                @if (app()->isLocale('ar'))
+                    <i data-feather="arrow-right-circle"></i> <!-- Arabic locale -->
+                @else
+                    <i data-feather="arrow-left-circle"></i> <!-- Default locale -->
+                @endif
+            </a>
               <h4 class="page-title">
                 {{ __('general.attributes.edit-priority') }}
               </h4>
@@ -60,7 +64,7 @@
                       @enderror
                     </div>
                     <div class="mb-3">
-                      <button type="submit" class="btn btn-primary">{{ __('general.btn.edit') }}</button>
+                      <button type="submit" class="btn btn-sm btn-de-primary">{{ __('general.btn.edit') }}</button>
                   </div>
                   </form>
                 </div></div></div></div></div></div>@endsection
