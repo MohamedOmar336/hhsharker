@@ -39,46 +39,30 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        // Validate the incoming request data.
-        $validatedData = $request->validate([
+        $request->validate([
             'type' => 'required|string|max:255',
-            'product_name_ar' => 'required|string|max:255',
-            'product_name_en' => 'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'category_id' => 'nullable|exists:categories,id',
-            'model_number' => 'nullable|string|max:100',
-            'status' => 'nullable|string|max:50',
-            'catalog' => 'nullable|file|mimes:pdf|max:2048',
-            'hp_dimensions_volume_ar' => 'nullable|string|max:255',
-            'hp_dimensions_volume_en' => 'nullable|string|max:255',
-            'color' => 'nullable|string|max:255',
-            'characteristics_ar' => 'nullable|array',
-            'characteristics_en' => 'nullable|array',
-            'optional_features_ar' => 'nullable|string|max:255',
-            'optional_features_en' => 'nullable|string|max:255',
-            'best_selling' => 'nullable|boolean',
-            'featured' => 'nullable|boolean',
-            'recommended' => 'nullable|boolean',
-            'power_supply' => 'nullable|string|max:100',
-            'type_freon' => 'nullable|string|max:100',
-            'technical_specifications' => 'nullable|string|max:255',
-            'saso_certificate' => 'nullable|string',
+            // add back any other required validation rules
         ]);
-    
-      
-    //    dd($validatedData);
-        
+
+        // Assuming 'characteristics_en' and 'characteristics_ar' are the only array expected fields:
+        $data = $request->except('_token');
+
+        // Manually encode arrays to JSON strings
+        if (isset($data['color'])) {
+            $data['color'] = json_encode($data['color']);
+        }
+        if (isset($data['characteristics_en'])) {
+            $data['characteristics_en'] = json_encode($data['characteristics_en']);
+        }
+
         // Create a new Product instance and fill it with validated data
-        $Products=Product::create($validatedData);
-    
-        // Debugging: Dump and die to inspect validated data
-        
-    
+        $product = Product::create($data);
+
         // Redirect back to the index page with a success message
         return redirect()->route('products.index')->with('success', 'Product created successfully.');
     }
-    
-    
+
+
     public function edit(Product $product)
     {
         $categories = Category::where('level', 1)->where('active', true)->get();
@@ -88,37 +72,15 @@ class ProductController extends Controller
 
     public function update(Request $request, Product $product)
     {
-        $validator = Validator::make($request->all(), [
-            'type' => 'required|string',
-            'product_name_ar' => 'required|string|max:191',
-            'product_name_en' => 'required|string|max:191',
-            'product_description_ar' => 'nullable|string',
-            'product_description_en' => 'nullable|string',
-            'category_id' => 'required|exists:categories,id',
-            'subcategory_id' => 'nullable|exists:categories,id',
-            'model_number' => 'nullable|string|max:191',
-            'status' => 'nullable|string|max:191',
-            'catalog' => 'nullable|string|max:191',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'characteristics_en.*' => 'nullable|exists:characteristics,id',
-            'characteristics_ar.*' => 'nullable|exists:characteristics,id',
-            'optional_features_ar' => 'nullable|string|max:191',
-            'optional_features_en' => 'nullable|string|max:191',
-            'best_selling' => 'nullable|boolean',
-            'featured' => 'nullable|boolean',
-            'recommended' => 'nullable|boolean',
-            'hp_dimensions_volume_en' => 'nullable|string|max:191',
-            'hp_dimensions_volume_ar' => 'nullable|string|max:191',
-            'color' => 'nullable|string|max:191',
-            'power_supply' => 'nullable|string|max:191',
-            'type_freon' => 'nullable|string|max:191',
-            'technical_specifications' => 'nullable|string',
-            'saso_certificate' => 'nullable|string',
+
+        $request->validate([
+            'type' => 'required|string|max:255',
+            // add back any other required validation rules
         ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
+        // if ($validator->fails()) {
+        //     return redirect()->back()->withErrors($validator)->withInput();
+        // }
 
         // Handle image update if provided
         if ($request->hasFile('image')) {

@@ -49,49 +49,38 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         // Validate the incoming request data.
-        $validatedData = $request->validate([
-            'product_type' => 'required|string|max:255',
-            'product_name_ar' => 'required|string|max:255',
-            'product_name_en' => 'required|string|max:255',
+        $data = $request->validate([
+            'name_ar' => 'required|string',
+            'name_en' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'category_id' => 'nullable|exists:categories,id',
-            'model_number' => 'nullable|string|max:100',
-            'status' => 'nullable|string|max:50',
-            'catalog' => 'nullable|file|mimes:pdf|max:2048',
-            'hp_dimensions_volume_ar' => 'nullable|string|max:255',
-            'hp_dimensions_volume_en' => 'nullable|string|max:255',
-            'color' => 'nullable|array',
-            'characteristics_ar' => 'nullable|array',
-            'characteristics_ar.*' => 'exists:characteristics,id',
-            'characteristics_en' => 'nullable|array',
-            'characteristics_en.*' => 'exists:characteristics,id',
-            'optional_features_ar' => 'nullable|string|max:255',
-            'optional_features_en' => 'nullable|string|max:255',
-            'best_selling' => 'nullable|boolean',
-            'featured' => 'nullable|boolean',
-            'recommended' => 'nullable|boolean',
-            'power_supply' => 'nullable|string|max:100',
-            'type_freon' => 'nullable|string|max:100',
-            'technical_specifications' => 'nullable|string|max:255',
-            'saso_certificate' => 'nullable|string',
+            'parent_id' => 'nullable',
+            'level' => 'integer',
+            'id_path' => 'string',
+            'slug' => 'nullable|string',
+            'active' => 'boolean',
         ]);
-        dd($validatedData);
-        // Handle image upload if present
-        if ($request->hasFile('image')) {
+        $data = $request->all();
+
+        if ($request->has('image')) {
+
             $imageName = uploadImage($request->file('image'));
-            $validatedData['image'] = $imageName;
+
+            $data['image'] = $imageName;
         }
-        dd($validatedData);
-        // Create a new Product instance and fill it with validated data
-        Product::create($validatedData);
-    
-        // Debugging: Dump and die to inspect validated data
-        dd($validatedData);
-    
+
+        $record = Category::create($data);
+
+        $slug = slugable($record->name_en);
+
+        $record->update([
+            'slug' => Category::whereSlug($slug)->where('id', '!=', $record->id)->exists() ? slugable($record->name_en, $record->id) : $slug,
+        ]);
+
+        session()->flash('success', __('messages.added_successfully'));
         // Redirect back to the index page with a success message
-        return redirect()->route('products.index')->with('success', 'Product created successfully.');
+        return redirect()->route('categories.index')->with('success', 'Category created successfully.');
     }
-    
+
 
 
     public function edit(Category $category)
@@ -118,24 +107,24 @@ class CategoryController extends Controller
             'parent_id' => 'nullable|exists:categories,id',
             'active' => 'boolean',
         ]);
-    
+
         $category->fill($validatedData);
-    
+
         if ($request->hasFile('image')) {
             $imageName = uploadImage($request->file('image'));
             $category->image = $imageName;
         }
-    
+
         // Update the slug if necessary
         $slug = slugable($category->name_en);
         $category->slug = Category::where('slug', $slug)->where('id', '!=', $category->id)->exists() ? slugable($category->name_en, $category->id) : $slug;
-    
+
         $category->save();
-    
+
         // Redirect back to the index page with a success message
         return redirect()->route('categories.index')->with('success', 'Category updated successfully.');
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *

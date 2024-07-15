@@ -62,11 +62,11 @@
                             <img src="{{ $record->image_url ? asset('images/' . $record->image_url) : asset('assets-admin/images/no_image.png') }}"
                                 alt="{{ $record->name }}" width="50">
                         </td>
-                        <td scope="col">{{ $record->name_ar }}</td>
-                        <td scope="col">{{ $record->name_en }}</td>
-                        <td scope="col">{{ $record->description_ar }}</td>
-                        <td scope="col">{{ $record->description_en }}</td>
-                        <td scope="col">{{ $record->is_available ? 'Yes' : 'No' }}</td>
+                        <td scope="col">{{ $record->product_name_ar }}</td>
+                        <td scope="col">{{ $record->product_name_en }}</td>
+                        <td scope="col">{{ $record->product_description_ar }}</td>
+                        <td scope="col">{{ $record->product_description_en }}</td>
+                        <td scope="col">{{ $record->status ? 'Yes' : 'No' }}</td>
                         <td scope="col">{{ $record->category ? $record->category->name_en : 'Uncategorized' }}</td>
                         <td scope="col">
                             <a href="{{ route('products.edit', $record->id) }}"><i data-feather="edit"></i></a>
