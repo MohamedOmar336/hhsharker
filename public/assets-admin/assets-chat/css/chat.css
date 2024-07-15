@@ -9,7 +9,7 @@
     --bs-sidebar-bg:#fff;
     --bs-sidebar-menu-item-color:#878a92;
     --bs-sidebar-menu-item-active-color:var(--bs-primary);
-    --bs-sidebar-menu-item-active-bg:#f7f7ff;
+    --bs-sidebar-menu-item-active-bg:#e6e9f4;
     --bs-sidebar-sub-bg:#f5f7fb;
     --bs-theme-mode-icon:"";
     --bs-accordion-button-bg:#f5f7fb;
@@ -187,7 +187,7 @@
     -webkit-box-align:center;
     -ms-flex-align:center;
     align-items:center;
-    background-color:#7269ef;
+    background-color:#111628;
     color:#fff;
     display:-webkit-box;
     display:-ms-flexbox;
@@ -326,8 +326,8 @@
     text-align:left
 }
 .custom-checkbox-primary .custom-control-input:checked~.custom-control-label:before,.custom-radio-primary .custom-control-input:checked~.custom-control-label:before{
-    background-color:#7269ef;
-    border-color:#7269ef
+    background-color:#111628;
+    border-color:#111628
 }
 .custom-checkbox-secondary .custom-control-input:checked~.custom-control-label:before,.custom-radio-secondary .custom-control-input:checked~.custom-control-label:before{
     background-color:#7a7f9a;
@@ -637,7 +637,8 @@
     display:flex;
     z-index:9;
     -webkit-box-shadow:0 2px 4px rgba(15,34,58,.12);
-    box-shadow:0 2px 4px rgba(15,34,58,.12)
+    box-shadow:0 2px 4px rgba(15,34,58,.12);
+    border-radius: 32px;
 }
 @media (max-width:991.98px){
     .side-menu{
@@ -704,11 +705,11 @@
 }
 .side-menu-nav .nav-item .nav-link.active{
     background-color:var(--bs-sidebar-menu-item-active-bg);
-    color:#7269ef
+    color:#111628
 }
 .side-menu-nav .nav-item.show>.nav-link{
     background-color:var(--bs-sidebar-menu-item-active-bg);
-    color:#7269ef
+    color:#111628
 }
 .side-menu-nav .profile-user{
     height:36px;
@@ -718,7 +719,8 @@
 }
 .chat-leftsidebar{
     height:100vh;
-    background-color:var(--bs-sidebar-sub-bg)
+    background-color:var(--bs-sidebar-sub-bg);
+    border-radius: 32px;
 }
 @media (min-width:992px){
     .chat-leftsidebar{
@@ -788,11 +790,11 @@
     font-size:14px
 }
 .chat-list li.typing .chat-user-message{
-    color:#7269ef;
+    color:#111628;
     font-weight:500
 }
 .chat-list li.typing .chat-user-message .dot{
-    background-color:#7269ef
+    background-color:#111628
 }
 .chat-list li .unread-message{
     position:absolute;
@@ -845,7 +847,8 @@
     -webkit-box-shadow:0 2px 4px rgba(15,34,58,.12);
     box-shadow:0 2px 4px rgba(15,34,58,.12);
     -webkit-transition:all .4s;
-    transition:all .4s
+    transition:all .4s;
+    border-radius: 32px;
 }
 @media (max-width:991.98px){
     .user-chat{
