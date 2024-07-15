@@ -163,10 +163,10 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/mails/compose', [MailController::class, 'compose'])->name('mails.compose');
     Route::post('/mails/send', [MailController::class, 'send'])->name('mails.send');
 
-    Route::get('/mails/forward/{id}', [MailController::class, 'forward'])->name('mails.forward');
-    Route::get('/mails/reply/{id}', [MailController::class, 'reply'])->name('mails.reply');
+    // Route::get('/mails/forward/{id}', [MailController::class, 'forward'])->name('mails.forward');
+    // Route::get('/mails/reply/{id}', [MailController::class, 'reply'])->name('mails.reply');
 
-    Route::post('/mails/send-reply/{mail}', [MailController::class, 'sendReply'])->name('mails.sendReply');
+    // Route::post('/mails/send-reply/{mail}', [MailController::class, 'sendReply'])->name('mails.sendReply');
 
     Route::patch('/mails/{mail}/star', [MailController::class, 'markStarred'])->name('mails.markStarred');
     Route::patch('/mails/{mail}/important', [MailController::class, 'markImportant'])->name('mails.markImportant');

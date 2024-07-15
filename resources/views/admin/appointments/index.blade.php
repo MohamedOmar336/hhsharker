@@ -44,7 +44,6 @@
                         <th>{{ __('general.attributes.start_time') }}</th>
                         <th>{{ __('general.attributes.finish_time') }}</th>
                         <th>{{ __('general.attributes.status') }}</th>
-                        <th>{{ __('general.attributes.notes') }}</th>
                         <th style="width: 15%;">{{ __('general.attributes.actions') }}</th>
                     </tr>
                 </x-slot>
@@ -58,10 +57,9 @@
                         <td>{{ $record->start_time }}</td>
                         <td>{{ $record->finish_time }}</td>
                         <td>{{ $record->status }}</td>
-                        <td>{{ $record->notes }}</td>
                         <td>
                             <a href="{{ route('appointments.show', $record->id) }}" >
-                                {{ __('general.btn.view') }}
+                                <i data-feather="eye"></i>
                             </a>
                             <a href="{{ route('appointments.edit', $record->id) }}">
                                 <i data-feather="edit"></i>

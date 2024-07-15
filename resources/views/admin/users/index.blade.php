@@ -66,7 +66,7 @@
                                 <td><span class="badge badge-soft-danger">Deactivated</span></td>
                             @endif
                             <td>
-                                <a href="{{ route('users.edit', $record->id) }}" class="btn btn-sm btn-primary">{{ __('general.btn.edit') }}</a>
+                                <a href="{{ route('users.edit', $record->id) }}"><i data-feather="edit"></i></a>
                                 <form action="{{ route('users.destroy', $record->id) }}" method="POST" class="delete-form"
                                     style="display: inline;">
                                     @csrf
