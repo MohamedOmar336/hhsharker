@@ -44,7 +44,7 @@ class BlogPostController extends Controller
     {
         $authors = User::all();
         $tags = Tag::latest()->paginate(EnumsSettings::Paginate);;
-        return view('admin.blogposts.create', compact('authors', 'tags'));
+        return view('admin.blogPosts.create', compact('authors', 'tags'));
     }
 
     /**
@@ -93,7 +93,7 @@ class BlogPostController extends Controller
         $tags = Tag::all();
         $authors = User::all();
         $postTags = $post->tags;
-        return view('admin.blogposts.edit', compact('post', 'authors', 'tags', 'postTags'));
+        return view('admin.blogPosts.edit', compact('post', 'authors', 'tags', 'postTags'));
     }
 
     /**
@@ -170,6 +170,6 @@ class BlogPostController extends Controller
     public function show($id)
     {
         $post = BlogPost::findOrFail($id);
-        return view('admin.blogposts.show', compact('post'));
+        return view('admin.blogPosts.show', compact('post'));
     }
 }
