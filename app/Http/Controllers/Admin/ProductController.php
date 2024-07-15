@@ -3,185 +3,146 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Characteristic;
 use App\Models\Product;
 use App\Models\Category;
-use App\Models\Characteristic;
-use App\Enums\EnumsSettings;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the products.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function index(Request $request)
+    public function index()
     {
-        $Characteristics = Characteristic::all();
-        $categories = Category::all();
-        $query = Product::query();
-
-        if ($request->has('search')) {
-            $query->where('name_ar', 'LIKE', "%{$request->search}%")
-                ->orWhere('name_en', 'LIKE', "%{$request->search}%")
-                ->orWhere('description_ar', 'LIKE', "%{$request->search}%")
-                ->orWhere('description_en', 'LIKE', "%{$request->search}%");
-        }
-
-        $records = $query->paginate(500);
-
-        return view('admin.products.index', compact('records','categories'));
+        $characteristics = Characteristic::all();
+        $records = Product::orderBy('created_at', 'desc')->paginate(10);
+        return view('admin.products.index', compact('records', 'characteristics'));
     }
 
-    /**
-     * Show the form for creating a new product.
-     *
-     * @return \Illuminate\View\View
-     */
     public function create()
     {
-        $Characteristics = Characteristic::all();
-        $categories = Category::all();
-        return view('admin.products.create', compact('categories','Characteristics'));
+        $categories = Category::where('level', 1)->where('active', true)->get();
+        $characteristics = Characteristic::all();
+        return view('admin.products.create', compact('categories', 'characteristics'));
     }
 
-    /**
-     * Store a newly created product in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'name_ar' => 'required|string',
-            'name_en' => 'required|string',
-            'description_ar' => 'required|string',
-            'description_en' => 'required|string',
-            'model_number' => 'nullable|string',
-            'power_supply' => 'nullable|string',
-            'type_of_freon' => 'nullable|string',
-            'characteristics_en' => 'nullable|string',
-            'characteristics_ar' => 'nullable|string',
-            'optional_features_en' => 'nullable|string',
-            'optional_features_ar' => 'nullable|string',
-            'price' => 'required|numeric',
-            'quantity' => 'required|integer',
-            'is_available' => 'nullable|boolean',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        $validator = Validator::make($request->all(), [
+            'type' => 'nullable|string',
+            'product_name_ar' => 'required|string|max:191',
+            'product_name_en' => 'nullable|string|max:191',
+            'product_description_ar' => 'nullable|string',
+            'product_description_en' => 'nullable|string',
             'category_id' => 'nullable|exists:categories,id',
-        ]);
-
-        $imageName = uploadImage($request->file('image'));
-        $data['image_url'] = $imageName;
-
-        $record = Product::create($data);
-
-        $slug = slugable($record->name_en);
-        $record->update([
-            'slug' => Product::whereSlug($slug)->where('id', '!=', $record->id)->exists() ? slugable($record->name_en, $record->id) : $slug,
-        ]);
-
-        session()->flash('success', __('messages.added_successfully'));
-
-        return redirect()->route('products.index');
-    }
-
-
-    /**
-     * Show the form for editing the specified product.
-     *
-     * @param  int  $id
-     * @return \Illuminate\View\View
-     */
-    public function edit($id)
-    {
-        $product = Product::findOrFail($id);
-        $categories = Category::all();
-        return view('admin.products.edit', compact('product', 'categories'));
-    }
-
-    /**
-     * Update the specified product in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function update(Request $request, $id)
-    {
-        $record = Product::findOrFail($id);
-
-        $validatedData = $request->validate([
-            'name_ar' => 'required|string',
-            'name_en' => 'required|string',
-            'description_ar' => 'required|string',
-            'description_en' => 'required|string',
-            'model_number' => 'nullable|string',
-            'power_supply' => 'nullable|string',
-            'type_of_freon' => 'nullable|string',
-            'characteristics_en' => 'nullable|string',
-            'characteristics_ar' => 'nullable|string',
-            'optional_features_en' => 'nullable|string',
-            'optional_features_ar' => 'nullable|string',
-            'price' => 'required|numeric',
-            'quantity' => 'required|integer',
-            'is_available' => 'nullable|boolean',
+            'subcategory_id' => 'nullable|exists:categories,id',
+            'model_number' => 'nullable|string|max:191',
+            'status' => 'nullable|string|max:191',
+            'catalog' => 'nullable|file|max:2048', // Adjusted for file upload
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'category_id' => 'nullable|exists:categories,id',
+            'characteristics_en.*' => 'nullable|exists:characteristics,id',
+            'characteristics_ar.*' => 'nullable|exists:characteristics,id',
+            'optional_features_ar' => 'nullable|string|max:191',
+            'optional_features_en' => 'nullable|string|max:191',
+            'best_selling' => 'nullable|boolean',
+            'featured' => 'nullable|boolean',
+            'recommended' => 'nullable|boolean',
+            'hp_dimensions_volume_en' => 'nullable|string|max:191',
+            'hp_dimensions_volume_ar' => 'nullable|string|max:191',
+            'color' => 'nullable|string|max:191',
+            'power_supply' => 'nullable|string|max:191',
+            'type_freon' => 'nullable|string|max:191',
+            'technical_specifications' => 'nullable|string',
+            'saso_certificate' => 'nullable|string',
+        ]);
+    
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+    
+        // Handle image upload if provided
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('products/images', 'public');
+            $request->merge(['image' => $imagePath]);
+        }
+    
+        // Handle catalog file upload if provided
+        if ($request->hasFile('catalog')) {
+            $catalogPath = $request->file('catalog')->store('products/catalogs', 'public');
+            $request->merge(['catalog' => $catalogPath]);
+        }
+    
+        // Create the product
+        Product::create($request->all());
+    
+        return redirect()->route('products.index')->with('success', 'Product added successfully!');
+    }
+    
+    public function edit(Product $product)
+    {
+        $categories = Category::where('level', 1)->where('active', true)->get();
+        $characteristics = Characteristic::all(); // Replace with your characteristic model
+        return view('admin.products.edit', compact('product', 'categories', 'characteristics'));
+    }
+
+    public function update(Request $request, Product $product)
+    {
+        $validator = Validator::make($request->all(), [
+            'type' => 'required|string',
+            'product_name_ar' => 'required|string|max:191',
+            'product_name_en' => 'required|string|max:191',
+            'product_description_ar' => 'nullable|string',
+            'product_description_en' => 'nullable|string',
+            'category_id' => 'required|exists:categories,id',
+            'subcategory_id' => 'nullable|exists:categories,id',
+            'model_number' => 'nullable|string|max:191',
+            'status' => 'nullable|string|max:191',
+            'catalog' => 'nullable|string|max:191',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'characteristics_en.*' => 'nullable|exists:characteristics,id',
+            'characteristics_ar.*' => 'nullable|exists:characteristics,id',
+            'optional_features_ar' => 'nullable|string|max:191',
+            'optional_features_en' => 'nullable|string|max:191',
+            'best_selling' => 'nullable|boolean',
+            'featured' => 'nullable|boolean',
+            'recommended' => 'nullable|boolean',
+            'hp_dimensions_volume_en' => 'nullable|string|max:191',
+            'hp_dimensions_volume_ar' => 'nullable|string|max:191',
+            'color' => 'nullable|string|max:191',
+            'power_supply' => 'nullable|string|max:191',
+            'type_freon' => 'nullable|string|max:191',
+            'technical_specifications' => 'nullable|string',
+            'saso_certificate' => 'nullable|string',
         ]);
 
-        $record->fill($validatedData);
-
-        if ($request->hasFile('image')) {
-            $imageName = uploadImage($request->file('image'));
-            $record->image_url = $imageName;
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $record->save();
+        // Handle image update if provided
+        if ($request->hasFile('image')) {
+            // Delete previous image if exists
+            if ($product->image && file_exists(storage_path("app/public/{$product->image}"))) {
+                unlink(storage_path("app/public/{$product->image}"));
+            }
+            // Upload new image
+            $imagePath = $request->file('image')->store('products/images', 'public');
+            $request->merge(['image' => $imagePath]);
+        }
 
-        // Update the slug if necessary
-        $slug = slugable($record->name_en);
-        $record->update([
-            'slug' => Product::whereSlug($slug)->where('id', '!=', $record->id)->exists() ? slugable($record->name_en, $record->id) : $slug,
-        ]);
+        $product->update($request->all());
 
-        return redirect()->route('products.index')->with('success', 'Product updated successfully.');
+        return redirect()->route('products.index')->with('success', 'Product updated successfully!');
     }
 
-    /**
-     * Remove the specified product from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        $product = Product::findOrFail($id);
+        // Delete associated image if exists
+        if ($product->image && file_exists(storage_path("app/public/{$product->image}"))) {
+            unlink(storage_path("app/public/{$product->image}"));
+        }
+
         $product->delete();
 
-        return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
-    }
-
-
-    /**
-     * Mass Delete the products.
-     *
-     * @return \Illuminate\Http\Response
-    **/
-    public function massDestroy()
-    {
-        $recordIds = request()->input('ids');
-
-        foreach ($recordIds as $recordId) {
-            $record = Product::find($recordId);
-
-            if (isset($record)) {
-                $record->delete($recordId);
-            }
-        }
-        return redirect()->route('products.index')
-            ->with('success', 'Products deleted successfully.');
+        return redirect()->route('products.index')->with('success', 'Product deleted successfully!');
     }
 }

@@ -49,8 +49,6 @@
                         <th scope="col">{{ __('general.attributes.name_en') }}</th>
                         <th scope="col">{{ __('general.attributes.description_ar') }}</th>
                         <th scope="col">{{ __('general.attributes.description_en') }}</th>
-                        <th scope="col">{{ __('general.attributes.price') }}</th>
-                        <th scope="col">{{ __('general.attributes.qty') }}</th>
                         <th scope="col">{{ __('general.attributes.state') }}</th>
                         <th scope="col">{{ __('general.attributes.category') }}</th>
                         <th style="width: 10%;">{{ __('general.attributes.actions') }}</th>
@@ -68,8 +66,6 @@
                         <td scope="col">{{ $record->name_en }}</td>
                         <td scope="col">{{ $record->description_ar }}</td>
                         <td scope="col">{{ $record->description_en }}</td>
-                        <td scope="col">{{ $record->price }}</td>
-                        <td scope="col">{{ $record->quantity }}</td>
                         <td scope="col">{{ $record->is_available ? 'Yes' : 'No' }}</td>
                         <td scope="col">{{ $record->category ? $record->category->name_en : 'Uncategorized' }}</td>
                         <td scope="col">
