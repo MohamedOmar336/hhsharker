@@ -58,6 +58,16 @@
                                             <div class="tab-content" id="product-nav-tabContent">
                                                 <div class="tab-pane active" id="step1"><br>
                                                     <!-- Product Details Fields -->
+
+                                                    <div class="mb-3" style="display:none;">
+                                                        <label for="type" class="form-label">Product Type:</label>
+                                                        <input type="hidden" id="productType" name="type" value="{{ old('type') }}">
+                                                        @error('type')
+                                                            <div class="invalid-feedback">
+                                                                {{ $message }}
+                                                            </div>
+                                                        @enderror
+                                                    </div>
                                                     <div class="mb-3">
                                                         <label for="product_name_ar" class="form-label">Product name (in Arabic):</label>
                                                         <input id="product_name_ar" type="text" class="form-control @error('product_name_ar') is-invalid @enderror" name="product_name_ar" value="{{ old('product_name_ar') }}"  >
@@ -99,8 +109,9 @@
                                                     <div class="mb-3">
                                                         <label for="category" class="form-label">Category:</label>
                                                         <select id="category" class="form-control @error('category') is-invalid @enderror" name="category">
-                                                            <option>Select category</option>
-                                                            <!-- Add options here -->
+                                                            @foreach($categories as $category)
+                                                                <option value="{{$category->id }}">{{ $category->name_en }}</option>
+                                                            @endforeach
                                                         </select>
                                                         @error('category')
                                                             <div class="invalid-feedback">
@@ -108,18 +119,19 @@
                                                             </div>
                                                         @enderror
                                                     </div>
-                                                    <div class="mb-3">
+                                                    {{-- <div class="mb-3">
                                                         <label for="category" class="form-label">Sub-category:</label>
                                                         <select id="category" class="form-control @error('category') is-invalid @enderror" name="category">
-                                                            <option>Select sub-category</option>
-                                                            <!-- Add options here -->
+                                                            @foreach($categories as $category)
+                                                            <option value="{{ $category->id }}">{{ $category->name_en }}</option>
+                                                        @endforeach
                                                         </select>
                                                         @error('sub-category')
                                                             <div class="invalid-feedback">
                                                                 {{ $message }}
                                                             </div>
                                                         @enderror
-                                                    </div>
+                                                    </div> --}}
                                                     <div class="mb-3">
                                                         <label for="model_number" class="form-label">Model Number:</label>
                                                         <input id="model_number" type="text" class="form-control @error('model_number') is-invalid @enderror" name="model_number" value="{{ old('model_number') }}"  >
@@ -165,7 +177,7 @@
                                                 <div class="tab-pane" id="step2">
                                                     <!-- Characteristics Fields -->
                                                     <br>
-                                                    <div class="mb-3" style='display: none;'>
+                                                    <div class="mb-3 AirConditioner">
                                                         <label for="hp_dimensions_volume_en" class="form-label">Dimensions and Volume (in English):</label>
                                                         <input id="hp_dimensions_volume_en" type="text" class="form-control @error('hp_dimensions_volume_en') is-invalid @enderror" name="hp_dimensions_volume_en" value="{{ old('hp_dimensions_volume_en') }}">
                                                         @error('hp_dimensions_volume_en')
@@ -174,7 +186,7 @@
                                                             </div>
                                                         @enderror
                                                     </div>
-                                                    <div class="mb-3" style='display: none;'>
+                                                    <div class="mb-3 AirConditioner">
                                                         <label for="hp_dimensions_volume_ar" class="form-label">Dimensions and Volume (in Arabic):</label>
                                                         <input id="hp_dimensions_volume_ar" type="text" class="form-control @error('hp_dimensions_volume_ar') is-invalid @enderror" name="hp_dimensions_volume_ar" value="{{ old('hp_dimensions_volume_ar') }}">
                                                         @error('hp_dimensions_volume_ar')
@@ -183,7 +195,7 @@
                                                             </div>
                                                         @enderror
                                                     </div>
-                                                    <div class="mb-3">
+                                                    <div class="mb-3 HomeAppliances">
                                                         <label for="characteristics_en" class="form-label">Characteristics (in English):</label>
                                                         <select id="choices-multiple-remove-button" name="characteristics_en[]" class="form-control @error('characteristics_en') is-invalid @enderror" multiple>
                                                             @foreach($characteristics as $Characteristic)
@@ -196,7 +208,7 @@
                                                         </div>
                                                         @enderror
                                                     </div>
-                                                    <div class="mb-3">
+                                                    <div class="mb-3 HomeAppliances ">
                                                         <label for="characteristics_ar" class="form-label">Characteristics (in Arabic):</label>
                                                         <select id="choices-multiple-remove-button" name="characteristics_ar[]" class="form-control @error('characteristics_ar') is-invalid @enderror" multiple>
                                                             @foreach($characteristics as $Characteristic)
@@ -213,7 +225,7 @@
                                         
                                                    
                                                     
-                                                    <div class="mb-3">
+                                                    <div class="mb-3 HomeAppliances">
                                                         <label for="optional_features_ar" class="form-label">Optional Features (in Arabic):</label>
                                                         <input id="optional_features_ar" type="text" class="form-control @error('optional_features_ar') is-invalid @enderror" name="optional_features_ar" value="{{ old('optional_features_ar') }}">
                                                         @error('optional_features_ar')
@@ -222,7 +234,7 @@
                                                             </div>
                                                         @enderror
                                                     </div>
-                                                    <div class="mb-3">
+                                                    <div class="mb-3 HomeAppliances">
                                                         <label for="optional_features_en" class="form-label">Optional Features (in English):</label>
                                                         <input id="optional_features_en" type="text" class="form-control @error('optional_features_en') is-invalid @enderror" name="optional_features_en" value="{{ old('optional_features_en') }}">
                                                         @error('optional_features_en')
@@ -232,7 +244,7 @@
                                                         @enderror
                                                     </div>
                                                     <hr>
-                                                    <div class="mb-3" style='display: none;'>
+                                                    <div class="mb-3 AirConditioner">
                                                         <label for="color" class="form-label">Color:</label>
                                                         <input id="color" type="text" class="form-control @error('color') is-invalid @enderror" name="color[]">
                                                         @error('color')
@@ -269,7 +281,7 @@
                                                 
                                                 <div class="tab-pane" id="step3"><br>
                                                     <!-- Additional Details Fields -->
-                                                    <div class="mb-3">
+                                                    <div class="mb-3 HomeAppliances">
                                                         <label for="power_supply" class="form-label">Power Supply:</label>
                                                         <input id="power_supply" type="text" class="form-control @error('power_supply') is-invalid @enderror" name="power_supply" value="{{ old('power_supply') }}"  >
                                                         @error('power_supply')
@@ -278,7 +290,7 @@
                                                             </div>
                                                         @enderror
                                                     </div>
-                                                    <div class="mb-3">
+                                                    <div class="mb-3  HomeAppliances">
                                                         <label for="type_freon" class="form-label">Type of Freon:</label>
                                                         <input id="type_freon" type="text" class="form-control @error('type_freon') is-invalid @enderror" name="type_freon" value="{{ old('type_freon') }}"  >
                                                         @error('type_freon')
@@ -286,10 +298,11 @@
                                                                 {{ $message }}
                                                             </div>
                                                         @enderror
-                                                    </div><hr>
-                                                    <div class="mb-3">
+                                                        <hr>
+                                                    </div>
+                                                    <div class="mb-3 ">
                                                         <label for="Technical Specifications" class="form-label">Technical Specifications</label>
-                                                        <input id="Technical Specifications" type="text" class="form-control @error('Technical Specifications') is-invalid @enderror" name="product_name_en" value="{{ old('product_name_en') }}"  >
+                                                        <input id="Technical Specifications" type="text" class="form-control @error('Technical Specifications') is-invalid @enderror" name="technical_specifications" value="{{ old('technical_specifications') }}"  >
                                                         @error('Technical Specifications')
                                                             <div class="invalid-feedback">
                                                                 {{ $message }}
@@ -299,7 +312,7 @@
                                                    
                                                     <div class="mb-3">
                                                         <label for="SASO Certificate" class="form-label">SASO Certificate</label>
-                                                        <textarea id="SASO Certificater" class="form-control @error('SASO Certificate') is-invalid @enderror" name="product_description_ar"  >{{ old('product_description_ar') }}</textarea>
+                                                        <textarea id="SASO Certificater" class="form-control @error('SASO Certificate') is-invalid @enderror" name="saso_certificate"  >{{ old('saso_certificate') }}</textarea>
                                                         @error('SASO Certificate')
                                                             <div class="invalid-feedback">
                                                                 {{ $message }}
@@ -337,28 +350,84 @@
                 });
             </script>
           @push('scripts')
-          <script>
-              document.addEventListener('DOMContentLoaded', function () {
-                  const airConditionerBtn = document.getElementById('AirConditioner');
-                  const homeAppliancesBtn = document.getElementById('HomeAppliances');
-                  const airConditionerSection = document.getElementById('airConditionerSection');
-                  const homeAppliancesSection = document.getElementById('homeAppliancesSection');
-      
-                  airConditionerBtn.addEventListener('click', function () {
-                      airConditionerBtn.classList.add('active');
-                      homeAppliancesBtn.classList.remove('active');
-                      airConditionerSection.style.display = 'block';
-                      homeAppliancesSection.style.display = 'none';
-                  });
-      
-                  homeAppliancesBtn.addEventListener('click', function () {
-                      homeAppliancesBtn.classList.add('active');
-                      airConditionerBtn.classList.remove('active');
-                      homeAppliancesSection.style.display = 'block';
-                      airConditionerSection.style.display = 'none';
-                  });
-              });
-          </script>
+
+<script>
+   
+
+    document.getElementById('AirConditioner').addEventListener('click', function() {
+       // document.getElementById('AirConditioner')
+        document.getElementById('productType').value = 'AirConditioner';
+        document.getElementById('type').value = 'AirConditioner';
+       // nodeList = document.querySelectorAll('.HomeAppliances');
+    });
+
+    document.getElementById('HomeAppliances').addEventListener('click', function() {
+        document.getElementById('productType').value = 'HomeAppliances';
+        document.getElementById('type').value = 'HomeAppliances';
+      //  nodeList = document.querySelectorAll('.HomeAppliances');
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+    // Function to hide Home Appliances sections
+    function hideHomeAppliances() {
+        const nodeList1 = document.querySelectorAll('.HomeAppliances');
+        for (let i = 0; i < nodeList1.length; i++) {
+            nodeList1[i].style.display = "none";
+        }
+    }
+
+    // Function to make Home Appliances sections visible
+    function visibleHomeAppliances() {
+        const nodeList2 = document.querySelectorAll('.HomeAppliances');
+        for (let i = 0; i < nodeList2.length; i++) {
+            nodeList2[i].style.display = "block";
+        }
+    }
+
+    // Function to hide Air Conditioner sections
+    function hideAirConditioner() {
+        const nodeList3 = document.querySelectorAll('.AirConditioner');
+        for (let i = 0; i < nodeList3.length; i++) {
+            nodeList3[i].style.display = "none";
+        }
+    }
+
+    // Function to make Air Conditioner sections visible
+    function visibleAirConditioner() {
+        const nodeList4 = document.querySelectorAll('.AirConditioner');
+        for (let i = 0; i < nodeList4.length; i++) {
+            nodeList4[i].style.display = "block";
+        }
+    }
+
+    // Function to set the active button class
+    function setActiveButton(button) {
+        document.querySelectorAll('.btn').forEach(function(btn) {
+            btn.classList.remove('active');
+        });
+        button.classList.add('active');
+    }
+
+    // Adding click event listener to the Air Conditioner button
+    const airConditionerBtn = document.querySelector('#AirConditioner');
+    airConditionerBtn.addEventListener('click', function() {
+        hideHomeAppliances();
+        visibleAirConditioner();
+        setActiveButton(airConditionerBtn);
+    });
+
+    // Adding click event listener to the Home Appliances button
+    const homeAppliancesBtn = document.querySelector('#HomeAppliances');
+    homeAppliancesBtn.addEventListener('click', function() {
+        visibleHomeAppliances();
+        hideAirConditioner();
+        setActiveButton(homeAppliancesBtn);
+    });
+});
+
+
+
+
+</script>
       @endpush
                 
         @endpush

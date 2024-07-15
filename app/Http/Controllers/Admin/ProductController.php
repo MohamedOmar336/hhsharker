@@ -24,58 +24,60 @@ class ProductController extends Controller
         $characteristics = Characteristic::all();
         return view('admin.products.create', compact('categories', 'characteristics'));
     }
+    // public function store(Request $request)
+    // {
+    //     $validatedData = $request->validate([
+    //         'name' => 'required|string|max:255',
+    //         'description' => 'nullable|string',
+    //         'permission_type' => 'nullable|string',
+    //         'permissions' => 'nullable|array',
+    //     ]);
+
+    //     $role = Roles::create($validatedData);
+    //     return redirect()->route('roles.index')->with('success', 'Role created successfully.');
+    // }
 
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'type' => 'nullable|string',
-            'product_name_ar' => 'required|string|max:191',
-            'product_name_en' => 'nullable|string|max:191',
-            'product_description_ar' => 'nullable|string',
-            'product_description_en' => 'nullable|string',
-            'category_id' => 'nullable|exists:categories,id',
-            'subcategory_id' => 'nullable|exists:categories,id',
-            'model_number' => 'nullable|string|max:191',
-            'status' => 'nullable|string|max:191',
-            'catalog' => 'nullable|file|max:2048', // Adjusted for file upload
+        // Validate the incoming request data.
+        $validatedData = $request->validate([
+            'type' => 'required|string|max:255',
+            'product_name_ar' => 'required|string|max:255',
+            'product_name_en' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'characteristics_en.*' => 'nullable|exists:characteristics,id',
-            'characteristics_ar.*' => 'nullable|exists:characteristics,id',
-            'optional_features_ar' => 'nullable|string|max:191',
-            'optional_features_en' => 'nullable|string|max:191',
+            'category_id' => 'nullable|exists:categories,id',
+            'model_number' => 'nullable|string|max:100',
+            'status' => 'nullable|string|max:50',
+            'catalog' => 'nullable|file|mimes:pdf|max:2048',
+            'hp_dimensions_volume_ar' => 'nullable|string|max:255',
+            'hp_dimensions_volume_en' => 'nullable|string|max:255',
+            'color' => 'nullable|string|max:255',
+            'characteristics_ar' => 'nullable|array',
+            'characteristics_en' => 'nullable|array',
+            'optional_features_ar' => 'nullable|string|max:255',
+            'optional_features_en' => 'nullable|string|max:255',
             'best_selling' => 'nullable|boolean',
             'featured' => 'nullable|boolean',
             'recommended' => 'nullable|boolean',
-            'hp_dimensions_volume_en' => 'nullable|string|max:191',
-            'hp_dimensions_volume_ar' => 'nullable|string|max:191',
-            'color' => 'nullable|string|max:191',
-            'power_supply' => 'nullable|string|max:191',
-            'type_freon' => 'nullable|string|max:191',
-            'technical_specifications' => 'nullable|string',
+            'power_supply' => 'nullable|string|max:100',
+            'type_freon' => 'nullable|string|max:100',
+            'technical_specifications' => 'nullable|string|max:255',
             'saso_certificate' => 'nullable|string',
         ]);
     
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
+      
+    //    dd($validatedData);
+        
+        // Create a new Product instance and fill it with validated data
+        $Products=Product::create($validatedData);
     
-        // Handle image upload if provided
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('products/images', 'public');
-            $request->merge(['image' => $imagePath]);
-        }
+        // Debugging: Dump and die to inspect validated data
+        
     
-        // Handle catalog file upload if provided
-        if ($request->hasFile('catalog')) {
-            $catalogPath = $request->file('catalog')->store('products/catalogs', 'public');
-            $request->merge(['catalog' => $catalogPath]);
-        }
-    
-        // Create the product
-        Product::create($request->all());
-    
-        return redirect()->route('products.index')->with('success', 'Product added successfully!');
+        // Redirect back to the index page with a success message
+        return redirect()->route('products.index')->with('success', 'Product created successfully.');
     }
+    
     
     public function edit(Product $product)
     {
