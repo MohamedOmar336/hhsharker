@@ -418,7 +418,7 @@
                             <li class="nav-item">
                                 <a href="#sidebarAppointments " class="nav-link" data-bs-toggle="collapse"
                                     role="button" aria-expanded="false" aria-controls="sidebarAppointments">
-                                    Appointments 
+                                    Appointments
                                 </a>
                                 <div class="collapse " id="sidebarAppointments">
                                     <ul class="nav flex-column">
@@ -431,7 +431,7 @@
                                     </ul><!--end nav-->
                                 </div><!--end sidebarAppointments-->sad
                             </li><!--end nav-item-->
-                          
+
                         </ul><!--end nav-->
                     </div><!--end sidebarHospital-->
                 </li><!--end nav-item-->
@@ -441,3 +441,5 @@
     <!--end menu-body-->
 </div><!-- end main-menu-inner-->
 </div>
+
+
