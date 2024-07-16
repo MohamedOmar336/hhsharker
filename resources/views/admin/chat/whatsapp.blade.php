@@ -290,7 +290,7 @@
                                         </div>
                                     </li>
 
-                                    <li class="list-inline-item d-none d-lg-inline-block me-2 ms-0">
+                                    {{-- <li class="list-inline-item d-none d-lg-inline-block me-2 ms-0">
                                         <button type="button" class="btn nav-btn" data-bs-toggle="modal"
                                             data-bs-target="#audiocallModal">
                                             <i class="ri-phone-line"></i>
@@ -302,7 +302,7 @@
                                             data-bs-target="#videocallModal">
                                             <i class="ri-vidicon-line"></i>
                                         </button>
-                                    </li>
+                                    </li> --}}
 
                                     {{-- <li class="list-inline-item d-none d-lg-inline-block me-2 ms-0">
                                         <button type="button" class="btn nav-btn user-profile-show">
