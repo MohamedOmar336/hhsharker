@@ -75,7 +75,7 @@
                                 </div><!--end row-->
                             </div><!--end f_profile-->
                         </div><!--end card-body-->
-                        <div class="card-body p-0">
+                        <div class=" p-0">
                             <div class="tab-pane p-3" id="Settings" role="tabpanel">
                                 <div class="row">
                                     <div class="col-lg-6 col-xl-6">

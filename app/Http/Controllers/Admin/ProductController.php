@@ -99,17 +99,20 @@ class ProductController extends Controller
         // if ($validator->fails()) {
         //     return redirect()->back()->withErrors($validator)->withInput();
         // }
-
-        // Handle image update if provided
         if ($request->hasFile('image')) {
-            // Delete previous image if exists
-            if ($product->image && file_exists(storage_path("app/public/{$product->image}"))) {
-                unlink(storage_path("app/public/{$product->image}"));
-            }
-            // Upload new image
-            $imagePath = $request->file('image')->store('products/images', 'public');
-            $request->merge(['image' => $imagePath]);
+            $imageName = uploadImage($request->file('image'));
+            $product->image = $imageName;
         }
+        // Handle image update if provided
+        // if ($request->hasFile('image')) {
+        //     // Delete previous image if exists
+        //     if ($product->image && file_exists(storage_path("app/public/{$product->image}"))) {
+        //         unlink(storage_path("app/public/{$product->image}"));
+        //     }
+        //     // Upload new image
+        //     $imagePath = $request->file('image')->store('products/images', 'public');
+        //     $request->merge(['image' => $imagePath]);
+        // }
 
         $product->update($request->all());
 
