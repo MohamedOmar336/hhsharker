@@ -167,7 +167,7 @@ return [
         'level' => 3,
         'sub_menu' => [
             [
-                'title' => __('Categories List'),
+                'title' => __('Ticket Categories List'),
                 'route' => 'ticket_categories.index',
 
             ],
