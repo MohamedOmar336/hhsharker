@@ -369,7 +369,7 @@ return [
         'category-ticket' => 'tickets Category',
         'category-ticket-list' => 'Category Ticket List',
         'created_by'=>'Created By',
-        'export'=>'Export Excel',
+        'export'=>'Export',
         ''  => '',
         ''  => '',
         ''  => '',

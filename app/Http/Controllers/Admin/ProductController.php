@@ -99,10 +99,13 @@ class ProductController extends Controller
         // if ($validator->fails()) {
         //     return redirect()->back()->withErrors($validator)->withInput();
         // }
-        if ($request->hasFile('image')) {
+        if ($request->has('image')) {
+
             $imageName = uploadImage($request->file('image'));
             $product->image = $imageName;
+            $request->image = $imageName;
         }
+       
         // Handle image update if provided
         // if ($request->hasFile('image')) {
         //     // Delete previous image if exists
@@ -122,8 +125,8 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         // Delete associated image if exists
-        if ($product->image && file_exists(storage_path("app/public/{$product->image}"))) {
-            unlink(storage_path("app/public/{$product->image}"));
+        if ($product->image && file_exists(storage_path("app/images/{$product->image}"))) {
+            unlink(storage_path("app/images/{$product->image}"));
         }
 
         $product->delete();

@@ -11,10 +11,10 @@
                         <div class="float-end">
                             <ol class="breadcrumb">
 
-                                <div class="col-5">
+                                <div class="col-4">
                                     <a href="{{ route('contacts.export') }}" class="btn btn-xs btn-primary" style="margin-right: 20px; margin-bottom: 10px;">
-                                    <i class="ti ti-file-download"></i>
-                                        {{ __('general.attributes.export') }}
+                                    <i class="ti ti-file-download">{{ __('general.attributes.export') }}</i>
+                                        
                                     </a>
                                 </div>
                                 <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a></li>
@@ -25,9 +25,7 @@
                             </ol>
                         </div>
                         <div class="col-md-12">
-                            <a href="{{ route('contacts.export') }}" class="btn btn-xs btn-primary">
-                                <span class="fa {{ app()->isLocale('ar') ? 'fa-forward' : 'fa-backward' }}"></span>
-                            </a>
+            
                             <a href="{{ URL::previous() }}">
                             @if (app()->isLocale('ar'))
                                 <i data-feather="arrow-right-circle"></i> <!-- Arabic locale -->
