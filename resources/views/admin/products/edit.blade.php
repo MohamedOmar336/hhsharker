@@ -134,7 +134,9 @@
                                                         @enderror
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="catalog" class="form-label">Catalog:</label>
+                                                        <label for="image" class="form-label">Catalog:</label><br>
+                                                        <a href="{{ $product->catalog ? asset('images/' . $product->catalog) : asset('assets-admin/images/no_image.png') }}" download>click</a><br>
+                                                        <label for="catalog" class="form-label">Update Catalog:</label>
                                                         <input id="catalog" type="file" class="form-control @error('catalog') is-invalid @enderror" name="catalog">
                                                         @error('catalog')
                                                             <div class="invalid-feedback">
@@ -143,6 +145,15 @@
                                                         @enderror
                                                     </div>
                                                     <div class="mb-3">
+                                                        <label for="image" class="form-label">{{ __('general.attributes.image') }}</label><br>
+                                                        <img src="{{ $product->image ? asset('images/' . $product->image) : asset('assets-admin/images/no_image.png') }}" alt="{{ $product->product_name_ar }}" width="100"><br>
+                                                        <label for="image" class="form-label mt-2">Update Image:</label>
+                                                        <input type="file" class="form-control" id="image" name="image">
+                                                        @error('image')
+                                                            <div class="invalid-feedback">{{ $message }}</div>
+                                                        @enderror
+                                                    </div>
+                                                    {{-- <div class="mb-3">
                                                         <label for="image" class="form-label">Image:</label>
                                                         <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image">
                                                         @error('image')
@@ -150,7 +161,7 @@
                                                                 {{ $message }}
                                                             </div>
                                                         @enderror
-                                                    </div>
+                                                    </div> --}}
                                                     <div>
                                                         <button type="button" id="step1Next"
                                                             class="btn btn-sm btn-de-primary">Next</button>
@@ -179,7 +190,7 @@
                                                     </div>
                                                     <div class="mb-3 HomeAppliances">
                                                         <label for="characteristics_en" class="form-label">Characteristics (in English):</label>
-                                                        <select id="characteristics_en" name="characteristics_en[]" class="form-control @error('characteristics_en') is-invalid @enderror" multiple>
+                                                        <select id="choices-multiple-remove-button" name="characteristics_en[]" class="form-control @error('characteristics_en') is-invalid @enderror" multiple>
                                                             @foreach ($characteristics as $Characteristic)
                                                                 <option value="{{ $Characteristic->id }}" {{ (collect(old('characteristics_en', $product->characteristics_en ?? []))->contains($Characteristic->id)) ? 'selected':'' }}>{{ $Characteristic->name_en }}</option>
                                                             @endforeach
@@ -192,7 +203,7 @@
                                                     </div>
                                                     <div class="mb-3 HomeAppliances">
                                                         <label for="characteristics_ar" class="form-label">Characteristics (in Arabic):</label>
-                                                        <select id="characteristics_ar" name="characteristics_ar[]" class="form-control @error('characteristics_ar') is-invalid @enderror" multiple>
+                                                        <select id="choices-multiple-remove-button" name="characteristics_ar[]" class="form-control @error('characteristics_ar') is-invalid @enderror" multiple>
                                                             @foreach ($characteristics as $Characteristic)
                                                                 <option value="{{ $Characteristic->id }}" {{ (collect(old('characteristics_ar', $product->characteristics_ar ?? []))->contains($Characteristic->id)) ? 'selected':'' }}>{{ $Characteristic->name_ar }}</option>
                                                             @endforeach
@@ -310,15 +321,19 @@
 @endsection
 
 @push('scripts')
-    <script>
-        $(document).ready(function() {
-            var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
-                removeItemButton: true,
-                maxItemCount: 100,
-                searchResultLimit: 5,
-                renderChoiceLimit: 5
-            });
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
+            removeItemButton: true,
+            maxItemCount: 100,
+            searchResultLimit: 5,
+            renderChoiceLimit: 5
         });
+    });
+</script>
+    <script>
+       
 
             document.getElementById('AirConditioner').addEventListener('click', function() {
                 // document.getElementById('AirConditioner')

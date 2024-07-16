@@ -51,6 +51,7 @@
                                         <form action="{{ route('products.store') }}" method="post" id="custom-step"
                                             enctype="multipart/form-data">
                                             @csrf
+                                            
                                             <nav>
                                                 <div class="nav nav-tabs" id="product-nav-tab">
                                                     <a class="nav-link active" id="step1-tab" data-bs-toggle="tab"
@@ -75,6 +76,7 @@
                                                             </div>
                                                         @enderror
                                                     </div>
+                                                    
                                                     <div class="mb-3">
                                                         <label for="product_name_ar" class="form-label">Product name (in
                                                             Arabic):</label>
@@ -139,9 +141,31 @@
                                                             </div>
                                                         @enderror
                                                     </div>
+                                                    <div class="mb-3">
+                                                        <label for="category" class="form-label">Sub-category:</label>
+                                                        <select id="category" class="form-control @error('category_id') is-invalid @enderror" name="subcategory_id">
+                                                            <option value="">Select Category</option>
+                                                            @foreach ($categories as $category)
+                                                                @if ($category->parent_id === null)
+                                                                    <option value="{{ $category->id }}" disabled>{{ $category->name_en }}</option>
+                                                                    @foreach ($categories as $subcategory)
+                                                                        @if ($subcategory->parent_id === $category->id)
+                                                                            <option value="{{ $subcategory->id }}"> {{ $subcategory->name_en }}</option>
+                                                                        @endif
+                                                                    @endforeach
+                                                                @endif
+                                                            @endforeach
+                                                        </select>
+                                                        @error('subcategory_id')
+                                                            <div class="invalid-feedback">
+                                                                {{ $message }}
+                                                            </div>
+                                                        @enderror
+                                                    </div>
+                                                    
                                                     {{-- <div class="mb-3">
                                                         <label for="category" class="form-label">Sub-category:</label>
-                                                        <select id="category" class="form-control @error('category') is-invalid @enderror" name="category">
+                                                        <select id="category" class="form-control @error('category') is-invalid @enderror" name="subcategory_id">
                                                             @foreach ($categories as $category)
                                                             <option value="{{ $category->id }}">{{ $category->name_en }}</option>
                                                         @endforeach
@@ -165,9 +189,14 @@
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="status" class="form-label">Status:</label>
-                                                        <input id="status" type="text"
+                                                        {{-- <input id="status" type="text"
                                                             class="form-control @error('status') is-invalid @enderror"
-                                                            name="status" value="{{ old('status') }}">
+                                                            name="status" value="{{ old('status') }}"> --}}
+                                                            <select id="status" class="form-control @error('status') is-invalid @enderror" name="status">
+                                                                <option value="available">Available</option>
+                                                                <option value="not_available">Not Available</option>
+                                                            </select>
+
                                                         @error('status')
                                                             <div class="invalid-feedback">
                                                                 {{ $message }}
@@ -233,40 +262,44 @@
                                                         @enderror
                                                     </div>
                                                     <div class="mb-3 HomeAppliances">
-                                                        <label for="characteristics_en" class="form-label">Characteristics
-                                                            (in English):</label>
-                                                        <select id="choices-multiple-remove-button"
-                                                            name="characteristics_en[]"
-                                                            class="form-control @error('characteristics_en') is-invalid @enderror"
-                                                            multiple>
-                                                            @foreach ($characteristics as $Characteristic)
-                                                                <option value="{{ $Characteristic->id }}">
-                                                                    {{ $Characteristic->name_en }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                        @error('characteristics_en')
-                                                            <div class="invalid-feedback">
-                                                                {{ $message }}
+                                                        <label for="characteristics_en" class="form-label">Characteristics (in English):</label>
+                                                        <div class="row">
+                                                            <div class="col-md-11">
+                                                                <select id="choices-multiple-remove-button" name="characteristics_en[]" class="form-control @error('characteristics_en') is-invalid @enderror" multiple>
+                                                                    @foreach ($characteristics as $Characteristic)
+                                                                        <option value="{{ $Characteristic->id }}">{{ $Characteristic->name_en }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                                @error('characteristics_en')
+                                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                                @enderror
                                                             </div>
-                                                        @enderror
+                                                            <div class="col-md-1">
+                                                                <button type="button" class="btn btn-de-primary" data-bs-toggle="modal" data-bs-target="#createCharacteristicsModal">
+                                                                    <i data-feather="plus"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="mb-3 HomeAppliances ">
-                                                        <label for="characteristics_ar" class="form-label">Characteristics
-                                                            (in Arabic):</label>
-                                                        <select id="choices-multiple-remove-button"
-                                                            name="characteristics_ar[]"
-                                                            class="form-control @error('characteristics_ar') is-invalid @enderror"
-                                                            multiple>
-                                                            @foreach ($characteristics as $Characteristic)
-                                                                <option value="{{ $Characteristic->id }}">
-                                                                    {{ $Characteristic->name_ar }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                        @error('characteristics_ar')
-                                                            <div class="invalid-feedback">
-                                                                {{ $message }}
+                                                    <div class="mb-3 HomeAppliances">
+                                                        <label for="characteristics_ar" class="form-label">Characteristics (in Arabic):</label>
+                                                        <div class="row">
+                                                            <div class="col-md-11">
+                                                                <select id="choices-multiple-remove-button" name="characteristics_ar[]" class="form-control @error('characteristics_ar') is-invalid @enderror" multiple>
+                                                                    @foreach ($characteristics as $Characteristic)
+                                                                        <option value="{{ $Characteristic->id }}">{{ $Characteristic->name_ar }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                                @error('characteristics_ar')
+                                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                                @enderror
                                                             </div>
-                                                        @enderror
+                                                            <div class="col-md-1">
+                                                                <button type="button" class="btn btn-de-primary" data-bs-toggle="modal" data-bs-target="#createCharacteristicsModal">
+                                                                    <i data-feather="plus"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
                                                         <hr>
                                                     </div>
 
@@ -408,6 +441,48 @@
                             <!--end col-->
 
                         </div><!--end row-->
+                        <div class="modal fade" id="createCharacteristicsModal" tabindex="-1" aria-labelledby="createCharacteristicsModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <form id="createCharacteristicsForm" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="createCharacteristicsModalLabel">Create Characteristics</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="mb-3">
+                                                <label for="name_en" class="form-label">{{ __('general.attributes.name_english') }}</label>
+                                                <input id="name_en" type="text" class="form-control @error('name_en') is-invalid @enderror" name="name_en" value="{{ old('name_en') }}" required autofocus>
+                                                @error('name_en')
+                                                    <span class="invalid-feedback">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="name_ar" class="form-label">{{ __('general.attributes.name_arabic') }}</label>
+                                                <input id="name_ar" type="text" class="form-control @error('name_ar') is-invalid @enderror" name="name_ar" value="{{ old('name_ar') }}" required>
+                                                @error('name_ar')
+                                                    <span class="invalid-feedback">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="image" class="form-label">{{ __('general.attributes.image') }}</label>
+                                                <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" accept=".svg,.png">
+                                                @error('image')
+                                                    <span class="invalid-feedback">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                            <div class="mb-3">
+                                                <button type="submit" class="btn btn-sm btn-de-primary">{{ __('general.btn.create') }}</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+
 
                     </div>
                 </div>
@@ -417,7 +492,55 @@
 @endsection
 
 @push('scripts')
-    <script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#createCharacteristicsForm').on('submit', function(e) {
+            e.preventDefault();
+            
+            let formData = new FormData(this);
+
+            $.ajax({
+                url: "{{ route('characteristics.store') }}",
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    alert('Characteristics created successfully.');
+                    $('#createCharacteristicsModal').modal('hide');
+                    fetchCharacteristics();
+                },
+                error: function(response) {
+                    alert('An error occurred. Please try again.');
+                }
+            });
+        });
+
+        function fetchCharacteristics() {
+            $.ajax({
+                url: "{{ route('characteristics.list') }}",
+                type: 'GET',
+                success: function(data) {
+                    let characteristicsEn = $('#choices-multiple-remove-button[name="characteristics_en[]"]');
+                    let characteristicsAr = $('#choices-multiple-remove-button[name="characteristics_ar[]"]');
+
+                    characteristicsEn.empty();
+                    characteristicsAr.empty();
+
+                    data.forEach(function(characteristic) {
+                        characteristicsEn.append(new Option(characteristic.name_en, characteristic.id));
+                        characteristicsAr.append(new Option(characteristic.name_ar, characteristic.id));
+                    });
+                },
+                error: function() {
+                    alert('Failed to fetch characteristics.');
+                }
+            });
+        }
+    });
+</script>
+      <script>
         $(document).ready(function() {
             var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
                 removeItemButton: true,
@@ -426,7 +549,8 @@
                 renderChoiceLimit: 5
             });
         });
-
+    </script>
+    <script>
             document.getElementById('AirConditioner').addEventListener('click', function() {
                 // document.getElementById('AirConditioner')
                 document.getElementById('productType').value = 'AirConditioner';

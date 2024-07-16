@@ -36,7 +36,7 @@
     --bs-danger: #ef476f;
     --bs-light: #e6ebf5;
     --bs-dark: #343a40;
-    --bs-primary-rgb: 114, 105, 239;
+    --bs-primary-rgb: #4AD7AA;
     --bs-secondary-rgb: 122, 127, 154;
     --bs-success-rgb: 6, 214, 160;
     --bs-info-rgb: 80, 165, 241;
@@ -52,7 +52,7 @@
     --bs-danger-text-emphasis: #601c2c;
     --bs-light-text-emphasis: #495057;
     --bs-dark-text-emphasis: #495057;
-    --bs-primary-bg-subtle: #e3e1fc;
+    --bs-primary-bg-subtle: #dbf7ee;
     --bs-secondary-bg-subtle: #e4e5eb;
     --bs-success-bg-subtle: #cdf7ec;
     --bs-info-bg-subtle: #dcedfc;
@@ -98,7 +98,7 @@
     --bs-tertiary-bg-rgb: 248, 249, 250;
     --bs-heading-color: inherit;
     --bs-link-color: #111628;
-    --bs-link-color-rgb: 114, 105, 239;
+    --bs-link-color-rgb: #4AD7AA;
     --bs-link-decoration: none;
     --bs-link-hover-color: #6159cb;
     --bs-link-hover-color-rgb: 97, 89, 203;
@@ -2105,7 +2105,7 @@ progress {
 }
 .table-primary {
     --bs-table-color: #212529;
-    --bs-table-bg: #e3e1fc;
+    --bs-table-bg: #dbf7ee;
     --bs-table-border-color: #d0cee7;
     --bs-table-striped-bg: #d9d8f1;
     --bs-table-striped-color: #212529;
@@ -3382,12 +3382,12 @@ fieldset:disabled .btn {
     --bs-btn-bg: #111628;
     --bs-btn-border-color: #111628;
     --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #6159cb;
-    --bs-btn-hover-border-color: #5b54bf;
+    --bs-btn-hover-bg: #4AD7AA;
+    --bs-btn-hover-border-color: #111628;
     --bs-btn-focus-shadow-rgb: 135, 128, 241;
     --bs-btn-active-color: #fff;
-    --bs-btn-active-bg: #5b54bf;
-    --bs-btn-active-border-color: #564fb3;
+    --bs-btn-active-bg: #4AD7AA;
+    --bs-btn-active-border-color: #111628;
     --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
     --bs-btn-disabled-color: #fff;
     --bs-btn-disabled-bg: #111628;
@@ -3512,7 +3512,7 @@ fieldset:disabled .btn {
     --bs-btn-hover-color: #fff;
     --bs-btn-hover-bg: #111628;
     --bs-btn-hover-border-color: #111628;
-    --bs-btn-focus-shadow-rgb: 114, 105, 239;
+    --bs-btn-focus-shadow-rgb: #4AD7AA;
     --bs-btn-active-color: #fff;
     --bs-btn-active-bg: #111628;
     --bs-btn-active-border-color: #111628;

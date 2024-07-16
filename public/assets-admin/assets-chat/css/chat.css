@@ -350,8 +350,8 @@
     border-color:#ef476f
 }
 .custom-checkbox-light .custom-control-input:checked~.custom-control-label:before,.custom-radio-light .custom-control-input:checked~.custom-control-label:before{
-    background-color:#e6ebf5;
-    border-color:#e6ebf5
+    background-color:#ebfbf6;
+    border-color:#e6ebf5;
 }
 .custom-checkbox-dark .custom-control-input:checked~.custom-control-label:before,.custom-radio-dark .custom-control-input:checked~.custom-control-label:before{
     background-color:#343a40;
@@ -705,7 +705,8 @@
 }
 .side-menu-nav .nav-item .nav-link.active{
     background-color:var(--bs-sidebar-menu-item-active-bg);
-    color:#111628
+    color:#111628;
+    border-radius: 32px;
 }
 .side-menu-nav .nav-item.show>.nav-link{
     background-color:var(--bs-sidebar-menu-item-active-bg);
