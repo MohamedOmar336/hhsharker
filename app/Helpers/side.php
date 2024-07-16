@@ -159,12 +159,31 @@ return [
             ],
         ],
     ],
+    [
+        'title' => __('Ticket Categories'),
+        'link' => 'sidebarTicketCategories',
+        'icon' => 'ti ti-menu-alt',
+        'route' => 'ticket_categories.index',
+        'level' => 3,
+        'sub_menu' => [
+            [
+                'title' => __('Categories List'),
+                'route' => 'ticket_categories.index',
+
+            ],
+            [
+                'title' => __('Add New'),
+                'route' => 'ticket_categories.create',
+            ],
+        ],
+    ],
    
     [
         'title' => __('Blog'),
         'link' => 'sidebarBlog',
         'icon' => 'ti ti-menu-alt',
         'route' => 'ticket-statuses.index',
+        'level' => 3,
         'sub_menu' => [
             [
                 'title' => __('Blog List'),
@@ -181,6 +200,7 @@ return [
         'link' => 'sidebarTags',
         'icon' => 'ti ti-tags',
         'route' => 'ticket-priorities.index',
+        'level' => 3,
         'sub_menu' => [
             [
                 'title' => __('Tags List'),
@@ -344,6 +364,7 @@ return [
         'title' => __('Products'),
         'link' => 'sidebarProducts',
         'icon' => 'ti ti-bag',
+        'level' => 3,
         'sub_menu' => [
             [
                 'title' => __('Product List'),
@@ -356,9 +377,26 @@ return [
         ],
     ],
     [
+        'title' => __('Characteristics'),
+        'link' => 'sidebarCharacteristics',
+        'icon' => 'ti ti-bag',
+        'level' => 3,
+        'sub_menu' => [
+            [
+                'title' => __('Characteristics List'),
+                'route' => 'characteristics.index',
+            ],
+            [
+                'title' => __('Add New'),
+                'route' => 'characteristics.create',
+            ],
+        ],
+    ],
+    [
         'title' => __('Category'),
         'link' => 'sidebarCategory',
         'icon' => 'ti ti-menu-alt',
+        'level' => 3,
         'sub_menu' => [
             [
                 'title' => __('Category List'),

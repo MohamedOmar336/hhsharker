@@ -18,7 +18,7 @@ class ProductController extends Controller
     public function index()
     {
         $characteristics = Characteristic::all();
-        $records = Product::orderBy('created_at', 'desc')->paginate(10);
+        $records = Product::orderBy('created_at', 'desc')->paginate(100);
         return view('admin.products.index', compact('records', 'characteristics'));
     }
 
@@ -55,8 +55,22 @@ class ProductController extends Controller
         if (isset($data['color'])) {
             $data['color'] = json_encode($data['color']);
         }
+        
         if (isset($data['characteristics_en'])) {
             $data['characteristics_en'] = json_encode($data['characteristics_en']);
+        }
+
+        if ($request->has('image')) {
+
+            $imageName = uploadImage($request->file('image'));
+
+            $data['image'] = $imageName;
+        }
+        if ($request->has('catalog')) {
+
+            $catalogName = uploadImage($request->file('catalog'));
+
+            $data['catalog'] = $catalogName;
         }
 
         // Create a new Product instance and fill it with validated data
@@ -118,5 +132,35 @@ class ProductController extends Controller
     {
         return Excel::download(new ProductsExport, 'products.xlsx');
     }
+
+
+    public function storeCharacteristics(Request $request)
+{
+    $request->validate([
+        'name_en' => 'required|string|max:255',
+        'name_ar' => 'required|string|max:255',
+        'image' => 'nullable|image|mimes:svg,png|max:2048',
+    ]);
+
+    $imagePath = null;
+    // if ($request->hasFile('image')) {
+    //     $imagePath = $request->file('image')->store('images', 'public');
+    // }
+    if ($request->has('image')) {
+
+        $imageName = uploadImage($request->file('image'));
+
+        $imagePath = $imageName;
+    }
+
+    Characteristic::create([
+        'name_en' => $request->name_en,
+        'name_ar' => $request->name_ar,
+        'image' => $imagePath,
+        'image_type' => $request->file('image')->getClientOriginalExtension(),
+    ]);
+   // return redirect()->route('products.create')->with('success', 'Characteristic created successfully.');
+
+}
 
 }

@@ -36,6 +36,7 @@
 
                             <form action="{{ route('characteristics.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
+                                
                                 <div class="mb-3">
                                     <label for="name_en" class="form-label">{{ __('general.attributes.name_english') }}</label>
                                     <input id="name_en" type="text"

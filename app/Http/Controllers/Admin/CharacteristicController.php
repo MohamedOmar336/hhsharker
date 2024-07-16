@@ -18,7 +18,7 @@ class CharacteristicController extends Controller
               ->orWhere('name_en', 'LIKE', "%{$request->search}%");
     }
 
-    $characteristics = $query->paginate(10);
+    $characteristics = $query->paginate(100);
 
     return view('admin.characteristics.index', compact('characteristics'));
 }
@@ -103,4 +103,11 @@ class CharacteristicController extends Controller
 
         return redirect()->route('characteristics.index')->with('success', 'Characteristic deleted successfully.');
     }
+
+    public function list()
+{
+    $characteristics = Characteristic::all();
+    return response()->json($characteristics);
+}
+
 }
