@@ -9,6 +9,7 @@ use App\Models\GroupContact;
 use Illuminate\Http\Request;
 use App\Exports\ContactsExport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\ContactsImport;
 
 class ContactController extends Controller
 {
@@ -157,7 +158,25 @@ class ContactController extends Controller
 
     public function export()
     {
+
         return Excel::download(new ContactsExport, 'contacts.xlsx');
     }
+
+    public function importForm()
+    {
+        return view('admin.contacts.import'); // Make sure to create this view
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'import_file' => 'required|file|mimes:xlsx',
+        ]);
+
+        Excel::import(new ContactsImport, $request->file('import_file'));
+
+        return redirect()->route('contacts.index')->with('success', 'Contacts imported successfully.');
+    }
+
 }
 

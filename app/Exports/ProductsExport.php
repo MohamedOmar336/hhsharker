@@ -12,13 +12,11 @@ class ProductsExport implements FromCollection, WithHeadings
         return Product::all()->map(function($product) {
             return [
                 'image' => $product->image_url,
-                'name_ar' => $product->name_ar,
-                'name_en' => $product->name_en,
-                'description_ar' => $product->description_ar,
-                'description_en' => $product->description_en,
-                'price' => $product->price,
-                'qty' => $product->quantity,
-                'state' => $product->is_available ? 'Yes' : 'No',
+                'product_name_ar' => $product->product_name_ar,
+                'product_name_en' => $product->product_name_en,
+                'product_description_ar' => $product->product_description_ar,
+                'product_description_en' => $product->product_description_en,
+                'status' => $product->status,
                 'category' => $product->category ? $product->category->name_en : 'Uncategorized',
             ];
         });
@@ -28,13 +26,11 @@ class ProductsExport implements FromCollection, WithHeadings
     {
         return [
             'image',
-            'name_ar',
-            'name_en',
-            'description_ar',
-            'description_en',
-            'price',
-            'qty',
-            'state',
+            'product_name_ar',
+            'product_name_en',
+            'product_description_ar',
+            'product_description_en',
+            'status',
             'category',
         ];
     }

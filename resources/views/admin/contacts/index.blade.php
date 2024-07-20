@@ -11,10 +11,16 @@
                         <div class="float-end">
                             <ol class="breadcrumb">
 
-                                <div class="col-4">
-                                    <a href="{{ route('contacts.export') }}" class="btn btn-xs btn-primary" style="margin-right: 20px; margin-bottom: 10px;">
-                                    <i class="ti ti-file-download">{{ __('general.attributes.export') }}</i>
-                                        
+                                <div class="col-4" style="position: absolute;z-index: 2;left: 961px;">
+                                    <a href="{{ route('contacts.export') }}" class="btn btn-xs btn-primary"
+                                        style="margin-right: 20px; margin-bottom: 10px;">
+                                        <i class="ti ti-file-download">{{ __('general.attributes.export') }}</i>
+                                    </a>
+                                </div>
+                                <div class="col-4" style="position: absolute;z-index: 1;left: 891px;">
+                                    <a href="{{ route('contacts.import.form') }}" class="btn btn-xs btn-primary"
+                                        style="margin-right: 20px; margin-bottom: 10px;">
+                                        <i class="ti ti-file-download">{{ __('general.attributes.import') }}</i>
                                     </a>
                                 </div>
                                 <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a></li>
@@ -25,14 +31,14 @@
                             </ol>
                         </div>
                         <div class="col-md-12">
-            
+
                             <a href="{{ URL::previous() }}">
-                            @if (app()->isLocale('ar'))
-                                <i data-feather="arrow-right-circle"></i> <!-- Arabic locale -->
-                            @else
-                                <i data-feather="arrow-left-circle"></i> <!-- Default locale -->
-                            @endif
-                        </a>
+                                @if (app()->isLocale('ar'))
+                                    <i data-feather="arrow-right-circle"></i> <!-- Arabic locale -->
+                                @else
+                                    <i data-feather="arrow-left-circle"></i> <!-- Default locale -->
+                                @endif
+                            </a>
                             <h4 class="page-title">{{ __('general.side.contacts-list') }}</h4>
                         </div>
 
@@ -64,20 +70,20 @@
                         <td>{{ $record->address }}</td>
                         <td>{{ $record->segment }}</td>
                         <td>
-                            @foreach($record->groups as $group)
+                            @foreach ($record->groups as $group)
                                 <span class="badge bg-primary">{{ $group->name }}</span>
                             @endforeach
                         </td>
                         <td>{{ $record->last_interaction }}</td>
                         <td>
-                            <a href="{{ route('contacts.edit', $record->id) }}"
-                               ><i data-feather="edit"></i></a>
+                            <a href="{{ route('contacts.edit', $record->id) }}"><i data-feather="edit"></i></a>
                             <form action="{{ route('contacts.destroy', $record->id) }}" method="POST"
                                 style="display: inline;" class="delete-form">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn delete-form"
-                                    onclick="return confirm('Are you sure you want to delete this contact?')"><i data-feather="trash"></i></button>
+                                    onclick="return confirm('Are you sure you want to delete this contact?')"><i
+                                        data-feather="trash"></i></button>
                             </form>
                         </td>
                     </tr>

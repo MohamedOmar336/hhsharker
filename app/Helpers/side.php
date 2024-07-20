@@ -39,6 +39,10 @@ return [
                 'route' => 'chat.index',
             ],
             [
+                'title' => __('general.attributes.whats_app'),
+                'route' => 'whatsapp.chat',
+            ],
+            [
                 'title' => __('Templates and Buttons'),
                 'route' => 'chat.index',
             ],
@@ -177,7 +181,7 @@ return [
             ],
         ],
     ],
-   
+
     [
         'title' => __('Blog'),
         'link' => 'sidebarBlog',
@@ -323,7 +327,7 @@ return [
 //             [
 //                 'title' => __('Priority List'),
 //                 'route' => 'ticket.priorities.index',
-// 
+//
 //             [
 //                 'title' => __('Add New Priority'),
 //                 'route' => 'ticket.priorities.create',

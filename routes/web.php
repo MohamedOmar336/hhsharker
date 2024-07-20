@@ -66,8 +66,12 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('/characteristics', CharacteristicController::class);
 
         Route::get('/smtp-settings', [SmtpSettingsController::class, 'edit'])->name('smtp-settings.edit');
-        
+
         Route::post('/smtp-settings', [SmtpSettingsController::class, 'update'])->name('smtp-settings.update');
+
+        Route::get('product/import',  [ProductController::class, 'importForm'])->name('products.import.form');
+
+        Route::post('product/import', [ProductController::class, 'import'])->name('products.import');
 
         Route::resource('/products', ProductController::class);
 
@@ -170,31 +174,28 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::get('/contact/exports', [ContactController::class, 'export'])->name('contacts.export');
 
+        Route::get('contact/import', [ContactController::class, 'importForm'])->name('contacts.import.form');
+
+        Route::post('contact/import', [ContactController::class, 'import'])->name('contacts.import');
+
         Route::post('/products/characteristics', [ProductController::class, 'storeCharacteristics'])->name('products.storeCharacteristics');
-        Route::get('/characteristics/list', [CharacteristicsController::class, 'list'])->name('characteristics.list');
+        // Route::get('/characteristics/list', [CharacteristicsController::class, 'list'])->name('characteristics.list');
 
+        Route::get('/mails/inbox', [MailController::class, 'inbox'])->name('mails.inbox');
+        Route::get('/mails/starred', [MailController::class, 'starred'])->name('mails.starred');
+        Route::get('/mails/important', [MailController::class, 'important'])->name('mails.important');
+        Route::get('/mails/drafts', [MailController::class, 'drafts'])->name('mails.drafts');
+        Route::get('/mails/sent', [MailController::class, 'sent'])->name('mails.sent');
+        Route::get('/mails/trash', [MailController::class, 'trash'])->name('mails.trash');
 
-    Route::get('/mails/inbox', [MailController::class, 'inbox'])->name('mails.inbox');
-    Route::get('/mails/starred', [MailController::class, 'starred'])->name('mails.starred');
-    Route::get('/mails/important', [MailController::class, 'important'])->name('mails.important');
-    Route::get('/mails/drafts', [MailController::class, 'drafts'])->name('mails.drafts');
-    Route::get('/mails/sent', [MailController::class, 'sent'])->name('mails.sent');
-    Route::get('/mails/trash', [MailController::class, 'trash'])->name('mails.trash');
+        Route::get('/mails/compose', [MailController::class, 'compose'])->name('mails.compose');
+        Route::post('/mails/send', [MailController::class, 'send'])->name('mails.send');
 
-    Route::get('/mails/compose', [MailController::class, 'compose'])->name('mails.compose');
-    Route::post('/mails/send', [MailController::class, 'send'])->name('mails.send');
+        Route::patch('/mails/{mail}/star', [MailController::class, 'markStarred'])->name('mails.markStarred');
+        Route::patch('/mails/{mail}/important', [MailController::class, 'markImportant'])->name('mails.markImportant');
+        Route::patch('/mails/{mail}/trash', [MailController::class, 'moveTrash'])->name('mails.moveTrash');
 
-    // Route::get('/mails/forward/{id}', [MailController::class, 'forward'])->name('mails.forward');
-    // Route::get('/mails/reply/{id}', [MailController::class, 'reply'])->name('mails.reply');
-
-    // Route::post('/mails/send-reply/{mail}', [MailController::class, 'sendReply'])->name('mails.sendReply');
-
-    Route::patch('/mails/{mail}/star', [MailController::class, 'markStarred'])->name('mails.markStarred');
-    Route::patch('/mails/{mail}/important', [MailController::class, 'markImportant'])->name('mails.markImportant');
-    Route::patch('/mails/{mail}/trash', [MailController::class, 'moveTrash'])->name('mails.moveTrash');
-
-    Route::post('/mails/bulk-action', [MailController::class, 'bulkAction'])->name('mails.bulkAction');
-
+        Route::post('/mails/bulk-action', [MailController::class, 'bulkAction'])->name('mails.bulkAction');
 
 
     });

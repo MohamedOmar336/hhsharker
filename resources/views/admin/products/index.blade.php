@@ -10,10 +10,16 @@
                     <div class="page-title-box">
                         <div class="float-end">
                             <ol class="breadcrumb">
-                                <div class="col-5">
+                                <div class="col-4" style="position: absolute;z-index: 2;left: 961px;">
                                     <a href="{{ route('products.exports') }}" class="btn btn-xs btn-primary" style="margin-right: 20px; margin-bottom: 10px;">
                                     <i class="ti ti-file-download"></i>
                                         {{ __('general.attributes.export') }}
+                                    </a>
+                                </div>
+                                <div class="col-4" style="position: absolute;z-index: 1;left: 891px;">
+                                    <a href="{{ route('products.import.form') }}" class="btn btn-xs btn-primary"
+                                        style="margin-right: 20px; margin-bottom: 10px;">
+                                        <i class="ti ti-file-download">{{ __('general.attributes.import') }}</i>
                                     </a>
                                 </div>
                                 <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a></li>
@@ -50,7 +56,6 @@
                         <th style="width: 10%;">{{ __('general.attributes.actions') }}</th>
                     </tr>
                 </x-slot>
-
                 @foreach ($records as $record)
                     <tr class="table-body">
                         <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>

@@ -12,6 +12,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use function Psy\debug;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Imports\ProductsImport;
 
 class ProductController extends Controller
 {
@@ -55,7 +56,7 @@ class ProductController extends Controller
         if (isset($data['color'])) {
             $data['color'] = json_encode($data['color']);
         }
-        
+
         if (isset($data['characteristics_en'])) {
             $data['characteristics_en'] = json_encode($data['characteristics_en']);
         }
@@ -105,7 +106,7 @@ class ProductController extends Controller
             $product->image = $imageName;
             $request->image = $imageName;
         }
-       
+
         // Handle image update if provided
         // if ($request->hasFile('image')) {
         //     // Delete previous image if exists
@@ -141,32 +142,47 @@ class ProductController extends Controller
 
 
     public function storeCharacteristics(Request $request)
-{
-    $request->validate([
-        'name_en' => 'required|string|max:255',
-        'name_ar' => 'required|string|max:255',
-        'image' => 'nullable|image|mimes:svg,png|max:2048',
-    ]);
+    {
+        $request->validate([
+            'name_en' => 'required|string|max:255',
+            'name_ar' => 'required|string|max:255',
+            'image' => 'nullable|image|mimes:svg,png|max:2048',
+        ]);
 
-    $imagePath = null;
-    // if ($request->hasFile('image')) {
-    //     $imagePath = $request->file('image')->store('images', 'public');
-    // }
-    if ($request->has('image')) {
+        $imagePath = null;
+        // if ($request->hasFile('image')) {
+        //     $imagePath = $request->file('image')->store('images', 'public');
+        // }
+        if ($request->has('image')) {
 
-        $imageName = uploadImage($request->file('image'));
+            $imageName = uploadImage($request->file('image'));
 
-        $imagePath = $imageName;
+            $imagePath = $imageName;
+        }
+
+        Characteristic::create([
+            'name_en' => $request->name_en,
+            'name_ar' => $request->name_ar,
+            'image' => $imagePath,
+            'image_type' => $request->file('image')->getClientOriginalExtension(),
+        ]);
+        // return redirect()->route('products.create')->with('success', 'Characteristic created successfully.');
+
     }
 
-    Characteristic::create([
-        'name_en' => $request->name_en,
-        'name_ar' => $request->name_ar,
-        'image' => $imagePath,
-        'image_type' => $request->file('image')->getClientOriginalExtension(),
-    ]);
-   // return redirect()->route('products.create')->with('success', 'Characteristic created successfully.');
+    public function importForm()
+    {
+        return view('admin.products.import'); // Make sure to create this view
+    }
 
-}
+    public function import(Request $request)
+    {
+        $request->validate([
+            'import_file' => 'required|file|mimes:xlsx',
+        ]);
 
+        Excel::import(new ProductsImport, $request->file('import_file'));
+
+        return redirect()->route('products.index')->with('success', 'Products imported successfully.');
+    }
 }

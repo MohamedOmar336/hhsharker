@@ -370,7 +370,7 @@ return [
         'category-ticket-list' => 'Category Ticket List',
         'created_by'=>'Created By',
         'export'=>'Export',
-        ''  => '',
+        'import'  => 'Import',
         ''  => '',
         ''  => '',
         ''  => '',
