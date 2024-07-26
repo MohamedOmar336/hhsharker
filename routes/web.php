@@ -179,7 +179,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('contact/import', [ContactController::class, 'import'])->name('contacts.import');
 
         Route::post('/products/characteristics', [ProductController::class, 'storeCharacteristics'])->name('products.storeCharacteristics');
-        // Route::get('/characteristics/list', [CharacteristicsController::class, 'list'])->name('characteristics.list');
+
+        Route::get('/characteristics/list', [CharacteristicsController::class, 'list'])->name('characteristics.list');
 
         Route::get('/mails/inbox', [MailController::class, 'inbox'])->name('mails.inbox');
         Route::get('/mails/starred', [MailController::class, 'starred'])->name('mails.starred');
