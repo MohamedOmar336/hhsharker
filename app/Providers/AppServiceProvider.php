@@ -52,9 +52,10 @@ class AppServiceProvider extends ServiceProvider
                 // Filter the side navigation based on user permissions
                 $filteredSideNav = array_filter($navArray, function ($item) use ($allowedPermissions) {
                     // If the route is in the user's permissions, keep it
-                    if (in_array($item['route'], $allowedPermissions)) {
+                    if (isset($item['route']) && in_array($item['route'], $allowedPermissions)) {
                         return true;
                     }
+
                     // If there are sub-menu items, check their routes too
                     if (isset($item['sub_menu'])) {
                         foreach ($item['sub_menu'] as $subItem) {

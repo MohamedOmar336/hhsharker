@@ -5,23 +5,23 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Characteristic;
 use Illuminate\Http\Request;
-//use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Storage;
 
 class CharacteristicController extends Controller
 {
     public function index(Request $request)
-{
-    $query = Characteristic::query();
+    {
+        $query = Characteristic::query();
 
-    if ($request->has('search')) {
-        $query->where('name_ar', 'LIKE', "%{$request->search}%")
-              ->orWhere('name_en', 'LIKE', "%{$request->search}%");
+        if ($request->has('search')) {
+            $query->where('name_ar', 'LIKE', "%{$request->search}%")
+                ->orWhere('name_en', 'LIKE', "%{$request->search}%");
+        }
+
+        $characteristics = $query->paginate(100);
+
+        return view('admin.characteristics.index', compact('characteristics'));
     }
-
-    $characteristics = $query->paginate(100);
-
-    return view('admin.characteristics.index', compact('characteristics'));
-}
 
 
     public function create()
@@ -104,10 +104,9 @@ class CharacteristicController extends Controller
         return redirect()->route('characteristics.index')->with('success', 'Characteristic deleted successfully.');
     }
 
-    public function list()
-{
-    $characteristics = Characteristic::all();
-    return response()->json($characteristics);
-}
-
+    public function listInProducts()
+    {
+        $characteristics = \App\Models\Characteristic::all();
+        return response()->json($characteristics);
+    }
 }

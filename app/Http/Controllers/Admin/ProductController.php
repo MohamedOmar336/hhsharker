@@ -9,6 +9,8 @@ use App\Models\Category;
 use App\Enums\EnumsSettings;
 use App\Exports\ProductsExport;
 use Maatwebsite\Excel\Facades\Excel;
+
+use function PHPSTORM_META\type;
 use function Psy\debug;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -29,28 +31,37 @@ class ProductController extends Controller
         $characteristics = Characteristic::all();
         return view('admin.products.create', compact('categories', 'characteristics'));
     }
-    // public function store(Request $request)
-    // {
-    //     $validatedData = $request->validate([
-    //         'name' => 'required|string|max:255',
-    //         'description' => 'nullable|string',
-    //         'permission_type' => 'nullable|string',
-    //         'permissions' => 'nullable|array',
-    //     ]);
-
-    //     $role = Roles::create($validatedData);
-    //     return redirect()->route('roles.index')->with('success', 'Role created successfully.');
-    // }
 
     public function store(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'type' => 'required|string|max:255',
-            // add back any other required validation rules
+            'product_name_ar' => 'required|string|max:255',
+            'product_name_en' => 'required|string|max:255',
+            'product_description_ar' => 'required|string|max:255',
+            'product_description_en' => 'required|string|max:255',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'category_id' => 'nullable|exists:categories,id',
+            'model_number' => 'nullable|string|max:100',
+            'status' => 'nullable|string|max:50',
+            'catalog' => 'nullable|file|mimes:pdf|max:2048',
+            'hp_dimensions_volume_ar' => 'nullable|string|max:255',
+            'hp_dimensions_volume_en' => 'nullable|string|max:255',
+            'color' => 'nullable',
+            'characteristics_ar' => 'nullable|array',
+            'characteristics_ar.*' => 'exists:characteristics,id',
+            'characteristics_en' => 'nullable|array',
+            'characteristics_en.*' => 'exists:characteristics,id',
+            'optional_features_ar' => 'nullable|string|max:255',
+            'optional_features_en' => 'nullable|string|max:255',
+            'best_selling' => 'nullable|boolean',
+            'featured' => 'nullable|boolean',
+            'recommended' => 'nullable|boolean',
+            'power_supply' => 'nullable|string|max:100',
+            'type_freon' => 'nullable|string|max:100',
+            'technical_specifications' => 'nullable|string|max:255',
+            'saso_certificate' => 'nullable|string',
         ]);
-
-        // Assuming 'characteristics_en' and 'characteristics_ar' are the only array expected fields:
-        $data = $request->except('_token');
 
         // Manually encode arrays to JSON strings
         if (isset($data['color'])) {
@@ -67,16 +78,13 @@ class ProductController extends Controller
 
             $data['image'] = $imageName;
         }
-        if ($request->has('catalog')) {
-
-            $catalogName = uploadImage($request->file('catalog'));
-
-            $data['catalog'] = $catalogName;
+        try {
+            Product::create($data);
+        } catch (\Exception $e) {
+            // Log the error for debugging purposes
+            \Log::error('Product creation failed: ' . $e->getMessage());
+            return redirect()->back()->withErrors(['error' => 'Failed to create the product.']);
         }
-
-        // Create a new Product instance and fill it with validated data
-        $product = Product::create($data);
-
         // Redirect back to the index page with a success message
         return redirect()->route('products.index')->with('success', 'Product created successfully.');
     }
@@ -88,37 +96,54 @@ class ProductController extends Controller
         $characteristics = Characteristic::all(); // Replace with your characteristic model
         return view('admin.products.edit', compact('product', 'categories', 'characteristics'));
     }
-
     public function update(Request $request, Product $product)
     {
-
-        $request->validate([
+        $data = $request->validate([
             'type' => 'required|string|max:255',
-            // add back any other required validation rules
+            'product_name_ar' => 'required|string|max:255',
+            'product_name_en' => 'required|string|max:255',
+            'product_description_ar' => 'required|string|max:255',
+            'product_description_en' => 'required|string|max:255',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'category_id' => 'nullable|exists:categories,id',
+            'model_number' => 'nullable|string|max:100',
+            'status' => 'nullable|string|max:50',
+            'catalog' => 'nullable|file|mimes:pdf|max:2048',
+            'hp_dimensions_volume_ar' => 'nullable|string|max:255',
+            'hp_dimensions_volume_en' => 'nullable|string|max:255',
+            // 'color' => 'nullable|array',
+            'characteristics_ar' => 'nullable|array',
+            'characteristics_ar.*' => 'exists:characteristics,id',
+            'characteristics_en' => 'nullable|array',
+            'characteristics_en.*' => 'exists:characteristics,id',
+            'optional_features_ar' => 'nullable|string|max:255',
+            'optional_features_en' => 'nullable|string|max:255',
+            'best_selling' => 'nullable',
+            'featured' => 'nullable',
+            'recommended' => 'nullable',
+            'power_supply' => 'nullable|string|max:100',
+            'type_freon' => 'nullable|string|max:100',
+            'technical_specifications' => 'nullable|string|max:255',
+            'saso_certificate' => 'nullable|string',
         ]);
-
-        // if ($validator->fails()) {
-        //     return redirect()->back()->withErrors($validator)->withInput();
-        // }
-        if ($request->has('image')) {
-
-            $imageName = uploadImage($request->file('image'));
-            $product->image = $imageName;
-            $request->image = $imageName;
-        }
+        // Manually encode arrays to JSON strings if needed
+        // $data['color'] = $request->has('color') ? json_encode($data['color']) : null;
+        $data['characteristics_en'] = $request->has('characteristics_en') ? json_encode($data['characteristics_en']) : null;
+        $data['characteristics_ar'] = $request->has('characteristics_ar') ? json_encode($data['characteristics_ar']) : null;
 
         // Handle image update if provided
-        // if ($request->hasFile('image')) {
-        //     // Delete previous image if exists
-        //     if ($product->image && file_exists(storage_path("app/public/{$product->image}"))) {
-        //         unlink(storage_path("app/public/{$product->image}"));
-        //     }
-        //     // Upload new image
-        //     $imagePath = $request->file('image')->store('products/images', 'public');
-        //     $request->merge(['image' => $imagePath]);
-        // }
+        if ($request->hasFile('image')) {
+            // Delete previous image if exists
+            if ($product->image && file_exists(storage_path("app/public/{$product->image}"))) {
+                unlink(storage_path("app/public/{$product->image}"));
+            }
+            // Upload new image
+            $imageName = uploadImage($request->file('image'));
+            $data['image'] = $imageName;
+        }
 
-        $product->update($request->all());
+        // Update product with validated data
+        $product->update($data);
 
         return redirect()->route('products.index')->with('success', 'Product updated successfully!');
     }

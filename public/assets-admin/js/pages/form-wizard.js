@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function switchTab(navId, fromTabId, toTabId) {
         const navTabs = document.getElementById(navId).querySelectorAll('.nav-link');
         const tabContents = document.getElementById(navId + 'Content').querySelectorAll('.tab-pane');
-        
+
         navTabs.forEach(tab => {
             tab.classList.remove('active');
         });

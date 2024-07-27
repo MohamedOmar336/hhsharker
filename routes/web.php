@@ -180,7 +180,7 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::post('/products/characteristics', [ProductController::class, 'storeCharacteristics'])->name('products.storeCharacteristics');
 
-        Route::get('/characteristics/list', [CharacteristicsController::class, 'list'])->name('characteristics.list');
+        Route::get('/characteristic/list', [CharacteristicController::class, 'listInProducts'])->name('characteristics.list');
 
         Route::get('/mails/inbox', [MailController::class, 'inbox'])->name('mails.inbox');
         Route::get('/mails/starred', [MailController::class, 'starred'])->name('mails.starred');
@@ -197,7 +197,6 @@ Route::group(['prefix' => 'admin'], function () {
         Route::patch('/mails/{mail}/trash', [MailController::class, 'moveTrash'])->name('mails.moveTrash');
 
         Route::post('/mails/bulk-action', [MailController::class, 'bulkAction'])->name('mails.bulkAction');
-
 
     });
 });
