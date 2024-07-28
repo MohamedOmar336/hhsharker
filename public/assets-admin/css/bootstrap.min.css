@@ -6041,7 +6041,7 @@ fieldset:disabled .btn {
     color: var(--bs-card-color);
     max-height: fit-content;
     background-color : #f8f9fb;
-    min-width: fit-content;
+    /* min-width: fit-content; */
     border-radius: 32px 32px 32px 32px;
     margin: 10px;
 }
@@ -15885,7 +15885,7 @@ li.L9 {
     margin: -10px;
     color:#303e67;
     font-family:"Plus Jakarta Sans", sans-serif;
-    
+
     }
     /* .dataTables_wrapper .dataTables_filter input{
     border-radius: 32px !important;
@@ -15898,8 +15898,8 @@ li.L9 {
         border-radius:32px;
         margin: 10px;
     }
-    
-    
+
+
       .mt-0 {
         margin-top: 10px !important;
       }
@@ -15909,28 +15909,28 @@ li.L9 {
       .table-body:first-child td:first-child {
         border-top-left-radius: 32px;
     }
-    
+
     .table-body:first-child td:last-child {
         border-top-right-radius: 32px;
     }
-    
+
     .table-body:last-child td:first-child {
         border-bottom-left-radius: 32px;
     }
-    
+
     .table-body:last-child td:last-child {
         border-bottom-right-radius: 32px;
     }
     .table thead th {
       padding-bottom: 10px; /* Add padding to the header cells if needed */
     }
-    
+
     .table tbody::before {
       content: "";
       display: table-row;
       height: 10px; /* Adjust the height to control the space between thead and tbody */
     }
-    
+
     .table thead th:first-child {
       border-top-left-radius:32px ;
     border-bottom-left-radius:32px ;
@@ -15944,6 +15944,6 @@ li.L9 {
       left: 700px;
     }
 
-    .table-body:first-child td:last-child .delete-form{   
-        margin: -19px; 
+    .table-body:first-child td:last-child .delete-form{
+        margin: -19px;
  }

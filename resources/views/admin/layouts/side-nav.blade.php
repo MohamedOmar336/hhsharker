@@ -114,6 +114,12 @@
                         <a class='nav-link' href="{{ route('home') }}">{{ __('general.dashboard') }}</a>
                     </li><!--end nav-item-->
                 </ul><!--end nav-->
+
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class='nav-link' href="{{ route('analytics') }}">{{ __('general.analytics') }}</a>
+                    </li><!--end nav-item-->
+                </ul><!--end nav-->
             </div><!-- end Dashboards -->
 
             <div id="MetricaExternal" class="main-icon-menu-pane tab-pane" role="tabpanel"

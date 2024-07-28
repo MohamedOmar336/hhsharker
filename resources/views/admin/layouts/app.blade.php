@@ -115,16 +115,10 @@
     <script src="{{ asset('assets-admin/js/pages/helpdesk-index.init.js') }}"></script>
     <script src="{{ asset('assets-admin/libs/litepicker/litepicker.js') }}"></script>
     <script src="{{ asset('assets-admin/js/pages/projects-index.init.js') }}"></script>
-
-
     <script src="{{ asset('assets-admin/libs/tabulator-tables/js/tabulator.min.js') }}"></script>
-
-
-
-        <script src="{{ asset('assets-admin/libs/sweetalert2/sweetalert2.min.js') }}"></script>
-        <script src="{{ asset('assets-admin/js/pages/sweet-alert.init.js') }}"></script>
-
-
+    <script src="{{ asset('assets-admin/libs/sweetalert2/sweetalert2.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/js/pages/sweet-alert.init.js') }}"></script>
+    <script src="{{ asset('assets-admin/js/pages/analytics-customers.init.js')}}"></script>
 
     <script src="{{ asset('assets-admin/js/tinymce/tinymce.min.js') }}"></script>
     <script src="{{ asset('assets-admin/js/pages/form-editor.init.js') }}"></script>

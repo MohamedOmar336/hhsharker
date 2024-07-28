@@ -63,6 +63,8 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+        Route::get('/analytics', [HomeController::class, 'analytics'])->name('analytics');
+
         Route::resource('/characteristics', CharacteristicController::class);
 
         Route::get('/smtp-settings', [SmtpSettingsController::class, 'edit'])->name('smtp-settings.edit');

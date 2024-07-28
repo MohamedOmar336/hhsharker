@@ -84,4 +84,9 @@ class HomeController extends Controller
 
         return view('admin.home', compact('notifications', 'appointments', 'newTicketsCount', 'openTicketsCount', 'onHoldTicketsCount', 'unassignedTicketsCount','tickets'));
     }
+
+    public function analytics()
+    {
+        return view('admin.analytics.index');
+    }
 }
