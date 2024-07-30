@@ -29,7 +29,7 @@
                         <div class="card-header">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <h4 class="card-title">Customers Growth</h4>
+                                    <h4 class="card-title">NPS (Net Promoter Score) Survey Automatio</h4>
                                 </div><!--end col-->
                             </div>  <!--end row-->
                         </div><!--end card-header-->
@@ -99,7 +99,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Customers Details </h4>
+                            <h4 class="card-title">Customer Feedback </h4>
                         </div><!--end card-header-->
                         <div class="card-body">
                             <div class="table-responsive">
@@ -484,7 +484,7 @@
             field: "name",
             editor: "input"
         }, {
-            title: "Task Progress",
+            title: "customer Satisfaction",
             field: "progress",
             hozAlign: "left",
             formatter: "progress",
