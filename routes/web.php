@@ -214,3 +214,7 @@ Route::view('/lcac', 'website.lcac')->name('lcac');
 
 Route::get('/test/create', [ContactUsController::class, 'create'])->name('test.create');
 Route::post('/test', [ContactUsController::class, 'store'])->name('test.store');
+
+
+Route::get('/whatsapp-webhook', [WhatsAppController::class, 'verify']);
+Route::post('/whatsapp-webhook', [WhatsAppController::class, 'receiveMessage']);

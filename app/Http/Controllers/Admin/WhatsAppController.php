@@ -115,4 +115,19 @@ class WhatsAppController extends Controller
             return response()->json(['success' => false, 'response' => $response, 'error' => $response['error'] ?? 'Unknown error']);
         }
     }
+
+    /**
+     * Verify the webhook endpoint.
+     */
+    public function verify(Request $request)
+    {
+        $verify_token = "mhmedomr336"; // This should match the token you set in Facebook's webhook configuration
+
+        if ($request->hub_mode === 'subscribe' &&
+            $request->hub_verify_token === $verify_token) {
+            return response($request->hub_challenge, 200);
+        }
+
+        return response('Invalid token', 403);
+    }
 }
