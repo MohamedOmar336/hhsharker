@@ -51,21 +51,39 @@ class WhatsAppController extends Controller
 
     public function receiveMessage(Request $request)
     {
-        // Extract the phone number and message from the request
-        // Note: Adjust these request keys based on the actual JSON structure sent by WhatsApp
-        $phoneNumber = $request->input('sender.phone');
-        $text = $request->input('message.text');
+        $recive = $request->entry;
+        $input = json_decode($recive , true);
+        return $request->all();
+        // Loop through each entry
+        foreach ($input['entry'] as $entry) {
+            $messages = $entry['changes'] ?? [];
 
-        // Find or create the contact
-        $contact = WhatsAppContact::firstOrCreate(['phone_number' => $phoneNumber]);
+            foreach ($messages as $message) {
+                if (isset($message['value']['messages'][0])) {
+                    $msgDetails = $message['value']['messages'][0];
 
-        // Store the message linked to the contact
-        $message = new WhatsAppMessage([
-            'whatsapp_contact_id' => $contact->id,
-            'message' => $text,
-            'direction' => 'incoming'  // Assuming it's an incoming message
-        ]);
-        $message->save();
+                    $chatMessage = $msgDetails['text']['body'] ?? null;
+                    $timestamp = $msgDetails['timestamp'] ?? null;
+                    $senderId = $msgDetails['from'] ?? null;
+
+                    if ($chatMessage) {
+                        // Assuming you might have a method to find or create a contact based on senderId
+                        $contact = WhatsAppContact::firstOrCreate(['phone_number' => $senderId]);
+
+                        // Create and save the WhatsApp message
+                        $whatsAppMessage = new WhatsAppMessage([
+                            'whatsapp_contact_id' => $contact->id,
+                            'message' => $chatMessage,
+                            'direction' => 'incoming'  // Assuming 'incoming' for received messages
+                        ]);
+                        $whatsAppMessage->save();
+
+                        // Log the message object or any other processing
+                        \Log::info("Message saved: {$whatsAppMessage->message} from {$contact->phone_number}");
+                    }
+                }
+            }
+        }
 
         return response()->json(['success' => true, 'message' => 'Message received and stored']);
     }

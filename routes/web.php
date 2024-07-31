@@ -217,4 +217,4 @@ Route::post('/test', [ContactUsController::class, 'store'])->name('test.store');
 
 
 Route::get('/whatsapp-webhook', [WhatsAppController::class, 'verify']);
-Route::post('/whatsapp-webhook', [WhatsAppController::class, 'receiveMessage']);
+Route::get('/whatsapp-webhook-test', [WhatsAppController::class, 'receiveMessage']);
