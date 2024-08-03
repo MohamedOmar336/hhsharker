@@ -954,7 +954,7 @@
 }
 .chat-conversation .conversation-list .ctext-wrap-content{
     padding:12px 20px;
-    background-color:var(--bs-primary);
+    background-color:#1f2b5a;
     border-radius:8px 8px 8px 0;
     color:#fff;
     position:relative

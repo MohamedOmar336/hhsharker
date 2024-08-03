@@ -115,7 +115,7 @@ class WhatsAppController extends Controller
     public function roomMessages (){
 
         $messages = WhatsAppContact::where('phone_number' , request()->phoneNumber)->with('messages')->first();
-
+        
         return response()->json(['success' => true, 'message' => $messages]);
     }
 

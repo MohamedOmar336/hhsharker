@@ -97,11 +97,12 @@
 
                         <div class="text-center p-4 border-bottom">
                             <div class="mb-4">
-                                <img src="{{ asset( 'images/' .  auth()->user()->image) }}"
+                                <img src="{{ asset('images/' . auth()->user()->image) }}"
                                     class="rounded-circle avatar-lg img-thumbnail" alt="">
                             </div>
 
-                            <h5 class="font-size-16 mb-1 text-truncate">{{ auth()->user()->first_name .' '. auth()->user()->last_name }}</h5>
+                            <h5 class="font-size-16 mb-1 text-truncate">
+                                {{ auth()->user()->first_name . ' ' . auth()->user()->last_name }}</h5>
                             <p class="text-muted text-truncate mb-1"><i
                                     class="ri-record-circle-fill font-size-10 text-success me-1 ms-0 d-inline-block"></i>
                                 Active</p>
@@ -127,7 +128,9 @@
                                         <div class="accordion-body">
                                             <div>
                                                 <p class="text-muted mb-1">Name</p>
-                                                <h5 class="font-size-14">{{ auth()->user()->first_name .' '. auth()->user()->last_name }}</h5>
+                                                <h5 class="font-size-14">
+                                                    {{ auth()->user()->first_name . ' ' . auth()->user()->last_name }}
+                                                </h5>
                                             </div>
 
                                             <div class="mt-4">
@@ -140,7 +143,7 @@
                                             @endphp
                                             <div class="mt-4">
                                                 <p class="text-muted mb-1">Time</p>
-                                                <h5 class="font-size-14">{{ $now->format('Y-m-d H:i:s')   }}</h5>
+                                                <h5 class="font-size-14">{{ $now->format('Y-m-d H:i:s') }}</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -185,7 +188,7 @@
                                             <div class="avatar-xs mx-auto d-block chat-user-img online">
                                                 <span
                                                     class="avatar-title rounded-circle bg-primary-subtle text-primary">
-                                                    M
+                                                    {{ strtoupper($contact->name[0]) }} <!-- Displays the first letter of the name, capitalized -->
                                                 </span>
                                                 <span class="user-status"></span>
                                             </div>
@@ -207,13 +210,14 @@
                                     @foreach ($contacts as $contact)
                                         <li>
                                             <a href="#" class="whatsapp"
-                                                data-whatsapp-id="{{ $contact->id }}" data-user-name="{{ $contact->name }}">
+                                                data-whatsapp-id="{{ $contact->id }}"
+                                                data-user-name="{{ $contact->name }}">
                                                 <div class="d-flex">
                                                     <div class="chat-user-img align-self-center online me-3 ms-0">
                                                         <div class="avatar-xs">
                                                             <span
                                                                 class="avatar-title rounded-circle bg-primary-subtle text-primary">
-                                                                M
+                                                                {{ strtoupper($contact->name[0]) }} <!-- Displays the first letter of the name, capitalized -->
                                                             </span>
                                                         </div>
                                                         <span class="user-status"></span>
@@ -260,9 +264,10 @@
                                                 class="ri-arrow-left-s-line"></i></a>
                                     </div>
                                     <div class="avatar-xs">
-                                        <spa class="avatar-title rounded-circle bg-primary-subtle text-primary image-text">
+                                        <span
+                                             class="avatar-title rounded-circle bg-primary-subtle text-primary image-text">
                                             M
-                                        </span>
+                                            </span>
                                     </div>
                                     <div class="flex-grow-1 overflow-hidden">
                                         <h5 class="font-size-16 mb-0 text-truncate"><a href="#"
@@ -277,8 +282,7 @@
                                     <li class="list-inline-item">
                                         <div class="dropdown">
                                             <button class="btn nav-btn dropdown-toggle" type="button"
-                                                data-bs-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false">
+                                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="ri-search-line"></i>
                                             </button>
                                             <div class="dropdown-menu p-0 dropdown-menu-end dropdown-menu-md">
@@ -289,32 +293,10 @@
                                             </div>
                                         </div>
                                     </li>
-
-                                    {{-- <li class="list-inline-item d-none d-lg-inline-block me-2 ms-0">
-                                        <button type="button" class="btn nav-btn" data-bs-toggle="modal"
-                                            data-bs-target="#audiocallModal">
-                                            <i class="ri-phone-line"></i>
-                                        </button>
-                                    </li>
-
-                                    <li class="list-inline-item d-none d-lg-inline-block me-2 ms-0">
-                                        <button type="button" class="btn nav-btn" data-bs-toggle="modal"
-                                            data-bs-target="#videocallModal">
-                                            <i class="ri-vidicon-line"></i>
-                                        </button>
-                                    </li> --}}
-
-                                    {{-- <li class="list-inline-item d-none d-lg-inline-block me-2 ms-0">
-                                        <button type="button" class="btn nav-btn user-profile-show">
-                                            <i class="ri-user-2-line"></i>
-                                        </button>
-                                    </li> --}}
-
                                     <li class="list-inline-item">
                                         <div class="dropdown">
                                             <button class="btn nav-btn dropdown-toggle" type="button"
-                                                data-bs-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false">
+                                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="ri-more-fill"></i>
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-end">
@@ -344,7 +326,7 @@
 
                     <!-- start chat conversation -->
                     <div class="chat-conversation p-3 p-lg-4" data-simplebar="init">
-                        <ul class="list-unstyled mb-0">
+                        <ul class="list-unstyled mb-0" id="append-messages">
 
                             <li class="right">
                                 <div class="conversation-list">
@@ -404,14 +386,18 @@
                             <div class="col-auto">
                                 <div class="chat-input-links ms-md-2 me-md-0">
                                     <ul class="list-inline mb-0">
-                                        <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-placement="top" title="Attached File">
-                                            <button type="button" class="btn btn-link text-decoration-none font-size-16 btn-lg waves-effect" id="triggerFileUpload">
+                                        <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-placement="top"
+                                            title="Attached File">
+                                            <button type="button"
+                                                class="btn btn-link text-decoration-none font-size-16 btn-lg waves-effect"
+                                                id="triggerFileUpload">
                                                 <i class="ri-attachment-line"></i>
                                             </button>
                                             <input type="file" id="fileInput" style="display: none;" />
                                         </li>
 
-                                        <li class="list-inline-item" data-bs-toggle="tooltip" title="Send the Template">
+                                        <li class="list-inline-item" data-bs-toggle="tooltip"
+                                            title="Send the Template">
                                             <button id="sendWhatsappTemplateButton"
                                                 class="btn btn-link font-size-11 btn-lg  waves-effect">
                                                 <i class="ri-send-plane-2-fill"></i>
@@ -539,10 +525,9 @@
                                                             </a>
                                                         </li>
                                                         <li class="list-inline-item dropdown">
-                                                            <a class="dropdown-toggle text-muted px-1"
-                                                                href="#" role="button"
-                                                                data-bs-toggle="dropdown" aria-haspopup="true"
-                                                                aria-expanded="false">
+                                                            <a class="dropdown-toggle text-muted px-1" href="#"
+                                                                role="button" data-bs-toggle="dropdown"
+                                                                aria-haspopup="true" aria-expanded="false">
                                                                 <i class="ri-more-fill"></i>
                                                             </a>
                                                             <div class="dropdown-menu dropdown-menu-end">
@@ -581,10 +566,9 @@
                                                             </a>
                                                         </li>
                                                         <li class="list-inline-item dropdown">
-                                                            <a class="dropdown-toggle text-muted px-1"
-                                                                href="#" role="button"
-                                                                data-bs-toggle="dropdown" aria-haspopup="true"
-                                                                aria-expanded="false">
+                                                            <a class="dropdown-toggle text-muted px-1" href="#"
+                                                                role="button" data-bs-toggle="dropdown"
+                                                                aria-haspopup="true" aria-expanded="false">
                                                                 <i class="ri-more-fill"></i>
                                                             </a>
                                                             <div class="dropdown-menu dropdown-menu-end">
@@ -623,10 +607,9 @@
                                                             </a>
                                                         </li>
                                                         <li class="list-inline-item dropdown">
-                                                            <a class="dropdown-toggle text-muted px-1"
-                                                                href="#" role="button"
-                                                                data-bs-toggle="dropdown" aria-haspopup="true"
-                                                                aria-expanded="false">
+                                                            <a class="dropdown-toggle text-muted px-1" href="#"
+                                                                role="button" data-bs-toggle="dropdown"
+                                                                aria-haspopup="true" aria-expanded="false">
                                                                 <i class="ri-more-fill"></i>
                                                             </a>
                                                             <div class="dropdown-menu dropdown-menu-end">
@@ -665,10 +648,9 @@
                                                             </a>
                                                         </li>
                                                         <li class="list-inline-item dropdown">
-                                                            <a class="dropdown-toggle text-muted px-1"
-                                                                href="#" role="button"
-                                                                data-bs-toggle="dropdown" aria-haspopup="true"
-                                                                aria-expanded="false">
+                                                            <a class="dropdown-toggle text-muted px-1" href="#"
+                                                                role="button" data-bs-toggle="dropdown"
+                                                                aria-haspopup="true" aria-expanded="false">
                                                                 <i class="ri-more-fill"></i>
                                                             </a>
                                                             <div class="dropdown-menu dropdown-menu-end">
@@ -804,12 +786,12 @@
                     handleWhatsAppChat($(this).data('whatsapp-id'), $(this).find('.phone-number').text());
                 });
 
-                function handleWhatsAppChat(whatsAppRoomId, groupName ) {
+                function handleWhatsAppChat(whatsAppRoomId, groupName) {
                     // assign the phone number to the chat room
                     this.phoneNumber = groupName;
 
                     var chatHeader = $('.user-profile-show');
-                    var chatBody = $('.user-chat-content');
+                    var chatBody = $('#append-messages');
                     $('#receiver_id').val(whatsAppRoomId);
                     chatBody.empty();
 
@@ -831,101 +813,51 @@
                         },
                         success: function(response) {
                             console.log(response.message);
-                            var chatBodyNew = $('.user-chat-content');
+                            var chatBodyNew = $('#append-messages');
                             var messages = response.message.messages;
                             // var otherUserImage = $('#imageUser').data('user-image');
 
                             messages.forEach(function(message) {
                                 var timeAgo = moment(message.updated_at)
-                            .fromNow(); // Convert ISO date to relative time
-                            if(message.direction == 'outgoing') {
-                                var media =
-                                    `<div class="user-chat-content">
-                                        <div class="ctext-wrap">
-                                            <div class="ctext-wrap-content">
-                                                <p class="mb-0">
-                                                    ${message.message}
-                                                </p>
-                                                <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i>
-                                                    <span class="align-middle">${timeAgo}</span></p>
-                                            </div>
+                                    .fromNow(); // Convert ISO date to relative time
+                                if (message.direction == 'outgoing') {
+                                    var media =
+                                        `<li class="right">
+                                            <div class="conversation-list">
+                                                <div class="chat-avatar">
+                                                    <img src="{{  asset('images/' . auth()->user()->image)  }}" alt="">
+                                                </div>
 
-                                            <div class="dropdown align-self-start">
-                                                <a class="dropdown-toggle" href="#" role="button"
-                                                    data-bs-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false">
-                                                    <i class="ri-more-2-fill"></i>
-                                                </a>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="#">Copy <i
-                                                            class="ri-file-copy-line float-end text-muted"></i></a>
-                                                    <a class="dropdown-item" href="#">Save <i
-                                                            class="ri-save-line float-end text-muted"></i></a>
-                                                    <a class="dropdown-item" href="#">Forward <i
-                                                            class="ri-chat-forward-line float-end text-muted"></i></a>
-                                                    <a class="dropdown-item" href="#">Delete <i
-                                                            class="ri-delete-bin-line float-end text-muted"></i></a>
+                                                <div class="user-chat-content">
+                                                    <div class="ctext-wrap">
+                                                        <div class="ctext-wrap-content">
+                                                            <p class="mb-0">
+                                                                ${message.message}
+                                                            </p>
+                                                            <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">${timeAgo}</span></p>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="conversation-name">Patricia Smith</div>
-                                    </div>`;
-                            }else{
-                                var media =   `  <li>
+                                        </li>`;
+                                } else {
+                                    var media = `
+                                    <li>
                                     <div class="conversation-list">
-                                        <div class="chat-avatar">
-                                            <img src="assets/images/users/avatar-4.jpg" alt="">
-                                        </div>
-
                                         <div class="user-chat-content">
-
                                             <div class="ctext-wrap">
                                                 <div class="ctext-wrap-content">
                                                     <p class="mb-0">
-                                                        Yeah everything is fine
+                                                        ${message.message}
                                                     </p>
-                                                    <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">10:05</span></p>
-                                                </div>
-                                                <div class="dropdown align-self-start">
-                                                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="ri-more-2-fill"></i>
-                                                    </a>
-                                                    <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="#">Copy <i class="ri-file-copy-line float-end text-muted"></i></a>
-                                                        <a class="dropdown-item" href="#">Save <i class="ri-save-line float-end text-muted"></i></a>
-                                                        <a class="dropdown-item" href="#">Forward <i class="ri-chat-forward-line float-end text-muted"></i></a>
-                                                        <a class="dropdown-item" href="#">Delete <i class="ri-delete-bin-line float-end text-muted"></i></a>
-                                                    </div>
+                                                    <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">${timeAgo}</span></p>
                                                 </div>
                                             </div>
-
-                                            <div class="ctext-wrap">
-                                                <div class="ctext-wrap-content">
-                                                    <p class="mb-0">
-                                                        & Next meeting tomorrow 10.00AM
-                                                    </p>
-                                                    <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">10:05</span></p>
-                                                </div>
-                                                <div class="dropdown align-self-start">
-                                                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="ri-more-2-fill"></i>
-                                                    </a>
-                                                    <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="#">Copy <i class="ri-file-copy-line float-end text-muted"></i></a>
-                                                        <a class="dropdown-item" href="#">Save <i class="ri-save-line float-end text-muted"></i></a>
-                                                        <a class="dropdown-item" href="#">Forward <i class="ri-chat-forward-line float-end text-muted"></i></a>
-                                                        <a class="dropdown-item" href="#">Delete <i class="ri-delete-bin-line float-end text-muted"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="conversation-name">Doris Brown</div>
                                         </div>
-
                                     </div>
                                 </li>
                                 `;
-                            }
+                                }
 
 
                                 chatBodyNew.append(media); // Append each message as it's created
@@ -947,43 +879,40 @@
                 });
 
                 function sendwhatsapp(messageText) {
-                    console.log('sendwhatsapp called');  // Check how many times this gets logged
+                    console.log('sendwhatsapp called'); // Check how many times this gets logged
                     $.ajax({
                         url: '{{ route('send-whatsapp-message') }}',
                         method: 'POST',
                         data: {
                             phone: this.phoneNumber,
-                            message : messageText,
+                            message: messageText,
                             _token: '{{ csrf_token() }}'
                         },
                         success: function(response) {
-                            var chatBodyMessage = $('.user-chat-content');
+                            var chatBodyMessage = $('#append-messages');
                             console.log('AJAX success', response);
-                            var timeAgo = moment(response.message.updated_at).fromNow();  // Make sure you convert the time correctly
+                            var timeAgo = moment(response.message.updated_at)
+                                .fromNow(); // Make sure you convert the time correctly
                             var media = `
-                                <div class="user-chat-content">
-                                    <div class="ctext-wrap">
-                                        <div class="ctext-wrap-content">
-                                            <p class="mb-0">${response.message.message}</p>
-                                            <p class="chat-time mb-0">
-                                                <i class="ri-time-line align-middle"></i>
-                                                <span class="align-middle">${timeAgo}</span>
-                                            </p>
-                                        </div>
-                                        <div class="dropdown align-self-start">
-                                            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="ri-more-2-fill"></i>
-                                            </a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#">Copy</a>
-                                                <a class="dropdown-item" href="#">Save</a>
-                                                <a class="dropdown-item" href="#">Forward</a>
-                                                <a class="dropdown-item" href="#">Delete</a>
+                            <li class="right">
+                                <div class="conversation-list">
+                                    <div class="chat-avatar">
+                                        <img src="{{  asset('images/' . auth()->user()->image)  }}" alt="">
+                                    </div>
+                                    <div class="user-chat-content">
+                                        <div class="ctext-wrap">
+                                            <div class="ctext-wrap-content">
+                                                <p class="mb-0">${response.message.message}</p>
+                                                <p class="chat-time mb-0">
+                                                    <i class="ri-time-line align-middle"></i>
+                                                    <span class="align-middle">${timeAgo}</span>
+                                                </p>
                                             </div>
+
                                         </div>
                                     </div>
-                                    <div class="conversation-name">Patricia Smith</div>
-                                </div>`;
+                                </div>
+                            </li>`;
                             chatBodyMessage.append(media);
                         },
                         error: function(xhr, status, error) {
@@ -1013,7 +942,7 @@
                             var chatBodyTemplate = $('.user-chat-content');
                             var timeAgo = moment(response.message.updated_at)
                             var template =
-                                    `<div class="user-chat-content">
+                                `<div class="user-chat-content">
                                         <div class="ctext-wrap">
                                             <div class="ctext-wrap-content">
                                                 <p class="mb-0">
@@ -1022,28 +951,9 @@
                                                 <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i>
                                                     <span class="align-middle">${timeAgo}</span></p>
                                             </div>
-
-                                            <div class="dropdown align-self-start">
-                                                <a class="dropdown-toggle" href="#" role="button"
-                                                    data-bs-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false">
-                                                    <i class="ri-more-2-fill"></i>
-                                                </a>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="#">Copy <i
-                                                            class="ri-file-copy-line float-end text-muted"></i></a>
-                                                    <a class="dropdown-item" href="#">Save <i
-                                                            class="ri-save-line float-end text-muted"></i></a>
-                                                    <a class="dropdown-item" href="#">Forward <i
-                                                            class="ri-chat-forward-line float-end text-muted"></i></a>
-                                                    <a class="dropdown-item" href="#">Delete <i
-                                                            class="ri-delete-bin-line float-end text-muted"></i></a>
-                                                </div>
-                                            </div>
                                         </div>
-                                        <div class="conversation-name">Patricia Smith</div>
                                     </div>`;
-                                chatBodyTemplate.append(template); // Append each message as it's created
+                            chatBodyTemplate.append(template); // Append each message as it's created
                         },
                         error: function(xhr, status, error) {
                             console.error('Error creating room:', error);
