@@ -210,6 +210,8 @@ Route::view('/about', 'website.about')->name('about');
 Route::view('/founders', 'website.founders')->name('founders');
 Route::view('/vision', 'website.vision')->name('vision');
 Route::view('/lcac', 'website.lcac')->name('lcac');
+Route::view('/terms-of-service', 'website.terms-of-service')->name('terms');
+Route::view('/policy', 'website.policy')->name('policy');
 
 
 Route::get('/test/create', [ContactUsController::class, 'create'])->name('test.create');
