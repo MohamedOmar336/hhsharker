@@ -51,41 +51,47 @@ class WhatsAppController extends Controller
 
     public function receiveMessage(Request $request)
     {
-        $recive = $request->entry;
-        $input = json_decode($recive , true);
-        return $request->all();
-        // Loop through each entry
-        foreach ($input['entry'] as $entry) {
-            $messages = $entry['changes'] ?? [];
+        \Log::info('Raw request data:', $request->all());
 
-            foreach ($messages as $message) {
-                if (isset($message['value']['messages'][0])) {
-                    $msgDetails = $message['value']['messages'][0];
+        $input = $request->all();
+        \Log::info('Webhook received:', $input); // Log the entire request to inspect structure
 
-                    $chatMessage = $msgDetails['text']['body'] ?? null;
-                    $timestamp = $msgDetails['timestamp'] ?? null;
-                    $senderId = $msgDetails['from'] ?? null;
+        try {
+            // Loop through each entry
+            foreach ($input['entry'] as $entry) {
+                $messages = $entry['changes'] ?? [];
 
-                    if ($chatMessage) {
-                        // Assuming you might have a method to find or create a contact based on senderId
-                        $contact = WhatsAppContact::firstOrCreate(['phone_number' => $senderId]);
+                foreach ($messages as $message) {
+                    if (isset($message['value']['messages'][0])) {
+                        $msgDetails = $message['value']['messages'][0];
 
-                        // Create and save the WhatsApp message
-                        $whatsAppMessage = new WhatsAppMessage([
-                            'whatsapp_contact_id' => $contact->id,
-                            'message' => $chatMessage,
-                            'direction' => 'incoming'  // Assuming 'incoming' for received messages
-                        ]);
-                        $whatsAppMessage->save();
+                        $chatMessage = $msgDetails['text']['body'] ?? null;
+                        $timestamp = $msgDetails['timestamp'] ?? null;
+                        $senderId = $msgDetails['from'] ?? null;
 
-                        // Log the message object or any other processing
-                        \Log::info("Message saved: {$whatsAppMessage->message} from {$contact->phone_number}");
+                        if ($chatMessage) {
+                            // Assuming you might have a method to find or create a contact based on senderId
+                            $contact = WhatsAppContact::firstOrCreate(['phone_number' => $senderId], ['name' => 'Unknown']); // Ensure 'name' or other required fields are handled
+
+                            // Create and save the WhatsApp message
+                            $whatsAppMessage = new WhatsAppMessage([
+                                'whatsapp_contact_id' => $contact->id,
+                                'message' => $chatMessage,
+                                'direction' => 'incoming'  // Assuming 'incoming' for received messages
+                            ]);
+                            $whatsAppMessage->save();
+
+                            \Log::info("Message saved: {$whatsAppMessage->message} from {$contact->phone_number}");
+                        }
                     }
                 }
             }
+        } catch (\Exception $e) {
+            \Log::error("Error processing WhatsApp webhook: " . $e->getMessage());
+            return response()->json(['success' => false, 'message' => 'Internal Server Error'], 500);
         }
 
-        return response()->json(['success' => true, 'message' => 'Message received and stored']);
+        return response()->json(['success' => true, 'message' => 'Messages received and stored']);
     }
 
     public function storeMessage($phoneNumber, $text, $direction)
@@ -139,7 +145,7 @@ class WhatsAppController extends Controller
      */
     public function verify(Request $request)
     {
-        $verify_token = "mhmedomr336"; // This should match the token you set in Facebook's webhook configuration
+        $verify_token = "mhmedomr336new"; // This should match the token you set in Facebook's webhook configuration
 
         if ($request->hub_mode === 'subscribe' &&
             $request->hub_verify_token === $verify_token) {
