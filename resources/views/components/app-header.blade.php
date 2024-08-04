@@ -40,15 +40,6 @@
                     <a href="#" class="dropdown-item">Logout</a>
                 </div>
             </li>
-            <li class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Media Center</a>
-                <div class="dropdown-menu dropdown-menu-end">
-                    <a href="#" class="dropdown-item">Reports</a>
-                    <a href="#" class="dropdown-item">Settings</a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">Logout</a>
-                </div>
-            </li>
         </div>
         <div class="end">
             <li class="nav-item">
