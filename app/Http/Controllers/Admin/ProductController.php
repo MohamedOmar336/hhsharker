@@ -18,11 +18,31 @@ use App\Imports\ProductsImport;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $characteristics = Characteristic::all();
-        $records = Product::orderBy('created_at', 'desc')->paginate(100);
-        return view('admin.products.index', compact('records', 'characteristics'));
+        $query = Product::orderBy('created_at', 'desc');
+
+        // Apply filter only if 'name' is not empty
+        if ($request->has('name') && $request->name != '') {
+            $query->where('product_name_en', 'like', '%' . $request->name . '%')
+                ->orWhere('product_name_ar', 'like', '%' . $request->name . '%');
+        }
+
+        // Apply filter only if 'category_id' is not empty
+        if ($request->has('category_id') && $request->category_id != '') {
+            $query->where('category_id', $request->category_id);
+        }
+
+        // Apply filter only if 'status' is not empty
+        if ($request->has('status') && $request->status != '') {
+            $query->where('status', 'like', '%' . $request->status . '%');
+        }
+
+        $records = $query->paginate(100);
+        // dd($records , $request->all());
+        $categories = Category::all(); // Assuming you want to filter by categories too
+        return view('admin.products.index', compact('records', 'characteristics', 'categories'));
     }
 
     public function create()

@@ -37,6 +37,21 @@ class TicketController extends Controller
                 ->orWhere('createdBy', 'LIKE', "%{$search}%");
         }
 
+        // Apply status filter
+        if ($request->has('status_id') && !empty($request->status_id)) {
+            $query->where('StatusID', $request->status_id);
+        }
+
+        // Apply priority filter
+        if ($request->has('priority_id') && !empty($request->priority_id)) {
+            $query->where('PriorityID', $request->priority_id);
+        }
+
+        // Apply assignedTo filter
+        if ($request->has('assigned_to') && !empty($request->assigned_to)) {
+            $query->where('assigned_to', $request->assigned_to);
+        }
+
         $records = $query->paginate(500);
         $priorities = TicketPrioritySetting::all();
         $statuses = TicketStatusSetting::all();
