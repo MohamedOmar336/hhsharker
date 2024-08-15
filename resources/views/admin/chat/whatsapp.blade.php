@@ -216,7 +216,7 @@
                                             data-user-status="Active"
                                             data-user-image="{{ asset('storage/' . $contact->image) }}"
                                             data-user-location="{{ $contact->address }}"
-                                            data-last-interaction="{{ $contact->last_interaction }}">
+                                            data-last-interaction="{{ $contact->last_interaction }}" >
                                                 <div class="d-flex">
                                                     <div class="chat-user-img align-self-center online me-3 ms-0">
                                                         <div class="avatar-xs">
@@ -563,44 +563,52 @@
         <script src="{{ asset('assets-admin/assets-chat/js/app.js') }}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
         <script>
-            // Initialize Firebase
-            firebase.initializeApp({
-                apiKey: "AIzaSyDXrOKuqnjDvWm8IZ2r3wM8ZY_fG_QamOg",
-                authDomain: "hhshaker-282b0.firebaseapp.com",
-                projectId: "hhshaker-282b0",
-                storageBucket: "hhshaker-282b0.appspot.com",
-                messagingSenderId: "567064391154",
-                appId: "1:567064391154:web:40574f6824350b17764f6b",
-                measurementId: "G-N2VKVTGWMX"
-            });
-            var messagesRef = firebase.database().ref('/path/to/messages/1');
-            messagesRef.on('child_added', function(snapshot) {
-                var message = snapshot.val();
-                console.log(message); // Log the message to debug
-                var timeAgo = moment(message.timestamp).fromNow(); // Assuming `timestamp` is stored correctly
-                var media = `<li>
-                                <div class="conversation-list">
-                                    <div class="user-chat-content">
-                                        <div class="ctext-wrap">
-                                            <div class="ctext-wrap-content">
-                                                <p class="mb-0">
-                                                    ${message.message}
-                                                </p>
-                                                <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">${timeAgo}</span></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>`;
-                $('#append-messages').append(media); // Append each message as it's created
-            });
+
         </script>
         <script>
             $(document).ready(function() {
                 var phoneNumber = null;
-
+                var currentContactId = null; // This will hold the current contact's ID
+                // Initialize Firebase
+                firebase.initializeApp({
+                    apiKey: "AIzaSyDXrOKuqnjDvWm8IZ2r3wM8ZY_fG_QamOg",
+                    authDomain: "hhshaker-282b0.firebaseapp.com",
+                    projectId: "hhshaker-282b0",
+                    storageBucket: "hhshaker-282b0.appspot.com",
+                    messagingSenderId: "567064391154",
+                    appId: "1:567064391154:web:40574f6824350b17764f6b",
+                    measurementId: "G-N2VKVTGWMX"
+                });
+                function initFirebaseListener(contactId) {
+                    console.log(22222222222222);
+                    var messagesRef = firebase.database().ref('/path/to/messages/' + currentContactId);
+                    messagesRef.on('child_added', function(snapshot) {
+                        var message = snapshot.val();
+                        var timeAgo = moment(message.timestamp).fromNow(); // Format time
+                        var media = `<li>
+                                        <div class="conversation-list">
+                                            <div class="user-chat-content">
+                                                <div class="ctext-wrap">
+                                                    <div class="ctext-wrap-content">
+                                                        <p class="mb-0">${message.message}</p>
+                                                        <p class="chat-time mb-0">
+                                                            <i class="ri-time-line align-middle"></i>
+                                                            <span class="align-middle">${timeAgo}</span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>`;
+                        $('#append-messages').append(media); // Append each message as it's created
+                    });
+                }
                 $('.whatsapp').click(function(e) {
                     e.preventDefault();
 
+                    currentContactId = $(this).data('whatsapp-id'); // Set the global contact ID
+                    debugger
+                    initFirebaseListener(currentContactId); // Initialize listener for this contact
 
                     var userName = $(this).data('user-name');
                     var userEmail = $(this).data('user-email');

@@ -61,11 +61,11 @@ class WhatsAppController extends Controller
                     if (isset($message['value']['messages'][0])) {
                         $msgDetails = $message['value']['messages'][0];
                         $chatMessage = $msgDetails['text']['body'] ?? null;
-                        $senderId = $msgDetails['from'] ?? null;
+                        $senderPhone = $msgDetails['from'] ?? null;
+                        $contactMessage = WhatsAppContact::where(['phone_number' => $senderPhone])->first();
+                        $contact = Contact::where(['phone' => $senderPhone]);
 
-                        if ($chatMessage) {
-                            $contactMessage = WhatsAppContact::firstOrCreate(['phone_number' => $senderId], ['name' => 'Unknown']);
-                            $contact = Contact::firstOrCreate(['phone' => $senderId]);
+                        if ($chatMessage && $contactMessage && $contact) {
                             $whatsAppMessage = new WhatsAppMessage([
                                 'whatsapp_contact_id' => $contactMessage->id,
                                 'message' => $chatMessage,
@@ -83,11 +83,42 @@ class WhatsAppController extends Controller
                             // Post data to Firebase using HTTP client
                             $response = Http::post(env('FIREBASE_DATABASE_URL') . '/path/to/messages/' . $contactMessage->id . '.json', [
                                 'message' => $chatMessage,
-                                'from' => $senderId,
+                                'from' => $senderPhone,
                                 'timestamp' => now()->toDateTimeString(),
                                 'updated_at'=> now()->toDateTimeString()
                             ]);
 
+                        }else{
+
+                            $contact = Contact::create([
+                                'name'=>'Guest',
+                                'email'=>'Guest@example.com',
+                                'phone'=>$senderPhone,
+                                'address'=>'test address',
+                                'last_interaction'=> now()->toDateTimeString(),
+                            ]);
+                            $contactMessage = WhatsAppContact::create(['phone_number' => $senderPhone , 'name'=>'Guest'])->first();
+
+                            $whatsAppMessage = new WhatsAppMessage([
+                                'whatsapp_contact_id' => $contactMessage->id,
+                                'message' => $chatMessage,
+                                'direction' => 'incoming'
+                            ]);
+                            $whatsAppMessage->save();
+
+                            Notification::create([
+                                'type' => 'App\Models\WhatsAppMessage',
+                                'data' => ['message' => 'New messages From ' . $contact->name, 'link' => route('whatsapp.chat')],
+                                'notifiable_id' => 1,
+                                'notifiable_type' => 'App\Models\User',
+                            ]);
+                            // Post data to Firebase using HTTP client
+                            $response = Http::post(env('FIREBASE_DATABASE_URL') . '/path/to/messages/' . $contactMessage->id . '.json', [
+                                'message' => $chatMessage,
+                                'from' => $senderPhone,
+                                'timestamp' => now()->toDateTimeString(),
+                                'updated_at'=> now()->toDateTimeString()
+                            ]);
                         }
                     }
                 }
