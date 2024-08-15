@@ -210,8 +210,13 @@
                                     @foreach ($contacts as $contact)
                                         <li>
                                             <a href="#" class="whatsapp"
-                                                data-whatsapp-id="{{ $contact->id }}"
-                                                data-user-name="{{ $contact->name }}">
+                                            data-whatsapp-id="{{ $contact->id }}"
+                                            data-user-name="{{ $contact->name }}"
+                                            data-user-email="{{ $contact->email }}"
+                                            data-user-status="Active"
+                                            data-user-image="{{ asset('storage/' . $contact->image) }}"
+                                            data-user-location="{{ $contact->address }}"
+                                            data-last-interaction="{{ $contact->last_interaction }}">
                                                 <div class="d-flex">
                                                     <div class="chat-user-img align-self-center online me-3 ms-0">
                                                         <div class="avatar-xs">
@@ -432,10 +437,10 @@
                     </div>
 
                     <div class="text-center p-4 border-bottom">
-                        <div class="mb-4">
-                            <img src="{{ asset('assets-admin/assets-chat/images/users/avatar-4.jpg') }}"
-                                class="rounded-circle avatar-lg img-thumbnail" alt="">
-                        </div>
+                            <div class="avatar-xs" style="margin-inline: auto;height:3.2rem;width:3.2rem;">
+                                <span class="avatar-title rounded-circle bg-primary-subtle text-primary image-text">
+                                </span>
+                            </div>
 
                         <h5 class="font-size-16 mb-1 text-truncate">Doris Brown</h5>
                         <p class="text-muted text-truncate mb-1"><i
@@ -446,8 +451,8 @@
                     <!-- Start user-profile-desc -->
                     <div class="p-4 user-profile-desc" data-simplebar>
                         <div class="text-muted">
-                            <p class="mb-4">If several languages coalesce, the grammar of the resulting language is
-                                more simple and regular than that of the individual.</p>
+                        <p class="mb-4 address-profile" >If several languages coalesce, the grammar of the resulting language is
+                            more simple and regular than that of the individual.</p>
                         </div>
 
                         <div class="accordion" id="myprofile">
@@ -467,7 +472,7 @@
                                     <div class="accordion-body">
                                         <div>
                                             <p class="text-muted mb-1">Name</p>
-                                            <h5 class="font-size-14">Doris Brown</h5>
+                                            <h5 class="font-size-14 user-neme-about">Doris Brown</h5>
                                         </div>
 
                                         <div class="mt-4">
@@ -487,188 +492,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="accordion-item card border">
-                                <div class="accordion-header" id="attachfile3">
-                                    <button class="accordion-button collapsed" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#attachprofile"
-                                        aria-expanded="false" aria-controls="attachprofile">
-                                        <h5 class="font-size-14 m-0">
-                                            <i class="ri-attachment-line me-2 ms-0 align-middle d-inline-block"></i>
-                                            Attached Files
-                                        </h5>
-                                    </button>
-                                </div>
-                                <div id="attachprofile" class="accordion-collapse collapse"
-                                    aria-labelledby="attachfile3" data-bs-parent="#myprofile">
-                                    <div class="accordion-body">
-                                        <div class="card p-2 border mb-2">
-                                            <div class="d-flex align-items-center">
-                                                <div class="avatar-sm me-3 ms-0">
-                                                    <div
-                                                        class="avatar-title bg-primary-subtle text-primary rounded font-size-20">
-                                                        <i class="ri-file-text-fill"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <div class="text-start">
-                                                        <h5 class="font-size-14 mb-1">admin_v1.0.zip</h5>
-                                                        <p class="text-muted font-size-13 mb-0">12.5 MB</p>
-                                                    </div>
-                                                </div>
-
-                                                <div class="ms-4 me-0">
-                                                    <ul class="list-inline mb-0 font-size-18">
-                                                        <li class="list-inline-item">
-                                                            <a href="#" class="text-muted px-1">
-                                                                <i class="ri-download-2-line"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li class="list-inline-item dropdown">
-                                                            <a class="dropdown-toggle text-muted px-1" href="#"
-                                                                role="button" data-bs-toggle="dropdown"
-                                                                aria-haspopup="true" aria-expanded="false">
-                                                                <i class="ri-more-fill"></i>
-                                                            </a>
-                                                            <div class="dropdown-menu dropdown-menu-end">
-                                                                <a class="dropdown-item" href="#">Action</a>
-                                                                <a class="dropdown-item" href="#">Another
-                                                                    action</a>
-                                                                <div class="dropdown-divider"></div>
-                                                                <a class="dropdown-item" href="#">Delete</a>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="card p-2 border mb-2">
-                                            <div class="d-flex align-items-center">
-                                                <div class="avatar-sm me-3 ms-0">
-                                                    <div
-                                                        class="avatar-title bg-primary-subtle text-primary rounded font-size-20">
-                                                        <i class="ri-image-fill"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <div class="text-start">
-                                                        <h5 class="font-size-14 mb-1">Image-1.jpg</h5>
-                                                        <p class="text-muted font-size-13 mb-0">4.2 MB</p>
-                                                    </div>
-                                                </div>
-
-                                                <div class="ms-4 me-0">
-                                                    <ul class="list-inline mb-0 font-size-18">
-                                                        <li class="list-inline-item">
-                                                            <a href="#" class="text-muted px-1">
-                                                                <i class="ri-download-2-line"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li class="list-inline-item dropdown">
-                                                            <a class="dropdown-toggle text-muted px-1" href="#"
-                                                                role="button" data-bs-toggle="dropdown"
-                                                                aria-haspopup="true" aria-expanded="false">
-                                                                <i class="ri-more-fill"></i>
-                                                            </a>
-                                                            <div class="dropdown-menu dropdown-menu-end">
-                                                                <a class="dropdown-item" href="#">Action</a>
-                                                                <a class="dropdown-item" href="#">Another
-                                                                    action</a>
-                                                                <div class="dropdown-divider"></div>
-                                                                <a class="dropdown-item" href="#">Delete</a>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="card p-2 border mb-2">
-                                            <div class="d-flex align-items-center">
-                                                <div class="avatar-sm me-3 ms-0">
-                                                    <div
-                                                        class="avatar-title bg-primary-subtle text-primary rounded font-size-20">
-                                                        <i class="ri-image-fill"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <div class="text-start">
-                                                        <h5 class="font-size-14 mb-1">Image-2.jpg</h5>
-                                                        <p class="text-muted font-size-13 mb-0">3.1 MB</p>
-                                                    </div>
-                                                </div>
-
-                                                <div class="ms-4 me-0">
-                                                    <ul class="list-inline mb-0 font-size-18">
-                                                        <li class="list-inline-item">
-                                                            <a href="#" class="text-muted px-1">
-                                                                <i class="ri-download-2-line"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li class="list-inline-item dropdown">
-                                                            <a class="dropdown-toggle text-muted px-1" href="#"
-                                                                role="button" data-bs-toggle="dropdown"
-                                                                aria-haspopup="true" aria-expanded="false">
-                                                                <i class="ri-more-fill"></i>
-                                                            </a>
-                                                            <div class="dropdown-menu dropdown-menu-end">
-                                                                <a class="dropdown-item" href="#">Action</a>
-                                                                <a class="dropdown-item" href="#">Another
-                                                                    action</a>
-                                                                <div class="dropdown-divider"></div>
-                                                                <a class="dropdown-item" href="#">Delete</a>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="card p-2 border mb-2">
-                                            <div class="d-flex align-items-center">
-                                                <div class="avatar-sm me-3 ms-0">
-                                                    <div
-                                                        class="avatar-title bg-primary-subtle text-primary rounded font-size-20">
-                                                        <i class="ri-file-text-fill"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <div class="text-start">
-                                                        <h5 class="font-size-14 mb-1">Landing-A.zip</h5>
-                                                        <p class="text-muted font-size-13 mb-0">6.7 MB</p>
-                                                    </div>
-                                                </div>
-
-                                                <div class="ms-4 me-0">
-                                                    <ul class="list-inline mb-0 font-size-18">
-                                                        <li class="list-inline-item">
-                                                            <a href="#" class="text-muted px-1">
-                                                                <i class="ri-download-2-line"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li class="list-inline-item dropdown">
-                                                            <a class="dropdown-toggle text-muted px-1" href="#"
-                                                                role="button" data-bs-toggle="dropdown"
-                                                                aria-haspopup="true" aria-expanded="false">
-                                                                <i class="ri-more-fill"></i>
-                                                            </a>
-                                                            <div class="dropdown-menu dropdown-menu-end">
-                                                                <a class="dropdown-item" href="#">Action</a>
-                                                                <a class="dropdown-item" href="#">Another
-                                                                    action</a>
-                                                                <div class="dropdown-divider"></div>
-                                                                <a class="dropdown-item" href="#">Delete</a>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end profile-user-accordion -->
                         </div>
                         <!-- end user-profile-desc -->
                     </div>
@@ -783,6 +606,33 @@
 
                 $('.whatsapp').click(function(e) {
                     e.preventDefault();
+
+
+                    var userName = $(this).data('user-name');
+                    var userEmail = $(this).data('user-email');
+                    var userStatus = $(this).data('user-status');
+                    var userLocation = $(this).data('user-location');
+                    var lastInteraction = $(this).data('last-interaction');
+                    var userAddress = $(this).data('user-location');
+
+                    // Update the sidebar with the contact's information
+                    $('.user-profile-sidebar .font-size-16').text(userName);
+                    $('.user-profile-sidebar .email-info').text(userEmail);
+                    $('.user-profile-sidebar .location-info').text(userLocation);
+                    $('.user-profile-sidebar .last-interaction-info').text(lastInteraction);
+                    $('.address-profile').text(userAddress);
+                    $('.user-profile-sidebar .text-muted.text-truncate').html(`<i class="ri-record-circle-fill font-size-10 text-success me-1 ms-0 d-inline-block"></i> ${userStatus}`);
+
+                    // Update the sidebar with the contact's information
+                    $('.user-neme-about').text(userName);
+                    $('.user-profile-sidebar .text-muted.mb-1:contains("Email")').next().text(userEmail);
+                    $('.user-profile-sidebar .text-muted.mb-1:contains("Location")').next().text(userLocation);
+                    $('.user-profile-sidebar .address-profile').text(userAddress);
+                    $('.user-profile-sidebar .text-muted.text-truncate').html(`<i class="ri-record-circle-fill font-size-10 text-success me-1 ms-0 d-inline-block"></i> ${userStatus}`);
+
+
+                    // Update the avatar title dynamically with the first letter of the name
+                    $('.user-profile-sidebar .avatar-title').text(userName[0].toUpperCase());
                     handleWhatsAppChat($(this).data('whatsapp-id'), $(this).find('.phone-number').text());
                 });
 
