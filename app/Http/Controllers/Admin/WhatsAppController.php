@@ -8,6 +8,7 @@ use App\Models\WhatsAppMessage;
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use Illuminate\Support\Facades\Http;
+use App\Models\Notification;
 
 
 class WhatsAppController extends Controller
@@ -63,17 +64,24 @@ class WhatsAppController extends Controller
                         $senderId = $msgDetails['from'] ?? null;
 
                         if ($chatMessage) {
-                            $contact = WhatsAppContact::firstOrCreate(['phone_number' => $senderId], ['name' => 'Unknown']);
+                            $contactMessage = WhatsAppContact::firstOrCreate(['phone_number' => $senderId], ['name' => 'Unknown']);
+                            $contact = Contact::firstOrCreate(['phone' => $senderId]);
                             $whatsAppMessage = new WhatsAppMessage([
-                                'whatsapp_contact_id' => $contact->id,
+                                'whatsapp_contact_id' => $contactMessage->id,
                                 'message' => $chatMessage,
                                 'direction' => 'incoming'
                             ]);
                             $whatsAppMessage->save();
 
+                            Notification::create([
+                                'type' => 'App\Models\WhatsAppMessage',
+                                'data' => ['message' => 'New messages From ' . $contact->name, 'link' => route('whatsapp.chat')],
+                                'notifiable_id' => 1,
+                                'notifiable_type' => 'App\Models\User',
+                            ]);
 
                             // Post data to Firebase using HTTP client
-                            $response = Http::post(env('FIREBASE_DATABASE_URL') . '/path/to/messages/' . $contact->id . '.json', [
+                            $response = Http::post(env('FIREBASE_DATABASE_URL') . '/path/to/messages/' . $contactMessage->id . '.json', [
                                 'message' => $chatMessage,
                                 'from' => $senderId,
                                 'timestamp' => now()->toDateTimeString(),
@@ -124,7 +132,7 @@ class WhatsAppController extends Controller
 
         $whatsAppService = new WhatsAppService();
 
-        $response = $whatsAppService->sendTemplateMessage($phone , 'visit_website', [
+        $response = $whatsAppService->sendTemplateMessage($phone , 'welcome_message', [
             ['type' => 'text', 'text' => 'Mohammed omarr'] // Assuming your template expects one text parameter
         ]);
 
