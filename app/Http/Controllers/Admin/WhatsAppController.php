@@ -7,6 +7,7 @@ use App\Models\WhatsAppContact;
 use App\Models\WhatsAppMessage;
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
+use Illuminate\Support\Facades\Http;
 
 
 class WhatsAppController extends Controller
@@ -48,40 +49,37 @@ class WhatsAppController extends Controller
         }
     }
 
-
     public function receiveMessage(Request $request)
     {
-        \Log::info('Raw request data:', $request->all());
-
         $input = $request->all();
-        \Log::info('Webhook received:', $input); // Log the entire request to inspect structure
 
         try {
-            // Loop through each entry
             foreach ($input['entry'] as $entry) {
                 $messages = $entry['changes'] ?? [];
-
                 foreach ($messages as $message) {
                     if (isset($message['value']['messages'][0])) {
                         $msgDetails = $message['value']['messages'][0];
-
                         $chatMessage = $msgDetails['text']['body'] ?? null;
-                        $timestamp = $msgDetails['timestamp'] ?? null;
                         $senderId = $msgDetails['from'] ?? null;
 
                         if ($chatMessage) {
-                            // Assuming you might have a method to find or create a contact based on senderId
-                            $contact = WhatsAppContact::firstOrCreate(['phone_number' => $senderId], ['name' => 'Unknown']); // Ensure 'name' or other required fields are handled
-
-                            // Create and save the WhatsApp message
+                            $contact = WhatsAppContact::firstOrCreate(['phone_number' => $senderId], ['name' => 'Unknown']);
                             $whatsAppMessage = new WhatsAppMessage([
                                 'whatsapp_contact_id' => $contact->id,
                                 'message' => $chatMessage,
-                                'direction' => 'incoming'  // Assuming 'incoming' for received messages
+                                'direction' => 'incoming'
                             ]);
                             $whatsAppMessage->save();
 
-                            \Log::info("Message saved: {$whatsAppMessage->message} from {$contact->phone_number}");
+
+                            // Post data to Firebase using HTTP client
+                            $response = Http::post(env('FIREBASE_DATABASE_URL') . '/path/to/messages/' . $contact->id . '.json', [
+                                'message' => $chatMessage,
+                                'from' => $senderId,
+                                'timestamp' => now()->toDateTimeString(),
+                                'updated_at'=> now()->toDateTimeString()
+                            ]);
+
                         }
                     }
                 }
@@ -93,6 +91,7 @@ class WhatsAppController extends Controller
 
         return response()->json(['success' => true, 'message' => 'Messages received and stored']);
     }
+
 
     public function storeMessage($phoneNumber, $text, $direction)
     {
@@ -118,6 +117,7 @@ class WhatsAppController extends Controller
 
         return response()->json(['success' => true, 'message' => $messages]);
     }
+
     public function sendTemplate (){
 
         $phone = isset(request()->phone) ?  request()->phone : null;

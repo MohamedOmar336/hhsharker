@@ -333,48 +333,6 @@
                     <div class="chat-conversation p-3 p-lg-4" data-simplebar="init">
                         <ul class="list-unstyled mb-0" id="append-messages">
 
-                            <li class="right">
-                                <div class="conversation-list">
-                                    <div class="chat-avatar">
-                                        <img src="{{ asset('assets-admin/assets-chat/images/users/avatar-1.jpg') }}"
-                                            alt="">
-                                    </div>
-
-                                    <div class="user-chat-content">
-                                        <div class="ctext-wrap">
-                                            <div class="ctext-wrap-content">
-                                                <p class="mb-0">
-                                                    Good morning, How are you? What about our next meeting?
-                                                </p>
-                                                <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i>
-                                                    <span class="align-middle">10:02</span>
-                                                </p>
-                                            </div>
-
-                                            <div class="dropdown align-self-start">
-                                                <a class="dropdown-toggle" href="#" role="button"
-                                                    data-bs-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false">
-                                                    <i class="ri-more-2-fill"></i>
-                                                </a>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="#">Copy <i
-                                                            class="ri-file-copy-line float-end text-muted"></i></a>
-                                                    <a class="dropdown-item" href="#">Save <i
-                                                            class="ri-save-line float-end text-muted"></i></a>
-                                                    <a class="dropdown-item" href="#">Forward <i
-                                                            class="ri-chat-forward-line float-end text-muted"></i></a>
-                                                    <a class="dropdown-item" href="#">Delete <i
-                                                            class="ri-delete-bin-line float-end text-muted"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="conversation-name">Patricia Smith</div>
-                                    </div>
-                                </div>
-                            </li>
-
                         </ul>
                     </div>
                     <!-- end chat conversation end -->
@@ -598,8 +556,44 @@
         <!-- page init -->
         <script src="{{ asset('assets-admin/assets-chat/js/pages/index.init.js') }}"></script>
 
+        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-messaging.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
+
         <script src="{{ asset('assets-admin/assets-chat/js/app.js') }}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+        <script>
+            // Initialize Firebase
+            firebase.initializeApp({
+                apiKey: "AIzaSyDXrOKuqnjDvWm8IZ2r3wM8ZY_fG_QamOg",
+                authDomain: "hhshaker-282b0.firebaseapp.com",
+                projectId: "hhshaker-282b0",
+                storageBucket: "hhshaker-282b0.appspot.com",
+                messagingSenderId: "567064391154",
+                appId: "1:567064391154:web:40574f6824350b17764f6b",
+                measurementId: "G-N2VKVTGWMX"
+            });
+            var messagesRef = firebase.database().ref('/path/to/messages/1');
+            messagesRef.on('child_added', function(snapshot) {
+                var message = snapshot.val();
+                console.log(message); // Log the message to debug
+                var timeAgo = moment(message.timestamp).fromNow(); // Assuming `timestamp` is stored correctly
+                var media = `<li>
+                                <div class="conversation-list">
+                                    <div class="user-chat-content">
+                                        <div class="ctext-wrap">
+                                            <div class="ctext-wrap-content">
+                                                <p class="mb-0">
+                                                    ${message.message}
+                                                </p>
+                                                <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">${timeAgo}</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>`;
+                $('#append-messages').append(media); // Append each message as it's created
+            });
+        </script>
         <script>
             $(document).ready(function() {
                 var phoneNumber = null;
