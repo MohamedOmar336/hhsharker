@@ -1068,7 +1068,8 @@
     background-color:#343a40
 }
 .chat-conversation{
-    height:calc(100vh - 184px)
+    height:calc(100vh - 184px);
+    overflow-x: hidden;
 }
 @media (max-width:991.98px){
     .chat-conversation{
@@ -1180,3 +1181,19 @@
     display:block
 }
 /*# sourceMappingURL=app.min.css.map */
+div#loader-wrapper {
+    background: white;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    text-align: center;
+}
+#loader-wrapper img {
+    width: 150px;
+    margin: auto;
+    margin-top: 200px;
+}
+ul#append-messages {
+    position: relative;
+}

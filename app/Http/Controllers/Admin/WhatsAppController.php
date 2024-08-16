@@ -63,7 +63,7 @@ class WhatsAppController extends Controller
                         $chatMessage = $msgDetails['text']['body'] ?? null;
                         $senderPhone = $msgDetails['from'] ?? null;
                         $contactMessage = WhatsAppContact::where(['phone_number' => $senderPhone])->first();
-                        $contact = Contact::where(['phone' => $senderPhone]);
+                        $contact = Contact::where(['phone' => $senderPhone])->first();
 
                         if ($chatMessage && $contactMessage && $contact) {
                             $whatsAppMessage = new WhatsAppMessage([
@@ -81,11 +81,12 @@ class WhatsAppController extends Controller
                             ]);
 
                             // Post data to Firebase using HTTP client
-                            $response = Http::post(env('FIREBASE_DATABASE_URL') . '/path/to/messages/' . $contactMessage->id . '.json', [
+                            $response = Http::post(env('FIREBASE_DATABASE_URL') . '/path/to/messages/' . $contact->id . '.json', [
                                 'message' => $chatMessage,
                                 'from' => $senderPhone,
                                 'timestamp' => now()->toDateTimeString(),
-                                'updated_at'=> now()->toDateTimeString()
+                                'updated_at'=> now()->toDateTimeString(),
+                                'contact_id' => $contact->id
                             ]);
 
                         }else{
@@ -113,11 +114,12 @@ class WhatsAppController extends Controller
                                 'notifiable_type' => 'App\Models\User',
                             ]);
                             // Post data to Firebase using HTTP client
-                            $response = Http::post(env('FIREBASE_DATABASE_URL') . '/path/to/messages/' . $contactMessage->id . '.json', [
+                            $response = Http::post(env('FIREBASE_DATABASE_URL') . '/path/to/messages/' . $contact->id . '.json', [
                                 'message' => $chatMessage,
                                 'from' => $senderPhone,
                                 'timestamp' => now()->toDateTimeString(),
-                                'updated_at'=> now()->toDateTimeString()
+                                'updated_at'=> now()->toDateTimeString(),
+                                'contact_id' => $contact->id
                             ]);
                         }
                     }

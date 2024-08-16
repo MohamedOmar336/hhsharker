@@ -188,7 +188,8 @@
                                             <div class="avatar-xs mx-auto d-block chat-user-img online">
                                                 <span
                                                     class="avatar-title rounded-circle bg-primary-subtle text-primary">
-                                                    {{ strtoupper($contact->name[0]) }} <!-- Displays the first letter of the name, capitalized -->
+                                                    {{ strtoupper($contact->name[0]) }}
+                                                    <!-- Displays the first letter of the name, capitalized -->
                                                 </span>
                                                 <span class="user-status"></span>
                                             </div>
@@ -210,19 +211,19 @@
                                     @foreach ($contacts as $contact)
                                         <li>
                                             <a href="#" class="whatsapp"
-                                            data-whatsapp-id="{{ $contact->id }}"
-                                            data-user-name="{{ $contact->name }}"
-                                            data-user-email="{{ $contact->email }}"
-                                            data-user-status="Active"
-                                            data-user-image="{{ asset('storage/' . $contact->image) }}"
-                                            data-user-location="{{ $contact->address }}"
-                                            data-last-interaction="{{ $contact->last_interaction }}" >
+                                                data-whatsapp-id="{{ $contact->id }}"
+                                                data-user-name="{{ $contact->name }}"
+                                                data-user-email="{{ $contact->email }}" data-user-status="Active"
+                                                data-user-image="{{ asset('storage/' . $contact->image) }}"
+                                                data-user-location="{{ $contact->address }}"
+                                                data-last-interaction="{{ $contact->last_interaction }}">
                                                 <div class="d-flex">
                                                     <div class="chat-user-img align-self-center online me-3 ms-0">
                                                         <div class="avatar-xs">
                                                             <span
                                                                 class="avatar-title rounded-circle bg-primary-subtle text-primary">
-                                                                {{ strtoupper($contact->name[0]) }} <!-- Displays the first letter of the name, capitalized -->
+                                                                {{ strtoupper($contact->name[0]) }}
+                                                                <!-- Displays the first letter of the name, capitalized -->
                                                             </span>
                                                         </div>
                                                         <span class="user-status"></span>
@@ -270,9 +271,9 @@
                                     </div>
                                     <div class="avatar-xs">
                                         <span
-                                             class="avatar-title rounded-circle bg-primary-subtle text-primary image-text">
+                                            class="avatar-title rounded-circle bg-primary-subtle text-primary image-text">
                                             M
-                                            </span>
+                                        </span>
                                     </div>
                                     <div class="flex-grow-1 overflow-hidden">
                                         <h5 class="font-size-16 mb-0 text-truncate"><a href="#"
@@ -331,8 +332,11 @@
 
                     <!-- start chat conversation -->
                     <div class="chat-conversation p-3 p-lg-4" data-simplebar="init">
-                        <ul class="list-unstyled mb-0" id="append-messages">
 
+                        <ul class="list-unstyled mb-0" id="append-messages">
+                            <div id="loader-wrapper">
+                                <img src="{{ asset('assets-admin/images/loader.gif') }}" alt="">
+                            </div>
                         </ul>
                     </div>
                     <!-- end chat conversation end -->
@@ -395,10 +399,10 @@
                     </div>
 
                     <div class="text-center p-4 border-bottom">
-                            <div class="avatar-xs" style="margin-inline: auto;height:3.2rem;width:3.2rem;">
-                                <span class="avatar-title rounded-circle bg-primary-subtle text-primary image-text">
-                                </span>
-                            </div>
+                        <div class="avatar-xs" style="margin-inline: auto;height:3.2rem;width:3.2rem;">
+                            <span class="avatar-title rounded-circle bg-primary-subtle text-primary image-text">
+                            </span>
+                        </div>
 
                         <h5 class="font-size-16 mb-1 text-truncate">Doris Brown</h5>
                         <p class="text-muted text-truncate mb-1"><i
@@ -409,8 +413,9 @@
                     <!-- Start user-profile-desc -->
                     <div class="p-4 user-profile-desc" data-simplebar>
                         <div class="text-muted">
-                        <p class="mb-4 address-profile" >If several languages coalesce, the grammar of the resulting language is
-                            more simple and regular than that of the individual.</p>
+                            <p class="mb-4 address-profile">If several languages coalesce, the grammar of the resulting
+                                language is
+                                more simple and regular than that of the individual.</p>
                         </div>
 
                         <div class="accordion" id="myprofile">
@@ -564,78 +569,86 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
         <script>
 
-        </script>
-        <script>
-            $(document).ready(function() {
-                var phoneNumber = null;
-                var currentContactId = null; // This will hold the current contact's ID
-                // Initialize Firebase
-                firebase.initializeApp({
-                    apiKey: "AIzaSyDXrOKuqnjDvWm8IZ2r3wM8ZY_fG_QamOg",
-                    authDomain: "hhshaker-282b0.firebaseapp.com",
-                    projectId: "hhshaker-282b0",
-                    storageBucket: "hhshaker-282b0.appspot.com",
-                    messagingSenderId: "567064391154",
-                    appId: "1:567064391154:web:40574f6824350b17764f6b",
-                    measurementId: "G-N2VKVTGWMX"
-                });
-                function initFirebaseListener(contactId) {
-                    console.log(22222222222222);
-                    var messagesRef = firebase.database().ref('/path/to/messages/' + currentContactId);
-                    messagesRef.on('child_added', function(snapshot) {
-                        var message = snapshot.val();
-                        var timeAgo = moment(message.timestamp).fromNow(); // Format time
+            var whatAppId = $('.whatsapp').first().data('whatsapp-id');
+            // Initialize Firebase
+            firebase.initializeApp({
+                apiKey: "AIzaSyDXrOKuqnjDvWm8IZ2r3wM8ZY_fG_QamOg",
+                authDomain: "hhshaker-282b0.firebaseapp.com",
+                projectId: "hhshaker-282b0",
+                storageBucket: "hhshaker-282b0.appspot.com",
+                messagingSenderId: "567064391154",
+                appId: "1:567064391154:web:40574f6824350b17764f6b",
+                measurementId: "G-N2VKVTGWMX"
+            });
+            @foreach ($contacts as $contact)
+                firebase.database().ref('/path/to/messages/{{ $contact->id }}').on('child_added', function(snapshot) {
+                    var message = snapshot.val();
+                    if (whatAppId == message.contact_id) {
+                        console.log(message , 55555555555); // Log the message to debug
+                        var timeAgo = moment(message.timestamp).fromNow(); // Assuming `timestamp` is stored correctly
                         var media = `<li>
                                         <div class="conversation-list">
                                             <div class="user-chat-content">
                                                 <div class="ctext-wrap">
                                                     <div class="ctext-wrap-content">
-                                                        <p class="mb-0">${message.message}</p>
-                                                        <p class="chat-time mb-0">
-                                                            <i class="ri-time-line align-middle"></i>
-                                                            <span class="align-middle">${timeAgo}</span>
+                                                        <p class="mb-0">
+                                                            ${message.message}
                                                         </p>
+                                                        <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">${timeAgo}</span></p>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </li>`;
+                                        </li>`;
                         $('#append-messages').append(media); // Append each message as it's created
-                    });
-                }
+
+                        var chatBox = $('#append-messages').closest('.simplebar-content-wrapper'); // Use closest to ensure you select the correct parent
+                        var lastConversation = $('#append-messages').find('.conversation-list:last'); // Target the last conversation element
+                        if (lastConversation.length) {
+                            chatBox.scrollTop(lastConversation.position().top + chatBox.scrollTop());
+                        }
+                    }
+                });
+            @endforeach
+
+        </script>
+        <script>
+            $(document).ready(function() {
+                var phoneNumber = null;
+
                 $('.whatsapp').click(function(e) {
                     e.preventDefault();
 
-                    currentContactId = $(this).data('whatsapp-id'); // Set the global contact ID
-                    debugger
-                    initFirebaseListener(currentContactId); // Initialize listener for this contact
-
+                    whatAppId = $(this).data('whatsapp-id');
+                    console.log(whatAppId , 8888888888888888888);
                     var userName = $(this).data('user-name');
                     var userEmail = $(this).data('user-email');
                     var userStatus = $(this).data('user-status');
                     var userLocation = $(this).data('user-location');
                     var lastInteraction = $(this).data('last-interaction');
                     var userAddress = $(this).data('user-location');
-
                     // Update the sidebar with the contact's information
                     $('.user-profile-sidebar .font-size-16').text(userName);
                     $('.user-profile-sidebar .email-info').text(userEmail);
                     $('.user-profile-sidebar .location-info').text(userLocation);
                     $('.user-profile-sidebar .last-interaction-info').text(lastInteraction);
                     $('.address-profile').text(userAddress);
-                    $('.user-profile-sidebar .text-muted.text-truncate').html(`<i class="ri-record-circle-fill font-size-10 text-success me-1 ms-0 d-inline-block"></i> ${userStatus}`);
+                    $('.user-profile-sidebar .text-muted.text-truncate').html(
+                        `<i class="ri-record-circle-fill font-size-10 text-success me-1 ms-0 d-inline-block"></i> ${userStatus}`
+                        );
 
                     // Update the sidebar with the contact's information
                     $('.user-neme-about').text(userName);
                     $('.user-profile-sidebar .text-muted.mb-1:contains("Email")').next().text(userEmail);
                     $('.user-profile-sidebar .text-muted.mb-1:contains("Location")').next().text(userLocation);
                     $('.user-profile-sidebar .address-profile').text(userAddress);
-                    $('.user-profile-sidebar .text-muted.text-truncate').html(`<i class="ri-record-circle-fill font-size-10 text-success me-1 ms-0 d-inline-block"></i> ${userStatus}`);
-
+                    $('.user-profile-sidebar .text-muted.text-truncate').html(
+                        `<i class="ri-record-circle-fill font-size-10 text-success me-1 ms-0 d-inline-block"></i> ${userStatus}`
+                        );
 
                     // Update the avatar title dynamically with the first letter of the name
                     $('.user-profile-sidebar .avatar-title').text(userName[0].toUpperCase());
                     handleWhatsAppChat($(this).data('whatsapp-id'), $(this).find('.phone-number').text());
+
                 });
 
                 function handleWhatsAppChat(whatsAppRoomId, groupName) {
@@ -646,7 +659,9 @@
                     var chatBody = $('#append-messages');
                     $('#receiver_id').val(whatsAppRoomId);
                     chatBody.empty();
-
+                    chatBody.append( `<div id="loader-wrapper">
+                    <img src="{{ asset('assets-admin/images/loader.gif') }}" alt="">
+                    </div>` );
                     chatHeader.text(groupName);
                     chatHeader.find('.media-left img').remove(); // Remove user image for group chat
 
@@ -664,61 +679,62 @@
                             _token: '{{ csrf_token() }}' // Correct way to include CSRF token in a Laravel project
                         },
                         success: function(response) {
-                            console.log(response.message);
                             var chatBodyNew = $('#append-messages');
                             var messages = response.message.messages;
-                            // var otherUserImage = $('#imageUser').data('user-image');
 
-                            messages.forEach(function(message) {
-                                var timeAgo = moment(message.updated_at)
-                                    .fromNow(); // Convert ISO date to relative time
-                                if (message.direction == 'outgoing') {
-                                    var media =
-                                        `<li class="right">
-                                            <div class="conversation-list">
-                                                <div class="chat-avatar">
-                                                    <img src="{{  asset('images/' . auth()->user()->image)  }}" alt="">
-                                                </div>
-
-                                                <div class="user-chat-content">
-                                                    <div class="ctext-wrap">
-                                                        <div class="ctext-wrap-content">
-                                                            <p class="mb-0">
-                                                                ${message.message}
-                                                            </p>
-                                                            <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">${timeAgo}</span></p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>`;
-                                } else {
-                                    var media = `
-                                    <li>
+                            $.each(messages, function(index, message) {
+                                var timeAgo = moment(message.updated_at).fromNow();
+                                var media = message.direction === 'outgoing' ?
+                                    `<li class="right">
                                     <div class="conversation-list">
+                                        <div class="chat-avatar">
+                                            <img src="{{ asset('images/' . auth()->user()->image) }}" alt="">
+                                        </div>
                                         <div class="user-chat-content">
                                             <div class="ctext-wrap">
                                                 <div class="ctext-wrap-content">
-                                                    <p class="mb-0">
-                                                        ${message.message}
-                                                    </p>
+                                                    <p class="mb-0">${message.message}</p>
                                                     <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">${timeAgo}</span></p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </li>
-                                `;
-                                }
+                                </li>` :
+                                    `<li>
+                                    <div class="conversation-list">
+                                        <div class="user-chat-content">
+                                            <div class="ctext-wrap">
+                                                <div class="ctext-wrap-content">
+                                                    <p class="mb-0">${message.message}</p>
+                                                    <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">${timeAgo}</span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>`;
 
+                                chatBodyNew.append(media);
+                            });
 
-                                chatBodyNew.append(media); // Append each message as it's created
+                            // Ensure all messages have been processed and appended
+                            chatBodyNew.promise().done(function() {
+                                console.log(66666666666666);
+                                scrollToLastConversation(); // Scroll to the last conversation in the chat
+                                $('#loader-wrapper').hide(); // Hide the loader after updating the UI
                             });
                         },
                         error: function(xhr, status, error) {
                             console.error('Error creating room:', error);
                         }
                     });
+                }
+
+                function scrollToLastConversation() {
+                    var chatBox = $('#append-messages').closest('.simplebar-content-wrapper'); // Use closest to ensure you select the correct parent
+                    var lastConversation = $('#append-messages').find('.conversation-list:last'); // Target the last conversation element
+                    if (lastConversation.length) {
+                        chatBox.scrollTop(lastConversation.position().top + chatBox.scrollTop());
+                    }
                 }
                 // Handle send message button click for user chat
                 $('#sendWhatsappMessageButton').click(function() {
@@ -749,7 +765,7 @@
                             <li class="right">
                                 <div class="conversation-list">
                                     <div class="chat-avatar">
-                                        <img src="{{  asset('images/' . auth()->user()->image)  }}" alt="">
+                                        <img src="{{ asset('images/' . auth()->user()->image) }}" alt="">
                                     </div>
                                     <div class="user-chat-content">
                                         <div class="ctext-wrap">
@@ -766,6 +782,8 @@
                                 </div>
                             </li>`;
                             chatBodyMessage.append(media);
+                            scrollToLastConversation(); // Scroll to the last conversation in the chat
+
                         },
                         error: function(xhr, status, error) {
                             console.error('Error sending message:', error);
@@ -779,6 +797,8 @@
 
                     sendwhatsappTemplate();
                     $('#messageInput').val(''); // Clear the input field
+                    scrollToLastConversation(); // Scroll to the last conversation in the chat
+
                 });
 
                 function sendwhatsappTemplate() {
