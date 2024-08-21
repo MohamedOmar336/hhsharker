@@ -121,6 +121,9 @@ class WhatsAppController extends Controller
                                 'updated_at'=> now()->toDateTimeString(),
                                 'contact_id' => $contact->id
                             ]);
+                            if($response){
+                                $this->sendTemplate($senderPhone);
+                            }
                         }
                     }
                 }
@@ -159,13 +162,13 @@ class WhatsAppController extends Controller
         return response()->json(['success' => true, 'message' => $messages]);
     }
 
-    public function sendTemplate (){
+    public function sendTemplate ($senderPhone = null){
 
-        $phone = isset(request()->phone) ?  request()->phone : null;
+        $phone = isset(request()->phone) ?  request()->phone : $senderPhone;
 
         $whatsAppService = new WhatsAppService();
 
-        $response = $whatsAppService->sendTemplateMessage($phone , 'welcome_message', [
+        $response = $whatsAppService->sendTemplateMessage($phone , 'visit_website', [
             ['type' => 'text', 'text' => 'Mohammed omarr'] // Assuming your template expects one text parameter
         ]);
 
