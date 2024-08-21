@@ -223,3 +223,6 @@ Route::post('/test', [ContactUsController::class, 'store'])->name('test.store');
 
 Route::get('/whatsapp-webhook', [WhatsAppController::class, 'verify']);
 Route::post('/whatsapp-webhook', [WhatsAppController::class, 'receiveMessage']);
+
+Route::post('/whatsapp-broadcast', [WhatsAppController::class, 'sendBroadcastMessage'])->name('whatsapp.broadcast.post');
+Route::get('/whatsapp-broadcast', [WhatsAppController::class, 'broadcastMessage'])->name('whatsapp.broadcast.index');

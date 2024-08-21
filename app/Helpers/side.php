@@ -36,7 +36,7 @@ return [
             ],
             [
                 'title' => __('Bulk Messages'),
-                'route' => 'chat.index',
+                'route' => 'whatsapp.broadcast.index',
             ],
             [
                 'title' => __('general.attributes.whats_app'),

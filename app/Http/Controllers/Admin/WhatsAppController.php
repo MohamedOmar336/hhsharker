@@ -197,4 +197,42 @@ class WhatsAppController extends Controller
 
         return response('Invalid token', 403);
     }
+
+    /**
+     * send broadcast whatsapp message to the selected numbers
+     *
+     */
+    public function broadcastMessage (Request $request){
+
+        $contacts = Contact::all();
+
+        return  view('admin.chat.broadcast' , compact( 'contacts'));
+    }
+
+
+    /**
+     * Send a broadcast WhatsApp message to the selected numbers.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function sendBroadcastMessage(Request $request)
+    {
+        $response = $this->whatsAppService->sendBroadcastMessage($request->phones, $request->message);
+
+        // Check if the response is successful for all numbers
+        if ($response && !array_search(false, array_column($response, 'success'))) {
+            // Redirect to a specific route or view with a success message
+            return redirect()->route('whatsapp.broadcast.index')->with('success', 'Message sent successfully!');
+        } else {
+            // Collect errors or use a generic error message
+            $errorMessages = array_map(function ($res) {
+                return $res['error'] ?? 'Failed to send';
+            }, $response);
+
+            // Redirect back or to a specific view with error details
+            return redirect()->back()->withErrors($errorMessages)->withInput();
+        }
+    }
+
 }

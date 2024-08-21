@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Services;
 
 use GuzzleHttp\Client;
@@ -76,4 +77,49 @@ class WhatsAppService
             return ['success' => false, 'error' => $e->getMessage()];
         }
     }
+
+    /**
+     * Send a broadcast message to multiple phone numbers.
+     *
+     * This method sends a single message to a list of phone numbers using WhatsApp's messaging API.
+     * It iterates over each phone number, sends the specified message, and records the success or failure
+     * of each attempt.
+     *
+     * @param array $phones Array of recipient phone numbers.
+     * @param string $message The message text to be sent to all recipients.
+     * @return array An array of results, with each entry containing the success status and data or error message for each phone number.
+     */
+    public function sendBroadcastMessage(array $phones, $message)
+    {
+        $results = [];
+
+        foreach ($phones as $phone) {
+            try {
+                $response = $this->client->post($this->url, [
+                    'headers' => [
+                        'Authorization' => 'Bearer ' . env('WHATSAPP_TOKEN'),
+                        'Content-Type' => 'application/json',
+                    ],
+                    'json' => [
+                        'messaging_product' => 'whatsapp',
+                        'to' => $phone,
+                        'text' => ['body' => $message]
+                    ]
+                ]);
+
+                $results[$phone] = [
+                    'success' => true,
+                    'data' => json_decode($response->getBody()->getContents(), true)
+                ];
+            } catch (\GuzzleHttp\Exception\GuzzleException $e) {
+                $results[$phone] = [
+                    'success' => false,
+                    'error' => $e->getMessage()
+                ];
+            }
+        }
+
+        return $results;
+    }
+
 }

@@ -19,24 +19,24 @@ class ContactController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-{
-    $query = Contact::with('groups'); // Eager load groups with contacts
+    {
+        $query = Contact::with('groups'); // Eager load groups with contacts
 
-    if ($request->has('search')) {
-        $searchTerm = $request->search;
-        $query->where(function ($q) use ($searchTerm) {
-            $q->where('name', 'LIKE', "%{$searchTerm}%")
-              ->orWhere('email', 'LIKE', "%{$searchTerm}%")
-              ->orWhere('phone', 'LIKE', "%{$searchTerm}%")
-              ->orWhere('address', 'LIKE', "%{$searchTerm}%")
-              ->orWhere('segment', 'LIKE', "%{$searchTerm}%");
-        });
+        if ($request->has('search')) {
+            $searchTerm = $request->search;
+            $query->where(function ($q) use ($searchTerm) {
+                $q->where('name', 'LIKE', "%{$searchTerm}%")
+                    ->orWhere('email', 'LIKE', "%{$searchTerm}%")
+                    ->orWhere('phone', 'LIKE', "%{$searchTerm}%")
+                    ->orWhere('address', 'LIKE', "%{$searchTerm}%")
+                    ->orWhere('segment', 'LIKE', "%{$searchTerm}%");
+            });
+        }
+
+        $records = $query->latest()->paginate(10);
+
+        return view('admin.contacts.index', compact('records'));
     }
-
-    $records = $query->latest()->paginate(10);
-
-    return view('admin.contacts.index', compact('records'));
-}
 
 
     /**
@@ -177,6 +177,4 @@ class ContactController extends Controller
 
         return redirect()->route('contacts.index')->with('success', 'Contacts imported successfully.');
     }
-
 }
-
