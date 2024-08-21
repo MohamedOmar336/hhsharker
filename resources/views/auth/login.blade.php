@@ -12,7 +12,7 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('assets-admin/images/IMG_1465.png') }}">
     <style>
-        .grecaptcha-badge{
+        .grecaptcha-badge {
             display: none !important;
         }
     </style>
@@ -24,7 +24,8 @@
     <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdzcfIpAAAAAHnIw33NCdfQeZTNGCyQx8htUzPN"></script>
 </head>
 
-<body id="body" class="auth-page" style="background-image: url('{{ asset('assets-admin/images/p-1.png') }}'); background-size: cover; background-position: center center;">
+<body id="body" class="auth-page"
+    style="background-image: url('{{ asset('assets-admin/images/p-1.png') }}'); background-size: cover; background-position: center center;">
     <!-- Alerts -->
     <div style="position: fixed; top: 20px; right: 20px; z-index: 1000;" id="popUpAlert">
         @if (session()->has('success'))
@@ -51,7 +52,8 @@
                             <div class="card-body p-0 auth-header-box">
                                 <div class="text-center p-3">
                                     <a href="{{ url('/') }}" class="logo logo-admin">
-                                        <img src="{{ asset('assets-admin/images/IMG_1520.png') }}" height="50" alt="logo" class="auth-logo">
+                                        <img src="{{ asset('assets-admin/images/IMG_1520.png') }}" height="50"
+                                            alt="logo" class="auth-logo">
                                     </a>
                                     <h4 class="mt-3 mb-1 fw-semibold text-white font-18">Login to HH-shaker</h4>
                                     <p class="text-muted mb-0">Enter your Email and Password to access your account!</p>
@@ -63,7 +65,9 @@
 
                                     <div class="form-group mb-3">
                                         <label class="form-label" for="email">Email</label>
-                                        <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="Enter Email Address" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                        <input type="email" class="form-control @error('email') is-invalid @enderror"
+                                            id="email" name="email" placeholder="Enter Email Address"
+                                            value="{{ old('email') }}" required autocomplete="email" autofocus>
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -73,7 +77,10 @@
 
                                     <div class="form-group mb-3">
                                         <label class="form-label" for="password">Password</label>
-                                        <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Enter Password" required autocomplete="current-password">
+                                        <input type="password"
+                                            class="form-control @error('password') is-invalid @enderror" id="password"
+                                            name="password" placeholder="Enter Password" required
+                                            autocomplete="current-password">
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -84,8 +91,10 @@
                                     <div class="form-group row mt-3">
                                         <div class="col-sm-6">
                                             <div class="form-check form-switch form-switch-success">
-                                                <input class="form-check-input" type="checkbox" id="customSwitchSuccess" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                                                <label class="form-check-label" for="customSwitchSuccess">Remember me</label>
+                                                <input class="form-check-input" type="checkbox" id="customSwitchSuccess"
+                                                    name="remember" {{ old('remember') ? 'checked' : '' }}>
+                                                <label class="form-check-label" for="customSwitchSuccess">Remember
+                                                    me</label>
                                             </div>
                                         </div>
                                         <div class="col-sm-6 text-end">
@@ -108,7 +117,8 @@
                                     <div class="form-group mb-0 row">
                                         <div class="col-12">
                                             <div class="d-grid mt-3">
-                                                <button class="btn btn-de-primary" type="submit">Log In <i class="fas fa-sign-in-alt ms-1"></i></button>
+                                                <button class="btn btn-de-primary" type="submit">Log In <i
+                                                        class="fas fa-sign-in-alt ms-1"></i></button>
                                             </div>
                                         </div>
                                     </div>
@@ -129,5 +139,14 @@
     <!-- App js -->
     <script src="{{ asset('assets-admin/js/app.js') }}"></script>
 </body>
+<footer class="container-md">
+    <div class="row justify-content-center text-center mt-4">
+        <div class="col">
+            <a href="{{ url('/terms-of-service') }}" class="text-muted">Terms of Service</a> |
+            <a href="{{ url('/policy') }}" class="text-muted">Privacy Policy</a> |
+            <a href="{{ url('/about') }}" class="text-muted">About Us</a>
+        </div>
+    </div>
+</footer>
 
 </html>
