@@ -11,7 +11,7 @@
                         <div class="float-end">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a></li>
-                                <li class="breadcrumb-item"><a href="{{ route('blogposts.index') }}">{{ __('general.blogs') }}</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('news.index') }}">{{ __('general.blogs') }}</a></li>
                                 <li class="breadcrumb-item active">{{ __('general.list') }}</li>
                             </ol>
                         </div>
@@ -50,8 +50,8 @@
                         <td>{{ $record->author->user_name }}</td>
                         <td>{{ $record->status }}</td>
                         <td>
-                               <a href="{{ route('blogposts.edit', $record->id) }}"><i data-feather="edit"></i></a>
-                            <form action="{{ route('blogposts.destroy', $record->id) }}" method="POST" style="display: inline;" class="delete-form">
+                               <a href="{{ route('news.edit', $record->id) }}"><i data-feather="edit"></i></a>
+                            <form action="{{ route('news.destroy', $record->id) }}" method="POST" style="display: inline;" class="delete-form">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn delete-form" onclick="return confirm('{{ __('general.confirm.delete') }}')"><i data-feather="trash"></i></button>
@@ -61,7 +61,7 @@
                 @endforeach
 
                 <x-slot name="createButton">
-                    <a href="{{ route('blogposts.create') }}" class="btn btn-outline-light btn-sm px-4">+ {{ __('general.actions.new') }}</a>
+                    <a href="{{ route('news.create') }}" class="btn btn-outline-light btn-sm px-4">+ {{ __('general.actions.new') }}</a>
                 </x-slot>
 
                 <x-slot name="pagination">

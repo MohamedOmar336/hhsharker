@@ -3,24 +3,22 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\BlogPost;
+use App\Models\News;
 use App\Models\User;
-use App\Models\Tag;
-//use App\Models\BlogPostTag; // Include the BlogPostTag model
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Enums\EnumsSettings;
 
-class BlogPostController extends Controller
+class NewsController extends Controller
 {
     /**
-     * Display a listing of the blog posts.
+     * Display a listing of the news.
      *
      * @return \Illuminate\Contracts\View\View
      */
     public function index(Request $request)
     {
-        $query = BlogPost::query();
+        $query = News::query();
 
         if ($request->has('search')) {
             $searchTerm = $request->search;
@@ -32,23 +30,22 @@ class BlogPostController extends Controller
 
         $records = $query->latest()->paginate(EnumsSettings::Paginate);
 
-        return view('admin.blogposts.index', compact('records'));
+        return view('admin.news.index', compact('records'));
     }
 
     /**
-     * Show the form for creating a new blog post.
+     * Show the form for creating a new news item.
      *
      * @return \Illuminate\Contracts\View\View
      */
     public function create()
     {
         $authors = User::all();
-        $tags = Tag::latest()->paginate(EnumsSettings::Paginate);;
-        return view('admin.blogPosts.create', compact('authors', 'tags'));
+        return view('admin.news.create', compact('authors'));
     }
 
     /**
-     * Store a newly created blog post in storage.
+     * Store a newly created news item in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
@@ -63,43 +60,35 @@ class BlogPostController extends Controller
             'author_id' => 'required|exists:users,id',
             'status' => 'required|in:draft,published',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'tags' => 'nullable|array',
         ]);
 
         if ($request->hasFile('image')) {
             $imageName = uploadImage($request->file('image'));
             $validatedData['image'] = $imageName;
         }
+
         $validatedData['post_date'] = now();
 
-        $post = BlogPost::create($validatedData);
-        /*
-        foreach ($request->input('tags') as $tagId) {
-            BlogPostTag::create([
-                'blog_post_id' => $post->id,
-                'tag_id' => (int) $tagId,
-            ]);
-        }*/
-        return redirect()->route('blogposts.index')->with('success', 'Post created successfully.');
+        $news = News::create($validatedData);
+
+        return redirect()->route('news.index')->with('success', 'News item created successfully.');
     }
 
     /**
-     * Show the form for editing the specified blog post.
+     * Show the form for editing the specified news item.
      *
      * @param  int  $id
      * @return \Illuminate\Contracts\View\View
      */
     public function edit($id)
     {
-        $post = BlogPost::findOrFail($id);
-        $tags = Tag::all();
+        $news = News::findOrFail($id);
         $authors = User::all();
-        $postTags = $post->tags;
-        return view('admin.blogPosts.edit', compact('post', 'authors', 'tags', 'postTags'));
+        return view('admin.news.edit', compact('news', 'authors'));
     }
 
     /**
-     * Update the specified blog post in storage.
+     * Update the specified news item in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -115,63 +104,47 @@ class BlogPostController extends Controller
             'author_id' => 'required|exists:users,id',
             'status' => 'required|in:draft,published',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'tags' => 'array',
         ]);
 
-        $post = BlogPost::findOrFail($id);
-
-        $post->title_en = $request->title_en;
-        $post->title_ar = $request->title_ar;
-        $post->content_en = $request->content_en;
-        $post->content_ar = $request->content_ar;
-        $post->author_id = $request->author_id;
-        $post->status = $request->status;
-
+        $newsItem = News::findOrFail($id);
         if ($request->hasFile('image')) {
-            if ($post->image) {
-                Storage::delete($post->image);
+            if ($newsItem->image) {
+                Storage::delete($newsItem->image);
             }
             $image = $request->file('image')->store('images', 'public');
-            $post->image = $image;
+            $validatedData['image'] = $image;
         }
-        // if ($request->has('tags')) {
-        //     $post->tags()->sync($request->tags);
-        // } else {
-        //     $post->tags()->sync([]); // Clear tags if none are provided
-        // }
 
-        // $post->save();
-        $post->update($validatedData);
+        $newsItem->update($validatedData);
 
-
-        return redirect()->route('blogposts.index')->with('success', 'Post updated successfully.');
+        return redirect()->route('news.index')->with('success', 'News item updated successfully.');
     }
 
     /**
-     * Remove the specified blog post from storage.
+     * Remove the specified news item from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        $post = BlogPost::findOrFail($id);
-        if ($post->image) {
-            Storage::delete($post->image);
+        $newsItem = News::findOrFail($id);
+        if ($newsItem->image) {
+            Storage::delete($newsItem->image);
         }
-        $post->delete();
-        return redirect()->route('blogposts.index')->with('success', 'Post deleted successfully.');
+        $newsItem->delete();
+        return redirect()->route('news.index')->with('success', 'News item deleted successfully.');
     }
 
     /**
-     * Display the specified blog post.
+     * Display the specified news item.
      *
      * @param  int  $id
      * @return \Illuminate\Contracts\View\View
      */
     public function show($id)
     {
-        $post = BlogPost::findOrFail($id);
-        return view('admin.blogPosts.show', compact('post'));
+        $newsItem = News::findOrFail($id);
+        return view('admin.news.show', compact('newsItem'));
     }
 }

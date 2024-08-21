@@ -31,6 +31,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\WhatsAppController;
 use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\Admin\NewsController;
 
 
 /*
@@ -199,6 +200,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::patch('/mails/{mail}/trash', [MailController::class, 'moveTrash'])->name('mails.moveTrash');
 
         Route::post('/mails/bulk-action', [MailController::class, 'bulkAction'])->name('mails.bulkAction');
+
+        Route::resource('news', NewsController::class);
 
     });
 });
