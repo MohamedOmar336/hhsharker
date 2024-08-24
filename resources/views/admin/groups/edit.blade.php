@@ -31,7 +31,7 @@
             <!-- end page title and breadcrumb -->
 
             <div class="row">
-                <div class="col-12 col-lg-10 mx-auto">
+                <div class="col-12 col-lg-12 mx-auto">
                     <div class="card">
                         <div class="card-body content-area">
                             <form method="POST" action="{{ route('groups.update', $group->id) }}" enctype="multipart/form-data">

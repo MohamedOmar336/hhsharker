@@ -154,6 +154,7 @@
                             @endif
                         @endforeach
 
+
                         <li class="nav-item">
                             <a class="nav-link" href="#sidebarHospital" data-bs-toggle="collapse" role="button"
                                 aria-expanded="false" aria-controls="sidebarHospital">
@@ -189,6 +190,30 @@
                                 </ul><!--end nav-->
                             </div><!--end sidebarHospital-->
                         </li><!--end nav-item-->
+
+                        
+                        @foreach ($filteredSideNav as $item)
+                            @if ($item['link'] == 'sidebarTasks')
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#{{ $item['link'] }}" data-bs-toggle="collapse"
+                                        role="button" aria-expanded="false" aria-controls="{{ $item['link'] }}">
+                                        {{ $item['title'] }}
+                                    </a>
+                                    <div class="collapse " id="{{ $item['link'] }}">
+                                        <ul class="nav flex-column">
+                                            @if (isset($item['sub_menu']))
+                                                @foreach ($item['sub_menu'] as $sub_item)
+                                                    <li class="nav-item">
+                                                        <a class="nav-link"
+                                                            href="{{ $sub_item['route'] == 'chat.index' ? route($sub_item['route'], Auth()->user()) : route($sub_item['route']) }}">{{ $sub_item['title'] }}</a>
+                                                    </li>
+                                                @endforeach
+                                            @endif
+                                        </ul><!--end nav-->
+                                    </div><!--end sidebarEcommerce-->
+                                </li><!--end nav-item-->
+                            @endif
+                        @endforeach
                     </ul><!--end navbar-nav--->
                 </div><!--end sidebarCollapse-->
             </div><!-- end Crypto -->

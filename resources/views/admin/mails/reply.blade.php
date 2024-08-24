@@ -32,10 +32,10 @@
             </div>
             <!-- end page title end breadcrumb -->
             <div class="row">
-                <div class="col-12 col-lg-10 mx-auto">
+                <div class="col-12 col-lg-12 mx-auto">
                     <div class="card">
                         <div class="card-body content-area">
-                            <form action="{{ route('mails.sendReply', $mail->id) }}" method="POST"  enctype="multipart/form-data"
+                            <form action="{{ route('mails.sendReply', $mail) }}" method="POST"  enctype="multipart/form-data"
                                 class="needs-validation" novalidate>
                                 @csrf
                                 <div class="mb-3">

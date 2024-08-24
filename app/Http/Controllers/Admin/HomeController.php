@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Ticket;
+use App\Models\Task;
 use App\Models\Appointment;
 use Illuminate\Support\Facades\Auth;
 
@@ -73,7 +74,14 @@ class HomeController extends Controller
         $appointments = Appointment::with('user', 'withUser')->orderBy('start_time', 'asc')->limit(5)->get();
 
         $tickets = Ticket::with(['priority', 'status', 'assignedTo', 'createdBy'])
-    ->orderBy('created_at', 'asc') // Adjust order as needed
+    ->orderBy('created_at', 'asc')->limit(5) // Adjust order as needed
+    ->get();
+    $tasks = Task::with(['title',
+    'description',
+    'assigned_to',
+    'status',
+    'due_date'])
+    ->orderBy('created_at', 'asc')->limit(5) // Adjust order as needed
     ->get();
 
         // Fetch ticket statistics
@@ -82,7 +90,7 @@ class HomeController extends Controller
         $onHoldTicketsCount = Ticket::where('StatusID', 'on_hold')->count();
         $unassignedTicketsCount = Ticket::whereNull('AssignedTo')->count();
 
-        return view('admin.home', compact('notifications', 'appointments', 'newTicketsCount', 'openTicketsCount', 'onHoldTicketsCount', 'unassignedTicketsCount','tickets'));
+        return view('admin.home', compact('notifications','tasks', 'appointments', 'newTicketsCount', 'openTicketsCount', 'onHoldTicketsCount', 'unassignedTicketsCount','tickets'));
     }
 
     public function analytics()

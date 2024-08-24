@@ -375,8 +375,19 @@ return [
         '' => '',
         '' => '',
         '' => '',
-        '' => '',
-
+        'task_title' => 'عنوان المهمة',
+        'assigned_to' => 'مخصص لـ',
+        'status' => 'الحالة',
+        'due_date' => 'تاريخ الاستحقاق',
+        'description' => 'الوصف',
+        'select_user' => 'اختر المستخدم',
+        'add_task' => 'إضافة مهمة',
+    ],
+    'status' => [
+        'pending' => 'معلق',
+        'completed' => 'مكتمل',
+        'in_progress' => 'قيد التنفيذ',
+        'archived' => 'أرشيف',
     ],
     'placeholders' => [
         'no_emails' => 'لم يتم العثور على رسائل.',
@@ -390,6 +401,7 @@ return [
         'trash' => 'سلة المحذوفات',
     ],
     'side' => [
+        'tasks' => 'المهام',
         "ticket_categories_list"=> "قائمة فئات التذاكر",
         "ticket_categories"=> "فئات التذاكر",
         'dashboard' => 'لوحة التحكم الرئيسية',

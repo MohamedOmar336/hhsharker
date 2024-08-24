@@ -31,6 +31,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\WhatsAppController;
 use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\Admin\TaskController;
+
 
 
 /*
@@ -151,10 +153,10 @@ Route::group(['prefix' => 'admin'], function () {
       //  Route::get('/mails/index', [MailController::class, 'index'])->name('mails.index');
         Route::get('/mails/compose', [MailController::class, 'compose'])->name('mails.compose');
         Route::post('/mails/send', [MailController::class, 'send'])->name('mails.send');
-        Route::get('/mails/{mail}', [MailController::class, 'show'])->name('mails.show');
+        Route::get('/mails/{id}', [MailController::class, 'show'])->name('mails.show');
 
         Route::get('/mails/{id}/reply', [MailController::class, 'reply'])->name('mails.reply');
-        Route::post('/mails/{id}/sendReply', [MailController::class, 'sendReply'])->name('mails.sendReply');
+        Route::post('/mails/sendReply/{id}', [MailController::class, 'sendReply'])->name('mails.sendReply');
 
         Route::post('/mails/bulk-action', [MailController::class, 'bulkAction'])->name('mails.bulkAction');
 
@@ -191,7 +193,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/mails/sent', [MailController::class, 'sent'])->name('mails.sent');
         Route::get('/mails/trash', [MailController::class, 'trash'])->name('mails.trash');
 
-        Route::get('/mails/compose', [MailController::class, 'compose'])->name('mails.compose');
+       Route::get('/mails/compose', [MailController::class, 'compose'])->name('mails.compose');
+
         Route::post('/mails/send', [MailController::class, 'send'])->name('mails.send');
 
         Route::patch('/mails/{mail}/star', [MailController::class, 'markStarred'])->name('mails.markStarred');
@@ -199,6 +202,11 @@ Route::group(['prefix' => 'admin'], function () {
         Route::patch('/mails/{mail}/trash', [MailController::class, 'moveTrash'])->name('mails.moveTrash');
 
         Route::post('/mails/bulk-action', [MailController::class, 'bulkAction'])->name('mails.bulkAction');
+        Route::post('/mails/toggle-state/{email}/{type}', [MailController::class, 'toggleState'])->name('mails.toggleState');
+
+ 
+        Route::resource('tasks', TaskController::class);
+
 
     });
 });

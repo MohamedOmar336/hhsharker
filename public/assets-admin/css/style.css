@@ -157,3 +157,53 @@ h2 {
   display: inline-block;
 }
 
+.hidden{
+
+  display: none;
+
+}
+
+    .checkbox-wrapper-mail {
+        display: flex;
+        align-items: center; /* Vertically center the icons with the checkbox */
+    }
+
+    .checkbox-wrapper-mail .form-check-input {
+      margin-right: 10px;
+      width: 20px;
+      height: 21px;
+      position: relative;
+      top: -3px;
+    }
+
+    .icons {
+        display: flex;
+        gap: 8px; /* Space between icons */
+        margin-left: 4px;
+        
+        position: relative;
+    bottom: 14px;
+    }
+
+    .icons span {
+        display: inline-flex; /* Ensure span wraps the icon without breaking line */
+        align-items: center; /* Center icon vertically within span */
+        cursor: pointer; /* Change cursor to pointer on hover */
+        margin-right: 10px;
+    }
+
+    .icons i {
+        font-size: 16px; /* Adjust icon size as needed */
+    }
+
+    .icons span:hover i {
+     opacity:0.5 ; /* Change color on hover */
+  }
+
+
+ /* Black text shadow styling */
+.text-shadow {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Adjust shadow offset, blur, and color */
+}
+
+

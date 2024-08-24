@@ -83,6 +83,22 @@ return [
         ],
     ],
     [
+        'title' => __('Tasks'),
+        'link' => 'sidebarTasks',
+        'icon' => 'ti ti-user',
+        'level' => 3,
+        'sub_menu' => [
+            [
+                'title' => __('Tasks List'),
+                'route' => 'tasks.index',
+            ],
+            [
+                'title' => __('Add New Taskst'),
+                'route' => 'tasks.create',
+            ],
+        ],
+    ],
+    [
         'title' => __('Groups'),
         'link' => 'sidebarGroups',
         'icon' => 'ti ti-layout-grid2-alt',

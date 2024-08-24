@@ -7,7 +7,7 @@
 
             <!-- Page Header with Breadcrumb, Back Button, and Actions -->
             <div class="row align-items-center mb-4">
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <div class="d-flex align-items-center">
                         <a href="{{ URL::previous() }}" class="me-3">
                             @if (app()->isLocale('ar'))
@@ -18,19 +18,24 @@
                         </a>
                         <h4 class="page-title mb-0">{{ __('general.list') }}</h4>
                     </div>
-                    <ol class="breadcrumb mb-0 mt-2">
-                        <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('products.index') }}">{{ __('general.attributes.product') }}</a></li>
-                        <li class="breadcrumb-item active">{{ __('general.list') }}</li>
-                    </ol>
+                    
                 </div>
-                <div class="col-md-6 text-end">
+                <div class="col-md-2 text-end">
                     <a href="{{ route('products.import.form') }}" class="btn btn-xs btn-primary me-2">
                         <i class="ti ti-file-upload"></i> {{ __('general.attributes.import') }}
                     </a>
                     <a href="{{ route('products.exports') }}" class="btn btn-xs btn-primary">
                         <i class="ti ti-file-download"></i> {{ __('general.attributes.export') }}
                     </a>
+                   
+                </div>
+                <div class="col-md-2 text-end">
+                   
+                    <ol class="breadcrumb mb-0 mt-2">
+                        <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('products.index') }}">{{ __('general.attributes.product') }}</a></li>
+                        <li class="breadcrumb-item active">{{ __('general.list') }}</li>
+                    </ol>
                 </div>
             </div>
 
@@ -87,10 +92,10 @@
                         <td>{{ $record->category ? $record->category->name_en : __('general.uncategorized') }}</td>
                         <td>
                             <a href="{{ route('products.edit', $record->id) }}" class="action-icon"> <i data-feather="edit"></i></a>
-                            <form action="{{ route('products.destroy', $record->id) }}" method="POST" class="d-inline">
+                            <form action="{{ route('products.destroy', $record->id) }}" method="POST" class="delete-form">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="action-icon delete-btn" onclick="return confirm('{{ __('general.confirm_delete') }}')">
+                                <button type="submit" class="btn delete-form" onclick="return confirm('{{ __('general.confirm_delete') }}')">
                                     <i data-feather="trash"></i>
                                 </button>
                             </form>

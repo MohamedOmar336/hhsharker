@@ -166,20 +166,6 @@
                                                             </div>
                                                         @enderror
                                                     </div>
-
-                                                    {{-- <div class="mb-3">
-                                                        <label for="category" class="form-label">Sub-category:</label>
-                                                        <select id="category" class="form-control @error('category') is-invalid @enderror" name="subcategory_id">
-                                                            @foreach ($categories as $category)
-                                                            <option value="{{ $category->id }}">{{ $category->name_en }}</option>
-                                                        @endforeach
-                                                        </select>
-                                                        @error('sub-category')
-                                                            <div class="invalid-feedback">
-                                                                {{ $message }}
-                                                            </div>
-                                                        @enderror
-                                                    </div> --}}
                                                     <div class="mb-3">
                                                         <label for="model_number" class="form-label">Model Number:</label>
                                                         <input id="model_number" type="text"
@@ -193,9 +179,7 @@
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="status" class="form-label">Status:</label>
-                                                        {{-- <input id="status" type="text"
-                                                            class="form-control @error('status') is-invalid @enderror"
-                                                            name="status" value="{{ old('status') }}"> --}}
+                                                       
                                                         <select id="status"
                                                             class="form-control @error('status') is-invalid @enderror"
                                                             name="status">
@@ -267,61 +251,38 @@
                                                             </div>
                                                         @enderror
                                                     </div>
+                                                  
                                                     <div class="mb-3 HomeAppliances">
-                                                        <label for="characteristics_en" class="form-label">Characteristics
-                                                            (in English):</label>
-                                                        <div class="row">
-                                                            <div class="col-md-11">
-                                                                <select id="choices-multiple-remove-button"
-                                                                    name="characteristics_en[]"
-                                                                    class="form-control @error('characteristics_en') is-invalid @enderror"
-                                                                    multiple>
-                                                                    @foreach ($characteristics as $Characteristic)
-                                                                        <option value="{{ $Characteristic->id }}">
-                                                                            {{ $Characteristic->name_en }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                                @error('characteristics_en')
-                                                                    <div class="invalid-feedback">{{ $message }}</div>
-                                                                @enderror
-                                                            </div>
-                                                            <div class="col-md-1">
-                                                                <button type="button" class="btn btn-de-primary"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#createCharacteristicsModal">
-                                                                    <i data-feather="plus"></i>
-                                                                </button>
+                                                        <label for="characteristics" class="form-label">Characteristics</label>
+                                                        
+                                                        <div id="dynamic-fields">
+                                                            <div class="form-group row">
+                                                                <div class="col-md-3">
+                                                                    <input type="file" name="characteristics[0][Characteristic_file]" class="form-control" placeholder="Select file">
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <input type="text" name="characteristics[0][Characteristic_name_en]" class="form-control name-field" placeholder="Enter Name (in English):">
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <input type="text" name="characteristics[0][Characteristic_name_ar]" class="form-control" placeholder="Enter Name (in Arabic):">
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <button type="button" class="btn btn-danger remove-field">Remove</button>
+                                                                    <button type="button" class="btn btn-warning hide-field">Hide</button>
+                                                                </div>
+                                                                <div class="col-md-9">
+                                                                    <textarea id="Characteristic_description_en" name="characteristics[0][Characteristic_description_en]" class="form-control" placeholder="Enter Description (in English):"></textarea>
+                                                                </div>
+                                                                <div class="col-md-9">
+                                                                    <textarea id="Characteristic_description_ar" name="characteristics[0][Characteristic_description_ar]" class="form-control" placeholder="Enter Description (in Arabic):"></textarea>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="mb-3 HomeAppliances">
-                                                        <label for="characteristics_ar" class="form-label">Characteristics
-                                                            (in Arabic):</label>
-                                                        <div class="row">
-                                                            <div class="col-md-11">
-                                                                <select id="choices-multiple-remove-button"
-                                                                    name="characteristics_ar[]"
-                                                                    class="form-control @error('characteristics_ar') is-invalid @enderror"
-                                                                    multiple>
-                                                                    @foreach ($characteristics as $characteristic)
-                                                                        <option value="{{ $characteristic->id }}">
-                                                                            {{ $characteristic->name_ar }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                                @error('characteristics_ar')
-                                                                    <div class="invalid-feedback">{{ $message }}</div>
-                                                                @enderror
-                                                            </div>
-                                                            <div class="col-md-1">
-                                                                <button type="button" class="btn btn-de-primary"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#createCharacteristicsModal">
-                                                                    <i data-feather="plus"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
+                                                        
+                                                        <button type="button" class="btn btn-success add-field">Add</button>
                                                         <hr>
                                                     </div>
+                                                    
 
 
 
@@ -354,7 +315,10 @@
                                                     <hr>
                                                     <div class="mb-3 AirConditioner">
                                                         <label for="color" class="form-label">Color:</label>
-                                                        <input type="color" class="form-control form-control-color  @error('color') is-invalid @enderror" id="color" name="color" value="#0b51b7" title="Choose your color">
+                                                        <input type="color"
+                                                            class="form-control form-control-color  @error('color') is-invalid @enderror"
+                                                            id="color" name="color" value="#0b51b7"
+                                                            title="Choose your color">
 
                                                         @error('color')
                                                             <div class="invalid-feedback">
@@ -460,58 +424,7 @@
                             <!--end col-->
 
                         </div><!--end row-->
-                        <div class="modal fade" id="createCharacteristicsModal" tabindex="-1"
-                            aria-labelledby="createCharacteristicsModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <form id="createCharacteristicsForm" method="POST" enctype="multipart/form-data">
-                                        @csrf
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="createCharacteristicsModalLabel">Create
-                                                Characteristics</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="mb-3">
-                                                <label for="name_en"
-                                                    class="form-label">{{ __('general.attributes.name_english') }}</label>
-                                                <input id="name_en" type="text"
-                                                    class="form-control @error('name_en') is-invalid @enderror"
-                                                    name="name_en" value="{{ old('name_en') }}" required autofocus>
-                                                @error('name_en')
-                                                    <span class="invalid-feedback">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="name_ar"
-                                                    class="form-label">{{ __('general.attributes.name_arabic') }}</label>
-                                                <input id="name_ar" type="text"
-                                                    class="form-control @error('name_ar') is-invalid @enderror"
-                                                    name="name_ar" value="{{ old('name_ar') }}" required>
-                                                @error('name_ar')
-                                                    <span class="invalid-feedback">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="image"
-                                                    class="form-label">{{ __('general.attributes.image') }}</label>
-                                                <input id="image" type="file"
-                                                    class="form-control @error('image') is-invalid @enderror"
-                                                    name="image" accept=".svg,.png">
-                                                @error('image')
-                                                    <span class="invalid-feedback">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                            <div class="mb-3">
-                                                <button type="submit"
-                                                    class="btn btn-sm btn-de-primary">{{ __('general.btn.create') }}</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                       
 
 
 
@@ -525,59 +438,8 @@
 
 @push('scripts')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#createCharacteristicsForm').on('submit', function(e) {
-                e.preventDefault();
-
-                let formData = new FormData(this);
-
-                $.ajax({
-                    url: "{{ route('characteristics.store') }}",
-                    type: 'POST',
-                    data: formData,
-                    contentType: false,
-                    processData: false,
-                    success: function(response) {
-                        alert('Characteristics created successfully.');
-                        $('#createCharacteristicsModal').modal('hide');
-                        fetchCharacteristics();
-                    },
-                    error: function(response) {
-                        alert('An error occurred. Please try again.');
-                    }
-                });
-            });
-
-            function fetchCharacteristics() {
-                $.ajax({
-                    url: "{{ route('characteristics.list') }}",
-                    type: 'GET',
-                    success: function(data) {
-                        console.log(data);
-                        debugger
-                        let characteristicsEn = $(
-                            '#choices-multiple-remove-button[name="characteristics_en[]"]');
-                        let characteristicsAr = $(
-                            '#choices-multiple-remove-button[name="characteristics_ar[]"]');
-
-                        characteristicsEn.empty();
-                        characteristicsAr.empty();
-
-                        data.forEach(function(characteristic) {
-                            characteristicsEn.append(new Option(characteristic.name_en,
-                                characteristic.id));
-                            characteristicsAr.append(new Option(characteristic.name_ar,
-                                characteristic.id));
-                        });
-                    },
-                    error: function() {
-                        // alert('Failed to fetch characteristics.');
-                    }
-                });
-            }
-        });
-    </script>
+   
+    
     <script>
         $(document).ready(function() {
             var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
@@ -657,4 +519,109 @@
             });
         });
     </script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    let fieldIndex = 0; // Initialize field index
+
+    // Add new field
+    $('.add-field').click(function() {
+        fieldIndex++; // Increment index for each new field
+
+        var html = `
+            <div class="form-group row" id="row${fieldIndex}">
+                <div class="col-md-3">
+                    <input type="file" name="characteristics[${fieldIndex}][Characteristic_file]" class="form-control" placeholder="Select file">
+                </div>
+                <div class="col-md-3">
+                    <input type="text" name="characteristics[${fieldIndex}][Characteristic_name_en]" class="form-control" placeholder="Enter Name (in English):">
+                </div>
+                <div class="col-md-3">
+                    <input type="text" name="characteristics[${fieldIndex}][Characteristic_name_ar]" class="form-control" placeholder="Enter Name (in Arabic):">
+                </div>
+                <div class="col-md-3">
+                    <button type="button" class="btn btn-danger remove-field">Remove</button>
+                    <button type="button" class="btn btn-warning hide-field">Hide</button>
+                </div>
+                <div class="col-md-9">
+                    <textarea name="characteristics[${fieldIndex}][Characteristic_description_en]" class="form-control" placeholder="Enter Description (in English):"></textarea>
+                </div>
+                <div class="col-md-9">
+                    <textarea name="characteristics[${fieldIndex}][Characteristic_description_ar]" class="form-control" placeholder="Enter Description (in Arabic):"></textarea>
+                </div>
+            </div>`;
+        
+        $('#dynamic-fields').append(html);
+    });
+
+    // Remove a field
+    $(document).on('click', '.remove-field', function() {
+        $(this).closest('.form-group').remove();
+    });
+
+    // Hide a field and replace it with a label and unhide button
+    $(document).on('click', '.hide-field', function() {
+        var row = $(this).closest('.form-group');
+        var fileValue = row.find('input[name*="Characteristic_file"]').val();
+        var nameEnValue = row.find('input[name*="Characteristic_name_en"]').val();
+        var nameArValue = row.find('input[name*="Characteristic_name_ar"]').val();
+        var descEnValue = row.find('textarea[name*="Characteristic_description_en"]').val();
+        var descArValue = row.find('textarea[name*="Characteristic_description_ar"]').val();
+
+        // Store data in row attributes
+        row.attr('data-file', fileValue);
+        row.attr('data-name-en', nameEnValue);
+        row.attr('data-name-ar', nameArValue);
+        row.attr('data-desc-en', descEnValue);
+        row.attr('data-desc-ar', descArValue);
+
+        // Replace the row with a label and unhide button
+        var labelValue = nameEnValue ? nameEnValue : 'Hidden Field';
+        row.html(`
+            <div class="col-md-9">
+                <label class="form-control bg-light">${labelValue}</label>
+            </div>
+            <div class="col-md-3">
+                <button type="button" class="btn btn-info unhide-field">Unhide</button>
+            </div>
+        `);
+    });
+
+    // Unhide the field with preserved values
+    $(document).on('click', '.unhide-field', function() {
+        var row = $(this).closest('.form-group');
+
+        // Retrieve stored data attributes
+        var fileVal = row.attr('data-file');
+        var nameEnVal = row.attr('data-name-en');
+        var nameArVal = row.attr('data-name-ar');
+        var descEnVal = row.attr('data-desc-en');
+        var descArVal = row.attr('data-desc-ar');
+
+        // Rebuild the row with the stored values
+        row.html(`
+            <div class="col-md-3">
+                <input type="file" name="characteristics[${fieldIndex}][Characteristic_file]" class="form-control" placeholder="Select file" value="${fileVal}">
+            </div>
+            <div class="col-md-3">
+                <input type="text" name="characteristics[${fieldIndex}][Characteristic_name_en]" class="form-control" placeholder="Enter Name (in English):" value="${nameEnVal}">
+            </div>
+            <div class="col-md-3">
+                <input type="text" name="characteristics[${fieldIndex}][Characteristic_name_ar]" class="form-control" placeholder="Enter Name (in Arabic):" value="${nameArVal}">
+            </div>
+            <div class="col-md-3">
+                <button type="button" class="btn btn-danger remove-field">Remove</button>
+                <button type="button" class="btn btn-warning hide-field">Hide</button>
+            </div>
+            <div class="col-md-9">
+                <textarea name="characteristics[${fieldIndex}][Characteristic_description_en]" class="form-control" placeholder="Enter Description (in English):">${descEnVal}</textarea>
+            </div>
+            <div class="col-md-9">
+                <textarea name="characteristics[${fieldIndex}][Characteristic_description_ar]" class="form-control" placeholder="Enter Description (in Arabic):">${descArVal}</textarea>
+            </div>
+        `);
+    });
+});
+
+</script>
+
 @endpush

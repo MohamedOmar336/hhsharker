@@ -2142,7 +2142,7 @@ mark {
 .card {
     margin-bottom: 16px;
     background-color: #e6e9f4;
-    border: 1px solid #eceff5;
+    border: none;
     -webkit-box-shadow: none;
     box-shadow: none
 }

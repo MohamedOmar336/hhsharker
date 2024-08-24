@@ -371,12 +371,19 @@ return [
         'created_by'=>'Created By',
         'export'=>'Export',
         'import'  => 'Import',
-        ''  => '',
-        ''  => '',
-        ''  => '',
-        ''  => '',
-        ''  => '',
-        ''  => '',
+        'task_title' => 'Task Title',
+        'assigned_to' => 'Assigned To',
+        'status' => 'Status',
+        'due_date' => 'Due Date',
+        'description' => 'Description',
+        'select_user' => 'Select User',
+        'add_task' => 'Add Task',
+    ],
+    'status' => [
+        'pending' => 'Pending',
+        'completed' => 'Completed',
+        'in_progress' => 'In Progress',
+        'archived' => 'Archived',
     ],
     'placeholders' => [
         'no_emails' => 'No emails found.',
@@ -394,6 +401,7 @@ return [
     ],
 
     'side' => [
+        'tasks' => 'Tasks',
         "ticket_categories_list" => "Ticket Categories List",
         "ticket_categories" => "Ticket Categories",
         'dashboard' => 'Dashboard',

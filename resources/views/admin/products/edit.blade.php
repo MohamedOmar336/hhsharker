@@ -225,44 +225,39 @@
                                                             </div>
                                                         @enderror
                                                     </div>
+                                                   
                                                     <div class="mb-3 HomeAppliances">
-                                                        <label for="characteristics_en" class="form-label">Characteristics
-                                                            (in English):</label>
-                                                        <select id="choices-multiple-remove-button"
-                                                            name="characteristics_en[]"
-                                                            class="form-control @error('characteristics_en') is-invalid @enderror"
-                                                            multiple>
-                                                            @foreach ($characteristics as $Characteristic)
-                                                                <option value="{{ $Characteristic->id }}"
-                                                                    {{ collect(old('characteristics_en', $product->characteristics_en ?? []))->contains($Characteristic->id) ? 'selected' : '' }}>
-                                                                    {{ $Characteristic->name_en }}</option>
+                                                        <label for="characteristics" class="form-label">Characteristics</label>
+                                                        <div id="dynamic-fields">
+                                                            @foreach($characteristics as $index => $characteristic)
+                                                                <div class="form-group row" id="row{{ $index }}">
+                                                                    <input type="hidden" name="characteristics[{{ $index }}][id]" value="{{ $characteristic->id }}">
+                                                                    <div class="col-md-3">
+                                                                        <input type="file" name="characteristics[{{ $index }}][Characteristic_file]" class="form-control">
+                                                                    </div>
+                                                                    <div class="col-md-3">
+                                                                        <input type="text" name="characteristics[{{ $index }}][Characteristic_name_en]" class="form-control" value="{{ old('characteristics.'.$index.'.Characteristic_name_en', $characteristic->Characteristic_name_en) }}" placeholder="Enter Name (in English):">
+                                                                    </div>
+                                                                    <div class="col-md-3">
+                                                                        <input type="text" name="characteristics[{{ $index }}][Characteristic_name_ar]" class="form-control" value="{{ old('characteristics.'.$index.'.Characteristic_name_ar', $characteristic->Characteristic_name_ar) }}" placeholder="Enter Name (in Arabic):">
+                                                                    </div>
+                                                                    <div class="col-md-3">
+                                                                        <button type="button" class="btn btn-danger remove-field">Remove</button>
+                                                                        <button type="button" class="btn btn-warning hide-field">Hide</button>
+                                                                    </div>
+                                                                    <div class="col-md-9">
+                                                                        <textarea name="characteristics[{{ $index }}][Characteristic_description_en]" class="form-control" placeholder="Enter Description (in English):">{{ old('characteristics.'.$index.'.Characteristic_description_en', $characteristic->Characteristic_description_en) }}</textarea>
+                                                                    </div>
+                                                                    <div class="col-md-9">
+                                                                        <textarea name="characteristics[{{ $index }}][Characteristic_description_ar]" class="form-control" placeholder="Enter Description (in Arabic):">{{ old('characteristics.'.$index.'.Characteristic_description_ar', $characteristic->Characteristic_description_ar) }}</textarea>
+                                                                    </div>
+                                                                </div>
                                                             @endforeach
-                                                        </select>
-                                                        @error('characteristics_en')
-                                                            <div class="invalid-feedback">
-                                                                {{ $message }}
-                                                            </div>
-                                                        @enderror
+                                                        </div>
+                                                        <button type="button" class="btn btn-success add-field">Add Characteristic</button>
+                                                        <hr>
                                                     </div>
-                                                    <div class="mb-3 HomeAppliances">
-                                                        <label for="characteristics_ar" class="form-label">Characteristics
-                                                            (in Arabic):</label>
-                                                        <select id="choices-multiple-remove-button"
-                                                            name="characteristics_ar[]"
-                                                            class="form-control @error('characteristics_ar') is-invalid @enderror"
-                                                            multiple>
-                                                            @foreach ($characteristics as $Characteristic)
-                                                                <option value="{{ $Characteristic->id }}"
-                                                                    {{ collect(old('characteristics_ar', $product->characteristics_ar ?? []))->contains($Characteristic->id) ? 'selected' : '' }}>
-                                                                    {{ $Characteristic->name_ar }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                        @error('characteristics_ar')
-                                                            <div class="invalid-feedback">
-                                                                {{ $message }}
-                                                            </div>
-                                                        @enderror
-                                                    </div>
+                                                    
                                                     <div class="mb-3 HomeAppliances">
                                                         <label for="optional_features_ar" class="form-label">Optional
                                                             Features (in Arabic):</label>
@@ -477,4 +472,82 @@
             });
         });
     </script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        let fieldIndex = {{ count($characteristics) }}; // Start with the number of existing fields
+
+        // Add new field
+        $('.add-field').click(function() {
+            fieldIndex++;
+            var html = `
+                <div class="form-group row" id="row${fieldIndex}">
+                    <div class="col-md-3">
+                        <input type="file" name="characteristics[${fieldIndex}][Characteristic_file]" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" name="characteristics[${fieldIndex}][Characteristic_name_en]" class="form-control" placeholder="Enter Name (in English):">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" name="characteristics[${fieldIndex}][Characteristic_name_ar]" class="form-control" placeholder="Enter Name (in Arabic):">
+                    </div>
+                    <div class="col-md-3">
+                        <button type="button" class="btn btn-danger remove-field">Remove</button>
+                        <button type="button" class="btn btn-warning hide-field">Hide</button>
+                    </div>
+                    <div class="col-md-9">
+                        <textarea name="characteristics[${fieldIndex}][Characteristic_description_en]" class="form-control" placeholder="Enter Description (in English):"></textarea>
+                    </div>
+                    <div class="col-md-9">
+                        <textarea name="characteristics[${fieldIndex}][Characteristic_description_ar]" class="form-control" placeholder="Enter Description (in Arabic):"></textarea>
+                    </div>
+                </div>`;
+            $('#dynamic-fields').append(html);
+        });
+
+        // Remove a field
+        $(document).on('click', '.remove-field', function() {
+            $(this).closest('.form-group').remove();
+        });
+
+        // Hide a field and replace it with a label and unhide button
+        $(document).on('click', '.hide-field', function() {
+            var row = $(this).closest('.form-group');
+            row.html(`
+                <div class="col-md-9">
+                    <label class="form-control bg-light">Characteristic (Hidden)</label>
+                </div>
+                <div class="col-md-3">
+                    <button type="button" class="btn btn-info unhide-field">Unhide</button>
+                </div>
+            `);
+        });
+
+        // Unhide the field by restoring the input fields
+        $(document).on('click', '.unhide-field', function() {
+            var row = $(this).closest('.form-group');
+            row.html(`
+                <div class="col-md-3">
+                    <input type="file" name="characteristics[${fieldIndex}][Characteristic_file]" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <input type="text" name="characteristics[${fieldIndex}][Characteristic_name_en]" class="form-control" placeholder="Enter Name (in English):">
+                </div>
+                <div class="col-md-3">
+                    <input type="text" name="characteristics[${fieldIndex}][Characteristic_name_ar]" class="form-control" placeholder="Enter Name (in Arabic):">
+                </div>
+                <div class="col-md-3">
+                    <button type="button" class="btn btn-danger remove-field">Remove</button>
+                    <button type="button" class="btn btn-warning hide-field">Hide</button>
+                </div>
+                <div class="col-md-9">
+                    <textarea name="characteristics[${fieldIndex}][Characteristic_description_en]" class="form-control" placeholder="Enter Description (in English):"></textarea>
+                </div>
+                <div class="col-md-9">
+                    <textarea name="characteristics[${fieldIndex}][Characteristic_description_ar]" class="form-control" placeholder="Enter Description (in Arabic):"></textarea>
+                </div>
+            `);
+        });
+    });
+</script>
 @endpush
