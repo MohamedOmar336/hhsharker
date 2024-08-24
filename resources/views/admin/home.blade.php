@@ -205,7 +205,7 @@
                             <div class="card-header">
                                 <div class="row align-items-center">
                                     <div class="col">
-                                        <h4 class="card-title">{{ __('general.all-tasks')}}</h4>
+                                        <h4 class="card-title">{{ __('general.all_tasks')}}</h4>
                                     </div><!--end col-->
                                     <div class="col-auto">
                                         <form action="{{ route('tasks.create') }}"  method="GET">
@@ -264,7 +264,7 @@
                             <div class="card-header">
                                 <div class="row align-items-center">
                                     <div class="col">
-                                        <h4 class="card-title">{{ __('general.all-tickets')}}</h4>
+                                        <h4 class="card-title">{{ __('general.all_tickets')}}</h4>
                                     </div><!--end col-->
                                     <div class="col-auto">
                                         <form action="{{ route('tickets.create') }}"  method="GET">

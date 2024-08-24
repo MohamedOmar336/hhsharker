@@ -765,7 +765,7 @@ return [
     'filter_priority' => 'Filter by Priority',
     'filter_assigned_to' => 'Filter by Assigned To',
     'apply_filters' => 'Apply Filters',
-    '' => '',
+    'all_tasks' => 'All Tasks',
     '' => '',
     '' => '',
     '' => '',

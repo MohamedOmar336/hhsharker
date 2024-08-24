@@ -757,7 +757,7 @@ return [
     'filter_priority' => 'تصفية حسب الأولوية',
     'filter_assigned_to' => 'تصفية حسب المخصص له',
     'apply_filters' => 'تطبيق الفلاتر',
-    '' => '',
+    'all_tasks' => 'جميع المهام',
     '' => '',
     '' => '',
 ];

@@ -267,8 +267,8 @@
                                                                     <input type="text" name="characteristics[0][Characteristic_name_ar]" class="form-control" placeholder="Enter Name (in Arabic):">
                                                                 </div>
                                                                 <div class="col-md-3">
-                                                                    <button type="button" class="btn btn-danger remove-field">Remove</button>
-                                                                    <button type="button" class="btn btn-warning hide-field">Hide</button>
+                                                                    <button type="button" class="btn btn-danger remove-field btn btn-sm btn-de-primary">Remove</button>
+                                                                    <button type="button" class="btn btn-warning hide-field btn btn-sm btn-de-primary">Hide</button>
                                                                 </div>
                                                                 <div class="col-md-9">
                                                                     <textarea id="Characteristic_description_en" name="characteristics[0][Characteristic_description_en]" class="form-control" placeholder="Enter Description (in English):"></textarea>
@@ -279,7 +279,7 @@
                                                             </div>
                                                         </div>
                                                         
-                                                        <button type="button" class="btn btn-success add-field">Add</button>
+                                                        <button type="button" class="btn btn-success add-field btn btn-sm btn-de-primary">Add</button>
                                                         <hr>
                                                     </div>
                                                     
@@ -539,8 +539,8 @@
                     <input type="text" name="characteristics[${fieldIndex}][Characteristic_name_ar]" class="form-control" placeholder="Enter Name (in Arabic):">
                 </div>
                 <div class="col-md-3">
-                    <button type="button" class="btn btn-danger remove-field">Remove</button>
-                    <button type="button" class="btn btn-warning hide-field">Hide</button>
+                    <button type="button" class="btn btn-danger remove-field btn btn-sm btn-de-primary">Remove</button>
+                    <button type="button" class="btn btn-warning hide-field btn btn-sm btn-de-primary">Hide</button>
                 </div>
                 <div class="col-md-9">
                     <textarea name="characteristics[${fieldIndex}][Characteristic_description_en]" class="form-control" placeholder="Enter Description (in English):"></textarea>
@@ -581,7 +581,7 @@
                 <label class="form-control bg-light">${labelValue}</label>
             </div>
             <div class="col-md-3">
-                <button type="button" class="btn btn-info unhide-field">Unhide</button>
+                <button type="button" class="btn btn-info unhide-field btn btn-sm btn-de-primary">Unhide</button>
             </div>
         `);
     });
@@ -609,8 +609,8 @@
                 <input type="text" name="characteristics[${fieldIndex}][Characteristic_name_ar]" class="form-control" placeholder="Enter Name (in Arabic):" value="${nameArVal}">
             </div>
             <div class="col-md-3">
-                <button type="button" class="btn btn-danger remove-field">Remove</button>
-                <button type="button" class="btn btn-warning hide-field">Hide</button>
+                <button type="button" class="btn btn-danger remove-field btn btn-sm btn-de-primary">Remove</button>
+                <button type="button" class="btn btn-warning hide-field btn btn-sm btn-de-primary">Hide</button>
             </div>
             <div class="col-md-9">
                 <textarea name="characteristics[${fieldIndex}][Characteristic_description_en]" class="form-control" placeholder="Enter Description (in English):">${descEnVal}</textarea>
