@@ -112,9 +112,10 @@
 
                                 <hr />
 
-                                <a href="{{ route('mails.reply', $mail) }}"
-                                    class="btn btn-de-primary btn-sm" method="GET">
-                                    <i class="mdi mdi-reply"></i> {{ __('general.btn.reply') }}</a>
+                                <a href="{{ route('mails.reply', $mail) }}" class="btn btn-de-primary btn-sm">
+                                    <i class="mdi mdi-reply"></i> {{ __('general.btn.reply') }}
+                                </a>
+                                
                             </div>
                         </div>
                     </div> <!-- end email-rightbar -->

@@ -17,6 +17,7 @@
                                 <li class="breadcrumb-item active">{{ __('general.actions.reply') }}</li>
                             </ol>
                         </div>
+                        
                         <div class="col-md-12">
                             <a href="{{ URL::previous() }}">
                             @if (app()->isLocale('ar'))
@@ -35,26 +36,26 @@
                 <div class="col-12 col-lg-12 mx-auto">
                     <div class="card">
                         <div class="card-body content-area">
-                            <form action="{{ route('mails.sendReply', $mail) }}" method="POST"  enctype="multipart/form-data"
-                                class="needs-validation" novalidate>
+                            <form action="{{ route('mails.sendReply', $mail->id) }}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+
                                 @csrf
                                 <div class="mb-3">
-                                    <label for="recipient_id" class="form-label">{{ __('general.recipient') }}</label>
+                                    <label for="recipient_id" class="form-label">{{ __('general.attributes.recipient') }}</label>
                                     <input type="text" id="recipient_id" class="form-control" value="{{ $mail->sender->email }}" readonly>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="subject" class="form-label">{{ __('general.subject') }}</label>
+                                    <label for="subject" class="form-label">{{ __('general.attributes.subject') }}</label>
                                     <input id="subject" type="text" class="form-control" value="{{ __('general.subject_prefix.reply') }} {{ $mail->subject }}" readonly>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="body" class="form-label">{{ __('general.body') }}</label>
+                                    <label for="body" class="form-label">{{ __('general.attributes.body') }}</label>
                                     <textarea id="body" class="form-control @error('body') is-invalid @enderror" name="body" rows="5" required>{{ old('body') }}</textarea>
                                     @error('body')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
 
-                                <button type="submit" class="btn btn-primary">{{ __('general.actions.send') }}</button>
+                                <button type="submit" class="btn btn-de-primary">{{ __('general.actions.send') }}</button>
                             </form>
                         </div> <!--end card-body-->
                     </div><!--end card-->

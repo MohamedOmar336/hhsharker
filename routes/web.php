@@ -155,8 +155,11 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/mails/send', [MailController::class, 'send'])->name('mails.send');
         Route::get('/mails/{id}', [MailController::class, 'show'])->name('mails.show');
 
-        Route::get('/mails/{id}/reply', [MailController::class, 'reply'])->name('mails.reply');
-        Route::post('/mails/sendReply/{id}', [MailController::class, 'sendReply'])->name('mails.sendReply');
+       // Route to display the reply form
+Route::get('/mails/{id}/reply', [MailController::class, 'reply'])->name('mails.reply');
+
+// Route to handle sending the reply
+Route::post('/mails/{id}/sendReply', [MailController::class, 'sendReply'])->name('mails.sendReply');
 
         Route::post('/mails/bulk-action', [MailController::class, 'bulkAction'])->name('mails.bulkAction');
 

@@ -38,10 +38,10 @@
                         <div class="card-body">
                             <nav>
                                 <div>
-                                    <button type="button" id="AirConditioner" class="btn btn-sm btn-primary">Air
-                                        Conditioner</button>
-                                    <button type="button" id="HomeAppliances" class="btn btn-sm btn-primary">Home
-                                        Appliances</button>
+                                    <button type="button" id="AirConditioner"
+                                        class="btn btn-sm btn-primary">{{ __('general.air-conditioner') }}</button>
+                                    <button type="button" id="HomeAppliances"
+                                        class="btn btn-sm btn-primary">{{ __('general.home-appliances') }}</button>
                                 </div>
                             </nav>
 
@@ -53,21 +53,22 @@
                                             @csrf
 
                                             <nav>
-                                                <div class="nav nav-tabs" id="product-nav-tab">
-                                                    <a class="nav-link active" id="step1-tab" data-bs-toggle="tab"
-                                                        href="#step1">General</a>
-                                                    <a class="nav-link" id="step2-tab" data-bs-toggle="tab"
-                                                        href="#step2">Characteristics</a>
-                                                    <a class="nav-link" id="step3-tab" data-bs-toggle="tab"
-                                                        href="#step3">Technical</a>
-                                                </div>
+                                             
+                                                    <div class="nav nav-tabs" id="product-nav-tab">
+                                                        <a class="nav-link active" id="step1-tab" data-bs-toggle="tab"
+                                                            href="#step1">{{ __('general.general') }}</a>
+                                                        <a class="nav-link" id="step2-tab" data-bs-toggle="tab"
+                                                            href="#step2">{{ __('general.characteristics') }}</a>
+                                                        <a class="nav-link" id="step3-tab" data-bs-toggle="tab"
+                                                            href="#step3">{{ __('general.technical') }}</a>
+                                                    </div> 
                                             </nav>
                                             <div class="tab-content" id="product-nav-tabContent">
                                                 <div class="tab-pane active" id="step1"><br>
                                                     <!-- Product Details Fields -->
 
                                                     <div class="mb-3" style="display:none;">
-                                                        <label for="type" class="form-label">Product Type:</label>
+                                                        <label for="type" class="form-label">{{ __('general.attributes.product_type') }}:</label>
                                                         <input type="hidden" id="productType" name="type"
                                                             value="AirConditioner">
                                                         @error('type')
@@ -78,8 +79,7 @@
                                                     </div>
 
                                                     <div class="mb-3">
-                                                        <label for="product_name_ar" class="form-label">Product name (in
-                                                            Arabic):</label>
+                                                        <label for="product_name_ar" class="form-label">{{ __('general.attributes.product_name_ar') }}:</label>
                                                         <input id="product_name_ar" type="text"
                                                             class="form-control @error('product_name_ar') is-invalid @enderror"
                                                             name="product_name_ar" value="{{ old('product_name_ar') }}">
@@ -90,8 +90,7 @@
                                                         @enderror
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="product_name_en" class="form-label">Product name (in
-                                                            English):</label>
+                                                        <label for="product_name_en" class="form-label">{{ __('general.attributes.product_name_en') }}:</label>
                                                         <input id="product_name_en" type="text"
                                                             class="form-control @error('product_name_en') is-invalid @enderror"
                                                             name="product_name_en" value="{{ old('product_name_en') }}">
@@ -103,8 +102,7 @@
                                                     </div>
                                                     <hr>
                                                     <div class="mb-3">
-                                                        <label for="product_description_ar" class="form-label">Product
-                                                            Description (in Arabic):</label>
+                                                        <label for="product_description_ar" class="form-label">{{ __('general.attributes.product_description_ar') }}:</label>
                                                         <textarea id="product_description_ar" class="form-control @error('product_description_ar') is-invalid @enderror"
                                                             name="product_description_ar">{{ old('product_description_ar') }}</textarea>
                                                         @error('product_description_ar')
@@ -114,8 +112,7 @@
                                                         @enderror
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="product_description_en" class="form-label">Product
-                                                            Description (in English):</label>
+                                                        <label for="product_description_en" class="form-label">{{ __('general.attributes.product_description_en') }}:</label>
                                                         <textarea id="product_description_en" class="form-control @error('product_description_en') is-invalid @enderror"
                                                             name="product_description_en">{{ old('product_description_en') }}</textarea>
                                                         @error('product_description_en')
@@ -126,7 +123,7 @@
                                                     </div>
                                                     <hr>
                                                     <div class="mb-3">
-                                                        <label for="category" class="form-label">Category:</label>
+                                                        <label for="category" class="form-label">{{ __('general.attributes.category') }}:</label>
                                                         <select id="category"
                                                             class="form-control @error('category') is-invalid @enderror"
                                                             name="category_id">
@@ -142,7 +139,7 @@
                                                         @enderror
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="category" class="form-label">Sub-category:</label>
+                                                        <label for="category" class="form-label">{{ __('general.attributes.subcategory') }}::</label>
                                                         <select id="category"
                                                             class="form-control @error('category_id') is-invalid @enderror"
                                                             name="subcategory_id">
@@ -167,7 +164,7 @@
                                                         @enderror
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="model_number" class="form-label">Model Number:</label>
+                                                        <label for="model_number" class="form-label">{{ __('general.attributes.model_number') }}:</label>
                                                         <input id="model_number" type="text"
                                                             class="form-control @error('model_number') is-invalid @enderror"
                                                             name="model_number" value="{{ old('model_number') }}">
@@ -178,13 +175,13 @@
                                                         @enderror
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="status" class="form-label">Status:</label>
+                                                        <label for="status" class="form-label">{{ __('general.attributes.status') }}:</label>
                                                        
                                                         <select id="status"
                                                             class="form-control @error('status') is-invalid @enderror"
                                                             name="status">
-                                                            <option value="available">Available</option>
-                                                            <option value="not_available">Not Available</option>
+                                                            <option value="available">{{ __('general.options.available') }}</option>
+                                                            <option value="not_available">{{ __('general.options.not_available') }}</option>
                                                         </select>
 
                                                         @error('status')
@@ -194,7 +191,7 @@
                                                         @enderror
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="catalog" class="form-label">Catalog:</label>
+                                                        <label for="catalog" class="form-label">{{ __('general.attributes.catalog') }}:</label>
                                                         <input id="catalog" type="file"
                                                             class="form-control @error('catalog') is-invalid @enderror"
                                                             name="catalog">
@@ -205,7 +202,7 @@
                                                         @enderror
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="image" class="form-label">Image:</label>
+                                                        <label for="image" class="form-label">{{ __('general.attributes.image') }}:</label>
                                                         <input id="image" type="file"
                                                             class="form-control @error('image') is-invalid @enderror"
                                                             name="image">
@@ -219,15 +216,14 @@
 
                                                     <div>
                                                         <button type="button" id="step1Next"
-                                                            class="btn btn-sm btn-de-primary">Next</button>
+                                                            class="btn btn-sm btn-de-primary"> {{ __('general.buttons.next') }}</button>
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane" id="step2">
                                                     <!-- Characteristics Fields -->
                                                     <br>
                                                     <div class="mb-3 AirConditioner">
-                                                        <label for="hp_dimensions_volume_en" class="form-label">Dimensions
-                                                            and Volume (in English):</label>
+                                                        <label for="hp_dimensions_volume_en" class="form-label">{{ __('general.attributes.dimensions_volume_en') }}:</label>
                                                         <input id="hp_dimensions_volume_en" type="text"
                                                             class="form-control @error('hp_dimensions_volume_en') is-invalid @enderror"
                                                             name="hp_dimensions_volume_en"
@@ -239,8 +235,7 @@
                                                         @enderror
                                                     </div>
                                                     <div class="mb-3 AirConditioner">
-                                                        <label for="hp_dimensions_volume_ar" class="form-label">Dimensions
-                                                            and Volume (in Arabic):</label>
+                                                        <label for="hp_dimensions_volume_ar" class="form-label">{{ __('general.attributes.dimensions_volume_ar') }}:</label>
                                                         <input id="hp_dimensions_volume_ar" type="text"
                                                             class="form-control @error('hp_dimensions_volume_ar') is-invalid @enderror"
                                                             name="hp_dimensions_volume_ar"
@@ -253,28 +248,28 @@
                                                     </div>
                                                   
                                                     <div class="mb-3 HomeAppliances">
-                                                        <label for="characteristics" class="form-label">Characteristics</label>
+                                                        <label for="characteristics" class="form-label">{{ __('general.attributes.characteristics') }}:</label>
                                                         
                                                         <div id="dynamic-fields">
                                                             <div class="form-group row">
                                                                 <div class="col-md-3">
-                                                                    <input type="file" name="characteristics[0][Characteristic_file]" class="form-control" placeholder="Select file">
+                                                                    <input type="file" name="characteristics[0][Characteristic_file]" class="form-control" placeholder="{{ __('general.placeholders.select_file') }}">
                                                                 </div>
                                                                 <div class="col-md-3">
-                                                                    <input type="text" name="characteristics[0][Characteristic_name_en]" class="form-control name-field" placeholder="Enter Name (in English):">
+                                                                    <input type="text" name="characteristics[0][Characteristic_name_en]" class="form-control name-field" placeholder="{{ __('general.placeholders.enter_name_en') }}">
                                                                 </div>
                                                                 <div class="col-md-3">
-                                                                    <input type="text" name="characteristics[0][Characteristic_name_ar]" class="form-control" placeholder="Enter Name (in Arabic):">
+                                                                    <input type="text" name="characteristics[0][Characteristic_name_ar]" class="form-control" placeholder="{{ __('general.placeholders.enter_name_ar') }}">
                                                                 </div>
                                                                 <div class="col-md-3">
-                                                                    <button type="button" class="btn btn-danger remove-field btn btn-sm btn-de-primary">Remove</button>
-                                                                    <button type="button" class="btn btn-warning hide-field btn btn-sm btn-de-primary">Hide</button>
+                                                                    <button type="button" class="btn btn-danger remove-field btn btn-sm btn-de-primary">{{ __('general.buttons.remove') }}</button>
+                                                                    <button type="button" class="btn btn-warning hide-field btn btn-sm btn-de-primary">{{ __('general.buttons.hide') }}</button>
                                                                 </div>
                                                                 <div class="col-md-9">
-                                                                    <textarea id="Characteristic_description_en" name="characteristics[0][Characteristic_description_en]" class="form-control" placeholder="Enter Description (in English):"></textarea>
+                                                                    <textarea id="Characteristic_description_en" name="characteristics[0][Characteristic_description_en]" class="form-control" placeholder="{{ __('general.placeholders.enter_description_en') }}"></textarea>
                                                                 </div>
                                                                 <div class="col-md-9">
-                                                                    <textarea id="Characteristic_description_ar" name="characteristics[0][Characteristic_description_ar]" class="form-control" placeholder="Enter Description (in Arabic):"></textarea>
+                                                                    <textarea id="Characteristic_description_ar" name="characteristics[0][Characteristic_description_ar]" class="form-control" placeholder="{{ __('general.placeholders.enter_description_ar') }}"></textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -287,8 +282,7 @@
 
 
                                                     <div class="mb-3 HomeAppliances">
-                                                        <label for="optional_features_ar" class="form-label">Optional
-                                                            Features (in Arabic):</label>
+                                                        <label for="optional_features_ar" class="form-label"> {{ __('general.attributes.optional_features_ar') }}:</label>
                                                         <input id="optional_features_ar" type="text"
                                                             class="form-control @error('optional_features_ar') is-invalid @enderror"
                                                             name="optional_features_ar"
@@ -300,8 +294,7 @@
                                                         @enderror
                                                     </div>
                                                     <div class="mb-3 HomeAppliances">
-                                                        <label for="optional_features_en" class="form-label">Optional
-                                                            Features (in English):</label>
+                                                        <label for="optional_features_en" class="form-label">{{ __('general.attributes.optional_features_en') }}:</label>
                                                         <input id="optional_features_en" type="text"
                                                             class="form-control @error('optional_features_en') is-invalid @enderror"
                                                             name="optional_features_en"
@@ -314,7 +307,7 @@
                                                     </div>
                                                     <hr>
                                                     <div class="mb-3 AirConditioner">
-                                                        <label for="color" class="form-label">Color:</label>
+                                                        <label for="color" class="form-label">{{ __('general.attributes.color') }}:</label>
                                                         <input type="color"
                                                             class="form-control form-control-color  @error('color') is-invalid @enderror"
                                                             id="color" name="color" value="#0b51b7"
@@ -332,35 +325,35 @@
                                                         <input class="form-check-input" type="checkbox"
                                                             name="best_selling" id="best_selling" value="1">
                                                         <label class="form-label" for="best_selling">
-                                                            Best Selling
+                                                            {{ __('general.attributes.best_selling') }}
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="checkbox" name="featured"
                                                             id="featured" value="1">
                                                         <label class="form-label" for="featured">
-                                                            Featured
+                                                            {{ __('general.attributes.featured') }}
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="checkbox"
                                                             name="recommended" id="recommended" value="1">
                                                         <label class="form-label" for="recommended">
-                                                            Recommended
+                                                            {{ __('general.attributes.recommended') }}
                                                         </label>
                                                     </div><br>
                                                     <div>
                                                         <button type="button" id="step2Prev"
-                                                            class="btn btn-sm btn-de-primary">Previous</button>
+                                                            class="btn btn-sm btn-de-primary">{{ __('general.buttons.previous') }}</button>
                                                         <button type="button" id="step2Next"
-                                                            class="btn btn-sm btn-de-primary">Next</button>
+                                                            class="btn btn-sm btn-de-primary">{{ __('general.buttons.next') }}</button>
                                                     </div>
                                                 </div>
 
                                                 <div class="tab-pane" id="step3"><br>
                                                     <!-- Additional Details Fields -->
                                                     <div class="mb-3 HomeAppliances">
-                                                        <label for="power_supply" class="form-label">Power Supply:</label>
+                                                        <label for="power_supply" class="form-label"> {{ __('general.attributes.power_supply') }}:</label>
                                                         <input id="power_supply" type="text"
                                                             class="form-control @error('power_supply') is-invalid @enderror"
                                                             name="power_supply" value="{{ old('power_supply') }}">
@@ -371,7 +364,7 @@
                                                         @enderror
                                                     </div>
                                                     <div class="mb-3  HomeAppliances">
-                                                        <label for="type_freon" class="form-label">Type of Freon:</label>
+                                                        <label for="type_freon" class="form-label"> {{ __('general.attributes.type_freon') }}:</label>
                                                         <input id="type_freon" type="text"
                                                             class="form-control @error('type_freon') is-invalid @enderror"
                                                             name="type_freon" value="{{ old('type_freon') }}">
@@ -383,8 +376,7 @@
                                                         <hr>
                                                     </div>
                                                     <div class="mb-3 ">
-                                                        <label for="Technical Specifications" class="form-label">Technical
-                                                            Specifications</label>
+                                                        <label for="Technical Specifications" class="form-label"> {{ __('general.attributes.technical_specifications') }}:</label>
                                                         <input id="Technical Specifications" type="text"
                                                             class="form-control @error('Technical Specifications') is-invalid @enderror"
                                                             name="technical_specifications"
@@ -397,8 +389,7 @@
                                                     </div>
 
                                                     <div class="mb-3">
-                                                        <label for="SASO Certificate" class="form-label">SASO
-                                                            Certificate</label>
+                                                        <label for="SASO Certificate" class="form-label"> {{ __('general.attributes.saso_certificate') }}:</label>
                                                         <textarea id="SASO Certificater" class="form-control @error('SASO Certificate') is-invalid @enderror"
                                                             name="saso_certificate">{{ old('saso_certificate') }}</textarea>
                                                         @error('SASO Certificate')
@@ -410,9 +401,9 @@
 
                                                     <div>
                                                         <button type="button" id="step3Prev"
-                                                            class="btn btn-sm btn-de-primary">Previous</button>
+                                                            class="btn btn-sm btn-de-primary"> {{ __('general.buttons.previous') }}</button>
                                                         <button type="submit"
-                                                            class="btn btn-sm btn-de-primary">Submit</button>
+                                                            class="btn btn-sm btn-de-primary"> {{ __('general.buttons.submit') }}</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -599,9 +590,10 @@
 
         // Rebuild the row with the stored values
         row.html(`
-            <div class="col-md-3">
-                <input type="file" name="characteristics[${fieldIndex}][Characteristic_file]" class="form-control" placeholder="Select file" value="${fileVal}">
-            </div>
+        <div class="col-md-3">
+            <input type="file" name="characteristics[${fieldIndex}][Characteristic_file]" class="form-control">
+            <small class="form-text text-muted"> file: ${fileVal}</small>
+        </div>
             <div class="col-md-3">
                 <input type="text" name="characteristics[${fieldIndex}][Characteristic_name_en]" class="form-control" placeholder="Enter Name (in English):" value="${nameEnVal}">
             </div>

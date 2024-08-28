@@ -7,11 +7,51 @@ use App\Models\Ticket;
 use App\Models\Task;
 use App\Models\Appointment;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
+
+
+// public function showTicketsStatus()
+// {
+//     // Retrieve tickets data grouped by months
+//     $ticketData = Ticket::select(
+//             DB::raw('MONTH(created_at) as month'),
+//             DB::raw('count(id) as ticket_count')
+//         )
+//         ->groupBy('month')
+//         ->get()
+//         ->pluck('ticket_count', 'month')
+//         ->toArray();
+
+//     // Fill in missing months with 0
+//     $monthlyTickets = array_fill(1, 12, 0);
+//     foreach ($ticketData as $month => $count) {
+//         $monthlyTickets[$month] = $count;
+//     }
+
+//     return view('tickets_status', compact('monthlyTickets'));
+// }
+
     public function index()
     {
+
+         // Retrieve tickets data grouped by months
+    $ticketData = Ticket::select(
+        DB::raw('MONTH(created_at) as month'),
+        DB::raw('count(id) as ticket_count')
+    )
+    ->groupBy('month')
+    ->get()
+    ->pluck('ticket_count', 'month')
+    ->toArray();
+
+// Fill in missing months with 0
+$monthlyTickets = array_fill(1, 12, 0);
+foreach ($ticketData as $month => $count) {
+    $monthlyTickets[$month] = $count;
+}
 
         // $tickets = Ticket::all(); // Fetch all tickets from database
 
@@ -90,7 +130,7 @@ class HomeController extends Controller
         $onHoldTicketsCount = Ticket::where('StatusID', 'on_hold')->count();
         $unassignedTicketsCount = Ticket::whereNull('AssignedTo')->count();
 
-        return view('admin.home', compact('notifications','tasks', 'appointments', 'newTicketsCount', 'openTicketsCount', 'onHoldTicketsCount', 'unassignedTicketsCount','tickets'));
+        return view('admin.home', compact('notifications','tasks', 'appointments', 'newTicketsCount', 'openTicketsCount', 'onHoldTicketsCount', 'unassignedTicketsCount','tickets','monthlyTickets'));
     }
 
     public function analytics()

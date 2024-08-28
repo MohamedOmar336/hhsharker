@@ -68,7 +68,7 @@
                                 style="display:inline-block;" class="delete-form">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn delete-form">
+                                <button type="submit" class="btn delete-form" onclick="confirmDelete(event)">
                                     <i data-feather="trash"></i>
                                 </button>
                             </form>

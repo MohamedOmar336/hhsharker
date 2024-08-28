@@ -158,7 +158,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#sidebarHospital" data-bs-toggle="collapse" role="button"
                                 aria-expanded="false" aria-controls="sidebarHospital">
-                                Contacts
+                                {{ __('general.contacts') }}
                             </a>
                             <div class="collapse " id="sidebarHospital">
                                 <ul class="nav flex-column">
@@ -254,7 +254,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#sidebarHospital" data-bs-toggle="collapse" role="button"
                                 aria-expanded="false" aria-controls="sidebarHospital">
-                                Tickets Settings
+                                {{ __('general.tickets_settings') }}
                             </a>
                             <div class="collapse " id="sidebarHospital">
                                 <ul class="nav flex-column">
@@ -304,7 +304,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#sidebarHospital" data-bs-toggle="collapse" role="button"
                                 aria-expanded="false" aria-controls="sidebarHospital">
-                                Products
+                                {{ __('general.products') }}
                             </a>
                             <div class="collapse " id="sidebarHospital">
                                 <ul class="nav flex-column">
@@ -339,7 +339,7 @@
                         </li><!--end nav-item--> <li class="nav-item">
                             <a class="nav-link" href="#sidebarHospitalOne" data-bs-toggle="collapse" role="button"
                                 aria-expanded="false" aria-controls="sidebarHospitalOne">
-                                Blog
+                                {{ __('general.blog') }}
                             </a>
                             <div class="collapse " id="sidebarHospitalOne">
                                 <ul class="nav flex-column">

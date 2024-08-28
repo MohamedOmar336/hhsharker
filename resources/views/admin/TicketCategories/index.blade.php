@@ -63,7 +63,7 @@
                         <form action="{{ route('ticket_categories.destroy', $ticketCategory->id) }}" method="POST" style="display:inline-block;" class="delete-form">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn delete-form" onclick="return confirm('Are you sure you want to delete this category?')"><i data-feather="trash"></i></button>
+                            <button type="submit" class="btn delete-form" onclick="confirmDelete(event)"><i data-feather="trash"></i></button>
                         </form>
                         </td>
                     </tr>

@@ -82,12 +82,44 @@ class MailController extends Controller
     $users = User::all(); // Fetch all users
     return view('admin.mails.compose', ['users' => $users]); // Pass the users to the view
 }
-    public function reply(MailModel $mail)
-    {
-        $users = User::all();
+public function reply($id)
+{
+    $mail = MailModel::findOrFail($id); // Find the mail by ID
+    $users = User::all(); // Get all users for the reply options
+    return view('admin.mails.reply', compact('mail', 'users'));
+}
 
-        return view('admin.mails.reply', compact('mail','users'));
-    }
+
+public function sendReply(Request $request, $id)
+{
+    // Find the original mail by ID
+    $mail = MailModel::findOrFail($id);
+
+    // Validate the reply request
+    $request->validate([
+        'body' => 'required|string',
+    ]);
+
+    // Find the recipient of the original mail
+    $recipient = User::findOrFail($mail->sender_id);
+
+    // Send the reply email
+    Mail::to($recipient->email)->send(new ComposeMail($request->subject, $request->body));
+
+    // Store the reply in the database
+    MailModel::create([
+        'sender_id' => auth()->user()->id,
+        'recipient_id' => $mail->sender_id,
+        'subject' => $mail->subject,
+        'body' => $request->body,
+        'received_at' => now(),
+        'label' => 'sent', // Set label as 'sent' for outgoing replies
+    ]);
+
+    // Redirect to the mail index page with a success message
+    return redirect()->route('mails.index')->with('success', 'Reply sent successfully!');
+}
+
     
 
     public function send(Request $request)
@@ -101,13 +133,7 @@ class MailController extends Controller
         $recipient = User::findOrFail($request->recipient_id);
         Mail::to($recipient->email)->send(new ComposeMail($request->subject, $request->body));
 
-        // Mail::send('admin.mails.compose', [
-        //     'body' => $request->body,
-        //     'subject' => $request->subject
-        // ], function ($message) use ($recipient, $request) {
-        //     $message->to($recipient->email)
-        //             ->subject($request->subject);
-        // });
+    
     
         MailModel::create([
             'sender_id' => auth()->user()->id,
@@ -158,26 +184,7 @@ class MailController extends Controller
         return back()->with('success', 'Label removed from mail!');
     }
 
-    public function sendReply(Request $request, $id)
-    {
-        $mail = MailModel::findOrFail($id);
-        $request->validate([
-            'body' => 'required|string',
-        ]);
-        $recipient = User::findOrFail($mail->sender_id);
-        Mail::to($recipient->email)->send(new ComposeMail($request->subject, $request->body));
-
-        MailModel::create([
-            'sender_id' => auth()->user()->id,
-            'recipient_id' => $mail->sender_id,
-            'subject' => $mail->subject,
-            'body' => $request->body,
-            'received_at' => now(),
-            'label' => 'sent', // Set label as 'sent' for outgoing replies
-        ]);
-
-        return redirect()->route('mails.index')->with('success', 'Reply sent successfully!');
-    }
+   
 
     public function bulkAction(Request $request)
     {

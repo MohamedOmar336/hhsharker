@@ -95,10 +95,11 @@
                             <form action="{{ route('products.destroy', $record->id) }}" method="POST" class="delete-form">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn delete-form" onclick="return confirm('{{ __('general.confirm_delete') }}')">
+                                <button type="button" class="btn delete-form" onclick="confirmDelete(event)">
                                     <i data-feather="trash"></i>
                                 </button>
                             </form>
+                            
                         </td>
                     </tr>
                 @endforeach
@@ -111,4 +112,6 @@
             </x-table>
         </div><!-- container -->
     </div><!-- container -->
+   
+  
 @endsection

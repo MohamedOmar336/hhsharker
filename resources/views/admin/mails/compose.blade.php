@@ -70,7 +70,7 @@
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <button type="submit" class="btn btn-primary">{{ __('general.actions.send') }}</button>
+                                <button type="submit" class="btn btn-de-primary">{{ __('general.actions.send') }}</button>
                             </form>
                         </div> <!--end card-body-->
                     </div><!--end card-->

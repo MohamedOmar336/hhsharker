@@ -58,7 +58,7 @@
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn delete-form"
-                                    onclick="return confirm('{{ __('general.messages.confirm_delete_role') }}')">
+                                onclick="confirmDelete(event)">
                                     <i data-feather="trash"></i></button>
                             </form>
                         </td>

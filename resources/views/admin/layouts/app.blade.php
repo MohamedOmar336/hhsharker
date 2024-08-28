@@ -132,6 +132,26 @@
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-messaging.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
     @stack('scripts')
+
+    <script>
+        function confirmDelete(event) {
+            event.preventDefault(); // Prevent the default form submission
+            Swal.fire({
+                title: '{{ __("general.messages.confirm_delete_title") }}',
+                text: '{{ __("general.messages.confirm_delete_text") }}',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#EE9A8F',
+                cancelButtonColor: '#4AD7AA',
+                confirmButtonText: '{{ __("general.messages.confirm_delete_confirm_button") }}',
+                cancelButtonText: '{{ __("general.messages.confirm_delete_cancel_button") }}'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    event.target.closest('form').submit(); // Submit the form
+                }
+            });
+        }
+    </script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const darkModeToggle = document.getElementById("darkModeToggle");
