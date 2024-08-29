@@ -50,7 +50,7 @@
                         <td>{{ $record->author->user_name }}</td>
                         <td>{{ $record->status }}</td>
                         <td>
-                               <a href="{{ route('news.edit', $record->id) }}"><i data-feather="edit"></i></a>
+                               <a href="{{ route('news.edit', $record->id) }}" class="action-button" data-tooltip="edit"><i data-feather="edit"></i></a>
                             <form action="{{ route('news.destroy', $record->id) }}" method="POST" style="display: inline;" class="delete-form">
                                 @csrf
                                 @method('DELETE')

@@ -62,14 +62,14 @@
                             @endif
                         </td>
                         <td>
-                            <a href="{{ route('categories.edit', $record->id) }}"
+                            <a href="{{ route('categories.edit', $record->id) }}" class="action-button" data-tooltip="edit"
                                 ><i data-feather="edit"></i></a>
                             <form action="{{ route('categories.destroy', $record->id) }}" method="POST"
                                 style="display: inline;" class="delete-form">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn delete-form"
-                                    onclick="return confirm('Are you sure you want to delete this category?')"><i data-feather="trash"></i></button>
+                                <button type="submit" class="btn delete-form action-button"
+                                    onclick="return confirm('Are you sure you want to delete this category?')" data-tooltip="delete"><i data-feather="trash"></i></button>
                             </form>
                         </td>
                     </tr>

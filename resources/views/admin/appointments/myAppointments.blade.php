@@ -14,9 +14,9 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a></li>
                                 <li class="breadcrumb-item active">{{ __('general.attributes.appointments') }}</li>
-                               
+
                                     <li class="breadcrumb-item active">{{ __('general.list') }}</li>
-                                
+
                             </ol>
                         </div>
                         <div class="col-md-12">
@@ -64,7 +64,7 @@
                             <a href="{{ route('appointments.show', $record->id) }}">
                                 <i data-feather="eye"></i>
                             </a>
-                            <a href="{{ route('appointments.edit', $record->id) }}">
+                            <a href="{{ route('appointments.edit', $record->id) }}" class="action-button" data-tooltip="edit">
                                 <i data-feather="edit"></i>
                             </a>
                             <form action="{{ route('appointments.destroy', $record->id) }}" method="POST" style="display:inline-block;" class="delete-form">

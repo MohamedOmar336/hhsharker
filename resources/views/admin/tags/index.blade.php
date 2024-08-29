@@ -45,7 +45,7 @@
                         <td>{{ $record->name_en }}</td>
                         <td>{{ $record->name_ar }}</td>
                         <td>
-                            <a href="{{ route('tags.edit', $record->id) }}"
+                            <a href="{{ route('tags.edit', $record->id) }}" class="action-button" data-tooltip="edit"
                             ><i data-feather="edit"></i></a>
                             <form action="{{ route('tags.destroy', $record->id) }}" method="POST"
                                 style="display: inline;" class="delete-form">

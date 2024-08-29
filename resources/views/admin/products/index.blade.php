@@ -86,11 +86,11 @@
                         <td>{{ $record->status }}</td>
                         <td>{{ $record->category ? $record->category->name_en : __('general.uncategorized') }}</td>
                         <td>
-                            <a href="{{ route('products.edit', $record->id) }}" class="action-icon"> <i data-feather="edit"></i></a>
+                            <a href="{{ route('products.edit', $record->id) }}" class="action-button" data-tooltip="edit" class="action-icon"> <i data-feather="edit"></i></a>
                             <form action="{{ route('products.destroy', $record->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="action-icon delete-btn" onclick="return confirm('{{ __('general.confirm_delete') }}')">
+                                <button type="submit" class="action-icon delete-btn action-button" data-tooltip="delete" onclick="return confirm('{{ __('general.confirm_delete') }}')">
                                     <i data-feather="trash"></i>
                                 </button>
                             </form>

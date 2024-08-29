@@ -32,6 +32,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\WhatsAppController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\WhatsAppTemplateController;
 
 
 /*
@@ -149,12 +150,15 @@ Route::group(['prefix' => 'admin'], function () {
         Route::delete('messages/{message}', [MessageController::class, 'destroy'])->name('messages.destroy');
 
         Route::get('/mails', [MailController::class, 'index'])->name('mails.index');
-      //  Route::get('/mails/index', [MailController::class, 'index'])->name('mails.index');
+
         Route::get('/mails/compose', [MailController::class, 'compose'])->name('mails.compose');
+
         Route::post('/mails/send', [MailController::class, 'send'])->name('mails.send');
+
         Route::get('/mails/{mail}', [MailController::class, 'show'])->name('mails.show');
 
         Route::get('/mails/{id}/reply', [MailController::class, 'reply'])->name('mails.reply');
+
         Route::post('/mails/{id}/sendReply', [MailController::class, 'sendReply'])->name('mails.sendReply');
 
         Route::post('/mails/bulk-action', [MailController::class, 'bulkAction'])->name('mails.bulkAction');
@@ -186,23 +190,34 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/characteristic/list', [CharacteristicController::class, 'listInProducts'])->name('characteristics.list');
 
         Route::get('/mails/inbox', [MailController::class, 'inbox'])->name('mails.inbox');
+
         Route::get('/mails/starred', [MailController::class, 'starred'])->name('mails.starred');
+
         Route::get('/mails/important', [MailController::class, 'important'])->name('mails.important');
+
         Route::get('/mails/drafts', [MailController::class, 'drafts'])->name('mails.drafts');
+
         Route::get('/mails/sent', [MailController::class, 'sent'])->name('mails.sent');
+
         Route::get('/mails/trash', [MailController::class, 'trash'])->name('mails.trash');
 
         Route::get('/mails/compose', [MailController::class, 'compose'])->name('mails.compose');
+
         Route::post('/mails/send', [MailController::class, 'send'])->name('mails.send');
 
         Route::patch('/mails/{mail}/star', [MailController::class, 'markStarred'])->name('mails.markStarred');
+
         Route::patch('/mails/{mail}/important', [MailController::class, 'markImportant'])->name('mails.markImportant');
+
         Route::patch('/mails/{mail}/trash', [MailController::class, 'moveTrash'])->name('mails.moveTrash');
 
         Route::post('/mails/bulk-action', [MailController::class, 'bulkAction'])->name('mails.bulkAction');
 
         Route::resource('news', NewsController::class);
 
+        Route::resource('whatsapp-templates', WhatsAppTemplateController::class);
+
+        Route::post('whatsapp-templates/{id}/send', [WhatsAppTemplateController::class, 'sendTemplate']);
     });
 });
 

@@ -58,17 +58,17 @@
                         <td>{{ $record->finish_time }}</td>
                         <td>{{ $record->status }}</td>
                         <td>
-                            <a href="{{ route('appointments.show', $record->id) }}" >
+                            <a href="{{ route('appointments.show', $record->id) }}"class="action-button" data-tooltip="Show" >
                                 <i data-feather="eye"></i>
                             </a>
-                            <a href="{{ route('appointments.edit', $record->id) }}">
+                            <a href="{{ route('appointments.edit', $record->id) }} " class="action-button" data-tooltip="edit">
                                 <i data-feather="edit"></i>
                             </a>
                             <form action="{{ route('appointments.destroy', $record->id) }}" method="POST"
                                 style="display:inline-block;" class="delete-form">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn delete-form">
+                                <button type="submit" class="btn delete-form action-button " data-tooltip="delete">
                                     <i data-feather="trash"></i>
                                 </button>
                             </form>

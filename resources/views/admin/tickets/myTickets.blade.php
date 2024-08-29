@@ -61,7 +61,7 @@
                                     </select>
                                 </form>
                             </td>
-    
+
                             <td>
                                 <form action="{{ route('tickets.update_field', ['id' => $record->id, 'field' => 'status']) }}" method="POST">
                                     @csrf
@@ -93,7 +93,7 @@
                                     >
                                     <i data-feather="rotate-ccw"></i>
                                 </a>
-                                <a href="{{ route('tickets.edit', $record->id) }}">
+                                <a href="{{ route('tickets.edit', $record->id) }}" class="action-button" data-tooltip="edit">
                                     <i data-feather="edit"></i>
                                 </a>
                                 <form action="{{ route('tickets.destroy', $record->id) }}" method="POST"

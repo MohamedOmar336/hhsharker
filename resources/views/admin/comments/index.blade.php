@@ -56,13 +56,13 @@
                         <td>{{ $record->comment }}</td>
                         <td>{{ $record->comment_date }}</td>
                         <td>
-                            <a href="{{ route('comments.edit', $record->id) }}"
+                            <a href="{{ route('comments.edit', $record->id) }}" class="action-button" data-tooltip="edit"
                                ><i data-feather="edit"></i></a>
                             <form action="{{ route('comments.destroy', $record->id) }}" method="POST"
                                 style="display: inline;" class="delete-form">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn delete-form"
+                                <button type="submit" class="btn delete-form action-button"data-tooltip="delete"
                                     onclick="return confirm('{{ __('general.actions.confirm_delete') }}')"><i data-feather="trash"></i></button>
                             </form>
                         </td>

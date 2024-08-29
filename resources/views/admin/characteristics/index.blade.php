@@ -17,12 +17,12 @@
                         </div>
                         <div class="col-md-12">
                             <a href="{{ URL::previous() }}">
-                            @if (app()->isLocale('ar'))
-                                <i data-feather="arrow-right-circle"></i> <!-- Arabic locale -->
-                            @else
-                                <i data-feather="arrow-left-circle"></i> <!-- Default locale -->
-                            @endif
-                        </a>
+                                @if (app()->isLocale('ar'))
+                                    <i data-feather="arrow-right-circle"></i> <!-- Arabic locale -->
+                                @else
+                                    <i data-feather="arrow-left-circle"></i> <!-- Default locale -->
+                                @endif
+                            </a>
                             <h4 class="page-title">{{ __('general.side.characteristics') }} {{ __('general.list') }}</h4>
                         </div>
                     </div><!--end page-title-box-->
@@ -49,19 +49,20 @@
                             @endif
                         </td> --}}
                         <td><img src="{{ $characteristic->image ? asset('images/' . $characteristic->image) : asset('assets-admin/images/no_image.png') }}"
-                            alt="{{ $characteristic->name_en }}" width="50"></td>
+                                alt="{{ $characteristic->name_en }}" width="50"></td>
                         <td>{{ $characteristic->name_en }}</td>
                         <td>{{ $characteristic->name_ar }}</td>
-                      
-                            <td>
-                            <a href="{{ route('characteristics.edit', $characteristic->id) }}"
-                               ><i data-feather="edit"></i></a>
+
+                        <td>
+                            <a href="{{ route('characteristics.edit', $characteristic->id) }} " class="action-button" data-tooltip="edit"><i
+                                    data-feather="edit"></i></a>
                             <form action="{{ route('characteristics.destroy', $characteristic->id) }}" method="POST"
                                 style="display: inline;" class="delete-form">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn delete-form"
-                                    onclick="return confirm('{{ __('general.confirm_delete_characteristic') }}')"><i data-feather="trash"></i></button>
+                                <button type="submit" class="btn delete-form action-button" data-tooltip="delete"
+                                    onclick="return confirm('{{ __('general.confirm_delete_characteristic') }}')"><i
+                                        data-feather="trash"></i></button>
                             </form>
                         </td>
                     </tr>

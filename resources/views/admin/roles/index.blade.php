@@ -51,7 +51,7 @@
                         <td>{{ $record->name }}</td>
                         <td>{{ $record->description }}</td>
                         <td>
-                            <a href="{{ route('roles.edit', $record->id) }}"
+                            <a href="{{ route('roles.edit', $record->id) }}" class="action-button" data-tooltip="edit"
                             ><i data-feather="edit"></i></a>
                             <form action="{{ route('roles.destroy', $record->id) }}" method="POST"
                                 style="display: inline;" class="delete-form">

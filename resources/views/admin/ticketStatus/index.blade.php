@@ -53,7 +53,7 @@
                         <td>{{ $record->Description_ar }}</td>
                         <td>{{ $record->Description_en }}</td>
                         <td>
-                            <a href="{{ route('ticket-statuses.edit', $record->id) }}">
+                            <a href="{{ route('ticket-statuses.edit', $record->id) }}" class="action-button" data-tooltip="edit">
                                 <i data-feather="edit"></i>
                             </a>
                             <form action="{{ route('ticket-statuses.destroy', $record->id) }}" method="POST"

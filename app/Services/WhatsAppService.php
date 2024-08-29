@@ -122,4 +122,30 @@ class WhatsAppService
         return $results;
     }
 
+    public function sendTemplateMessageDynamic($phone, $templateName, $components) {
+        try {
+            $response = $this->client->post($this->url, [
+                'headers' => [
+                    'Authorization' => 'Bearer ' . env('WHATSAPP_TOKEN'),
+                    'Content-Type' => 'application/json',
+                ],
+                'json' => [
+                    'messaging_product' => 'whatsapp',
+                    'to' => $phone,
+                    'type' => 'template',
+                    'template' => [
+                        'name' => $templateName,
+                        'language' => [
+                            'code' => 'en_US'
+                        ],
+                        'components' => $components
+                    ]
+                ]
+            ]);
+
+            return ['success' => true, 'data' => json_decode($response->getBody()->getContents(), true)];
+        } catch (\Exception $e) {
+            return ['success' => false, 'error' => $e->getMessage()];
+        }
+    }
 }

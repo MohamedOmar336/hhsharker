@@ -44,7 +44,7 @@ return [
             ],
             [
                 'title' => __('Templates and Buttons'),
-                'route' => 'chat.index',
+                'route' => 'whatsapp-templates.index',
             ],
             [
                 'title' => __('Appointments List'),

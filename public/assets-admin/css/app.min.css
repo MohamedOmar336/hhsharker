@@ -2637,7 +2637,7 @@ li.L9 {
 .btn-de-primary:hover {
     background-color: #1F2B5A !important;
     color: #fff !important;
-    border: 2px solid #4AD7AA !important;  
+    border: 2px solid #4AD7AA !important;
 }
 .btn-de-primary:focus {
     background-color: #1F2B5A !important;
@@ -9611,4 +9611,33 @@ ul.steppedprogress li:first-child:after {
 /* Example hover effect */
 .custom-send-button:hover {
     background-color: #5171e3; /* Darker green */
+}
+
+
+/* Add this to your main CSS file (e.g., app.css) */
+
+.action-button {
+    position: relative;
+    cursor: pointer;
+}
+
+.action-button::after {
+    content: attr(data-tooltip); /* This will show the tooltip text defined in the data attribute */
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    bottom: 100%; /* Position tooltip above the element */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.action-button:hover::after {
+    opacity: 1;
 }

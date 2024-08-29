@@ -49,7 +49,7 @@
                         <td>{{ $record->name }}</td>
                         <td>{!! $record->description !!}</td>
                         <td>
-                            <a href="{{ route('groups.edit', $record->id) }}"
+                            <a href="{{ route('groups.edit', $record->id) }}" class="action-button" data-tooltip="edit"
                                 ><i data-feather="edit"></i></a>
                             <form action="{{ route('groups.destroy', $record->id) }}" method="POST"
                                 style="display: inline;" class="delete-form">

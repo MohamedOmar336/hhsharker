@@ -76,12 +76,12 @@
                         </td>
                         <td>{{ $record->last_interaction }}</td>
                         <td>
-                            <a href="{{ route('contacts.edit', $record->id) }}"><i data-feather="edit"></i></a>
+                            <a href="{{ route('contacts.edit', $record->id) }}" class="action-button" data-tooltip="edit"><i data-feather="edit"></i></a>
                             <form action="{{ route('contacts.destroy', $record->id) }}" method="POST"
                                 style="display: inline;" class="delete-form">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn delete-form"
+                                <button type="submit" class="btn delete-form action-button" data-tooltip="delete"
                                     onclick="return confirm('Are you sure you want to delete this contact?')"><i
                                         data-feather="trash"></i></button>
                             </form>

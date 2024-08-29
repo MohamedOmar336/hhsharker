@@ -50,11 +50,11 @@
                         <td>{{ $record->author->user_name }}</td>
                         <td>{{ $record->status }}</td>
                         <td>
-                               <a href="{{ route('blogposts.edit', $record->id) }}"><i data-feather="edit"></i></a>
+                               <a href="{{ route('blogposts.edit', $record->id) }} " class="action-button" data-tooltip="edit"><i data-feather="edit"></i></a>
                             <form action="{{ route('blogposts.destroy', $record->id) }}" method="POST" style="display: inline;" class="delete-form">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn delete-form" onclick="return confirm('{{ __('general.confirm.delete') }}')"><i data-feather="trash"></i></button>
+                                <button type="submit" class="btn delete-form action-button" onclick="return confirm('{{ __('general.confirm.delete') }}')" data-tooltip="delete"><i data-feather="trash"></i></button>
                             </form>
                         </td>
                     </tr>

@@ -46,7 +46,7 @@
             <td>{{ $record->Name_en }}</td>
             <td>{{ $record->Status }}</td>
             <td>
-              <a href="{{ route('ticket-priorities.edit', $record->id) }}">
+              <a href="{{ route('ticket-priorities.edit', $record->id) }}" class="action-button" data-tooltip="edit">
                 <i data-feather="edit"></i>
               </a>
               <form action="{{ route('ticket-priorities.destroy', $record->id) }}" method="POST" style="display:inline-block;">
