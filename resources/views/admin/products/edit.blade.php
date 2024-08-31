@@ -38,11 +38,9 @@
                             <nav>
                                 <div>
                                     <button type="button" id="AirConditioner"
-                                        class="btn btn-sm btn-primary">Air
-                                        Conditioner</button>
+                                        class="btn btn-sm btn-primary">{{ __('general.air-conditioner') }}</button>
                                     <button type="button" id="HomeAppliances"
-                                        class="btn btn-sm btn-primary">Home
-                                        Appliances</button>
+                                        class="btn btn-sm btn-primary">{{ __('general.home-appliances') }}</button>
                                 </div>
                             </nav>
 
@@ -56,15 +54,15 @@
                                             <nav>
                                                 <div class="nav nav-tabs" id="product-nav-tab">
                                                     <a class="nav-link active" id="step1-tab" data-bs-toggle="tab"
-                                                        href="#step1">General</a>
+                                                        href="#step1">{{ __('general.general') }}</a>
                                                     <a class="nav-link" id="step2-tab" data-bs-toggle="tab"
-                                                        href="#step2">Characteristics</a>
+                                                        href="#step2">{{ __('general.characteristics') }}</a>
                                                     <a class="nav-link" id="step3-tab" data-bs-toggle="tab"
-                                                        href="#step3">Technical</a>
+                                                        href="#step3">{{ __('general.technical') }}</a>
                                                 </div>
                                             </nav>
                                             <div class="mb-3" style="display:none;">
-                                                <label for="type" class="form-label">Product Type:</label>
+                                                <label for="type" class="form-label">{{ __('general.attributes.product_type') }}:</label>
                                                 <input type="hidden" id="productType" name="type" value="{{ $product->type }}">
                                                 @error('type')
                                                     <div class="invalid-feedback">
@@ -73,11 +71,10 @@
                                                 @enderror
                                             </div>
                                             <div class="tab-content" id="product-nav-tabContent">
-                                                <div class="tab-pane fade show active" id="step1" role="tabpanel">
+                                                <div class="tab-pane fade show active" id="step1" role="tabpanel"><br>
                                                     <!-- General tab content -->
                                                     <div class="mb-3">
-                                                        <label for="product_name_ar" class="form-label">Product name (in
-                                                            Arabic):</label>
+                                                        <label for="product_name_ar" class="form-label">{{ __('general.attributes.product_name_ar') }}:</label>
                                                         <input id="product_name_ar" type="text"
                                                             class="form-control @error('product_name_ar') is-invalid @enderror"
                                                             name="product_name_ar"
@@ -89,8 +86,7 @@
                                                         @enderror
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="product_name_en" class="form-label">Product name (in
-                                                            English):</label>
+                                                        <label for="product_name_en" class="form-label">{{ __('general.attributes.product_name_en') }}:</label>
                                                         <input id="product_name_en" type="text"
                                                             class="form-control @error('product_name_en') is-invalid @enderror"
                                                             name="product_name_en"
@@ -102,8 +98,7 @@
                                                         @enderror
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="product_description_ar" class="form-label">Product
-                                                            Description (in Arabic):</label>
+                                                        <label for="product_description_ar" class="form-label">{{ __('general.attributes.product_description_ar') }}:</label>
                                                         <textarea id="product_description_ar" class="form-control @error('product_description_ar') is-invalid @enderror"
                                                             name="product_description_ar">{{ old('product_description_ar', $product->product_description_ar) }}</textarea>
                                                         @error('product_description_ar')
@@ -113,8 +108,7 @@
                                                         @enderror
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="product_description_en" class="form-label">Product
-                                                            Description (in English):</label>
+                                                        <label for="product_description_en" class="form-label">{{ __('general.attributes.product_description_en') }}:</label>
                                                         <textarea id="product_description_en" class="form-control @error('product_description_en') is-invalid @enderror"
                                                             name="product_description_en">{{ old('product_description_en', $product->product_description_en) }}</textarea>
                                                         @error('product_description_en')
@@ -124,7 +118,7 @@
                                                         @enderror
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="category_id" class="form-label">Category:</label>
+                                                        <label for="category_id" class="form-label">{{ __('general.attributes.category') }}:</label>
                                                         <select id="category_id"
                                                             class="form-control @error('category_id') is-invalid @enderror"
                                                             name="category_id"
@@ -142,7 +136,33 @@
                                                         @enderror
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="model_number" class="form-label">Model Number:</label>
+                                                        <label for="category" class="form-label">{{ __('general.attributes.subcategory') }}:</label>
+                                                        <select id="category"
+                                                            class="form-control @error('category_id') is-invalid @enderror"
+                                                            name="subcategory_id">
+                                                            @foreach ($categories as $category)
+                                                                @if ($category->parent_id === null)
+                                                                    <option value="{{ $category->id }}" disabled>
+                                                                        {{ $category->name_en }}</option>
+                                                                    @foreach ($categories as $subcategory)
+                                                                        @if ($subcategory->parent_id === $category->id)
+                                                                            <option value="{{ $subcategory->id }}" 
+                                                                                {{ old('subcategory_id') == $subcategory->id ? 'selected' : '' }}>
+                                                                                {{ $subcategory->name_en }}</option>
+                                                                        @endif
+                                                                    @endforeach
+                                                                @endif
+                                                            @endforeach
+                                                        </select>
+                                                        @error('subcategory_id')
+                                                            <div class="invalid-feedback">
+                                                                {{ $message }}
+                                                            </div>
+                                                        @enderror
+                                                    </div>
+                                                    
+                                                    <div class="mb-3">
+                                                        <label for="model_number" class="form-label">{{ __('general.attributes.model_number') }}:</label>
                                                         <input id="model_number" type="text"
                                                             class="form-control @error('model_number') is-invalid @enderror"
                                                             name="model_number"
@@ -154,7 +174,7 @@
                                                         @enderror
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="status" class="form-label">Status:</label>
+                                                        <label for="status" class="form-label">{{ __('general.attributes.status') }}:</label>
                                                         <input id="status" type="text"
                                                             class="form-control @error('status') is-invalid @enderror"
                                                             name="status" value="{{ old('status', $product->status) }}">
@@ -165,7 +185,7 @@
                                                         @enderror
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="image" class="form-label">Catalog:</label><br>
+                                                        <label for="image" class="form-label">{{ __('general.attributes.catalog') }}:</label><br>
                                                         <a href="{{ $product->catalog ? asset('images/' . $product->catalog) : asset('assets-admin/images/no_image.png') }}"
                                                             download>click</a><br>
                                                         <label for="catalog" class="form-label">Update Catalog:</label>
@@ -193,15 +213,14 @@
                                                     </div>
                                                     <div>
                                                         <button type="button" id="step1Next"
-                                                            class="btn btn-sm btn-de-primary">Next</button>
+                                                            class="btn btn-sm btn-de-primary"> {{ __('general.buttons.next') }}</button>
                                                     </div>
                                                 </div> <!-- End of General Tab -->
 
-                                                <div class="tab-pane fade" id="step2">
+                                                <div class="tab-pane fade" id="step2"><br>
                                                     <!-- Characteristics Tab -->
                                                     <div class="mb-3 AirConditioner">
-                                                        <label for="hp_dimensions_volume_en" class="form-label">Dimensions
-                                                            and Volume (in English):</label>
+                                                        <label for="hp_dimensions_volume_en" class="form-label">{{ __('general.attributes.dimensions_volume_en') }}:</label>
                                                         <input id="hp_dimensions_volume_en" type="text"
                                                             class="form-control @error('hp_dimensions_volume_en') is-invalid @enderror"
                                                             name="hp_dimensions_volume_en"
@@ -213,8 +232,7 @@
                                                         @enderror
                                                     </div>
                                                     <div class="mb-3 AirConditioner">
-                                                        <label for="hp_dimensions_volume_ar" class="form-label">Dimensions
-                                                            and Volume (in Arabic):</label>
+                                                        <label for="hp_dimensions_volume_ar" class="form-label">{{ __('general.attributes.dimensions_volume_ar') }}:</label>
                                                         <input id="hp_dimensions_volume_ar" type="text"
                                                             class="form-control @error('hp_dimensions_volume_ar') is-invalid @enderror"
                                                             name="hp_dimensions_volume_ar"
@@ -225,47 +243,41 @@
                                                             </div>
                                                         @enderror
                                                     </div>
+                                                   
                                                     <div class="mb-3 HomeAppliances">
-                                                        <label for="characteristics_en" class="form-label">Characteristics
-                                                            (in English):</label>
-                                                        <select id="choices-multiple-remove-button"
-                                                            name="characteristics_en[]"
-                                                            class="form-control @error('characteristics_en') is-invalid @enderror"
-                                                            multiple>
-                                                            @foreach ($characteristics as $Characteristic)
-                                                                <option value="{{ $Characteristic->id }}"
-                                                                    {{ collect(old('characteristics_en', $product->characteristics_en ?? []))->contains($Characteristic->id) ? 'selected' : '' }}>
-                                                                    {{ $Characteristic->name_en }}</option>
+                                                        <label for="characteristics" class="form-label">{{ __('general.attributes.characteristics') }}:</label>
+                                                        <div id="dynamic-fields">
+                                                            @foreach($characteristics as $index => $characteristic)
+                                                                <div class="form-group row" id="row{{ $index }}">
+                                                                    <input type="hidden" name="characteristics[{{ $index }}][id]" value="{{ $characteristic->id }}">
+                                                                    <div class="col-md-3">
+                                                                        <input type="file" name="characteristics[{{ $index }}][Characteristic_file]" class="form-control">
+                                                                    </div>
+                                                                    <div class="col-md-3">
+                                                                        <input type="text" name="characteristics[{{ $index }}][Characteristic_name_en]" class="form-control" value="{{ old('characteristics.'.$index.'.Characteristic_name_en', $characteristic->Characteristic_name_en) }}" placeholder="Enter Name (in English):">
+                                                                    </div>
+                                                                    <div class="col-md-3">
+                                                                        <input type="text" name="characteristics[{{ $index }}][Characteristic_name_ar]" class="form-control" value="{{ old('characteristics.'.$index.'.Characteristic_name_ar', $characteristic->Characteristic_name_ar) }}" placeholder="Enter Name (in Arabic):">
+                                                                    </div>
+                                                                    <div class="col-md-3">
+                                                                        <button type="button" class="btn btn-danger remove-field btn btn-sm btn-de-primary">{{ __('general.buttons.remove') }}</button>
+                                                                        <button type="button" class="btn btn-warning hide-field btn btn-sm btn-de-primary">{{ __('general.buttons.hide') }}</button>
+                                                                    </div>
+                                                                    <div class="col-md-9">
+                                                                        <textarea name="characteristics[{{ $index }}][Characteristic_description_en]" class="form-control" placeholder="Enter Description (in English):">{{ old('characteristics.'.$index.'.Characteristic_description_en', $characteristic->Characteristic_description_en) }}</textarea>
+                                                                    </div>
+                                                                    <div class="col-md-9">
+                                                                        <textarea name="characteristics[{{ $index }}][Characteristic_description_ar]" class="form-control" placeholder="Enter Description (in Arabic):">{{ old('characteristics.'.$index.'.Characteristic_description_ar', $characteristic->Characteristic_description_ar) }}</textarea>
+                                                                    </div>
+                                                                </div>
                                                             @endforeach
-                                                        </select>
-                                                        @error('characteristics_en')
-                                                            <div class="invalid-feedback">
-                                                                {{ $message }}
-                                                            </div>
-                                                        @enderror
+                                                        </div>
+                                                        <button type="button" class="btn btn-success add-field btn btn-sm btn-de-primary">Add Characteristic</button>
+                                                        <hr>
                                                     </div>
+                                                    
                                                     <div class="mb-3 HomeAppliances">
-                                                        <label for="characteristics_ar" class="form-label">Characteristics
-                                                            (in Arabic):</label>
-                                                        <select id="choices-multiple-remove-button"
-                                                            name="characteristics_ar[]"
-                                                            class="form-control @error('characteristics_ar') is-invalid @enderror"
-                                                            multiple>
-                                                            @foreach ($characteristics as $Characteristic)
-                                                                <option value="{{ $Characteristic->id }}"
-                                                                    {{ collect(old('characteristics_ar', $product->characteristics_ar ?? []))->contains($Characteristic->id) ? 'selected' : '' }}>
-                                                                    {{ $Characteristic->name_ar }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                        @error('characteristics_ar')
-                                                            <div class="invalid-feedback">
-                                                                {{ $message }}
-                                                            </div>
-                                                        @enderror
-                                                    </div>
-                                                    <div class="mb-3 HomeAppliances">
-                                                        <label for="optional_features_ar" class="form-label">Optional
-                                                            Features (in Arabic):</label>
+                                                        <label for="optional_features_ar" class="form-label"> {{ __('general.attributes.optional_features_ar') }}:</label>
                                                         <input id="optional_features_ar" type="text"
                                                             class="form-control @error('optional_features_ar') is-invalid @enderror"
                                                             name="optional_features_ar"
@@ -277,8 +289,7 @@
                                                         @enderror
                                                     </div>
                                                     <div class="mb-3 HomeAppliances">
-                                                        <label for="optional_features_en" class="form-label">Optional
-                                                            Features (in English):</label>
+                                                        <label for="optional_features_en" class="form-label">{{ __('general.attributes.optional_features_en') }}:</label>
                                                         <input id="optional_features_en" type="text"
                                                             class="form-control @error('optional_features_en') is-invalid @enderror"
                                                             name="optional_features_en"
@@ -290,7 +301,7 @@
                                                         @enderror
                                                     </div>
                                                     <div class="mb-3 AirConditioner">
-                                                        <label for="color" class="form-label">Color:</label>
+                                                        <label for="color" class="form-label">{{ __('general.attributes.color') }}:</label>
                                                         <input type="color" class="form-control form-control-color" name="color" id="color" value="{{ old('color', $product->color)}} "  title="Choose your color">
                                                         @error('color')
                                                             <div class="invalid-feedback">
@@ -302,33 +313,33 @@
                                                         <input class="form-check-input" type="checkbox"
                                                             name="best_selling" id="best_selling"
                                                             {{ $product->best_selling ? 'checked' : '' }}>
-                                                        <label class="form-label" for="best_selling">Best Selling</label>
+                                                        <label class="form-label" for="best_selling"> {{ __('general.attributes.best_selling') }}</label>
                                                     </div>
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="checkbox" name="featured"
                                                             id="featured" {{ $product->featured ? 'checked' : '' }}>
-                                                        <label class="form-label" for="featured">Featured</label>
+                                                        <label class="form-label" for="featured"> {{ __('general.attributes.featured') }}</label>
                                                     </div>
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="checkbox"
                                                             name="recommended" id="recommended"
                                                             {{ $product->recommended ? 'checked' : '' }}>
-                                                        <label class="form-label" for="recommended">Recommended</label>
+                                                        <label class="form-label" for="recommended"> {{ __('general.attributes.recommended') }}</label>
                                                     </div>
 
                                                     <div>
                                                         <button type="button" id="step2Prev"
-                                                            class="btn btn-sm btn-de-primary">Previous</button>
+                                                            class="btn btn-sm btn-de-primary">{{ __('general.buttons.previous') }}</button>
                                                         <button type="button" id="step2Next"
-                                                            class="btn btn-sm btn-de-primary">Next</button>
+                                                            class="btn btn-sm btn-de-primary">{{ __('general.buttons.next') }}</button>
                                                     </div>
                                                 </div> <!-- End of Characteristics Tab -->
 
                                                 <div class="tab-pane fade" id="step3" role="tabpanel"
-                                                    aria-labelledby="step3-tab">
+                                                    aria-labelledby="step3-tab"><br>
                                                     <!-- Technical Specifications Tab -->
                                                     <div class="mb-3 HomeAppliances">
-                                                        <label for="power_supply" class="form-label">Power Supply:</label>
+                                                        <label for="power_supply" class="form-label"> {{ __('general.attributes.power_supply') }}:</label>
                                                         <input id="power_supply" type="text"
                                                             class="form-control @error('power_supply') is-invalid @enderror"
                                                             name="power_supply"
@@ -340,7 +351,7 @@
                                                         @enderror
                                                     </div>
                                                     <div class="mb-3 HomeAppliances">
-                                                        <label for="type_freon" class="form-label">Type of Freon:</label>
+                                                        <label for="type_freon" class="form-label"> {{ __('general.attributes.type_freon') }}:</label>
                                                         <input id="type_freon" type="text"
                                                             class="form-control @error('type_freon') is-invalid @enderror"
                                                             name="type_freon"
@@ -352,8 +363,7 @@
                                                         @enderror
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="technical_specifications" class="form-label">Technical
-                                                            Specifications:</label>
+                                                        <label for="technical_specifications" class="form-label"> {{ __('general.attributes.technical_specifications') }}:</label>
                                                         <input id="technical_specifications" type="text"
                                                             class="form-control @error('technical_specifications') is-invalid @enderror"
                                                             name="technical_specifications"
@@ -365,8 +375,7 @@
                                                         @enderror
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="saso_certificate" class="form-label">SASO
-                                                            Certificate:</label>
+                                                        <label for="saso_certificate" class="form-label"> {{ __('general.attributes.saso_certificate') }}:</label>
                                                         <textarea id="saso_certificate" class="form-control @error('saso_certificate') is-invalid @enderror"
                                                             name="saso_certificate">{{ old('saso_certificate', $product->saso_certificate) }}</textarea>
                                                         @error('saso_certificate')
@@ -377,9 +386,9 @@
                                                     </div>
                                                     <div>
                                                         <button type="button" id="step3Prev"
-                                                            class="btn btn-sm btn-de-primary">Previous</button>
+                                                            class="btn btn-sm btn-de-primary"> {{ __('general.buttons.previous') }}</button>
                                                         <button type="submit"
-                                                            class="btn btn-sm btn-de-primary">Submit</button>
+                                                            class="btn btn-sm btn-de-primary"> {{ __('general.buttons.submit') }}</button>
                                                     </div>
                                                 </div> <!-- End of Technical Specifications Tab -->
                                             </div>
@@ -477,4 +486,92 @@
             });
         });
     </script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        let fieldIndex = {{ count($characteristics) }}; // Start with the number of existing fields
+
+        // Add new field
+        $('.add-field').click(function() {
+            fieldIndex++;
+            var html = `
+                <div class="form-group row" id="row${fieldIndex}">
+                    <div class="col-md-3">
+                        <input type="file" name="characteristics[${fieldIndex}][Characteristic_file]" class="form-control" placeholder="{{ __('general.placeholders.select_file') }}">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" name="characteristics[${fieldIndex}][Characteristic_name_en]" class="form-control" placeholder="{{ __('general.placeholders.enter_name_en') }}">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" name="characteristics[${fieldIndex}][Characteristic_name_ar]" class="form-control" placeholder="{{ __('general.placeholders.enter_name_ar') }}">
+                    </div>
+                    <div class="col-md-3">
+                        <button type="button" class="btn btn-danger remove-field btn btn-sm btn-de-primary">{{ __('general.buttons.remove') }}</button>
+                        <button type="button" class="btn btn-warning hide-field btn btn-sm btn-de-primary">{{ __('general.buttons.hide') }}</button>
+                    </div>
+                    <div class="col-md-9">
+                        <textarea name="characteristics[${fieldIndex}][Characteristic_description_en]" class="form-control" placeholder="{{ __('general.placeholders.enter_description_en') }}"></textarea>
+                    </div>
+                    <div class="col-md-9">
+                        <textarea name="characteristics[${fieldIndex}][Characteristic_description_ar]" class="form-control" placeholder="{{ __('general.placeholders.enter_description_ar') }}"></textarea>
+                    </div>
+                </div>`;
+            $('#dynamic-fields').append(html);
+        });
+
+        // Remove a field
+        $(document).on('click', '.remove-field', function() {
+            $(this).closest('.form-group').remove();
+        });
+
+        // Hide a field and save values
+        $(document).on('click', '.hide-field', function() {
+            var row = $(this).closest('.form-group');
+            
+            // Save current values in data attributes
+            row.data('name-en', row.find('input[name$="[Characteristic_name_en]"]').val());
+            row.data('name-ar', row.find('input[name$="[Characteristic_name_ar]"]').val());
+            row.data('desc-en', row.find('textarea[name$="[Characteristic_description_en]"]').val());
+            row.data('desc-ar', row.find('textarea[name$="[Characteristic_description_ar]"]').val());
+
+            row.html(`
+                <div class="col-md-9">
+                    <label class="form-control bg-light">Characteristic (Hidden)</label>
+                </div>
+                <div class="col-md-3">
+                    <button type="button" class="btn btn-info unhide-field btn btn-sm btn-de-primary">Unhide</button>
+                </div>
+            `);
+        });
+
+        // Unhide the field and restore values
+        $(document).on('click', '.unhide-field', function() {
+            var row = $(this).closest('.form-group');
+            var fieldIndex = $('#dynamic-fields .form-group').index(row);
+
+            row.html(`
+                <div class="col-md-3">
+                    <input type="file" name="characteristics[${fieldIndex}][Characteristic_file]" class="form-control" placeholder="{{ __('general.placeholders.select_file') }}">
+                </div>
+                <div class="col-md-3">
+                    <input type="text" name="characteristics[${fieldIndex}][Characteristic_name_en]" class="form-control" placeholder="{{ __('general.placeholders.enter_name_en') }}" value="${row.data('name-en')}">
+                </div>
+                <div class="col-md-3">
+                    <input type="text" name="characteristics[${fieldIndex}][Characteristic_name_ar]" class="form-control" placeholder="{{ __('general.placeholders.enter_name_ar') }}" value="${row.data('name-ar')}">
+                </div>
+                <div class="col-md-3">
+                    <button type="button" class="btn btn-danger remove-field btn btn-sm btn-de-primary">{{ __('general.buttons.remove') }}</button>
+                    <button type="button" class="btn btn-warning hide-field btn btn-sm btn-de-primary">{{ __('general.buttons.hide') }}</button>
+                </div>
+                <div class="col-md-9">
+                    <textarea name="characteristics[${fieldIndex}][Characteristic_description_en]" class="form-control" placeholder="{{ __('general.placeholders.enter_description_en') }}">${row.data('desc-en')}</textarea>
+                </div>
+                <div class="col-md-9">
+                    <textarea name="characteristics[${fieldIndex}][Characteristic_description_ar]" class="form-control" placeholder="{{ __('general.placeholders.enter_description_ar') }}">${row.data('desc-ar')}</textarea>
+                </div>
+            `);
+        });
+    });
+</script>
+
 @endpush

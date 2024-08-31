@@ -2142,7 +2142,7 @@ mark {
 .card {
     margin-bottom: 16px;
     background-color: #e6e9f4;
-    border: 1px solid #eceff5;
+    border: none;
     -webkit-box-shadow: none;
     box-shadow: none
 }
@@ -4971,7 +4971,8 @@ a.badge:hover {
 }
 
 .swal2-popup {
-    background: #fff
+    background: #fff;
+    border-radius: 32px;
 }
 
 .swal2-popup .swal2-title {
@@ -5021,7 +5022,10 @@ a.badge:hover {
 
 .swal2-popup .swal2-styled.swal2-confirm {
     font-size: .8125rem;
-    background-color: #22b783
+    background-color: #22b783;
+    color: #1F2B5A !important;
+    border: 1px solid #e8ebf3;
+    border-radius: 32px;
 }
 
 .swal2-popup .swal2-styled.swal2-confirm:focus {
@@ -5041,7 +5045,10 @@ a.badge:hover {
 
 .swal2-popup .swal2-styled.swal2-cancel {
     font-size: .8125rem;
-    background-color: #ef4d56
+    background-color: #ef4d56;
+    color: #1F2B5A !important;
+    border: 1px solid #e8ebf3;
+    border-radius: 32px;
 }
 
 .swal2-popup .swal2-styled.swal2-cancel:focus {

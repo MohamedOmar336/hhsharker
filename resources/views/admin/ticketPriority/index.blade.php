@@ -52,7 +52,7 @@
               <form action="{{ route('ticket-priorities.destroy', $record->id) }}" method="POST" style="display:inline-block;">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn delete-form" onclick="return confirm('{{ __('general.confirm_delete') }}')" class="delete-form">
+                <button type="submit" class="btn delete-form" onclick="confirmDelete(event)" class="delete-form">
                   <i data-feather="trash"></i>
                 </button>
               </form>

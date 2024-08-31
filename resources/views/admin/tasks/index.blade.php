@@ -10,11 +10,8 @@
                     <div class="page-title-box">
                         <div class="float-end">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a>
-                                </li><!--end nav-item-->
-                                <li class="breadcrumb-item"><a
-                                        href="{{ route('roles.index') }}">{{ __('general.side.roles') }}</a>
-                                </li><!--end nav-item-->
+                                <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a></li>
+                                <li class="breadcrumb-item active">{{ __('general.side.tasks') }}</li>
                                 <li class="breadcrumb-item active">{{ __('general.list') }}</li>
                             </ol>
                         </div>
@@ -26,47 +23,46 @@
                                     <i data-feather="arrow-left-circle"></i> <!-- Default locale -->
                                 @endif
                             </a>
-                            <h4 class="page-title">{{ __('general.list') }}</h4>
+                            <h4 class="page-title">{{ __('general.side.tasks') }} {{ __('general.list') }}</h4>
                         </div>
-
                     </div><!--end page-title-box-->
                 </div><!--end col-->
-                <div class="col-md-12">
-                </div>
             </div>
             <!-- end page title end breadcrumb -->
+
             <x-table tableId="DataTables">
                 <x-slot name="header">
                     <tr>
                         <th><input type="checkbox" id="select-all"></th>
-                        <th>{{ __('general.attributes.name') }}</th>
-                        <th>{{ __('general.attributes.description') }}</th>
+                        <th>{{ __('general.attributes.task_title') }}</th>
+                        <th>{{ __('general.attributes.assigned_to') }}</th>
+                        <th>{{ __('general.attributes.status') }}</th>
+                        <th>{{ __('general.attributes.due_date') }}</th>
                         <th style="width: 15%;">{{ __('general.attributes.actions') }}</th>
                     </tr>
                 </x-slot>
-                @foreach ($records as $record)
+                @foreach ($records as $task)
                     <tr class="table-body">
-                        <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
-
-                        <td>{{ $record->name }}</td>
-                        <td>{{ $record->description }}</td>
+                        <td><input type="checkbox" name="ids[]" value="{{ $task->id }}"></td>
+                        <td>{{ $task->title }}</td>
+                        <td>{{ $task->assignedTo ? $task->assignedTo->user_name : __('general.not_assigned') }}</td>
+                        <td>{{ __('general.status.'.$task->status) }}</td>
+                        <td>{{ $task->due_date ? $task->due_date->format('Y-m-d') : __('general.no_due_date') }}</td>
                         <td>
-                            <a href="{{ route('roles.edit', $record->id) }}" class="action-button" data-tooltip="edit"
-                            ><i data-feather="edit"></i></a>
-                            <form action="{{ route('roles.destroy', $record->id) }}" method="POST"
+                            <a href="{{ route('tasks.edit', $task->id) }}"><i data-feather="edit"></i></a>
+                            <form action="{{ route('tasks.destroy', $task->id) }}" method="POST"
                                 style="display: inline;" class="delete-form">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn delete-form"
-                                onclick="confirmDelete(event)">
-                                    <i data-feather="trash"></i></button>
+                                onclick="confirmDelete(event)"><i data-feather="trash"></i></button>
                             </form>
                         </td>
                     </tr>
                 @endforeach
 
                 <x-slot name="createButton">
-                    <a href="{{ route('roles.create') }}" class="btn btn-outline-light btn-sm px-4">+
+                    <a href="{{ route('tasks.create') }}" class="btn btn-outline-light btn-sm px-4">+
                         {{ __('general.actions.new') }}</a>
                 </x-slot>
 
@@ -74,12 +70,6 @@
                     {{ $records->links('admin.pagination.bootstrap') }}
                 </x-slot>
             </x-table>
-
-
-        </div><!--end card-body-->
-    </div><!--end card-->
-    </div> <!-- end col -->
-    </div> <!-- end row -->
-    </div><!-- container -->
+        </div>
     </div><!-- container -->
 @endsection

@@ -57,7 +57,6 @@
                                     <a href="{{ route('mails.index', ['label' => 'sent']) }}"
                                         class="{{ request('label') === 'sent' ? 'active' : '' }}">
                                         <i class="las la-paper-plane font-15 me-1"></i>{{ __('general.labels.sent') }}
-                                        {{ __('general.attributes.mail') }}
                                     </a>
                                     <a href="{{ route('mails.index', ['label' => 'trash']) }}"
                                         class="{{ request('label') === 'trash' ? 'active' : '' }}">
@@ -70,7 +69,7 @@
                     <!-- End Left sidebar -->
 
                     <div class="email-rightbar">
-                        <div class="btn-toolbar" role="toolbar">
+                        {{-- <div class="btn-toolbar" role="toolbar">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-sm btn-de-secondary"
                                     onclick="submitBulkAction('mark_as_read')"><i class="fas fa-inbox"></i></button>
@@ -92,18 +91,18 @@
                                         href="#">{{ __('general.btn.mark_draft') }}</a>
                                 </div>
                             </div>
-                        </div><!-- end toolbar -->
+                        </div><!-- end toolbar --> --}}
 
                         <div class="card mt-3">
                             <div class="card-body">
 
                                 <div class="media mb-4">
                                     <img class="d-flex me-2 rounded-circle thumb-md"
-                                        src="{{ $mail->sender->image ? asset('images/' . $mail->sender->image) : asset('assets-admin/images/user.png') }}"
+                                        src="{{ $mail->recipient->image ? asset('images/' . $mail->recipient->image) : asset('assets-admin/images/user.png') }}"
                                         alt="Generic placeholder image">
                                     <div class="media-body align-self-center">
-                                        <h5 class="font-14 m-0">{{ $mail->sender->getFullNameAttribute() }}</h5>
-                                        <small class="text-muted">{{ $mail->sender->email }}</small>
+                                        <h5 class="font-14 m-0">{{ $mail->recipient->user_name }}</h5>
+                                        <small class="text-muted">{{ $mail->recipient->email }}</small>
                                     </div>
                                 </div>
 
@@ -113,9 +112,10 @@
 
                                 <hr />
 
-                                <a href="{{ route('mails.reply', $mail->id) }}"
-                                    class="btn btn-de-primary btn-sm" method="GET">
-                                    <i class="mdi mdi-reply"></i> {{ __('general.btn.reply') }}</a>
+                                <a href="{{ route('mails.reply', $mail) }}" class="btn btn-de-primary btn-sm">
+                                    <i class="mdi mdi-reply"></i> {{ __('general.btn.reply') }}
+                                </a>
+                                
                             </div>
                         </div>
                     </div> <!-- end email-rightbar -->

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}" dir="{{ app()->isLocale('ar') ? 'rtl' : 'ltr' }}">
 
 
 <!-- Mirrored from themesbrand.com/chatvia/layouts/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Jul 2024 06:58:02 GMT -->
@@ -12,23 +12,28 @@
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
     <!-- magnific-popup css -->
-    <link href="{{ asset('assets-admin/assets-chat/libs/magnific-popup/magnific-popup.css') }}" rel="stylesheet"
-        type="text/css" />
+    <link href="{{ asset('assets-admin/assets-chat/libs/magnific-popup/magnific-popup.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- owl.carousel css -->
     <link rel="stylesheet" href="{{ asset('assets-admin/assets-chat/libs/owl.carousel/assets/owl.carousel.min.css') }}">
 
-    <link rel="stylesheet"
-        href="{{ asset('assets-admin/assets-chat/libs/owl.carousel/assets/owl.theme.default.min.css') }} ">
-
-    <!-- Bootstrap Css -->
+    <link rel="stylesheet" href="{{ asset('assets-admin/assets-chat/libs/owl.carousel/assets/owl.theme.default.min.css') }} ">
+        @if (app()->isLocale('ar'))
+         <!-- Bootstrap Css -->
+    <link href="{{ asset('assets-admin/assets-chat/css/bootstrap-chat-rtl.css') }}" id="bootstrap-style" rel="stylesheet"
+    type="text/css" />
+<!-- App Css-->
+<link href="{{ asset('assets-admin/assets-chat/css/chat-rtl.css') }}" id="app-style" rel="stylesheet" type="text/css" />
+@else
+        <!-- Bootstrap Css -->
     <link href="{{ asset('assets-admin/assets-chat/css/bootstrap-chat.css') }}" id="bootstrap-style" rel="stylesheet"
-        type="text/css" />
-    <!-- Icons Css -->
-    <link href="{{ asset('assets-admin/assets-chat/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-    <!-- App Css-->
-    <link href="{{ asset('assets-admin/assets-chat/css/chat.css') }}" id="app-style" rel="stylesheet" type="text/css" />
-
+    type="text/css" />
+<!-- App Css-->
+<link href="{{ asset('assets-admin/assets-chat/css/chat.css') }}" id="app-style" rel="stylesheet" type="text/css" />
+@endif
+   
+<!-- Icons Css -->
+<link href="{{ asset('assets-admin/assets-chat/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -171,7 +176,7 @@
                                     <span class="input-group-text text-muted bg-light pe-1 ps-3" id="basic-addon1">
                                         <i class="ri-search-line search-icon font-size-18"></i>
                                     </span>
-                                    <input type="text" class="form-control bg-light"
+                                    <input dir="auto" type="text" class="form-control bg-light"
                                         placeholder="Search messages or users" aria-label="Search messages or users"
                                         aria-describedby="basic-addon1">
                                 </div>
@@ -293,7 +298,7 @@
                                             </button>
                                             <div class="dropdown-menu p-0 dropdown-menu-end dropdown-menu-md">
                                                 <div class="search-box p-2">
-                                                    <input type="text" class="form-control bg-light border-0"
+                                                    <input dir="auto" type="text" class="form-control bg-light border-0"
                                                         placeholder="Search..">
                                                 </div>
                                             </div>
@@ -347,7 +352,7 @@
                         <div class="row g-0">
 
                             <div class="col">
-                                <input type="text" class="form-control form-control-lg bg-light border-light"
+                                <input dir="auto" type="text" class="form-control form-control-lg bg-light border-light"
                                     placeholder="Enter Message..." id="messageInput">
                             </div>
                             <div class="col-auto">
@@ -591,7 +596,7 @@
                                             <div class="user-chat-content">
                                                 <div class="ctext-wrap">
                                                     <div class="ctext-wrap-content">
-                                                        <p class="mb-0">
+                                                        <p dir="auto" class="mb-0">
                                                             ${message.message}
                                                         </p>
                                                         <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">${timeAgo}</span></p>
@@ -693,7 +698,7 @@
                                         <div class="user-chat-content">
                                             <div class="ctext-wrap">
                                                 <div class="ctext-wrap-content">
-                                                    <p class="mb-0">${message.message}</p>
+                                                    <p dir="auto" class="mb-0">${message.message}</p>
                                                     <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">${timeAgo}</span></p>
                                                 </div>
                                             </div>
@@ -705,7 +710,7 @@
                                         <div class="user-chat-content">
                                             <div class="ctext-wrap">
                                                 <div class="ctext-wrap-content">
-                                                    <p class="mb-0">${message.message}</p>
+                                                    <p dir="auto" class="mb-0">${message.message}</p>
                                                     <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">${timeAgo}</span></p>
                                                 </div>
                                             </div>
@@ -770,7 +775,7 @@
                                     <div class="user-chat-content">
                                         <div class="ctext-wrap">
                                             <div class="ctext-wrap-content">
-                                                <p class="mb-0">${response.message.message}</p>
+                                                <p dir="auto" class="mb-0">${response.message.message}</p>
                                                 <p class="chat-time mb-0">
                                                     <i class="ri-time-line align-middle"></i>
                                                     <span class="align-middle">${timeAgo}</span>
@@ -817,7 +822,7 @@
                                 `<div class="user-chat-content">
                                         <div class="ctext-wrap">
                                             <div class="ctext-wrap-content">
-                                                <p class="mb-0">
+                                                <p dir="auto" class="mb-0">
                                                     ${response.message.message}
                                                 </p>
                                                 <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i>

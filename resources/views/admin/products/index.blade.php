@@ -7,7 +7,7 @@
 
             <!-- Page Header with Breadcrumb, Back Button, and Actions -->
             <div class="row align-items-center mb-4">
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <div class="d-flex align-items-center">
                         <a href="{{ URL::previous() }}" class="me-3">
                             @if (app()->isLocale('ar'))
@@ -18,19 +18,24 @@
                         </a>
                         <h4 class="page-title mb-0">{{ __('general.list') }}</h4>
                     </div>
-                    <ol class="breadcrumb mb-0 mt-2">
-                        <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('products.index') }}">{{ __('general.attributes.product') }}</a></li>
-                        <li class="breadcrumb-item active">{{ __('general.list') }}</li>
-                    </ol>
+
                 </div>
-                <div class="col-md-6 text-end">
+                <div class="col-md-2 text-end">
                     <a href="{{ route('products.import.form') }}" class="btn btn-xs btn-primary me-2">
                         <i class="ti ti-file-upload"></i> {{ __('general.attributes.import') }}
                     </a>
                     <a href="{{ route('products.exports') }}" class="btn btn-xs btn-primary">
                         <i class="ti ti-file-download"></i> {{ __('general.attributes.export') }}
                     </a>
+
+                </div>
+                <div class="col-md-2 text-end">
+
+                    <ol class="breadcrumb mb-0 mt-2">
+                        <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('products.index') }}">{{ __('general.attributes.product') }}</a></li>
+                        <li class="breadcrumb-item active">{{ __('general.list') }}</li>
+                    </ol>
                 </div>
             </div>
 
@@ -94,6 +99,7 @@
                                     <i data-feather="trash"></i>
                                 </button>
                             </form>
+
                         </td>
                     </tr>
                 @endforeach
@@ -106,4 +112,6 @@
             </x-table>
         </div><!-- container -->
     </div><!-- container -->
+
+
 @endsection

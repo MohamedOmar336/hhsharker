@@ -33,6 +33,8 @@ use App\Http\Controllers\Admin\WhatsAppController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\WhatsAppTemplateController;
+use App\Http\Controllers\Admin\TaskController;
+
 
 
 /*
@@ -85,7 +87,7 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::resource('/users', UserController::class);
 
-        Route::get('/user/bulk-delete', [UserController::class  , 'massDestroy'])->name('users.bulkDelete');
+        Route::get('/user/bulk-delete', [UserController::class, 'massDestroy'])->name('users.bulkDelete');
 
         Route::resource('/categories', CategoryController::class);
 
@@ -119,7 +121,7 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::resource('/tickets', TicketController::class);
 
-        Route::get('/ticket/bulk-delete', [TicketController::class  , 'massDestroy'])->name('tickets.bulkDelete');
+        Route::get('/ticket/bulk-delete', [TicketController::class, 'massDestroy'])->name('tickets.bulkDelete');
 
         Route::Resource('/ticket-priorities', TicketPriorityController::class);
 
@@ -160,6 +162,13 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/mails/{id}/reply', [MailController::class, 'reply'])->name('mails.reply');
 
         Route::post('/mails/{id}/sendReply', [MailController::class, 'sendReply'])->name('mails.sendReply');
+        Route::get('/mails/{id}', [MailController::class, 'show'])->name('mails.show');
+
+        // Route to display the reply form
+        Route::get('/mails/{id}/reply', [MailController::class, 'reply'])->name('mails.reply');
+
+        // Route to handle sending the reply
+        Route::post('/mails/{id}/sendReply', [MailController::class, 'sendReply'])->name('mails.sendReply');
 
         Route::post('/mails/bulk-action', [MailController::class, 'bulkAction'])->name('mails.bulkAction');
 
@@ -169,15 +178,15 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::post('/send-whatsapp-message', [WhatsAppController::class, 'sendMessage'])->name('send-whatsapp-message');
 
-        Route::post('/receive-whatsapp-message', [WhatsAppController::class , 'receiveMessage']);
+        Route::post('/receive-whatsapp-message', [WhatsAppController::class, 'receiveMessage']);
 
         Route::get('/whatsApp/room', [WhatsAppController::class, 'roomMessages'])->name('whatsapp.room');
 
-        Route::get('/whatsApp', [WhatsAppController::class, 'index'] )->name('whatsapp.chat');
+        Route::get('/whatsApp', [WhatsAppController::class, 'index'])->name('whatsapp.chat');
 
-        Route::get('/whatsApp-chat', [WhatsAppController::class, 'chat'] )->name('whatsapp.index');
+        Route::get('/whatsApp-chat', [WhatsAppController::class, 'chat'])->name('whatsapp.index');
 
-        Route::post('/whatsApp-template', [WhatsAppController::class, 'sendTemplate'] )->name('whatsapp.template');
+        Route::post('/whatsApp-template', [WhatsAppController::class, 'sendTemplate'])->name('whatsapp.template');
 
         Route::get('/contact/exports', [ContactController::class, 'export'])->name('contacts.export');
 
@@ -212,6 +221,11 @@ Route::group(['prefix' => 'admin'], function () {
         Route::patch('/mails/{mail}/trash', [MailController::class, 'moveTrash'])->name('mails.moveTrash');
 
         Route::post('/mails/bulk-action', [MailController::class, 'bulkAction'])->name('mails.bulkAction');
+        Route::post('/mails/toggle-state/{email}/{type}', [MailController::class, 'toggleState'])->name('mails.toggleState');
+
+
+        Route::resource('tasks', TaskController::class);
+
 
         Route::resource('news', NewsController::class);
 

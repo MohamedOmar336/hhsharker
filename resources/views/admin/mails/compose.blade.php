@@ -22,7 +22,7 @@
                             @else
                                 <i data-feather="arrow-left-circle"></i> <!-- Default locale -->
                             @endif
-                        </a>
+                            </a>
                             <h4 class="page-title">{{ __('general.actions.compose') }}</h4>
                         </div>
                     </div><!--end page-title-box-->
@@ -30,18 +30,26 @@
             </div>
             <!-- end page title end breadcrumb -->
             <div class="row">
-                <div class="col-12 col-lg-10 mx-auto">
+                <div class="col-12 col-lg-12 mx-auto">
                     <div class="card">
                         <div class="card-body content-area">
+                            {{-- <!-- Debugging output -->
+                            @if (isset($users))
+                                <p>Users variable is set and has {{ $users->count() }} users.</p>
+                            @else
+                                <p>Users variable is not set.</p>
+                            @endif --}}
+
                             <form action="{{ route('mails.send') }}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
                                 @csrf
                                 <div class="mb-3">
                                     <label for="recipient_id" class="form-label">{{ __('general.attributes.recipient') }}</label>
                                     <input type="text" placeholder="{{ __('general.attributes.select') }}" name="recipient_id" id="recipient_id" class="form-control" list="cat" autocomplete="off">
                                     <datalist id="cat">
+                                        @if (isset($users))
                                         @foreach ($users as $user)
                                             <option data-id="{{ $user->id }}" value="{{ $user->email }}"></option>
-                                        @endforeach
+                                        @endforeach @endif
                                     </datalist>
                                     <input type="hidden" name="recipient_id" id="hidden_recipient_id">
                                     @error('recipient_id')
@@ -62,7 +70,7 @@
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <button type="submit" class="btn btn-primary">{{ __('general.actions.send') }}</button>
+                                <button type="submit" class="btn btn-de-primary">{{ __('general.actions.send') }}</button>
                             </form>
                         </div> <!--end card-body-->
                     </div><!--end card-->

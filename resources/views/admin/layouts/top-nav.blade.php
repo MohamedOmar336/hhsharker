@@ -57,8 +57,7 @@
                 <div class="dropdown-menu dropdown-menu-end dropdown-lg pt-0">
                     <h6
                         class="dropdown-item-text font-15 m-0 py-3 border-bottom d-flex justify-content-between align-items-center">
-                        Notifications <span
-                            class="badge bg-soft-primary badge-pill">{{ auth()->user()->unreadNotifications->count() }}</span>
+                        Notifications <span class="badge bg-soft-primary badge-pill">{{ auth()->user()->unreadNotifications->count() }}</span>
                     </h6>
                     <div class="notification-menu" data-simplebar>
                         @forelse(auth()->user()->unreadNotifications as $notification)

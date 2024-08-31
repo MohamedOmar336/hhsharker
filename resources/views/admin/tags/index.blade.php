@@ -52,7 +52,7 @@
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn delete-form"
-                                    onclick="return confirm('{{ __('general.confirm_delete_tag') }}')"><i data-feather="trash"></i></button>
+                                onclick="confirmDelete(event)"><i data-feather="trash"></i></button>
                             </form>
                         </td>
                     </tr>

@@ -16,6 +16,10 @@ class Mail extends Model
         'body',
         'received_at',
         'is_starred',
+        'is_read',
+        'is_important',
+        'is_draft',
+        'is_trash',
         'label',
     ];
 

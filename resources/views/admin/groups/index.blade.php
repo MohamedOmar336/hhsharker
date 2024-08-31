@@ -56,7 +56,7 @@
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn delete-form"
-                                    onclick="return confirm('Are you sure you want to delete this contact?')"><i data-feather="trash"></i></button>
+                                onclick="confirmDelete(event)"><i data-feather="trash"></i></button>
                             </form>
                         </td>
                     </tr>
