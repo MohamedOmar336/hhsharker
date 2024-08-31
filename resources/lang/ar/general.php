@@ -474,7 +474,7 @@ return [
         'Category List' => 'قائمة الفئات',
         'Add New Category' => 'إضافة فئة جديدة',
         'Email Configuration' => 'إعدادات البريد الإلكتروني',
-        'API' => '',
+        'API' => 'API',
         'WhatsApp Settings' => 'إعدادات واتساب',
         'Auth Key Settings' => 'إعدادات مفتاح المصادقة',
         'Profile' => 'الملف الشخصي',
@@ -589,6 +589,10 @@ return [
         'compose' => 'إنشاء',
         'reply' => 'رد',
 
+    ],
+    'options' => [
+        'available' => 'متوفر',
+        'not_available' => 'غير متوفر',
     ],
     'emails' => [
         'send_mail_to' => 'ارسال رساله الى',

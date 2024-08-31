@@ -497,23 +497,23 @@
             var html = `
                 <div class="form-group row" id="row${fieldIndex}">
                     <div class="col-md-3">
-                        <input type="file" name="characteristics[${fieldIndex}][Characteristic_file]" class="form-control">
+                        <input type="file" name="characteristics[${fieldIndex}][Characteristic_file]" class="form-control" placeholder="{{ __('general.placeholders.select_file') }}">
                     </div>
                     <div class="col-md-3">
-                        <input type="text" name="characteristics[${fieldIndex}][Characteristic_name_en]" class="form-control" placeholder="Enter Name (in English):">
+                        <input type="text" name="characteristics[${fieldIndex}][Characteristic_name_en]" class="form-control" placeholder="{{ __('general.placeholders.enter_name_en') }}">
                     </div>
                     <div class="col-md-3">
-                        <input type="text" name="characteristics[${fieldIndex}][Characteristic_name_ar]" class="form-control" placeholder="Enter Name (in Arabic):">
+                        <input type="text" name="characteristics[${fieldIndex}][Characteristic_name_ar]" class="form-control" placeholder="{{ __('general.placeholders.enter_name_ar') }}">
                     </div>
                     <div class="col-md-3">
-                        <button type="button" class="btn btn-danger remove-field btn btn-sm btn-de-primary">Remove</button>
-                        <button type="button" class="btn btn-warning hide-field btn btn-sm btn-de-primary">Hide</button>
+                        <button type="button" class="btn btn-danger remove-field btn btn-sm btn-de-primary">{{ __('general.buttons.remove') }}</button>
+                        <button type="button" class="btn btn-warning hide-field btn btn-sm btn-de-primary">{{ __('general.buttons.hide') }}</button>
                     </div>
                     <div class="col-md-9">
-                        <textarea name="characteristics[${fieldIndex}][Characteristic_description_en]" class="form-control" placeholder="Enter Description (in English):"></textarea>
+                        <textarea name="characteristics[${fieldIndex}][Characteristic_description_en]" class="form-control" placeholder="{{ __('general.placeholders.enter_description_en') }}"></textarea>
                     </div>
                     <div class="col-md-9">
-                        <textarea name="characteristics[${fieldIndex}][Characteristic_description_ar]" class="form-control" placeholder="Enter Description (in Arabic):"></textarea>
+                        <textarea name="characteristics[${fieldIndex}][Characteristic_description_ar]" class="form-control" placeholder="{{ __('general.placeholders.enter_description_ar') }}"></textarea>
                     </div>
                 </div>`;
             $('#dynamic-fields').append(html);
@@ -551,23 +551,23 @@
 
             row.html(`
                 <div class="col-md-3">
-                    <input type="file" name="characteristics[${fieldIndex}][Characteristic_file]" class="form-control">
+                    <input type="file" name="characteristics[${fieldIndex}][Characteristic_file]" class="form-control" placeholder="{{ __('general.placeholders.select_file') }}">
                 </div>
                 <div class="col-md-3">
-                    <input type="text" name="characteristics[${fieldIndex}][Characteristic_name_en]" class="form-control" placeholder="Enter Name (in English):" value="${row.data('name-en')}">
+                    <input type="text" name="characteristics[${fieldIndex}][Characteristic_name_en]" class="form-control" placeholder="{{ __('general.placeholders.enter_name_en') }}" value="${row.data('name-en')}">
                 </div>
                 <div class="col-md-3">
-                    <input type="text" name="characteristics[${fieldIndex}][Characteristic_name_ar]" class="form-control" placeholder="Enter Name (in Arabic):" value="${row.data('name-ar')}">
+                    <input type="text" name="characteristics[${fieldIndex}][Characteristic_name_ar]" class="form-control" placeholder="{{ __('general.placeholders.enter_name_ar') }}" value="${row.data('name-ar')}">
                 </div>
                 <div class="col-md-3">
-                    <button type="button" class="btn btn-danger remove-field btn btn-sm btn-de-primary">Remove</button>
-                    <button type="button" class="btn btn-warning hide-field btn btn-sm btn-de-primary">Hide</button>
+                    <button type="button" class="btn btn-danger remove-field btn btn-sm btn-de-primary">{{ __('general.buttons.remove') }}</button>
+                    <button type="button" class="btn btn-warning hide-field btn btn-sm btn-de-primary">{{ __('general.buttons.hide') }}</button>
                 </div>
                 <div class="col-md-9">
-                    <textarea name="characteristics[${fieldIndex}][Characteristic_description_en]" class="form-control" placeholder="Enter Description (in English):">${row.data('desc-en')}</textarea>
+                    <textarea name="characteristics[${fieldIndex}][Characteristic_description_en]" class="form-control" placeholder="{{ __('general.placeholders.enter_description_en') }}">${row.data('desc-en')}</textarea>
                 </div>
                 <div class="col-md-9">
-                    <textarea name="characteristics[${fieldIndex}][Characteristic_description_ar]" class="form-control" placeholder="Enter Description (in Arabic):">${row.data('desc-ar')}</textarea>
+                    <textarea name="characteristics[${fieldIndex}][Characteristic_description_ar]" class="form-control" placeholder="{{ __('general.placeholders.enter_description_ar') }}">${row.data('desc-ar')}</textarea>
                 </div>
             `);
         });

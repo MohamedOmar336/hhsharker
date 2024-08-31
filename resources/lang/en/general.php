@@ -597,6 +597,10 @@ return [
         'compose' => 'Compose',
         'reply' => 'Reply',
     ],
+    'options' => [
+        'available' => 'Available',
+        'not_available' => 'Not Available',
+    ],
     'confirmation' => [
         'delete_comment' => 'Are you sure you want to delete this comment?',
     ],

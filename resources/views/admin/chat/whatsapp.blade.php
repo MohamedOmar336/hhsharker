@@ -176,7 +176,7 @@
                                     <span class="input-group-text text-muted bg-light pe-1 ps-3" id="basic-addon1">
                                         <i class="ri-search-line search-icon font-size-18"></i>
                                     </span>
-                                    <input type="text" class="form-control bg-light"
+                                    <input dir="auto" type="text" class="form-control bg-light"
                                         placeholder="Search messages or users" aria-label="Search messages or users"
                                         aria-describedby="basic-addon1">
                                 </div>
@@ -298,7 +298,7 @@
                                             </button>
                                             <div class="dropdown-menu p-0 dropdown-menu-end dropdown-menu-md">
                                                 <div class="search-box p-2">
-                                                    <input type="text" class="form-control bg-light border-0"
+                                                    <input dir="auto" type="text" class="form-control bg-light border-0"
                                                         placeholder="Search..">
                                                 </div>
                                             </div>
@@ -352,7 +352,7 @@
                         <div class="row g-0">
 
                             <div class="col">
-                                <input type="text" class="form-control form-control-lg bg-light border-light"
+                                <input dir="auto" type="text" class="form-control form-control-lg bg-light border-light"
                                     placeholder="Enter Message..." id="messageInput">
                             </div>
                             <div class="col-auto">
@@ -596,7 +596,7 @@
                                             <div class="user-chat-content">
                                                 <div class="ctext-wrap">
                                                     <div class="ctext-wrap-content">
-                                                        <p class="mb-0">
+                                                        <p dir="auto" class="mb-0">
                                                             ${message.message}
                                                         </p>
                                                         <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">${timeAgo}</span></p>
@@ -698,7 +698,7 @@
                                         <div class="user-chat-content">
                                             <div class="ctext-wrap">
                                                 <div class="ctext-wrap-content">
-                                                    <p class="mb-0">${message.message}</p>
+                                                    <p dir="auto" class="mb-0">${message.message}</p>
                                                     <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">${timeAgo}</span></p>
                                                 </div>
                                             </div>
@@ -710,7 +710,7 @@
                                         <div class="user-chat-content">
                                             <div class="ctext-wrap">
                                                 <div class="ctext-wrap-content">
-                                                    <p class="mb-0">${message.message}</p>
+                                                    <p dir="auto" class="mb-0">${message.message}</p>
                                                     <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">${timeAgo}</span></p>
                                                 </div>
                                             </div>
@@ -775,7 +775,7 @@
                                     <div class="user-chat-content">
                                         <div class="ctext-wrap">
                                             <div class="ctext-wrap-content">
-                                                <p class="mb-0">${response.message.message}</p>
+                                                <p dir="auto" class="mb-0">${response.message.message}</p>
                                                 <p class="chat-time mb-0">
                                                     <i class="ri-time-line align-middle"></i>
                                                     <span class="align-middle">${timeAgo}</span>
@@ -822,7 +822,7 @@
                                 `<div class="user-chat-content">
                                         <div class="ctext-wrap">
                                             <div class="ctext-wrap-content">
-                                                <p class="mb-0">
+                                                <p dir="auto" class="mb-0">
                                                     ${response.message.message}
                                                 </p>
                                                 <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i>

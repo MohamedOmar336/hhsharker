@@ -39,7 +39,7 @@ return [
                 'route' => 'chat.index',
             ],
             [
-                'title' => __('general.side.general.attributes.whats_app'),
+                'title' => __('general.attributes.whats_app'),
                 'route' => 'whatsapp.chat',
             ],
             [
@@ -250,22 +250,7 @@ return [
             ],
         ],
     ],
-    [
-        'title' => __('general.side.Characteristics'),
-        'link' => 'sidebarCharacteristics',
-        'icon' => 'ti ti-bag',
-        'level' => 3,
-        'sub_menu' => [
-            [
-                'title' => __('general.side.Characteristics List'),
-                'route' => 'characteristics.index',
-            ],
-            [
-                'title' => __('general.side.Add New'),
-                'route' => 'characteristics.create',
-            ],
-        ],
-    ],
+   
     [
         'title' => __('general.side.Category'),
         'link' => 'sidebarCategory',
