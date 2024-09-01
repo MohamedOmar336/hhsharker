@@ -24,11 +24,11 @@
                         <ul class="nav nav-tabs mb-3 nav-justified" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <a class="nav-link active" id="general_chat_tab" data-bs-toggle="tab" href="#general_chat"
-                                    role="tab">General</a>
+                                    role="tab">{{ __('general.attributes.general') }}</a>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <a class="nav-link" id="group_chat_tab" data-bs-toggle="tab" href="#group_chat"
-                                    role="tab">Groups</a>
+                                    role="tab">{{ __('general.attributes.groups') }}</a>
                             </li>
                             <!-- Remove the duplicate ID and fix the Whatsapp tab if needed -->
                             {{-- <li class="nav-item" role="presentation">
@@ -130,15 +130,15 @@
 
                         <div class="chat-footer">
                             <div class="row">
-                                <div class="col-12 col-md-9">
-                                    <input type="text" class="form-control" id="messageInput"
-                                        placeholder="Type something here...">
+                                <div class="col-12 col-md-10">
+                                    <input dir="auto" type="text" class="form-control" id="messageInput"
+                                    placeholder="{{ __('general.attributes.placeholder_type_something_here') }}"></div> <div class="col-12 col-md-1">
                                     <button id="sendUserMessageButton"
-                                        class="custom-send-button">{{ __('general.btn.send') }}</button>
+                                        class="custom-send-button  btn btn-sm btn-de-primary">{{ __('general.btn.send') }}</button>
                                     <button id="sendGroupMessageButton"
-                                        class="custom-send-button d-none">{{ __('general.btn.send') }}</button>
+                                        class="custom-send-button d-none btn btn-sm btn-de-primary">{{ __('general.btn.send') }}</button>
                                     <button id="sendWhatsappMessageButton"
-                                        class="custom-send-button d-none">{{ __('general.btn.send') }}</button>
+                                        class="custom-send-button d-none btn btn-sm btn-de-primary">{{ __('general.btn.send') }}</button>
                                 </div><!-- col-8 -->
                             </div><!-- end row -->
                         </div><!-- end chat-footer -->

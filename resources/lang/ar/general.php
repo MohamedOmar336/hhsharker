@@ -1,7 +1,34 @@
 <?php
 
 return [
+    'messages' => [
+        'updated_successfully' => 'تم التحديث بنجاح',
+    ],
+    'alerts' => [
+        'success' => 'نجاح:',
+        'error' => 'خطأ:',
+    ],
     'attributes' => [
+        'placeholder_type_something_here' => 'اكتب شيئًا هنا...',
+        'general' => 'عام',
+        'groups' => 'المجموعات',
+        'edit' => 'تعديل',
+        'action' => 'الإجراء',
+        'another_action' => 'إجراء آخر',
+        'my_profile' => 'ملفي الشخصي',
+        'active' => 'نشط',
+        'about' => 'حول',
+        'name' => 'الاسم',
+        'email' => 'البريد الإلكتروني',
+        'time' => 'الوقت',
+        'chats' => 'الدردشات',
+        'recent' => 'الأحدث',
+        'audio' => 'الصوت',
+        'video' => 'الفيديو',
+        'archive' => 'الأرشيف',
+        'muted' => 'مكتوم',
+        'delete' => 'حذف',
+        'your_browser_does_not_support_iframes' => 'المتصفح الخاص بك لا يدعم الإطارات.',
         'product_type' => 'نوع المنتج',
         'product_name_ar' => 'اسم المنتج (بالعربية)',
         'product_name_en' => 'اسم المنتج (بالإنجليزية)',

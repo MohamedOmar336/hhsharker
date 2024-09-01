@@ -142,7 +142,7 @@
                                                             class="form-label">{{ __('general.attributes.image') }}</label><br>
                                                         <img src="{{ Auth::user()->image ? asset('images/' . Auth::user()->image) : asset('assets-admin/images/user.png') }}"
                                                             alt="{{ Auth::user()->user_name }}" width="100"><br>
-                                                        <label for="image" class="form-label mt-2">Update Image</label>
+                                                        <label for="image" class="form-label mt-2">{{ __('general.attributes.update_image') }}</label>
                                                         <input type="file" class="form-control" id="image"
                                                             name="image">
                                                         @error('image')
@@ -154,7 +154,7 @@
 
 
 
-                                                    <button type="submit" class="btn btn-sm btn-de-primary">Update Profile</button>
+                                                    <button type="submit" class="btn btn-sm btn-de-primary">{{ __('general.btn.update') }}</button>
                                                 </form>
 
 
