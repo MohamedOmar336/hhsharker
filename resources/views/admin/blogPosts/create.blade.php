@@ -15,7 +15,7 @@
                                 </li>
                                 <!--end nav-item-->
                                 <li class="breadcrumb-item">
-                                    <a href="{{ url('/blogs') }}">{{ __('general.attributes.blog') }}</a>
+                                    <a href="{{ url('/blogs') }}">{{ __('general.blog') }}</a>
                                 </li>
                                 <!--end nav-item-->
                                 <li class="breadcrumb-item active">{{ __('general.attributes.add-blog') }}</li>
@@ -83,7 +83,7 @@
                                     <label for="author_id" class="form-label">{{ __('general.attributes.author') }}</label>
                                     <select id="author_id" class="form-control @error('author_id') is-invalid @enderror"
                                         name="author_id" required>
-                                        <option value="">{{ __('general.select.select_author') }}</option>
+                                        <option value="">{{ __('general.select.choose') }}</option>
                                         @foreach ($authors as $author)
                                             <option value="{{ $author->id }}"
                                                 {{ old('author_id') == $author->id ? 'selected' : '' }}>

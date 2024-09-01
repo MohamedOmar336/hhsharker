@@ -53,21 +53,25 @@
 </head>
 
 <body id="body">
-    <div style="position: fixed; top: 20px; right: 20px; z-index: 1000;" id="popUpAlert">
-        @if (session()->has('success'))
-            <div class="alert alert-primary alert-dismissible fade show custom-class-for-success" role="alert">
-                <strong>Success:</strong> {{ session('success') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
-        @if (session()->has('error'))
-            <div class="alert alert-danger alert-dismissible fade show custom-class-for-error" role="alert">
-                <strong>Error:</strong> {{ session('error') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
-        <!-- Add more alert types as needed -->
-    </div>
+    <div 
+    style="position: fixed; top: 20px; {{ app()->getLocale() == 'ar' ? 'left: 20px;' : 'right: 20px;' }} z-index: 1000;" 
+    id="popUpAlert" 
+    class="{{ app()->getLocale() == 'ar' ? 'rtl' : '' }}">
+    @if (session()->has('success'))
+        <div class="alert alert-primary alert-dismissible fade show custom-class-for-success" role="alert">
+            <strong>{{ __('general.alerts.success') }}</strong> {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+    @if (session()->has('error'))
+        <div class="alert alert-danger alert-dismissible fade show custom-class-for-error" role="alert">
+            <strong>{{ __('general.alerts.error') }}</strong> {{ session('error') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+</div>
+
+    
 
     <!-- leftbar-tab-menu -->
     @include('admin.layouts.side-nav')

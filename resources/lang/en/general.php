@@ -1,7 +1,34 @@
 <?php
 
 return [
+    'messages' => [
+        'updated_successfully' => 'Updated successfully',
+    ],
+    'alerts' => [
+        'success' => 'Success:',
+        'error' => 'Error:',
+    ],
     'attributes' => [
+        'placeholder_type_something_here' => 'Type something here...',
+        'general' => 'General',
+        'groups' => 'Groups',
+        'edit' => 'Edit',
+        'action' => 'Action',
+        'another_action' => 'Another action',
+        'my_profile' => 'My Profile',
+        'active' => 'Active',
+        'about' => 'About',
+        'name' => 'Name',
+        'email' => 'Email',
+        'time' => 'Time',
+        'chats' => 'Chats',
+        'recent' => 'Recent',
+        'audio' => 'Audio',
+        'video' => 'Video',
+        'archive' => 'Archive',
+        'muted' => 'Muted',
+        'delete' => 'Delete',
+        'your_browser_does_not_support_iframes' => 'Your browser does not support iframes.',
         'product_type' => 'Product Type',
         'product_name_ar' => 'Product Name (Arabic)',
         'product_name_en' => 'Product Name (English)',

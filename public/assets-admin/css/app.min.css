@@ -8621,9 +8621,9 @@ input.add-file-input {
 .chat-box-left {
     float: left;
     width: 340px;
-    height: 750px;
+    height: 80vh;
     background-color: #fff;
-    border-radius: 3px;
+    border-radius: 50px;
     padding: 16px;
     margin-bottom: 20px;
     border: 1px solid #eceff5
@@ -8763,9 +8763,9 @@ input.add-file-input {
     width: auto;
     background-color: #fff;
     display: block;
-    border-radius: 3px;
+    border-radius: 50px;
     position: relative;
-    height: 750px;
+    height: 80vh;
     margin-left: 361px;
     margin-bottom: 20px;
     border: 1px solid #eceff5
@@ -8774,7 +8774,8 @@ input.add-file-input {
 .chat-box-right .chat-header {
     border-bottom: 1px solid #f1f5fa;
     padding: 16px;
-    background-color: #fff
+    background-color: #fff;
+    border-radius: 50px;
 }
 
 .chat-box-right .chat-header .media .media-body {
@@ -8893,7 +8894,8 @@ input.add-file-input {
     position: absolute;
     width: 100%;
     left: 0;
-    bottom: 0
+    bottom: 0;
+    border-radius: 50px;
 }
 
 .chat-box-right .chat-footer .media .media-body {
@@ -9647,4 +9649,47 @@ ul.steppedprogress li:first-child:after {
 
 .action-button:hover::after {
     opacity: 1;
+}
+
+.checkbox-wrapper-mail {
+    display: flex;
+    align-items: center; /* Vertically center the icons with the checkbox */
+}
+
+.checkbox-wrapper-mail .form-check-input {
+  margin-right: 10px;
+  width: 20px;
+  height: 21px;
+  position: relative;
+  top: -3px;
+}
+
+.icons {
+    display: flex;
+    gap: 8px; /* Space between icons */
+    margin-left: 4px;
+
+    position: relative;
+bottom: 14px;
+}
+
+.icons span {
+    display: inline-flex; /* Ensure span wraps the icon without breaking line */
+    align-items: center; /* Center icon vertically within span */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    margin-right: 10px;
+}
+
+.icons i {
+    font-size: 16px; /* Adjust icon size as needed */
+}
+
+.icons span:hover i {
+ opacity:0.5 ; /* Change color on hover */
+}
+
+
+/* Black text shadow styling */
+.text-shadow {
+text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Adjust shadow offset, blur, and color */
 }

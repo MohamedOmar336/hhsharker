@@ -90,14 +90,14 @@
                                         <i class="ri-more-2-fill"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        <a class="dropdown-item" href="{{ route('profile.show') }}">Edit</a>
-                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="{{ route('profile.show') }}">{{ __('general.attributes.edit') }}</a>
+                                        <a class="dropdown-item" href="#">{{ __('general.attributes.action') }}</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <a class="dropdown-item" href="#">{{ __('general.attributes.another_action') }}</a>
                                     </div>
                                 </div>
                             </div>
-                            <h4 class="mb-0">My Profile</h4>
+                            <h4 class="mb-0">{{ __('general.attributes.my_profile') }}</h4>
                         </div>
 
                         <div class="text-center p-4 border-bottom">
@@ -110,7 +110,7 @@
                                 {{ auth()->user()->first_name . ' ' . auth()->user()->last_name }}</h5>
                             <p class="text-muted text-truncate mb-1"><i
                                     class="ri-record-circle-fill font-size-10 text-success me-1 ms-0 d-inline-block"></i>
-                                Active</p>
+                                    {{ __('general.attributes.active') }}</p>
                         </div>
                         <!-- End profile user -->
 
@@ -124,7 +124,7 @@
                                             <h5 class="font-size-14 m-0">
                                                 <i
                                                     class="ri-user-2-line me-2 ms-0 ms-0 align-middle d-inline-block"></i>
-                                                About
+                                                    {{ __('general.attributes.about') }}
                                             </h5>
                                         </button>
                                     </div>
@@ -132,14 +132,14 @@
                                         aria-labelledby="about2" data-bs-parent="#tabprofile">
                                         <div class="accordion-body">
                                             <div>
-                                                <p class="text-muted mb-1">Name</p>
+                                                <p class="text-muted mb-1">{{ __('general.attributes.name') }}</p>
                                                 <h5 class="font-size-14">
                                                     {{ auth()->user()->first_name . ' ' . auth()->user()->last_name }}
                                                 </h5>
                                             </div>
 
                                             <div class="mt-4">
-                                                <p class="text-muted mb-1">Email</p>
+                                                <p class="text-muted mb-1">{{ __('general.attributes.email') }}</p>
                                                 <h5 class="font-size-14">{{ auth()->user()->email }}</h5>
                                             </div>
                                             @php
@@ -147,7 +147,7 @@
                                             @endphp
                                             @endphp
                                             <div class="mt-4">
-                                                <p class="text-muted mb-1">Time</p>
+                                                <p class="text-muted mb-1">{{ __('general.attributes.time') }}</p>
                                                 <h5 class="font-size-14">{{ $now->format('Y-m-d H:i:s') }}</h5>
                                             </div>
                                         </div>
@@ -170,7 +170,7 @@
                     <!-- Start chats content -->
                     <div>
                         <div class="px-4 pt-4">
-                            <h4 class="mb-4">Chats</h4>
+                            <h4 class="mb-4">{{ __('general.attributes.chats') }}</h4>
                             <div class="search-box chat-search-box">
                                 <div class="input-group mb-3 rounded-3">
                                     <span class="input-group-text text-muted bg-light pe-1 ps-3" id="basic-addon1">
@@ -210,7 +210,7 @@
 
                         <!-- Start chat-message-list -->
                         <div class="">
-                            <h5 class="mb-3 px-3 font-size-16">Recent</h5>
+                            <h5 class="mb-3 px-3 font-size-16">{{ __('general.attributes.recent') }}</h5>
                             <div class="chat-message-list px-2" data-simplebar>
                                 <ul class="list-unstyled chat-list chat-user-list">
                                     @foreach ($contacts as $contact)
@@ -315,16 +315,16 @@
                                                     href="#">View profile <i
                                                         class="ri-user-2-line float-end text-muted"></i></a>
                                                 <a class="dropdown-item d-block d-lg-none" href="#"
-                                                    data-bs-toggle="modal" data-bs-target="#audiocallModal">Audio <i
+                                                    data-bs-toggle="modal" data-bs-target="#audiocallModal">{{ __('general.attributes.audio') }} <i
                                                         class="ri-phone-line float-end text-muted"></i></a>
                                                 <a class="dropdown-item d-block d-lg-none" href="#"
-                                                    data-bs-toggle="modal" data-bs-target="#videocallModal">Video <i
+                                                    data-bs-toggle="modal" data-bs-target="#videocallModal">{{ __('general.attributes.video') }} <i
                                                         class="ri-vidicon-line float-end text-muted"></i></a>
-                                                <a class="dropdown-item" href="#">Archive <i
+                                                <a class="dropdown-item" href="#">{{ __('general.attributes.archive') }} <i
                                                         class="ri-archive-line float-end text-muted"></i></a>
-                                                <a class="dropdown-item" href="#">Muted <i
+                                                <a class="dropdown-item" href="#">{{ __('general.attributes.muted') }} <i
                                                         class="ri-volume-mute-line float-end text-muted"></i></a>
-                                                <a class="dropdown-item" href="#">Delete <i
+                                                <a class="dropdown-item" href="#">{{ __('general.attributes.delete') }} <i
                                                         class="ri-delete-bin-line float-end text-muted"></i></a>
                                             </div>
                                         </div>

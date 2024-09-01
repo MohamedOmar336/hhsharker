@@ -7,7 +7,7 @@
 
             <!-- Page Header with Breadcrumb, Back Button, and Actions -->
             <div class="row align-items-center mb-4">
-                <div class="col-md-8">
+                <div class="col-md-7">
                     <div class="d-flex align-items-center">
                         <a href="{{ URL::previous() }}" class="me-3">
                             @if (app()->isLocale('ar'))
@@ -20,7 +20,7 @@
                     </div>
 
                 </div>
-                <div class="col-md-2 text-end">
+                <div class="col-md-2  text-end">
                     <a href="{{ route('products.import.form') }}" class="btn btn-xs btn-primary me-2">
                         <i class="ti ti-file-upload"></i> {{ __('general.attributes.import') }}
                     </a>
@@ -29,12 +29,12 @@
                     </a>
 
                 </div>
-                <div class="col-md-2 text-end">
+                <div class="col-md-3 px-5 text-end  text-right">
 
-                    <ol class="breadcrumb mb-0 mt-2">
-                        <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('products.index') }}">{{ __('general.attributes.product') }}</a></li>
-                        <li class="breadcrumb-item active">{{ __('general.list') }}</li>
+                    <ol class="breadcrumb  mb-0 mt-2 text-end">
+                        <li class="breadcrumb-item text-end"><a href="{{ url('/home') }}">{{ __('general.home') }}</a></li>
+                        <li class="breadcrumb-item text-end"><a href="{{ route('products.index') }}">{{ __('general.attributes.product') }}</a></li>
+                        <li class="breadcrumb-item text-end active">{{ __('general.list') }}</li>
                     </ol>
                 </div>
             </div>
