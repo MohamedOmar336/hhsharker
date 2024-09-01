@@ -10,6 +10,6 @@ class WhatsAppTemplate extends Model
     use HasFactory;
     protected $table = 'whatsapp_templates'; // Ensure this matches your actual database table name
 
-    protected $fillable = ['name', 'language_code', 'components'];
+    protected $fillable = ['name', 'language_code', 'components', 'status'];
 
 }

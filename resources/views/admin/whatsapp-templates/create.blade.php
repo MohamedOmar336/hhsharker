@@ -3,7 +3,6 @@
 @section('content')
 <div class="page-content-tab">
     <div class="container-fluid">
-        <!-- Page-Title -->
         <div class="row">
             <div class="col-sm-12">
                 <div class="page-title-box">
@@ -18,37 +17,28 @@
                 </div>
             </div>
         </div>
-        <!-- end page title -->
 
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('whatsapp-templates.store') }}" method="post">
+                        <form action="{{ route('whatsapp-templates.store') }}" method="post" id="templateForm">
                             @csrf
                             <div class="mb-3">
                                 <label for="name" class="form-label">Template Name</label>
-                                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}">
-                                @error('name')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
+                                <input type="text" class="form-control" id="name" name="name" required>
                             </div>
 
                             <div class="mb-3">
                                 <label for="language_code" class="form-label">Language Code</label>
-                                <input type="text" class="form-control @error('language_code') is-invalid @enderror" id="language_code" name="language_code" value="{{ old('language_code') }}">
-                                @error('language_code')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
+                                <input type="text" class="form-control" id="language_code" name="language_code" required>
                             </div>
 
                             <div class="mb-3">
-                                <label for="components" class="form-label">Components (JSON Format)</label>
-                                <textarea class="form-control @error('components') is-invalid @enderror" id="components" name="components" rows="5">{{ old('components') }}</textarea>
-                                @error('components')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
+                                <button type="button" class="btn btn-primary" onclick="addComponent()">Add Component</button>
                             </div>
+
+                            <div id="componentsContainer"></div>
 
                             <div class="text-right">
                                 <button type="submit" class="btn btn-primary">Create Template</button>
@@ -61,3 +51,38 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    function addComponent() {
+        const container = document.getElementById('componentsContainer');
+        const index = container.children.length;
+        const html = `
+            <div class="component mb-3" data-index="${index}">
+                <label>Type:</label>
+                <select name="components[${index}][type]" class="form-control">
+                    <option value="header">Header</option>
+                    <option value="body">Body</option>
+                    <option value="button">Button</option>
+                    <option value="footer">Footer</option>
+                </select>
+                <label>Value:</label>
+                <input type="text" name="components[${index}][value]" class="form-control" required>
+                <button type="button" class="btn btn-danger mt-2" onclick="removeComponent(this)">Remove</button>
+            </div>
+        `;
+        container.insertAdjacentHTML('beforeend', html);
+    }
+
+    function removeComponent(button) {
+        const component = button.closest('.component');
+        component.remove();
+    }
+</script>
+<script>
+    document.getElementById('templateForm').addEventListener('submit', function() {
+        var componentsInput = document.getElementById('components');
+        componentsInput.value = JSON.stringify(yourComponentsArray); // Convert your array to a JSON string
+    });
+    </script>
+@endpush

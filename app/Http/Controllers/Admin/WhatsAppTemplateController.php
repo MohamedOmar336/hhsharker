@@ -5,6 +5,7 @@ use App\Models\WhatsAppTemplate;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\WhatsAppService;
+use Illuminate\Support\Facades\Validator;
 
 class WhatsAppTemplateController extends Controller
 {
@@ -55,16 +56,25 @@ class WhatsAppTemplateController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request) {
+        $data = [
+            'name' => $request->name,
+            'language_code' => $request->language_code,
+            'components' => json_encode($request->components) // Ensure this is an array before encoding
+        ];
 
-        $validated = $request->validate([
+        $validated = Validator::make($data, [
             'name' => 'required|string|max:255',
             'language_code' => 'required|string|max:10',
             'components' => 'required|json'
-        ]);
+        ])->validate();
 
-        $template = WhatsAppTemplate::create($validated);
-        $this->sendTemplate($template->id);
-        return redirect()->route('whatsapp-templates.index')->with('success', 'Template created successfully');
+        try {
+            $template = WhatsAppTemplate::create($validated);
+            $this->sendTemplate($template->id);
+            return redirect()->route('whatsapp-templates.index')->with('success', 'Template created successfully');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to create template: ' . $e->getMessage());
+        }
     }
 
     /**
@@ -92,20 +102,27 @@ class WhatsAppTemplateController extends Controller
     /**
      * Update the specified template in the database.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id Template ID
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id) {
+        // Validate the incoming request data
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'language_code' => 'required|string|max:10',
-            'components' => 'required|json'
+            'components' => 'required|array'
         ]);
 
+        // Convert components array to JSON string for storage
+        $validated['components'] = json_encode($validated['components']);
+
+        // Find the template by ID and update it with validated data
         $template = WhatsAppTemplate::findOrFail($id);
         $template->update($validated);
-        return redirect()->route('admin.whatsapp-templates.index')->with('success', 'Template updated successfully');
+
+        // Redirect to the template index route with a success message
+        return redirect()->route('whatsapp-templates.index')->with('success', 'Template updated successfully');
     }
 
     /**

@@ -18,37 +18,43 @@
                 </div>
             </div>
         </div>
-        <!-- end page title -->
 
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('whatsapp-templates.update', $template->id) }}" method="post">
+                        <form action="{{ route('whatsapp-templates.update', $template->id) }}" method="post" id="templateForm">
                             @csrf
                             @method('PUT')
                             <div class="mb-3">
                                 <label for="name" class="form-label">Template Name</label>
-                                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name', $template->name) }}">
-                                @error('name')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
+                                <input type="text" class="form-control" id="name" name="name" value="{{ $template->name }}" required>
                             </div>
 
                             <div class="mb-3">
                                 <label for="language_code" class="form-label">Language Code</label>
-                                <input type="text" class="form-control @error('language_code') is-invalid @enderror" id="language_code" name="language_code" value="{{ old('language_code', $template->language_code) }}">
-                                @error('language_code')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
+                                <input type="text" class="form-control" id="language_code" name="language_code" value="{{ $template->language_code }}" required>
+                            </div>
+
+                            <div class="mb-3" id="componentsContainer">
+                                @foreach(json_decode($template->components, true) as $index => $component)
+                                    <div class="component mb-3" data-index="{{ $index }}">
+                                        <label>Type:</label>
+                                        <select name="components[{{ $index }}][type]" class="form-control">
+                                            <option value="header" @if($component['type'] == 'header') selected @endif>Header</option>
+                                            <option value="body" @if($component['type'] == 'body') selected @endif>Body</option>
+                                            <option value="button" @if($component['type'] == 'button') selected @endif>Button</option>
+                                            <option value="footer" @if($component['type'] == 'footer') selected @endif>Footer</option>
+                                        </select>
+                                        <label>Value:</label>
+                                        <input type="text" name="components[{{ $index }}][value]" class="form-control" value="{{ $component['value'] }}" required>
+                                        <button type="button" class="btn btn-danger mt-2" onclick="removeComponent(this)">Remove</button>
+                                    </div>
+                                @endforeach
                             </div>
 
                             <div class="mb-3">
-                                <label for="components" class="form-label">Components (JSON Format)</label>
-                                <textarea class="form-control @error('components') is-invalid @enderror" id="components" name="components" rows="5">{{ old('components', $template->components) }}</textarea>
-                                @error('components')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
+                                <button type="button" class="btn btn-primary" onclick="addComponent()">Add Component</button>
                             </div>
 
                             <div class="text-right">
@@ -62,3 +68,32 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    function addComponent() {
+        const container = document.getElementById('componentsContainer');
+        const index = container.children.length;
+        const html = `
+            <div class="component mb-3" data-index="${index}">
+                <label>Type:</label>
+                <select name="components[${index}][type]" class="form-control">
+                    <option value="header">Header</option>
+                    <option value="body">Body</option>
+                    <option value="button">Button</option>
+                    <option value="footer">Footer</option>
+                </select>
+                <label>Value:</label>
+                <input type="text" name="components[${index}][value]" class="form-control" required>
+                <button type="button" class="btn btn-danger mt-2" onclick="removeComponent(this)">Remove</button>
+            </div>
+        `;
+        container.insertAdjacentHTML('beforeend', html);
+    }
+
+    function removeComponent(button) {
+        const component = button.closest('.component');
+        component.remove();
+    }
+</script>
+@endpush

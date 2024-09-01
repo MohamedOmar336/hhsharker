@@ -39,7 +39,7 @@
                         <th><input type="checkbox" id="select-all"></th>
                         <th scope="col">Template Name</th>
                         <th scope="col">Language Code</th>
-                        <th scope="col">Components</th>
+                        <th scope="col">status</th>
                         <th style="width: 15%;">Actions</th>
                     </tr>
                 </x-slot>
@@ -49,7 +49,7 @@
                     <td><input type="checkbox" name="ids[]" value="{{ $template->id }}"></td>
                     <td>{{ $template->name }}</td>
                     <td>{{ $template->language_code }}</td>
-                    <td>{{ $template->components }}</td>
+                    <td>{{ $template->status }}</td>
                     <td>
                         <a href="{{ route('whatsapp-templates.edit', $template->id) }}" class="btn btn-info">Edit</a>
                         <form action="{{ route('whatsapp-templates.destroy', $template->id) }}" method="POST" style="display: inline;">
