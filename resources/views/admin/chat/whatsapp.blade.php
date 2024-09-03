@@ -31,7 +31,7 @@
 <!-- App Css-->
 <link href="{{ asset('assets-admin/assets-chat/css/chat.css') }}" id="app-style" rel="stylesheet" type="text/css" />
 @endif
-   
+
 <!-- Icons Css -->
 <link href="{{ asset('assets-admin/assets-chat/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
 </head>
@@ -61,12 +61,12 @@
 
             <div class="flex-lg-column d-none d-lg-block">
                 <ul class="nav side-menu-nav justify-content-center">
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link light-dark-mode" href="#" data-bs-toggle="tooltip"
                             data-bs-trigger="hover" data-bs-placement="right" title="Dark / Light Mode">
                             <i class='ri-sun-line theme-mode-icon'></i>
                         </a>
-                    </li>
+                    </li> --}}
 
                 </ul>
             </div>
@@ -322,10 +322,10 @@
                                                         class="ri-vidicon-line float-end text-muted"></i></a>
                                                 <a class="dropdown-item" href="#">{{ __('general.attributes.archive') }} <i
                                                         class="ri-archive-line float-end text-muted"></i></a>
-                                                <a class="dropdown-item" href="#">{{ __('general.attributes.muted') }} <i
+                                                {{-- <a class="dropdown-item" href="#">{{ __('general.attributes.muted') }} <i
                                                         class="ri-volume-mute-line float-end text-muted"></i></a>
                                                 <a class="dropdown-item" href="#">{{ __('general.attributes.delete') }} <i
-                                                        class="ri-delete-bin-line float-end text-muted"></i></a>
+                                                        class="ri-delete-bin-line float-end text-muted"></i></a> --}}
                                             </div>
                                         </div>
                                     </li>

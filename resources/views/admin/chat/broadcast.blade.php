@@ -50,7 +50,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="mb-3">
+                                {{-- <div class="mb-3">
                                     <label for="message" class="form-label">Product
                                         {{ __() }}</label>
                                     <textarea id="message" class="form-control @error('message') is-invalid @enderror"
@@ -59,6 +59,15 @@
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
+                                    @enderror
+                                </div> --}}
+                                <div class="mb-3">
+                                    <label for="message"
+                                        class="form-label">{{ __('general.attributes.message') }}</label>
+                                    <textarea id="content_en" class="form-control @error('message') is-invalid @enderror" name="message"
+                                        rows="6" required>{{ old('message') }}</textarea>
+                                    @error('message')
+                                        <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <button type="submit" class="btn btn-sm btn-de-primary">{{ __('general.btn.create') }}</button>
