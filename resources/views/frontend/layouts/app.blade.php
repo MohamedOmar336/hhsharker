@@ -18,6 +18,7 @@
         @include('frontend.layouts.includes.footer')  
         @include('frontend.layouts.includes.js')  
 
+        @stack('extra-js')
     </body>
 
 </html>

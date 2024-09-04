@@ -121,212 +121,81 @@
                 </div>
             </div>
             <ul class="nav nav-pills home-tab-main mb-5 wow fadeInUpBig" id="pills-tab" role="tablist">
-                <button class="nav-link active" id="home_pro_tab_1-tab" data-bs-toggle="pill" data-bs-target="#home_pro_tab_1" type="button" role="tab" aria-controls="home_pro_tab_1" aria-selected="true">Air Conditioner</button>
-                <button class="nav-link" id="home_pro_tab_2-tab" data-bs-toggle="pill" data-bs-target="#home_pro_tab_2" type="button" role="tab" aria-controls="home_pro_tab_2" aria-selected="false">Home Appliances</button>
-                <button class="nav-link" id="home_pro_tab_3-tab" data-bs-toggle="pill" data-bs-target="#home_pro_tab_3" type="button" role="tab" aria-controls="home_pro_tab_3" aria-selected="false">Brands</button>
+                @if($airConditionProducts->count() > 0)
+                    <button class="nav-link active" id="home_pro_tab_1-tab" data-bs-toggle="pill" data-bs-target="#home_pro_tab_1" type="button" role="tab" aria-controls="home_pro_tab_1" aria-selected="true">Air Conditioner</button>
+                @endif 
+                    @if($homeApplianceProducts->count() > 0)
+                    <button class="nav-link {{ $airConditionProducts->count() == 0 ? 'active' : ''}}" id="home_pro_tab_2-tab" data-bs-toggle="pill" data-bs-target="#home_pro_tab_2" type="button" role="tab" aria-controls="home_pro_tab_2" aria-selected="false">Home Appliances</button>
+                @endif            
             </ul>
             <div class="tab-content" id="pills-tabContent">
+                @if($airConditionProducts->count() > 0)
                 <div class="tab-pane fade show active" id="home_pro_tab_1" role="tabpanel" aria-labelledby="home_pro_tab_1-tab" tabindex="0">
                     <div class="row justify-content-center gx-lg-5 gy-lg-2">
-                        <div class="col-md-6 col-lg-4 wow fadeInUpBig">
-                            <div class="product-list-home">
-                                <div class="product-img"><img src="{{ asset('assets-frontend/images/pro-1.png') }}" width="100%" alt="Product Image"></div>
-                                <div class="product-body">
-                                    <h3>Freezer</h3>
-                                    <p>Discover the complete selection of freezers perfect for your storage needs.</p>
-                                    <a href="#">See More</a>
+                        @foreach($airConditionProducts as $product)
+                            <div class="col-md-6 col-lg-4 wow fadeInUpBig">
+                                <div class="product-list-home">
+                                    <div class="product-img"><img src="{{ Storage::url($product->image) }}" width="100%" alt="Product Image"></div>
+                                    <div class="product-body">
+                                        <h3>{{ $product->product_name_en }}</h3>
+                                        <p>{{ $product->product_description_en }}</p>
+                                        <a href="#">See More</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 wow fadeInUpBig" data-wow-delay="0.2s">
-                            <div class="product-list-home">
-                                <div class="product-img"><img src="{{ asset('assets-frontend/images/pro-2.png') }}" width="100%" alt="Product Image"></div>
-                                <div class="product-body">
-                                    <h3>Dishwashers</h3>
-                                    <p>Explore the full range of dishwashers suitable for your kitchen.</p>
-                                    <a href="#">See More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 wow fadeInUpBig" data-wow-delay="0.4s">
-                            <div class="product-list-home">
-                                <div class="product-img"><img src="{{ asset('assets-frontend/images/pro-3.png') }}" width="100%" alt="Product Image"></div>
-                                <div class="product-body">
-                                    <h3>Stoves</h3>
-                                    <p>Discover the diverse range of stoves, ideal for your fast cooking needs.</p>
-                                    <a href="#">See More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 wow fadeInUpBig" data-wow-delay="0.6s">
-                            <div class="product-list-home">
-                                <div class="product-img"><img src="{{ asset('assets-frontend/images/pro-4.png') }}" width="100%" alt="Product Image"></div>
-                                <div class="product-body">
-                                    <h3>Coffee Machine</h3>
-                                    <p>Compare the comprehensive range of air conditioners designed for your cooling comfort.</p>
-                                    <a href="#">See More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 wow fadeInUpBig" data-wow-delay="0.8s">
-                            <div class="product-list-home">
-                                <div class="product-img"><img src="{{ asset('assets-frontend/images/pro-5.png') }}" width="100%" alt="Product Image"></div>
-                                <div class="product-body">
-                                    <h3>Washing Machines</h3>
-                                    <p>Choose the suitable washing machine tailored to your laundry needs.</p>
-                                    <a href="#">See More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 wow fadeInUpBig" data-wow-delay="1s">
-                            <div class="product-list-home">
-                                <div class="product-img"><img src="{{ asset('assets-frontend/images/pro-6.png') }}" width="100%" alt="Product Image"></div>
-                                <div class="product-body">
-                                    <h3>Refrigerators</h3>
-                                    <p>Select the perfect refrigerator according to your food storage requirements.</p>
-                                    <a href="#">See More</a>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
-                <div class="tab-pane fade" id="home_pro_tab_2" role="tabpanel" aria-labelledby="home_pro_tab_2-tab" tabindex="0">
+                @endif
+                @if($homeApplianceProducts->count() > 0)
+                <div class="tab-pane fade {{ $airConditionProducts->count() == 0 ? 'show active' : ''}}" id="home_pro_tab_2" role="tabpanel" aria-labelledby="home_pro_tab_2-tab" tabindex="0">
                     <div class="row justify-content-center gx-lg-5 gy-lg-2">
+                        @foreach($homeApplianceProducts as $product)
                         <div class="col-md-6 col-lg-4">
                             <div class="product-list-home">
-                                <div class="product-img"><img src="{{ asset('assets-frontend/images/pro-6.png') }}" width="100%" alt="Product Image"></div>
+                                <div class="product-img"><img src="{{ Storage::url($product->image) }}" width="100%" alt="Product Image"></div>
                                 <div class="product-body">
-                                    <h3>Deko</h3>
-                                    <p>Discover the complete selection of freezers perfect for your storage needs.</p>
+                                    <h3>{{ $product->product_name_en }}</h3>
+                                    <p>{{ $product->product_description_en }}</p>
                                     <a href="#">See More</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-4">
-                            <div class="product-list-home">
-                                <div class="product-img"><img src="{{ asset('assets-frontend/images/pro-7.png') }}" width="100%" alt="Product Image"></div>
-                                <div class="product-body">
-                                    <h3>Midea</h3>
-                                    <p>Discover the complete selection of freezers perfect for your storage needs.</p>
-                                    <a href="#">See More</a>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
-                <div class="tab-pane fade" id="home_pro_tab_3" role="tabpanel" aria-labelledby="home_pro_tab_3-tab" tabindex="0">
-                    <div class="row justify-content-center gx-lg-5 gy-lg-2">
-                        <div class="col-md-6 col-lg-4">
-                            <div class="product-list-home">
-                                <div class="product-img"><img src="{{ asset('assets-frontend/images/pro-8.png') }}" width="100%" alt="Product Image"></div>
-                                <div class="product-body">
-                                    <h3>Portable Air Conditioners</h3>
-                                    <p>Discover the complete selection of freezers perfect for your storage needs.</p>
-                                    <a href="#">See More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4">
-                            <div class="product-list-home">
-                                <div class="product-img"><img src="{{ asset('assets-frontend/images/pro-9.png') }}" width="100%" alt="Product Image"></div>
-                                <div class="product-body">
-                                    <h3>Portable Air Conditioners</h3>
-                                    <p>Discover the complete selection of freezers perfect for your storage needs.</p>
-                                    <a href="#">See More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4">
-                            <div class="product-list-home">
-                                <div class="product-img"><img src="{{ asset('assets-frontend/images/pro-10.png') }}" width="100%" alt="Product Image"></div>
-                                <div class="product-body">
-                                    <h3>Portable Air Conditioners</h3>
-                                    <p>Discover the complete selection of freezers perfect for your storage needs.</p>
-                                    <a href="#">See More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4">
-                            <div class="product-list-home">
-                                <div class="product-img"><img src="{{ asset('assets-frontend/images/pro-11.png') }}" width="100%" alt="Product Image"></div>
-                                <div class="product-body">
-                                    <h3>Portable Air Conditioners</h3>
-                                    <p>Discover the complete selection of freezers perfect for your storage needs.</p>
-                                    <a href="#">See More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4">
-                            <div class="product-list-home">
-                                <div class="product-img"><img src="{{ asset('assets-frontend/images/pro-12.png') }}" width="100%" alt="Product Image"></div>
-                                <div class="product-body">
-                                    <h3>Portable Air Conditioners</h3>
-                                    <p>Discover the complete selection of freezers perfect for your storage needs.</p>
-                                    <a href="#">See More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4">
-                            <div class="product-list-home">
-                                <div class="product-img"><img src="{{ asset('assets-frontend/images/pro-7.png') }}" width="100%" alt="Product Image"></div>
-                                <div class="product-body">
-                                    <h3>Portable Air Conditioners</h3>
-                                    <p>Discover the complete selection of freezers perfect for your storage needs.</p>
-                                    <a href="#">See More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endif
+                
             </div>
         </div>
     </section>
 
+    @if($homeApplianceBestSellerProducts->count() > 0)
     <section class="home-slider-main">
 
         <img class="homeslider-img wow fadeIn" src="{{ asset('assets-frontend/images/home-slider-bg.png') }}" width="100%" alt="slider BG">
 
         <div class="section-heading text-center wow fadeInUpBig" data-wow-delay="1s">
             <h5>Best Selling Product</h5>
-            <h2>Our Best Selling Products</h2>
+            <h2>Best Sellers In Home Appliances</h2>
         </div>
 
+        @if($homeApplianceBestSellerProducts->count() > 5)
         <div class="home-drag-btn wow zoomInDown" data-wow-delay="0.5s">
             <i class="fa-regular fa-arrow-left-long"></i>DRAG<i class="fa-regular fa-arrow-right-long"></i>
         </div>
+        @endif
         <div class="owl-carousel owl-theme mt-4 home-product-slider wow rollIn" id="home-product-slider">
+            @foreach($homeApplianceBestSellerProducts as $product)
             <div class="item">
                 <div class="home-slider-item">
-                    <h4>Refigenerator</h4>
+                    <h4>{{ $product->product_name_en }}</h4>
                     <span>Best Seller</span>
-                    <img src="{{ asset('assets-frontend/images/pro-4.png') }}" alt="Product Image">
+                    <img src="{{ Storage::url($product->image) }}" alt="Product Image">
                     <a href="#">Learn More</a>
                 </div>
             </div>
-            <div class="item">
-                <div class="home-slider-item">
-                    <h4>Refigenerator</h4>
-                    <span>Best Seller</span>
-                    <img src="{{ asset('assets-frontend/images/pro-4.png') }}" alt="Product Image">
-                    <a href="#">Learn More</a>
-                </div>
-            </div>
-            <div class="item">
-                <div class="home-slider-item">
-                    <h4>Refigenerator</h4>
-                    <span>Best Seller</span>
-                    <img src="{{ asset('assets-frontend/images/pro-4.png') }}" alt="Product Image">
-                    <a href="#">Learn More</a>
-                </div>
-            </div>
-            <div class="item">
-                <div class="home-slider-item">
-                    <h4>Refigenerator</h4>
-                    <span>Best Seller</span>
-                    <img src="{{ asset('assets-frontend/images/pro-4.png') }}" alt="Product Image">
-                    <a href="#">Learn More</a>
-                </div>
-            </div>
+            @endforeach
         </div>
 
         <div class="mt-1 text-center wow zoomInUp">
@@ -334,6 +203,7 @@
         </div>
 
     </section>
+    @endif
 
     <section>
         <div class="container wow zoomIn">
@@ -360,11 +230,12 @@
 
     <section class="home-commercial-section ">
         <div class="container-fluid">
+            @if($airConditionFeaturedProducts->count() > 0)
             <div class="row">
                 <div class="col-lg-3 wow fadeInLeftBig">
                     <div class="section-heading">
                         <h5>Best Selling Product</h5>
-                        <h2>Our Best Commercial Devices</h2>
+                        <h2>Featured Air Conditioners</h2>
                     </div>
                     <a class="cutome-btn" href="#">Learn More</a>
                 </div>
@@ -372,30 +243,14 @@
                 <div class="col-lg-8 col-xl-6 pe-0 wow fadeInRightBig">
 
                     <div class="commercial-list-home ">
-                        <div class="comn-slider-list one">
+                        @foreach($airConditionFeaturedProducts as $product)
+                        <div class="comn-slider-list {{ numberToWord($loop->iteration) }}">
                             <img src="{{ asset('assets-frontend/images/comm-image-1.png') }}" alt="Commercial Devices Image">
                             <h4>Commercial Air Conditioners</h4>
                             <p>Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.</p>
                             <a href="#">Learn More</a>
                         </div>
-                        <div class="comn-slider-list two">
-                            <img src="{{ asset('assets-frontend/images/comm-image-1.png') }}" alt="Commercial Devices Image">
-                            <h4>Commercial Air Conditioners</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.</p>
-                            <a href="#">Learn More</a>
-                        </div>
-                        <div class="comn-slider-list tree">
-                            <img src="{{ asset('assets-frontend/images/comm-image-1.png') }}" alt="Commercial Devices Image">
-                            <h4>Commercial Air Conditioners</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.</p>
-                            <a href="#">Learn More</a>
-                        </div>
-                        <div class="comn-slider-list four">
-                            <img src="{{ asset('assets-frontend/images/comm-image-1.png') }}" alt="Commercial Devices Image">
-                            <h4>Commercial Air Conditioners</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.</p>
-                            <a href="#">Learn More</a>
-                        </div> 
+                        @endforeach
                     </div>
 
                     <!-- <div class="owl-carousel owl-theme" id="home-commercial-slider">
@@ -436,6 +291,7 @@
 
                 </div>
             </div>
+            @endif
         </div>
     </section>
 

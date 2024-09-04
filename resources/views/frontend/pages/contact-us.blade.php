@@ -94,42 +94,42 @@
 
                     <div class="tab-content" id="nav-tabContent">
                         <div class="contact-tab-body tab-pane fade show active" id="contact_1" role="tabpanel" aria-labelledby="contact_1-tab" tabindex="0">
-                            <form>
+                            <form id="contact-frm">
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="contact-input">
                                             <label>Your Name <span>*</span></label>
-                                            <input type="text" class="form-control" placeholder="Your Name">
+                                            <input type="text" name="yourName" class="form-control" placeholder="Your Name">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="contact-input">
                                             <label>Your Company <span>*</span></label>
-                                            <input type="text" class="form-control" placeholder="Company Name">
+                                            <input type="text" name="companyName" class="form-control" placeholder="Company Name">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="contact-input">
                                             <label>Mobile Number <span>*</span></label>
-                                            <input type="tel" class="form-control" placeholder="Your Number">
+                                            <input type="tel" name="mobileNumber" class="form-control" placeholder="Your Number">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="contact-input">
                                             <label>Email Address <span>*</span></label>
-                                            <input type="email" class="form-control" placeholder="Your email">
+                                            <input type="email" name="emailAddress" class="form-control" placeholder="Your email">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="contact-input">
                                             <label>Subject <span>*</span></label>
-                                            <input type="text" class="form-control" placeholder="Subject">
+                                            <input type="text" name="subject" class="form-control" placeholder="Subject">
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="contact-input">
                                             <label>Message <span>*</span></label>
-                                            <textarea class="form-control" placeholder="Type Something" rows="5"></textarea>
+                                            <textarea name="message" class="form-control" placeholder="Type Something" rows="5"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
@@ -167,3 +167,68 @@
     </section>
 
 @endsection
+
+@push('extra-js')
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/additional-methods.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $("#contact-frm").validate({
+        rules: {
+            yourName: {
+                required: true,
+                minlength: 2
+            },
+            companyName: {
+                required: true,
+                minlength: 2
+            },
+            mobileNumber: {
+                required: true,
+                phoneUS: true // This requires the jQuery Validation additional-methods.js for phone validation
+            },
+            emailAddress: {
+                required: true,
+                email: true
+            },
+            subject: {
+                required: true,
+                minlength: 2
+            },
+            message: {
+                required: true,
+                minlength: 10
+            }
+        },
+        messages: {
+            yourName: {
+                required: "Please enter your name",
+                minlength: "Your name must be at least 2 characters long"
+            },
+            companyName: {
+                required: "Please enter your company name",
+                minlength: "Company name must be at least 2 characters long"
+            },
+            mobileNumber: {
+                required: "Please enter your mobile number",
+                phoneUS: "Please enter a valid phone number"
+            },
+            emailAddress: {
+                required: "Please enter your email address",
+                email: "Please enter a valid email address"
+            },
+            subject: {
+                required: "Please enter the subject",
+                minlength: "Subject must be at least 2 characters long"
+            },
+            message: {
+                required: "Please enter a message",
+                minlength: "Your message must be at least 10 characters long"
+            }
+        }
+    });
+});
+</script>
+
+@endpush

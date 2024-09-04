@@ -151,7 +151,7 @@
         </div>
     </section>
 
-
+    @if($blogs->count() > 0)
     <section class="indu-blog-section">
         <div class="container">
             <div class="row">
@@ -168,37 +168,29 @@
             </div>
             <div class="row mt-5">
                 <div class="col-lg-8 wow fadeInLeft">
+                    @if(isset($blogs[0]))
                     <div class="indu-big-list-div">
-                        <img src="{{ asset('assets-frontend/images/blog-img-1.png') }}" alt="Blog Image">
-                        <h3>Lorem ipsum dolor sit amet consectetur. </h3>
-                        <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat. Ut phasellus arcu est
-                            sollicitudin malesuada morbi sit.Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra
-                            egestas erat. Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
-                        <span>May 14, 2024</span>
+                        <img src="{{ asset('images/'.$blogs[0]->image) }}" alt="Blog Image">
+                        <h3>{{ $blogs[0]->title_en }}</h3>
+                        <p>{{ strip_tags($blogs[0]->content_en ) }}</p>
+                        <span>{{ $blogs[0]->created_at->format('M d, Y') }}</span>
                         <a href="#">Read Now</a>
                     </div>
+                    @endif
                 </div>
                 <div class="col-lg-4 wow fadeInRight">
+                    @foreach($blogs->skip(1)->take(3) as $blog)
                     <div class="indu-small-list-div">
-                        <img src="{{ asset('assets-frontend/images/blog-img-1.png') }}" alt="Blog Image">
-                        <h3>Lorem ipsum dolor sit amet consectetur. </h3>
-                        <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. </p>
+                        <img src="{{ asset('images/'.$blog->image) }}" alt="Blog Image">
+                        <h3>{{ $blog->title_en }}</h3>
+                        <p>{{ $blog->created_at->format('M d, Y') }}</p>
                     </div>
-                    <div class="indu-small-list-div">
-                        <img src="{{ asset('assets-frontend/images/blog-img-1.png') }}" alt="Blog Image">
-                        <h3>Lorem ipsum dolor sit amet consectetur. </h3>
-                        <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. </p>
-                    </div>
-                    <div class="indu-small-list-div">
-                        <img src="{{ asset('assets-frontend/images/blog-img-1.png') }}" alt="Blog Image">
-                        <h3>Lorem ipsum dolor sit amet consectetur. </h3>
-                        <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. </p>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
     </section>
-
+    @endif
 
     <section class="indu-last-slider-section">
 
