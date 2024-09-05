@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 @section('content')
 
-<section class="banner-space">
+    <section class="banner-space">
         <div class="container">
             <div class="contact-banner">
                 <img class="cc-img-1 wow fadeInLeft" src="{{ asset('assets-frontend/images/contact-testi-1.png') }}" alt="Image">
@@ -14,7 +14,6 @@
                 <a class="cutome-btn green-custome-btn wow fadeInUp" href="#">Send a Messages</a>
             </div>
         </div>
-
     </section>
 
 
@@ -94,42 +93,74 @@
 
                     <div class="tab-content" id="nav-tabContent">
                         <div class="contact-tab-body tab-pane fade show active" id="contact_1" role="tabpanel" aria-labelledby="contact_1-tab" tabindex="0">
-                            <form id="contact-frm">
+                         <!-- Display success message -->
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
+                        <!-- Display error message -->
+                        @if (session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif    
+                        <form id="contact-frm" method="post" action="{{ route('frontend.contact-us.store') }}">
+                                @csrf
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="contact-input">
                                             <label>Your Name <span>*</span></label>
-                                            <input type="text" name="yourName" class="form-control" placeholder="Your Name">
+                                            <input type="text" name="name" class="form-control @error('name') error @enderror" placeholder="Your Name"  value="{{ old('name') }}">
+                                            @error('name')
+                                                <label id="name-error" class="error" for="name">{{ $message }}</label>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="contact-input">
                                             <label>Your Company <span>*</span></label>
-                                            <input type="text" name="companyName" class="form-control" placeholder="Company Name">
+                                            <input type="text" name="company" class="form-control @error('company') error @enderror" placeholder="Company Name"  value="{{ old('company') }}">
+                                            @error('company')
+                                                <label id="company-error" class="error" for="company">{{ $message }}</label>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="contact-input">
                                             <label>Mobile Number <span>*</span></label>
-                                            <input type="tel" name="mobileNumber" class="form-control" placeholder="Your Number">
+                                            <input type="tel" name="mobile_number" class="form-control @error('mobile_number') error @enderror"  placeholder="Your Number"  value="{{ old('mobile_number') }}">
+                                            @error('mobile_number')
+                                                <label id="mobile_number-error" class="error" for="mobile_number" >{{ $message }}</label>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="contact-input">
                                             <label>Email Address <span>*</span></label>
-                                            <input type="email" name="emailAddress" class="form-control" placeholder="Your email">
+                                            <input type="email" name="email" class="form-control @error('email') error @enderror" placeholder="Your email" value="{{ old('email') }}">
+                                            @error('email')
+                                                <label id="email-error" class="error" for="email" >{{ $message }}</label>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="contact-input">
                                             <label>Subject <span>*</span></label>
-                                            <input type="text" name="subject" class="form-control" placeholder="Subject">
+                                            <input type="text" name="subject" class="form-control  @error('subject') error @enderror" value="{{ old('subject') }}" placeholder="Subject">
+                                            @error('subject')
+                                                <label id="subject-error" class="error" for="subject">{{ $message }}</label>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="contact-input">
                                             <label>Message <span>*</span></label>
-                                            <textarea name="message" class="form-control" placeholder="Type Something" rows="5"></textarea>
+                                            <textarea name="message" class="form-control @error('message') error @enderror"  placeholder="Type Something" rows="5">{{ old('message') }}</textarea>
+                                            @error('message')
+                                                <label id="message-error" class="error" for="message">{{ $message }}</label>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
@@ -176,19 +207,20 @@
 $(document).ready(function() {
     $("#contact-frm").validate({
         rules: {
-            yourName: {
+            name: {
                 required: true,
-                minlength: 2
+                maxlength: 255
             },
-            companyName: {
+            company: {
                 required: true,
-                minlength: 2
+                maxlength: 255
             },
-            mobileNumber: {
+            mobile_number: {
                 required: true,
-                phoneUS: true // This requires the jQuery Validation additional-methods.js for phone validation
+                maxlength: 15,
+                digits : true
             },
-            emailAddress: {
+            email: {
                 required: true,
                 email: true
             },
@@ -202,19 +234,20 @@ $(document).ready(function() {
             }
         },
         messages: {
-            yourName: {
+            name: {
                 required: "Please enter your name",
-                minlength: "Your name must be at least 2 characters long"
+                maxlength: "Your name must be max 255 characters long"
             },
-            companyName: {
+            company: {
                 required: "Please enter your company name",
-                minlength: "Company name must be at least 2 characters long"
+                maxlength: "Company name must be max 255 characters long"
             },
-            mobileNumber: {
+            mobile_number: {
                 required: "Please enter your mobile number",
-                phoneUS: "Please enter a valid phone number"
+                digits: "Mobile number must be valid",
+                maxlength: "Mobile number must be max 15 digits"
             },
-            emailAddress: {
+            email: {
                 required: "Please enter your email address",
                 email: "Please enter a valid email address"
             },
