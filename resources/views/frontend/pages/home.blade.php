@@ -245,9 +245,9 @@
                     <div class="commercial-list-home ">
                         @foreach($airConditionFeaturedProducts as $product)
                         <div class="comn-slider-list {{ numberToWord($loop->iteration) }}">
-                            <img src="{{ asset('assets-frontend/images/comm-image-1.png') }}" alt="Commercial Devices Image">
-                            <h4>Commercial Air Conditioners</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.</p>
+                            <img src="{{ Storage::url($product->image) }}" alt="Commercial Devices Image">
+                            <h4>{{ $product->product_name_en }}</h4>
+                            <p>{{ $product->product_description_en }}</p>
                             <a href="#">Learn More</a>
                         </div>
                         @endforeach
