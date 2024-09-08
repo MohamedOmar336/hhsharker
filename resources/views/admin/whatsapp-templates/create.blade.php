@@ -51,7 +51,6 @@
     </div>
 </div>
 @endsection
-
 @push('scripts')
 <script>
     function addComponent() {
@@ -60,7 +59,7 @@
         const html = `
             <div class="component mb-3" data-index="${index}">
                 <label>Type:</label>
-                <select name="components[${index}][type]" class="form-control">
+                <select name="components[${index}][type]" class="form-control component-type" onchange="checkType(this, ${index})">
                     <option value="header">Header</option>
                     <option value="body">Body</option>
                     <option value="button">Button</option>
@@ -68,10 +67,23 @@
                 </select>
                 <label>Value:</label>
                 <input type="text" name="components[${index}][value]" class="form-control" required>
+                <div id="urlField${index}" style="display: none;">
+                    <label>URL:</label>
+                    <input type="text" name="components[${index}][url]" class="form-control">
+                </div>
                 <button type="button" class="btn btn-danger mt-2" onclick="removeComponent(this)">Remove</button>
             </div>
         `;
         container.insertAdjacentHTML('beforeend', html);
+    }
+
+    function checkType(select, index) {
+        const urlField = document.getElementById(`urlField${index}`);
+        if (select.value === 'button') {
+            urlField.style.display = 'block';
+        } else {
+            urlField.style.display = 'none';
+        }
     }
 
     function removeComponent(button) {
@@ -79,10 +91,4 @@
         component.remove();
     }
 </script>
-<script>
-    document.getElementById('templateForm').addEventListener('submit', function() {
-        var componentsInput = document.getElementById('components');
-        componentsInput.value = JSON.stringify(yourComponentsArray); // Convert your array to a JSON string
-    });
-    </script>
 @endpush
