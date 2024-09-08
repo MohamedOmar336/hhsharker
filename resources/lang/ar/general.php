@@ -443,6 +443,7 @@ return [
         'no_emails' => 'لم يتم العثور على رسائل.',
     ],
     'labels' => [
+        'email_body' => 'محتوى البريد الإلكتروني',
         'inbox' => 'البريد الوارد',
         'starred' => 'المميزة',
         'important' => 'مهمة',
@@ -451,6 +452,7 @@ return [
         'trash' => 'سلة المحذوفات',
     ],
     'side' => [
+        'email_list' => 'قائمة البريد الإلكتروني',
         'Tickets' => 'التذاكر',
         'Tickets Overview' => 'نظرة عامة على التذاكر',
         'Add New' => 'إضافة جديد',
@@ -775,6 +777,12 @@ return [
         'enter_description_en' => 'أدخل الوصف (بالإنجليزية)',
         'enter_description_ar' => 'أدخل الوصف (بالعربية)',
     ],
+    'from' => 'من',
+    'date' => 'تاريخ',
+    'subject' => 'موضوع',
+    'loading' => 'جاري التحميل...',
+    'load_more' => 'تحميل المزيد',
+    'close' => 'إغلاق',
     'home' => 'الرئيسية',
     'smtp_settings' => 'إعدادات SMTP',
     'edit' => 'تعديل',

@@ -227,6 +227,7 @@ return [
 
     ],
     'side' => [
+        'email_list' => 'Email List',
         'dashboard' => 'Dashboard',
         'products' => 'Products',
         'list' => 'List',
@@ -415,6 +416,16 @@ return [
         '' => '',
         '' => '',
     ],
+    'labels' => [
+        'email_body' => 'Email Body',
+    ],
+  
+    'from' => 'From',
+    'date' => 'Date',
+    'subject' => 'Subject',
+    'loading' => 'Loading...',
+    'load_more' => 'Load More',
+    'close' => 'Close',
     'dashboard' => 'Dashboard',
     'home' => 'Home',
     'products' => 'Products',

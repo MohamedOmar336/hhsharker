@@ -1,6 +1,8 @@
 <?php
 
-use App\Http\Controllers\Admin\MailboxController;
+//use App\Http\Controllers\Admin\MailboxController;
+
+use App\Http\Controllers\Admin\GmailController;
 use App\Http\Controllers\Admin\ActivityLogController;
 use App\Http\Controllers\Admin\AppointmentController;
 use App\Http\Controllers\Admin\BlogPostController;
@@ -34,6 +36,7 @@ use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\WhatsAppTemplateController;
 use App\Http\Controllers\Admin\TaskController;
+use App\Http\Controllers\FormController;
 
 
 
@@ -64,6 +67,7 @@ Route::group(['prefix' => 'admin'], function () {
             \Illuminate\Support\Facades\Session::put('locale', $lang);
             return redirect()->back();
         })->name('change.lang');
+
 
         Route::get('/home', [HomeController::class, 'index'])->name('home');
 
@@ -223,6 +227,14 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/mails/bulk-action', [MailController::class, 'bulkAction'])->name('mails.bulkAction');
         Route::post('/mails/toggle-state/{email}/{type}', [MailController::class, 'toggleState'])->name('mails.toggleState');
 
+
+        Route::get('/emails/more', [GmailController::class, 'getMoreEmails'])->name('emails.get-more');
+
+        Route::get('/submitForm', [FormController::class, 'submitForm']);
+
+        Route::get('/gmail', [GmailController::class, 'getEmails'])->name('gmail');
+        Route::get('/gmail/compose', [GmailController::class, 'compose'])->name('gmail.compose');
+        Route::post('/gmail/send', [GmailController::class, 'send'])->name('gmail.send');
 
         Route::resource('tasks', TaskController::class);
 
