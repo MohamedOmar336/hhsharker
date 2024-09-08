@@ -440,6 +440,7 @@ return [
         'no_emails' => 'No emails found.',
     ],
     'labels' => [
+        'email_body' => 'Email Body',
         'inbox' => 'Inbox',
         'starred' => 'Starred',
         'important' => 'Important',
@@ -452,6 +453,7 @@ return [
     ],
 
     'side' => [
+        'email_list' => 'Email List',
         'Tickets' => 'Tickets',
         'Tickets Overview' => 'Tickets Overview',
         'Add New' => 'Add New',
@@ -781,6 +783,12 @@ return [
         'enter_description_en' => 'Enter Description (English)',
         'enter_description_ar' => 'Enter Description (Arabic)',
     ],
+    'from' => 'From',
+    'date' => 'Date',
+    'subject' => 'Subject',
+    'loading' => 'Loading...',
+    'load_more' => 'Load More',
+    'close' => 'Close',
     'home' => 'Home',
     'smtp_settings' => 'SMTP Settings',
     'edit' => 'Edit',

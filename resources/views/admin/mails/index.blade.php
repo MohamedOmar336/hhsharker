@@ -83,7 +83,7 @@
                             <form id="bulk-action-form" method="POST" action="{{ route('mails.bulkAction') }}">
                                 @csrf
                                 <input type="hidden" name="action" id="bulk-action">
-                                <div class="card my-3">
+                                <div class=" my-3">
                                     <ul class="message-list">
                                         @forelse ($records as $record)
                                             <li>
@@ -100,7 +100,7 @@
                                                                 @csrf
                                                                 @method('POST')
                                                                 <button type="submit" class="btn btn-link p-0">
-                                                                    <i class="fas fa-star text-shadow {{ $record->is_starred ? 'text-warning' : 'text-light text-shadow' }}" title="{{ __('general.labels.starred') }}"></i>
+                                                                    <i class=" {{ $record->is_starred ? 'star-toggle fas fa-star text-warning' : 'star-toggle far fa-star' }}" title="{{ __('general.labels.starred') }}"></i>
                                                                 </button>
                                                             </form>
                                                 
@@ -109,7 +109,7 @@
                                                                 @csrf
                                                                 @method('POST')
                                                                 <button type="submit" class="btn btn-link p-0">
-                                                                    <i class="fas fa-bookmark text-shadow {{ $record->is_important ? 'text-primary' : 'text-light ' }}" title="{{ __('general.labels.important') }}"></i>
+                                                                    <i class=" {{ $record->is_important ? 'star-toggle  fas fa-bookmark  text-primary' : 'star-toggle far fa-bookmark' }}" title="{{ __('general.labels.important') }}"></i>
                                                                 </button>
                                                             </form>
                                                 
@@ -118,7 +118,7 @@
                                                                 @csrf
                                                                 @method('POST')
                                                                 <button type="submit" class="btn btn-link p-0">
-                                                                    <i class="fas fa-file-alt text-shadow {{ $record->is_draft ? 'text-secondary' : 'text-light ' }}" title="{{ __('general.labels.draft') }}"></i>
+                                                                    <i class=" {{ $record->is_draft ? 'star-toggle fas fa-file-alt text-secondary' : 'star-toggle far fa-file-alt ' }}" title="{{ __('general.labels.draft') }}"></i>
                                                                 </button>
                                                             </form>
                                                         </div>

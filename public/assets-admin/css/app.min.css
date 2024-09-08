@@ -9119,7 +9119,7 @@ input.add-file-input {
 }
 
 .message-list li a {
-    color: #7081b9
+   /* color: #7081b9*/
 }
 
 .message-list li:hover {
@@ -9161,7 +9161,8 @@ input.add-file-input {
 .message-list li .col-mail-1 .star-toggle {
     margin-top: 18px;
     font-size: 16px;
-    margin-left: 5px
+    margin-left: 5px;
+    margin-bottom: 20px;
 }
 
 .message-list li .col-mail-1 .title {

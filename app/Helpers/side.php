@@ -62,7 +62,10 @@ return [
                 'title' => __('general.side.Email'),
                 'route' => 'mails.index',
             ],
-
+            [
+                'title' =>  __('general.side.email_list'),
+                'route' => 'gmail',
+            ],
         ],
 
     ],
@@ -272,6 +275,7 @@ return [
         'link' => 'sidebarEmailConfiguration',
         'route' => 'smtp-settings.edit',
     ],
+   
     [
         'title' => __('general.side.API'),
         'link' => 'sidebarAPI',
