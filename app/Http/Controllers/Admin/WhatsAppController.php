@@ -9,7 +9,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use Illuminate\Support\Facades\Http;
 use App\Models\Notification;
-
+use Illuminate\Support\Facades\Bus;
+use App\Jobs\SendWhatsAppMessage;
 
 class WhatsAppController extends Controller
 {
@@ -218,6 +219,12 @@ class WhatsAppController extends Controller
      */
     public function sendBroadcastMessage(Request $request)
     {
+        if($request->scheduled_time){
+            $this->sendSchedualBroadcast( $request );
+
+            return redirect()->route('whatsapp.broadcast.index')->with('success', 'Message sent successfully!');
+        }
+
         $response = $this->whatsAppService->sendBroadcastMessage($request->phones, $request->message);
 
         // Check if the response is successful for all numbers
@@ -235,4 +242,15 @@ class WhatsAppController extends Controller
         }
     }
 
+    public function sendSchedualBroadcast (Request $request)
+    {
+        $scheduledTime = \Carbon\Carbon::parse($request->scheduled_time);  // Notice the leading backslash
+        \Log::info("Scheduled time: " . $scheduledTime);  // Log the time for debugging
+
+        // Dispatch the job to be executed at the specified time
+        SendWhatsAppMessage::dispatch($request->phones, $request->message)
+                           ->delay($scheduledTime);
+
+        return redirect()->route('whatsapp.broadcast.index')->with('success', 'Message scheduled successfully 2!');
+    }
 }

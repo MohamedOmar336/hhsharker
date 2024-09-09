@@ -70,6 +70,15 @@
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
+
+                                <!-- Add this inside your form in broadcast.blade.php -->
+                                <div class="mb-3">
+                                    <label for="scheduled_time" class="form-label">{{ __('general.attributes.scheduled_time') }}</label>
+                                    <input type="datetime-local" class="form-control @error('scheduled_time') is-invalid @enderror" id="scheduled_time" name="scheduled_time" value="{{ old('scheduled_time') }}" required>
+                                    @error('scheduled_time')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
+                                </div>
                                 <button type="submit" class="btn btn-sm btn-de-primary">{{ __('general.btn.create') }}</button>
                             </form>
                         </div><!--end card-body-->
