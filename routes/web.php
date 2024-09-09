@@ -65,7 +65,7 @@ Route::group(['prefix' => 'admin'], function () {
             \Illuminate\Support\Facades\Session::put('locale', $lang);
             return redirect()->back();
         })->name('change.lang');
-       
+
 
         Route::get('/home', [HomeController::class, 'index'])->name('home');
 
@@ -77,7 +77,7 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::post('/smtp-settings', [SmtpSettingsController::class, 'update'])->name('smtp-settings.update');
 
-        Route::get('product/import',  [ProductController::class, 'importForm'])->name('products.import.form');
+        Route::get('product/import', [ProductController::class, 'importForm'])->name('products.import.form');
 
         Route::post('product/import', [ProductController::class, 'import'])->name('products.import');
 
@@ -89,7 +89,7 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::resource('/users', UserController::class);
 
-        Route::get('/user/bulk-delete', [UserController::class  , 'massDestroy'])->name('users.bulkDelete');
+        Route::get('/user/bulk-delete', [UserController::class, 'massDestroy'])->name('users.bulkDelete');
 
         Route::resource('/categories', CategoryController::class);
 
@@ -123,7 +123,7 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::resource('/tickets', TicketController::class);
 
-        Route::get('/ticket/bulk-delete', [TicketController::class  , 'massDestroy'])->name('tickets.bulkDelete');
+        Route::get('/ticket/bulk-delete', [TicketController::class, 'massDestroy'])->name('tickets.bulkDelete');
 
         Route::Resource('/ticket-priorities', TicketPriorityController::class);
 
@@ -154,16 +154,16 @@ Route::group(['prefix' => 'admin'], function () {
         Route::delete('messages/{message}', [MessageController::class, 'destroy'])->name('messages.destroy');
 
         Route::get('/mails', [MailController::class, 'index'])->name('mails.index');
-      //  Route::get('/mails/index', [MailController::class, 'index'])->name('mails.index');
+        //  Route::get('/mails/index', [MailController::class, 'index'])->name('mails.index');
         Route::get('/mails/compose', [MailController::class, 'compose'])->name('mails.compose');
         Route::post('/mails/send', [MailController::class, 'send'])->name('mails.send');
         Route::get('/mails/{id}', [MailController::class, 'show'])->name('mails.show');
 
-       // Route to display the reply form
-Route::get('/mails/{id}/reply', [MailController::class, 'reply'])->name('mails.reply');
+        // Route to display the reply form
+        Route::get('/mails/{id}/reply', [MailController::class, 'reply'])->name('mails.reply');
 
-// Route to handle sending the reply
-Route::post('/mails/{id}/sendReply', [MailController::class, 'sendReply'])->name('mails.sendReply');
+        // Route to handle sending the reply
+        Route::post('/mails/{id}/sendReply', [MailController::class, 'sendReply'])->name('mails.sendReply');
 
         Route::post('/mails/bulk-action', [MailController::class, 'bulkAction'])->name('mails.bulkAction');
 
@@ -173,15 +173,15 @@ Route::post('/mails/{id}/sendReply', [MailController::class, 'sendReply'])->name
 
         Route::post('/send-whatsapp-message', [WhatsAppController::class, 'sendMessage'])->name('send-whatsapp-message');
 
-        Route::post('/receive-whatsapp-message', [WhatsAppController::class , 'receiveMessage']);
+        Route::post('/receive-whatsapp-message', [WhatsAppController::class, 'receiveMessage']);
 
         Route::get('/whatsApp/room', [WhatsAppController::class, 'roomMessages'])->name('whatsapp.room');
 
-        Route::get('/whatsApp', [WhatsAppController::class, 'index'] )->name('whatsapp.chat');
+        Route::get('/whatsApp', [WhatsAppController::class, 'index'])->name('whatsapp.chat');
 
-        Route::get('/whatsApp-chat', [WhatsAppController::class, 'chat'] )->name('whatsapp.index');
+        Route::get('/whatsApp-chat', [WhatsAppController::class, 'chat'])->name('whatsapp.index');
 
-        Route::post('/whatsApp-template', [WhatsAppController::class, 'sendTemplate'] )->name('whatsapp.template');
+        Route::post('/whatsApp-template', [WhatsAppController::class, 'sendTemplate'])->name('whatsapp.template');
 
         Route::get('/contact/exports', [ContactController::class, 'export'])->name('contacts.export');
 
@@ -200,7 +200,7 @@ Route::post('/mails/{id}/sendReply', [MailController::class, 'sendReply'])->name
         Route::get('/mails/sent', [MailController::class, 'sent'])->name('mails.sent');
         Route::get('/mails/trash', [MailController::class, 'trash'])->name('mails.trash');
 
-       Route::get('/mails/compose', [MailController::class, 'compose'])->name('mails.compose');
+        Route::get('/mails/compose', [MailController::class, 'compose'])->name('mails.compose');
 
         Route::post('/mails/send', [MailController::class, 'send'])->name('mails.send');
 
@@ -215,11 +215,18 @@ Route::post('/mails/{id}/sendReply', [MailController::class, 'sendReply'])->name
         Route::get('/emails/more', [GmailController::class, 'getMoreEmails'])->name('emails.get-more');
 
         Route::get('/submitForm', [FormController::class, 'submitForm']);
-      
+
         Route::get('/gmail', [GmailController::class, 'getEmails'])->name('gmail');
         Route::get('/gmail/compose', [GmailController::class, 'compose'])->name('gmail.compose');
         Route::post('/gmail/send', [GmailController::class, 'send'])->name('gmail.send');
 
+        // Sales emails routes
+        Route::get('/sales/emails/more', [GmailController::class, 'getMoreSalesEmails'])->name('sales.emails.get-more');
+        Route::get('/sales/gmail', [GmailController::class, 'getSalesEmails'])->name('sales.gmail');
+
+        // Support emails routes
+        Route::get('/support/emails/more', [GmailController::class, 'getMoreSupportEmails'])->name('support.emails.get-more');
+        Route::get('/support/gmail', [GmailController::class, 'getSupportEmails'])->name('support.gmail');
         Route::resource('tasks', TaskController::class);
 
 
@@ -243,4 +250,3 @@ Route::post('/test', [ContactUsController::class, 'store'])->name('test.store');
 
 Route::get('/whatsapp-webhook', [WhatsAppController::class, 'verify']);
 Route::post('/whatsapp-webhook', [WhatsAppController::class, 'receiveMessage']);
-
