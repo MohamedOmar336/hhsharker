@@ -13,45 +13,45 @@ class HomeController extends Controller
 {
 
 
-// public function showTicketsStatus()
-// {
-//     // Retrieve tickets data grouped by months
-//     $ticketData = Ticket::select(
-//             DB::raw('MONTH(created_at) as month'),
-//             DB::raw('count(id) as ticket_count')
-//         )
-//         ->groupBy('month')
-//         ->get()
-//         ->pluck('ticket_count', 'month')
-//         ->toArray();
+    // public function showTicketsStatus()
+    // {
+    //     // Retrieve tickets data grouped by months
+    //     $ticketData = Ticket::select(
+    //             DB::raw('MONTH(created_at) as month'),
+    //             DB::raw('count(id) as ticket_count')
+    //         )
+    //         ->groupBy('month')
+    //         ->get()
+    //         ->pluck('ticket_count', 'month')
+    //         ->toArray();
 
-//     // Fill in missing months with 0
-//     $monthlyTickets = array_fill(1, 12, 0);
-//     foreach ($ticketData as $month => $count) {
-//         $monthlyTickets[$month] = $count;
-//     }
+    //     // Fill in missing months with 0
+    //     $monthlyTickets = array_fill(1, 12, 0);
+    //     foreach ($ticketData as $month => $count) {
+    //         $monthlyTickets[$month] = $count;
+    //     }
 
-//     return view('tickets_status', compact('monthlyTickets'));
-// }
+    //     return view('tickets_status', compact('monthlyTickets'));
+    // }
 
     public function index()
     {
 
-         // Retrieve tickets data grouped by months
-    $ticketData = Ticket::select(
-        DB::raw('MONTH(created_at) as month'),
-        DB::raw('count(id) as ticket_count')
-    )
-    ->groupBy('month')
-    ->get()
-    ->pluck('ticket_count', 'month')
-    ->toArray();
+        // Retrieve tickets data grouped by months
+        $ticketData = Ticket::select(
+            DB::raw('MONTH(created_at) as month'),
+            DB::raw('count(id) as ticket_count')
+        )
+            ->groupBy('month')
+            ->get()
+            ->pluck('ticket_count', 'month')
+            ->toArray();
 
-// Fill in missing months with 0
-$monthlyTickets = array_fill(1, 12, 0);
-foreach ($ticketData as $month => $count) {
-    $monthlyTickets[$month] = $count;
-}
+        // Fill in missing months with 0
+        $monthlyTickets = array_fill(1, 12, 0);
+        foreach ($ticketData as $month => $count) {
+            $monthlyTickets[$month] = $count;
+        }
 
         // $tickets = Ticket::all(); // Fetch all tickets from database
 
@@ -114,15 +114,10 @@ foreach ($ticketData as $month => $count) {
         $appointments = Appointment::with('user', 'withUser')->orderBy('start_time', 'asc')->limit(5)->get();
 
         $tickets = Ticket::with(['priority', 'status', 'assignedTo', 'createdBy'])
-    ->orderBy('created_at', 'asc')->limit(5) // Adjust order as needed
-    ->get();
-    $tasks = Task::with(['title',
-    'description',
-    'assigned_to',
-    'status',
-    'due_date'])
-    ->orderBy('created_at', 'asc')->limit(5) // Adjust order as needed
-    ->get();
+            ->orderBy('created_at', 'asc')->limit(5) // Adjust order as needed
+            ->get();
+        $tasks = Task::orderBy('created_at', 'asc')->limit(5)
+            ->get();
 
         // Fetch ticket statistics
         $newTicketsCount = Ticket::whereDate('created_at', now()->today())->count();
@@ -130,7 +125,7 @@ foreach ($ticketData as $month => $count) {
         $onHoldTicketsCount = Ticket::where('StatusID', 'on_hold')->count();
         $unassignedTicketsCount = Ticket::whereNull('AssignedTo')->count();
 
-        return view('admin.home', compact('notifications','tasks', 'appointments', 'newTicketsCount', 'openTicketsCount', 'onHoldTicketsCount', 'unassignedTicketsCount','tickets','monthlyTickets'));
+        return view('admin.home', compact('notifications', 'tasks', 'appointments', 'newTicketsCount', 'openTicketsCount', 'onHoldTicketsCount', 'unassignedTicketsCount', 'tickets', 'monthlyTickets'));
     }
 
     public function analytics()

@@ -133,8 +133,8 @@
                             </div><!--end card-body-->
                         </div><!--end card-->
                     </div> <!--end col-->
-              
-                
+
+
                     @push('scripts')
                     <script>
                         document.addEventListener('DOMContentLoaded', function () {
@@ -178,15 +178,15 @@
                                         },
                                     },
                                 };
-                    
+
                                 var chart = new ApexCharts(document.querySelector("#Tickets_Status1"), options);
                                 chart.render();
                             }
                         });
                     </script>
                     @endpush
-                    
-                   
+
+
 
                     <div class="col-lg-4">
                         <div class="card">
@@ -280,7 +280,7 @@
                                                 <td>{{ $task->title }}</td>
                                                 <td>{{ $task->assignedTo ? $task->assignedTo->name : __('general.not_assigned') }}</td>
                                                 <td>{{ __('general.status.'.$task->status) }}</td>
-                                                <td>{{ $task->due_date ? $task->due_date->format('Y-m-d') : __('general.no_due_date') }}</td>
+                                                <td>{{ $task->due_date ? $task->due_date : __('general.no_due_date') }}</td>
                                             </tr>
                                         @endforeach
                                         </tbody>
