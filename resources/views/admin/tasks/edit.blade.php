@@ -49,7 +49,7 @@
 
                                 <div class="mb-3">
                                     <label for="description" class="form-label">{{ __('general.attributes.description') }}</label>
-                                    <textarea id="description" class="form-control @error('description') is-invalid @enderror" 
+                                    <textarea id="description" class="form-control @error('description') is-invalid @enderror"
                                         name="description" required>{{ old('description', $task->description) }}</textarea>
                                     @error('description')
                                         <span class="invalid-feedback">{{ $message }}</span>
@@ -94,9 +94,9 @@
 
                                 <div class="mb-3">
                                     <label for="due_date" class="form-label">{{ __('general.attributes.due_date') }}</label>
-                                    <input id="due_date" type="datetime-local" 
+                                    <input id="due_date" type="datetime-local"
                                         class="form-control @error('due_date') is-invalid @enderror" name="due_date"
-                                        value="{{ old('due_date', $task->due_date ? $task->due_date->format('Y-m-d\TH:i') : '') }}">
+                                        value="{{ old('due_date', $task->due_date ? $task->due_date : '') }}">
                                     @error('due_date')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror

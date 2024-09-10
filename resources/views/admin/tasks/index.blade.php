@@ -47,7 +47,7 @@
                         <td>{{ $task->title }}</td>
                         <td>{{ $task->assignedTo ? $task->assignedTo->user_name : __('general.not_assigned') }}</td>
                         <td>{{ __('general.status.'.$task->status) }}</td>
-                        <td>{{ $task->due_date ? $task->due_date->format('Y-m-d') : __('general.no_due_date') }}</td>
+                        <td>{{ $task->due_date ? $task->due_date : __('general.no_due_date') }}</td>
                         <td>
                             <a href="{{ route('tasks.edit', $task->id) }}"><i data-feather="edit"></i></a>
                             <form action="{{ route('tasks.destroy', $task->id) }}" method="POST"
