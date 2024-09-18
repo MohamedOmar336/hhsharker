@@ -36,57 +36,7 @@
         @endif
     </section>
 
-    <div class="owl-carousel owl-theme banner-green-slider wow bounceInRight" id="banner-green-line" data-wow-duration="3s">
-        <div class="item">
-            <h5>founders</h5>
-        </div>
-        <div class="item">
-            <h5>h&h Shaker</h5>
-        </div>
-        <div class="item">
-            <h5>founders</h5>
-        </div>
-        <div class="item">
-            <h5>h&h Shaker</h5>
-        </div>
-        <div class="item">
-            <h5>founders</h5>
-        </div>
-        <div class="item">
-            <h5>h&h Shaker</h5>
-        </div>
-        <div class="item">
-            <h5>founders</h5>
-        </div>
-        <div class="item">
-            <h5>h&h Shaker</h5>
-        </div>
-        <div class="item">
-            <h5>founders</h5>
-        </div>
-        <div class="item">
-            <h5>h&h Shaker</h5>
-        </div>
-        <div class="item">
-            <h5>founders</h5>
-        </div>
-        <div class="item">
-            <h5>h&h Shaker</h5>
-        </div>
-        <div class="item">
-            <h5>founders</h5>
-        </div>
-        <div class="item">
-            <h5>h&h Shaker</h5>
-        </div>
-        <div class="item">
-            <h5>founders</h5>
-        </div>
-        <div class="item">
-            <h5>h&h Shaker</h5>
-        </div>
-    </div>
-
+    @include('frontend.layouts.includes.common_slider_1')
 
     <section class="news-h-section">
         <div class="container">

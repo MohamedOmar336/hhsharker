@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
-class Localization
+class SetWebLocale
 {
     /**
      * Handle an incoming request.
@@ -16,11 +16,13 @@ class Localization
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function handle(Request $request, Closure $next)
-    {   
-        if (session()->has('locale') && in_array(session('locale'), ['ar', 'en'])) {
-            App::setLocale(session('locale'));
-        } elseif ($request->headers->has('lang') && in_array($request->header('lang'), ['ar', 'en'])) {
-            App::setLocale($request->header('lang'));
+    {
+        // if(!$request->route('locale') || !in_array($request->route('locale'),['en','ar'])){
+        //     return redirect()->route('frontend.home',['locale' => 'en']);
+        // }
+        $locale = $request->route('locale', config('app.locale'));
+        if (in_array($locale, ['en', 'ar'])) { // Add your supported locales here
+            App::setLocale($locale);
         }
         return $next($request);
     }

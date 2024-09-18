@@ -3,29 +3,29 @@
     <section class="home-banner">
         <div class="container">
             <h1 class="banner-text-animation wow fadeInLeft">
-                <span class="word">Commercial Air Conditioners</span>
-                <span class="word">With a Single Touch</span>
-                <span class="word">Home Appliances</span>
+                <span class="word"> {{ __('website.homepage_slider_1.title_1') }}</span>
+                <span class="word"> {{ __('website.homepage_slider_1.title_2') }}</span>
+                <span class="word"> {{ __('website.homepage_slider_1.title_3') }}</span>
             </h1>
-            <h6 class="wow fadeInLeft">Find the Best Products for Your Need</h6>
-            <a class="cutome-btn wow fadeInLeft" href="#">Additional Details</a>
+            <h6 class="wow fadeInLeft"> {{ __('website.homepage_slider_1.tag_line') }}</h6>
+            <a class="cutome-btn wow fadeInLeft" href="#">{{ __('website.homepage_slider_1.button') }}</a>
             <div class="banner-box-row wow fadeInLeft">
                 <div class="banner-box-col">
                     <div>
-                        <div class="ani-nub-banner"><span class="numberanimation">100</span>%</div>
-                        <p class="p-nub-banner">Satisfied Customer</p>
+                        <div class="ani-nub-banner"><span class="numberanimation">{{ __('website.homepage_slider_1.box_1_desc') }}</span>%</div>
+                        <p class="p-nub-banner">{{ __('website.homepage_slider_1.box_1_title') }}</p>
                     </div>
                 </div>
                 <div class="banner-box-col">
                     <div>
-                        <div class="ani-nub-banner"><span class="numberanimation">10</span>Y<span class="ani-nub-small">up to</span></div>
-                        <p class="p-nub-banner">Warranty</p>
+                        <div class="ani-nub-banner"><span class="numberanimation">{{ __('website.homepage_slider_1.box_2_desc') }}</span>>{{ __('website.homepage_slider_1.box_2_desc_3') }}<span class="ani-nub-small">{{ __('website.homepage_slider_1.box_2_desc_2') }}</span></div>
+                        <p class="p-nub-banner">{{ __('website.homepage_slider_1.box_2_title') }}</p>
                     </div>
                 </div>
                 <div class="banner-box-col">
                     <div>
-                        <div class="ani-nub-banner">No. <span class="numberanimation">1</span></div>
-                        <p class="p-nub-banner">Efficiency</p>
+                        <div class="ani-nub-banner">{{ __('website.homepage_slider_1.box_3_desc') }}. <span class="numberanimation">{{ __('website.homepage_slider_1.box_3_desc_2') }}</span></div>
+                        <p class="p-nub-banner">{{ __('website.homepage_slider_1.box_3_title') }}</p>
                     </div>
                 </div>
             </div>
@@ -34,70 +34,16 @@
 
 
     </section>
-    <div class="owl-carousel owl-theme banner-green-slider wow bounceInRight" id="banner-green-line" data-wow-duration="3s">
-        <div class="item">
-            <h5>Commercial Air Conditioners</h5>
-        </div>
-        <div class="item">
-            <h5>Home Appliances</h5>
-        </div>
-        <div class="item">
-            <h5>With a Single Touch</h5>
-        </div>
-        <div class="item">
-            <h5>Commercial Air Conditioners</h5>
-        </div>
-        <div class="item">
-            <h5>Home Appliances</h5>
-        </div>
-        <div class="item">
-            <h5>With a Single Touch</h5>
-        </div>
-        <div class="item">
-            <h5>Commercial Air Conditioners</h5>
-        </div>
-        <div class="item">
-            <h5>Home Appliances</h5>
-        </div>
-        <div class="item">
-            <h5>With a Single Touch</h5>
-        </div>
-        <div class="item">
-            <h5>Commercial Air Conditioners</h5>
-        </div>
-        <div class="item">
-            <h5>Home Appliances</h5>
-        </div>
-        <div class="item">
-            <h5>With a Single Touch</h5>
-        </div>
-        <div class="item">
-            <h5>Commercial Air Conditioners</h5>
-        </div>
-        <div class="item">
-            <h5>Home Appliances</h5>
-        </div>
-        <div class="item">
-            <h5>With a Single Touch</h5>
-        </div>
-        <div class="item">
-            <h5>Commercial Air Conditioners</h5>
-        </div>
-        <div class="item">
-            <h5>Home Appliances</h5>
-        </div>
-        <div class="item">
-            <h5>With a Single Touch</h5>
-        </div>
-    </div>
+    
+   @include('frontend.layouts.includes.common_slider_1')
 
     <section class="logo-list-section">
         <div class="container">
             <div class="row">
                 <div class="col-xl-6 wow fadeInLeft">
                     <div class="section-heading">
-                        <h5>Quick Access</h5>
-                        <h2>OUR TRUSTED BRANDS</h2>
+                        <h5>{{ __('website.homepage_brand_section.button') }}</h5>
+                        <h2>{{ __('website.homepage_brand_section.title') }}</h2>
                     </div>
                 </div>
                 <div class="col-xl-6 wow fadeInRight">
@@ -115,17 +61,17 @@
             <div class="row mb-4 wow fadeInUpBig">
                 <div class="col-xl-8 m-auto">
                     <div class="section-heading text-center">
-                        <h5>Quick Access</h5>
-                        <h2>Find Your Perfect Solution <br> Explore Our Wide Range of Products.</h2>
+                        <h5>{{ __('website.homepage_product_section_1.title') }}</h5>
+                        <h2>{!! __('website.homepage_product_section_1.desc') !!}</h2>
                     </div>
                 </div>
             </div>
             <ul class="nav nav-pills home-tab-main mb-5 wow fadeInUpBig" id="pills-tab" role="tablist">
                 @if($airConditionProducts->count() > 0)
-                    <button class="nav-link active" id="home_pro_tab_1-tab" data-bs-toggle="pill" data-bs-target="#home_pro_tab_1" type="button" role="tab" aria-controls="home_pro_tab_1" aria-selected="true">Air Conditioner</button>
+                    <button class="nav-link active" id="home_pro_tab_1-tab" data-bs-toggle="pill" data-bs-target="#home_pro_tab_1" type="button" role="tab" aria-controls="home_pro_tab_1" aria-selected="true">{{ __('website.homepage_product_section_1.category_1') }}</button>
                 @endif 
                     @if($homeApplianceProducts->count() > 0)
-                    <button class="nav-link {{ $airConditionProducts->count() == 0 ? 'active' : ''}}" id="home_pro_tab_2-tab" data-bs-toggle="pill" data-bs-target="#home_pro_tab_2" type="button" role="tab" aria-controls="home_pro_tab_2" aria-selected="false">Home Appliances</button>
+                    <button class="nav-link {{ $airConditionProducts->count() == 0 ? 'active' : ''}}" id="home_pro_tab_2-tab" data-bs-toggle="pill" data-bs-target="#home_pro_tab_2" type="button" role="tab" aria-controls="home_pro_tab_2" aria-selected="false">{{ __('website.homepage_product_section_1.category_2') }}</button>
                 @endif            
             </ul>
             <div class="tab-content" id="pills-tabContent">
@@ -139,7 +85,7 @@
                                     <div class="product-body">
                                         <h3>{{ $product->product_name_en }}</h3>
                                         <p>{{ $product->product_description_en }}</p>
-                                        <a href="#">See More</a>
+                                        <a href="#">{{ __('website.homepage_product_section_1.button') }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -157,7 +103,7 @@
                                 <div class="product-body">
                                     <h3>{{ $product->product_name_en }}</h3>
                                     <p>{{ $product->product_description_en }}</p>
-                                    <a href="#">See More</a>
+                                    <a href="#">{{ __('website.homepage_product_section_1.button') }}</a>
                                 </div>
                             </div>
                         </div>
@@ -176,13 +122,13 @@
         <img class="homeslider-img wow fadeIn" src="{{ asset('assets-frontend/images/home-slider-bg.png') }}" width="100%" alt="slider BG">
 
         <div class="section-heading text-center wow fadeInUpBig" data-wow-delay="1s">
-            <h5>Best Selling Product</h5>
-            <h2>Best Sellers In Home Appliances</h2>
+            <h5>{{ __('website.homepage_product_section_2.title') }}</h5>
+            <h2>{{ __('website.homepage_product_section_2.desc') }}</h2>
         </div>
 
         @if($homeApplianceBestSellerProducts->count() > 5)
         <div class="home-drag-btn wow zoomInDown" data-wow-delay="0.5s">
-            <i class="fa-regular fa-arrow-left-long"></i>DRAG<i class="fa-regular fa-arrow-right-long"></i>
+            <i class="fa-regular fa-arrow-left-long"></i>{{ __('website.homepage_product_section_2.dragbtn') }}<i class="fa-regular fa-arrow-right-long"></i>
         </div>
         @endif
         <div class="owl-carousel owl-theme mt-4 home-product-slider wow rollIn" id="home-product-slider">
@@ -190,16 +136,16 @@
             <div class="item">
                 <div class="home-slider-item">
                     <h4>{{ $product->product_name_en }}</h4>
-                    <span>Best Seller</span>
+                    <span>{{ __('website.homepage_product_section_2.title') }}</span>
                     <img src="{{ Storage::url($product->image) }}" alt="Product Image">
-                    <a href="#">Learn More</a>
+                    <a href="#">{{ __('website.homepage_product_section_2.button') }}</a>
                 </div>
             </div>
             @endforeach
         </div>
 
         <div class="mt-1 text-center wow zoomInUp">
-            <a class="cutome-btn" href="#">Learn More</a>
+            <a class="cutome-btn" href="#">{{ __('website.homepage_product_section_2.button') }}</a>
         </div>
 
     </section>
@@ -208,8 +154,8 @@
     <section>
         <div class="container wow zoomIn">
             <div class="section-heading text-center">
-                <h5>About Us</h5>
-                <h2>Your Partner in Comfort and Efficiency</h2>
+                <h5>{{ __('website.homepage_aboutus.title') }}</h5>
+                <h2>{{ __('website.homepage_aboutus.tagline') }}</h2>
             </div>
             <div class="video-banner mt-4">
                 <img src="{{ asset('assets-frontend/images/video-banner.png') }}" alt="Video Banner">
@@ -219,10 +165,10 @@
             </div>
             <div class="row mt-5">
                 <div class="col-md-8">
-                    <p class="p-grey-color">One of the largest companies in the air conditioning and home appliances sector, and the exclusive distributor of MIDEA air conditioners and BEKO home appliances in the Kingdom of Saudi Arabia.</p>
+                    <p class="p-grey-color">{{ __('website.homepage_aboutus.desc') }}</p>
                 </div>
                 <div class="col-md-4 v-bb-btn-div">
-                    <button class="cutome-btn" data-bs-toggle="modal" data-bs-target="#videomodal">Watch Video</buttom>
+                    <button class="cutome-btn" data-bs-toggle="modal" data-bs-target="#videomodal">{{ __('website.homepage_aboutus.link') }}</buttom>
                 </div>
             </div>
         </div>
@@ -234,10 +180,10 @@
             <div class="row">
                 <div class="col-lg-3 wow fadeInLeftBig">
                     <div class="section-heading">
-                        <h5>Best Selling Product</h5>
-                        <h2>Featured Air Conditioners</h2>
+                        <h5>{{ __('website.homepage_product_section_3.title') }}</h5>
+                        <h2>{{ __('website.homepage_product_section_3.desc') }}</h2>
                     </div>
-                    <a class="cutome-btn" href="#">Learn More</a>
+                    <a class="cutome-btn" href="#">{{ __('website.homepage_product_section_3.button') }}</a>
                 </div>
                 <div class="col-lg-1 col-xl-3"></div>
                 <div class="col-lg-8 col-xl-6 pe-0 wow fadeInRightBig">
@@ -248,7 +194,7 @@
                             <img src="{{ Storage::url($product->image) }}" alt="Commercial Devices Image">
                             <h4>{{ $product->product_name_en }}</h4>
                             <p>{{ $product->product_description_en }}</p>
-                            <a href="#">Learn More</a>
+                            <a href="#">{{ __('website.homepage_product_section_3.button') }}</a>
                         </div>
                         @endforeach
                     </div>
@@ -300,61 +246,61 @@
             <div class="row">
                 <div class="col-lg-5 col-xl-3 wow fadeInLeftBig">
                     <div class="section-heading">
-                        <h5>Testimonials</h5>
-                        <h2>What they Say about us</h2>
+                        <h5>>{{ __('website.homepage_testimonials.title') }}</h5>
+                        <h2>{{ __('website.homepage_testimonials.tagline') }}</h2>
                     </div>
                 </div>
                 <div class="col-lg-1 col-xl-3"></div>
                 <div class="col-lg-6 col-xl-6 wow fadeInRightBig">
-                    <p class="testim-h-p">Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.</p>
-                    <a class="cutome-btn" href="#">Learn More</a>
+                    <p class="testim-h-p">{{ __('website.homepage_testimonials.desc') }}</p>
+                    <a class="cutome-btn" href="#">{{ __('website.homepage_testimonials.button') }}</a>
                 </div>
             </div>
 
             <div class="row g-5 home-testi-list ">
-                <div class="test-testi-h animate-this wow zoomInUp" data-wow-duration="3s">Testimonials</div>
+                <div class="test-testi-h animate-this wow zoomInUp" data-wow-duration="3s">{{ __('website.homepage_testimonials.title') }}</div>
                 <div class="col-lg-4 wow fadeInLeftBig">
                     <div class="testi-box">
-                        <h4>Amazing Product!</h4>
-                        <p>“Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.”</p>
+                        <h4>{{ __('website.homepage_testimonials.item_1.title') }}</h4>
+                        <p>“{{ __('website.homepage_testimonials.item_1.desc') }}”</p>
                         <div>
-                            <img src="{{ asset('assets-frontend/images/testi-pro-1.png') }}" alt="Testimonial Profile Image"> John David
+                            <img src="{{ asset('assets-frontend/images/testi-pro-1.png') }}" alt="Testimonial Profile Image"> {{ __('website.homepage_testimonials.item_1.author') }}
                         </div> 
                     </div>
                 </div> 
                 <div class="col-lg-4 offset-lg-4 wow fadeInRightBig" data-wow-delay="0.4s">
                     <div class="testi-box">
-                        <h4>Amazing Product!</h4>
-                        <p>“Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.”</p>
+                        <h4>{{ __('website.homepage_testimonials.item_2.title') }}</h4>
+                        <p>“{{ __('website.homepage_testimonials.item_2.desc') }}”</p>
                         <div>
-                            <img src="{{ asset('assets-frontend/images/testi-pro-1.png') }}" alt="Testimonial Profile Image"> John David
+                            <img src="{{ asset('assets-frontend/images/testi-pro-1.png') }}" alt="Testimonial Profile Image"> {{ __('website.homepage_testimonials.item_2.author') }}
                         </div> 
                     </div>
                 </div>
                 <div class="col-lg-4 wow fadeInLeftBig" data-wow-delay="0.2s">
                     <div class="testi-box">
-                        <h4>Amazing Product!</h4>
-                        <p>“Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.”</p>
+                        <h4>{{ __('website.homepage_testimonials.item_3.title') }}</h4>
+                        <p>“{{ __('website.homepage_testimonials.item_3.desc') }}”</p>
                         <div>
-                            <img src="{{ asset('assets-frontend/images/testi-pro-1.png') }}" alt="Testimonial Profile Image"> John David
+                            <img src="{{ asset('assets-frontend/images/testi-pro-1.png') }}" alt="Testimonial Profile Image"> {{ __('website.homepage_testimonials.item_3.author') }}
                         </div> 
                     </div>
                 </div>
                 <div class="col-lg-4 wow fadeInUpBig" data-wow-delay="0.8s">
                     <div class="testi-box">
-                        <h4>Amazing Product!</h4>
-                        <p>“Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.”</p>
+                        <h4>{{ __('website.homepage_testimonials.item_4.title') }}</h4>
+                        <p>“{{ __('website.homepage_testimonials.item_4.desc') }}”</p>
                         <div>
-                            <img src="{{ asset('assets-frontend/images/testi-pro-1.png') }}" alt="Testimonial Profile Image"> John David
+                            <img src="{{ asset('assets-frontend/images/testi-pro-1.png') }}" alt="Testimonial Profile Image"> {{ __('website.homepage_testimonials.item_4.author') }}
                         </div> 
                     </div>
                 </div>
                 <div class="col-lg-4 wow fadeInRightBig" data-wow-delay="0.6s">
                     <div class="testi-box">
-                        <h4>Amazing Product!</h4>
-                        <p>“Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.”</p>
+                        <h4>{{ __('website.homepage_testimonials.item_5.title') }}</h4>
+                        <p>“{{ __('website.homepage_testimonials.item_5.desc') }}”</p>
                         <div>
-                            <img src="{{ asset('assets-frontend/images/testi-pro-1.png') }}" alt="Testimonial Profile Image"> John David
+                            <img src="{{ asset('assets-frontend/images/testi-pro-1.png') }}" alt="Testimonial Profile Image">{{ __('website.homepage_testimonials.item_5.author') }}
                         </div> 
                     </div>
                 </div>

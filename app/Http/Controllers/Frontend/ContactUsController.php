@@ -25,9 +25,9 @@ class ContactUsController extends Controller
                 'message' => 'required|string',
             ]);    
             test::create($request->all());    
-            return redirect()->route('frontend.contact-us')->with('success', 'Contact created successfully.');
+            return redirect()->route('frontend.contact-us',['locale' => app()->getLocale()])->with('success', 'Contact created successfully.');
         }catch(Exception $e){
-            return redirect()->route('frontend.contact-us')->with('error', $e->getMessage());
+            return redirect()->route('frontend.contact-us',['locale' => app()->getLocale()])->with('error', $e->getMessage());
         }
        
     }

@@ -4,13 +4,13 @@
                 <a href="#">
                     <img src="{{ asset('assets-frontend/images/white-logo.png') }}" alt="Logo">
                 </a>
-                <p>A leading company in the field of air conditioners and home appliances in Saudi Arabia.</p>
+                <p>{{ __('website.footer.title') }}</p>
             </div>
             <div class="row">
                 <div class="col-lg-4">
                     <div class="section-heading"> 
-                        <h2>Get In touch With HH Shaker</h2>
-                        <a class="cutome-btn mt-3" href="{{ route('frontend.contact-us') }}">Contact Us</a>
+                        <h2>{{ __('website.footer.get_in_touch') }}</h2>
+                        <a class="cutome-btn mt-3" href="{{ route('frontend.contact-us',['locale' => app()->getLocale()]) }}">{{ __('website.footer.button') }}</a>
                     </div>
                     <div class="footer-social">
                         <a href="#">
@@ -40,7 +40,7 @@
                                 <a href="#">All Products </a>
                                 <a href="#">Sales & Support </a>
                                 <a href="#">Service Center</a>
-                                <a href="{{ route('frontend.contact-us') }}">Contact Us</a>
+                                <a href="{{ route('frontend.contact-us',['locale' => app()->getLocale()]) }}">Contact Us</a>
                             </div>
                             <div class="col-xl-4">
                                 <a href="#">Air Conditioners</a>
@@ -61,8 +61,8 @@
                 </div>
             </div>
             <div class="footer-copy-text">
-                <div>© 2024 HH SHAKER for Modern Trading CO. LTD. All Rights Reserved</div>
-                <div>Powered By <a href="#">BOB28 Studio</a></div>
+                <div>© {{ __('website.footer.copy_right') }}</div>
+                <div>{{ __('website.footer.powered_by') }} <a href="#">{{ __('website.footer.powered_by_title') }}</a></div>
             </div>
         </div>
     </footer>

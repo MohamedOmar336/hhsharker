@@ -264,14 +264,16 @@ Route::group(['prefix' => 'admin'], function () {
 // Route::view('/terms-of-service', 'website.terms-of-service')->name('terms');
 // Route::view('/policy', 'website.policy')->name('policy');
 
-Route::get('/', [FrontHomeController::class,'index'])->name('frontend.home');
-Route::get('/about', [AboutController::class,'index'])->name('frontend.about');
-Route::get('/company-founders', [CompanyFounderController::class,'index'])->name('frontend.company-founder');
-Route::get('/contact-us', [FrontContactUsController::class,'index'])->name('frontend.contact-us');
-Route::post('/contact-us/store', [FrontContactUsController::class,'store'])->name('frontend.contact-us.store');
-Route::get('/industry-insights', [IndustryInsightsController::class,'index'])->name('frontend.industry-insights');
-Route::get('/news', [FrontNewsController::class,'index'])->name('frontend.news');
-Route::get('/value-and-vision', [ValueAndVisionController::class,'index'])->name('frontend.value-and-vision');
+Route::group(['prefix' => '{locale}', 'middleware' => 'setWebLocale'], function () {
+    Route::get('/', [FrontHomeController::class,'index'])->name('frontend.home');
+    Route::get('/about', [AboutController::class,'index'])->name('frontend.about');
+    Route::get('/company-founders', [CompanyFounderController::class,'index'])->name('frontend.company-founder');
+    Route::get('/contact-us', [FrontContactUsController::class,'index'])->name('frontend.contact-us');
+    Route::post('/contact-us/store', [FrontContactUsController::class,'store'])->name('frontend.contact-us.store');
+    Route::get('/industry-insights', [IndustryInsightsController::class,'index'])->name('frontend.industry-insights');
+    Route::get('/news', [FrontNewsController::class,'index'])->name('frontend.news');
+    Route::get('/value-and-vision', [ValueAndVisionController::class,'index'])->name('frontend.value-and-vision');
+});
 
 Route::get('/test/create', [ContactUsController::class, 'create'])->name('test.create');
 Route::post('/test', [ContactUsController::class, 'store'])->name('test.store');

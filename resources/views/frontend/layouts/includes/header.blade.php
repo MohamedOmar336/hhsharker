@@ -5,7 +5,7 @@
     <header class="header">
         <div class="container header-container">
             <nav class="navbar navbar-expand-xl ">
-                <a class="header-logo" href="{{ route('frontend.home') }}">
+                <a class="header-logo" href="{{ route('frontend.home',['locale' => app()->getLocale()]) }}">
                     <img src="{{ asset('assets-frontend/images/white-logo.png') }}" alt="Logo">
                 </a>
                 <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,14 +17,14 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav m-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('frontend.home') }}">Home</a>
+                            <a class="nav-link active" href="{{ route('frontend.home',['locale' => app()->getLocale()]) }}">{{ __('website.header_menu.home') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('frontend.company-founder') }}">Company</a>
+                            <a class="nav-link" href="{{ route('frontend.company-founder',['locale' => app()->getLocale()]) }}">{{ __('website.header_menu.company') }}</a>
                         </li>
                         <li class="nav-item dropdown dropdown-div">
                             <a class="nav-link dropdown-toggle" href="#" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Air Conditioner
+                            {{ __('website.header_menu.air_conditioner') }}
                             </a>
                             <ul class="dropdown-menu">
                                 <div class="drop-innter-div">
@@ -35,7 +35,7 @@
                         </li>
                         <li class="nav-item megamenu">
                             <a class="nav-link dropdown-toggle" href="#">
-                                Home Appliances
+                            {{ __('website.header_menu.home_appliances') }}
                             </a>
                             <div class="megamenu-main-div">
                                 <div class="megamenu-body ">
@@ -93,18 +93,18 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
-                                Media Center
+                            {{ __('website.header_menu.media_center') }}
                             </a>
                         </li>
                     </ul>
                     <div class="h-button-list">
                         <div class="dropdown flag-dropdown">
-                            <a href="#" class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="{{ asset('assets-frontend/images/en-flag.svg') }}" alt="EN Flag"> EN
+                            <a href="{{ route('frontend.home',['locale' => (app()->getLocale() == 'en' ? 'ar' : 'en')]) }}" class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                               <img src=" {{ app()->getLocale() == 'en' ? asset('assets-frontend/images/en-flag.svg') : asset('assets-frontend/images/ar-flag.svg') }}" alt="{{ strtoupper(app()->getLocale()) }} Flag"> {{ strtoupper(app()->getLocale()) }}
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a class="dropdown-item" href="#"><img src="{{ asset('assets-frontend/images/ar-flag.svg') }}" alt="AR Flag"> AR</a>
+                                    <a class="dropdown-item" href="{{ route('frontend.home',['locale' => (app()->getLocale() == 'en' ? 'ar' : 'en')]) }}"> <img src=" {{ app()->getLocale() == 'en' ? asset('assets-frontend/images/ar-flag.svg') : asset('assets-frontend/images/en-flag.svg') }}" alt="{{ strtoupper(app()->getLocale()) }} Flag"> {{ app()->getLocale() == 'en' ? strtoupper('ar') : strtoupper('en') }}</a> 
                                 </li>
                             </ul>
                         </div>
@@ -121,7 +121,7 @@
                                 </svg>
                             </span>
                         </button>
-                        <a href="{{ route('frontend.contact-us') }}" type="button" class="btn header-btn">Contact Us</a>
+                        <a href="{{ route('frontend.contact-us',['locale' => app()->getLocale()]) }}" type="button" class="btn header-btn"> {{ __('website.header_menu.contact_us') }}</a>
                     </div>
                 </div>
             </nav>
