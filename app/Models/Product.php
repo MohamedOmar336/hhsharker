@@ -11,52 +11,67 @@ class Product extends Model
 
     protected $fillable = [
         'type',
-        'product_name_ar',
         'product_name_en',
-        'product_description_ar',
-        'product_description_en',
-        'category_id',
-        'subcategory_id',
+        'product_name_ar',
         'model_number',
-        'status',
-        'catalog',
-        'image',
+        'product_option_title',
+        'product_option_list',
+        'main_option',
+        'feature_title_en',
+        'feature_description_en',
+        'feature_icon_en',
+        'feature_title_ar',
+        'feature_description_ar',
+        'feature_icon_ar',
         'characteristics_en',
+        'characteristics_description_en',
+        'characteristics_icon_en',
         'characteristics_ar',
-        'optional_features_ar',
-        'optional_features_en',
+        'characteristics_description_ar',
+        'characteristics_icon_ar',
+        'technical_specification',
+        'saso',
+        'product_image',
+        'group',
+        'category',
+        'sub_category',
+        'child',
+        'sub_child',
+        'status',
         'best_selling',
         'featured',
-        'recommended',
-        'hp_dimensions_volume_en',
-        'hp_dimensions_volume_ar',
-        'color',
-        'power_supply',
-        'type_freon',
-        'technical_specifications',
-        'saso_certificate',
+        'recommened',
+        'title_tag_en',
+        'title_tag_ar',
+        'meta_description_en',
+        'meta_description_ar',
+        'product_schema_en',
+        'product_schema_ar',
     ];
 
     protected $casts = [
+        'product_option_list' => 'array',
         'characteristics_en' => 'json',
         'characteristics_ar' => 'json',
+        'product_schema_en' => 'json',
+        'product_schema_ar' => 'json',
         'best_selling' => 'boolean',
         'featured' => 'boolean',
-        'recommended' => 'boolean',
+        'recommened' => 'boolean',
     ];
 
     public function category()
     {
-        return $this->belongsTo(Category::class, 'category_id');
+        return $this->belongsTo(Category::class, 'category');
     }
 
     public function subcategory()
     {
-        return $this->belongsTo(Category::class, 'subcategory_id');
+        return $this->belongsTo(Category::class, 'sub_category');
     }
 
     public function characteristics()
     {
-        return $this->hasMany(Characteristic::class, 'product_id');
+        return $this->hasMany(Characteristic::class, 'id');
     }
 }

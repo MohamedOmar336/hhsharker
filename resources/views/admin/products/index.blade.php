@@ -72,8 +72,6 @@
                         <th scope="col">{{ __('general.attributes.image') }}</th>
                         <th scope="col">{{ __('general.attributes.name_ar') }}</th>
                         <th scope="col">{{ __('general.attributes.name_en') }}</th>
-                        <th scope="col">{{ __('general.attributes.description_ar') }}</th>
-                        <th scope="col">{{ __('general.attributes.description_en') }}</th>
                         <th scope="col">{{ __('general.attributes.state') }}</th>
                         <th scope="col">{{ __('general.attributes.category') }}</th>
                         <th style="width: 10%;">{{ __('general.attributes.actions') }}</th>
@@ -82,12 +80,10 @@
                 @foreach ($records as $record)
                     <tr class="table-body">
                         <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
-                        <td><img src="{{ $record->image ? asset('images/' . $record->image) : asset('assets-admin/images/no_image.png') }}"
+                        <td><img src="{{ $record->product_image ? asset('images/' . $record->product_image) : asset('assets-admin/images/no_image.png') }}"
                             alt="{{ $record->product_name_ar }}" width="50"></td>
                         <td>{{ $record->product_name_ar }}</td>
                         <td>{{ $record->product_name_en }}</td>
-                        <td style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ $record->product_description_ar }}</td>
-                        <td style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ $record->product_description_en }}</td>
                         <td>{{ $record->status }}</td>
                         <td>{{ $record->category ? $record->category->name_en : __('general.uncategorized') }}</td>
                         <td>
