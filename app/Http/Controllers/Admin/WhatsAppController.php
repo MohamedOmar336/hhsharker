@@ -29,11 +29,9 @@ class WhatsAppController extends Controller
 
     public function chat(){
 
-        $whatsapps = WhatsAppContact::with('messages' , 'lastMessage')->get();
-
         $contacts = Contact::all();
 
-        return  view('admin.chat.whatsapp' , compact('whatsapps' , 'contacts'));
+        return  view('admin.chat.whatsapp' , compact( 'contacts'));
     }
 
     public function sendMessage(Request $request)

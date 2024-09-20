@@ -177,8 +177,8 @@
                                         <i class="ri-search-line search-icon font-size-18"></i>
                                     </span>
                                     <input dir="auto" type="text" class="form-control bg-light"
-                                        placeholder="Search messages or users" aria-label="Search messages or users"
-                                        aria-describedby="basic-addon1">
+                                        placeholder="Search users" aria-label="Search users"
+                                        aria-describedby="basic-addon1" id="search-input">
                                 </div>
                             </div> <!-- Search Box-->
                         </div> <!-- .p-4 -->
@@ -186,19 +186,16 @@
                         <!-- Start user status -->
                         <div class="px-4 pb-4" dir="ltr">
 
-                            <div class="owl-carousel owl-theme" id="user-status-carousel">
+                            <div class="owl-carousel owl-theme" >
                                 @foreach ($contacts as $contact)
                                     <div class="item">
                                         <a href="#" class="user-status-box">
                                             <div class="avatar-xs mx-auto d-block chat-user-img online">
-                                                <span
-                                                    class="avatar-title rounded-circle bg-primary-subtle text-primary">
+                                                <span class="avatar-title rounded-circle bg-primary-subtle text-primary">
                                                     {{ strtoupper($contact->name[0]) }}
-                                                    <!-- Displays the first letter of the name, capitalized -->
                                                 </span>
                                                 <span class="user-status"></span>
                                             </div>
-
                                             <h5 class="font-size-13 text-truncate mt-3 mb-1">{{ $contact->name }}</h5>
                                         </a>
                                     </div>
@@ -212,39 +209,8 @@
                         <div class="">
                             <h5 class="mb-3 px-3 font-size-16">{{ __('general.attributes.recent') }}</h5>
                             <div class="chat-message-list px-2" data-simplebar>
-                                <ul class="list-unstyled chat-list chat-user-list">
-                                    @foreach ($contacts as $contact)
-                                        <li>
-                                            <a href="#" class="whatsapp"
-                                                data-whatsapp-id="{{ $contact->id }}"
-                                                data-user-name="{{ $contact->name }}"
-                                                data-user-email="{{ $contact->email }}" data-user-status="Active"
-                                                data-user-image="{{ asset('storage/' . $contact->image) }}"
-                                                data-user-location="{{ $contact->address }}"
-                                                data-last-interaction="{{ $contact->last_interaction }}">
-                                                <div class="d-flex">
-                                                    <div class="chat-user-img align-self-center online me-3 ms-0">
-                                                        <div class="avatar-xs">
-                                                            <span
-                                                                class="avatar-title rounded-circle bg-primary-subtle text-primary">
-                                                                {{ strtoupper($contact->name[0]) }}
-                                                                <!-- Displays the first letter of the name, capitalized -->
-                                                            </span>
-                                                        </div>
-                                                        <span class="user-status"></span>
-                                                    </div>
-                                                    <div class="flex-grow-1 overflow-hidden">
-                                                        <h5 class="text-truncate font-size-15 mb-1 user-name">
-                                                            {{ $contact->name }}</h5>
-                                                        <p class="chat-user-message text-truncate mb-0 phone-number">
-                                                            {{ $contact->phone }} </p>
-                                                    </div>
-                                                    <div class="font-size-11">12/07</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    @endforeach
-
+                                <ul class="list-unstyled chat-list chat-user-list" id="user-status-carousel1">
+                                    @include('admin.partials.contacts', ['contacts' => $contacts])
                                 </ul>
                             </div>
                         </div>
@@ -299,7 +265,7 @@
                                             <div class="dropdown-menu p-0 dropdown-menu-end dropdown-menu-md">
                                                 <div class="search-box p-2">
                                                     <input dir="auto" type="text" class="form-control bg-light border-0"
-                                                        placeholder="Search..">
+                                                        placeholder="Search.." id="messageSearch">
                                                 </div>
                                             </div>
                                         </div>
@@ -574,6 +540,24 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
         <script>
 
+
+            $('#search-input').on('keyup', function() {
+                var value = $(this).val().toLowerCase();
+                $('.chat-list .whatsapp').filter(function() {
+                    $(this).toggle($(this).data('user-name').toLowerCase().indexOf(value) > -1);
+                });
+            });
+
+            $('#messageSearch').on('keyup', function() {
+                var value = $(this).val().toLowerCase();
+                $('#append-messages .messageContent').each(function() {
+                    // Check if the text of the message includes the search value
+                    var isVisible = $(this).text().toLowerCase().indexOf(value) > -1;
+                    // Show or hide the entire list item based on the search
+                    $(this).closest('li').toggle(isVisible);
+                });
+            });
+
             var whatAppId = $('.whatsapp').first().data('whatsapp-id');
             // Initialize Firebase
             firebase.initializeApp({
@@ -589,14 +573,13 @@
                 firebase.database().ref('/path/to/messages/{{ $contact->id }}').on('child_added', function(snapshot) {
                     var message = snapshot.val();
                     if (whatAppId == message.contact_id) {
-                        console.log(message , 55555555555); // Log the message to debug
                         var timeAgo = moment(message.timestamp).fromNow(); // Assuming `timestamp` is stored correctly
                         var media = `<li>
                                         <div class="conversation-list">
                                             <div class="user-chat-content">
                                                 <div class="ctext-wrap">
                                                     <div class="ctext-wrap-content">
-                                                        <p dir="auto" class="mb-0">
+                                                        <p dir="auto" class="mb-0 messageContent">
                                                             ${message.message}
                                                         </p>
                                                         <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">${timeAgo}</span></p>
@@ -698,7 +681,7 @@
                                         <div class="user-chat-content">
                                             <div class="ctext-wrap">
                                                 <div class="ctext-wrap-content">
-                                                    <p dir="auto" class="mb-0">${message.message}</p>
+                                                    <p dir="auto" class="mb-0 messageContent">${message.message}</p>
                                                     <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">${timeAgo}</span></p>
                                                 </div>
                                             </div>
@@ -710,7 +693,7 @@
                                         <div class="user-chat-content">
                                             <div class="ctext-wrap">
                                                 <div class="ctext-wrap-content">
-                                                    <p dir="auto" class="mb-0">${message.message}</p>
+                                                    <p dir="auto" class="mb-0 messageContent">${message.message}</p>
                                                     <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">${timeAgo}</span></p>
                                                 </div>
                                             </div>
@@ -775,7 +758,7 @@
                                     <div class="user-chat-content">
                                         <div class="ctext-wrap">
                                             <div class="ctext-wrap-content">
-                                                <p dir="auto" class="mb-0">${response.message.message}</p>
+                                                <p dir="auto" class="mb-0 messageContent">${response.message.message}</p>
                                                 <p class="chat-time mb-0">
                                                     <i class="ri-time-line align-middle"></i>
                                                     <span class="align-middle">${timeAgo}</span>
@@ -822,7 +805,7 @@
                                 `<div class="user-chat-content">
                                         <div class="ctext-wrap">
                                             <div class="ctext-wrap-content">
-                                                <p dir="auto" class="mb-0">
+                                                <p dir="auto" class="mb-0 messageContent">
                                                     ${response.message.message}
                                                 </p>
                                                 <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i>
@@ -841,6 +824,7 @@
                 document.getElementById('triggerFileUpload').addEventListener('click', function() {
                     document.getElementById('fileInput').click(); // Trigger the hidden file input
                 });
+
 
             });
         </script>
