@@ -244,6 +244,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('whatsapp-templates', WhatsAppTemplateController::class);
 
         Route::post('whatsapp-templates/{id}/send', [WhatsAppTemplateController::class, 'sendTemplate']);
+
+
     });
 });
 
@@ -267,3 +269,5 @@ Route::post('/whatsapp-webhook', [WhatsAppController::class, 'receiveMessage']);
 
 Route::post('/whatsapp-broadcast', [WhatsAppController::class, 'sendBroadcastMessage'])->name('whatsapp.broadcast.post');
 Route::get('/whatsapp-broadcast', [WhatsAppController::class, 'broadcastMessage'])->name('whatsapp.broadcast.index');
+
+Route::post('/upload-file', [WhatsAppController::class, 'uploadFile'])->name('upload.file');

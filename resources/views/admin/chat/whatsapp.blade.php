@@ -607,7 +607,7 @@
                     e.preventDefault();
 
                     whatAppId = $(this).data('whatsapp-id');
-                    console.log(whatAppId , 8888888888888888888);
+
                     var userName = $(this).data('user-name');
                     var userEmail = $(this).data('user-email');
                     var userStatus = $(this).data('user-status');
@@ -635,13 +635,14 @@
 
                     // Update the avatar title dynamically with the first letter of the name
                     $('.user-profile-sidebar .avatar-title').text(userName[0].toUpperCase());
+
                     handleWhatsAppChat($(this).data('whatsapp-id'), $(this).find('.phone-number').text());
 
                 });
 
                 function handleWhatsAppChat(whatsAppRoomId, groupName) {
                     // assign the phone number to the chat room
-                    this.phoneNumber = groupName;
+                    phoneNumber = groupName;
 
                     var chatHeader = $('.user-profile-show');
                     var chatBody = $('#append-messages');
@@ -657,13 +658,13 @@
                 }
 
                 function listenForWhatsAppMessages(roomId) {
-                    console.log(this.phoneNumber);
+                    // console.log(phoneNumber);
                     $.ajax({
                         url: '{{ route('whatsapp.room') }}', // Ensure this route is correctly defined in your Laravel routes
                         method: 'GET',
                         data: {
                             roomId: roomId,
-                            phoneNumber: this.phoneNumber,
+                            phoneNumber: phoneNumber,
                             _token: '{{ csrf_token() }}' // Correct way to include CSRF token in a Laravel project
                         },
                         success: function(response) {
@@ -740,7 +741,7 @@
                         url: '{{ route('send-whatsapp-message') }}',
                         method: 'POST',
                         data: {
-                            phone: this.phoneNumber,
+                            phone: phoneNumber,
                             message: messageText,
                             _token: '{{ csrf_token() }}'
                         },
@@ -749,8 +750,7 @@
                             console.log('AJAX success', response);
                             var timeAgo = moment(response.message.updated_at)
                                 .fromNow(); // Make sure you convert the time correctly
-                            var media = `
-                            <li class="right">
+                            var media = `<li class="right">
                                 <div class="conversation-list">
                                     <div class="chat-avatar">
                                         <img src="{{ asset('images/' . auth()->user()->image) }}" alt="">
@@ -794,7 +794,7 @@
                         url: '{{ route('whatsapp.template') }}',
                         method: 'POST',
                         data: {
-                            phone: this.phoneNumber,
+                            phone: phoneNumber,
                             _token: '{{ csrf_token() }}'
                         },
                         success: function(response) {
@@ -821,10 +821,95 @@
                     });
                 }
 
-                document.getElementById('triggerFileUpload').addEventListener('click', function() {
-                    document.getElementById('fileInput').click(); // Trigger the hidden file input
+                // When the button is clicked, trigger the file input
+                $('#triggerFileUpload').click(function() {
+                    $('#fileInput').click();
                 });
 
+
+                    // Function to handle the file upload
+                function uploadFile() {
+                    var fileInput = document.getElementById('fileInput');
+                    var file = fileInput.files[0]; // Get the file from the input
+
+                    if (!file) return; // If no file is selected, do nothing
+
+                    var formData = new FormData();
+                    formData.append('attachment', file); // Attach the file in formData under 'attachment' key
+                    formData.append('_token', '{{ csrf_token() }}'); // Add CSRF token
+                    formData.append('phone', phoneNumber); // Assume phoneNumber is defined
+
+                    $.ajax({
+                        url: "{{ route('upload.file') }}", // Laravel route
+                        type: "POST",
+                        data: formData,
+                        processData: false, // Important: tell jQuery not to process the data
+                        contentType: false, // Important: tell jQuery not to set contentType
+                        success: function(response) {
+                            console.log('File uploaded and message sent successfully', response);
+                            // Dynamically add the message to the chat
+                            if (response.success) {
+                                var chatHTML = `
+                                    <li class="right">
+                                        <div class="conversation-list">
+                                            <div class="chat-avatar">
+                                                <img src="{{ asset('images/' . auth()->user()->image) }}" alt="">
+                                            </div>
+                                            <div class="user-chat-content">
+                                                <div class="ctext-wrap">
+                                                    <div class="ctext-wrap-content">
+                                                        <div class="card p-2 mb-2">
+                                                            <div class="d-flex flex-wrap align-items-center attached-file">
+                                                                <div class="avatar-sm me-3 ms-0 attached-file-avatar">
+                                                                    <div class="avatar-title bg-primary-subtle text-primary rounded font-size-20">
+                                                                        <i class="ri-file-text-fill"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="flex-grow-1 overflow-hidden">
+                                                                    <div class="text-start">
+                                                                        <h5 class="font-size-14 text-truncate mb-1">${response.filename}</h5>
+                                                                        <p class="text-muted text-truncate font-size-13 mb-0">${response.fileSize}</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="ms-4 me-0">
+                                                                    <div class="d-flex gap-2 font-size-20 d-flex align-items-start">
+                                                                        <div>
+                                                                            <a download="${response.filename}" href="${response.fileUrl}" class="fw-medium">
+                                                                                <i class="ri-download-2-line"></i>
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="dropdown">
+                                                                            <a class="dropdown-toggle text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                                <i class="ri-more-fill"></i>
+                                                                            </a>
+                                                                            <div class="dropdown-menu dropdown-menu-end">
+                                                                                <a class="dropdown-item" href="#">Share <i class="ri-share-line float-end text-muted"></i></a>
+                                                                                <a class="dropdown-item" href="#">Delete <i class="ri-delete-bin-line float-end text-muted"></i></a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">10:16</span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>`;
+                                // Append new message to the chat container
+                                $('#append-messages').append(chatHTML); // Make sure to have a container with id 'append-messages'
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Failed to upload file', error);
+                            alert('Failed to upload file: ' + error);
+                        }
+                    });
+                }
+
+                // Event listener for file input change
+                $('#fileInput').change(uploadFile);
 
             });
         </script>
