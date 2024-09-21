@@ -87,7 +87,7 @@ class TicketController extends Controller
         $request->validate([
             'Title' => 'required|string|max:255',
             'Description' => 'nullable|string',
-            'Note' => 'nullable|string', // Validation for note
+            'note' => 'nullable|string', // Validation for note
             'priority' => 'required|exists:ticket_priority_settings,id',
             'status' => 'required|exists:ticket_status_settings,id',
             'AssignedTo' => 'required|exists:users,id',
@@ -98,7 +98,7 @@ class TicketController extends Controller
         $ticket = Ticket::create([
             'Title' => $request->Title,
             'Description' => $request->Description,
-            'Note' => $request->Note, // Storing the note
+            'note' => $request->note, // Storing the note
             'PriorityID' => $request->priority,
             'StatusID' => $request->status,
             'AssignedTo' => $request->AssignedTo,
@@ -152,7 +152,7 @@ class TicketController extends Controller
         $request->validate([
             'Title' => 'required|string|max:255',
             'Description' => 'nullable|string',
-            'Note' => 'nullable|string', // Validation for note
+            'note' => 'nullable|string', // Validation for note
             'priority' => 'required|exists:ticket_priority_settings,id',
             'status' => 'required|exists:ticket_status_settings,id',
             'AssignedTo' => 'required|exists:users,id',
@@ -163,7 +163,7 @@ class TicketController extends Controller
         $ticket->update([
             'Title' => $request->Title,
             'Description' => $request->Description,
-            'Note' => $request->Note, // Updating the note
+            'note' => $request->note, // Updating the note
             'PriorityID' => $request->priority,
             'StatusID' => $request->status,
             'AssignedTo' => $request->AssignedTo,
