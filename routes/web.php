@@ -79,7 +79,7 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::post('/smtp-settings', [SmtpSettingsController::class, 'update'])->name('smtp-settings.update');
 
-        Route::get('product/import',  [ProductController::class, 'importForm'])->name('products.import.form');
+        Route::get('product/import', [ProductController::class, 'importForm'])->name('products.import.form');
 
         Route::post('product/import', [ProductController::class, 'import'])->name('products.import');
 
@@ -157,6 +157,7 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::get('/mails', [MailController::class, 'index'])->name('mails.index');
 
+        //  Route::get('/mails/index', [MailController::class, 'index'])->name('mails.index');
         Route::get('/mails/compose', [MailController::class, 'compose'])->name('mails.compose');
 
         Route::post('/mails/send', [MailController::class, 'send'])->name('mails.send');
@@ -236,6 +237,13 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/gmail/compose', [GmailController::class, 'compose'])->name('gmail.compose');
         Route::post('/gmail/send', [GmailController::class, 'send'])->name('gmail.send');
 
+        // Sales emails routes
+        Route::get('/sales/emails/more', [GmailController::class, 'getMoreSalesEmails'])->name('sales.emails.get-more');
+        Route::get('/sales/gmail', [GmailController::class, 'getSalesEmails'])->name('sales.gmail');
+
+        // Support emails routes
+        Route::get('/support/emails/more', [GmailController::class, 'getMoreSupportEmails'])->name('support.emails.get-more');
+        Route::get('/support/gmail', [GmailController::class, 'getSupportEmails'])->name('support.gmail');
         Route::resource('tasks', TaskController::class);
 
 

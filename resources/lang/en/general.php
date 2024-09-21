@@ -453,6 +453,8 @@ return [
     ],
 
     'side' => [
+        'sales_email_list' => 'Sales Email List',
+        'support_email_list' => 'Support Email List',
         'email_list' => 'Email List',
         'Tickets' => 'Tickets',
         'Tickets Overview' => 'Tickets Overview',

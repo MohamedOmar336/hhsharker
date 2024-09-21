@@ -77,6 +77,8 @@
                                                     </th>
                                                     <th>{{ __('general.attributes.change_description') }}
                                                     </th>
+                                                    <th>{{ __('general.attributes.assigned_to') }}
+                                                    </th>
                                                     <th>{{ __('general.attributes.changed_at') }}
                                                     </th>
                                                 </tr><!--end tr-->
@@ -87,6 +89,8 @@
                                                         <td>{{ $history->changedBy->user_name }}
                                                         </td>
                                                         <td>{{  e(strip_tags($history->ChangeDescription)) }}
+                                                        </td>
+                                                        <td>{{ $history->assignedTo->user_name  }}
                                                         </td>
                                                         <td>{{ $history->ChangedAt }}</td>
                                                     </tr>

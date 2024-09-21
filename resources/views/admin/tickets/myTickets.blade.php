@@ -91,7 +91,7 @@
                             <td>
                                 <a href="{{ route('ticket_histories.show_by_ticket', $record->id) }}"
                                     >
-                                    <i data-feather="rotate-ccw"></i>
+                                    <i data-feather="eye"></i>
                                 </a>
                                 <a href="{{ route('tickets.edit', $record->id) }}" class="action-button" data-tooltip="edit">
                                     <i data-feather="edit"></i>
@@ -100,7 +100,7 @@
                                     style="display:inline-block; margin: -10px;" class="delete-form">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn delete-form" >
+                                    <button type="submit" class="btn delete-form" onclick="confirmDelete(event)">
                                         <i data-feather="trash"></i>
                                     </button>
                                 </form>

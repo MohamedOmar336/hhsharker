@@ -111,6 +111,7 @@ class TicketController extends Controller
             'TicketID' => $ticket->id,
             'ChangedBy' => $ticket->CreatedBy,
             'ChangeDescription' => 'Ticket created',
+            'AssignedTo' => $ticket->AssignedTo,
             'ChangedAt' => now()
         ]);
 
@@ -173,14 +174,15 @@ class TicketController extends Controller
 
         TicketHistory::create([
             'TicketID' => $ticket->id,
-            'ChangedBy' => $ticket->CreatedBy,
-            'ChangeDescription' => 'Ticket updated',
+            'ChangedBy' =>auth()->id(), 
+            'ChangeDescription' => $ticket->Description,
+            'AssignedTo' => $ticket->AssignedTo,
             'ChangedAt' => now()
         ]);
 
         Notification::create([
             'type' => 'App\Models\Ticket',
-            'data' => ['message' => 'ticket has been updated', 'link' => route('tickets.my')],
+            'data' => ['message' => 'Ticket assigned to you.', 'link' => route('tickets.my')],
             'notifiable_id' => $request->AssignedTo,
             'notifiable_type' => 'App\Models\User',
         ]);
@@ -272,6 +274,20 @@ class TicketController extends Controller
                 break;
             case 'assigned_to':
                 $ticket->AssignedTo = $request->input('assigned_to');
+                TicketHistory::create([
+                    'TicketID' => $ticket->id,
+                    'ChangedBy' => auth()->id(), 
+                    'ChangeDescription' =>  'Ticket updated',
+                    'AssignedTo' => $ticket->AssignedTo,
+                    'ChangedAt' => now()
+                ]);
+
+                Notification::create([
+                    'type' => 'App\Models\Ticket',
+                    'data' => ['message' => 'Ticket assigned to you.', 'link' => route('tickets.my')],
+                    'notifiable_id' => $ticket->AssignedTo,
+                    'notifiable_type' => 'App\Models\User',
+                ]);
                 break;
             default:
                 return redirect()->back()->with('error', 'Invalid field');

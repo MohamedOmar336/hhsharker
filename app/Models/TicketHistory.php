@@ -18,6 +18,7 @@ class TicketHistory extends Model
         'TicketID',
         'ChangedBy',
         'ChangeDescription',
+        'AssignedTo',
         'ChangedAt',
     ];
 
@@ -29,5 +30,10 @@ class TicketHistory extends Model
     public function changedBy()
     {
         return $this->belongsTo(User::class, 'ChangedBy');
+    }
+
+    public function assignedTo()
+    {
+        return $this->belongsTo(User::class, 'AssignedTo');
     }
 }
