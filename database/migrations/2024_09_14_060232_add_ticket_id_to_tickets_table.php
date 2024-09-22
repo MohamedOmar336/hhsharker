@@ -12,9 +12,11 @@ class AddTicketIdToTicketsTable extends Migration
      */
     public function up()
     {
-        Schema::table('tickets', function (Blueprint $table) {
-            $table->string('TicketID')->unique()->after('id'); // Add the TicketID column after 'id'
-        });
+        if (!Schema::hasColumn('tickets', 'TicketID')) {
+            Schema::table('tickets', function (Blueprint $table) {
+                $table->string('TicketID')->after('id');
+            });
+        }
     }
 
     /**
@@ -24,8 +26,10 @@ class AddTicketIdToTicketsTable extends Migration
      */
     public function down()
     {
-        Schema::table('tickets', function (Blueprint $table) {
-            $table->dropColumn('TicketID'); // Remove the TicketID column
-        });
+        if (Schema::hasColumn('tickets', 'TicketID')) {
+            Schema::table('tickets', function (Blueprint $table) {
+                $table->dropColumn('TicketID');
+            });
+        }
     }
 }
