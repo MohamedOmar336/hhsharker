@@ -14,6 +14,7 @@ class InsertRolesIntoRolesTable extends Migration
      */
     public function up()
     {
+        DB::table('roles')->truncate();
         // Insert roles into the roles table
         DB::table('roles')->insert([
             [
