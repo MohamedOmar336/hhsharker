@@ -90,7 +90,7 @@
                                                         </td>
                                                         <td>{{  e(strip_tags($history->ChangeDescription)) }}
                                                         </td>
-                                                        <td>{{ $history->assignedTo->user_name  }}
+                                                        <td>{{ isset($history->assignedTo->user_name) ? $history->assignedTo->user_name : null  }}
                                                         </td>
                                                         <td>{{ $history->ChangedAt }}</td>
                                                     </tr>
