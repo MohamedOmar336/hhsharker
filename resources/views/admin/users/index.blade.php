@@ -46,7 +46,7 @@
                             <th scope="col">{{ __('general.attributes.email') }}</th>
                             <th scope="col">{{ __('general.attributes.phone') }}</th>
                             <th scope="col">{{ __('general.attributes.status') }}</th>
-                            <th style="width: 10%;">{{ __('general.attributes.actions') }}</th>
+                            <th style="width: 12%;">{{ __('general.attributes.actions') }}</th>
                         </tr>
                     </x-slot>
 
@@ -57,7 +57,14 @@
                                     alt="" class="rounded-circle thumb-sm me-1">
                                 {{ $record->user_name }}
                             </td>
-                            <td>Administrator</td>
+
+                            <td>
+    @if ($record->role)
+        {{ $record->role->name }}
+    @else
+    Not selected
+    @endif
+</td>
                             <td>{{ $record->email }}</td>
                             <td>{{ $record->phone }}</td>
                             @if ($record->active)
@@ -66,7 +73,10 @@
                                 <td><span class="badge badge-soft-danger">Deactivated</span></td>
                             @endif
                             <td>
-                                <a href="{{ route('users.edit', $record->id) }}" class="action-button" data-tooltip="edit"><i data-feather="edit"></i></a>
+                                <a href="{{ route('users.edit', $record->id) }}"><i data-feather="edit"></i></a>
+                                <form style="display: inline;">
+
+                               </form>
                                 <form action="{{ route('users.destroy', $record->id) }}" method="POST" class="delete-form"
                                     style="display: inline;">
                                     @csrf

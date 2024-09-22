@@ -53,6 +53,9 @@
                         <td>
                             <a href="{{ route('roles.edit', $record->id) }}" class="action-button" data-tooltip="edit"
                             ><i data-feather="edit"></i></a>
+                            <form style="display: inline;">
+                               
+                               </form>
                             <form action="{{ route('roles.destroy', $record->id) }}" method="POST"
                                 style="display: inline;" class="delete-form">
                                 @csrf
@@ -65,7 +68,7 @@
                     </tr>
                 @endforeach
 
-                <x-slot name="createButton">
+                <x-slot name="createButton"    action="{{ route('roles.bulkdelete') }}">
                     <a href="{{ route('roles.create') }}" class="btn btn-outline-light btn-sm px-4">+
                         {{ __('general.actions.new') }}</a>
                 </x-slot>

@@ -7,6 +7,7 @@ use App\Models\Appointment;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Notification;
 
 class AppointmentController extends Controller
 {
@@ -28,8 +29,9 @@ class AppointmentController extends Controller
                 ->orWhere('notes', 'LIKE', "%{$searchTerm}%");
         }
 
-        $records = $query->paginate(500);
+        $totalResults = $query->count();
 
+        $records = $query->latest()->paginate($totalResults);
         return view('admin.appointments.index', compact('records'));
     }
 
@@ -97,6 +99,19 @@ class AppointmentController extends Controller
         $appointment->notes = $request->notes;
         $appointment->save();
 
+        Notification::create([
+            'type' => 'App\Models\Ticket',
+            'data' => ['message' => 'New appointment created', 'link' => route('appointments.myAppointments')],
+            'notifiable_id' => $request->with_user_id,
+            'notifiable_type' => 'App\Models\User',
+        ]); 
+
+        Notification::create([
+            'type' => 'App\Models\Ticket',
+            'data' => ['message' => 'Appointment assigned to you', 'link' => route('appointments.myAppointments')],
+            'notifiable_id' => Auth::id(),
+            'notifiable_type' => 'App\Models\User',
+        ]);
         return redirect()->route('appointments.index')->with('success', 'Appointment created successfully.');
     }
 
@@ -149,6 +164,19 @@ class AppointmentController extends Controller
         $appointment->notes = $request->notes;
         $appointment->save();
 
+        Notification::create([
+            'type' => 'App\Models\Ticket',
+            'data' => ['message' => 'Appointment updated.', 'link' => route('appointments.myAppointments')],
+            'notifiable_id' => Auth::id(),
+            'notifiable_type' => 'App\Models\User',
+        ]); 
+
+        Notification::create([
+            'type' => 'App\Models\Ticket',
+            'data' => ['message' => 'Appointment updated.', 'link' => route('appointments.myAppointments')],
+            'notifiable_id' => $request->with_user_id,
+            'notifiable_type' => 'App\Models\User',
+        ]);
         return redirect()->route('appointments.index')->with('success', 'Appointment updated successfully.');
     }
 
@@ -163,4 +191,26 @@ class AppointmentController extends Controller
         $appointment->delete();
         return redirect()->route('appointments.index')->with('success', 'Appointment deleted successfully.');
     }
+
+    public function bulkDelete(Request $request)
+{
+   // dd($request->all());
+    // Validate that the 'ids' array is present and contains valid appointment IDs
+    $request->validate([
+        'ids' => 'required|array',
+        'ids.*' => 'exists:appointments,id',
+    ]);
+
+    // Retrieve IDs from the request
+    $recordIds = $request->input('ids');
+
+    // Perform the deletion
+    Appointment::whereIn('id', $recordIds)->delete();
+
+    // Delete the selected appointments
+   // Appointment::whereIn('id', $request->ids)->delete();
+
+    return redirect()->route('appointments.index')->with('success', 'Selected appointments deleted successfully.');
+}
+
 }

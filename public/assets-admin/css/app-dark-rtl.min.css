@@ -405,7 +405,7 @@ body.dark-topbar .app-search form .form-control,body.dark-topbar .app-search for
     display:block
 }
 .leftbar-tab-menu .main-menu-inner .navbar-vertical .navbar-nav{
-    padding-right:1rem
+   /* padding-right:1rem*/
 }
 .leftbar-tab-menu .main-menu-inner .navbar-vertical .navbar-nav .nav-link[data-bs-toggle=collapse]:after{
     display:block;

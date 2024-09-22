@@ -114,10 +114,9 @@ class HomeController extends Controller
         $appointments = Appointment::with('user', 'withUser')->orderBy('start_time', 'asc')->limit(5)->get();
 
         $tickets = Ticket::with(['priority', 'status', 'assignedTo', 'createdBy'])
-            ->orderBy('created_at', 'asc')->limit(5) // Adjust order as needed
-            ->get();
-        $tasks = Task::orderBy('created_at', 'asc')->limit(5)
-            ->get();
+        ->orderBy('created_at', 'asc')->limit(5)->get();
+        $tasks = Task::select(['id','title', 'description', 'assigned_to', 'status', 'due_date'])
+        ->with('assignedTo')->orderBy('created_at', 'asc')->limit(5)->get();
 
         // Fetch ticket statistics
         $newTicketsCount = Ticket::whereDate('created_at', now()->today())->count();

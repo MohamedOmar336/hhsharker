@@ -61,6 +61,7 @@ use App\Http\Controllers\Frontend\ContactUsController as FrontContactUsControlle
 Route::get('/admin', function () {
     return view('auth.login');
 })->name('admin.login');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Auth::routes(['verify' => false]);
 
@@ -94,15 +95,15 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::get('/product/export', [ProductController::class, 'export'])->name('products.exports');
 
-        Route::get('/products/bulk-delete', [ProductController::class, 'bulkDelete'])->name('products.bulkdelete');
+        Route::post('/products/bulk-delete', [ProductController::class, 'bulkDelete'])->name('products.bulkdelete');
 
         Route::resource('/users', UserController::class);
 
-        Route::get('/user/bulk-delete', [UserController::class, 'massDestroy'])->name('users.bulkDelete');
+        Route::post('/user/bulk-delete', [UserController::class, 'massDestroy'])->name('users.bulkDelete');
 
         Route::resource('/categories', CategoryController::class);
 
-        Route::get('/categoriess/bulk-delete', [CategoryController::class, 'bulkDelete'])->name('categories.bulk-delete');
+        Route::post('/categoriess/bulk-delete', [CategoryController::class, 'bulkDelete'])->name('categories.bulk-delete');
 
         Route::resource('/blogposts', BlogPostController::class);
 
@@ -132,7 +133,7 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::resource('/tickets', TicketController::class);
 
-        Route::get('/ticket/bulk-delete', [TicketController::class, 'massDestroy'])->name('tickets.bulkDelete');
+        Route::post('/ticket/bulk-delete', [TicketController::class, 'massDestroy'])->name('tickets.bulkDelete');
 
         Route::Resource('/ticket-priorities', TicketPriorityController::class);
 
@@ -260,6 +261,18 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::post('whatsapp-templates/{id}/send', [WhatsAppTemplateController::class, 'sendTemplate']);
 
+
+      Route::post('/ticket-categories/bulk-delete', [TicketCategoryController::class, 'bulkDelete'])->name('ticket_categories.bulkDelete');
+      Route::post('/ticket-statuses/bulk-delete', [TicketStatusController::class, 'bulkDelete'])->name('ticket_statuses.bulkDelete');
+      Route::post('/appointments/bulk-delete', [AppointmentController::class, 'bulkDelete'])->name('appointments.bulkDelete');
+      Route::post('blogposts/bulk-delete', [BlogPostController::class, 'bulkDelete'])->name('blogposts.bulkdelete');
+      Route::post('tags/bulk-delete', [TagController::class, 'bulkDelete'])->name('tags.bulkdelete');
+      Route::post('/roles/bulk-delete', [RolesController::class, 'bulkDelete'])->name('roles.bulkdelete');
+
+      Route::post('/ticket-priorities/bulk-delete', [TicketPriorityController::class, 'bulkDelete'])->name('ticket-priorities.bulkdelete');
+      Route::post('/contacts/bulk-delete', [ContactController::class, 'bulkDelete'])->name('contacts.bulkDelete');
+      Route::post('/groups/bulk-delete', [GroupController::class, 'bulkDelete'])->name('groups.bulkDelete');
+      Route::post('/tasks/bulk-delete', [TaskController::class, 'bulkDelete'])->name('tasks.bulkDelete');
 
     });
 });

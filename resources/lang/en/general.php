@@ -785,6 +785,12 @@ return [
         'enter_description_en' => 'Enter Description (English)',
         'enter_description_ar' => 'Enter Description (Arabic)',
     ],
+    'statuses' => [
+        'pending' => 'Pending',
+        'confirmed' => 'Confirmed',
+        'completed' => 'Completed',
+        'cancelled' => 'Cancelled',
+    ],
     'from' => 'From',
     'date' => 'Date',
     'subject' => 'Subject',

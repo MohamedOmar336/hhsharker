@@ -76,8 +76,8 @@
                 <x-slot name="header">
                     <tr>
                         <th><input type="checkbox" id="select-all"></th>
-                        <th>{{ __('general.attributes.id') }}</th>
-                        <th style="width: 30%;">{{ __('general.attributes.title') }}</th>
+                        <th style="width: 12%;">{{ __('general.attributes.id') }}</th>
+                        <th style="width: 28%;">{{ __('general.attributes.title') }}</th>
                         <th>{{ __('general.attributes.priority') }}</th>
                         <th>{{ __('general.attributes.status') }}</th>
                         <th>{{ __('general.attributes.assigned_to') }}</th>
@@ -87,8 +87,9 @@
                 @foreach ($records as $record)
                     <tr class="table-body">
                         <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
-                        <td>{{ $record->id }}</td>
-                        <td>{{ $record->Title }}</td>
+                        <td>{{ $record->TicketID }}</td>
+                        <form action="{{ route('tickets.update_field', ['id' => $record->id, 'field' => 'Title']) }}" method="POST">
+                        <td>{{ $record->Title }}</td></form>
                         <td>
                             <form
                                 action="{{ route('tickets.update_field', ['id' => $record->id, 'field' => 'priority']) }}"
@@ -137,7 +138,7 @@
                             </form>
                         </td>
                         <td>
-                            <a href="{{ route('ticket_histories.show_by_ticket', $record->id) }}"> <i data-feather="eye"></i></a>
+                            <a class="show_icon" href="{{ route('ticket_histories.show_by_ticket', $record->id) }}"> <i data-feather="eye"></i></a>
                             <a href="{{ route('tickets.edit', $record->id) }}"><i data-feather="edit"></i></a>
                             <form action="{{ route('tickets.destroy', $record->id) }}" method="POST" class="delete-form"
                                 style="display:inline-block; margin: -2px;" class="delete-form">

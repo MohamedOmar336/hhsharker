@@ -26,8 +26,9 @@ class UserController extends Controller
                 ->orWhere('description_en', 'LIKE', "%{$request->search}%");
         }
 
-        $records = $query->paginate(500);
+        $totalResults = $query->count();
 
+    $records = $query->latest()->paginate($totalResults);
         return view("admin.users.index", compact("records"));
     }
 
@@ -62,6 +63,11 @@ class UserController extends Controller
             'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'active' => 'boolean',
         ]);
+
+         // If role_id is null, set it to 'member' (or any default role ID for 'member')
+    if (empty($request->role_id)) {
+        $validatedData['role_id'] = 3; // Adjust this based on how you identify roles
+    }
 
         // Handle image upload if provided
     if ($request->hasFile('image')) {

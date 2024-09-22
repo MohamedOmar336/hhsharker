@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\Notification;
 
 class TaskController extends Controller
 {
@@ -18,8 +19,18 @@ class TaskController extends Controller
                 ->orWhere('status', 'LIKE', "%{$request->search}%");
         }
 
-        $records = $query->paginate(500);
+        // Apply status filter
+    if ($request->has('status') && !empty($request->status)) {
+        $query->where('status', $request->status);
+    }
 
+    // Apply assignedTo filter
+    if ($request->has('assigned_to') && !empty($request->assigned_to)) {
+        $query->where('assigned_to', $request->assigned_to);
+    }
+    $totalResults = $query->count();
+
+    $records = $query->latest()->paginate($totalResults);
         $users = User::all();
         return view('admin.tasks.index', compact('records','users'));
     }
@@ -41,6 +52,13 @@ class TaskController extends Controller
         ]);
 
         Task::create($request->all());
+
+        Notification::create([
+            'type' => 'App\Models\task',
+            'data' => ['message' => 'new task has been created', 'link' => route('tasks.index')],
+            'notifiable_id' => $request->assigned_to,
+            'notifiable_type' => 'App\Models\User',
+        ]);
 
         return redirect()->route('tasks.index')->with('success', 'Task created successfully.');
     }
@@ -67,14 +85,34 @@ class TaskController extends Controller
         ]);
 
         $task->update($request->all());
+        Notification::create([
+            'type' => 'App\Models\task',
+            'data' => ['message' => 'Task updated.', 'link' => route('tasks.index')],
+            'notifiable_id' => $request->assigned_to,
+            'notifiable_type' => 'App\Models\User',
+        ]);
 
         return redirect()->route('tasks.index')->with('success', 'Task updated successfully.');
     }
 
-    public function destroy(Task $task)
+    public function destroy($id)
     {
-        $task->delete();
-
+        $task = Task::findOrFail($id); // Find the task by its ID
+        $task->delete(); // This will delete the task
         return redirect()->route('tasks.index')->with('success', 'Task deleted successfully.');
     }
+
+    public function bulkDelete(Request $request)
+{
+    $request->validate([
+        'ids' => 'required|array', // Validate that 'ids' is an array
+        'ids.*' => 'exists:tasks,id', // Ensure each ID exists in the tasks table
+    ]);
+
+    // Delete each task by ID
+    Task::destroy($request->ids);
+
+    return redirect()->route('tasks.index')->with('success', 'Tasks deleted successfully.');
+}
+
 }

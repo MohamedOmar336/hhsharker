@@ -58,7 +58,7 @@ class MailController extends Controller
         //     });
         // }
     
-        $records = $query->orderBy('created_at', 'desc')->paginate(10);
+        $records = $query->orderBy('created_at', 'desc')->paginate();
     
         return view('admin.mails.index', compact('records'));
     }

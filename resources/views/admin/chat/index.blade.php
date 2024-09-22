@@ -51,7 +51,7 @@
                                                         data-user-image="{{ asset('assets-admin\images\users\user-vector.png') }}"
                                                         alt="user" class="rounded-circle thumb-md" id="imageUser">
                                                 @endif
-                                                <span class="round-10 bg-success"></span>
+                                                <span class="round-10 {{ $user->is_online ? 'bg-success' : 'bg-secondary' }}"></span>
                                             </div><!-- media-left -->
                                             <div class="media-body">
                                                 <div class="d-inline-block">

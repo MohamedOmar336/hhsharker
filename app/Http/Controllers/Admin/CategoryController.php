@@ -22,8 +22,9 @@ class CategoryController extends Controller
         $query->where('name_ar', 'LIKE', "%{$request->search}%")
             ->orWhere('name_en', 'LIKE', "%{$request->search}%");
     }
+    $totalResults = $query->count();
 
-    $records = $query->paginate(500);
+    $records = $query->latest()->paginate($totalResults);
 
     return view('admin.categories.index', compact('records'));
 }

@@ -95,16 +95,25 @@
 
 
                                 <div class="mb-3">
-                                    <label for="status" class="form-label">{{ __('general.attributes.status') }}</label>
-                                    <input id="status" type="text"
-                                        class="form-control @error('status') is-invalid @enderror" name="status"
-                                        value="{{ old('status', 'pending') }}" required>
-                                    @error('status')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
+    <label for="status" class="form-label">{{ __('general.attributes.status') }}</label>
+    <select id="status" class="form-control @error('status') is-invalid @enderror" name="status" required>
+        <option value="pending" {{ old('status', 'pending') == 'pending' ? 'selected' : '' }}>
+            {{ __('general.statuses.pending') }}
+        </option>
+        <option value="confirmed" {{ old('status') == 'confirmed' ? 'selected' : '' }}>
+            {{ __('general.statuses.confirmed') }}
+        </option>
+        <option value="completed" {{ old('status') == 'completed' ? 'selected' : '' }}>
+            {{ __('general.statuses.completed') }}
+        </option>
+        <option value="cancelled" {{ old('status') == 'cancelled' ? 'selected' : '' }}>
+            {{ __('general.statuses.cancelled') }}
+        </option>
+    </select>
+    @error('status')
+        <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
+</div>
 
                                 <div class="mb-3">
                                     <label for="notes" class="form-label">{{ __('general.attributes.notes') }}</label>
