@@ -32,8 +32,9 @@ class ContactController extends Controller
               ->orWhere('segment', 'LIKE', "%{$searchTerm}%");
         });
     }
+    $totalResults = $query->count();
 
-    $records = $query->latest()->paginate(10);
+    $records = $query->latest()->paginate($totalResults);
 
     return view('admin.contacts.index', compact('records'));
 }
@@ -61,8 +62,8 @@ class ContactController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'nullable|email|max:255',
-            'phone' => 'nullable|string|max:20',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|string|max:20',
             'address' => 'nullable|string|max:255',
             'segment' => 'nullable|string|max:255',
             'last_interaction' => 'nullable|date',
@@ -115,8 +116,8 @@ class ContactController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'nullable|email|max:255',
-            'phone' => 'nullable|string|max:20',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|string|max:20',
             'address' => 'nullable|string|max:255',
             'segment' => 'nullable|string|max:255',
             'last_interaction' => 'nullable|date',
@@ -177,6 +178,26 @@ class ContactController extends Controller
 
         return redirect()->route('contacts.index')->with('success', 'Contacts imported successfully.');
     }
+
+
+    public function bulkDelete(Request $request)
+{
+    $request->validate([
+        'ids' => 'required|array', // Validate that 'ids' is an array
+        'ids.*' => 'exists:contacts,id', // Ensure each ID exists in the contacts table
+    ]);
+
+    // Detach all groups for each contact before deleting
+    foreach ($request->ids as $id) {
+        $contact = Contact::find($id);
+        if ($contact) {
+            $contact->groups()->detach(); // Detach groups
+            $contact->delete(); // Delete the contact
+        }
+    }
+
+    return redirect()->route('contacts.index')->with('success', 'Contacts deleted successfully.');
+}
 
 }
 

@@ -27,7 +27,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'image',
         'role_id',
         'active',
-        'gender'
+        'gender',
+        'last_activity', 
     ];
 
     /**
@@ -125,6 +126,14 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany(Group::class, 'group_members', 'user_id', 'group_id')->withTimestamps();
     }
+
+    public function getIsOnlineAttribute()
+{
+    // Assuming you have a `last_activity` column and a threshold for online status
+    $threshold = now()->subMinutes(5); // User considered online if active in the last 5 minutes
+    return $this->last_activity > $threshold;
+}
+
 }
 
 

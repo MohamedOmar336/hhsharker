@@ -779,6 +779,12 @@ return [
         'enter_description_en' => 'أدخل الوصف (بالإنجليزية)',
         'enter_description_ar' => 'أدخل الوصف (بالعربية)',
     ],
+    'statuses' => [
+        'pending' => 'قيد الانتظار',
+        'confirmed' => 'مؤكد',
+        'completed' => 'مكتمل',
+        'cancelled' => 'ملغي',
+    ],
     'from' => 'من',
     'date' => 'تاريخ',
     'subject' => 'موضوع',

@@ -18,7 +18,7 @@ class CharacteristicController extends Controller
                 ->orWhere('name_en', 'LIKE', "%{$request->search}%");
         }
 
-        $characteristics = $query->paginate(100);
+        $characteristics = $query->paginate();
 
         return view('admin.characteristics.index', compact('characteristics'));
     }

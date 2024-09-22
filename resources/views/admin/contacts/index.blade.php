@@ -11,13 +11,13 @@
                         <div class="float-end">
                             <ol class="breadcrumb">
 
-                                <div class="col-4" style="position: absolute;z-index: 2;left: 961px;">
+                                <div class="col-4" style="position: absolute;z-index: 2;left: 940px;">
                                     <a href="{{ route('contacts.export') }}" class="btn btn-xs btn-primary"
                                         style="margin-right: 20px; margin-bottom: 10px;">
                                         <i class="ti ti-file-download">{{ __('general.attributes.export') }}</i>
                                     </a>
                                 </div>
-                                <div class="col-4" style="position: absolute;z-index: 1;left: 891px;">
+                                <div class="col-4" style="position: absolute;z-index: 1;left: 870px;">
                                     <a href="{{ route('contacts.import.form') }}" class="btn btn-xs btn-primary"
                                         style="margin-right: 20px; margin-bottom: 10px;">
                                         <i class="ti ti-file-download">{{ __('general.attributes.import') }}</i>
@@ -77,6 +77,9 @@
                         <td>{{ $record->last_interaction }}</td>
                         <td>
                             <a href="{{ route('contacts.edit', $record->id) }}"><i data-feather="edit"></i></a>
+                            <form style="display: inline;">
+                               
+                               </form>
                             <form action="{{ route('contacts.destroy', $record->id) }}" method="POST"
                                 style="display: inline;" class="delete-form">
                                 @csrf
@@ -89,7 +92,7 @@
                     </tr>
                 @endforeach
 
-                <x-slot name="createButton">
+                <x-slot name="createButton" action="{{ route('contacts.bulkDelete') }}">
                     <a href="{{ route('contacts.create') }}" class="btn btn-outline-light btn-sm px-4">+
                         {{ __('general.actions.new') }}</a>
                 </x-slot>

@@ -1,44 +1,48 @@
 @extends('admin.layouts.app')
 
 @section('content')
-    <!-- Page Content-->
     <div class="page-content-tab">
         <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <div class="float-end">
+                   
 
-            <!-- Page Header with Breadcrumb, Back Button, and Actions -->
-            <div class="row align-items-center mb-4">
-                <div class="col-md-7">
-                    <div class="d-flex align-items-center">
-                        <a href="{{ URL::previous() }}" class="me-3">
-                            @if (app()->isLocale('ar'))
-                                <i data-feather="arrow-right-circle"></i> <!-- Arabic locale -->
-                            @else
-                                <i data-feather="arrow-left-circle"></i> <!-- Default locale -->
-                            @endif
-                        </a>
-                        <h4 class="page-title mb-0">{{ __('general.list') }}</h4>
+                    <div class="col-4" style="position: absolute;z-index: 2;left: 940px;">
+                                    <a href="{{ route('products.exports') }}"  class="btn btn-xs btn-primary"
+                                        style="margin-right: 20px; margin-bottom: 10px;">
+                                        <i class="ti ti-file-download">{{ __('general.attributes.export') }}</i>
+                                    </a>
+                                </div>
+                                <div class="col-4" style="position: absolute;z-index: 1;left: 870px;">
+                                    <a href="{{ route('products.import.form') }}" class="btn btn-xs btn-primary"
+                                        style="margin-right: 20px; margin-bottom: 10px;">
+                                        <i class="ti ti-file-download">{{ __('general.attributes.import') }}</i>
+                                    </a>
+                                </div>
+                            <ol class="breadcrumb">
+
+                                <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a></li>
+                                <li class="breadcrumb-item active"><a href="{{ route('products.index') }}">{{ __('general.attributes.product') }}</a></li>
+                                <li class="breadcrumb-item active">{{ __('general.list') }}</li>
+                            </ol>
+                        </div>
+                        <div class="col-md-12">
+                            <a href="{{ URL::previous() }}">
+                                @if (app()->isLocale('ar'))
+                                    <i data-feather="arrow-right-circle"></i> <!-- Arabic locale -->
+                                @else
+                                    <i data-feather="arrow-left-circle"></i> <!-- Default locale -->
+                                @endif
+                            </a>
+                            <h4 class="page-title mb-0">{{ __('general.list') }}</h4>
+                        </div>
                     </div>
-                    
-                </div>
-                <div class="col-md-2  text-end">
-                    <a href="{{ route('products.import.form') }}" class="btn btn-xs btn-primary me-2">
-                        <i class="ti ti-file-upload"></i> {{ __('general.attributes.import') }}
-                    </a>
-                    <a href="{{ route('products.exports') }}" class="btn btn-xs btn-primary">
-                        <i class="ti ti-file-download"></i> {{ __('general.attributes.export') }}
-                    </a>
-                   
-                </div>
-                <div class="col-md-3 px-5 text-end  text-right">
-                   
-                    <ol class="breadcrumb  mb-0 mt-2 text-end">
-                        <li class="breadcrumb-item text-end"><a href="{{ url('/home') }}">{{ __('general.home') }}</a></li>
-                        <li class="breadcrumb-item text-end"><a href="{{ route('products.index') }}">{{ __('general.attributes.product') }}</a></li>
-                        <li class="breadcrumb-item text-end active">{{ __('general.list') }}</li>
-                    </ol>
                 </div>
             </div>
 
+     
             <!-- Filter Form -->
             <form action="{{ route('products.index') }}" method="GET" class="mb-4">
                 <div class="row g-3 align-items-center">
@@ -76,7 +80,7 @@
                         <th scope="col">{{ __('general.attributes.description_en') }}</th>
                         <th scope="col">{{ __('general.attributes.state') }}</th>
                         <th scope="col">{{ __('general.attributes.category') }}</th>
-                        <th style="width: 10%;">{{ __('general.attributes.actions') }}</th>
+                        <th style="width: 12%;">{{ __('general.attributes.actions') }}</th>
                     </tr>
                 </x-slot>
                 @foreach ($records as $record)
@@ -92,6 +96,9 @@
                         <td>{{ $record->category ? $record->category->name_en : __('general.uncategorized') }}</td>
                         <td>
                             <a href="{{ route('products.edit', $record->id) }}" class="action-icon"> <i data-feather="edit"></i></a>
+                            <form style="display: inline;">
+                               
+                               </form>
                             <form action="{{ route('products.destroy', $record->id) }}" method="POST" class="delete-form">
                                 @csrf
                                 @method('DELETE')

@@ -20,8 +20,9 @@ class TicketStatusController extends Controller
                 ->orWhere('description_en', 'LIKE', "%{$request->search}%");
         }
 
-        $records = $query->paginate(500);
+        $totalResults = $query->count();
 
+    $records = $query->latest()->paginate($totalResults);
         return view('admin.ticketstatus.index', compact('records'));
     }
 
@@ -85,12 +86,43 @@ class TicketStatusController extends Controller
     }
 
     public function destroy($id)
-    {
+{
+    try {
         // Retrieve and delete the TicketStatus
         $status = TicketStatusSetting::findOrFail($id);
         $status->delete();
 
         // Redirect to the index view with a success message
         return redirect()->route('ticket-statuses.index')->with('success', 'Ticket Status deleted successfully.');
+
+    } catch (\Exception $e) {
+        // If there's an exception (such as linked tickets), redirect with error message
+        return redirect()->route('ticket-statuses.index')->with('error', $e->getMessage());
     }
+}
+
+
+public function bulkDelete(Request $request)
+{
+    $request->validate([
+        'ids' => 'required|array',
+        'ids.*' => 'exists:ticket_status_settings,id',
+    ]);
+
+    try {
+        // Loop through each ID and try to delete them one by one
+        foreach ($request->ids as $id) {
+            $status = TicketStatusSetting::findOrFail($id);
+            $status->delete();
+        }
+
+        return redirect()->route('ticket-statuses.index')->with('success', 'Ticket Statuses deleted successfully.');
+
+    } catch (\Exception $e) {
+        // If any exception occurs during deletion, catch it and return with error message
+        return redirect()->route('ticket-statuses.index')->with('error', $e->getMessage());
+    }
+}
+
+    
 }

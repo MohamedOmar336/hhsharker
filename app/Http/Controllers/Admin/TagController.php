@@ -24,7 +24,9 @@ class TagController extends Controller
                 ->orWhere('description_en', 'LIKE', "%{$request->search}%");
         }
 
-        $records = $query->paginate(500);
+        $totalResults = $query->count();
+
+    $records = $query->latest()->paginate($totalResults);
         return view('admin.tags.index', compact('records'));
     }
 
@@ -46,8 +48,13 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate the request...
-        $tag = Tag::create($request->all());
+        $request->validate([
+            'name_en' => 'required|string|max:255', 
+            'name_ar' => 'required|string|max:255',
+        ]);
+       // Create a tag using only validated data
+    $tag = Tag::create($request->only(['name_en', 'name_ar']));
+
         return redirect()->route('tags.index')->with('success', 'Tag created successfully.');
     }
 
@@ -102,4 +109,24 @@ class TagController extends Controller
         $tag->delete();
         return redirect()->route('tags.index')->with('success', 'Tag deleted successfully.');
     }
+
+
+    /**
+ * Remove multiple tags from storage.
+ *
+ * @param  \Illuminate\Http\Request  $request
+ * @return \Illuminate\Http\RedirectResponse
+ */
+public function bulkDelete(Request $request)
+{
+    $request->validate([
+        'ids' => 'required|array',
+        'ids.*' => 'exists:tags,id', // Validate each ID
+    ]);
+
+   //destroy($request->ids); // Bulk delete the tags
+   Tag::whereIn('id', $request->input('ids'))->delete();
+    return redirect()->route('tags.index')->with('success', 'Selected tags deleted successfully.');
+}
+
 }

@@ -42,7 +42,7 @@ class ProductController extends Controller
             $query->where('status', 'like', '%' . $request->status . '%');
         }
 
-        $records = $query->paginate(100);
+        $records = $query->paginate();
         // dd($records , $request->all());
         $categories = Category::all(); // Assuming you want to filter by categories too
         return view('admin.products.index', compact('records', 'characteristics', 'categories'));
@@ -275,4 +275,17 @@ return redirect()->route('products.index')->with('success', 'Product updated suc
 
         return redirect()->route('products.index')->with('success', 'Products imported successfully.');
     }
+
+    public function bulkDelete(Request $request)
+{
+    $request->validate([
+        'ids' => 'required|array',
+        'ids.*' => 'exists:products,id', // Adjust to your model name
+    ]);
+
+    // Perform the deletion
+    Product::whereIn('id', $request->input('ids'))->delete();
+
+    return redirect()->route('products.index')->with('success', 'Selected products deleted successfully.');
+}
 }

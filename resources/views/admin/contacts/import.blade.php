@@ -52,6 +52,10 @@
                     <input type="file" name="import_file" required>
                     <button type="submit" class="btn btn-primary">Import</button>
                 </form>
+                <!-- resources/views/your-view.blade.php -->
+
+<a href="{{ asset('template.xlsx') }}" class="btn btn-primary" download>Download Template</a>
+
             </div>
         </div>
     </div>

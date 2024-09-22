@@ -96,6 +96,7 @@
                                     @enderror
                                 </div>
 
+                              
                                 <div class="mb-3">
                                     <label for="Note" class="form-label">{{ __('general.attributes.notes') }}</label>
                                     <textarea class="form-control @error('Note') is-invalid @enderror" id="Note" name="Note" rows="4">{{ old('Note') }}</textarea>
@@ -135,31 +136,22 @@
             });
         });
 
-        document.addEventListener("DOMContentLoaded", function(){
-            function generateTicketNumber() {
-                const prefix = "TK-";  // Example prefix
-                const suffix = new Date().getFullYear();  // Using the current year as the suffix
-                const randomNumber = Math.floor(Math.random() * 9000) + 1000;  // Random number simulating an incrementing sequence
-                return prefix + randomNumber + '-' + suffix;
-            }
+        // document.addEventListener("DOMContentLoaded", function(){
+        //     function generateTicketNumber() {
+        //         const prefix = "TK-";  // Example prefix
+        //         const suffix = new Date().getFullYear();  // Using the current year as the suffix
+        //         const randomNumber = Math.floor(Math.random() * 9000) + 1000;  // Random number simulating an incrementing sequence
+        //         return prefix + randomNumber + '-' + suffix;
+        //     }
 
-            // Set the generated ticket number to the Title input field on page load
-            document.getElementById('Title').value = generateTicketNumber();
+        //     // Set the generated ticket number to the Title input field on page load
+        //     document.getElementById('Title').value = generateTicketNumber();
 
-            // Optional: Regenerate the ticket number on some event, like changing a category
-            document.getElementById('categories').addEventListener('change', function() {
-                document.getElementById('Title').value = generateTicketNumber(); // Regenerate when category changes
-            });
-        });
+        //     // Optional: Regenerate the ticket number on some event, like changing a category
+        //     document.getElementById('categories').addEventListener('change', function() {
+        //         document.getElementById('Title').value = generateTicketNumber(); // Regenerate when category changes
+        //     });
+        // });
     </script>
-    <script>
-        $(document).ready(function(){
-            var multipleCancelButton = new Choices('#categories', {
-                removeItemButton: true,
-                maxItemCount:100,
-                searchResultLimit:5,
-                renderChoiceLimit:5
-            });
-        });
-    </script>
+ 
 @endpush

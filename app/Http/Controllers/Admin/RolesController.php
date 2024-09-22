@@ -23,7 +23,9 @@ class RolesController extends Controller
                 ->orWhere('description', 'LIKE', "%{$request->search}%");
         }
 
-        $records = $query->paginate(500);
+        $totalResults = $query->count();
+
+    $records = $query->latest()->paginate($totalResults);
         return view('admin.roles.index', compact('records'));
     }
 
@@ -114,4 +116,24 @@ class RolesController extends Controller
         $role->delete();
         return redirect()->route('roles.index')->with('success', 'Role deleted successfully.');
     }
+
+
+    /**
+ * Remove multiple resources from storage.
+ *
+ * @param  \Illuminate\Http\Request  $request
+ * @return \Illuminate\Http\Response
+ */
+public function bulkDelete(Request $request)
+{
+    $request->validate([
+        'ids' => 'required|array', // Ensure it's an array
+        'ids.*' => 'exists:roles,id', // Ensure each ID exists in the roles table
+    ]);
+
+    Roles::destroy($request->ids); // Delete the roles
+
+    return redirect()->route('roles.index')->with('success', 'Selected roles deleted successfully.');
+}
+
 }

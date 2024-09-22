@@ -47,6 +47,9 @@
                         <td>
                             <a href="{{ route('tags.edit', $record->id) }}"
                             ><i data-feather="edit"></i></a>
+                            <form style="display: inline;">
+                               
+                            </form>
                             <form action="{{ route('tags.destroy', $record->id) }}" method="POST"
                                 style="display: inline;" class="delete-form">
                                 @csrf
@@ -58,7 +61,7 @@
                     </tr>
                 @endforeach
 
-                <x-slot name="createButton">
+                <x-slot name="createButton"   action="{{ route('tags.bulkdelete') }}">
                     <a href="{{ route('tags.create') }}" class="btn btn-outline-light btn-sm px-4">+
                         {{ __('general.actions.new') }}</a>
                 </x-slot>

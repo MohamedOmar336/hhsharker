@@ -58,12 +58,15 @@
                         <td>{{ $record->finish_time }}</td>
                         <td>{{ $record->status }}</td>
                         <td>
-                            <a href="{{ route('appointments.show', $record->id) }}" >
+                            <a class="show_icon" href="{{ route('appointments.show', $record->id) }}" >
                                 <i data-feather="eye"></i>
                             </a>
                             <a href="{{ route('appointments.edit', $record->id) }}">
                                 <i data-feather="edit"></i>
                             </a>
+                            <form style="display: inline;">
+                               
+                               </form>
                             <form action="{{ route('appointments.destroy', $record->id) }}" method="POST"
                                 style="display:inline-block;" class="delete-form">
                                 @csrf
@@ -76,7 +79,7 @@
                     </tr>
                 @endforeach
 
-                <x-slot name="createButton">
+                <x-slot name="createButton"  action="{{ route('appointments.bulkDelete') }}">
                     <a href="{{ route('appointments.create') }}" class="btn btn-outline-light btn-sm px-4">
                         + {{ __('general.actions.new') }}
                     </a>

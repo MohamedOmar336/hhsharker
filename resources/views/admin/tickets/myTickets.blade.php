@@ -89,7 +89,7 @@
                                 </form>
                             </td>
                             <td>
-                                <a href="{{ route('ticket_histories.show_by_ticket', $record->id) }}"
+                                <a class="show_icon" href="{{ route('ticket_histories.show_by_ticket', $record->id) }}"
                                     >
                                     <i data-feather="eye"></i>
                                 </a>
@@ -108,7 +108,7 @@
                         </tr>
                     @endforeach
 
-                    <x-slot name="createButton">
+                    <x-slot name="createButton" action="{{ route('tickets.bulkDelete') }}">
                         <a href="{{ route('tickets.create') }}" class="btn btn-outline-light btn-sm px-4">+
                             {{ __('general.actions.new') }}</a>
                     </x-slot>

@@ -15885,7 +15885,7 @@ li.L9 {
 
 .delete-form{
     display:inline-block;
-    margin: -10px;
+  /*  margin: -10px;*/
     color:#303e67;
     font-family:"Plus Jakarta Sans", sans-serif;
     

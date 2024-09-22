@@ -38,7 +38,7 @@
                         <th>{{ __('general.attributes.title_ar') }}</th>
                         <th>{{ __('general.attributes.author') }}</th>
                         <th>{{ __('general.attributes.status') }}</th>
-                        <th style="width: 10%;">{{ __('general.attributes.actions') }}</th>
+                        <th style="width: 12%;">{{ __('general.attributes.actions') }}</th>
                     </tr>
                 </x-slot>
                 @foreach ($records as $record)
@@ -47,10 +47,13 @@
                         <td><img src="{{ asset('images/' . $record->image) }}" alt="{{ $record->title_en }}" width="50"></td>
                         <td>{{ $record->title_en }}</td>
                         <td>{{ $record->title_ar }}</td>
-                        <td>{{ $record->author->user_name }}</td>
+                        <td>{{ $record->author ? $record->author->user_name : __('general.attributes.unknown') }}</td>
                         <td>{{ $record->status }}</td>
                         <td>
                                <a href="{{ route('blogposts.edit', $record->id) }}"><i data-feather="edit"></i></a>
+                               <form style="display: inline;">
+                               
+                               </form>
                             <form action="{{ route('blogposts.destroy', $record->id) }}" method="POST" style="display: inline;" class="delete-form">
                                 @csrf
                                 @method('DELETE')
@@ -60,7 +63,7 @@
                     </tr>
                 @endforeach
 
-                <x-slot name="createButton">
+                <x-slot name="createButton" action="{{ route('blogposts.bulkdelete') }}">
                     <a href="{{ route('blogposts.create') }}" class="btn btn-outline-light btn-sm px-4">+ {{ __('general.actions.new') }}</a>
                 </x-slot>
 

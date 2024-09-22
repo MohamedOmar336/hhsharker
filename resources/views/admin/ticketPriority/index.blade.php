@@ -10,24 +10,23 @@
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a></li>
                 <li class="breadcrumb-item"><a href="{{ url('/ticket-priorities') }}">{{ __('general.attributes.priorities') }}</a></li>
-                <li class="breadcrumb-item active">
-                   {{ __('general.list') }}
-                </li>
+                <li class="breadcrumb-item active">{{ __('general.list') }}</li>
               </ol>
             </div>
             <div class="col-md-12">
               <a href="{{ URL::previous() }}">
                 @if (app()->isLocale('ar'))
-                    <i data-feather="arrow-right-circle"></i> <!-- Arabic locale -->
+                  <i data-feather="arrow-right-circle"></i> <!-- Arabic locale -->
                 @else
-                    <i data-feather="arrow-left-circle"></i> <!-- Default locale -->
+                  <i data-feather="arrow-left-circle"></i> <!-- Default locale -->
                 @endif
-            </a>
-              <h4 class="page-title">
-                {{ __('general.list') }}
-              </h4>
+              </a>
+              <h4 class="page-title">{{ __('general.list') }}</h4>
             </div>
-          </div></div></div>
+          </div>
+        </div>
+      </div>
+
       <x-table tableId="DataTables">
         <x-slot name="header">
           <tr>
@@ -49,24 +48,33 @@
               <a href="{{ route('ticket-priorities.edit', $record->id) }}">
                 <i data-feather="edit"></i>
               </a>
-              <form action="{{ route('ticket-priorities.destroy', $record->id) }}" method="POST" style="display:inline-block;">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn delete-form" onclick="confirmDelete(event)" class="delete-form">
-                  <i data-feather="trash"></i>
-                </button>
-              </form>
+              <form style="display: inline;">
+                               
+                               </form>
+              <form action="{{ route('ticket-priorities.destroy', $record->id) }}" method="POST" class="delete-form" data-id="{{ $record->id }}">
+    @csrf
+    @method('DELETE')
+    <button type="button" class="btn delete-form" onclick="confirmDelete(event, {{ $record->id }})">
+        <i data-feather="trash"></i>
+    </button>
+</form>
+
             </td>
           </tr>
         @endforeach
 
-        <x-slot name="createButton">
+        <x-slot name="createButton"  action="{{ route('ticket-priorities.bulkdelete') }}">
           <a href="{{ route('ticket-priorities.create') }}" class="btn btn-outline-light btn-sm px-4">+
-            {{ __('general.actions.new') }} </a>
+            {{ __('general.actions.new') }}
+          </a>
         </x-slot>
 
         <x-slot name="pagination">
           {{ $records->links('admin.pagination.bootstrap') }}
         </x-slot>
       </x-table>
-    </div></div>@endsection
+    </div>
+  </div>
+  
+
+@endsection

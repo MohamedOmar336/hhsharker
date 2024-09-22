@@ -18,8 +18,9 @@ class GroupController extends Controller
             $query->where('name', 'LIKE', "%{$request->search}%")
                 ->orWhere('description', 'LIKE', "%{$request->search}%");
         }
+        $totalResults = $query->count();
 
-        $records = $query->paginate(500);
+        $records = $query->latest()->paginate($totalResults);
         return view('admin.groups.index', compact('records'));
     }
 
@@ -90,4 +91,24 @@ class GroupController extends Controller
 
         return redirect()->route('groups.index')->with('success', 'Group deleted successfully.');
     }
+
+    public function bulkDelete(Request $request)
+{
+    $request->validate([
+        'ids' => 'required|array', // Validate that 'ids' is an array
+        'ids.*' => 'exists:groups,id', // Ensure each ID exists in the groups table
+    ]);
+
+    // Delete each group by ID
+    foreach ($request->ids as $id) {
+        $group = Group::find($id);
+        if ($group) {
+            $group->members()->delete(); // Delete associated members if needed
+            $group->delete(); // Delete the group
+        }
+    }
+
+    return redirect()->route('groups.index')->with('success', 'Groups deleted successfully.');
+}
+
 }

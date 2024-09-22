@@ -49,10 +49,12 @@ class TicketController extends Controller
 
         // Apply assignedTo filter
         if ($request->has('assigned_to') && !empty($request->assigned_to)) {
-            $query->where('assigned_to', $request->assigned_to);
+            $query->where('AssignedTo', $request->assigned_to);
         }
 
-        $records = $query->paginate(500);
+        $totalResults = $query->count();
+
+    $records = $query->latest()->paginate($totalResults);
         $priorities = TicketPrioritySetting::all();
         $statuses = TicketStatusSetting::all();
         $users = User::all();
@@ -93,9 +95,13 @@ class TicketController extends Controller
             'AssignedTo' => 'required|exists:users,id',
             'categories' => 'array', // Validation for categories
             'categories.*' => 'exists:ticket_categories,id',
-        ]);
-
+        ]); 
+         // Generate the custom Ticket ID
+         $ticketID = Ticket::generateTicketID(); 
+    
+        // Store the ticket with the generated Ticket ID
         $ticket = Ticket::create([
+            'TicketID' => $ticketID, // Custom ticket ID
             'Title' => $request->Title,
             'Description' => $request->Description,
             'Note' => $request->Note, // Storing the note
@@ -263,6 +269,9 @@ class TicketController extends Controller
         $ticket = Ticket::findOrFail($id);
 
         switch ($field) {
+            case 'tiketid':
+               // $ticket->Title = $request->input('title');
+                break;
             case 'title':
                 $ticket->Title = $request->input('title');
                 break;
@@ -303,19 +312,23 @@ class TicketController extends Controller
      *
      * @return \Illuminate\Http\Response
      **/
-    public function massDestroy()
-    {
-        $recordIds = request()->input('ids');
-        if(count($recordIds)){
-            foreach ($recordIds as $recordId) {
-                $record = Ticket::find($recordId);
+    public function massDestroy(Request $request)
+{
+    // Validate the request
+    $request->validate([
+        'ids' => 'required|array',
+        'ids.*' => 'exists:tickets,id', // Ensure the IDs exist in the 'tickets' table
+    ]);
 
-                if (isset($record)) {
-                    $record->delete($recordId);
-                }
-            }
-        }
-        return redirect()->route('tickets.index')
-            ->with('success', 'Ticket deleted successfully.');
-    }
+    // Retrieve IDs from the request
+    $recordIds = $request->input('ids');
+
+    // Perform the deletion
+    Ticket::whereIn('id', $recordIds)->delete();
+
+    // Redirect with a success message
+    return redirect()->route('tickets.index')
+        ->with('success', 'Tickets deleted successfully.');
+}
+
 }
