@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Str;
 
 if (!function_exists('slugable')) {
     function slugable($string, $id = null)
@@ -65,4 +66,27 @@ function numberToWord($number) {
         // Add more numbers if needed
     ];
     return $words[$number] ?? $number; // Return number as string if not found
+}
+
+if (!function_exists('uploadWhatsappDoc')) {
+    /**
+     * Uploads the document to the storage with a unique name and returns the file path.
+     *
+     * @param  \Illuminate\Http\UploadedFile  $file
+     * @return string The path to the uploaded file
+     */
+    function uploadWhatsappDoc($file)
+    {
+        // Create a unique file name using a UUID and the file's original extension
+        $uniqueName = Str::uuid() . '.' . $file->getClientOriginalExtension();
+
+        // Define the storage path where the file will be saved
+        $path = 'whatsapp_docs';
+
+        // Move the file to the specified storage path
+        $file->storeAs($path, $uniqueName, 'public'); // Ensure 'public' disk is configured in config/filesystems.php
+
+        // Return the storage path with the unique file name
+        return $path . '/' . $uniqueName;
+    }
 }

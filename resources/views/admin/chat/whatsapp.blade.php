@@ -658,7 +658,6 @@
                 }
 
                 function listenForWhatsAppMessages(roomId) {
-                    // console.log(phoneNumber);
                     $.ajax({
                         url: '{{ route('whatsapp.room') }}', // Ensure this route is correctly defined in your Laravel routes
                         method: 'GET',
@@ -673,41 +672,96 @@
 
                             $.each(messages, function(index, message) {
                                 var timeAgo = moment(message.updated_at).fromNow();
-                                var media = message.direction === 'outgoing' ?
-                                    `<li class="right">
-                                    <div class="conversation-list">
-                                        <div class="chat-avatar">
-                                            <img src="{{ asset('images/' . auth()->user()->image) }}" alt="">
-                                        </div>
-                                        <div class="user-chat-content">
-                                            <div class="ctext-wrap">
-                                                <div class="ctext-wrap-content">
-                                                    <p dir="auto" class="mb-0 messageContent">${message.message}</p>
-                                                    <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">${timeAgo}</span></p>
+
+                                // Parse the message content if it is stored as JSON
+                                let content = message.type === 'document' ? JSON.parse(message.message) : message.message;
+
+                                // Define the media variable to store the HTML
+                                var media;
+
+                                // Check the type of the message
+                                if (message.type === 'document') {
+                                    media = `
+                                        <li class="right">
+                                            <div class="conversation-list">
+                                                <div class="chat-avatar">
+                                                    <img src="{{ asset('images/' . auth()->user()->image) }}" alt="">
+                                                </div>
+                                                <div class="user-chat-content">
+                                                    <div class="ctext-wrap">
+                                                        <div class="ctext-wrap-content">
+                                                            <div class="card p-2 mb-2">
+                                                                <div class="d-flex flex-wrap align-items-center attached-file">
+                                                                    <div class="avatar-sm me-3 ms-0 attached-file-avatar">
+                                                                        <div class="avatar-title bg-primary-subtle text-primary rounded font-size-20">
+                                                                            <i class="ri-file-text-fill"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="flex-grow-1 overflow-hidden">
+                                                                        <div class="text-start">
+                                                                            <h5 class="font-size-14 text-truncate mb-1">${content.filename}</h5>
+                                                                            <p class="text-muted text-truncate font-size-13 mb-0">${content.fileSize} bytes</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="ms-4 me-0">
+                                                                        <div class="d-flex gap-2 font-size-20 d-flex align-items-start">
+                                                                            <div>
+                                                                                <a download="${content.filename}" href="${content.fileUrl}" class="fw-medium">
+                                                                                    <i class="ri-download-2-line"></i>
+                                                                                </a>
+                                                                            </div>
+                                                                            <div class="dropdown">
+                                                                                <a class="dropdown-toggle text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                                    <i class="ri-more-fill"></i>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">${timeAgo}</span></p>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </li>` :
-                                    `<li>
-                                    <div class="conversation-list">
-                                        <div class="user-chat-content">
-                                            <div class="ctext-wrap">
-                                                <div class="ctext-wrap-content">
-                                                    <p dir="auto" class="mb-0 messageContent">${message.message}</p>
-                                                    <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">${timeAgo}</span></p>
+                                        </li>`;
+                                } else {
+                                    // Handle text messages and other types as default
+                                    media = message.direction === 'outgoing' ?
+                                        `<li class="right">
+                                            <div class="conversation-list">
+                                                <div class="chat-avatar">
+                                                    <img src="{{ asset('images/' . auth()->user()->image) }}" alt="">
+                                                </div>
+                                                <div class="user-chat-content">
+                                                    <div class="ctext-wrap">
+                                                        <div class="ctext-wrap-content">
+                                                            <p dir="auto" class="mb-0 messageContent">${content}</p>
+                                                            <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">${timeAgo}</span></p>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </li>`;
+                                        </li>` :
+                                        `<li>
+                                            <div class="conversation-list">
+                                                <div class="user-chat-content">
+                                                    <div class="ctext-wrap">
+                                                        <div class="ctext-wrap-content">
+                                                            <p dir="auto" class="mb-0 messageContent">${content}</p>
+                                                            <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">${timeAgo}</span></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>`;
+                                }
 
                                 chatBodyNew.append(media);
                             });
 
                             // Ensure all messages have been processed and appended
                             chatBodyNew.promise().done(function() {
-                                console.log(66666666666666);
                                 scrollToLastConversation(); // Scroll to the last conversation in the chat
                                 $('#loader-wrapper').hide(); // Hide the loader after updating the UI
                             });
@@ -849,6 +903,7 @@
                             console.log('File uploaded and message sent successfully', response);
                             // Dynamically add the message to the chat
                             if (response.success) {
+                            console.log(response);
                                 var chatHTML = `
                                     <li class="right">
                                         <div class="conversation-list">
@@ -882,10 +937,6 @@
                                                                             <a class="dropdown-toggle text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                                 <i class="ri-more-fill"></i>
                                                                             </a>
-                                                                            <div class="dropdown-menu dropdown-menu-end">
-                                                                                <a class="dropdown-item" href="#">Share <i class="ri-share-line float-end text-muted"></i></a>
-                                                                                <a class="dropdown-item" href="#">Delete <i class="ri-delete-bin-line float-end text-muted"></i></a>
-                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>

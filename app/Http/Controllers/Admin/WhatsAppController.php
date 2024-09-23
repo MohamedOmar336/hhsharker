@@ -136,7 +136,7 @@ class WhatsAppController extends Controller
     }
 
 
-    public function storeMessage($phoneNumber, $text, $direction)
+    public function storeMessage($phoneNumber, $text, $direction , $type = 'text')
     {
         $contact = WhatsAppContact::firstOrCreate(
             ['phone_number' => $phoneNumber],
@@ -146,7 +146,8 @@ class WhatsAppController extends Controller
         $message = new WhatsAppMessage([
             'whatsapp_contact_id' => $contact->id,
             'message' => $text,
-            'direction' => $direction // 'incoming' or 'outgoing'
+            'direction' => $direction ,// 'incoming' or 'outgoing'
+            'type'=> $type
         ]);
 
         $message->save();
@@ -283,17 +284,33 @@ class WhatsAppController extends Controller
                 $type = 'document'; // Change this to 'image', 'video', or 'audio' as needed
                 $caption = 'Here is the document'; // Optional caption for media messages
                 $filename = $file->getClientOriginalName(); // Get the original file name
+                $fileSize = filesize($file);
+
 
                 // Send the message with the uploaded file
                 $sendResult = $whatsAppService->sendMessage($phone, $mediaId, $type, $caption, $filename);
 
-                        // Check if the message was sent successfully
+                // Check if the message was sent successfully
                 if ($sendResult['success']) {
+
+                    $filePath = uploadWhatsappDoc($file);
+
+                    $fileData = [
+                        'media_id' => $mediaId,
+                        'filename'=> $filename,
+                        'fileSize'=> $fileSize,
+                        'fileUrl'=> asset('storage/' . $filePath)
+                    ];
+
+                    $this->storeMessage($phone, json_encode($fileData), 'outgoing' , 'document');
                     // Return a JSON response with success status and media ID
                     return response()->json([
                         'success' => true,
                         'message' => 'File uploaded and message sent successfully!',
                         'media_id' => $mediaId,
+                        'filename'=> $filename,
+                        'fileSize'=> $fileSize,
+                        'fileUrl'=> asset('storage/' . $filePath)
                     ], 200);
                 } else {
                     // Return an error if sending the message failed

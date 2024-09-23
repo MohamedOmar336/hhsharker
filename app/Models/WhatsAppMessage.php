@@ -10,7 +10,7 @@ class WhatsAppMessage extends Model
 
     protected $table = 'whatsapp_messages'; // Ensure this matches your actual database table name
 
-    protected $fillable = ['whatsapp_contact_id', 'message', 'direction'];
+    protected $fillable = ['whatsapp_contact_id', 'message', 'direction' , 'type'];
 
     // Relationship with WhatsAppContact
     public function contact()
