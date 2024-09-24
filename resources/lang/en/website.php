@@ -233,7 +233,64 @@ return [
             'title_1' => 'Industry',
             'title_2' => 'Insight',
         ]
+    ],
+    'news' => [
+        'title' => 'our News Updates',
+        'placeholder' => 'Search Here...',
+        'btn' => 'Search',
+        'new' => 'New',
+        'middle_section' =>[
+            'title' => 'Lorem ipsum',
+            'description' => 'Lorem ipsum dolor sit amet consectetur.
+                            <span class="span-t-1">Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat. </span>
+                            <span class="span-t-2">Ut phasellus arcu est sollicitudin malesuada morbi sit.</span>',
+            'btn' => 'Continue Reading'
+        ],
+        'news_section' => [
+            'title' => 'NEWS',
+            'all' => 'All',
+            'popular' => 'Popular',
+            'new' => 'New',
+            'btn' => 'Read Now',
+            'desc' => 'Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat. Ut phasellus arcu est sollicitudin malesuada morbi sit.',
+            'btn2' => 'Load More'
+        ]        
+    ],
+    'value_vision' => [
+        'section_1' => [
+            'btn_1' => 'Values ​​and vision',
+            'title' => 'Values ​​and vision',
+            'desc'  => 'Our priority is to provide the best services promptly, meeting the needs of our customers quickly and efficiently. We aim to ensure the highest levels of comfort and satisfaction for them.'
+        ],
+        'section_2' => [
+            'btn_1' => 'Value',
+            'title' => 'Hh Shaker Value',
+            'desc' => '<p>At the core of our company lies a deep commitment to prioritizing our customers, ensuring their needs and satisfaction are our primary focus.</p>
+                    <p>We believe that communication with customers should be simple and effective. Therefore, we strive to provide a comfortable, enjoyable, and smooth shopping experience for our customers, focusing on providing exceptional customer service
+                        and high-quality products. </p>
+                    <p>We are recognized as the premier option for consumers and the preferred partner for brands in the electronics and electrical appliances sector in the Kingdom of Saudi Arabia. </p>',
+        ],
+        'section_3' => [
+            'box_1_title_1' => '100%',
+            'box_1_title_2' => 'Satisfied Customer',
+            'box_2_title_1' => 'Simple & Efficient',
+            'box_2_title_2' => 'Communication with customers',
+            'box_3_title_1' => '10Y',
+            'box_3_title_2' => 'Experiences',
+            'box_4_title_1' => '100%',
+            'box_4_title_2' => 'Satisfied Customer',
+        ],
+        'section_4' => [
+            'title' => 'We are committed to help our customer'
+        ],
+        'section_5' => [
+            'btn_1' => 'Vision',
+            'title' => 'Hh Shaker Vision',
+            'desc' => '<p>At the core of our company lies a deep commitment to prioritizing our customers, ensuring their needs and satisfaction are our primary focus.</p>
+                    <p>We believe that communication with customers should be simple and effective. Therefore, we strive to provide a comfortable, enjoyable, and smooth shopping experience for our customers, focusing on providing exceptional customer service
+                        and high-quality products. </p>
+                    <p>We are recognized as the premier option for consumers and the preferred partner for brands in the electronics and electrical appliances sector in the Kingdom of Saudi Arabia. </p>'
+        ],
 
     ]
-
 ];

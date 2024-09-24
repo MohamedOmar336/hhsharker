@@ -99,12 +99,12 @@
                     </ul>
                     <div class="h-button-list">
                         <div class="dropdown flag-dropdown">
-                            <a href="{{ route('frontend.home',['locale' => (app()->getLocale() == 'en' ? 'ar' : 'en')]) }}" class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a href="{{ changeLanguage() }}" class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                <img src=" {{ app()->getLocale() == 'en' ? asset('assets-frontend/images/en-flag.svg') : asset('assets-frontend/images/ar-flag.svg') }}" alt="{{ strtoupper(app()->getLocale()) }} Flag"> {{ strtoupper(app()->getLocale()) }}
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a class="dropdown-item" href="{{ route('frontend.home',['locale' => (app()->getLocale() == 'en' ? 'ar' : 'en')]) }}"> <img src=" {{ app()->getLocale() == 'en' ? asset('assets-frontend/images/ar-flag.svg') : asset('assets-frontend/images/en-flag.svg') }}" alt="{{ strtoupper(app()->getLocale()) }} Flag"> {{ app()->getLocale() == 'en' ? strtoupper('ar') : strtoupper('en') }}</a> 
+                                    <a class="dropdown-item" href="{{ changeLanguage() }}"> <img src=" {{ app()->getLocale() == 'en' ? asset('assets-frontend/images/ar-flag.svg') : asset('assets-frontend/images/en-flag.svg') }}" alt="{{ strtoupper(app()->getLocale()) }} Flag"> {{ app()->getLocale() == 'en' ? strtoupper('ar') : strtoupper('en') }}</a> 
                                 </li>
                             </ul>
                         </div>

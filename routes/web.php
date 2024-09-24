@@ -263,8 +263,7 @@ Route::group(['prefix' => 'admin'], function () {
 // Route::view('/lcac', 'website.lcac')->name('lcac');
 // Route::view('/terms-of-service', 'website.terms-of-service')->name('terms');
 // Route::view('/policy', 'website.policy')->name('policy');
-
-Route::group(['prefix' => '{locale}', 'middleware' => 'setWebLocale'], function () {
+Route::group(['prefix' => '{locale}', 'where' => ['locale' => 'en|ar'],'middleware' => 'setWebLocale'], function () {
     Route::get('/', [FrontHomeController::class,'index'])->name('frontend.home');
     Route::get('/about', [AboutController::class,'index'])->name('frontend.about');
     Route::get('/company-founders', [CompanyFounderController::class,'index'])->name('frontend.company-founder');
@@ -274,6 +273,13 @@ Route::group(['prefix' => '{locale}', 'middleware' => 'setWebLocale'], function 
     Route::get('/news', [FrontNewsController::class,'index'])->name('frontend.news');
     Route::get('/value-and-vision', [ValueAndVisionController::class,'index'])->name('frontend.value-and-vision');
 });
+
+Route::get('/', function () {
+    // Set the default language (you can customize this)
+    $defaultLanguage = 'en'; // or 'ar' based on your needs
+    return redirect("/$defaultLanguage");
+});
+
 
 Route::get('/test/create', [ContactUsController::class, 'create'])->name('test.create');
 Route::post('/test', [ContactUsController::class, 'store'])->name('test.store');

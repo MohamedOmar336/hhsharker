@@ -66,3 +66,12 @@ function numberToWord($number) {
     ];
     return $words[$number] ?? $number; // Return number as string if not found
 }
+
+function changeLanguage(){
+    
+    $currentRouteName = Route::currentRouteName();
+    if($currentRouteName == 'frontend.home'){
+        return str_replace('/' . app()->getLocale(), '/'.(app()->getLocale() == 'en' ? 'ar' : 'en'), url()->current());
+    }
+    return str_replace('/' . app()->getLocale() . '/', '/'.(app()->getLocale() == 'en' ? 'ar' : 'en').'/', url()->current());
+}
