@@ -10,9 +10,9 @@ return [
         'contact_us' => 'Contact Us',
     ],
     'homepage_slider_1' => [
-        'title_1' => 'Commercial Air Conditioners',
-        'title_2' => 'With a Single Touch',
-        'title_3' => 'Home Appliances',
+        'title_1' => 'Commercial <br> Air Conditioners',
+        'title_2' => 'With a <br> Single Touch',
+        'title_3' => 'Home <br> Appliances',
         'tag_line' => 'Find the Best Products for Your Need',
         'button' => 'Additional Details',
         'box_1_title' => 'Satisfied Customer',

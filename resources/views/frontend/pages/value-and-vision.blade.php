@@ -1,22 +1,22 @@
 @extends('frontend.layouts.app')
 @section('content')   
-<section class="banner-space values-banner">
+<section class="banner-space values-banner wow fadeIn">
         <div class="container">
             <div class="row gx-lg-5">
-                <div class="col-lg-12 wow fadeInLeftBig">
+                <div class="col-lg-12 wow fadeInLeftBig" data-wow-delay="1.2s">
                     <div class="section-heading ">
                         <h5>{{ __('website.value_vision.section_1.btn_1') }}</h5>
                     </div>
                 </div>
-                <div class="col-lg-6 wow fadeInLeftBig">
+                <div class="col-lg-6 wow fadeInLeftBig" data-wow-delay="1.2s">
                     <div class="section-heading ">
                         <h2>{{ __('website.value_vision.section_1.title') }}</h2>
                     </div>
                 </div>
-                <div class="col-lg-6 wow fadeInRightBig">
+                <div class="col-lg-6 wow fadeInRightBig" data-wow-delay="1.2s">
                     <p>{{ __('website.value_vision.section_1.desc') }}</p>
                 </div>
-                <div class="col-lg-12 mt-lg-5 mt-3 wow fadeInUpBig">
+                <div class="col-lg-12 mt-lg-5 mt-3 wow fadeInUpBig" data-wow-delay="1.2s">
                     <img src="{{ asset('assets-frontend/images/values-banner-img.png') }}" alt="Values ​​and vision Banner">
                 </div>
             </div>

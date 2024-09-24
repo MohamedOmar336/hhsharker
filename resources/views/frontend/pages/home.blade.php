@@ -2,34 +2,41 @@
 @section('content')   
     <section class="home-banner">
         <div class="container">
-            <h1 class="banner-text-animation wow fadeInLeft">
-                <span class="word"> {{ __('website.homepage_slider_1.title_1') }}</span>
-                <span class="word"> {{ __('website.homepage_slider_1.title_2') }}</span>
-                <span class="word"> {{ __('website.homepage_slider_1.title_3') }}</span>
+            <h1 class="banner-text-animation owl-carousel owl-theme wow fadeInLeft" data-wow-delay="4s" id="home-text-animation">
+                <span class="item">{!! __('website.homepage_slider_1.title_1') !!} </span>
+                <span class="item">{!! __('website.homepage_slider_1.title_2') !!} </span>
+                <span class="item">{!! __('website.homepage_slider_1.title_3') !!} </span>
             </h1>
-            <h6 class="wow fadeInLeft"> {{ __('website.homepage_slider_1.tag_line') }}</h6>
-            <a class="cutome-btn wow fadeInLeft" href="#">{{ __('website.homepage_slider_1.button') }}</a>
-            <div class="banner-box-row wow fadeInLeft">
-                <div class="banner-box-col">
+            <h6 class="wow fadeInLeft" data-wow-delay="4s"> {{ __('website.homepage_slider_1.tag_line') }}</h6>
+            <a class="cutome-btn wow fadeInLeft" href="#" data-wow-delay="4s">{{ __('website.homepage_slider_1.button') }}</a>
+            <div class="banner-box-row">
+                <div class="banner-box-col wow fadeInLeft" data-wow-delay="4s">
                     <div>
                         <div class="ani-nub-banner"><span class="numberanimation">{{ __('website.homepage_slider_1.box_1_desc') }}</span>%</div>
                         <p class="p-nub-banner">{{ __('website.homepage_slider_1.box_1_title') }}</p>
                     </div>
                 </div>
-                <div class="banner-box-col">
+                <div class="banner-box-col wow fadeInLeft" data-wow-delay="4.2s">
                     <div>
-                        <div class="ani-nub-banner"><span class="numberanimation">{{ __('website.homepage_slider_1.box_2_desc') }}</span>>{{ __('website.homepage_slider_1.box_2_desc_3') }}<span class="ani-nub-small">{{ __('website.homepage_slider_1.box_2_desc_2') }}</span></div>
+                        <div class="ani-nub-banner"><span class="numberanimation">{{ __('website.homepage_slider_1.box_2_desc') }}</span>{{ __('website.homepage_slider_1.box_2_desc_3') }}<span class="ani-nub-small">{{ __('website.homepage_slider_1.box_2_desc_2') }}</span></div>
                         <p class="p-nub-banner">{{ __('website.homepage_slider_1.box_2_title') }}</p>
                     </div>
                 </div>
-                <div class="banner-box-col">
+                <div class="banner-box-col wow fadeInLeft" data-wow-delay="4.4s">
                     <div>
                         <div class="ani-nub-banner">{{ __('website.homepage_slider_1.box_3_desc') }}. <span class="numberanimation">{{ __('website.homepage_slider_1.box_3_desc_2') }}</span></div>
                         <p class="p-nub-banner">{{ __('website.homepage_slider_1.box_3_title') }}</p>
                     </div>
                 </div>
             </div>
-            <img class="banner-image wow fadeInRight" src="{{ asset('assets-frontend/images/banner-img-1.png') }}" alt="Banner Image">
+            {{-- <img class="banner-image wow fadeInRight" src="{{ asset('assets-frontend/images/banner-img-1.png') }}" alt="Banner Image"> --}}
+            <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.26/build/spline-viewer.js"></script>
+            <spline-viewer class="home-banner-bg" loading-anim-type="spinner-small-dark" url="https://prod.spline.design/zCRrIry32lOBKNAu/scene.splinecode"></spline-viewer>
+
+            <div class="banner-drag-div">
+                <i class="fa-regular fa-arrow-left-long"></i>DRAG<i class="fa-regular fa-arrow-right-long"></i>
+            </div>
+
         </div>
 
 
@@ -119,7 +126,7 @@
     @if($homeApplianceBestSellerProducts->count() > 0)
     <section class="home-slider-main">
 
-        <img class="homeslider-img wow fadeIn" src="{{ asset('assets-frontend/images/home-slider-bg.png') }}" width="100%" alt="slider BG">
+        <img class="homeslider-img wow fadeInUp" src="{{ asset('assets-frontend/images/home-slider-bg.png') }}" width="100%" alt="slider BG">
 
         <div class="section-heading text-center wow fadeInUpBig" data-wow-delay="1s">
             <h5>{{ __('website.homepage_product_section_2.title') }}</h5>
@@ -127,11 +134,11 @@
         </div>
 
         @if($homeApplianceBestSellerProducts->count() > 5)
-        <div class="home-drag-btn wow zoomInDown" data-wow-delay="0.5s">
+        <div class="home-drag-btn wow zoomInDown" data-wow-delay="0.3s">
             <i class="fa-regular fa-arrow-left-long"></i>{{ __('website.homepage_product_section_2.dragbtn') }}<i class="fa-regular fa-arrow-right-long"></i>
         </div>
         @endif
-        <div class="owl-carousel owl-theme mt-4 home-product-slider wow rollIn" id="home-product-slider">
+        <div class="owl-carousel owl-theme mt-4 home-product-slider wow fadeInUp" id="home-product-slider">
             @foreach($homeApplianceBestSellerProducts as $product)
             <div class="item">
                 <div class="home-slider-item">

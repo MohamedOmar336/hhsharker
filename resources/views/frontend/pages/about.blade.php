@@ -3,10 +3,10 @@
 <section class="about-banner">
         <div class="container">
             <div class="row gx-lg-5 align-items-center">
-                <div class="col-lg-6 wow fadeInLeftBig">
+                <div class="col-lg-6 wow fadeInLeftBig" data-wow-delay="1.2s">
                     <img src="{{ asset('assets-frontend/images/about-banner.png') }}" alt="About Banner">
                 </div>
-                <div class="col-lg-6 wow fadeInRightBig">
+                <div class="col-lg-6 wow fadeInRightBig" data-wow-delay="1.2s">
                     <div class="section-heading ">
                         <h5>{{ __('website.about.title') }}</h5>
                         <h2>{{ __('website.about.tag_line') }}</h2>

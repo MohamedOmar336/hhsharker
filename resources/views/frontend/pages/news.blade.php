@@ -4,12 +4,12 @@
 <section class="banner-space news-banner">
         <div class="container">
             <div class="news-banner-text">
-                <img class="news-tp-1 wow fadeInLeftBig" data-wow-delay="0.4s" src="{{ asset('assets-frontend/images/new-banner-text-img.png') }}" alt="News Banner Text Image">
-                <h1 class="wow bounceInDown">{{ __('website.news.title') }}</h1>
-                <img class="news-tp-2 wow fadeInRightBig" data-wow-delay="0.8s" src="{{ asset('assets-frontend/images/new-banner-text-img.png') }}" alt="News Banner Text Image">
+                <img class="news-tp-1 wow rollIn" data-wow-delay="1.4s" src="{{ asset('assets-frontend/images/new-banner-text-img.png') }}" alt="News Banner Text Image">
+                <h1 class="wow bounceInDown" data-wow-delay="1.2s">{{ __('website.news.title') }}</h1>
+                <img class="news-tp-2 wow fadeIn" data-wow-delay="1.8s" src="{{ asset('assets-frontend/images/new-banner-text-img.png') }}" alt="News Banner Text Image">
             </div>
             <form>
-                <div class="news-search-div wow bounceInUp" data-wow-delay="0.3s">
+                <div class="news-search-div wow bounceInUp" data-wow-delay="1.5s">
                     <i class="fa-regular fa-magnifying-glass new-search-icon"></i>
                     <input class="news-search-input" type="search" placeholder="{{ __('website.news.placeholder') }}">
                     <button type="submit" class="news-search-btn">{{ __('website.news.btn') }}</button>
@@ -18,7 +18,7 @@
         </div>
         @if($news->count() > 0)
         <div>
-            <div class="owl-carousel owl-theme news-banner-slider wow fadeInUp" id="news-banner-slider">
+            <div class="owl-carousel owl-theme news-banner-slider wow fadeInUp" data-wow-delay="1.7s" id="news-banner-slider">
                 @foreach($news as $newsItem)    
                 <div class="item">
                     <div class="newspage-list-div">

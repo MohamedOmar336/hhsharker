@@ -77,7 +77,8 @@
                     <a type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-regular fa-xmark"></i></a>
                     <!-- <iframe width="100%" height="450px" src="https://www.youtube.com/embed/681PJt7mWa0?si=SO1aP5mtLFNJTf9M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
-                    <video width="100%" height="450px" controls src="{{ asset('assets-frontend/images/home-page-video.mp4') }}"></video>
+                        <iframe width="100%" height="450px" src="https://www.youtube.com/embed/JgAj1EYdwTo?si=si5m8mKcX4CqjAVw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    {{-- <video width="100%" height="450px" controls src="{{ asset('assets-frontend/images/home-page-video.mp4') }}"></video> --}}
                 </div>
             </div>
         </div>

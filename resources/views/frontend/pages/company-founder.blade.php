@@ -3,12 +3,12 @@
 
     <section class="banner-space founders-banner">
         <div class="container">
-            <div class="section-heading text-center wow fadeInDownBig">
+            <div class="section-heading text-center wow fadeInDownBig" data-wow-delay="1.2s">
                 <h5> {{ __('website.company_founder.title') }}</h5>
                 <h2> {{ __('website.company_founder.desc') }}</h2>
             </div>
             <div class="row justify-content-center mt-lg-5">
-                <div class="col-md-6 col-lg-5 col-xl-4 wow fadeInLeftBig">
+                <div class="col-md-6 col-lg-5 col-xl-4 wow fadeInLeftBig" data-wow-delay="1.2s">
                     <div class="founder-list-div">
                         <img src="{{ asset('assets-frontend/images/founders-1.png') }}" alt="Founders Images">
                         <div>
@@ -17,7 +17,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-5 col-xl-4 wow fadeInRightBig">
+                <div class="col-md-6 col-lg-5 col-xl-4 wow fadeInRightBig" data-wow-delay="1.2s">
                     <div class="founder-list-div">
                         <img src="{{ asset('assets-frontend/images/founders-2.png') }}" alt="Founders Images">
                         <div>

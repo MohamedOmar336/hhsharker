@@ -111,6 +111,9 @@ jQuery(document).ready(function($) {
         dots: false,
         nav: false,
         items: 5,
+        autoplay: true,
+        autoplayTimeout: 4000,
+        autoplayHoverPause: true,
         responsive: {
             0: {
                 items: 1
@@ -164,10 +167,10 @@ function setWindowWH() {
     $(document).ready(function() {
         width = $(window).width();
         if ($(window).width() > 1280) {
-            $('.home-commercial-section, .topic-slider-section').css('padding-left', (calculatePadding) + "px");
+            $('.home-commercial-section, .topic-slider-section, .sing-rec-pro-section, .disco-look-section').css('padding-left', (calculatePadding) + "px");
         }
         if (width <= 1280) {
-            $('.home-commercial-section, .topic-slider-section').css('padding-left', "0px");
+            $('.home-commercial-section, .topic-slider-section, .sing-rec-pro-section, .disco-look-section').css('padding-left', "0px");
         }
     });
 }
@@ -366,6 +369,31 @@ $('#indu-topic-slider').owlCarousel({
 
 
 
+
+// product main page single-gallery-image slider 
+$('#single-gallery-image').owlCarousel({
+    loop: true,
+    margin: 0,
+    dots: false,
+    nav: true,
+    center: true,
+    items: 1,
+    navText: ["<i class='fa-regular fa-arrow-left-long'></i>", "<i class='fa-regular fa-arrow-right-long'></i>"]
+});
+
+
+// product main page product type slider 
+$('#pro-type-slider').owlCarousel({
+    loop: false,
+    margin: 0,
+    dots: true,
+    nav: true,
+    center: true,
+    items: 1,
+    navText: ["<i class='fa-regular fa-arrow-left-long'></i>", "<i class='fa-regular fa-arrow-right-long'></i>"]
+});
+
+
 // // industry-insights last section slider 
 $(document).ready(function() {
     $('#indu-last-slider-1').owlCarousel({
@@ -406,6 +434,236 @@ $(document).ready(function() {
 
 
 
+
+
+// residentials ac page last slider
+jQuery(document).ready(function($) {
+    var carousel = $("#image-cross-slider");
+    carousel.owlCarousel({
+        loop: true,
+        margin: 20,
+        dots: false,
+        nav: true,
+        center: true,
+        items: 5,
+        navText: ["<i class='fa-regular fa-arrow-left-long'></i>", "<i class='fa-regular fa-arrow-right-long'></i>"],
+        responsive: {
+            0: {
+                items: 1
+            },
+            575: {
+                items: 3
+            },
+            992: {
+                items: 5
+            }
+        }
+    });
+
+    checkClasses();
+    carousel.on('translated.owl.carousel', function(event) {
+        checkClasses();
+    });
+
+    function checkClasses() {
+        var total = $('#image-cross-slider .owl-stage .owl-item.active').length;
+
+        $('#image-cross-slider .owl-stage .owl-item').removeClass('one two tree four five');
+
+        $('#image-cross-slider .owl-stage .owl-item.active').each(function(index) {
+            if (index === 0) {
+                $(this).addClass('one');
+            }
+            if (index === 1) {
+                $(this).addClass('two');
+            }
+            if (index === 2) {
+                $(this).addClass('tree');
+            }
+            if (index === 3) {
+                $(this).addClass('four');
+            }
+            if (index === 4) {
+                $(this).addClass('five');
+            }
+        });
+    }
+});
+
+
+
+
+
+
+// single-product page slider
+jQuery(document).ready(function($) {
+    var carousel = $("#sign-cross-slider");
+    carousel.owlCarousel({
+        loop: true,
+        margin: 0,
+        dots: false,
+        nav: false,
+        center: true,
+        items: 5,
+        responsive: {
+            0: {
+                items: 1
+            },
+            575: {
+                items: 1
+            },
+            992: {
+                items: 3
+            }
+        }
+    });
+
+    checkClasses();
+    carousel.on('translated.owl.carousel', function(event) {
+        checkClasses();
+    });
+
+    function checkClasses() {
+        var total = $('#sign-cross-slider .owl-stage .owl-item.active').length;
+
+        $('#sign-cross-slider .owl-stage .owl-item').removeClass('one two tree four five');
+
+        $('#sign-cross-slider .owl-stage .owl-item.active').each(function(index) {
+            if (index === 0) {
+                $(this).addClass('one');
+            }
+            if (index === 1) {
+                $(this).addClass('two');
+            }
+            if (index === 2) {
+                $(this).addClass('tree');
+            }
+            if (index === 3) {
+                $(this).addClass('four');
+            }
+            if (index === 4) {
+                $(this).addClass('five');
+            }
+        });
+    }
+});
+
+
+
+
+// commercial-ac-vrf page hover class add remove and sty one div
+$(document).ready(function() {
+    var lastHoveredBox = null;
+    $(".col-vrf").on("mouseenter", function() {
+        $(".col-vrf").removeClass("hovered");
+        $(this).addClass("hovered");
+    });
+    $(".col-vrf").on("mouseleave", function() {
+        lastHoveredBox = this;
+    });
+    $(".col-vrf").on("mouseleave", function() {
+        $(lastHoveredBox).addClass("hovered");
+    });
+});
+
+
+
+// Recommended Products slider 
+$('#recommend-product').owlCarousel({
+    loop: true,
+    margin: 20,
+    dots: true,
+    nav: true,
+    navText: ["<i class='fa-regular fa-arrow-left-long'></i>", "<i class='fa-regular fa-arrow-right-long'></i>"],
+    responsive: {
+        0: {
+            items: 1.2,
+        },
+        480: {
+            items: 1.2,
+        },
+        768: {
+            items: 2.2,
+        },
+        992: {
+            items: 3.2,
+        }
+    }
+});
+
+
+// Recommended Products slider 
+$('#look-future-sldier').owlCarousel({
+    loop: true,
+    margin: 20,
+    dots: false,
+    nav: false,
+    responsive: {
+        0: {
+            items: 1.15,
+        },
+        580: {
+            items: 2.15,
+        },
+        768: {
+            items: 2.15,
+        },
+        992: {
+            items: 3.15,
+        },
+        2200: {
+            items: 5.15,
+        }
+    }
+});
+
+
+
+// Recommended Products slider 
+$('#view-all-slider').owlCarousel({
+    loop: true,
+    margin: 25,
+    dots: false,
+    nav: true,
+    navText: ["<i class='fa-regular fa-arrow-left-long'></i>", "<i class='fa-regular fa-arrow-right-long'></i>"],
+    responsive: {
+        0: {
+            items: 1,
+        },
+        480: {
+            items: 1,
+        },
+        768: {
+            items: 2,
+        },
+        992: {
+            items: 2,
+        },
+        1099: {
+            items: 3,
+        }
+    }
+});
+
+
+
+
+
+
+// home banner text animation
+$('#home-text-animation').owlCarousel({
+    animateOut: 'fadeOutDown',
+    animateIn: 'fadeInDown',
+    items: 1,
+    loop: true,
+    margin: 0,
+    dots: false,
+    nav: false,
+    autoplay: true,
+    autoplayTimeout: 4000,
+    autoplayHoverPause: false,
+    mouseDrag: false,
+});
 
 // home banner text animation
 var words = document.getElementsByClassName('word');

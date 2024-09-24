@@ -1,29 +1,29 @@
 @extends('frontend.layouts.app')
 @section('content')   
-<section class="banner-space indu-banner-section">
+<section class="banner-space indu-banner-section wow fadeIn" data-wow-delay="1.2s">
         <div class="container">
             <div class="position-relative">
                 <div class="news-banner-text indu-hbanenr-text-div-1">
-                    <h1 class="wow fadeInLeft" data-wow-delay="0.4s">{{ __('website.industry_insight.title_1') }}</h1>
+                    <h1 class="wow fadeInLeft" data-wow-delay="1.4s">{{ __('website.industry_insight.title_1') }}</h1>
                 </div>
                 <div class="indu-banner-img">
-                    <img class="back-img-indu-1 wow fadeInLeft" src="{{ asset('assets-frontend/images/indu-banner-1.png') }}" alt="Industry Image">
-                    <img class="back-img-indu-2 wow fadeInRight" src="{{ asset('assets-frontend/images/indu-banner-1.png') }}" alt="Industry Image">
-                    <img class="wow fadeInUp" src="{{ asset('assets-frontend/images/indu-banner-1.png') }}" alt="Industry Image">
+                    <img class="back-img-indu-1 wow fadeIn" data-wow-delay="1.5s" src="{{ asset('assets-frontend/images/indu-banner-1.png') }}" alt="Industry Image">
+                    <img class="back-img-indu-2 wow fadeIn" data-wow-delay="2.0s" src="{{ asset('assets-frontend/images/indu-banner-1.png') }}" alt="Industry Image">
+                    <img class="wow fadeIn" data-wow-delay="1.2s" src="{{ asset('assets-frontend/images/indu-banner-1.png') }}" alt="Industry Image">
                 </div>
                 <div class="news-banner-text indu-hbanenr-text-div-2">
-                    <h1 class="wow fadeInRight" data-wow-delay="0.8s">{{ __('website.industry_insight.title_2') }}</h1>
+                    <h1 class="wow fadeInRight" data-wow-delay="1.8s">{{ __('website.industry_insight.title_2') }}</h1>
                 </div>
             </div>
-            <div class="indu-ban-nub wow fadeInLeft" data-wow-delay="0.5s">
+            <div class="indu-ban-nub wow fadeInLeft" data-wow-delay="1.5s">
                 <h3><span class="numberanimation">{{ __('website.industry_insight.title_3') }}</span>+</h3>
                 <p>{{ __('website.industry_insight.title_4') }}</p>
             </div>
             <div class="row indu-search-row">
-                <div class="col-lg-6 wow fadeInLeft">
+                <div class="col-lg-6 wow fadeInLeftBig" data-wow-delay="0.5s">
                     <p>{{ __('website.industry_insight.desc') }}</p>
                 </div>
-                <div class="col-lg-6 wow fadeInRight">
+                <div class="col-lg-6 wow fadeInRightBig" data-wow-delay="0.5s">
                     <form>
                         <div class="news-search-div">
                             <i class="fa-regular fa-magnifying-glass new-search-icon"></i>

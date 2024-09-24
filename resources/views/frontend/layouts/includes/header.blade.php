@@ -98,7 +98,7 @@
                         </li>
                     </ul>
                     <div class="h-button-list">
-                        <div class="dropdown flag-dropdown">
+                        <div class="dropdown flag-dropdown me-2">
                             <a href="{{ changeLanguage() }}" class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                <img src=" {{ app()->getLocale() == 'en' ? asset('assets-frontend/images/en-flag.svg') : asset('assets-frontend/images/ar-flag.svg') }}" alt="{{ strtoupper(app()->getLocale()) }} Flag"> {{ strtoupper(app()->getLocale()) }}
                             </a>
@@ -108,6 +108,7 @@
                                 </li>
                             </ul>
                         </div>
+                        @if(request()->routeIs('frontend.home'))
                         <button class="dark-ligh-btn">
                             <span class="sun-icon">
                                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -121,6 +122,7 @@
                                 </svg>
                             </span>
                         </button>
+                        @endif
                         <a href="{{ route('frontend.contact-us',['locale' => app()->getLocale()]) }}" type="button" class="btn header-btn"> {{ __('website.header_menu.contact_us') }}</a>
                     </div>
                 </div>
