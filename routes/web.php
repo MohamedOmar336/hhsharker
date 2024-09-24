@@ -2,48 +2,53 @@
 
 //use App\Http\Controllers\Admin\MailboxController;
 
-use App\Http\Controllers\Admin\GmailController;
-use App\Http\Controllers\Admin\ActivityLogController;
-use App\Http\Controllers\Admin\AppointmentController;
-use App\Http\Controllers\Admin\BlogPostController;
-use App\Http\Controllers\Admin\CalendarController;
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\ChatController;
-use App\Http\Controllers\Admin\CommentController;
-use App\Http\Controllers\Admin\ContactController;
-use App\Http\Controllers\Admin\GroupController;
-use App\Http\Controllers\Admin\HomeController;
-use App\Http\Controllers\Admin\MailController;
-use App\Http\Controllers\Admin\MessageController;
-use App\Http\Controllers\Admin\NotificationController;
-use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Admin\ProfileController;
-use App\Http\Controllers\Admin\RolesController;
-use App\Http\Controllers\Admin\SmtpSettingsController;
-use App\Http\Controllers\Admin\TagController;
-use App\Http\Controllers\Admin\TicketController;
-use App\Http\Controllers\Admin\TicketHistoryController;
-use App\Http\Controllers\Admin\TicketPriorityController;
-use App\Http\Controllers\Admin\TicketStatusController;
-use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\TicketCategoryController;
-use App\Http\Controllers\Admin\CharacteristicController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\WhatsAppController;
-use App\Http\Controllers\ContactUsController;
-use App\Http\Controllers\Admin\NewsController;
-use App\Http\Controllers\Admin\WhatsAppTemplateController;
-use App\Http\Controllers\Admin\TaskController;
 use App\Http\Controllers\FormController;
-
-use App\Http\Controllers\Frontend\CompanyFounderController;
-use App\Http\Controllers\Frontend\IndustryInsightsController;
-use App\Http\Controllers\Frontend\ValueAndVisionController;
+use App\Http\Controllers\Admin\TagController;
+use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\Admin\ChatController;
+use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\MailController;
+use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\TaskController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\GmailController;
+use App\Http\Controllers\Admin\GroupController;
+use App\Http\Controllers\Admin\RolesController;
+use App\Http\Controllers\Admin\TicketController;
+use App\Http\Controllers\Admin\CommentController;
+use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\MessageController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\BlogPostController;
+use App\Http\Controllers\Admin\CalendarController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\WhatsAppController;
 use App\Http\Controllers\Frontend\AboutController;
-use App\Http\Controllers\Frontend\NewsController as FrontNewsController;
+use App\Http\Controllers\Admin\ActivityLogController;
+use App\Http\Controllers\Admin\AppointmentController;
+use App\Http\Controllers\Admin\NotificationController;
+use App\Http\Controllers\Admin\SmtpSettingsController;
+use App\Http\Controllers\Admin\TicketStatusController;
+use App\Http\Controllers\Frontend\CaseStudyController;
+use App\Http\Controllers\Frontend\OurLatestController;
+use App\Http\Controllers\Admin\TicketHistoryController;
+use App\Http\Controllers\Admin\CharacteristicController;
+
+use App\Http\Controllers\Admin\TicketCategoryController;
+use App\Http\Controllers\Admin\TicketPriorityController;
+use App\Http\Controllers\Admin\WhatsAppTemplateController;
+use App\Http\Controllers\Frontend\DiscoverLearnController;
+use App\Http\Controllers\Frontend\CompanyFounderController;
+use App\Http\Controllers\Frontend\ValueAndVisionController;
+use App\Http\Controllers\Frontend\SalesAndSupportController;
+use App\Http\Controllers\Frontend\IndustryInsightsController;
+use App\Http\Controllers\Frontend\CommercialSupportController;
 use App\Http\Controllers\Frontend\HomeController as FrontHomeController;
+use App\Http\Controllers\Frontend\NewsController as FrontNewsController;
 use App\Http\Controllers\Frontend\ContactUsController as FrontContactUsController;
 
 
@@ -272,6 +277,15 @@ Route::group(['prefix' => '{locale}', 'where' => ['locale' => 'en|ar'],'middlewa
     Route::get('/industry-insights', [IndustryInsightsController::class,'index'])->name('frontend.industry-insights');
     Route::get('/news', [FrontNewsController::class,'index'])->name('frontend.news');
     Route::get('/value-and-vision', [ValueAndVisionController::class,'index'])->name('frontend.value-and-vision');
+
+    Route::get('/case-studies', [CaseStudyController::class,'index'])->name('frontend.case-studies');
+    Route::get('/commercial-support', [CommercialSupportController::class,'index'])->name('frontend.commercial-support');
+    Route::get('/our-latest-projects', [OurLatestController::class,'index'])->name('frontend.our-latest-projects');
+    Route::get('/sales-and-support', [SalesAndSupportController::class,'index'])->name('frontend.sales-and-support');
+    Route::get('/discover-and-learn', [DiscoverLearnController::class,'index'])->name('frontend.discover-and-learn');
+    Route::get('/discover-all', [DiscoverLearnController::class,'viewAll'])->name('frontend.discover-all');
+
+ 
 });
 
 Route::get('/', function () {
