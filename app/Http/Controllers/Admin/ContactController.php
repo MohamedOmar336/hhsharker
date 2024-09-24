@@ -64,7 +64,7 @@ class ContactController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'phone' => 'required|string|max:20',
+            'phone' => 'required|string|max:20|unique:contacts,phone', // Ensuring phone is unique in the contacts table
             'address' => 'nullable|string|max:255',
             'segment' => 'nullable|string|max:255',
             'last_interaction' => 'nullable|date',
@@ -118,7 +118,7 @@ class ContactController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'phone' => 'required|string|max:20',
+            'phone' => 'required|string|max:20|unique:contacts,phone,' . $contact->id, // Exclude current contact's phone during update
             'address' => 'nullable|string|max:255',
             'segment' => 'nullable|string|max:255',
             'last_interaction' => 'nullable|date',
