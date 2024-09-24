@@ -544,19 +544,24 @@
             $('#search-input').on('keyup', function() {
                 var value = $(this).val().toLowerCase();
                 $('.chat-list .whatsapp').filter(function() {
-                    $(this).toggle($(this).data('user-name').toLowerCase().indexOf(value) > -1);
+                    // Check if the name or phone number contains the search value
+                    var userName = $(this).data('user-name').toLowerCase();
+                    var userPhone = $(this).find('.phone-number').text().toLowerCase(); // Assuming phone number is displayed in an element with class 'phone-number'
+
+                    $(this).toggle(userName.indexOf(value) > -1 || userPhone.indexOf(value) > -1);
                 });
             });
-
             $('#messageSearch').on('keyup', function() {
                 var value = $(this).val().toLowerCase();
                 $('#append-messages .messageContent').each(function() {
                     // Check if the text of the message includes the search value
                     var isVisible = $(this).text().toLowerCase().indexOf(value) > -1;
+
                     // Show or hide the entire list item based on the search
                     $(this).closest('li').toggle(isVisible);
                 });
             });
+
 
             var whatAppId = $('.whatsapp').first().data('whatsapp-id');
             // Initialize Firebase
