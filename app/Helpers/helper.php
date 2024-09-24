@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Str;
 
 if (!function_exists('slugable')) {
@@ -49,9 +50,9 @@ if (!function_exists('uploadImage')) {
         $image->move(public_path('images'), $imageName);
         return $imageName;
     }
-
 }
-function numberToWord($number) {
+function numberToWord($number)
+{
     $words = [
         1 => 'one',
         2 => 'two',
@@ -88,5 +89,14 @@ if (!function_exists('uploadWhatsappDoc')) {
 
         // Return the storage path with the unique file name
         return $path . '/' . $uniqueName;
+    }
+    function changeLanguage()
+    {
+
+        $currentRouteName = Route::currentRouteName();
+        if ($currentRouteName == 'frontend.home') {
+            return str_replace('/' . app()->getLocale(), '/' . (app()->getLocale() == 'en' ? 'ar' : 'en'), url()->current());
+        }
+        return str_replace('/' . app()->getLocale() . '/', '/' . (app()->getLocale() == 'en' ? 'ar' : 'en') . '/', url()->current());
     }
 }
