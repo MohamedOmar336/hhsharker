@@ -42,7 +42,9 @@ use App\Http\Controllers\Admin\TicketCategoryController;
 use App\Http\Controllers\Admin\TicketPriorityController;
 use App\Http\Controllers\Admin\WhatsAppTemplateController;
 use App\Http\Controllers\Frontend\DiscoverLearnController;
+use App\Http\Controllers\Frontend\AirConditionerController;
 use App\Http\Controllers\Frontend\CompanyFounderController;
+use App\Http\Controllers\Frontend\HomeAppliancesController;
 use App\Http\Controllers\Frontend\ValueAndVisionController;
 use App\Http\Controllers\Frontend\SalesAndSupportController;
 use App\Http\Controllers\Frontend\IndustryInsightsController;
@@ -308,7 +310,17 @@ Route::group(['prefix' => '{locale}', 'where' => ['locale' => 'en|ar'],'middlewa
     Route::get('/discover-and-learn', [DiscoverLearnController::class,'index'])->name('frontend.discover-and-learn');
     Route::get('/discover-all', [DiscoverLearnController::class,'viewAll'])->name('frontend.discover-all');
 
- 
+    Route::get('/air-conditioner', [AirConditionerController::class,'index'])->name('frontend.air-conditioner');
+    Route::get('/air-conditioner/{parent}', [AirConditionerController::class,'parent'])->name('frontend.air-conditioner.parent');
+    Route::get('/air-conditioner/{parent}/{child}', [AirConditionerController::class,'child'])->name('frontend.air-conditioner.child');
+    Route::get('/air-conditioner/{parent}/{child}/{subchild}', [AirConditionerController::class,'subChild'])->name('frontend.air-conditioner.subchild');
+    Route::get('/product-details', [AirConditionerController::class,'productDetails'])->name('frontend.air-conditioner.product-details');
+    
+    Route::get('/home-appliances', [HomeAppliancesController::class,'index'])->name('frontend.home-appliances');
+    Route::get('/home-appliances/{parent}', [HomeAppliancesController::class,'parent'])->name('frontend.home-appliances.parent');
+    Route::get('/product-list-1', [HomeAppliancesController::class,'productList1'])->name('frontend.home-appliances.product-list-1');
+    Route::get('/product-list-2', [HomeAppliancesController::class,'productList2'])->name('frontend.home-appliances.product-list-1');
+
 });
 
 Route::get('/', function () {

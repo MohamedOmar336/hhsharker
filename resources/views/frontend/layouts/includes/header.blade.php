@@ -23,15 +23,18 @@
                             <a class="nav-link" href="{{ route('frontend.company-founder',['locale' => app()->getLocale()]) }}">{{ __('website.header_menu.company') }}</a>
                         </li>
                         <li class="nav-item dropdown dropdown-div">
-                            <a class="nav-link dropdown-toggle" href="#" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="{{ route('frontend.air-conditioner',['locale' => app()->getLocale()]) }}" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             {{ __('website.header_menu.air_conditioner') }}
                             </a>
+                            @if($headerAirConditionerArr->count() > 0)
                             <ul class="dropdown-menu">
                                 <div class="drop-innter-div">
-                                    <li><a class="dropdown-item" href="#">Commercial Solutions 1</a></li>
-                                    <li><a class="dropdown-item" href="#">Commercial Solutions 2</a></li>
+                                    @foreach($headerAirConditionerArr as $cat)
+                                    <li><a class="dropdown-item" href="{{ route('frontend.air-conditioner.parent',['locale' => app()->getLocale(),'parent'=>$cat->slug]) }}">{{ $cat->name }}</a></li>
+                                    @endforeach
                                 </div>
                             </ul>
+                            @endif
                         </li>
                         <li class="nav-item megamenu">
                             <a class="nav-link dropdown-toggle" href="#">
