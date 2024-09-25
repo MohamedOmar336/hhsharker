@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -36,7 +37,7 @@ class LoginController extends Controller
         $request->validate([
             $this->username() => 'required|string', // Validate username is required and of type string
             'password' => 'required|string', // Validate password is required and of type string
-            'g-recaptcha-response' => 'required|captcha' // Validate the Google reCAPTCHA response
+            // 'g-recaptcha-response' => 'required|captcha' // Validate the Google reCAPTCHA response
         ]);
     }
 
@@ -58,5 +59,16 @@ class LoginController extends Controller
             return redirect()->route('admin.login')->with('error', 'Your account is inactive.');
         }
         return redirect()->route('home')->with('success', 'login successful'); // Redirect to home if active
+    }
+
+
+    public function logout(Request $request)
+    {
+        Auth::logout(); // Log the user out
+        $request->session()->invalidate(); // Invalidate the session
+        $request->session()->regenerateToken(); // Regenerate the CSRF token
+
+        // Redirect to your desired page after logout
+        return redirect('/login')->with('success', 'You have been logged out.');
     }
 }

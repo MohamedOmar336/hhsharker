@@ -21,7 +21,7 @@
     <link href="{{ asset('assets-admin/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets-admin/css/app.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets-admin/css/style.css') }}" rel="stylesheet" type="text/css" />
-    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdzcfIpAAAAAHnIw33NCdfQeZTNGCyQx8htUzPN"></script>
+    {{-- <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdzcfIpAAAAAHnIw33NCdfQeZTNGCyQx8htUzPN"></script> --}}
 </head>
 
 <body id="body" class="auth-page"
@@ -106,13 +106,13 @@
                                         </div>
                                     </div>
 
-                                    {!! app('captcha')->display() !!}
+                                    {{-- {!! app('captcha')->display() !!}
 
                                     @if ($errors->has('g-recaptcha-response'))
                                         <span class="help-block">
                                             <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
                                         </span>
-                                    @endif
+                                    @endif --}}
 
                                     <div class="form-group mb-0 row">
                                         <div class="col-12">
@@ -123,7 +123,7 @@
                                         </div>
                                     </div>
                                 </form>
-                                {!! app('captcha')->renderJs() !!}
+                                {{-- {!! app('captcha')->renderJs() !!} --}}
                             </div>
 
                         </div>

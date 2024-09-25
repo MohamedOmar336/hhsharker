@@ -13,6 +13,7 @@
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   
 
     <link href="{{ asset('assets-admin/libs/litepicker/css/litepicker.css') }}" rel="stylesheet" type="text/css" />
     {{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"> --}}
@@ -138,24 +139,26 @@
     @stack('scripts')
 
     <script>
-        function confirmDelete(event) {
-            event.preventDefault(); // Prevent the default form submission
-            Swal.fire({
-                title: '{{ __("general.messages.confirm_delete_title") }}',
-                text: '{{ __("general.messages.confirm_delete_text") }}',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#EE9A8F',
-                cancelButtonColor: '#4AD7AA',
-                confirmButtonText: '{{ __("general.messages.confirm_delete_confirm_button") }}',
-                cancelButtonText: '{{ __("general.messages.confirm_delete_cancel_button") }}'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    event.target.closest('form').submit(); // Submit the form
-                }
-            });
-        }
-    </script>
+    function confirmDelete(event) {
+        event.preventDefault(); // Prevent the default form submission
+        Swal.fire({
+            title: '{{ __("general.messages.confirm_delete_title") }}',
+            text: '{{ __("general.messages.confirm_delete_text") }}',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#EE9A8F',
+            cancelButtonColor: '#4AD7AA',
+            confirmButtonText: '{{ __("general.messages.confirm_delete_confirm_button") }}',
+            cancelButtonText: '{{ __("general.messages.confirm_delete_cancel_button") }}'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Find the form and submit it
+                event.target.closest('form').submit(); // Submit the form
+            }
+        });
+    }
+</script>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const darkModeToggle = document.getElementById("darkModeToggle");

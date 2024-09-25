@@ -64,6 +64,9 @@
                         <td>
                             <a href="{{ route('categories.edit', $record->id) }}" class="action-button" data-tooltip="edit"
                                 ><i data-feather="edit"></i></a>
+                                <form style="display: inline;">
+                               
+                               </form>
                             <form action="{{ route('categories.destroy', $record->id) }}" method="POST"
                                 style="display: inline;" class="delete-form">
                                 @csrf
@@ -74,7 +77,7 @@
                         </td>
                     </tr>
                 @endforeach
-                <x-slot name="createButton">
+                <x-slot name="createButton" action="{{ route('categories.bulk-delete') }}">
                     <a href="{{ route('categories.create') }}" class="btn btn-outline-light btn-sm px-4">+
                         {{ __('general.actions.new') }}</a>
                 </x-slot>

@@ -95,11 +95,22 @@
 
                                 <div class="mb-3">
                                     <label for="status" class="form-label">{{ __('general.attributes.status') }}</label>
-                                    <input id="status" type="text" class="form-control @error('status') is-invalid @enderror" name="status" value="{{ old('status', $appointment->status) }}" required>
+                                    <select id="status" class="form-control @error('status') is-invalid @enderror" name="status" required>
+                                        <option value="pending" {{ old('status', $appointment->status) == 'pending' ? 'selected' : '' }}>
+                                            {{ __('general.statuses.pending') }}
+                                        </option>
+                                        <option value="confirmed" {{ old('status', $appointment->status) == 'confirmed' ? 'selected' : '' }}>
+                                            {{ __('general.statuses.confirmed') }}
+                                        </option>
+                                        <option value="completed" {{ old('status', $appointment->status) == 'completed' ? 'selected' : '' }}>
+                                            {{ __('general.statuses.completed') }}
+                                        </option>
+                                        <option value="cancelled" {{ old('status', $appointment->status) == 'cancelled' ? 'selected' : '' }}>
+                                            {{ __('general.statuses.cancelled') }}
+                                        </option>
+                                    </select>
                                     @error('status')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
+                                    <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 

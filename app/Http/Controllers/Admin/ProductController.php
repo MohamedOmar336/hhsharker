@@ -188,4 +188,17 @@ class ProductController extends Controller
 
         return redirect()->route('products.index')->with('success', 'Products imported successfully.');
     }
+
+    public function bulkDelete(Request $request)
+{
+    $request->validate([
+        'ids' => 'required|array',
+        'ids.*' => 'exists:products,id', // Adjust to your model name
+    ]);
+
+    // Perform the deletion
+    Product::whereIn('id', $request->input('ids'))->delete();
+
+    return redirect()->route('products.index')->with('success', 'Selected products deleted successfully.');
+}
 }

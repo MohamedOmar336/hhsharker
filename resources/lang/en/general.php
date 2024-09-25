@@ -453,6 +453,8 @@ return [
     ],
 
     'side' => [
+        'sales_email_list' => 'Sales Email List',
+        'support_email_list' => 'Support Email List',
         'email_list' => 'Email List',
         'Tickets' => 'Tickets',
         'Tickets Overview' => 'Tickets Overview',
@@ -782,6 +784,12 @@ return [
         'enter_name_ar' => 'Enter Name (Arabic)',
         'enter_description_en' => 'Enter Description (English)',
         'enter_description_ar' => 'Enter Description (Arabic)',
+    ],
+    'statuses' => [
+        'pending' => 'Pending',
+        'confirmed' => 'Confirmed',
+        'completed' => 'Completed',
+        'cancelled' => 'Cancelled',
     ],
     'from' => 'From',
     'date' => 'Date',

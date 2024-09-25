@@ -174,4 +174,25 @@ class BlogPostController extends Controller
         $post = BlogPost::findOrFail($id);
         return view('admin.blogPosts.show', compact('post'));
     }
+
+
+    public function bulkDelete(Request $request)
+{
+    $request->validate([
+        'ids' => 'required|array',
+        'ids.*' => 'exists:blog_posts,id', // Validate each ID
+    ]);
+
+    foreach ($request->ids as $id) {
+        $post = BlogPost::find($id);
+        if ($post) {
+            if ($post->image) {
+                Storage::delete($post->image); // Delete the image if it exists
+            }
+            $post->delete(); // Delete the blog post
+        }
+    }
+
+    return redirect()->route('blogposts.index')->with('success', 'Selected posts deleted successfully.');
+}
 }

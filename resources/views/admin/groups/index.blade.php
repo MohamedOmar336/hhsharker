@@ -51,6 +51,9 @@
                         <td>
                             <a href="{{ route('groups.edit', $record->id) }}" class="action-button" data-tooltip="edit"
                                 ><i data-feather="edit"></i></a>
+                                <form style="display: inline;">
+                               
+                               </form>
                             <form action="{{ route('groups.destroy', $record->id) }}" method="POST"
                                 style="display: inline;" class="delete-form">
                                 @csrf
@@ -62,7 +65,7 @@
                     </tr>
                 @endforeach
 
-                <x-slot name="createButton">
+                <x-slot name="createButton" action="{{ route('groups.bulkDelete') }}">
                     <a href="{{ route('groups.create') }}" class="btn btn-outline-light btn-sm px-4">+
                         {{ __('general.actions.new') }}</a>
                 </x-slot>

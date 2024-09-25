@@ -24,9 +24,10 @@ class TicketCategoryController extends Controller
             $query->where('name', 'LIKE', "%{$searchTerm}%");
         }
 
-        $ticketCategories = $query->paginate(10); // Adjust pagination limit as needed
+        $totalResults = $query->count();
 
-        return view('admin.TicketCategories.index', compact('ticketCategories'));
+        $records = $query->latest()->paginate($totalResults);
+        return view('admin.TicketCategories.index', compact('records'));
     }
 
     /**

@@ -19,9 +19,9 @@ class TicketPriorityController extends Controller
                   ->orWhere('status', 'LIKE', "%{$request->search}%");
         }
     
-        // Paginate the results
-        $records = $query->latest()->paginate(500);
-    
+        $totalResults = $query->count();
+
+    $records = $query->latest()->paginate($totalResults);
         // Return the view with the data
         return view('admin.ticketPriority.index', compact('records'));
     }
@@ -86,12 +86,37 @@ class TicketPriorityController extends Controller
 
     public function destroy($id)
     {
-        // Retrieve and delete the TicketPriority
-        $priority = TicketPrioritySetting::findOrFail($id);
-        $priority->delete();
-
-        // Redirect to the index view with a success message
-        return redirect()->route('ticket-priorities.index')
-                         ->with('success', 'Ticket Priority deleted successfully.');
+        try {
+            // Retrieve and delete the TicketPriority
+            $priority = TicketPrioritySetting::findOrFail($id);
+            $priority->delete();
+    
+            // Redirect to the index view with a success message
+            return redirect()->route('ticket-priorities.index')->with('success', 'Ticket Priority deleted successfully.');
+        } catch (\Exception $e) {
+            // If there's an exception, redirect with the error message
+            return redirect()->route('ticket-priorities.index')->with('error', $e->getMessage());
+        }
     }
+    public function bulkDelete(Request $request)
+    {
+        $request->validate([
+            'ids' => 'required|array',
+            'ids.*' => 'exists:ticket_priority_settings,id',
+        ]);
+    
+        try {
+            // Loop through each ID and try to delete them one by one
+            foreach ($request->ids as $id) {
+                $priority = TicketPrioritySetting::findOrFail($id);
+                $priority->delete();
+            }
+    
+            return redirect()->route('ticket-priorities.index')->with('success', 'Ticket Priorities deleted successfully.');
+        } catch (\Exception $e) {
+            // If any exception occurs during deletion, catch it and return with error message
+            return redirect()->route('ticket-priorities.index')->with('error', $e->getMessage());
+        }
+    }
+    
 }

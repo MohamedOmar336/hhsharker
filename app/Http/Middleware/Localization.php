@@ -16,7 +16,7 @@ class Localization
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function handle(Request $request, Closure $next)
-    {
+    {   
         if (session()->has('locale') && in_array(session('locale'), ['ar', 'en'])) {
             App::setLocale(session('locale'));
         } elseif ($request->headers->has('lang') && in_array($request->header('lang'), ['ar', 'en'])) {

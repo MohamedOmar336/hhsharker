@@ -50,4 +50,6 @@ class News extends Model
     {
         return $this->belongsTo(User::class, 'author_id');
     }
+
+    protected $dates = ['created_at', 'updated_at'];
 }

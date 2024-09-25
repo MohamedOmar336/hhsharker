@@ -452,6 +452,8 @@ return [
         'trash' => 'سلة المحذوفات',
     ],
     'side' => [
+        'sales_email_list' => 'قائمة البريد الإلكتروني للمبيعات',
+        'support_email_list' => 'قائمة البريد الإلكتروني للدعم',
         'email_list' => 'قائمة البريد الإلكتروني',
         'Tickets' => 'التذاكر',
         'Tickets Overview' => 'نظرة عامة على التذاكر',
@@ -776,6 +778,12 @@ return [
         'enter_name_ar' => 'أدخل الاسم (بالعربية)',
         'enter_description_en' => 'أدخل الوصف (بالإنجليزية)',
         'enter_description_ar' => 'أدخل الوصف (بالعربية)',
+    ],
+    'statuses' => [
+        'pending' => 'قيد الانتظار',
+        'confirmed' => 'مؤكد',
+        'completed' => 'مكتمل',
+        'cancelled' => 'ملغي',
     ],
     'from' => 'من',
     'date' => 'تاريخ',

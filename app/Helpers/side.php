@@ -63,8 +63,12 @@ return [
                 'route' => 'mails.index',
             ],
             [
-                'title' =>  __('general.side.email_list'),
-                'route' => 'gmail',
+                'title' =>  __('general.side.sales_email_list'),
+                'route' => 'sales.gmail',
+            ],
+            [
+                'title' =>  __('general.side.support_email_list'),
+                'route' => 'support.gmail',
             ],
         ],
 

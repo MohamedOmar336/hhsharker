@@ -29,18 +29,16 @@ class WhatsAppController extends Controller
 
     public function chat(){
 
-        $whatsapps = WhatsAppContact::with('messages' , 'lastMessage')->get();
-
         $contacts = Contact::all();
 
-        return  view('admin.chat.whatsapp' , compact('whatsapps' , 'contacts'));
+        return  view('admin.chat.whatsapp' , compact( 'contacts'));
     }
 
     public function sendMessage(Request $request)
     {
         $phone = $request->phone;
         $message = $request->message;
-        $response = $this->whatsAppService->sendMessage($phone, $message);
+        $response = $this->whatsAppService->sendMessage($phone, $message , 'text');
         // Check if the success key exists and is true
         if (isset($response['success']) && $response['success']) {
             $messageRecord = $this->storeMessage($phone, $message, 'outgoing');
@@ -138,7 +136,7 @@ class WhatsAppController extends Controller
     }
 
 
-    public function storeMessage($phoneNumber, $text, $direction)
+    public function storeMessage($phoneNumber, $text, $direction , $type = 'text')
     {
         $contact = WhatsAppContact::firstOrCreate(
             ['phone_number' => $phoneNumber],
@@ -148,7 +146,8 @@ class WhatsAppController extends Controller
         $message = new WhatsAppMessage([
             'whatsapp_contact_id' => $contact->id,
             'message' => $text,
-            'direction' => $direction // 'incoming' or 'outgoing'
+            'direction' => $direction ,// 'incoming' or 'outgoing'
+            'type'=> $type
         ]);
 
         $message->save();
@@ -253,4 +252,83 @@ class WhatsAppController extends Controller
 
         return redirect()->route('whatsapp.broadcast.index')->with('success', 'Message scheduled successfully 2!');
     }
+
+    /**
+     * Handles the file upload request from the user and sends the file to WhatsApp.
+     *
+     * This function accepts a file from an HTTP request, processes the file,
+     * and uses the WhatsAppService to send it to WhatsApp's server. It then
+     * returns a response to the user based on the success or failure of the file upload.
+     *
+     * @param Request $request The Laravel request object containing the file to be uploaded.
+     * @return \Illuminate\Http\RedirectResponse Redirects back with a success or error message.
+     */
+    public function uploadFile(Request $request)
+    {
+        // Retrieve the file from the request object assuming 'attachment' is the input's name
+        $file = $request->file('attachment');
+
+        // Instantiate the WhatsAppService to use its method for sending attachments
+        $whatsAppService = new WhatsAppService();
+
+        // Attempt to send the attachment and store the result
+        $uploadResult = $whatsAppService->uploadMedia($file);
+
+        if ($uploadResult['success']) {
+            // Check if the upload was successful
+            if ($uploadResult['success']) {
+                // Get the media ID from the upload result
+                $mediaId = $uploadResult['media_id'];
+                // Define the phone number, message type, and other relevant details
+                $phone = $request->phone;
+                $type = 'document'; // Change this to 'image', 'video', or 'audio' as needed
+                $caption = 'Here is the document'; // Optional caption for media messages
+                $filename = $file->getClientOriginalName(); // Get the original file name
+                $fileSize = filesize($file);
+
+
+                // Send the message with the uploaded file
+                $sendResult = $whatsAppService->sendMessage($phone, $mediaId, $type, $caption, $filename);
+
+                // Check if the message was sent successfully
+                if ($sendResult['success']) {
+
+                    $filePath = uploadWhatsappDoc($file);
+
+                    $fileData = [
+                        'media_id' => $mediaId,
+                        'filename'=> $filename,
+                        'fileSize'=> $fileSize,
+                        'fileUrl'=> asset('storage/' . $filePath)
+                    ];
+
+                    $this->storeMessage($phone, json_encode($fileData), 'outgoing' , 'document');
+                    // Return a JSON response with success status and media ID
+                    return response()->json([
+                        'success' => true,
+                        'message' => 'File uploaded and message sent successfully!',
+                        'media_id' => $mediaId,
+                        'filename'=> $filename,
+                        'fileSize'=> $fileSize,
+                        'fileUrl'=> asset('storage/' . $filePath)
+                    ], 200);
+                } else {
+                    // Return an error if sending the message failed
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'Failed to send message: ' . $sendResult['error'],
+                    ], 500);
+                }
+            } else {
+                // Return an error if the upload failed
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Failed to upload file: ' . $uploadResult['error'],
+                ], 500);
+            }
+        } else {
+            return back()->with('error', 'Failed to upload file: ' . $uploadResult['error']);
+        }
+    }
+
 }
