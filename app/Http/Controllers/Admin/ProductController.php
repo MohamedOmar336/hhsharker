@@ -6,13 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Characteristic;
 use App\Models\Product;
 use App\Models\Category;
-use App\Enums\EnumsSettings;
-use App\Exports\ProductsExport;
-use Maatwebsite\Excel\Facades\Excel;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ProductsExport;
 use App\Imports\ProductsImport;
 
 class ProductController extends Controller
@@ -20,12 +17,17 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $characteristics = Characteristic::all();
-        $query = Product::orderBy('created_at', 'desc');
+        $categories = Category::all();
+
+        // Query products where parent_id is null (main products only)
+        $query = Product::whereNull('parent_id')->orderBy('created_at', 'desc');
 
         // Apply filter for 'name' if not empty
         if ($request->has('name') && $request->name != '') {
-            $query->where('product_name_en', 'like', '%' . $request->name . '%')
+            $query->where(function($q) use ($request) {
+                $q->where('product_name_en', 'like', '%' . $request->name . '%')
                   ->orWhere('product_name_ar', 'like', '%' . $request->name . '%');
+            });
         }
 
         // Apply filter for 'category' if not empty
@@ -38,8 +40,9 @@ class ProductController extends Controller
             $query->where('status', 'like', '%' . $request->status . '%');
         }
 
-        $records = $query->paginate(100);
-        $categories = Category::all(); // Assuming you want to filter by categories too
+        // Fetch the records with their child products
+        $records = $query->with('children')->paginate(100);
+
         return view('admin.products.index', compact('records', 'characteristics', 'categories'));
     }
 
@@ -54,27 +57,23 @@ class ProductController extends Controller
     {
         // Validate product data
         $validatedData = $request->validate([
-            'type' => 'required|string|max:255',
-            'product_name_en' => 'required|string|max:255',
-            'product_name_ar' => 'required|string|max:255',
-            'product_option_title' => 'nullable|string|max:255',
-            'product_option_list' => 'nullable|array',
-            'main_option' => 'nullable|string|max:255',
-            'feature_title_en' => 'nullable|string|max:255',
-            'feature_description_en' => 'nullable|string',
-            'feature_icon_en' => 'nullable|string|max:255',
-            'feature_title_ar' => 'nullable|string|max:255',
-            'feature_description_ar' => 'nullable|string',
-            'feature_icon_ar' => 'nullable|string|max:255',
-            'technical_specification' => 'nullable|string',
-            'saso' => 'nullable|string|max:255',
+            'type' => 'required|string|max:16',
+            'product_name_en' => 'required|string|max:71',
+            'product_name_ar' => 'required|string|max:86',
+            'model_number' => 'nullable|string|max:19',
+            'product_option_title' => 'nullable|string|max:3',
+            'product_option_list' => 'nullable|numeric',
+            'main_option' => 'nullable|string|max:29',
+            'feature_en' => 'nullable|json',
+            'feature_ar' => 'nullable|json',
+            'status' => 'nullable|string|max:50',
+            'saso' => 'nullable|string|max:255',  // If this field is still relevant
             'product_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'group' => 'nullable|string|max:255',
             'category' => 'nullable|string|max:255',
             'sub_category' => 'nullable|string|max:255',
             'child' => 'nullable|string|max:255',
             'sub_child' => 'nullable|string|max:255',
-            'status' => 'nullable|string|max:50',
             'best_selling' => 'nullable|boolean',
             'featured' => 'nullable|boolean',
             'recommened' => 'nullable|boolean',
@@ -113,27 +112,23 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $data = $request->validate([
-            'type' => 'required|string|max:255',
-            'product_name_en' => 'required|string|max:255',
-            'product_name_ar' => 'required|string|max:255',
-            'product_option_title' => 'nullable|string|max:255',
-            'product_option_list' => 'nullable|array',
-            'main_option' => 'nullable|string|max:255',
-            'feature_title_en' => 'nullable|string|max:255',
-            'feature_description_en' => 'nullable|string',
-            'feature_icon_en' => 'nullable|string|max:255',
-            'feature_title_ar' => 'nullable|string|max:255',
-            'feature_description_ar' => 'nullable|string',
-            'feature_icon_ar' => 'nullable|string|max:255',
-            'technical_specification' => 'nullable|string',
-            'saso' => 'nullable|string|max:255',
+            'type' => 'required|string|max:16',
+            'product_name_en' => 'required|string|max:71',
+            'product_name_ar' => 'required|string|max:86',
+            'model_number' => 'nullable|string|max:19',
+            'product_option_title' => 'nullable|string|max:3',
+            'product_option_list' => 'nullable|numeric',
+            'main_option' => 'nullable|string|max:29',
+            'feature_en' => 'nullable|json',
+            'feature_ar' => 'nullable|json',
+            'status' => 'nullable|string|max:50',
+            'saso' => 'nullable|string|max:255',  // If still relevant
             'product_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'group' => 'nullable|string|max:255',
             'category' => 'nullable|string|max:255',
             'sub_category' => 'nullable|string|max:255',
             'child' => 'nullable|string|max:255',
             'sub_child' => 'nullable|string|max:255',
-            'status' => 'nullable|string|max:50',
             'best_selling' => 'nullable|boolean',
             'featured' => 'nullable|boolean',
             'recommened' => 'nullable|boolean',
@@ -190,15 +185,14 @@ class ProductController extends Controller
     }
 
     public function bulkDelete(Request $request)
-{
-    $request->validate([
-        'ids' => 'required|array',
-        'ids.*' => 'exists:products,id', // Adjust to your model name
-    ]);
+    {
+        $request->validate([
+            'ids' => 'required|array',
+            'ids.*' => 'exists:products,id',
+        ]);
 
-    // Perform the deletion
-    Product::whereIn('id', $request->input('ids'))->delete();
+        Product::whereIn('id', $request->input('ids'))->delete();
 
-    return redirect()->route('products.index')->with('success', 'Selected products deleted successfully.');
-}
+        return redirect()->route('products.index')->with('success', 'Selected products deleted successfully.');
+    }
 }

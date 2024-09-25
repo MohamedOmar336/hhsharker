@@ -10,6 +10,8 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id',
+        'parent_id',
         'type',
         'product_name_en',
         'product_name_ar',
@@ -17,27 +19,16 @@ class Product extends Model
         'product_option_title',
         'product_option_list',
         'main_option',
-        'feature_title_en',
-        'feature_description_en',
-        'feature_icon_en',
-        'feature_title_ar',
-        'feature_description_ar',
-        'feature_icon_ar',
-        'characteristics_en',
-        'characteristics_description_en',
-        'characteristics_icon_en',
-        'characteristics_ar',
-        'characteristics_description_ar',
-        'characteristics_icon_ar',
-        'technical_specification',
-        'saso',
+        'feature_en',
+        'feature_ar',
+        'status', // Assuming status is relevant, modify or remove if not needed
+        'saso',  // If still relevant, otherwise remove or adjust
         'product_image',
         'group',
         'category',
         'sub_category',
         'child',
         'sub_child',
-        'status',
         'best_selling',
         'featured',
         'recommened',
@@ -47,12 +38,13 @@ class Product extends Model
         'meta_description_ar',
         'product_schema_en',
         'product_schema_ar',
+        'technical_specification',
     ];
 
     protected $casts = [
         'product_option_list' => 'array',
-        'characteristics_en' => 'json',
-        'characteristics_ar' => 'json',
+        'feature_en' => 'json',
+        'feature_ar' => 'json',
         'product_schema_en' => 'json',
         'product_schema_ar' => 'json',
         'best_selling' => 'boolean',
@@ -72,6 +64,16 @@ class Product extends Model
 
     public function characteristics()
     {
-        return $this->hasMany(Characteristic::class, 'id');
+        return $this->hasMany(Characteristic::class, 'product_id');
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo(Product::class, 'parent_id');
+    }
+
+    public function children()
+    {
+        return $this->hasMany(Product::class, 'parent_id');
     }
 }

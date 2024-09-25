@@ -7,22 +7,19 @@
                 <div class="col-sm-12">
                     <div class="page-title-box">
                         <div class="float-end">
-
-
-                    <div class="col-4" style="position: absolute;z-index: 2;left: 940px;">
-                                    <a href="{{ route('products.exports') }}"  class="btn btn-xs btn-primary"
-                                        style="margin-right: 20px; margin-bottom: 10px;">
-                                        <i class="ti ti-file-download">{{ __('general.attributes.export') }}</i>
-                                    </a>
-                                </div>
-                                <div class="col-4" style="position: absolute;z-index: 1;left: 870px;">
-                                    <a href="{{ route('products.import.form') }}" class="btn btn-xs btn-primary"
-                                        style="margin-right: 20px; margin-bottom: 10px;">
-                                        <i class="ti ti-file-download">{{ __('general.attributes.import') }}</i>
-                                    </a>
-                                </div>
+                            <div class="col-4" style="position: absolute;z-index: 2;left: 940px;">
+                                <a href="{{ route('products.exports') }}" class="btn btn-xs btn-primary"
+                                    style="margin-right: 20px; margin-bottom: 10px;">
+                                    <i class="ti ti-file-download">{{ __('general.attributes.export') }}</i>
+                                </a>
+                            </div>
+                            <div class="col-4" style="position: absolute;z-index: 1;left: 870px;">
+                                <a href="{{ route('products.import.form') }}" class="btn btn-xs btn-primary"
+                                    style="margin-right: 20px; margin-bottom: 10px;">
+                                    <i class="ti ti-file-download">{{ __('general.attributes.import') }}</i>
+                                </a>
+                            </div>
                             <ol class="breadcrumb">
-
                                 <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a></li>
                                 <li class="breadcrumb-item active"><a href="{{ route('products.index') }}">{{ __('general.attributes.product') }}</a></li>
                                 <li class="breadcrumb-item active">{{ __('general.list') }}</li>
@@ -41,7 +38,6 @@
                     </div>
                 </div>
             </div>
-
 
             <!-- Filter Form -->
             <form action="{{ route('products.index') }}" method="GET" class="mb-4">
@@ -76,7 +72,8 @@
                         <th scope="col">{{ __('general.attributes.image') }}</th>
                         <th scope="col">{{ __('general.attributes.name_ar') }}</th>
                         <th scope="col">{{ __('general.attributes.name_en') }}</th>
-                        <th scope="col">{{ __('general.attributes.state') }}</th>
+                        <th scope="col">{{ __('general.attributes.type') }}</th>
+                        <th scope="col">{{ __('general.attributes.status') }}</th>
                         <th scope="col">{{ __('general.attributes.category') }}</th>
                         <th style="width: 12%;">{{ __('general.attributes.actions') }}</th>
                     </tr>
@@ -84,30 +81,24 @@
                 @foreach ($records as $record)
                     <tr class="table-body">
                         <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
-                        <td><img src="{{ $record->product_image ? asset('images/' . $record->product_image) : asset('assets-admin/images/no_image.png') }}"
+                        <td><img src="{{ $record->product_image ? asset('storage/' . $record->product_image) : asset('assets-admin/images/no_image.png') }}"
                             alt="{{ $record->product_name_ar }}" width="50"></td>
                         <td>{{ $record->product_name_ar }}</td>
                         <td>{{ $record->product_name_en }}</td>
+                        <td>{{ $record->type }}</td>
                         <td>{{ $record->status }}</td>
-                        <td>{{ $record->category ? $record->category->name_en : __('general.uncategorized') }}</td>
+                        <td>{{ $record->category ? $record->category : __('general.uncategorized') }}</td>
                         <td>
-<<<<<<< HEAD
-                            <a href="{{ route('products.edit', $record->id) }}" class="action-button" data-tooltip="edit" class="action-icon"> <i data-feather="edit"></i></a>
-                            <form action="{{ route('products.destroy', $record->id) }}" method="POST" class="d-inline">
-=======
                             <a href="{{ route('products.edit', $record->id) }}" class="action-icon"> <i data-feather="edit"></i></a>
                             <form style="display: inline;">
-
-                               </form>
+                            </form>
                             <form action="{{ route('products.destroy', $record->id) }}" method="POST" class="delete-form">
->>>>>>> 8d27a7cd9328eeb2db9b5189c72031b110463f72
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="action-icon delete-btn action-button" data-tooltip="delete" onclick="return confirm('{{ __('general.confirm_delete') }}')">
                                     <i data-feather="trash"></i>
                                 </button>
                             </form>
-
                         </td>
                     </tr>
                 @endforeach
@@ -120,6 +111,4 @@
             </x-table>
         </div><!-- container -->
     </div><!-- container -->
-
-
 @endsection
