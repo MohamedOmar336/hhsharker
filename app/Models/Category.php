@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\App;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Category extends Model
 {
@@ -60,6 +61,14 @@ class Category extends Model
     public function children()
     {
         return $this->hasMany(Category::class, 'parent_id');
+    }
+
+    public function getNameAttribute()
+    {
+        $locale = App::getLocale(); // Get the current locale
+        
+        // Choose the right column based on locale
+        return $this->{'name_' . $locale} ?? $this->name_en; // Fallback to English
     }
 
 }
