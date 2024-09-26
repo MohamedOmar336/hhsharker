@@ -423,7 +423,12 @@ return [
     'labels' => [
         'email_body' => 'محتوى البريد الإلكتروني',
     ],
- 
+    'statuses' => [
+        'pending' => 'قيد الانتظار',
+        'confirmed' => 'مؤكد',
+        'completed' => 'مكتمل',
+        'cancelled' => 'ملغي',
+    ],
     'from' => 'من',
     'date' => 'تاريخ',
     'subject' => 'موضوع',

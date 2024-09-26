@@ -46,7 +46,7 @@ class ProfileController extends Controller
 
         $user->update($request->only(['first_name','last_name','user_name', 'email', 'phone']));
 
-        return redirect()->back()->with('success', 'Profile updated successfully!');
+        return redirect()->back()->with('success', __('messages.profile_updated_successfully'));
     }
 
 
@@ -66,11 +66,12 @@ class ProfileController extends Controller
 
         $user = Auth::user();
         if (!\Hash::check($request->current_password, $user->password)) {
-            return redirect()->back()->with('error', 'The current password is incorrect.');
+            return redirect()->back()->with('error', __('messages.current_password_incorrect'));
         }
 
         $user->update(['password' => \Hash::make($request->password)]);
 
-        return redirect()->back()->with('success', 'Password changed successfully!');
-    }
+      
+    return redirect()->back()->with('success', __('messages.password_changed_successfully'));
+}
 }

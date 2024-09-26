@@ -399,6 +399,12 @@ return [
         '' => '',
         '' => '',
     ],
+    'statuses' => [
+        'pending' => 'Pending',
+        'confirmed' => 'Confirmed',
+        'completed' => 'Completed',
+        'cancelled' => 'Cancelled',
+    ],
     'actions' => [
         'new' => 'Add New',
         'edit' => 'Edit',

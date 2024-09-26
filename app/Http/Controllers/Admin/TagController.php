@@ -55,7 +55,9 @@ class TagController extends Controller
        // Create a tag using only validated data
     $tag = Tag::create($request->only(['name_en', 'name_ar']));
 
-        return redirect()->route('tags.index')->with('success', 'Tag created successfully.');
+      
+    return redirect()->route('tags.index')->with('success', __('messages.tag_created_successfully'));
+
     }
 
     /**
@@ -94,7 +96,9 @@ class TagController extends Controller
         // Validate the request...
         $tag = Tag::findOrFail($id);
         $tag->update($request->all());
-        return redirect()->route('tags.index')->with('success', 'Tag updated successfully.');
+       
+    return redirect()->route('tags.index')->with('success', __('messages.tag_updated_successfully'));
+
     }
 
     /**
@@ -107,7 +111,7 @@ class TagController extends Controller
     {
         $tag = Tag::findOrFail($id);
         $tag->delete();
-        return redirect()->route('tags.index')->with('success', 'Tag deleted successfully.');
+        return redirect()->route('tags.index')->with('success', __('messages.tag_deleted_successfully'));
     }
 
 
@@ -126,7 +130,9 @@ public function bulkDelete(Request $request)
 
    //destroy($request->ids); // Bulk delete the tags
    Tag::whereIn('id', $request->input('ids'))->delete();
-    return redirect()->route('tags.index')->with('success', 'Selected tags deleted successfully.');
+    
+   return redirect()->route('tags.index')->with('success', __('messages.selected_tags_deleted_successfully'));
+
 }
 
 }

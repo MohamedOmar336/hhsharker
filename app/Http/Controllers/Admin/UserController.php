@@ -149,7 +149,7 @@ class UserController extends Controller
         session()->flash('success', __('messages.deleted_successfully'));
 
         // Redirect back to the index page with a success message
-        return redirect()->route('users.index')->with('success', 'User updated successfully.');
+        return redirect()->route('users.index')->with('success', __('messages.user_updated'));
     }
 
 
@@ -188,6 +188,6 @@ class UserController extends Controller
             }
         }
         return redirect()->route('users.index')
-            ->with('success', 'Users deleted successfully.');
+            ->with('success', __('messages.users_deleted'));
     }
 }

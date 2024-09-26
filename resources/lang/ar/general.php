@@ -1,6 +1,7 @@
 <?php
 
 return [
+
     'messages' => [
         'updated_successfully' => 'تم التحديث بنجاح',
     ],
@@ -9,6 +10,11 @@ return [
         'error' => 'خطأ:',
     ],
     'attributes' => [
+        'scheduled_time' => 'الوقت المجدول',
+        'pending' => 'قيد الانتظار',
+        'confirmed' => 'مؤكد',
+        'completed' => 'مكتمل',
+        'cancelled' => 'ملغي',
         'placeholder_type_something_here' => 'اكتب شيئًا هنا...',
         'general' => 'عام',
         'groups' => 'المجموعات',
@@ -452,6 +458,7 @@ return [
         'trash' => 'سلة المحذوفات',
     ],
     'side' => [
+        'my tasks' => 'مهامي', 
         'sales_email_list' => 'قائمة البريد الإلكتروني للمبيعات',
         'support_email_list' => 'قائمة البريد الإلكتروني للدعم',
         'email_list' => 'قائمة البريد الإلكتروني',
@@ -780,10 +787,7 @@ return [
         'enter_description_ar' => 'أدخل الوصف (بالعربية)',
     ],
     'statuses' => [
-        'pending' => 'قيد الانتظار',
-        'confirmed' => 'مؤكد',
-        'completed' => 'مكتمل',
-        'cancelled' => 'ملغي',
+        
     ],
     'from' => 'من',
     'date' => 'تاريخ',

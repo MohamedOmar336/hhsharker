@@ -53,7 +53,8 @@ class GroupController extends Controller
         }
         
 
-        return redirect()->route('groups.index')->with('success', 'Group created successfully.');
+        return redirect()->route('groups.index')->with('success', __('messages.group_created_successfully'));
+
     }
 
     public function show(Group $group)
@@ -82,14 +83,14 @@ class GroupController extends Controller
         // Sync the group's members with the selected member IDs
         $group->members()->sync($request->members);
         // Redirect the user back to the index page with a success message
-        return redirect()->route('groups.index')->with('success', 'Group updated successfully.');
+        return redirect()->route('groups.index')->with('success', __('messages.group_updated_successfully'));
     }
 
     public function destroy(Group $group)
     {
         $group->delete();
 
-        return redirect()->route('groups.index')->with('success', 'Group deleted successfully.');
+        return redirect()->route('groups.index')->with('success', __('messages.group_deleted_successfully'));
     }
 
     public function bulkDelete(Request $request)
@@ -108,7 +109,7 @@ class GroupController extends Controller
         }
     }
 
-    return redirect()->route('groups.index')->with('success', 'Groups deleted successfully.');
+    return redirect()->route('groups.index')->with('success', __('messages.groups_bulk_deleted_successfully'));
 }
 
 }

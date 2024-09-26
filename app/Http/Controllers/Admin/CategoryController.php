@@ -77,9 +77,9 @@ class CategoryController extends Controller
             'slug' => Category::whereSlug($slug)->where('id', '!=', $record->id)->exists() ? slugable($record->name_en, $record->id) : $slug,
         ]);
 
-        session()->flash('success', __('messages.added_successfully'));
+       // session()->flash('success', __('messages.added_successfully'));
         // Redirect back to the index page with a success message
-        return redirect()->route('categories.index')->with('success', 'Category created successfully.');
+        return redirect()->route('categories.index')->with('success',  __('messages.added_successfully'));
     }
 
 
@@ -123,8 +123,10 @@ class CategoryController extends Controller
         $category->save();
 
         // Redirect back to the index page with a success message
-        return redirect()->route('categories.index')->with('success', 'Category updated successfully.');
-    }
+       
+return redirect()->route('categories.index')->with('success', __('messages.updated_successfully'));
+
+}
 
     /**
      * Remove the specified resource from storage.
@@ -138,7 +140,7 @@ class CategoryController extends Controller
         $category->delete();
 
         // Redirect back to the index page with a success message
-        return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
+        return redirect()->route('categories.index')->with('success', __('messages.deleted_successfully'));
     }
 
     public function bulkDelete(Request $request)
@@ -148,7 +150,7 @@ class CategoryController extends Controller
         // For example, updating a specific field for all selected records
         Category::whereIn('id', $ids)->delete();
 
-        return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
+        return redirect()->route('categories.index')->with('success', __('messages.bulk_deleted_successfully'));
     }
 
 }

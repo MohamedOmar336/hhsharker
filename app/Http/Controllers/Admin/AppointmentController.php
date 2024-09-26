@@ -101,18 +101,18 @@ class AppointmentController extends Controller
 
         Notification::create([
             'type' => 'App\Models\Ticket',
-            'data' => ['message' => 'New appointment created', 'link' => route('appointments.myAppointments')],
+            'data' => ['message' => 'New appointment created', 'link' => route('appointments.show',$appointment->id)],
             'notifiable_id' => $request->with_user_id,
             'notifiable_type' => 'App\Models\User',
         ]); 
 
         Notification::create([
             'type' => 'App\Models\Ticket',
-            'data' => ['message' => 'Appointment assigned to you', 'link' => route('appointments.myAppointments')],
+            'data' => ['message' => 'Appointment assigned to you', 'link' => route('appointments.show',$appointment->id)],
             'notifiable_id' => Auth::id(),
             'notifiable_type' => 'App\Models\User',
         ]);
-        return redirect()->route('appointments.index')->with('success', 'Appointment created successfully.');
+        return redirect()->route('appointments.index')->with('success', __('messages.appointment_created'));
     }
 
     /**
@@ -166,19 +166,20 @@ class AppointmentController extends Controller
 
         Notification::create([
             'type' => 'App\Models\Ticket',
-            'data' => ['message' => 'Appointment updated.', 'link' => route('appointments.myAppointments')],
+            'data' => ['message' => 'Appointment updated.', 'link' => route('appointments.show',$appointment->id)],
             'notifiable_id' => Auth::id(),
             'notifiable_type' => 'App\Models\User',
         ]); 
 
         Notification::create([
             'type' => 'App\Models\Ticket',
-            'data' => ['message' => 'Appointment updated.', 'link' => route('appointments.myAppointments')],
+            'data' => ['message' => 'Appointment updated.', 'link' =>route('appointments.show',$appointment->id)],
             'notifiable_id' => $request->with_user_id,
             'notifiable_type' => 'App\Models\User',
         ]);
-        return redirect()->route('appointments.index')->with('success', 'Appointment updated successfully.');
-    }
+        
+return redirect()->route('appointments.index')->with('success', __('messages.appointment_updated'));
+}
 
     /**
      * Remove the specified appointment from storage.
@@ -189,7 +190,7 @@ class AppointmentController extends Controller
     public function destroy(Appointment $appointment)
     {
         $appointment->delete();
-        return redirect()->route('appointments.index')->with('success', 'Appointment deleted successfully.');
+        return redirect()->route('appointments.index')->with('success', __('messages.appointment_deleted'));
     }
 
     public function bulkDelete(Request $request)
@@ -210,7 +211,6 @@ class AppointmentController extends Controller
     // Delete the selected appointments
    // Appointment::whereIn('id', $request->ids)->delete();
 
-    return redirect()->route('appointments.index')->with('success', 'Selected appointments deleted successfully.');
-}
+   return redirect()->route('appointments.index')->with('success', __('messages.appointments_deleted'));}
 
 }

@@ -27,6 +27,6 @@ class SmtpSettingsController extends Controller
         $settings = SmtpSettings::first();
         $settings->update($request->all());
 
-        return redirect()->route('smtp-settings.edit')->with('success', 'SMTP settings updated successfully.');
+        return redirect()->route('smtp-settings.edit')->with('success', __('messages.smtp_settings_updated_successfully'));
     }
 }

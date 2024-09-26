@@ -194,12 +194,12 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::get('/characteristic/list', [CharacteristicController::class, 'listInProducts'])->name('characteristics.list');
 
-        Route::get('/mails/inbox', [MailController::class, 'inbox'])->name('mails.inbox');
-        Route::get('/mails/starred', [MailController::class, 'starred'])->name('mails.starred');
-        Route::get('/mails/important', [MailController::class, 'important'])->name('mails.important');
-        Route::get('/mails/drafts', [MailController::class, 'drafts'])->name('mails.drafts');
-        Route::get('/mails/sent', [MailController::class, 'sent'])->name('mails.sent');
-        Route::get('/mails/trash', [MailController::class, 'trash'])->name('mails.trash');
+        // Route::get('/mails/inbox', [MailController::class, 'inbox'])->name('mails.inbox');
+        // Route::get('/mails/starred', [MailController::class, 'starred'])->name('mails.starred');
+        // Route::get('/mails/important', [MailController::class, 'important'])->name('mails.important');
+        // Route::get('/mails/drafts', [MailController::class, 'drafts'])->name('mails.drafts');
+        // Route::get('/mails/sent', [MailController::class, 'sent'])->name('mails.sent');
+        // Route::get('/mails/trash', [MailController::class, 'trash'])->name('mails.trash');
 
         Route::get('/mails/compose', [MailController::class, 'compose'])->name('mails.compose');
 
@@ -243,6 +243,18 @@ Route::group(['prefix' => 'admin'], function () {
       Route::post('/contacts/bulk-delete', [ContactController::class, 'bulkDelete'])->name('contacts.bulkDelete');
       Route::post('/groups/bulk-delete', [GroupController::class, 'bulkDelete'])->name('groups.bulkDelete');
       Route::post('/tasks/bulk-delete', [TaskController::class, 'bulkDelete'])->name('tasks.bulkDelete');
+      Route::get('gmail/email/{subject}', [GmailController::class, 'showEmail'])->name('gmail.email.show');
+
+
+      Route::get('/emails/inbox', [GmailController::class, 'getSupportEmails'])->name('emails.inbox');
+      Route::get('/emails/starred', [GmailController::class, 'getSupportEmails'])->name('emails.starred')->defaults('filter', 'starred');
+      Route::get('/emails/important', [GmailController::class, 'getSupportEmails'])->name('emails.important')->defaults('filter', 'important');
+      Route::get('/emails/draft', [GmailController::class, 'getSupportEmails'])->name('emails.draft')->defaults('filter', 'draft');
+      Route::get('/emails/sent', [GmailController::class, 'getSupportEmails'])->name('emails.sent')->defaults('filter', 'sent');
+      Route::get('/emails/trash', [GmailController::class, 'getSupportEmails'])->name('emails.trash')->defaults('filter', 'trash');
+      Route::get('/emails/unread', [GmailController::class, 'getSupportEmails'])->name('emails.unread')->defaults('filter', 'unread');
+
+Route::get('/my-tasks', [TaskController::class, 'mytasks'])->name('mytasks');
 
     });
 });

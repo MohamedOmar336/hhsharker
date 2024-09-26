@@ -73,9 +73,9 @@ class TicketCategoryController extends Controller
             'slug' => TicketCategory::whereSlug($slug)->where('id', '!=', $record->id)->exists() ? slugable($record->name_en, $record->id) : $slug,
         ]);
 
-        session()->flash('success', __('messages.added_successfully'));
+        session()->flash('success', __('messages.Ticket_category_added_successfully'));
 
-        return redirect()->route('ticket_categories.index')->with('success', 'Ticket category created successfully.');
+        return redirect()->route('ticket_categories.index')->with('success', __('messages.Ticket_category_added_successfully'));
     }
 
     /**
@@ -125,7 +125,8 @@ class TicketCategoryController extends Controller
         $ticket_category->save();
     
         // Redirect back to the index page with a success message
-        return redirect()->route('ticket_categories.index')->with('success', 'Ticket category updated successfully.');
+      
+        return redirect()->route('ticket_categories.index')->with('success', __('messages.Ticket_category_updated_successfully'));
     }
     
     // public function update(Request $request, TicketCategory $category)
@@ -169,7 +170,7 @@ class TicketCategoryController extends Controller
         $category = TicketCategory::findOrFail($id);
         $category->delete();
 
-        return redirect()->route('ticket_categories.index')->with('success', 'Ticket category deleted successfully.');
+        return redirect()->route('ticket_categories.index')->with('success', __('messages.Ticket_category_deleted_successfully'));
     }
 
     /**
@@ -187,6 +188,7 @@ class TicketCategoryController extends Controller
 
         TicketCategory::whereIn('id', $request->ids)->delete();
 
-        return redirect()->route('ticket_categories.index')->with('success', 'Ticket categories deleted successfully.');
+       
+        return redirect()->route('ticket_categories.index')->with('success', __('messages.Ticket_category_bulk_deleted_successfully'));
     }
 }

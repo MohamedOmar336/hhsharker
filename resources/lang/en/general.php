@@ -9,6 +9,11 @@ return [
         'error' => 'Error:',
     ],
     'attributes' => [
+        'scheduled_time' => 'Scheduled Time',
+        'pending' => 'Pending',
+        'confirmed' => 'Confirmed',
+        'completed' => 'Completed',
+        'cancelled' => 'Cancelled',
         'placeholder_type_something_here' => 'Type something here...',
         'general' => 'General',
         'groups' => 'Groups',
@@ -453,6 +458,7 @@ return [
     ],
 
     'side' => [
+        'my tasks' => 'My Tasks',
         'sales_email_list' => 'Sales Email List',
         'support_email_list' => 'Support Email List',
         'email_list' => 'Email List',
@@ -786,10 +792,7 @@ return [
         'enter_description_ar' => 'Enter Description (Arabic)',
     ],
     'statuses' => [
-        'pending' => 'Pending',
-        'confirmed' => 'Confirmed',
-        'completed' => 'Completed',
-        'cancelled' => 'Cancelled',
+      
     ],
     'from' => 'From',
     'date' => 'Date',
