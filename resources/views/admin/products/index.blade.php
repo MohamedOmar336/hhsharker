@@ -89,8 +89,8 @@
                         <td>{{ $record->status }}</td>
                         <td>{{ $record->category ? $record->category : __('general.uncategorized') }}</td>
                         <td>
-                            <a href="{{ route('products.edit', $record->id) }}" class="action-icon"> <i data-feather="edit"></i></a>
-                            <form style="display: inline;">
+                            <a href="{{ route('frontend.product.page', ['locale' => app()->getLocale(), 'id' => $record->id]) }}" target="_blank" class="mdi mdi-eye-circle-outline"> </a>
+                            {{-- <form style="display: inline;">
                             </form>
                             <form action="{{ route('products.destroy', $record->id) }}" method="POST" class="delete-form">
                                 @csrf
@@ -98,7 +98,7 @@
                                 <button type="submit" class="action-icon delete-btn action-button" data-tooltip="delete" onclick="return confirm('{{ __('general.confirm_delete') }}')">
                                     <i data-feather="trash"></i>
                                 </button>
-                            </form>
+                            </form> --}}
                         </td>
                     </tr>
                 @endforeach
