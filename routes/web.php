@@ -315,7 +315,8 @@ Route::group(['prefix' => '{locale}', 'where' => ['locale' => 'en|ar'],'middlewa
     Route::get('/air-conditioner/{parent}/{child}', [AirConditionerController::class,'child'])->name('frontend.air-conditioner.child');
     Route::get('/air-conditioner/{parent}/{child}/{subchild}', [AirConditionerController::class,'subChild'])->name('frontend.air-conditioner.subchild');
     Route::get('/product-details', [AirConditionerController::class,'productDetails'])->name('frontend.air-conditioner.product-details');
-    
+    Route::get('/product/{id}', [AirConditionerController::class,'productPage'])->where('id', '[0-9]+')->name('frontend.product.page');
+
     Route::get('/home-appliances', [HomeAppliancesController::class,'index'])->name('frontend.home-appliances');
     Route::get('/home-appliances/{parent}', [HomeAppliancesController::class,'parent'])->name('frontend.home-appliances.parent');
     Route::get('/product-list-1', [HomeAppliancesController::class,'productList1'])->name('frontend.home-appliances.product-list-1');
