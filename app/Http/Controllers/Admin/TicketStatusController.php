@@ -47,7 +47,7 @@ class TicketStatusController extends Controller
 
         // Redirect to the index view with a success message
         return redirect()->route('ticket-statuses.index')
-                         ->with('success', 'Ticket Status created successfully.');
+        ->with('success', __('messages.ticket_status_created'));
     }
 
     public function show($id)
@@ -82,7 +82,7 @@ class TicketStatusController extends Controller
 
         // Redirect to the show view with a success message
         return redirect()->route('ticket-statuses.index')
-                         ->with('success', 'Ticket Status updated successfully.');
+        ->with('success', __('messages.ticket_status_updated'));
     }
 
     public function destroy($id)
@@ -93,8 +93,8 @@ class TicketStatusController extends Controller
         $status->delete();
 
         // Redirect to the index view with a success message
-        return redirect()->route('ticket-statuses.index')->with('success', 'Ticket Status deleted successfully.');
-
+        return redirect()->route('ticket-statuses.index')
+                ->with('success', __('messages.ticket_status_deleted'));
     } catch (\Exception $e) {
         // If there's an exception (such as linked tickets), redirect with error message
         return redirect()->route('ticket-statuses.index')->with('error', $e->getMessage());
@@ -116,8 +116,8 @@ public function bulkDelete(Request $request)
             $status->delete();
         }
 
-        return redirect()->route('ticket-statuses.index')->with('success', 'Ticket Statuses deleted successfully.');
-
+        return redirect()->route('ticket-statuses.index')
+        ->with('success', __('messages.ticket_statuses_deleted')); 
     } catch (\Exception $e) {
         // If any exception occurs during deletion, catch it and return with error message
         return redirect()->route('ticket-statuses.index')->with('error', $e->getMessage());

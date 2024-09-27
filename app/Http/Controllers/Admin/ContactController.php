@@ -83,7 +83,7 @@ class ContactController extends Controller
             }
         }
 
-        return redirect()->route('contacts.index')->with('success', 'Contact created successfully.');
+        return redirect()->route('contacts.index')->with('success',  __('messages.contact_added_successfully'));
     }
 
     /**
@@ -138,8 +138,9 @@ class ContactController extends Controller
         // Sync the group contacts for the contact
         $contact->groups()->sync($groupIds);
 
-        return redirect()->route('contacts.index')->with('success', 'Contact updated successfully.');
-    }
+
+    return redirect()->route('contacts.index')->with('success', __('messages.contact_updated_successfully'));
+}
 
     /**
      * Remove the specified resource from storage.
@@ -155,7 +156,7 @@ class ContactController extends Controller
         // Delete the contact
         $contact->delete();
 
-        return redirect()->route('contacts.index')->with('success', 'Contact deleted successfully.');
+        return redirect()->route('contacts.index')->with('success', __('messages.contact_deleted_successfully'));
     }
 
     public function export()
@@ -177,8 +178,9 @@ class ContactController extends Controller
 
         Excel::import(new ContactsImport, $request->file('import_file'));
 
-        return redirect()->route('contacts.index')->with('success', 'Contacts imported successfully.');
-    }
+
+    return redirect()->route('contacts.index')->with('success', __('messages.contacts_imported_successfully'));
+}
 
 
     public function bulkDelete(Request $request)
@@ -197,7 +199,7 @@ class ContactController extends Controller
             }
         }
 
-        return redirect()->route('contacts.index')->with('success', 'Contacts deleted successfully.');
+        return redirect()->route('contacts.index')->with('success', __('messages.contacts_bulk_deleted_successfully'));
     }
 
 }

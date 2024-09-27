@@ -15947,4 +15947,13 @@ li.L9 {
       left: 657px;
     }
 
+    .table-body:first-child td:last-child .delete-form{
+       /* margin: -19px; */
+ }
+
+
+.show_icon{
+    margin-left: 20px;
+  }
+
 

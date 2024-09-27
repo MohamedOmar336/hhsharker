@@ -58,14 +58,14 @@ return [
                 'title' => __('general.side.My Appointments'),
                 'route' => 'appointments.myAppointments',
             ],
-            [
-                'title' => __('general.side.Email'),
-                'route' => 'mails.index',
-            ],
-            [
-                'title' =>  __('general.side.sales_email_list'),
-                'route' => 'sales.gmail',
-            ],
+            // [
+            //     'title' => __('general.side.Email'),
+            //     'route' => 'mails.index',
+            // ],
+            // [
+            //     'title' =>  __('general.side.sales_email_list'),
+            //     'route' => 'sales.gmail',
+            // ],
             [
                 'title' =>  __('general.side.support_email_list'),
                 'route' => 'support.gmail',
@@ -102,6 +102,10 @@ return [
             [
                 'title' => __('general.side.Add New Task'),
                 'route' => 'tasks.create',
+            ],
+            [
+                'title' => __('general.side.my tasks'),
+                'route' => 'mytasks',
             ],
         ],
     ],

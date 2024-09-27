@@ -23,44 +23,54 @@ class TicketController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\View\View
      */
-    public function index(Request $request)
-    {
-        $query = Ticket::with('priority', 'status', 'assignedTo', 'createdBy');
+ public function index(Request $request)
+{
+    $query = Ticket::with('priority', 'status', 'assignedTo', 'createdBy');
 
-        if ($request->has('search')) {
-            $search = $request->input('search');
-            $query->where('title', 'LIKE', "%{$search}%")
-                ->orWhere('description', 'LIKE', "%{$search}%")
-                ->orWhere('priority', 'LIKE', "%{$search}%")
-                ->orWhere('status', 'LIKE', "%{$search}%")
-                ->orWhere('assignedTo', 'LIKE', "%{$search}%")
-                ->orWhere('createdBy', 'LIKE', "%{$search}%");
-        }
-
-        // Apply status filter
-        if ($request->has('status_id') && !empty($request->status_id)) {
-            $query->where('StatusID', $request->status_id);
-        }
-
-        // Apply priority filter
-        if ($request->has('priority_id') && !empty($request->priority_id)) {
-            $query->where('PriorityID', $request->priority_id);
-        }
-
-        // Apply assignedTo filter
-        if ($request->has('assigned_to') && !empty($request->assigned_to)) {
-            $query->where('AssignedTo', $request->assigned_to);
-        }
-
-        $totalResults = $query->count();
-
-    $records = $query->latest()->paginate($totalResults);
-        $priorities = TicketPrioritySetting::all();
-        $statuses = TicketStatusSetting::all();
-        $users = User::all();
-
-        return view('admin.tickets.index', compact('records', 'priorities', 'statuses', 'users'));
+    if ($request->has('search')) {
+        $search = $request->input('search');
+        $query->where('title', 'LIKE', "%{$search}%")
+            ->orWhere('description', 'LIKE', "%{$search}%")
+            ->orWhereHas('priority', function($q) use ($search) {
+                $q->where('name', 'LIKE', "%{$search}%");
+            })
+            ->orWhereHas('status', function($q) use ($search) {
+                $q->where('name', 'LIKE', "%{$search}%");
+            })
+            ->orWhereHas('assignedTo', function($q) use ($search) {
+                $q->where('name', 'LIKE', "%{$search}%");
+            })
+            ->orWhereHas('createdBy', function($q) use ($search) {
+                $q->where('name', 'LIKE', "%{$search}%");
+            });
     }
+
+    // Apply filters
+    if ($request->has('status_id') && !empty($request->status_id)) {
+        $query->where('StatusID', $request->status_id);
+    }
+
+    if ($request->has('priority_id') && !empty($request->priority_id)) {
+        $query->where('PriorityID', $request->priority_id);
+    }
+
+    if ($request->has('assigned_to') && !empty($request->assigned_to)) {
+        $query->where('AssignedTo', $request->assigned_to);
+    }
+  $totalResults = $query->count();
+
+        $records = $query->latest()->get();
+    if ($request->ajax()) {
+        return view('admin.tickets.partials.records', compact('records'))->render();
+    }
+
+    $priorities = TicketPrioritySetting::all();
+    $statuses = TicketStatusSetting::all();
+    $users = User::all();
+
+    return view('admin.tickets.index', compact('records', 'priorities', 'statuses', 'users'));
+}
+
 
 
     /**
@@ -123,13 +133,14 @@ class TicketController extends Controller
 
         Notification::create([
             'type' => 'App\Models\Ticket',
-            'data' => ['message' => 'new ticket has been created', 'link' => route('tickets.my')],
+            'data' => ['message' => 'new ticket has been created', 'link' => route('ticket_histories.show_by_ticket', $ticket->id)],
             'notifiable_id' => $request->AssignedTo,
             'notifiable_type' => 'App\Models\User',
         ]);
 
-        return redirect()->route('tickets.index')->with('success', 'Ticket created successfully.');
-    }
+        
+    return redirect()->route('tickets.index')->with('success', __('messages.ticket_created_successfully'));
+}
 
     /**
      * Show the form for editing the specified ticket.
@@ -188,13 +199,14 @@ class TicketController extends Controller
 
         Notification::create([
             'type' => 'App\Models\Ticket',
-            'data' => ['message' => 'Ticket assigned to you.', 'link' => route('tickets.my')],
+            'data' => ['message' => 'Ticket assigned to you.', 'link' => route('ticket_histories.show_by_ticket', $ticket->id)],
             'notifiable_id' => $request->AssignedTo,
             'notifiable_type' => 'App\Models\User',
         ]);
 
-        return redirect()->route('tickets.index')->with('success', 'Ticket updated successfully.');
-    }
+       
+    return redirect()->route('tickets.index')->with('success', __('messages.ticket_updated_successfully'));
+}
 
     /**
      * Display a specific ticket along with its history.
@@ -221,8 +233,9 @@ class TicketController extends Controller
         $ticket->delete();
 
         // Redirect to the index view with a success message
-        return redirect()->route('tickets.index')
-            ->with('success', 'Ticket deleted successfully.');
+      
+    return redirect()->route('tickets.index')->with('success', __('messages.ticket_deleted_successfully'));
+
     }
 
 
@@ -293,7 +306,7 @@ class TicketController extends Controller
 
                 Notification::create([
                     'type' => 'App\Models\Ticket',
-                    'data' => ['message' => 'Ticket assigned to you.', 'link' => route('tickets.my')],
+                    'data' => ['message' => 'Ticket assigned to you.', 'link' => route('ticket_histories.show_by_ticket', $ticket->id)],
                     'notifiable_id' => $ticket->AssignedTo,
                     'notifiable_type' => 'App\Models\User',
                 ]);
@@ -304,7 +317,7 @@ class TicketController extends Controller
 
         $ticket->save();
 
-        return redirect()->back()->with('success', 'Ticket updated successfully');
+        return redirect()->back()->with('success',  __('messages.ticket_updated_successfully'));
     }
 
     /**
@@ -327,8 +340,10 @@ class TicketController extends Controller
     Ticket::whereIn('id', $recordIds)->delete();
 
     // Redirect with a success message
-    return redirect()->route('tickets.index')
-        ->with('success', 'Tickets deleted successfully.');
+ 
+    return redirect()->route('tickets.index')->with('success', __('messages.ticket_bulk_deleted_successfully'));
 }
+
+
 
 }

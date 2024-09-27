@@ -47,7 +47,7 @@ class TicketPriorityController extends Controller
 
         // Redirect to the index view with a success message
         return redirect()->route('ticket-priorities.index')
-                         ->with('success', 'Ticket Priority created successfully.');
+                         ->with('success', __('messages.ticket_priority_created_success'));
     }
 
     public function show($id)
@@ -80,8 +80,10 @@ class TicketPriorityController extends Controller
         $priority->update($request->all());
 
         // Redirect to the show view with a success message
-        return redirect()->route('ticket-priorities.index')
-                         ->with('success', 'Ticket Priority updated successfully.');
+      // Redirect to the show view with a success message
+      return redirect()->route('ticket-priorities.index')
+      ->with('success', __('messages.ticket_priority_updated_success'));
+
     }
 
     public function destroy($id)
@@ -92,7 +94,7 @@ class TicketPriorityController extends Controller
             $priority->delete();
     
             // Redirect to the index view with a success message
-            return redirect()->route('ticket-priorities.index')->with('success', 'Ticket Priority deleted successfully.');
+            return redirect()->route('ticket-priorities.index')->with('success', __('messages.ticket_priority_deleted_success'));
         } catch (\Exception $e) {
             // If there's an exception, redirect with the error message
             return redirect()->route('ticket-priorities.index')->with('error', $e->getMessage());
@@ -112,7 +114,8 @@ class TicketPriorityController extends Controller
                 $priority->delete();
             }
     
-            return redirect()->route('ticket-priorities.index')->with('success', 'Ticket Priorities deleted successfully.');
+           
+            return redirect()->route('ticket-priorities.index')->with('success', __('messages.ticket_priorities_deleted_success'));
         } catch (\Exception $e) {
             // If any exception occurs during deletion, catch it and return with error message
             return redirect()->route('ticket-priorities.index')->with('error', $e->getMessage());

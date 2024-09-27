@@ -8814,7 +8814,7 @@ input.add-file-input {
 
 .chat-box-right .chat-body {
     padding: 16px;
-    height: 615px
+    height: 400px
 }
 
 .chat-box-right .chat-body .chat-detail {
@@ -9112,7 +9112,7 @@ input.add-file-input {
 .message-list li {
     position: relative;
     display: block;
-    height: 50px;
+    height: 70px;
     line-height: 50px;
     -webkit-transition-duration: .3s;
     transition-duration: .3s
@@ -9168,7 +9168,7 @@ input.add-file-input {
 .message-list li .col-mail-1 .title {
     position: absolute;
     top: 0;
-    left: 110px;
+    left: 48px;
     right: 0;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -9694,3 +9694,4 @@ bottom: 14px;
 .text-shadow {
 text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Adjust shadow offset, blur, and color */
 }
+

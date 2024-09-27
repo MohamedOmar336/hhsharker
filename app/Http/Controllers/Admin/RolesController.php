@@ -57,7 +57,8 @@ class RolesController extends Controller
         ]);
 
         $role = Roles::create($validatedData);
-        return redirect()->route('roles.index')->with('success', 'Role created successfully.');
+        return redirect()->route('roles.index')->with('success', __('messages.role_created_successfully'));
+
     }
 
     /**
@@ -102,7 +103,8 @@ class RolesController extends Controller
 
         $role->update($validatedData);
 
-        return redirect()->route('roles.index')->with('success', 'Role updated successfully.');
+        return redirect()->route('roles.index')->with('success', __('messages.role_updated_successfully'));
+
     }
 
     /**
@@ -114,7 +116,7 @@ class RolesController extends Controller
     public function destroy(Roles $role)
     {
         $role->delete();
-        return redirect()->route('roles.index')->with('success', 'Role deleted successfully.');
+        return redirect()->route('roles.index')->with('success', __('messages.role_deleted_successfully'));
     }
 
 
@@ -133,7 +135,7 @@ public function bulkDelete(Request $request)
 
     Roles::destroy($request->ids); // Delete the roles
 
-    return redirect()->route('roles.index')->with('success', 'Selected roles deleted successfully.');
+    return redirect()->route('roles.index')->with('success', __('messages.roles_deleted_successfully'));
 }
 
 }

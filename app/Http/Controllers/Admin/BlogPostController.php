@@ -80,7 +80,7 @@ class BlogPostController extends Controller
                 'tag_id' => (int) $tagId,
             ]);
         }*/
-        return redirect()->route('blogposts.index')->with('success', 'Post created successfully.');
+        return redirect()->route('blogposts.index')->with('success', __('messages.post_created'));
     }
 
     /**
@@ -144,7 +144,7 @@ class BlogPostController extends Controller
         $post->update($validatedData);
 
 
-        return redirect()->route('blogposts.index')->with('success', 'Post updated successfully.');
+       return redirect()->route('blogposts.index')->with('success', __('messages.post_updated'));
     }
 
     /**
@@ -159,9 +159,9 @@ class BlogPostController extends Controller
         if ($post->image) {
             Storage::delete($post->image);
         }
-        $post->delete();
-        return redirect()->route('blogposts.index')->with('success', 'Post deleted successfully.');
-    }
+        $post->delete(); 
+        return redirect()->route('blogposts.index')->with('success', __('messages.post_deleted'));
+       }
 
     /**
      * Display the specified blog post.
@@ -193,6 +193,7 @@ class BlogPostController extends Controller
         }
     }
 
-    return redirect()->route('blogposts.index')->with('success', 'Selected posts deleted successfully.');
+ 
+    return redirect()->route('blogposts.index')->with('success', __('messages.posts_bulk_deleted'));
 }
 }
