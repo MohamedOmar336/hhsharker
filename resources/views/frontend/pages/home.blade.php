@@ -12,19 +12,19 @@
             <div class="banner-box-row">
                 <div class="banner-box-col wow fadeInLeft" data-wow-delay="4s">
                     <div>
-                        <div class="ani-nub-banner"><span class="numberanimation">{{ __('website.homepage_slider_1.box_1_desc') }}</span>%</div>
+                        <div class="ani-nub-banner"><span class="numberanimation-home-page">{{ __('website.homepage_slider_1.box_1_desc') }}</span>%</div>
                         <p class="p-nub-banner">{{ __('website.homepage_slider_1.box_1_title') }}</p>
                     </div>
                 </div>
                 <div class="banner-box-col wow fadeInLeft" data-wow-delay="4.2s">
                     <div>
-                        <div class="ani-nub-banner"><span class="numberanimation">{{ __('website.homepage_slider_1.box_2_desc') }}</span>{{ __('website.homepage_slider_1.box_2_desc_3') }}<span class="ani-nub-small">{{ __('website.homepage_slider_1.box_2_desc_2') }}</span></div>
+                        <div class="ani-nub-banner"><span class="numberanimation-home-page">{{ __('website.homepage_slider_1.box_2_desc') }}</span>{{ __('website.homepage_slider_1.box_2_desc_3') }}<span class="ani-nub-small">{{ __('website.homepage_slider_1.box_2_desc_2') }}</span></div>
                         <p class="p-nub-banner">{{ __('website.homepage_slider_1.box_2_title') }}</p>
                     </div>
                 </div>
                 <div class="banner-box-col wow fadeInLeft" data-wow-delay="4.4s">
                     <div>
-                        <div class="ani-nub-banner">{{ __('website.homepage_slider_1.box_3_desc') }}. <span class="numberanimation">{{ __('website.homepage_slider_1.box_3_desc_2') }}</span></div>
+                        <div class="ani-nub-banner">{{ __('website.homepage_slider_1.box_3_desc') }}. <span class="numberanimation-home-page">{{ __('website.homepage_slider_1.box_3_desc_2') }}</span></div>
                         <p class="p-nub-banner">{{ __('website.homepage_slider_1.box_3_title') }}</p>
                     </div>
                 </div>
@@ -33,9 +33,9 @@
             <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.26/build/spline-viewer.js"></script>
             <spline-viewer class="home-banner-bg" loading-anim-type="spinner-small-dark" url="https://prod.spline.design/zCRrIry32lOBKNAu/scene.splinecode"></spline-viewer>
 
-            <div class="banner-drag-div">
+            {{-- <div class="banner-drag-div">
                 <i class="fa-regular fa-arrow-left-long"></i>DRAG<i class="fa-regular fa-arrow-right-long"></i>
-            </div>
+            </div> --}}
 
         </div>
 
@@ -126,7 +126,9 @@
     @if($homeApplianceBestSellerProducts->count() > 0)
     <section class="home-slider-main">
 
-        <img class="homeslider-img wow fadeInUp" src="{{ asset('assets-frontend/images/home-slider-bg.png') }}" width="100%" alt="slider BG">
+        {{-- <img class="homeslider-img wow fadeInUp" src="{{ asset('assets-frontend/images/home-slider-bg.png') }}" width="100%" alt="slider BG"> --}}
+
+        <div class="homeslider-img wow fadeInUp"></div>
 
         <div class="section-heading text-center wow fadeInUpBig" data-wow-delay="1s">
             <h5>{{ __('website.homepage_product_section_2.title') }}</h5>

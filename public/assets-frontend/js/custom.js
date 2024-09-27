@@ -1,3 +1,78 @@
+// smoth scroll js
+
+
+var html = document.documentElement;
+var body = document.body;
+
+var scroller = {
+    target: document.querySelector("#scroll-container"),
+    ease: 0.1, // <= scroll speed
+    endY: 0,
+    y: 0,
+    resizeRequest: 1,
+    scrollRequest: 0,
+};
+
+var requestId = null;
+
+TweenLite.set(scroller.target, {
+    rotation: 0.00,
+    force3D: true
+});
+
+window.addEventListener("load", onLoad);
+
+function onLoad() {
+    updateScroller();
+    window.focus();
+    window.addEventListener("resize", onResize);
+    document.addEventListener("scroll", onScroll);
+}
+
+function updateScroller() {
+
+    var resized = scroller.resizeRequest > 0;
+
+    if (resized) {
+        var height = scroller.target.clientHeight;
+        body.style.height = height - 6 + "px";
+        scroller.resizeRequest = 0;
+    }
+
+    var scrollY = window.pageYOffset || html.scrollTop || body.scrollTop || 0;
+
+    scroller.endY = scrollY;
+    scroller.y += (scrollY - scroller.y) * scroller.ease;
+
+    if (Math.abs(scrollY - scroller.y) < 0.05 || resized) {
+        scroller.y = scrollY;
+        scroller.scrollRequest = 0;
+    }
+
+    TweenLite.set(scroller.target, {
+        y: -scroller.y
+    });
+
+    requestId = scroller.scrollRequest > 0 ? requestAnimationFrame(updateScroller) : null;
+}
+
+function onScroll() {
+    scroller.scrollRequest++;
+    if (!requestId) {
+        requestId = requestAnimationFrame(updateScroller);
+    }
+}
+
+function onResize() {
+    scroller.resizeRequest++;
+    if (!requestId) {
+        requestId = requestAnimationFrame(updateScroller);
+    }
+}
+
+
+
+
 // video stop on modal close
 $("#videomodal").on('hidden.bs.modal', function(e) {
     $("#videomodal iframe, #videomodal video").attr("src", $("#videomodal iframe, #videomodal video").attr("src"));
@@ -72,7 +147,7 @@ $('.numberanimation').each(function() {
     $(this).prop('Counter', 0).animate({
         Counter: $(this).text()
     }, {
-        duration: 3000,
+        duration: 5000,
         easing: 'swing',
         step: function(now) {
             $(this).text(Math.ceil(now));
@@ -80,6 +155,19 @@ $('.numberanimation').each(function() {
     });
 });
 
+setTimeout(function() {
+    $('.numberanimation-home-page').each(function() {
+        $(this).prop('Counter', 0).animate({
+            Counter: $(this).text()
+        }, {
+            duration: 5000,
+            easing: 'swing',
+            step: function(now) {
+                $(this).text(Math.ceil(now));
+            }
+        });
+    });
+}, 4500);
 
 
 // home product slider
@@ -113,7 +201,9 @@ jQuery(document).ready(function($) {
         items: 5,
         autoplay: true,
         autoplayTimeout: 4000,
-        autoplayHoverPause: true,
+        autoplayHoverPause: false,
+        mouseDrag: false,
+        touchDrag: false,
         responsive: {
             0: {
                 items: 1
@@ -207,16 +297,56 @@ $('#home-commercial-slider').owlCarousel({
     }
 });
 
+// $(document).ready(function() {
+//     const classes = ['class1', 'class2', 'class3', 'class4'];
+//     let index = 0;
+
+//     setInterval(function() {
+//         $('.commercial-list-home').removeClass(classes.join(' '));
+//         $('.commercial-list-home').addClass(classes[index]);
+//         index = (index + 1) % classes.length;
+//     }, 5000);
+// });
+
+
 $(document).ready(function() {
     const classes = ['class1', 'class2', 'class3', 'class4'];
     let index = 0;
+    let dragging = true;
 
-    setInterval(function() {
+    const cycleClasses = function() {
         $('.commercial-list-home').removeClass(classes.join(' '));
         $('.commercial-list-home').addClass(classes[index]);
         index = (index + 1) % classes.length;
-    }, 5000);
+    };
+
+    const intervalId = setInterval(cycleClasses, 5000);
+
+    $('.commercial-list-home').on('mousedown', function() {
+        dragging = true;
+        $(document).on('mousemove', onMouseMove);
+    });
+    $(document).on('mouseup', function() {
+        dragging = true;
+        $(document).off('mousemove', onMouseMove);
+    });
+
+    function onMouseMove(event) {
+        if (dragging) {
+            const mouseX = event.pageX;
+            const mouseY = event.pageY;
+            const classIndex = Math.floor(mouseX / 100) % classes.length;
+            $('.commercial-list-home').removeClass(classes.join(' ')).addClass(classes[classIndex]);
+        }
+    }
 });
+
+
+
+
+
+
+
 
 
 

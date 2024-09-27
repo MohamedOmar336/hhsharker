@@ -1,13 +1,13 @@
 <footer class="footer wow fadeInUpBig" style="background-image: url('{{ asset('assets-frontend/images/footer-bg.png') }}');">
         <div class="container">
             <div class="footer-logo-list">
-                <a href="#">
+                <a class="wow fadeInLeftBig" data-wow-delay="0.5s" href="#">
                     <img src="{{ asset('assets-frontend/images/white-logo.png') }}" alt="Logo">
                 </a>
-                <p>{{ __('website.footer.title') }}</p>
+                <p class="wow fadeInRightBig" data-wow-delay="0.5s">{{ __('website.footer.title') }}</p>
             </div>
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-4 wow fadeInLeftBig" data-wow-delay="1s">
                     <div class="section-heading"> 
                         <h2>{{ __('website.footer.get_in_touch') }}</h2>
                         <a class="cutome-btn mt-3" href="{{ route('frontend.contact-us',['locale' => app()->getLocale()]) }}">{{ __('website.footer.button') }}</a>
@@ -33,7 +33,7 @@
                         </a>
                     </div>
                 </div> 
-                <div class="col-lg-8">
+                <div class="col-lg-8 wow fadeInRightBig" data-wow-delay="1s">
                     <div class="footer-box">
                         <div class="row">
                             <div class="col-xl-4">
@@ -61,13 +61,15 @@
                 </div>
             </div>
             <div class="footer-copy-text">
-                <div>© {{ __('website.footer.copy_right') }}</div>
-                <div>{{ __('website.footer.powered_by') }} <a href="#">{{ __('website.footer.powered_by_title') }}</a></div>
+                <div class="wow fadeInLeftBig" data-wow-delay="1s">© {{ __('website.footer.copy_right') }}</div>
+                <div class="wow fadeInRightBig" data-wow-delay="1s">{{ __('website.footer.powered_by') }} <a href="#">{{ __('website.footer.powered_by_title') }}</a></div>
             </div>
         </div>
     </footer>
 
-
+</div>
+</div>
+</div>
 
     <!-- video Modal -->
     <div class="modal video-modal fade" id="videomodal" tabindex="-1" aria-labelledby="videomodalLabel" aria-hidden="true">
@@ -83,3 +85,26 @@
             </div>
         </div>
     </div>
+
+    @push('extra-js')
+    <script>
+        $(document).ready(function(){
+            var routepath = '{{  Route::currentRouteName() }}';
+            if(routepath == 'frontend.home' && localStorage.getItem('isDarkMode') == 1){
+                $('body').addClass('dark-mode');
+                $('.dark-ligh-btn').addClass('dark-active');
+            }
+        })
+
+        function setDarkMode(val){
+            localStorage.setItem('isDarkMode',val);
+            if(val == true){
+                $('body').addClass('dark-mode');
+                $('.dark-ligh-btn').addClass('dark-active');
+            }else{
+                $('body').removeClass('dark-mode');
+                $('.dark-ligh-btn').removeClass('dark-active');
+            }
+        }
+    </script>
+    @endpush

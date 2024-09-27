@@ -12,6 +12,7 @@
     </head>
 
     <body>
+    {{-- <body class="dark-mode"> --}}
 
         @include('frontend.layouts.includes.header')  
         @yield('content')    
