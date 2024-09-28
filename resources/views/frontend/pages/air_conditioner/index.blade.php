@@ -6,7 +6,7 @@
     <div class="container ">
         <img src="{{ asset('assets-frontend/images/product-main-banner.png') }}">
         <div class="text-center">
-            <a class="cutome-btn wow fadeInUp" data-wow-delay="0.5s" href="about.html">Learn More</a>
+            <a class="cutome-btn wow fadeInUp" data-wow-delay="0.5s" href="{{ route('frontend.about',['locale' => app()->getLocale()]) }}">Learn More</a>
         </div>
     </div>
 </section>
@@ -27,7 +27,7 @@
                 <div class="row">
                     <div class="col-lg-6 wow fadeInLeft" data-wow-delay="0.5s">
                         <h3>{{ $cat->name }}</h3>
-                        <p>Window, Inverter, On/Off Split Air Conditioners.</p>
+                        <p>{{ $cat->description }}</p>
                         <a class="cutome-btn" href="{{ route('frontend.air-conditioner.parent',['locale' => app()->getLocale(),'parent'=>$cat->slug]) }}">Learn More</a>
                     </div>
                     <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.5s">

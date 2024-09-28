@@ -49,10 +49,21 @@
                         <li class="nav-item">
                             <a class="nav-link active" href="{{ route('frontend.home',['locale' => app()->getLocale()]) }}">{{ __('website.header_menu.home') }}</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('frontend.company-founder',['locale' => app()->getLocale()]) }}">{{ __('website.header_menu.company') }}</a>
-                        </li>
                         <li class="nav-item dropdown dropdown-div">
+                            <a class="nav-link dropdown-toggle" href="#" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ __('website.header_menu.company') }}
+                            </a>
+                           
+                            <ul class="dropdown-menu">
+                                <div class="drop-innter-div">                                   
+                                    <li><a class="dropdown-item" href="{{ route('frontend.about',['locale' => app()->getLocale()]) }}"> {{ __('website.header_menu.about') }}</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('frontend.value-and-vision',['locale' => app()->getLocale()]) }}"> {{ __('website.header_menu.value_vision') }}</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('frontend.company-founder',['locale' => app()->getLocale()]) }}"> {{ __('website.header_menu.company_founder') }}</a></li>
+                                </div>
+                            </ul>
+                            
+                        </li>
+                        {{-- <li class="nav-item dropdown dropdown-div">
                             <a class="nav-link dropdown-toggle" href="{{ route('frontend.air-conditioner',['locale' => app()->getLocale()]) }}" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             {{ __('website.header_menu.air_conditioner') }}
                             </a>
@@ -65,9 +76,67 @@
                                 </div>
                             </ul>
                             @endif
+                        </li> --}}
+                        <li class="nav-item megamenu">
+                            <a class="nav-link dropdown-toggle" href="{{ route('frontend.air-conditioner',['locale' => app()->getLocale()]) }}">
+                                {{ __('website.header_menu.air_conditioner') }}
+                            </a>
+                            <div class="megamenu-main-div">
+                                <div class="megamenu-body ">
+                                    <div class="row">
+                                        <div class="col-xl-7">
+                                            <div class="row mb-4">
+                                                <div class="col-md-4">
+                                                    <h5>Residentials AC</h5>
+                                                    <div class="mega-a-list">
+                                                        <a href="#">Window</a>
+                                                        <a href="#">Inverter</a>
+                                                        <a href="#">On/Off</a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <h5>Commercial AC</h5>
+                                                    <div class="mega-a-list">
+                                                        <a href="#">VRF</a>
+                                                        <a href="#">Indoor</a>
+                                                        <a href="#">Outdoor</a>
+                                                        <a href="#">Rooftop</a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <h5>Light Commercial AC</h5>
+                                                    <div class="mega-a-list">
+                                                        <a href="#">Concealed</a>
+                                                        <a href="#">Cassette</a>
+                                                        <a href="#">Floor Standing</a>
+                                                        <a href="#">Portable</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-md-4">
+                                                    <h5>Case Studies</h5>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <h5>Commercial Support</h5>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <h5>Our Latest Projects</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-5">
+                                            <img src="{{ asset('assets-frontend/images/mega-menu-img.png') }}" width="100%" height="100%" alt="Mega Menu Banner">
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <img src="{{ asset('assets-frontend/images/mega-menu-img-2.png') }}" width="100%" alt="Mega Menu Banner">
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                         <li class="nav-item megamenu">
-                            <a class="nav-link dropdown-toggle" href="#">
+                            <a class="nav-link dropdown-toggle" href="{{ route('frontend.home-appliances',['locale' => app()->getLocale()]) }}">
                             {{ __('website.header_menu.home_appliances') }}
                             </a>
                             <div class="megamenu-main-div">
@@ -124,10 +193,19 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                            {{ __('website.header_menu.media_center') }}
+
+                        <li class="nav-item dropdown dropdown-div">
+                            <a class="nav-link dropdown-toggle" href="#" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ __('website.header_menu.media_center') }}
                             </a>
+                           
+                            <ul class="dropdown-menu">
+                                <div class="drop-innter-div">                                   
+                                    <li><a class="dropdown-item" href="{{ route('frontend.news',['locale' => app()->getLocale()]) }}"> {{ __('website.header_menu.news') }}</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('frontend.industry-insights',['locale' => app()->getLocale()]) }}"> {{ __('website.header_menu.industry_insight') }}</a></li>
+                                </div>
+                            </ul>
+                            
                         </li>
                     </ul>
                     <div class="h-button-list">

@@ -70,5 +70,12 @@ class Category extends Model
         // Choose the right column based on locale
         return $this->{'name_' . $locale} ?? $this->name_en; // Fallback to English
     }
-
+    
+    public function getDescriptionAttribute()
+    {
+       $locale = App::getLocale(); // Get the current locale
+       
+       // Choose the right column based on locale
+       return $this->{'description_' . $locale} ?? $this->description_en; // Fallback to English
+    }
 }

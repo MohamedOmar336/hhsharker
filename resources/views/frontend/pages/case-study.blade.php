@@ -32,13 +32,13 @@
                 <p>Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna </p>
             </div>
             <div class="col-lg-6 wow fadeInRightBig" data-wow-delay="0.5s">
-                <form>
+                {{-- <form>
                     <div class="news-search-div">
                         <i class="fa-regular fa-magnifying-glass new-search-icon"></i>
                         <input class="news-search-input" type="search" placeholder="Search here...">
                         <button type="submit" class="news-search-btn">Search</button>
                     </div>
-                </form>
+                </form> --}}
             </div>
         </div>
     </div>

@@ -72,5 +72,10 @@ class AirConditionerController extends Controller
         return view('frontend.pages.air_conditioner.product');
     }
 
+    public function concealedList(Request $request)
+    {
+        return view('frontend.pages.air_conditioner.concealed-list');        
+    }
+
 
 }

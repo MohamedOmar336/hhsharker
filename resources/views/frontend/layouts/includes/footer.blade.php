@@ -37,20 +37,20 @@
                     <div class="footer-box">
                         <div class="row">
                             <div class="col-xl-4">
-                                <a href="#">All Products </a>
-                                <a href="#">Sales & Support </a>
-                                <a href="#">Service Center</a>
+                                <a href="{{ route('frontend.home-appliances.product-list-1',['locale' => app()->getLocale()]) }}">All Products </a>
+                                <a href="{{ route('frontend.sales-and-support',['locale' => app()->getLocale()]) }}">Sales & Support </a>
+                                <a href="{{ route('frontend.commercial-support',['locale' => app()->getLocale()]) }}">Service Center</a>
                                 <a href="{{ route('frontend.contact-us',['locale' => app()->getLocale()]) }}">Contact Us</a>
                             </div>
                             <div class="col-xl-4">
-                                <a href="#">Air Conditioners</a>
+                                <a href="{{ route('frontend.air-conditioner',['locale' => app()->getLocale()]) }}">Air Conditioners</a>
                                 <a class="small-af" href="#">Window AC</a>
                                 <a class="small-af" href="#">VRF</a>
                                 <a class="small-af" href="#">Concealed</a>
                                 <a class="small-af" href="#">Cassette</a>
                             </div>
                             <div class="col-xl-4">
-                                <a href="#">Home Appliances </a>
+                                <a href="{{ route('frontend.home-appliances',['locale' => app()->getLocale()]) }}">Home Appliances </a>
                                 <a class="small-af" href="#">Refrigerator</a>
                                 <a class="small-af" href="#">Dishwashers </a>
                                 <a class="small-af" href="#">Washing machine </a>

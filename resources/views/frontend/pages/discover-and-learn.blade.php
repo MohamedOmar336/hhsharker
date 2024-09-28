@@ -23,7 +23,7 @@
     <div class="container">
         <div class="maint-h-row">
             <h2 class="wow fadeInLeft">Maintenance Tips</h2>
-            <a class="mainte-head-a wow fadeInRight" href="discover-view-all.html">View all</a>
+            <a class="mainte-head-a wow fadeInRight" href="{{ route('frontend.discover-all',['locale' => app()->getLocale()]) }}">View all</a>
         </div>
 
         <div class="maint-list-div">
@@ -39,7 +39,7 @@
                     <p>Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet
                         lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae
                         magna </p>
-                    <a href="discover-and-learn-single.html">Read Now</a>
+                    <a href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
                 </div>
             </div>
             <div class="row g-lg-5 g-2">
@@ -54,7 +54,7 @@
                     <p>Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet
                         lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae
                         magna </p>
-                    <a href="discover-and-learn-single.html">Read Now</a>
+                    <a href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
                 </div>
             </div>
             <div class="row g-lg-5 g-2">
@@ -69,7 +69,7 @@
                     <p>Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet
                         lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae
                         magna </p>
-                    <a href="discover-and-learn-single.html">Read Now</a>
+                    <a href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
                 </div>
             </div>
         </div>
@@ -131,7 +131,7 @@
                     <div>
                         <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat. Ut phasellus arcu
                             est sollicitudin malesuada morbi sit.</p>
-                        <a class="cutome-btn green-custome-btn" href="discover-view-all.html">Load More</a>
+                        <a class="cutome-btn green-custome-btn" href="{{ route('frontend.discover-all',['locale' => app()->getLocale()]) }}">Load More</a>
                     </div>
                 </div>
             </div>
@@ -147,7 +147,7 @@
                                         <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
                                             Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
                                         <span>May 14, 2024</span>
-                                        <a class="btn-a" href="discover-and-learn-single.html">Read Now</a>
+                                        <a class="btn-a" href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
                                     </div>
                                 </div>
                                 <div class="news-list-tab">
@@ -157,7 +157,7 @@
                                         <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
                                             Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
                                         <span>May 14, 2024</span>
-                                        <a class="btn-a" href="discover-and-learn-single.html">Read Now</a>
+                                        <a class="btn-a" href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
                                     </div>
                                 </div>
                                 <div class="news-list-tab">
@@ -167,39 +167,7 @@
                                         <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
                                             Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
                                         <span>May 14, 2024</span>
-                                        <a class="btn-a" href="discover-and-learn-single.html">Read Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="new-list-main-div">
-                                <div class="news-list-tab">
-                                    <img src="{{ asset('assets-frontend/images/upp-img-1.png')}}" alt="New Image">
-                                    <div>
-                                        <h3>Lorem ipsum dolor sit amet consectetur. </h3>
-                                        <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
-                                            Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
-                                        <span>May 14, 2024</span>
-                                        <a class="btn-a" href="discover-and-learn-single.html">Read Now</a>
-                                    </div>
-                                </div>
-                                <div class="news-list-tab">
-                                    <img src="{{ asset('assets-frontend/images/upp-img-1.png')}}" alt="New Image">
-                                    <div>
-                                        <h3>Lorem ipsum dolor sit amet consectetur. </h3>
-                                        <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
-                                            Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
-                                        <span>May 14, 2024</span>
-                                        <a class="btn-a" href="discover-and-learn-single.html">Read Now</a>
-                                    </div>
-                                </div>
-                                <div class="news-list-tab">
-                                    <img src="{{ asset('assets-frontend/images/upp-img-1.png')}}" alt="New Image">
-                                    <div>
-                                        <h3>Lorem ipsum dolor sit amet consectetur. </h3>
-                                        <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
-                                            Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
-                                        <span>May 14, 2024</span>
-                                        <a class="btn-a" href="discover-and-learn-single.html">Read Now</a>
+                                        <a class="btn-a" href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -211,7 +179,7 @@
                                         <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
                                             Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
                                         <span>May 14, 2024</span>
-                                        <a class="btn-a" href="discover-and-learn-single.html">Read Now</a>
+                                        <a class="btn-a" href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
                                     </div>
                                 </div>
                                 <div class="news-list-tab">
@@ -221,7 +189,7 @@
                                         <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
                                             Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
                                         <span>May 14, 2024</span>
-                                        <a class="btn-a" href="discover-and-learn-single.html">Read Now</a>
+                                        <a class="btn-a" href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
                                     </div>
                                 </div>
                                 <div class="news-list-tab">
@@ -231,7 +199,39 @@
                                         <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
                                             Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
                                         <span>May 14, 2024</span>
-                                        <a class="btn-a" href="discover-and-learn-single.html">Read Now</a>
+                                        <a class="btn-a" href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="new-list-main-div">
+                                <div class="news-list-tab">
+                                    <img src="{{ asset('assets-frontend/images/upp-img-1.png')}}" alt="New Image">
+                                    <div>
+                                        <h3>Lorem ipsum dolor sit amet consectetur. </h3>
+                                        <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
+                                            Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
+                                        <span>May 14, 2024</span>
+                                        <a class="btn-a" href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
+                                    </div>
+                                </div>
+                                <div class="news-list-tab">
+                                    <img src="{{ asset('assets-frontend/images/upp-img-1.png')}}" alt="New Image">
+                                    <div>
+                                        <h3>Lorem ipsum dolor sit amet consectetur. </h3>
+                                        <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
+                                            Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
+                                        <span>May 14, 2024</span>
+                                        <a class="btn-a" href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
+                                    </div>
+                                </div>
+                                <div class="news-list-tab">
+                                    <img src="{{ asset('assets-frontend/images/upp-img-1.png')}}" alt="New Image">
+                                    <div>
+                                        <h3>Lorem ipsum dolor sit amet consectetur. </h3>
+                                        <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
+                                            Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
+                                        <span>May 14, 2024</span>
+                                        <a class="btn-a" href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -247,7 +247,7 @@
                                         <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
                                             Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
                                         <span>May 14, 2024</span>
-                                        <a class="btn-a" href="discover-and-learn-single.html">Read Now</a>
+                                        <a class="btn-a" href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
                                     </div>
                                 </div>
                                 <div class="news-list-tab">
@@ -257,7 +257,7 @@
                                         <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
                                             Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
                                         <span>May 14, 2024</span>
-                                        <a class="btn-a" href="discover-and-learn-single.html">Read Now</a>
+                                        <a class="btn-a" href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
                                     </div>
                                 </div>
                                 <div class="news-list-tab">
@@ -267,39 +267,7 @@
                                         <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
                                             Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
                                         <span>May 14, 2024</span>
-                                        <a class="btn-a" href="discover-and-learn-single.html">Read Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="new-list-main-div">
-                                <div class="news-list-tab">
-                                    <img src="{{ asset('assets-frontend/images/upp-img-1.png')}}" alt="New Image">
-                                    <div>
-                                        <h3>Lorem ipsum dolor sit amet consectetur. </h3>
-                                        <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
-                                            Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
-                                        <span>May 14, 2024</span>
-                                        <a class="btn-a" href="discover-and-learn-single.html">Read Now</a>
-                                    </div>
-                                </div>
-                                <div class="news-list-tab">
-                                    <img src="{{ asset('assets-frontend/images/upp-img-1.png')}}" alt="New Image">
-                                    <div>
-                                        <h3>Lorem ipsum dolor sit amet consectetur. </h3>
-                                        <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
-                                            Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
-                                        <span>May 14, 2024</span>
-                                        <a class="btn-a" href="discover-and-learn-single.html">Read Now</a>
-                                    </div>
-                                </div>
-                                <div class="news-list-tab">
-                                    <img src="{{ asset('assets-frontend/images/upp-img-1.png')}}" alt="New Image">
-                                    <div>
-                                        <h3>Lorem ipsum dolor sit amet consectetur. </h3>
-                                        <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
-                                            Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
-                                        <span>May 14, 2024</span>
-                                        <a class="btn-a" href="discover-and-learn-single.html">Read Now</a>
+                                        <a class="btn-a" href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -311,7 +279,7 @@
                                         <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
                                             Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
                                         <span>May 14, 2024</span>
-                                        <a class="btn-a" href="discover-and-learn-single.html">Read Now</a>
+                                        <a class="btn-a" href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
                                     </div>
                                 </div>
                                 <div class="news-list-tab">
@@ -321,7 +289,7 @@
                                         <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
                                             Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
                                         <span>May 14, 2024</span>
-                                        <a class="btn-a" href="discover-and-learn-single.html">Read Now</a>
+                                        <a class="btn-a" href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
                                     </div>
                                 </div>
                                 <div class="news-list-tab">
@@ -331,7 +299,39 @@
                                         <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
                                             Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
                                         <span>May 14, 2024</span>
-                                        <a class="btn-a" href="discover-and-learn-single.html">Read Now</a>
+                                        <a class="btn-a" href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="new-list-main-div">
+                                <div class="news-list-tab">
+                                    <img src="{{ asset('assets-frontend/images/upp-img-1.png')}}" alt="New Image">
+                                    <div>
+                                        <h3>Lorem ipsum dolor sit amet consectetur. </h3>
+                                        <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
+                                            Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
+                                        <span>May 14, 2024</span>
+                                        <a class="btn-a" href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
+                                    </div>
+                                </div>
+                                <div class="news-list-tab">
+                                    <img src="{{ asset('assets-frontend/images/upp-img-1.png')}}" alt="New Image">
+                                    <div>
+                                        <h3>Lorem ipsum dolor sit amet consectetur. </h3>
+                                        <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
+                                            Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
+                                        <span>May 14, 2024</span>
+                                        <a class="btn-a" href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
+                                    </div>
+                                </div>
+                                <div class="news-list-tab">
+                                    <img src="{{ asset('assets-frontend/images/upp-img-1.png')}}" alt="New Image">
+                                    <div>
+                                        <h3>Lorem ipsum dolor sit amet consectetur. </h3>
+                                        <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
+                                            Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
+                                        <span>May 14, 2024</span>
+                                        <a class="btn-a" href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -347,7 +347,7 @@
                                         <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
                                             Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
                                         <span>May 14, 2024</span>
-                                        <a class="btn-a" href="discover-and-learn-single.html">Read Now</a>
+                                        <a class="btn-a" href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
                                     </div>
                                 </div>
                                 <div class="news-list-tab">
@@ -357,7 +357,7 @@
                                         <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
                                             Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
                                         <span>May 14, 2024</span>
-                                        <a class="btn-a" href="discover-and-learn-single.html">Read Now</a>
+                                        <a class="btn-a" href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
                                     </div>
                                 </div>
                                 <div class="news-list-tab">
@@ -367,39 +367,7 @@
                                         <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
                                             Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
                                         <span>May 14, 2024</span>
-                                        <a class="btn-a" href="discover-and-learn-single.html">Read Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="new-list-main-div">
-                                <div class="news-list-tab">
-                                    <img src="{{ asset('assets-frontend/images/upp-img-1.png')}}" alt="New Image">
-                                    <div>
-                                        <h3>Lorem ipsum dolor sit amet consectetur. </h3>
-                                        <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
-                                            Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
-                                        <span>May 14, 2024</span>
-                                        <a class="btn-a" href="discover-and-learn-single.html">Read Now</a>
-                                    </div>
-                                </div>
-                                <div class="news-list-tab">
-                                    <img src="{{ asset('assets-frontend/images/upp-img-1.png')}}" alt="New Image">
-                                    <div>
-                                        <h3>Lorem ipsum dolor sit amet consectetur. </h3>
-                                        <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
-                                            Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
-                                        <span>May 14, 2024</span>
-                                        <a class="btn-a" href="discover-and-learn-single.html">Read Now</a>
-                                    </div>
-                                </div>
-                                <div class="news-list-tab">
-                                    <img src="{{ asset('assets-frontend/images/upp-img-1.png')}}" alt="New Image">
-                                    <div>
-                                        <h3>Lorem ipsum dolor sit amet consectetur. </h3>
-                                        <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
-                                            Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
-                                        <span>May 14, 2024</span>
-                                        <a class="btn-a" href="discover-and-learn-single.html">Read Now</a>
+                                        <a class="btn-a" href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -411,7 +379,7 @@
                                         <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
                                             Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
                                         <span>May 14, 2024</span>
-                                        <a class="btn-a" href="discover-and-learn-single.html">Read Now</a>
+                                        <a class="btn-a" href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
                                     </div>
                                 </div>
                                 <div class="news-list-tab">
@@ -421,7 +389,7 @@
                                         <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
                                             Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
                                         <span>May 14, 2024</span>
-                                        <a class="btn-a" href="discover-and-learn-single.html">Read Now</a>
+                                        <a class="btn-a" href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
                                     </div>
                                 </div>
                                 <div class="news-list-tab">
@@ -431,7 +399,39 @@
                                         <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
                                             Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
                                         <span>May 14, 2024</span>
-                                        <a class="btn-a" href="discover-and-learn-single.html">Read Now</a>
+                                        <a class="btn-a" href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="new-list-main-div">
+                                <div class="news-list-tab">
+                                    <img src="{{ asset('assets-frontend/images/upp-img-1.png')}}" alt="New Image">
+                                    <div>
+                                        <h3>Lorem ipsum dolor sit amet consectetur. </h3>
+                                        <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
+                                            Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
+                                        <span>May 14, 2024</span>
+                                        <a class="btn-a" href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
+                                    </div>
+                                </div>
+                                <div class="news-list-tab">
+                                    <img src="{{ asset('assets-frontend/images/upp-img-1.png')}}" alt="New Image">
+                                    <div>
+                                        <h3>Lorem ipsum dolor sit amet consectetur. </h3>
+                                        <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
+                                            Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
+                                        <span>May 14, 2024</span>
+                                        <a class="btn-a" href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
+                                    </div>
+                                </div>
+                                <div class="news-list-tab">
+                                    <img src="{{ asset('assets-frontend/images/upp-img-1.png')}}" alt="New Image">
+                                    <div>
+                                        <h3>Lorem ipsum dolor sit amet consectetur. </h3>
+                                        <p>Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat.
+                                            Ut phasellus arcu est sollicitudin malesuada morbi sit.</p>
+                                        <span>May 14, 2024</span>
+                                        <a class="btn-a" href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
                                     </div>
                                 </div>
                             </div>

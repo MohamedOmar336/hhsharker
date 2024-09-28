@@ -156,7 +156,7 @@
             <div class="col-lg-1 col-xl-3"></div>
             <div class="col-lg-6 col-xl-6 wow fadeInRightBig">
                 <p class="testim-h-p">Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.</p>
-                <a class="cutome-btn" href="about.html">Learn More</a>
+                <a class="cutome-btn" href="{{ route('frontend.about',['locale' => app()->getLocale()]) }}">Learn More</a>
             </div>
         </div>
 

@@ -8,6 +8,11 @@ return [
         'home_appliances' => 'Home Appliances',
         'media_center' => 'Media Center',
         'contact_us' => 'Contact Us',
+        'about' => 'About',
+        'value_vision' => 'Value And Vision',
+        'company_founder' => 'Company Founders',
+        'news' => 'News',
+        'industry_insight' => 'Industry Insight',
     ],
     'homepage_slider_1' => [
         'title_1' => 'Commercial <br> Air Conditioners',

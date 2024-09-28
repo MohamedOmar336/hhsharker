@@ -8,13 +8,13 @@
                 <h1 class="wow bounceInDown" data-wow-delay="1.2s">{{ __('website.news.title') }}</h1>
                 <img class="news-tp-2 wow fadeIn" data-wow-delay="1.8s" src="{{ asset('assets-frontend/images/new-banner-text-img.png') }}" alt="News Banner Text Image">
             </div>
-            <form>
+            {{-- <form>
                 <div class="news-search-div wow bounceInUp" data-wow-delay="1.5s">
                     <i class="fa-regular fa-magnifying-glass new-search-icon"></i>
                     <input class="news-search-input" type="search" placeholder="{{ __('website.news.placeholder') }}">
                     <button type="submit" class="news-search-btn">{{ __('website.news.btn') }}</button>
                 </div>
-            </form>
+            </form> --}}
         </div>
         @if($news->count() > 0)
         <div>

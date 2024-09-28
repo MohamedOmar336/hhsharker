@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\App;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
@@ -58,5 +59,21 @@ class Product extends Model
     public function characteristics()
     {
         return $this->hasMany(Characteristic::class, 'product_id');
+    }
+
+    public function getNameAttribute()
+    {
+        $locale = App::getLocale(); // Get the current locale
+        
+        // Choose the right column based on locale
+        return $this->{'product_name_' . $locale} ?? $this->product_name_en; // Fallback to English
+    }
+
+    public function getDescriptionAttribute()
+    {
+        $locale = App::getLocale(); // Get the current locale
+        
+        // Choose the right column based on locale
+        return $this->{'product_description_' . $locale} ?? $this->product_description_en; // Fallback to English
     }
 }

@@ -29,7 +29,7 @@
                             <p>
                                 Beko is a well-known brand around the world, found in over 120 countries. It offers the latest technology at affordable prices, making Beko a trusted choice for everyone.
                             </p>
-                            <a class="cutome-btn" href="about.html">Learn More</a>
+                            <a class="cutome-btn" href="{{ route('frontend.about',['locale' => app()->getLocale()]) }}">Learn More</a>
                         </div>
                     </div>
                     <div class="wow fadeInLeft">
@@ -67,7 +67,7 @@
                     <img src="{{ asset('images/'.$cat->image) }}" width="100%" alt="Product Image">
                     <div>
                         <h3>{{ $cat->name }}</h3>
-                        <p>Keep your food fresh for the longest time possible.</p>
+                        <p>{{ $cat->description}}</p>
                         <a href="{{ route('frontend.home-appliances.parent',['locale' => app()->getLocale(),'parent'=>$cat->slug]) }}">Learn More</a>
                     </div>
                 </div>

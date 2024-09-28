@@ -25,13 +25,13 @@
                                 <img src="{{ asset('assets-frontend/images/blog-img-1.png')}}">
                                 <h3>Lorem ipsum dolor sit amet consectetur</h3>
                                 <p>Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna </p>
-                                <a href="discover-and-learn-single.html">Read Now</a>
+                                <a href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
                             </div>
                             <div class="view-all-list">
                                 <img src="{{ asset('assets-frontend/images/blog-img-1.png')}}">
                                 <h3>Lorem ipsum dolor sit amet consectetur</h3>
                                 <p>Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna </p>
-                                <a href="discover-and-learn-single.html">Read Now</a>
+                                <a href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
                             </div>
                         </div>
                         <div class="item wow fadeInUp" data-wow-delay="0.4s">
@@ -39,27 +39,13 @@
                                 <img src="{{ asset('assets-frontend/images/blog-img-1.png')}}">
                                 <h3>Lorem ipsum dolor sit amet consectetur</h3>
                                 <p>Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna </p>
-                                <a href="discover-and-learn-single.html">Read Now</a>
+                                <a href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
                             </div>
                             <div class="view-all-list">
                                 <img src="{{ asset('assets-frontend/images/blog-img-1.png')}}">
                                 <h3>Lorem ipsum dolor sit amet consectetur</h3>
                                 <p>Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna </p>
-                                <a href="discover-and-learn-single.html">Read Now</a>
-                            </div>
-                        </div>
-                        <div class="item wow fadeInUp" data-wow-delay="0.6s">
-                            <div class="view-all-list">
-                                <img src="{{ asset('assets-frontend/images/blog-img-1.png')}}">
-                                <h3>Lorem ipsum dolor sit amet consectetur</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna </p>
-                                <a href="discover-and-learn-single.html">Read Now</a>
-                            </div>
-                            <div class="view-all-list">
-                                <img src="{{ asset('assets-frontend/images/blog-img-1.png')}}">
-                                <h3>Lorem ipsum dolor sit amet consectetur</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna </p>
-                                <a href="discover-and-learn-single.html">Read Now</a>
+                                <a href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
                             </div>
                         </div>
                         <div class="item wow fadeInUp" data-wow-delay="0.6s">
@@ -67,13 +53,27 @@
                                 <img src="{{ asset('assets-frontend/images/blog-img-1.png')}}">
                                 <h3>Lorem ipsum dolor sit amet consectetur</h3>
                                 <p>Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna </p>
-                                <a href="discover-and-learn-single.html">Read Now</a>
+                                <a href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
                             </div>
                             <div class="view-all-list">
                                 <img src="{{ asset('assets-frontend/images/blog-img-1.png')}}">
                                 <h3>Lorem ipsum dolor sit amet consectetur</h3>
                                 <p>Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna </p>
-                                <a href="discover-and-learn-single.html">Read Now</a>
+                                <a href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
+                            </div>
+                        </div>
+                        <div class="item wow fadeInUp" data-wow-delay="0.6s">
+                            <div class="view-all-list">
+                                <img src="{{ asset('assets-frontend/images/blog-img-1.png')}}">
+                                <h3>Lorem ipsum dolor sit amet consectetur</h3>
+                                <p>Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna </p>
+                                <a href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
+                            </div>
+                            <div class="view-all-list">
+                                <img src="{{ asset('assets-frontend/images/blog-img-1.png')}}">
+                                <h3>Lorem ipsum dolor sit amet consectetur</h3>
+                                <p>Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna </p>
+                                <a href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
                             </div>
                         </div>
                         <div class="item wow fadeInUp" data-wow-delay="0.8s">
@@ -81,13 +81,13 @@
                                 <img src="{{ asset('assets-frontend/images/blog-img-1.png')}}">
                                 <h3>Lorem ipsum dolor sit amet consectetur</h3>
                                 <p>Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna </p>
-                                <a href="discover-and-learn-single.html">Read Now</a>
+                                <a href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
                             </div>
                             <div class="view-all-list">
                                 <img src="{{ asset('assets-frontend/images/blog-img-1.png')}}">
                                 <h3>Lorem ipsum dolor sit amet consectetur</h3>
                                 <p>Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna </p>
-                                <a href="discover-and-learn-single.html">Read Now</a>
+                                <a href="{{ route('frontend.discover-single',['locale' => app()->getLocale()]) }}">Read Now</a>
                             </div>
                         </div>
                     </div>

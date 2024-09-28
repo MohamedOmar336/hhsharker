@@ -6,7 +6,7 @@
         <div class="row gx-lg-5 align-items-center">
             <div class="col-lg-5 wow fadeInLeft" data-wow-delay="1.2s">
                 <h1> {{ $parentCategoryArr->name }}</h1>
-                <a class="cutome-btn" href="about.html">Learn More</a>
+                <a class="cutome-btn" href="{{ route('frontend.about',['locale' => app()->getLocale()]) }}">Learn More</a>
             </div>
             <div class="col-lg-6 offset-lg-1 wow fadeInRight" data-wow-delay="1.2s">
                 <img class="list-banner-img" src="{{ asset('images/'.$parentCategoryArr->image) }}" alt="Banner Image">
@@ -90,7 +90,7 @@
                                         <span>Anti-Corrosion Performance</span>
                                         <span>Built-in Pump</span>
                                     </div>
-                                    <a href="single-product.html">Learn More</a>
+                                    <a href="{{ route('frontend.air-conditioner.product-details',['locale' => app()->getLocale()]) }}">Learn More</a>
                                 </div>
                             </div>
                         </div>
@@ -106,7 +106,7 @@
                                         <span>Anti-Corrosion Performance</span>
                                         <span>Built-in Pump</span>
                                     </div>
-                                    <a href="single-product.html">Learn More</a>
+                                    <a href="{{ route('frontend.air-conditioner.product-details',['locale' => app()->getLocale()]) }}">Learn More</a>
                                 </div>
                             </div>
                         </div>
@@ -122,7 +122,7 @@
                                         <span>Anti-Corrosion Performance</span>
                                         <span>Built-in Pump</span>
                                     </div>
-                                    <a href="single-product.html">Learn More</a>
+                                    <a href="{{ route('frontend.air-conditioner.product-details',['locale' => app()->getLocale()]) }}">Learn More</a>
                                 </div>
                             </div>
                         </div>
@@ -138,7 +138,7 @@
                                         <span>Anti-Corrosion Performance</span>
                                         <span>Built-in Pump</span>
                                     </div>
-                                    <a href="single-product.html">Learn More</a>
+                                    <a href="{{ route('frontend.air-conditioner.product-details',['locale' => app()->getLocale()]) }}">Learn More</a>
                                 </div>
                             </div>
                         </div>
@@ -154,7 +154,7 @@
                                         <span>Anti-Corrosion Performance</span>
                                         <span>Built-in Pump</span>
                                     </div>
-                                    <a href="single-product.html">Learn More</a>
+                                    <a href="{{ route('frontend.air-conditioner.product-details',['locale' => app()->getLocale()]) }}">Learn More</a>
                                 </div>
                             </div>
                         </div>
@@ -170,7 +170,7 @@
                                         <span>Anti-Corrosion Performance</span>
                                         <span>Built-in Pump</span>
                                     </div>
-                                    <a href="single-product.html">Learn More</a>
+                                    <a href="{{ route('frontend.air-conditioner.product-details',['locale' => app()->getLocale()]) }}">Learn More</a>
                                 </div>
                             </div>
                         </div>
@@ -235,7 +235,7 @@
                 <div class="list-other-div">
                     <h3>Concealed Splits</h3>
                     <p>Enjoy air distribution in all directions and 360° coverage.</p>
-                    <a class="cutome-btn" href="concealed-list.html">Learn More</a>
+                    <a class="cutome-btn" href="{{ route('frontend.air-conditioner.concealed-list',['locale' => app()->getLocale()]) }}">Learn More</a>
                     <img src="{{ asset('assets-frontend/images/gal-slider-1.png') }}">
                 </div>
             </div>
@@ -243,7 +243,7 @@
                 <div class="list-other-div">
                     <h3>Floor Standing Splits</h3>
                     <p>Enjoy air distribution in all directions and 360° coverage.</p>
-                    <a class="cutome-btn" href="concealed-list.html">Learn More</a>
+                    <a class="cutome-btn" href="{{ route('frontend.air-conditioner.concealed-list',['locale' => app()->getLocale()]) }}">Learn More</a>
                     <img src="{{ asset('assets-frontend/images/gal-slider-1.png') }}">
                 </div>
             </div>

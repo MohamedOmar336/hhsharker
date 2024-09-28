@@ -107,67 +107,67 @@
                             </div>
                         @endif    
                         <form id="contact-frm" method="post" action="{{ route('frontend.contact-us.store',['locale' => app()->getLocale()]) }}">
-                                @csrf
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="contact-input">
-                                            <label>{{ __('website.contact.field_title_1') }} <span>*</span></label>
-                                            <input type="text" name="name" class="form-control @error('name') error @enderror" placeholder="{{ __('website.contact.field_title_1') }}"  value="{{ old('name') }}">
-                                            @error('name')
-                                                <label id="name-error" class="error" for="name">{{ $message }}</label>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="contact-input">
-                                            <label>{{ __('website.contact.field_title_2') }} <span>*</span></label>
-                                            <input type="text" name="company" class="form-control @error('company') error @enderror" placeholder="{{ __('website.contact.field_title_2') }}"  value="{{ old('company') }}">
-                                            @error('company')
-                                                <label id="company-error" class="error" for="company">{{ $message }}</label>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="contact-input">
-                                            <label>{{ __('website.contact.field_title_3') }} <span>*</span></label>
-                                            <input type="tel" name="mobile_number" class="form-control @error('mobile_number') error @enderror"  placeholder="{{ __('website.contact.field_title_3') }}"  value="{{ old('mobile_number') }}">
-                                            @error('mobile_number')
-                                                <label id="mobile_number-error" class="error" for="mobile_number" >{{ $message }}</label>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="contact-input">
-                                            <label>{{ __('website.contact.field_title_4') }} <span>*</span></label>
-                                            <input type="email" name="email" class="form-control @error('email') error @enderror" placeholder="{{ __('website.contact.field_title_4') }}" value="{{ old('email') }}">
-                                            @error('email')
-                                                <label id="email-error" class="error" for="email" >{{ $message }}</label>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="contact-input">
-                                            <label>{{ __('website.contact.field_title_5') }} <span>*</span></label>
-                                            <input type="text" name="subject" class="form-control  @error('subject') error @enderror" value="{{ old('subject') }}" placeholder="{{ __('website.contact.field_title_5') }}">
-                                            @error('subject')
-                                                <label id="subject-error" class="error" for="subject">{{ $message }}</label>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="contact-input">
-                                            <label>{{ __('website.contact.field_title_6') }} <span>*</span></label>
-                                            <textarea name="message" class="form-control @error('message') error @enderror"  placeholder="{{ __('website.contact.field_title_6_placeholder') }}" rows="5">{{ old('message') }}</textarea>
-                                            @error('message')
-                                                <label id="message-error" class="error" for="message">{{ $message }}</label>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <button class="contact-form-btn" type="submit">{{ __('website.contact.field_title_7') }}</button>
+                            @csrf
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="contact-input">
+                                        <label>{{ __('website.contact.field_title_1') }} <span>*</span></label>
+                                        <input type="text" name="name" class="form-control @error('name') error @enderror" placeholder="{{ __('website.contact.field_title_1') }}"  value="{{ old('name') }}">
+                                        @error('name')
+                                            <label id="name-error" class="error" for="name">{{ $message }}</label>
+                                        @enderror
                                     </div>
                                 </div>
-                            </form>
+                                <div class="col-lg-6">
+                                    <div class="contact-input">
+                                        <label>{{ __('website.contact.field_title_2') }} <span>*</span></label>
+                                        <input type="text" name="company" class="form-control @error('company') error @enderror" placeholder="{{ __('website.contact.field_title_2') }}"  value="{{ old('company') }}">
+                                        @error('company')
+                                            <label id="company-error" class="error" for="company">{{ $message }}</label>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="contact-input">
+                                        <label>{{ __('website.contact.field_title_3') }} <span>*</span></label>
+                                        <input type="tel" name="mobile_number" class="form-control @error('mobile_number') error @enderror"  placeholder="{{ __('website.contact.field_title_3') }}"  value="{{ old('mobile_number') }}">
+                                        @error('mobile_number')
+                                            <label id="mobile_number-error" class="error" for="mobile_number" >{{ $message }}</label>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="contact-input">
+                                        <label>{{ __('website.contact.field_title_4') }} <span>*</span></label>
+                                        <input type="email" name="email" class="form-control @error('email') error @enderror" placeholder="{{ __('website.contact.field_title_4') }}" value="{{ old('email') }}">
+                                        @error('email')
+                                            <label id="email-error" class="error" for="email" >{{ $message }}</label>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="contact-input">
+                                        <label>{{ __('website.contact.field_title_5') }} <span>*</span></label>
+                                        <input type="text" name="subject" class="form-control  @error('subject') error @enderror" value="{{ old('subject') }}" placeholder="{{ __('website.contact.field_title_5') }}">
+                                        @error('subject')
+                                            <label id="subject-error" class="error" for="subject">{{ $message }}</label>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="contact-input">
+                                        <label>{{ __('website.contact.field_title_6') }} <span>*</span></label>
+                                        <textarea name="message" class="form-control @error('message') error @enderror"  placeholder="{{ __('website.contact.field_title_6_placeholder') }}" rows="5">{{ old('message') }}</textarea>
+                                        @error('message')
+                                            <label id="message-error" class="error" for="message">{{ $message }}</label>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <button class="contact-form-btn" type="submit">{{ __('website.contact.field_title_7') }}</button>
+                                </div>
+                            </div>
+                        </form>
                         </div>
                         <div class="contact-tab-body tab-pane fade" id="contact_2" role="tabpanel" aria-labelledby="contact_2-tab" tabindex="0">
                             <div class="contact-toll-h">

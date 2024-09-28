@@ -24,13 +24,13 @@
                     <p>{{ __('website.industry_insight.desc') }}</p>
                 </div>
                 <div class="col-lg-6 wow fadeInRightBig" data-wow-delay="0.5s">
-                    <form>
+                    {{-- <form>
                         <div class="news-search-div">
                             <i class="fa-regular fa-magnifying-glass new-search-icon"></i>
                             <input class="news-search-input" type="search" placeholder="{{ __('website.industry_insight.search_placeholder') }}">
                             <button type="submit" class="news-search-btn">{{ __('website.industry_insight.search_btn') }}</button>
                         </div>
-                    </form>
+                    </form> --}}
                 </div>
             </div>
         </div>

@@ -100,3 +100,12 @@ if (!function_exists('uploadWhatsappDoc')) {
         return str_replace('/' . app()->getLocale() . '/', '/' . (app()->getLocale() == 'en' ? 'ar' : 'en') . '/', url()->current());
     }
 }
+
+function trimString($string, $length = 30) {
+    // Check if the string length exceeds the specified length
+    if (mb_strlen($string) > $length) {
+        // Trim the string and add ellipsis if desired
+        return mb_substr($string, 0, $length) . '...';
+    }
+    return $string;
+}

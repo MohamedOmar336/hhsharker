@@ -74,25 +74,25 @@
                 </div>
             </div>
             <ul class="nav nav-pills home-tab-main mb-5 wow fadeInUpBig" id="pills-tab" role="tablist">
-                @if($airConditionProducts->count() > 0)
+                @if($airConditionerArr->count() > 0)
                     <button class="nav-link active" id="home_pro_tab_1-tab" data-bs-toggle="pill" data-bs-target="#home_pro_tab_1" type="button" role="tab" aria-controls="home_pro_tab_1" aria-selected="true">{{ __('website.homepage_product_section_1.category_1') }}</button>
                 @endif 
-                    @if($homeApplianceProducts->count() > 0)
-                    <button class="nav-link {{ $airConditionProducts->count() == 0 ? 'active' : ''}}" id="home_pro_tab_2-tab" data-bs-toggle="pill" data-bs-target="#home_pro_tab_2" type="button" role="tab" aria-controls="home_pro_tab_2" aria-selected="false">{{ __('website.homepage_product_section_1.category_2') }}</button>
+                    @if($homeApplianceArr->count() > 0)
+                    <button class="nav-link {{ $airConditionerArr->count() == 0 ? 'active' : ''}}" id="home_pro_tab_2-tab" data-bs-toggle="pill" data-bs-target="#home_pro_tab_2" type="button" role="tab" aria-controls="home_pro_tab_2" aria-selected="false">{{ __('website.homepage_product_section_1.category_2') }}</button>
                 @endif            
             </ul>
             <div class="tab-content" id="pills-tabContent">
-                @if($airConditionProducts->count() > 0)
+                @if($airConditionerArr->count() > 0)
                 <div class="tab-pane fade show active" id="home_pro_tab_1" role="tabpanel" aria-labelledby="home_pro_tab_1-tab" tabindex="0">
                     <div class="row justify-content-center gx-lg-5 gy-lg-2">
-                        @foreach($airConditionProducts as $product)
+                        @foreach($airConditionerArr as $cat)
                             <div class="col-md-6 col-lg-4 wow fadeInUpBig">
                                 <div class="product-list-home">
-                                    <div class="product-img"><img src="{{ Storage::url($product->image) }}" width="100%" alt="Product Image"></div>
+                                    <div class="product-img"><img src="{{ asset('images/'.$cat->image) }}" width="100%" alt="Product Image"></div>
                                     <div class="product-body">
-                                        <h3>{{ $product->product_name_en }}</h3>
-                                        <p>{{ $product->product_description_en }}</p>
-                                        <a href="#">{{ __('website.homepage_product_section_1.button') }}</a>
+                                        <h3>{{ $cat->name }}</h3>
+                                        <p>{{ trimString($cat->description,90) }}</p>
+                                        <a href="{{ route('frontend.air-conditioner.parent',['locale' => app()->getLocale(),'parent'=>$cat->slug]) }}">{{ __('website.homepage_product_section_1.button') }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -100,17 +100,17 @@
                     </div>
                 </div>
                 @endif
-                @if($homeApplianceProducts->count() > 0)
-                <div class="tab-pane fade {{ $airConditionProducts->count() == 0 ? 'show active' : ''}}" id="home_pro_tab_2" role="tabpanel" aria-labelledby="home_pro_tab_2-tab" tabindex="0">
+                @if($homeApplianceArr->count() > 0)
+                <div class="tab-pane fade {{ $airConditionerArr->count() == 0 ? 'show active' : ''}}" id="home_pro_tab_2" role="tabpanel" aria-labelledby="home_pro_tab_2-tab" tabindex="0">
                     <div class="row justify-content-center gx-lg-5 gy-lg-2">
-                        @foreach($homeApplianceProducts as $product)
+                        @foreach($homeApplianceArr as $cat)
                         <div class="col-md-6 col-lg-4">
                             <div class="product-list-home">
-                                <div class="product-img"><img src="{{ Storage::url($product->image) }}" width="100%" alt="Product Image"></div>
+                                <div class="product-img"><img src="{{ asset('images/'.$cat->image) }}" width="100%" alt="Product Image"></div>
                                 <div class="product-body">
-                                    <h3>{{ $product->product_name_en }}</h3>
-                                    <p>{{ $product->product_description_en }}</p>
-                                    <a href="#">{{ __('website.homepage_product_section_1.button') }}</a>
+                                    <h3>{{ $cat->name }}</h3>
+                                    <p>{{ trimString($cat->description,90) }}</p>
+                                    <a href="{{ route('frontend.home-appliances.parent',['locale' => app()->getLocale(),'parent'=>$cat->slug]) }}">{{ __('website.homepage_product_section_1.button') }}</a>
                                 </div>
                             </div>
                         </div>
@@ -144,17 +144,17 @@
             @foreach($homeApplianceBestSellerProducts as $product)
             <div class="item">
                 <div class="home-slider-item">
-                    <h4>{{ $product->product_name_en }}</h4>
+                    <h4>{{ $product->name }}</h4>
                     <span>{{ __('website.homepage_product_section_2.title') }}</span>
                     <img src="{{ Storage::url($product->image) }}" alt="Product Image">
-                    <a href="#">{{ __('website.homepage_product_section_2.button') }}</a>
+                    <a href="{{ route('frontend.air-conditioner.product-details',['locale' => app()->getLocale()]) }}">{{ __('website.homepage_product_section_2.button') }}</a>
                 </div>
             </div>
             @endforeach
         </div>
 
         <div class="mt-1 text-center wow zoomInUp">
-            <a class="cutome-btn" href="#">{{ __('website.homepage_product_section_2.button') }}</a>
+            <a class="cutome-btn" href="{{ route('frontend.home-appliances',['locale' => app()->getLocale()]) }}">{{ __('website.homepage_product_section_2.button') }}</a>
         </div>
 
     </section>
@@ -192,7 +192,7 @@
                         <h5>{{ __('website.homepage_product_section_3.title') }}</h5>
                         <h2>{{ __('website.homepage_product_section_3.desc') }}</h2>
                     </div>
-                    <a class="cutome-btn" href="#">{{ __('website.homepage_product_section_3.button') }}</a>
+                    <a class="cutome-btn" href="{{ route('frontend.air-conditioner',['locale' => app()->getLocale()]) }}">{{ __('website.homepage_product_section_3.button') }}</a>
                 </div>
                 <div class="col-lg-1 col-xl-3"></div>
                 <div class="col-lg-8 col-xl-6 pe-0 wow fadeInRightBig">
@@ -201,9 +201,9 @@
                         @foreach($airConditionFeaturedProducts as $product)
                         <div class="comn-slider-list {{ numberToWord($loop->iteration) }}">
                             <img src="{{ Storage::url($product->image) }}" alt="Commercial Devices Image">
-                            <h4>{{ $product->product_name_en }}</h4>
-                            <p>{{ $product->product_description_en }}</p>
-                            <a href="#">{{ __('website.homepage_product_section_3.button') }}</a>
+                            <h4>{{ $product->name }}</h4>
+                            <p>{{ trimString($product->description,90) }}</p>
+                            <a href="{{ route('frontend.air-conditioner.product-details',['locale' => app()->getLocale()]) }}">{{ __('website.homepage_product_section_3.button') }}</a>
                         </div>
                         @endforeach
                     </div>
