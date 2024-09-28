@@ -16,27 +16,27 @@ return [
         'route' => 'products.index',
         'sort'  => 2,
     ], [
-        'key'   => 'products.create',
+        'key'   => 'create products ',
         'name'  => 'app.acl.create',
         'route' => 'products.create',
         'sort'  => 2,
     ],[
-        'key'   => 'products.edit',
+        'key'   => 'edit products ',
         'name'  => 'app.acl.edit',
         'route' => 'products.edit',
         'sort'  => 3,
     ], [
-        'key'   => 'products.destroy',
+        'key'   => ' destroy products',
         'name'  => 'app.acl.destroy',
         'route' => 'products.destroy',
         'sort'  => 4,
     ], [
-        'key'   => 'products.store',
+        'key'   => 'store products',
         'name'  => 'app.acl.store',
         'route' => 'products.store',
         'sort'  => 4,
     ], [
-        'key'   => 'products.bulk_delete',
+        'key'   => 'bulk delete products',
         'name'  => 'app.acl.bulk_delete',
         'route' => 'products.bulkdelete',
         'sort'  => 5,
@@ -56,27 +56,27 @@ return [
         'route' => 'categories.index',
         'sort'  => 2,
     ], [
-        'key'   => 'categories.create',
+        'key'   => 'create categories',
         'name'  => 'app.acl.create',
         'route' => 'categories.create',
         'sort'  => 1,
     ], [
-        'key'   => 'categories.edit',
+        'key'   => 'edit categories',
         'name'  => 'app.acl.edit',
         'route' => 'categories.edit',
         'sort'  => 2,
     ], [
-        'key'   => 'categories.destroy',
+        'key'   => 'destroy categories ',
         'name'  => 'app.acl.destroy',
         'route' => 'categories.destroy',
         'sort'  => 3,
     ],[
-        'key'   => 'categories.store',
+        'key'   => 'store categories ',
         'name'  => 'app.acl.store',
         'route' => 'categories.store',
         'sort'  => 4,
     ], [
-        'key'   => 'categories.bulk_delete',
+        'key'   => 'bulk delete categories',
         'name'  => 'app.acl.bulk_delete',
         'route' => 'categories.bulk-delete',
         'sort'  => 5,
@@ -96,22 +96,22 @@ return [
         'route' => 'blogposts.index',
         'sort'  => 2,
     ], [
-        'key'   => 'blogposts.create',
+        'key'   => 'create blogposts ',
         'name'  => 'app.acl.create',
         'route' => 'blogposts.create',
         'sort'  => 1,
     ], [
-        'key'   => 'blogposts.edit',
+        'key'   => 'edit blogposts ',
         'name'  => 'app.acl.edit',
         'route' => 'blogposts.edit',
         'sort'  => 2,
     ], [
-        'key'   => 'blogposts.destroy',
+        'key'   => 'destroy blogposts ',
         'name'  => 'app.acl.destroy',
         'route' => 'blogposts.destroy',
         'sort'  => 3,
     ],[
-        'key'   => 'blogposts.store',
+        'key'   => 'store blogposts',
         'name'  => 'app.acl.store',
         'route' => 'blogposts.store',
         'sort'  => 4,
@@ -131,22 +131,22 @@ return [
         'route' => 'comments.index',
         'sort'  => 2,
     ], [
-        'key'   => 'comments.create',
+        'key'   => 'create comments ',
         'name'  => 'app.acl.create',
         'route' => 'comments.create',
         'sort'  => 1,
     ], [
-        'key'   => 'comments.edit',
+        'key'   => 'edit comments ',
         'name'  => 'app.acl.edit',
         'route' => 'comments.edit',
         'sort'  => 2,
     ], [
-        'key'   => 'comments.destroy',
+        'key'   => 'destroy comments',
         'name'  => 'app.acl.destroy',
         'route' => 'comments.destroy',
         'sort'  => 3,
     ],[
-        'key'   => 'comments.store',
+        'key'   => 'store comments',
         'name'  => 'app.acl.store',
         'route' => 'comments.store',
         'sort'  => 4,
@@ -166,22 +166,22 @@ return [
         'route' => 'tags.index',
         'sort'  => 2,
     ], [
-        'key'   => 'tags.create',
+        'key'   => 'create tags ',
         'name'  => 'app.acl.create',
         'route' => 'tags.create',
         'sort'  => 1,
     ], [
-        'key'   => 'tags.edit',
+        'key'   => 'edit tags ',
         'name'  => 'app.acl.edit',
         'route' => 'tags.edit',
         'sort'  => 2,
     ], [
-        'key'   => 'tags.destroy',
+        'key'   => 'destroy tags',
         'name'  => 'app.acl.destroy',
         'route' => 'tags.destroy',
         'sort'  => 3,
     ],[
-        'key'   => 'tags.store',
+        'key'   => 'store tags ',
         'name'  => 'app.acl.store',
         'route' => 'tags.store',
         'sort'  => 4,
@@ -201,22 +201,22 @@ return [
         'route' => 'contacts.index',
         'sort'  => 2,
     ], [
-        'key'   => 'contacts.create',
+        'key'   => 'create contacts',
         'name'  => 'app.acl.create',
         'route' => 'contacts.create',
         'sort'  => 1,
     ], [
-        'key'   => 'contacts.edit',
+        'key'   => ' edit contacts',
         'name'  => 'app.acl.edit',
         'route' => 'contacts.edit',
         'sort'  => 2,
     ], [
-        'key'   => 'contacts.destroy',
+        'key'   => ' destroy contacts',
         'name'  => 'app.acl.destroy',
         'route' => 'contacts.destroy',
         'sort'  => 3,
     ],[
-        'key'   => 'contacts.store',
+        'key'   => 'store contacts',
         'name'  => 'app.acl.store',
         'route' => 'contacts.store',
         'sort'  => 4,
@@ -236,22 +236,22 @@ return [
         'route' => 'users.index',
         'sort'  => 2,
     ], [
-        'key'   => 'users.create',
+        'key'   => 'create users',
         'name'  => 'app.acl.create',
         'route' => 'users.create',
         'sort'  => 1,
     ], [
-        'key'   => 'users.edit',
+        'key'   => 'edit users ',
         'name'  => 'app.acl.edit',
         'route' => 'users.edit',
         'sort'  => 2,
     ], [
-        'key'   => 'users.destroy',
+        'key'   => 'destroy users ',
         'name'  => 'app.acl.destroy',
         'route' => 'users.destroy',
         'sort'  => 3,
     ],[
-        'key'   => 'users.store',
+        'key'   => 'store users ',
         'name'  => 'app.acl.store',
         'route' => 'users.store',
         'sort'  => 4,
@@ -271,22 +271,22 @@ return [
         'route' => 'profile.show',
         'sort'  => 2,
     ], [
-        'key'   => 'profile.update',
+        'key'   => 'update profile',
         'name'  => 'app.acl.update',
         'route' => 'profile.update',
         'sort'  => 1,
     ], [
-        'key'   => 'profile.change_password_form',
+        'key'   => 'change password form',
         'name'  => 'app.acl.change_password_form',
         'route' => 'profile.change_password_form',
         'sort'  => 2,
     ], [
-        'key'   => 'profile.change_password',
+        'key'   => 'change password',
         'name'  => 'app.acl.change_password',
         'route' => 'profile.change_password',
         'sort'  => 3,
     ],[
-        'key'   => 'categories.store',
+        'key'   => 'store categories',
         'name'  => 'app.acl.store',
         'route' => 'categories.store',
         'sort'  => 4,
@@ -306,22 +306,22 @@ return [
         'route' => 'roles.index',
         'sort'  => 2,
     ], [
-        'key'   => 'roles.create',
+        'key'   => 'create roles',
         'name'  => 'app.acl.create',
         'route' => 'roles.create',
         'sort'  => 1,
     ], [
-        'key'   => 'roles.edit',
+        'key'   => 'edit roles',
         'name'  => 'app.acl.edit',
         'route' => 'roles.edit',
         'sort'  => 2,
     ], [
-        'key'   => 'roles.destroy',
+        'key'   => 'destroy roles',
         'name'  => 'app.acl.destroy',
         'route' => 'roles.destroy',
         'sort'  => 3,
     ],[
-        'key'   => 'roles.store',
+        'key'   => 'store roles',
         'name'  => 'app.acl.store',
         'route' => 'roles.store',
         'sort'  => 4,
@@ -341,12 +341,12 @@ return [
         'route' => 'chat.index',
         'sort'  => 2,
     ], [
-        'key'   => 'chat.checkRoom',
+        'key'   => 'chat checkRoom',
         'name'  => 'app.acl.checkRoom',
         'route' => 'chat.checkRoom',
         'sort'  => 1,
     ], [
-        'key'   => 'chat.create',
+        'key'   => 'create chat',
         'name'  => 'app.acl.create',
         'route' => 'chat.create',
         'sort'  => 2,
@@ -366,27 +366,27 @@ return [
         'route' => 'tickets.index',
         'sort'  => 2,
     ], [
-        'key'   => 'tickets.create',
+        'key'   => 'create tickets',
         'name'  => 'app.acl.create',
         'route' => 'tickets.create',
         'sort'  => 1,
     ], [
-        'key'   => 'tickets.edit',
+        'key'   => 'edit tickets',
         'name'  => 'app.acl.edit',
         'route' => 'tickets.edit',
         'sort'  => 2,
     ], [
-        'key'   => 'tickets.destroy',
+        'key'   => 'destroy tickets',
         'name'  => 'app.acl.destroy',
         'route' => 'tickets.destroy',
         'sort'  => 3,
     ],[
-        'key'   => 'tickets.store',
+        'key'   => 'store tickets',
         'name'  => 'app.acl.store',
         'route' => 'tickets.store',
         'sort'  => 4,
     ], [
-        'key'   => 'tickets.my',
+        'key'   => 'my tickets',
         'name'  => 'app.acl.my',
         'route' => 'tickets.my',
         'sort'  => 5,
@@ -401,27 +401,27 @@ return [
     |
     */
     [
-        'key'   => 'ticket_priorities',
+        'key'   => 'ticket priorities',
         'name'  => 'app.acl.ticket_priorities',
         'route' => 'ticket-priorities.index',
         'sort'  => 2,
     ], [
-        'key'   => 'ticket_priorities.create',
+        'key'   => 'create ticket priorities',
         'name'  => 'app.acl.create',
         'route' => 'ticket-priorities.create',
         'sort'  => 1,
     ], [
-        'key'   => 'ticket_priorities.edit',
+        'key'   => 'edit ticket priorities',
         'name'  => 'app.acl.edit',
         'route' => 'ticket-priorities.edit',
         'sort'  => 2,
     ], [
-        'key'   => 'ticket_priorities.destroy',
+        'key'   => 'destroy ticket priorities',
         'name'  => 'app.acl.destroy',
         'route' => 'ticket-priorities.destroy',
         'sort'  => 3,
     ],[
-        'key'   => 'ticket_priorities.store',
+        'key'   => 'store ticket priorities',
         'name'  => 'app.acl.store',
         'route' => 'ticket-priorities.store',
         'sort'  => 4,
@@ -436,27 +436,27 @@ return [
     |
     */
     [
-        'key'   => 'ticket_statuses',
+        'key'   => 'ticket statuses',
         'name'  => 'app.acl.ticket_statuses',
         'route' => 'ticket-statuses.index',
         'sort'  => 2,
     ], [
-        'key'   => 'ticket_statuses.create',
+        'key'   => 'create ticket statuses',
         'name'  => 'app.acl.create',
         'route' => 'ticket-statuses.create',
         'sort'  => 1,
     ], [
-        'key'   => 'ticket_statuses.edit',
+        'key'   => 'edit ticket statuses',
         'name'  => 'app.acl.edit',
         'route' => 'ticket-statuses.edit',
         'sort'  => 2,
     ], [
-        'key'   => 'ticket_statuses.destroy',
+        'key'   => 'destroy ticket statuses',
         'name'  => 'app.acl.destroy',
         'route' => 'ticket-statuses.destroy',
         'sort'  => 3,
     ],[
-        'key'   => 'ticket_statuses.store',
+        'key'   => 'store ticket statuses',
         'name'  => 'app.acl.store',
         'route' => 'ticket-statuses.store',
         'sort'  => 4,
@@ -471,27 +471,27 @@ return [
     |
     */
     [
-        'key'   => 'ticket_histories',
+        'key'   => 'ticket histories',
         'name'  => 'app.acl.ticket_histories',
         'route' => 'ticket-histories.index',
         'sort'  => 2,
     ], [
-        'key'   => 'ticket_histories.create',
+        'key'   => ' create ticket histories',
         'name'  => 'app.acl.create',
         'route' => 'ticket-histories.create',
         'sort'  => 1,
     ], [
-        'key'   => 'ticket_histories.edit',
+        'key'   => 'edit ticket histories',
         'name'  => 'app.acl.edit',
         'route' => 'ticket-histories.edit',
         'sort'  => 2,
     ], [
-        'key'   => 'ticket_histories.destroy',
+        'key'   => 'destroy ticket histories',
         'name'  => 'app.acl.destroy',
         'route' => 'ticket-histories.destroy',
         'sort'  => 3,
     ],[
-        'key'   => 'ticket_histories.store',
+        'key'   => 'store ticket histories ',
         'name'  => 'app.acl.store',
         'route' => 'ticket-histories.store',
         'sort'  => 4,
@@ -516,27 +516,27 @@ return [
         'route' => 'appointments.index',
         'sort'  => 2,
     ], [
-        'key'   => 'appointments.create',
+        'key'   => 'create appointments ',
         'name'  => 'app.acl.create',
         'route' => 'appointments.create',
         'sort'  => 1,
     ], [
-        'key'   => 'appointments.edit',
+        'key'   => 'edit appointments',
         'name'  => 'app.acl.edit',
         'route' => 'appointments.edit',
         'sort'  => 2,
     ], [
-        'key'   => 'appointments.destroy',
+        'key'   => 'destroy appointments',
         'name'  => 'app.acl.destroy',
         'route' => 'appointments.destroy',
         'sort'  => 3,
     ],[
-        'key'   => 'appointments.store',
+        'key'   => 'store appointments',
         'name'  => 'app.acl.store',
         'route' => 'appointments.store',
         'sort'  => 4,
     ], [
-        'key'   => 'appointments.myAppointments',
+        'key'   => 'my Appointments',
         'name'  => 'app.acl.myAppointments',
         'route' => 'appointments.myAppointments',
         'sort'  => 5,
@@ -581,7 +581,7 @@ return [
     |
     */
     [
-        'key'   => 'notifications.markAsRead',
+        'key'   => 'mark As Read notifications ',
         'name'  => 'app.acl.markAsRead',
         'route' => 'notifications.markAsRead',
         'sort'  => 2,
@@ -589,27 +589,27 @@ return [
 
 
     [
-        'key'   => 'category-ticket',
+        'key'   => ' ticket category',
         'name'  => 'app.acl.category-ticket',
         'route' => 'ticket-priorities.index',
         'sort'  => 2,
     ], [
-        'key'   => 'category-ticket.create',
+        'key'   => 'create ticket category',
         'name'  => 'app.acl.create',
         'route' => 'ticket-priorities.create',
         'sort'  => 1,
     ], [
-        'key'   => 'category-ticket.edit',
+        'key'   => 'edit ticket category ',
         'name'  => 'app.acl.edit',
         'route' => 'ticket-priorities.edit',
         'sort'  => 2,
     ], [
-        'key'   => 'category-ticket.destroy',
+        'key'   => 'destroy ticket category ',
         'name'  => 'app.acl.destroy',
         'route' => 'ticket-priorities.destroy',
         'sort'  => 3,
     ],[
-        'key'   => 'category-ticket.store',
+        'key'   => 'store ticket category ',
         'name'  => 'app.acl.store',
         'route' => 'ticket-priorities.store',
         'sort'  => 4,
