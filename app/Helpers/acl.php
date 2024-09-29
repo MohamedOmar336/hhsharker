@@ -11,6 +11,12 @@ return [
     |
     */
     [
+        'key' => 'manage language',
+        'name' => 'app.acl.manage_language', // Translation key for the permission name
+        'route' => 'change.lang', // The route associated with the permission
+        'sort' => 1, // Sorting order for permissions
+    ],
+    [
         'key'   => 'products',
         'name'  => 'app.acl.products',
         'route' => 'products.index',
@@ -220,6 +226,12 @@ return [
         'name'  => 'app.acl.store',
         'route' => 'contacts.store',
         'sort'  => 4,
+    ],
+    [
+        'key'   => 'contacts_bulk_delete',
+        'name'  => 'app.acl.contacts_bulk_delete',
+        'route' => 'contacts.bulkDelete',
+        'sort'  => 7,
     ],
 
     /*
@@ -614,4 +626,22 @@ return [
         'route' => 'ticket-priorities.store',
         'sort'  => 4,
     ],
+
+
+
+    [
+        'key'   => 'home',
+        'name'  => 'app.acl.home',
+        'route' => 'home',
+        'sort'  => 1,
+    ],
+    [
+        'key'   => 'analytics',
+        'name'  => 'app.acl.analytics',
+        'route' => 'analytics',
+        'sort'  => 2,
+    ],
+
+
+
 ];

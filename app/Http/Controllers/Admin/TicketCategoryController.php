@@ -168,10 +168,12 @@ class TicketCategoryController extends Controller
     public function destroy($id)
     {
         $category = TicketCategory::findOrFail($id);
-        $category->delete();
-
-        return redirect()->route('ticket_categories.index')->with('success', __('messages.Ticket_category_deleted_successfully'));
-    }
+        try {
+            $category->delete();
+            return redirect()->route('ticket_categories.index')->with('success', __('messages.Ticket_category_deleted_successfully'));
+        } catch (\Exception $e) {
+            return redirect()->route('ticket_categories.index')->with('error', $e->getMessage());
+        }    }
 
     /**
      * Bulk delete ticket categories.
@@ -186,9 +188,18 @@ class TicketCategoryController extends Controller
             'ids.*' => 'exists:ticket_categories,id',
         ]);
 
+        $categories = TicketCategory::whereIn('id', $request->ids)->get();
+    
+        foreach ($categories as $category) {
+            // Check if the category has linked tickets before deleting
+            if ($category->tickets()->count() > 0) {
+                return redirect()->route('ticket_categories.index')->with('error', "Unable to delete category {$category->name_en} as it's linked to active tickets.");
+            }
+        }
+    
         TicketCategory::whereIn('id', $request->ids)->delete();
-
-       
+    
         return redirect()->route('ticket_categories.index')->with('success', __('messages.Ticket_category_bulk_deleted_successfully'));
+            return redirect()->route('ticket_categories.index')->with('success', __('messages.Ticket_category_bulk_deleted_successfully'));
     }
 }

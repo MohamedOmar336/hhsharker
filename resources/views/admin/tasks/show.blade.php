@@ -12,7 +12,7 @@
                                     <a href="{{ url('/home') }}">{{ __('general.home') }}</a>
                                 </li>
                                 <li class="breadcrumb-item">
-                                    <a href="{{ url('/tasks') }}">{{ __('general.attributes.tasks') }}</a>
+                                    <a href="{{ url('/tasks') }}">{{ __('general.side.tasks') }}</a>
                                 </li>
                                 <li class="breadcrumb-item active">
                                     {{ $task->id }}
@@ -46,7 +46,7 @@
                                     <div class="col-md-4 align-self-center">
                                         <div class="media">
                                             <div class="media-body align-self-center">
-                                                <h3 class="m-0 font-20">Task Title:</h3>
+                                                <h3 class="m-0 font-20">{{ __('general.attributes.task_title') }}:</h3>
                                             </div>
                                         </div>
                                         <p class="mt-2 mb-0 text-muted">{{ $task->title }}.</p>

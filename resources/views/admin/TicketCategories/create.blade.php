@@ -11,7 +11,7 @@
                         <div class="float-end">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ url('/home') }}">{{ __('general.home') }}</a></li>
-                                <li class="breadcrumb-item"><a href="{{ url('/ticket_categories') }}">{{ __('general.attributes.ticket_categories') }}</a></li>
+                                <li class="breadcrumb-item"><a href="{{ url('/ticket_categories') }}">{{ __('general.side.ticket_categories') }}</a></li>
                                 <li class="breadcrumb-item active">{{ __('general.attributes.add_ticket_category') }}</li>
                             </ol>
                         </div>

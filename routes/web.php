@@ -35,8 +35,8 @@ use App\Http\Controllers\Admin\WhatsAppController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\Admin\TaskController;
 use App\Http\Controllers\FormController;
-
-
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,14 +60,19 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::group(['middleware' => ['auth', 'Localization', 'check.permissions']], function () {
 
-        Route::get('/change-lang/{lang}', function ($lang) {
-            App::setLocale($lang);
-            \Illuminate\Support\Facades\Config::set('locale', $lang);
-            \Illuminate\Support\Facades\Session::put('locale', $lang);
-            return redirect()->back();
-        })->name('change.lang');
+      // Language switch route
+Route::get('/change-lang/{lang}', function ($lang) {
+    // Validate that the language is supported
+    $supportedLanguages = ['en', 'ar']; // Add other supported languages as needed
 
+    if (in_array($lang, $supportedLanguages)) {
+        App::setLocale($lang);
+        Config::set('locale', $lang);
+        Session::put('locale', $lang);
+    }
 
+    return redirect()->back();
+})->name('change.lang');
         Route::get('/home', [HomeController::class, 'index'])->name('home');
 
         Route::get('/analytics', [HomeController::class, 'analytics'])->name('analytics');

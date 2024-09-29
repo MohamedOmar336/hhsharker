@@ -9,6 +9,8 @@ return [
         'error' => 'Error:',
     ],
     'attributes' => [
+        'appointment' => 'Appointment',
+        'task' => 'Task',
         'scheduled_time' => 'Scheduled Time',
         'pending' => 'Pending',
         'confirmed' => 'Confirmed',

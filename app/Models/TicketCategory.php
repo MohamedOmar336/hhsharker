@@ -37,8 +37,26 @@ class TicketCategory extends Model
         return $this->hasMany(TicketCategory::class, 'parent_id');
     }
 
+    /**
+     * Get the tickets associated with the category.
+     */
     public function tickets()
     {
         return $this->belongsToMany(Ticket::class, 'ticket_ticket_category', 'ticket_category_id', 'ticket_id');
+    }
+
+    /**
+     * Prevent deletion if the category is linked to any tickets.
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($ticketCategory) {
+            // Check if the category has any tickets linked
+            if ($ticketCategory->tickets()->count() > 0) {
+                throw new \Exception("Unable to delete category as it's linked to active tickets.");
+            }
+        });
     }
 }

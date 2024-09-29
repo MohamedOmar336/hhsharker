@@ -31,7 +31,7 @@ class TaskController extends Controller
     }
     $totalResults = $query->count();
 
-    $records = $query->latest()->paginate($totalResults);
+    $records = $query->latest()->paginate(500);
         $users = User::all();
         return view('admin.tasks.index', compact('records','users'));
     }
