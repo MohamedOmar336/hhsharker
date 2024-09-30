@@ -156,7 +156,7 @@
                 </x-slot>
 
                 <x-slot name="pagination">
-                   
+                    {{ $records->links('admin.pagination.bootstrap') }}
                 </x-slot>
             </x-table>
         </div>
