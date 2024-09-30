@@ -6,8 +6,8 @@
             <div class="col-lg-6 wow fadeInLeft" data-wow-delay="1.2s">
                 <img class="single-main-img" src="{{ asset('assets-frontend/images/pro-4.png')}}">
                 <div class="sing-btn-main">
-                    <a class="sing-btn-1" href="commercial-support.html">Request a Quote</a>
-                    <a class="sing-btn-2" href="sales-and-support.html">Contact Sales</a>
+                    <a class="sing-btn-1" href="{{ route('frontend.commercial-support',['locale' => app()->getLocale()]) }}">Request a Quote</a>
+                    <a class="sing-btn-2" href="{{ route('frontend.sales-and-support',['locale' => app()->getLocale()]) }}">Contact Sales</a>
                 </div>
                 <div class="sing-text-icon">
                     <a href="#"><img src="{{ asset('assets-frontend/images/clipboard-icon-1.svg') }}">Technical Specification</a>
@@ -140,7 +140,7 @@
                                 <span>Anti-Corrosion Performance</span>
                                 <span>Built-in Pump</span>
                             </div>
-                            <a href="single-product.html">Learn More</a>
+                            <a href="{{ route('frontend.air-conditioner.product-details',['locale' => app()->getLocale()]) }}">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -156,7 +156,7 @@
                                 <span>Anti-Corrosion Performance</span>
                                 <span>Built-in Pump</span>
                             </div>
-                            <a href="single-product.html">Learn More</a>
+                            <a href="{{ route('frontend.air-conditioner.product-details',['locale' => app()->getLocale()]) }}">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -172,7 +172,7 @@
                                 <span>Anti-Corrosion Performance</span>
                                 <span>Built-in Pump</span>
                             </div>
-                            <a href="single-product.html">Learn More</a>
+                            <a href="{{ route('frontend.air-conditioner.product-details',['locale' => app()->getLocale()]) }}">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -188,7 +188,7 @@
                                 <span>Anti-Corrosion Performance</span>
                                 <span>Built-in Pump</span>
                             </div>
-                            <a href="single-product.html">Learn More</a>
+                            <a href="{{ route('frontend.air-conditioner.product-details',['locale' => app()->getLocale()]) }}">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -204,7 +204,7 @@
                                 <span>Anti-Corrosion Performance</span>
                                 <span>Built-in Pump</span>
                             </div>
-                            <a href="single-product.html">Learn More</a>
+                            <a href="{{ route('frontend.air-conditioner.product-details',['locale' => app()->getLocale()]) }}">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -220,7 +220,7 @@
                                 <span>Anti-Corrosion Performance</span>
                                 <span>Built-in Pump</span>
                             </div>
-                            <a href="single-product.html">Learn More</a>
+                            <a href="{{ route('frontend.air-conditioner.product-details',['locale' => app()->getLocale()]) }}">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -236,7 +236,7 @@
                                 <span>Anti-Corrosion Performance</span>
                                 <span>Built-in Pump</span>
                             </div>
-                            <a href="single-product.html">Learn More</a>
+                            <a href="{{ route('frontend.air-conditioner.product-details',['locale' => app()->getLocale()]) }}">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -252,7 +252,7 @@
                                 <span>Anti-Corrosion Performance</span>
                                 <span>Built-in Pump</span>
                             </div>
-                            <a href="single-product.html">Learn More</a>
+                            <a href="{{ route('frontend.air-conditioner.product-details',['locale' => app()->getLocale()]) }}">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -268,7 +268,7 @@
                                 <span>Anti-Corrosion Performance</span>
                                 <span>Built-in Pump</span>
                             </div>
-                            <a href="single-product.html">Learn More</a>
+                            <a href="{{ route('frontend.air-conditioner.product-details',['locale' => app()->getLocale()]) }}">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -284,7 +284,7 @@
                                 <span>Anti-Corrosion Performance</span>
                                 <span>Built-in Pump</span>
                             </div>
-                            <a href="single-product.html">Learn More</a>
+                            <a href="{{ route('frontend.air-conditioner.product-details',['locale' => app()->getLocale()]) }}">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -300,7 +300,7 @@
                                 <span>Anti-Corrosion Performance</span>
                                 <span>Built-in Pump</span>
                             </div>
-                            <a href="single-product.html">Learn More</a>
+                            <a href="{{ route('frontend.air-conditioner.product-details',['locale' => app()->getLocale()]) }}">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -316,7 +316,7 @@
                                 <span>Anti-Corrosion Performance</span>
                                 <span>Built-in Pump</span>
                             </div>
-                            <a href="single-product.html">Learn More</a>
+                            <a href="{{ route('frontend.air-conditioner.product-details',['locale' => app()->getLocale()]) }}">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -332,7 +332,7 @@
                                 <span>Anti-Corrosion Performance</span>
                                 <span>Built-in Pump</span>
                             </div>
-                            <a href="single-product.html">Learn More</a>
+                            <a href="{{ route('frontend.air-conditioner.product-details',['locale' => app()->getLocale()]) }}">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -348,7 +348,7 @@
                                 <span>Anti-Corrosion Performance</span>
                                 <span>Built-in Pump</span>
                             </div>
-                            <a href="single-product.html">Learn More</a>
+                            <a href="{{ route('frontend.air-conditioner.product-details',['locale' => app()->getLocale()]) }}">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -364,7 +364,7 @@
                                 <span>Anti-Corrosion Performance</span>
                                 <span>Built-in Pump</span>
                             </div>
-                            <a href="single-product.html">Learn More</a>
+                            <a href="{{ route('frontend.air-conditioner.product-details',['locale' => app()->getLocale()]) }}">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -380,7 +380,7 @@
                                 <span>Anti-Corrosion Performance</span>
                                 <span>Built-in Pump</span>
                             </div>
-                            <a href="single-product.html">Learn More</a>
+                            <a href="{{ route('frontend.air-conditioner.product-details',['locale' => app()->getLocale()]) }}">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -396,7 +396,7 @@
                                 <span>Anti-Corrosion Performance</span>
                                 <span>Built-in Pump</span>
                             </div>
-                            <a href="single-product.html">Learn More</a>
+                            <a href="{{ route('frontend.air-conditioner.product-details',['locale' => app()->getLocale()]) }}">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -412,7 +412,7 @@
                                 <span>Anti-Corrosion Performance</span>
                                 <span>Built-in Pump</span>
                             </div>
-                            <a href="single-product.html">Learn More</a>
+                            <a href="{{ route('frontend.air-conditioner.product-details',['locale' => app()->getLocale()]) }}">Learn More</a>
                         </div>
                     </div>
                 </div>

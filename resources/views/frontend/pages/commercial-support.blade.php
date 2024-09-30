@@ -39,55 +39,56 @@
         </div>
         <ul class="nav nav-pills home-tab-main mb-4 mb-lg-5 wow fadeInUp" data-wow-delay="0.4s" id="pills-tab" role="tablist">
             <button class="nav-link active" id="commercial_form_1-tab" data-bs-toggle="pill" data-bs-target="#commercial_form_1" type="button" role="tab" aria-controls="commercial_form_1" aria-selected="true">WhatsApp</button>
-            <button class="nav-link" id="commercial_form_2-tab" data-bs-toggle="pill" data-bs-target="#commercial_form_2" type="button" role="tab" aria-controls="commercial_form_2" aria-selected="false">Sales</button>
-            <button class="nav-link" id="commercial_form_3-tab" data-bs-toggle="pill" data-bs-target="#commercial_form_3" type="button" role="tab" aria-controls="commercial_form_3" aria-selected="false">Find the Service Center</button>
+            <button class="nav-link" id="commercial_form_1-tab" data-bs-toggle="pill" data-bs-target="#commercial_form_1" type="button" role="tab" aria-controls="commercial_form_1" aria-selected="false">Sales</button>
+            <button class="nav-link" id="commercial_form_1-tab" data-bs-toggle="pill" data-bs-target="#commercial_form_1" type="button" role="tab" aria-controls="commercial_form_1" aria-selected="false">Find the Service Center</button>
         </ul>
         <div class="tab-content wow fadeInUp" id="pills-tabContent" data-wow-delay="0.6s">
             <div class="tab-pane fade show active" id="commercial_form_1" role="tabpanel" aria-labelledby="commercial_form_1-tab" tabindex="0">
                 <div class="contact-tab-body">
-                    <form>
+                    <form id="contact-frm" method="post" action="{{ route('frontend.contact-us.store',['locale' => app()->getLocale()]) }}">
+                        @csrf
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="contact-input">
                                     <label>Your Name <span>*</span></label>
-                                    <input type="text" class="form-control" placeholder="Your Name">
+                                    <input type="text" name="name" class="form-control" placeholder="Your Name" value="{{ old('name') }}">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="contact-input">
                                     <label>Your Company <span>*</span></label>
-                                    <input type="text" class="form-control" placeholder="Company Name">
+                                    <input type="text" name="company" class="form-control" placeholder="Company Name" value="{{ old('company') }}">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="contact-input">
                                     <label>Mobile Number <span>*</span></label>
-                                    <input type="tel" class="form-control" placeholder="Your Number">
+                                    <input type="tel" name="mobile_number" class="form-control" placeholder="Your Number" value="{{ old('mobile_number') }}">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="contact-input">
                                     <label>Email Address <span>*</span></label>
-                                    <input type="email" class="form-control" placeholder="Your email">
+                                    <input type="email" name="email" class="form-control" placeholder="Your email" value="{{ old('email') }}">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="contact-input">
                                     <label>City <span>*</span></label>
-                                    <input type="email" class="form-control" placeholder="Your City">
+                                    <input type="text" name="city" class="form-control" placeholder="Your City" value="{{ old('city') }}">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="contact-input">
                                     <label>District <span>*</span></label>
-                                    <input type="email" class="form-control" placeholder="Your District">
+                                    <input type="text" name="district" class="form-control" placeholder="Your District" value="{{ old('district') }}">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="contact-input">
                                     <label>Product Category <span>*</span></label>
-                                    <select class="form-select form-control">
-                                        <option selected>Category</option>
+                                    <select name="product_category" class="form-select form-control">
+                                        <option selected disabled>Category</option>
                                         <option value="1">Category 1</option>
                                         <option value="2">Category 2</option>
                                         <option value="3">Category 3</option>
@@ -97,13 +98,13 @@
                             <div class="col-lg-6">
                                 <div class="contact-input">
                                     <label>Subject <span>*</span></label>
-                                    <input type="text" class="form-control" placeholder="Subject">
+                                    <input type="text" name="subject" class="form-control" placeholder="Subject" value="{{ old('subject') }}">
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="contact-input">
                                     <label>Message <span>*</span></label>
-                                    <textarea class="form-control" placeholder="Type Something" rows="5"></textarea>
+                                    <textarea name="message" class="form-control" placeholder="Type Something" rows="5">{{ old('message') }}</textarea>
                                 </div>
                             </div>
                             <div class="col-lg-12">
@@ -111,9 +112,10 @@
                             </div>
                         </div>
                     </form>
+                    
                 </div>
             </div>
-            <div class="tab-pane fade" id="commercial_form_2" role="tabpanel" aria-labelledby="commercial_form_2-tab" tabindex="0">
+            {{-- <div class="tab-pane fade" id="commercial_form_2" role="tabpanel" aria-labelledby="commercial_form_2-tab" tabindex="0">
                 <div class="contact-tab-body">
                     <form>
                         <div class="row">
@@ -252,7 +254,7 @@
                         </div>
                     </form>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </section>

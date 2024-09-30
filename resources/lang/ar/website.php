@@ -8,6 +8,11 @@ return [
         'home_appliances' => 'الأجهزة المنزلية',
         'media_center' => 'مركز الوسائط',
         'contact_us' => 'اتصل بنا',
+        'about' => 'حول',
+        'value_vision' => 'القيمة والرؤية',
+        'company_founder' => 'مؤسسو الشركة',
+        'news' => 'أخبار',
+        'industry_insight' => 'رؤية صناعية'
     ],
     'homepage_slider_1' => [
         'title_1' => 'مكيفات هواء <br> تجارية',

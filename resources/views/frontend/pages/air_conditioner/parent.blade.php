@@ -6,8 +6,8 @@
         <div class="row">
             <div class="col-lg-7 col-xl-6 col-xxl-5 wow fadeInLeft" data-wow-delay="1.2s">
                 <h1>{{ $parentCategoryArr->name }}</h1>
-                <p>Choose between energy-efficient inverter models, standard on/off split models, or ultra-quiet window models.</p>
-                <a class="cutome-btn" href="about.html">Learn More</a>
+                <p>{{ $parentCategoryArr->description }}</p>
+                <a class="cutome-btn" href="{{ route('frontend.about',['locale' => app()->getLocale()]) }}">Learn More</a>
             </div>
         </div>
         <img class="wow fadeInRight" data-wow-delay="1.2s" src="{{ asset('images/'.$parentCategoryArr->image) }}" alt="Banner Image">
@@ -61,7 +61,7 @@
                     <img src="{{ asset('images/'.$cat->image) }}" width="100%" alt="Product Image">
                     <div>
                         <h3>{{ $cat->name }} </h3>
-                        <p>High cooling efficiency with ultra-quiet operation.</p>
+                        <p>{{ $cat->description }}</p>
                         <a href="{{ route('frontend.air-conditioner.child',['locale' => app()->getLocale(),'child'=>$cat->slug,'parent'=>$parentCategoryArr->slug]) }}">Learn More</a>
                     </div>
                 </div>

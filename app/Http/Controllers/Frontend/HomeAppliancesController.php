@@ -33,6 +33,7 @@ class HomeAppliancesController extends Controller
     {
         return view('frontend.pages.home_appliance.product-list-2');        
     }
+   
 
 
 }

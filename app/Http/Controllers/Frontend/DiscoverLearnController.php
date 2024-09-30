@@ -15,6 +15,10 @@ class DiscoverLearnController extends Controller
     {
         return view('frontend.pages.discover-all');
     }
+    public function single()
+    {
+        return view('frontend.pages.discover-single');
+    }
 
 
 }

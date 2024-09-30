@@ -5,4 +5,12 @@
 <script>
     new WOW().init();
 </script>
+<script type="text/javascript" src="{{ asset('assets-frontend/js/TweenMax.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets-frontend/js/custom.js') }}"></script>
+
+
+
+
+
+
+ 
