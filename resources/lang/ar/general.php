@@ -10,6 +10,8 @@ return [
         'error' => 'خطأ:',
     ],
     'attributes' => [
+        'appointment' => 'موعد',
+        'task' => 'المهمة',
         'scheduled_time' => 'الوقت المجدول',
         'pending' => 'قيد الانتظار',
         'confirmed' => 'مؤكد',

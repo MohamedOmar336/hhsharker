@@ -59,7 +59,7 @@ class TicketController extends Controller
     }
   $totalResults = $query->count();
 
-        $records = $query->latest()->get();
+  $records = $query->latest()->paginate(500);
     if ($request->ajax()) {
         return view('admin.tickets.partials.records', compact('records'))->render();
     }

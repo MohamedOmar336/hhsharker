@@ -13,9 +13,9 @@ class AddAssignedToToTicketHistoryTable extends Migration
      */
     public function up()
     {
-        Schema::table('ticket_history', function (Blueprint $table) {
-            $table->foreignId('AssignedTo')->nullable()->constrained('users')->onDelete('cascade');
-        });
+        // Schema::table('ticket_history', function (Blueprint $table) {
+        //     $table->foreignId('AssignedTo')->nullable()->constrained('users')->onDelete('cascade');
+        // });
     }
 
     /**
