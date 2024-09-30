@@ -37,13 +37,13 @@
                                                         <i data-feather="tag" class="ti ti-arrow-up"></i>
                                                     </div>
                                                     <div class="media-body align-self-center ms-2">
-                                                        <p class="text-dark mb-1 fw-semibold">{{ __('general.new_tickets') }}</p>
-                                                        <p class="mb-0 text-truncate text-muted">{{ __('general.from_average_yesterday') }}</p>
+                                                        <p class="text-dark mb-1 fw-semibold">{{ __('general.tickets') }}</p>
+                                                        {{-- <p class="mb-0 text-truncate text-muted">{{ __('general.from_average_yesterday') }}</p> --}}
                                                     </div><!--end media body-->
                                                 </div><!--end media-->
                                             </div><!--end col-->
                                             <div class="col-auto align-self-center">
-                                                <h4 class="my-1">{{ $newTicketsCount }}</h4>
+                                                <h4 class="my-1">{{ $ticketCount }}</h4>
                                             </div><!--end col-->
                                         </div><!--end row-->
                                     </div><!--end card-body-->
@@ -58,7 +58,7 @@
                                                     </div>
                                                     <div class="media-body align-self-center ms-2">
                                                         <p class="text-dark mb-1 fw-semibold">{{ __('general.open_tickets') }}</p>
-                                                        <p class="mb-0 text-truncate text-muted">{{ __('general.from_average_yesterday') }}</p>
+                                                        {{-- <p class="mb-0 text-truncate text-muted">{{ __('general.from_average_yesterday') }}</p> --}}
                                                     </div><!--end media body-->
                                                 </div><!--end media-->
                                             </div><!--end col-->
@@ -78,7 +78,7 @@
                                                     </div>
                                                     <div class="media-body align-self-center ms-2">
                                                         <p class="text-dark mb-1 fw-semibold">{{ __('general.on_hold') }}</p>
-                                                        <p class="mb-0 text-truncate text-muted">{{ __('general.from_average_yesterday') }}</p>
+                                                        {{-- <p class="mb-0 text-truncate text-muted">{{ __('general.from_average_yesterday') }}</p> --}}
                                                     </div><!--end media body-->
                                                 </div><!--end media-->
                                             </div><!--end col-->
@@ -98,7 +98,7 @@
                                                     </div>
                                                     <div class="media-body align-self-center ms-2">
                                                         <p class="text-dark mb-1 fw-semibold">{{ __('general.unassigned') }}</p>
-                                                        <p class="mb-0 text-truncate text-muted">{{ __('general.from_average_yesterday') }}</p>
+                                                        {{-- <p class="mb-0 text-truncate text-muted">{{ __('general.from_average_yesterday') }}</p> --}}
                                                     </div><!--end media body-->
                                                 </div><!--end media-->
                                             </div><!--end col-->
@@ -404,7 +404,9 @@
                                     @foreach ($appointments as $appointment)
                                         <li class="list-group-item align-items-center d-flex">
                                             <div class="media">
-                                                <img src="{{ asset('assets/images/users/' . $appointment->user->image) }}"
+                                               
+                                                <img src="{{ $appointment->user->image ? asset('assets/images/users/' . $appointment->user->image) : asset('assets-admin/images/user.png') }}" 
+
                                                     class="me-3 thumb-sm align-self-center rounded-circle" alt="...">
                                                 <div class="media-body align-self-center">
                                                     <h6 class="mt-0 mb-1">{{ $appointment->title }}</h6>
