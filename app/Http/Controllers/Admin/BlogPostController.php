@@ -32,7 +32,7 @@ class BlogPostController extends Controller
 
         $records = $query->latest()->paginate(EnumsSettings::Paginate);
 
-        return view('admin.blogposts.index', compact('records'));
+        return view('admin.blogPosts.index', compact('records'));
     }
 
     /**
@@ -159,7 +159,7 @@ class BlogPostController extends Controller
         if ($post->image) {
             Storage::delete($post->image);
         }
-        $post->delete(); 
+        $post->delete();
         return redirect()->route('blogposts.index')->with('success', __('messages.post_deleted'));
        }
 
@@ -193,7 +193,7 @@ class BlogPostController extends Controller
         }
     }
 
- 
+
     return redirect()->route('blogposts.index')->with('success', __('messages.posts_bulk_deleted'));
 }
 }
