@@ -4,19 +4,18 @@
     <div class="container">
         <img class="support-banner-img-1 wow zoomInRight" data-wow-delay="1.7s" src="{{ asset('assets-frontend/images/indu-banner-1.png')}}">
         <div class="support-banner-text">
-            <div class="wow fadeInLeft" data-wow-delay="1.2s">HH Shaker Customer</div>
-            <div class="wow fadeInRight" data-wow-delay="1.2s">Service Ready</div>
-            <div class="wow fadeInUp" data-wow-delay="1.2s">To Help</div>
+            <div class="wow fadeInLeft" data-wow-delay="1.2s">{{ __('website.commercial_support.title_1') }}</div>
+            <div class="wow fadeInRight" data-wow-delay="1.2s">{{ __('website.commercial_support.title_2') }}</div>
+            <div class="wow fadeInUp" data-wow-delay="1.2s">{{ __('website.commercial_support.title_3') }}</div>
         </div>
         <img class="support-banner-img-2 wow zoomInLeft" data-wow-delay="1.3s" src="{{ asset('assets-frontend/images/indu-banner-1.png')}}">
         <div class="row commes-p-text-div">
             <div class="col-lg-7 wow fadeInLeft" data-wow-delay="0.5s">
-                <p>Lorem ipsum dolor sit amet consectetur. Tempor pellentesque viverra malesuada tempor sollicitudin. Orci egestas at feugiat quam pretium faucibus elementum. Venenatis magnis pretium donec interdum. Mi magna vitae consectetur lectus
-                    leo.
+                <p>{{ __('website.commercial_support.description') }}
                 </p>
             </div>
             <div class="col-lg-5 text-lg-end wow fadeInRight" data-wow-delay="0.5s">
-                <a class="cutome-btn green-custome-btn " href="#">Send a Messages</a>
+                <a class="cutome-btn green-custome-btn " href="#">{{ __('website.commercial_support.btn') }}</a>
             </div>
         </div>
     </div>
@@ -31,16 +30,16 @@
         <div class="row mb-4 mb-lg-5 wow fadeInUp" data-wow-delay="0.2s">
             <div class="col-lg-8">
                 <div class="section-heading section-p-heading">
-                    <h5>CAC</h5>
-                    <h2>Need help with your recent product purchase, replacement parts, or installation?</h2>
-                    <p>Our Customer Service team is here for you! Feel free to reach out with any questions or concerns you may have.</p>
+                    <h5>{{ __('website.commercial_support.section_1.btn') }}</h5>
+                    <h2>{{ __('website.commercial_support.section_1.title') }}</h2>
+                    <p>{{ __('website.commercial_support.section_1.desc') }}</p>
                 </div>
             </div>
         </div>
         <ul class="nav nav-pills home-tab-main mb-4 mb-lg-5 wow fadeInUp" data-wow-delay="0.4s" id="pills-tab" role="tablist">
-            <button class="nav-link active" id="commercial_form_1-tab" data-bs-toggle="pill" data-bs-target="#commercial_form_1" type="button" role="tab" aria-controls="commercial_form_1" aria-selected="true">WhatsApp</button>
-            <button class="nav-link" id="commercial_form_1-tab" data-bs-toggle="pill" data-bs-target="#commercial_form_1" type="button" role="tab" aria-controls="commercial_form_1" aria-selected="false">Sales</button>
-            <button class="nav-link" id="commercial_form_1-tab" data-bs-toggle="pill" data-bs-target="#commercial_form_1" type="button" role="tab" aria-controls="commercial_form_1" aria-selected="false">Find the Service Center</button>
+            <button class="nav-link active" id="commercial_form_1-tab" data-bs-toggle="pill" data-bs-target="#commercial_form_1" type="button" role="tab" aria-controls="commercial_form_1" aria-selected="true">{{ __('website.commercial_support.section_1.tab_1') }}</button>
+            <button class="nav-link" id="commercial_form_1-tab" data-bs-toggle="pill" data-bs-target="#commercial_form_1" type="button" role="tab" aria-controls="commercial_form_1" aria-selected="false">{{ __('website.commercial_support.section_1.tab_2') }}</button>
+            <button class="nav-link" id="commercial_form_1-tab" data-bs-toggle="pill" data-bs-target="#commercial_form_1" type="button" role="tab" aria-controls="commercial_form_1" aria-selected="false">{{ __('website.commercial_support.section_1.tab_3') }}</button>
         </ul>
         <div class="tab-content wow fadeInUp" id="pills-tabContent" data-wow-delay="0.6s">
             <div class="tab-pane fade show active" id="commercial_form_1" role="tabpanel" aria-labelledby="commercial_form_1-tab" tabindex="0">

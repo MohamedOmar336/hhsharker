@@ -255,7 +255,7 @@
             <div class="row">
                 <div class="col-lg-5 col-xl-3 wow fadeInLeftBig">
                     <div class="section-heading">
-                        <h5>>{{ __('website.homepage_testimonials.title') }}</h5>
+                        <h5>{{ __('website.homepage_testimonials.title') }}</h5>
                         <h2>{{ __('website.homepage_testimonials.tagline') }}</h2>
                     </div>
                 </div>

@@ -7,7 +7,7 @@
             <div class="col-lg-7 col-xl-6 col-xxl-5 wow fadeInLeft" data-wow-delay="1.2s">
                 <h1>{{ $parentCategoryArr->name }}</h1>
                 <p>{{ $parentCategoryArr->description }}</p>
-                <a class="cutome-btn" href="{{ route('frontend.about',['locale' => app()->getLocale()]) }}">Learn More</a>
+                <a class="cutome-btn" href="{{ route('frontend.about',['locale' => app()->getLocale()]) }}">{{ __('website.air_conditioner.btn') }}</a>
             </div>
         </div>
         <img class="wow fadeInRight" data-wow-delay="1.2s" src="{{ asset('images/'.$parentCategoryArr->image) }}" alt="Banner Image">
@@ -22,21 +22,21 @@
         <div class="row gx-lg-5">
             <div class="col-lg-6 ">
                 <div class="section-heading section-p-heading wow fadeInLeft">
-                    <h5>RAC</h5>
-                    <h2>Types of <br> {{ $parentCategoryArr->name }}</h2>
+                    <h5>{{ __('website.air_conditioner.parent_title_1') }}</h5>
+                    <h2>{{ __('website.air_conditioner.parent_title_2') }} <br> {{ $parentCategoryArr->name }}</h2>
                     <p>
-                        Select the type that best fits your needs: energy-efficient inverter splits, standard on/off splits, or ultra-quiet window units.
+                        {{ __('website.air_conditioner.parent_desc_1') }}
                     </p>
                 </div>
                 <div class="tag-main-div wow fadeInLeft">
                     <div class="small-icon-tag">
-                        <span><img src="{{ asset('assets-frontend/images/home-tred-icon.svg') }}"></span> Energy-saving
+                        <span><img src="{{ asset('assets-frontend/images/home-tred-icon.svg') }}"></span>{{ __('website.air_conditioner.tag_1') }}
                     </div>
                     <div class="small-icon-tag">
-                        <span><img src="{{ asset('assets-frontend/images/home-tred-icon.svg') }}"></span> High-efficiency
+                        <span><img src="{{ asset('assets-frontend/images/home-tred-icon.svg') }}"></span> {{ __('website.air_conditioner.tag_2') }}
                     </div>
                     <div class="small-icon-tag">
-                        <span><img src="{{ asset('assets-frontend/images/home-tred-icon.svg') }}"></span> Unique features
+                        <span><img src="{{ asset('assets-frontend/images/home-tred-icon.svg') }}"></span> {{ __('website.air_conditioner.tag_3') }}
                     </div>
                     <img class="tag-bg-img" src="{{ asset('assets-frontend/images/gal-slider-1.png') }}">
                 </div>
@@ -46,11 +46,11 @@
                 <div class="nub-residiv wow fadeInLeft">
                     <div>
                         <h4><span class="numberanimation">100</span>+</h4>
-                        <p>Products</p>
+                        <p>{{ __('website.air_conditioner.box_1') }}</p>
                     </div>
                     <div>
-                        <h4><span class="numberanimation">10</span> y</h4>
-                        <p>Warranty</p>
+                        <h4><span class="numberanimation">10</span> {{ __('website.air_conditioner.box_2') }}</h4>
+                        <p>{{ __('website.air_conditioner.box_3') }}</p>
                     </div>
                 </div>
             </div>
@@ -62,7 +62,7 @@
                     <div>
                         <h3>{{ $cat->name }} </h3>
                         <p>{{ $cat->description }}</p>
-                        <a href="{{ route('frontend.air-conditioner.child',['locale' => app()->getLocale(),'child'=>$cat->slug,'parent'=>$parentCategoryArr->slug]) }}">Learn More</a>
+                        <a href="{{ route('frontend.air-conditioner.child',['locale' => app()->getLocale(),'child'=>$cat->slug,'parent'=>$parentCategoryArr->slug]) }}">{{ __('website.air_conditioner.btn') }}</a>
                     </div>
                 </div>
                 @endforeach
@@ -75,16 +75,16 @@
 
 <section class="tags-text-section wow fadeIn">
     <div class="container wow fadeInUp" data-wow-delay="0.3s">
-        <h2>hh shaker</h2>
+        <h2>{{ __('website.air_conditioner.slider_title') }}</h2>
         <div class="tags-text-div">
             <div class="big-icon-tag wow rotateInDownLeft" data-wow-delay="0.6s">
-                <span><img src="{{ asset('assets-frontend/images/home-tred-icon.svg') }}"></span> Energy-saving
+                <span><img src="{{ asset('assets-frontend/images/home-tred-icon.svg') }}"></span>{{ __('website.air_conditioner.tag_1') }}
             </div>
             <div class="big-icon-tag wow fadeInDown" data-wow-delay="0.8s">
-                <span><img src="{{ asset('assets-frontend/images/home-tred-icon.svg') }}"></span> High-efficiency
+                <span><img src="{{ asset('assets-frontend/images/home-tred-icon.svg') }}"></span> {{ __('website.air_conditioner.tag_2') }}
             </div>
             <div class="big-icon-tag wow rotateInDownRight" data-wow-delay="0.9s">
-                <span><img src="{{ asset('assets-frontend/images/home-tred-icon.svg') }}"></span> High-efficiency
+                <span><img src="{{ asset('assets-frontend/images/home-tred-icon.svg') }}"></span> {{ __('website.air_conditioner.tag_3') }}
             </div>
         </div>
     </div>
@@ -92,7 +92,7 @@
 
 <section class="resi-cust-section">
     <div class="gal-test-slider wow bounceInUp">
-        <h2>Galleries</h2>
+        <h2>{{ __('website.air_conditioner.galleries') }}</h2>
     </div>
     <div class="container">
         <div class="row">
@@ -103,12 +103,12 @@
                     <img src="{{ asset('assets-frontend/images/contact-testi-4.png') }}">
                 </div>
                 <p class="p-grey-color">
-                    Lorem ipsum dolor sit amet consectetur. Fermentum bibendum id tellus mattis eget at quam ac quam. Id sit vestibulum sodales posuere erat at.
+                    {{ __('website.air_conditioner.happy_customer_desc') }}
                 </p>
             </div>
             <div class="col-lg-7 wow fadeInRight">
                 <div class="section-heading text-lg-end">
-                    <h2>Happy Customers</h2>
+                    <h2>{{ __('website.air_conditioner.happy_customer') }}</h2>
                 </div>
             </div>
         </div>

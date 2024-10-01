@@ -3,7 +3,7 @@
 
 <section class="banner-space case-studies-banner-section">
     <div class="container">
-        <h1 class="wow fadeInDown" data-wow-delay="1.2s">case studies</h1>
+        <h1 class="wow fadeInDown" data-wow-delay="1.2s">{{ __('website.case_study.title') }}</h1>
         <div class="case-s-b-row">
             <div class="case-s-ban-col">
                 <img class="wow fadeInLeftBig" data-wow-delay="1.4s" src="{{ asset('assets-frontend/images/indu-banner-1.png') }}">
@@ -29,7 +29,7 @@
         </div>
         <div class="row indu-search-row">
             <div class="col-lg-6 wow fadeInLeftBig" data-wow-delay="0.5s">
-                <p>Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna </p>
+                <p>{{ __('website.case_study.description') }}</p>
             </div>
             <div class="col-lg-6 wow fadeInRightBig" data-wow-delay="0.5s">
                 {{-- <form>
@@ -53,7 +53,7 @@
     <div class="container">
         <div class="case-s-hilight-head">
             <div class="section-heading text-center wow fadeInUp">
-                <h2>Highlighted cases</h2>
+                <h2>{{ __('website.case_study.highlited_case_title') }}</h2>
             </div>
             <div class="inner-case-div wow fadeInUp" data-wow-delay="0.3s">
                 <div class="row">
@@ -77,7 +77,7 @@
 <section class="case-tab-section">
     <div class="container">
         <div class="section-heading text-center wow fadeInUp">
-            <h2>Highlighted topic</h2>
+            <h2>{{ __('website.case_study.highlited_topic_title') }}</h2>
         </div>
 
         <ul class="nav nav-pills case-tab-ul mb-5 wow fadeInUp" id="pills-tab-inner" role="tablist">

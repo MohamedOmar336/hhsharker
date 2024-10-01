@@ -297,5 +297,191 @@ return [
                     <p>We are recognized as the premier option for consumers and the preferred partner for brands in the electronics and electrical appliances sector in the Kingdom of Saudi Arabia. </p>'
         ],
 
+    ],
+    'case_study' => [
+        'title' => 'case studies',
+        'description' => 'Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna',
+        'highlited_case_title' => 'Highlighted cases',
+        'highlited_topic_title' => 'Highlighted topic',
+    ],
+    'commercial_support' => [
+        'title_1' => 'HH Shaker Customer',
+        'title_2' => 'Service Ready',
+        'title_3' => 'To Help',
+        'description' => 'Lorem ipsum dolor sit amet consectetur. Tempor pellentesque viverra malesuada tempor sollicitudin. Orci egestas at feugiat quam pretium faucibus elementum. Venenatis magnis pretium donec interdum. Mi magna vitae consectetur lectus
+                    leo.',
+        'btn' => 'Send a Messages',
+        'section_1' => [
+            'btn' => 'CAC',
+            'title' => 'Need help with your recent product purchase, replacement parts, or installation?',
+            'desc' => 'Our Customer Service team is here for you! Feel free to reach out with any questions or concerns you may have.',
+            'tab_1' => 'WhatsApp',
+            'tab_2' => 'Sales',
+            'tab_3' => 'Find the Service Center',
+        ]
+    ],
+    'our_latest_project' => [
+        'title_1' => 'Our',
+        'title_2' => 'latest',
+        'title_3' => 'projects',
+        'btn' => 'Learn More',
+        'project_done_title' => 'Projects Done',
+        'project_done_desc' => '100',
+        'testimonial' =>[
+            'tag' => 'Testimonials',
+            'title' => 'What they Say',
+            'desc' => 'Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.'
+        ],
+        'section_2' => [
+            'title_1' => 'High-efficiency',
+            'title_2' => 'Energy-saving',
+            'title_3' => 'High-efficiency',
+            'title' => 'hh shaker',
+        ],
+        'highlited_topics' => [
+            'title' => 'Highlighted topic',
+            'btn' => 'Learn More'
+        ],
+        'testimonials' => [
+            'title' => 'Testimonials',        
+            'tagline' => 'What they Say about us',        
+            'desc' => 'Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.',        
+            'button' => 'Learn More',
+            'item_1' => [
+                'title' => 'Amazing Product!',
+                'desc' => 'Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.',
+                'author' => 'John David'
+            ],
+            'item_2' => [
+                'title' => 'Amazing Product!',
+                'desc' => 'Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.',
+                'author' => 'John David'
+            ],
+            'item_3' => [
+                'title' => 'Amazing Product!',
+                'desc' => 'Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.',
+                'author' => 'John David'
+            ],
+            'item_4' => [
+                'title' => 'Amazing Product!',
+                'desc' => 'Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.',
+                'author' => 'John David'
+            ],
+            'item_5' => [
+                'title' => 'Amazing Product!',
+                'desc' => 'Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.',
+                'author' => 'John David'
+            ]
+        ]
+    ],
+    'sale_and_support' => [
+        'banner_title_1' => 'HH Shaker Customer',
+        'banner_title_2' => 'Service Ready',
+        'banner_title_3' => 'To Help',
+        'description' => 'Lorem ipsum dolor sit amet consectetur. Tempor pellentesque viverra malesuada tempor sollicitudin. Orci egestas at feugiat quam pretium faucibus elementum. Venenatis magnis pretium donec interdum. Mi magna vitae consectetur lectus leo.',
+        'btn_send_message' => 'Send a Message',
+        'tab' => [
+            'direct_contact' => 'Direct Contact',
+            'contact_us' => 'Contact Us',
+            'find_service_center' => 'Find the Service Center',
+        ],
+        'form' => [
+            'your_name' => 'Your Name',
+            'your_company' => 'Your Company',
+            'mobile_number' => 'Mobile Number',
+            'email_address' => 'Email Address',
+            'city' => 'City',
+            'district' => 'District',
+            'product_category' => 'Product Category',
+            'subject' => 'Subject',
+            'message' => 'Message',
+            'submit' => 'Submit',
+            'category_placeholder' => 'Category',
+        ],
+        'validation' => [
+            'required' => '*',
+        ],
+    ],
+    'discover_learn' => [
+        'title_1' => 'HH shaker',
+        'title_2' => 'Ultimate Guide',
+        'title_3' => 'for you',
+        'bottom_text' => [
+            'number' => '32',
+            'description' => 'Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna',
+        ],
+    ],
+    'newsletter' => [
+        'title' => 'Subscribe to get the latest tips',
+        'your_name' => 'Your Name',
+        'your_email' => 'Email Address',
+        'btn' => 'Subscribe'
+    ],
+    'air_conditioner' => [
+        'title' => 'Types of Air Conditioners',
+        'btn' => 'Learn More',
+        'tab' => 'LCAC',
+        'slider_title' => 'hh shaker',
+        'parent_title_1' => 'RAC',
+        'parent_title_2' => 'Types of',
+        'parent_desc_1' => 'Select the type that best fits your needs: energy-efficient inverter splits, standard on/off splits, or ultra-quiet window units.',
+        'tag_1' => 'Energy-saving',
+        'tag_2' => 'High-efficiency',
+        'tag_3' => 'Unique features',
+        'box_1' => 'Products',
+        'box_2' => 'y',
+        'box_3' => 'Warranty',
+        'happy_customer' => 'Happy Customers',
+        'happy_customer_desc' => 'Lorem ipsum dolor sit amet consectetur. Fermentum bibendum id tellus mattis eget at quam ac quam. Id sit vestibulum sodales posuere erat at.',
+        'galleries' => 'Galleries',
+        'child_title_1' => 'Exceptional Energy Efficiency and Cost Savings with VRF Systems',
+        'child_slider_title_1' => 'Meta 2.0',
+        'child_slider_title_2' => 'HyperLink',
+        'child_slider_title_3' => 'Adaptive ESP',
+        'child_slider_tag' => 'LCAC',
+        'child_slider_description' => 'Choose the best type based on space capacity and required features.',
+        'sub_child_title_1' => 'Ultra-Quiet Operation',
+        'sub_child_title_2' => 'Energy Saving<br> Inverter Tech',
+        'sub_child_title_3' => 'Smart Control',
+        'happy_customer_desc_1' => 'Photo Capture from our Customers',
+        'happy_customer_desc_2' => 'Lorem ipsum dolor sit amet consectetur. Fermentum bibendum id tellus mattis eget at quam ac quam. Id sit vestibulum sodales posuere erat at.',
+        'view_other_product' => 'view other Products',
+        'vop_title_1' => 'Concealed Splits',
+        'vop_title_2' => 'Enjoy air distribution in all directions and 360° coverage.' ,
+        'vop_desc_1' => 'Floor Standing Splits',
+        'vop_desc_1' => 'Enjoy air distribution in all directions and 360° coverage.',
+        'all_product' => 'All Products',
+        'search_product' => 'Search Products',
+    ],
+    'concealed' => [
+        'title' => 'Concealed <br> air conditioner',
+        'btn' => 'Learn More',
+        'title_1' => 'Easy Installation and Cleaning',
+        'title_2' => 'Energy Saving',
+        'title_3' => 'Fresh Air',
+        'all_product' => 'All Products',
+        'search_product' => 'Search Products',
+        'slider_title' => 'hh shaker',
+    ],
+    'home_appliances' => [
+        'happy_customer' => 'Happy Customers',
+        'happy_customer_desc' => 'Lorem ipsum dolor sit amet consectetur. Fermentum bibendum id tellus mattis eget at quam ac quam. Id sit vestibulum sodales posuere erat at.',
+        'galleries' => 'Galleries',
+        'slider_title_1' => 'Ultra-Quiet Operation',
+        'slider_title_2' => 'Energy Saving<br> Inverter Tech',
+        'slider_title_3' => 'Smart Control',
+        'slider_title' => 'hh shaker',
+        'box_1' => 'Products',
+        'box_2' => 'y',
+        'box_3' => 'Warranty',
+        'btn' => 'Learn More',
+        'section_1_title_1' => 'All your home appliances',
+        'section_1_title_2' => 'From Beko',
+        'section_1_title_3' => 'Quality and Efficiency in One Place',
+        'why_beko_tag' => 'Quality State',
+        'why_beko' => 'Why Beko?',
+        'why_beko_desc' => 'Beko is a well-known brand around the world, found in over 120 countries. It offers the latest technology at affordable prices, making Beko a trusted choice for everyone.',
     ]
+
+
 ];
