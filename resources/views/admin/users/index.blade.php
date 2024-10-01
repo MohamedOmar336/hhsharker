@@ -21,14 +21,14 @@
                             </div>
                             <div class="col-md-12">
                                 <a href="{{ URL::previous() }}">
-                            @if (app()->isLocale('ar'))
-                                <i data-feather="arrow-right-circle"></i> <!-- Arabic locale -->
-                            @else
-                                <i data-feather="arrow-left-circle"></i> <!-- Default locale -->
-                            @endif
-                        </a>
+                                    @if (app()->isLocale('ar'))
+                                        <i data-feather="arrow-right-circle"></i> <!-- Arabic locale -->
+                                    @else
+                                        <i data-feather="arrow-left-circle"></i> <!-- Default locale -->
+                                    @endif
+                                </a>
                                 <h4 class="page-title">
-                                       {{ __('general.list') }}
+                                    {{ __('general.list') }}
                                 </h4>
                             </div>
 
@@ -59,12 +59,12 @@
                             </td>
 
                             <td>
-    @if ($record->role)
-        {{ $record->role->name }}
-    @else
-    Not selected
-    @endif
-</td>
+                                @if ($record->role)
+                                    {{ $record->role->name }}
+                                @else
+                                    Not selected
+                                @endif
+                            </td>
                             <td>{{ $record->email }}</td>
                             <td>{{ $record->phone }}</td>
                             @if ($record->active)
@@ -76,13 +76,13 @@
                                 <a href="{{ route('users.edit', $record->id) }}"><i data-feather="edit"></i></a>
                                 <form style="display: inline;">
 
-                               </form>
+                                </form>
                                 <form action="{{ route('users.destroy', $record->id) }}" method="POST" class="delete-form"
                                     style="display: inline;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn delete-form"
-                                    onclick="confirmDelete(event)"><i data-feather="trash"></i></button>
+                                    <button type="submit" class="btn delete-form" onclick="confirmDelete(event)"><i
+                                            data-feather="trash"></i></button>
                                 </form>
                             </td>
                         </tr>

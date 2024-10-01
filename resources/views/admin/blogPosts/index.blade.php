@@ -44,7 +44,8 @@
                 @foreach ($records as $record)
                     <tr class="table-body">
                         <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
-                        <td><img src="{{ asset('images/' . $record->image) }}" ></td>
+                        <td><img src="{{ isset($record->image) ? asset('images/' . $record->image) : asset('assets-admin/images/user.png') }}"
+                            alt="" class="rounded-circle thumb-sm me-1">
                         <td>{{ $record->title_en }}</td>
                         <td>{{ $record->title_ar }}</td>
                         <td>{{ $record->author ? $record->author->user_name : __('general.attributes.unknown') }}</td>
