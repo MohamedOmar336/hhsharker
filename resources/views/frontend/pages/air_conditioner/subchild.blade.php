@@ -46,7 +46,7 @@
 
 @include('frontend.layouts.includes.common_slider_1')
 
-
+@if(count($subSubChildCategoryArr) > 0)
 <section class="prod-list-section">
     <div class="container">
         <div class="row">
@@ -69,123 +69,62 @@
         </div>
 
         <div class="mt-4 wow fadeInUp">
-            <ul class="nav nav-pills inner-tab-pill mt-5 mb-5" id="pills-tab-inner" role="tablist">
-                <button class="nav-link active" id="innter_list_1-tab" data-bs-toggle="pill" data-bs-target="#innter_list_1" type="button" role="tab" aria-controls="innter_list_1" aria-selected="true">All Products</button>
-                <button class="nav-link" id="innter_list_2-tab" data-bs-toggle="pill" data-bs-target="#innter_list_2" type="button" role="tab" aria-controls="innter_list_2" aria-selected="false">Cool Only</button>
-                <button class="nav-link" id="innter_list_3-tab" data-bs-toggle="pill" data-bs-target="#innter_list_3" type="button" role="tab" aria-controls="innter_list_3" aria-selected="false">Heat & Cold</button>
+            <ul class="nav nav-pills home-tab-main mb-5" id="pills-tab" role="tablist">
+                @foreach($subSubChildCategoryArr as $subCat)
+                    <button class="nav-link {{ $loop->iteration == 1 ? 'active' : '' }}" id="list_pro_tab_{{ $loop->iteration }}-tab" data-bs-toggle="pill" data-bs-target="#list_pro_tab_{{ $loop->iteration }}" type="button" role="tab" aria-controls="list_pro_tab_{{ $loop->iteration }}" aria-selected="true">{{  $subCat->name }}</button>
+                @endforeach
             </ul>
-            <div class="tab-content" id="pills-tabContent-inner">
-                <div class="tab-pane fade show active" id="innter_list_1" role="tabpanel" aria-labelledby="innter_list_1-tab" tabindex="0">
-                    <div class="row g-3 g-lg-4">
-                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                            <div class="inner-list-div">
-                                <img src="{{ asset('assets-frontend/images/inner-prod-1.png') }}">
-                                <div class="innter-body-text">
-                                    <h3>Midea Cassette Inverter AC 18000 BT</h3>
-                                    <p>MCCTV18HRN3</p>
-                                    <div>
-                                        <span>360° CoolSurround</span>
-                                        <span>Energy Saving</span>
-                                        <span>Anti-Corrosion Performance</span>
-                                        <span>Built-in Pump</span>
-                                    </div>
-                                    <a href="{{ route('frontend.air-conditioner.product-details',['locale' => app()->getLocale()]) }}">Learn More</a>
-                                </div>
+            <div class="tab-content" id="pills-tabContent">
+                @foreach($subSubChildCategoryArr as $subCat)
+                <div class="tab-pane fade {{ $loop->iteration == 1 ? 'show active' : '' }} " id="list_pro_tab_{{ $loop->iteration }}" role="tabpanel" aria-labelledby="list_pro_tab_{{ $loop->iteration }}-tab" tabindex="0">
+                    <ul class="nav nav-pills inner-tab-pill mb-5" id="pills-tab-inner" role="tablist">
+                        <button class="nav-link active" id="innter_list_{{$loop->iteration}}_1-tab" data-bs-toggle="pill" data-bs-target="#innter_list_{{$loop->iteration}}_1" type="button" role="tab" aria-controls="innter_list_{{$loop->iteration}}_1" aria-selected="true">All Products</button>
+                        <button class="nav-link" id="innter_list_{{$loop->iteration}}_2-tab" data-bs-toggle="pill" data-bs-target="#innter_list_{{$loop->iteration}}_2" type="button" role="tab" aria-controls="innter_list_{{$loop->iteration}}_2" aria-selected="false">Cool Only</button>
+                        <button class="nav-link" id="innter_list_{{$loop->iteration}}_3-tab" data-bs-toggle="pill" data-bs-target="#innter_list_{{$loop->iteration}}_3" type="button" role="tab" aria-controls="innter_list_{{$loop->iteration}}_3" aria-selected="false">Heat & Cold</button>
+                    </ul>
+                    <div class="tab-content" id="pills-tabContent-inner">
+                        <div class="tab-pane fade show active" id="innter_list_{{$loop->iteration}}_1" role="tabpanel" aria-labelledby="innter_list_{{$loop->iteration}}_1-tab" tabindex="0">
+                            <div class="row g-3 g-lg-4">
+                                @forelse($allProductArr as $product)
+                                    @if($product->child == $subCat->name_en)
+                                        @include('frontend.pages.product.product-component',compact('product'))
+                                    @endif
+                                @empty
+                                    <p class="nodata-found">No Products Found</p>
+                                @endforelse
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
-                            <div class="inner-list-div">
-                                <img src="{{ asset('assets-frontend/images/inner-prod-2.png') }}">
-                                <div class="innter-body-text">
-                                    <h3>Midea Cassette Inverter AC 24000 BTU</h3>
-                                    <p>MCCTV24HRN4</p>
-                                    <div>
-                                        <span>360° CoolSurround</span>
-                                        <span>Energy Saving</span>
-                                        <span>Anti-Corrosion Performance</span>
-                                        <span>Built-in Pump</span>
-                                    </div>
-                                    <a href="{{ route('frontend.air-conditioner.product-details',['locale' => app()->getLocale()]) }}">Learn More</a>
-                                </div>
-                            </div>
+                        <div class="tab-pane fade" id="innter_list_{{$loop->iteration}}_2" role="tabpanel" aria-labelledby="innter_list_{{$loop->iteration}}_2-tab" tabindex="0">
+                            @forelse($coolOnlyProductArr as $product)
+                                @if($product->child == $subCat->name_en)
+                                    @include('frontend.pages.product.product-component',compact('product'))
+                                @endif
+                            @empty
+                                <p class="nodata-found">No Products Found</p>
+                            @endforelse
                         </div>
-                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-                            <div class="inner-list-div">
-                                <img src="{{ asset('assets-frontend/images/inner-prod-1.png') }}">
-                                <div class="innter-body-text">
-                                    <h3>Midea Cassette Inverter AC 30000 BTU</h3>
-                                    <p>MCCTV30HRN2</p>
-                                    <div>
-                                        <span>360° CoolSurround</span>
-                                        <span>Energy Saving</span>
-                                        <span>Anti-Corrosion Performance</span>
-                                        <span>Built-in Pump</span>
-                                    </div>
-                                    <a href="{{ route('frontend.air-conditioner.product-details',['locale' => app()->getLocale()]) }}">Learn More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                            <div class="inner-list-div">
-                                <img src="{{ asset('assets-frontend/images/inner-prod-1.png') }}">
-                                <div class="innter-body-text">
-                                    <h3>Midea Cassette Inverter AC 36 BTU</h3>
-                                    <p>MCCTV36HRN4</p>
-                                    <div>
-                                        <span>360° CoolSurround</span>
-                                        <span>Energy Saving</span>
-                                        <span>Anti-Corrosion Performance</span>
-                                        <span>Built-in Pump</span>
-                                    </div>
-                                    <a href="{{ route('frontend.air-conditioner.product-details',['locale' => app()->getLocale()]) }}">Learn More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
-                            <div class="inner-list-div">
-                                <img src="{{ asset('assets-frontend/images/inner-prod-1.png') }}">
-                                <div class="innter-body-text">
-                                    <h3>Midea Cassette  R32 Inverter AC 36000 BTU</h3>
-                                    <p>New R32</p>
-                                    <div>
-                                        <span>360° CoolSurround</span>
-                                        <span>Energy Saving</span>
-                                        <span>Anti-Corrosion Performance</span>
-                                        <span>Built-in Pump</span>
-                                    </div>
-                                    <a href="{{ route('frontend.air-conditioner.product-details',['locale' => app()->getLocale()]) }}">Learn More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-                            <div class="inner-list-div">
-                                <img src="{{ asset('assets-frontend/images/inner-prod-1.png') }}">
-                                <div class="innter-body-text">
-                                    <h3>Midea Cassette  R32 Inverter AC 50000 BTU</h3>
-                                    <p>New R32</p>
-                                    <div>
-                                        <span>360° CoolSurround</span>
-                                        <span>Energy Saving</span>
-                                        <span>Anti-Corrosion Performance</span>
-                                        <span>Built-in Pump</span>
-                                    </div>
-                                    <a href="{{ route('frontend.air-conditioner.product-details',['locale' => app()->getLocale()]) }}">Learn More</a>
-                                </div>
-                            </div>
+                        <div class="tab-pane fade" id="innter_list_{{$loop->iteration}}_3" role="tabpanel" aria-labelledby="innter_list_{{$loop->iteration}}_3-tab" tabindex="0">
+                            @forelse($heatCoolProductArr as $product)
+                                @if($product->child == $subCat->name_en)
+                                    @include('frontend.pages.product.product-component',compact('product'))
+                                @endif
+                            @empty
+                                <p class="nodata-found">No Products Found</p>
+                            @endforelse
                         </div>
                     </div>
+
                 </div>
-                <div class="tab-pane fade" id="innter_list_2" role="tabpanel" aria-labelledby="innter_list_2-tab" tabindex="0">
-                    Tab Details 2
-                </div>
-                <div class="tab-pane fade" id="innter_list_3" role="tabpanel" aria-labelledby="innter_list_3-tab" tabindex="0">
-                    Tab Details 2
-                </div>
+                @endforeach
             </div>
         </div>
 
     </div>
 </section>
+@else
+<p class="nodata-found">No Products Found</p>
+@endif
+
 
 <section class="list-hc-section">
     <div class="gal-test-slider wow fadeInDown" data-wow-delay="1s">

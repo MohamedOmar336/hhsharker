@@ -4,10 +4,10 @@
     <div class="container">
         <div class="row g-lg-5">
             <div class="col-lg-6 wow fadeInLeft" data-wow-delay="1.2s">
-                <img class="single-main-img" src="{{ asset('assets-frontend/images/pro-4.png')}}">
+                <img class="single-main-img" src="{{ Storage::url($record->product_image); }}">
                 <div class="sing-btn-main">
-                    <a class="sing-btn-1" href="commercial-support.html">Request a Quote</a>
-                    <a class="sing-btn-2" href="sales-and-support.html">Contact Sales</a>
+                    <a class="sing-btn-1" href="#">Request a Quote</a>
+                    <a class="sing-btn-2" href="#">Contact Sales</a>
                 </div>
                 <div class="sing-text-icon">
                     @if(isset($record->technical_specification) && $record->technical_specification)
@@ -55,8 +55,8 @@
                                             <img src="{{ asset('assets-frontend/images/sing-icon-1.png') }}">
                                         </span>
                                         <div>
-                                            <h6>{{ $feature['title'] ?? 'Feature Title' }}</h6>
-                                            <p>{{ $feature['description'] ?? 'Feature description not available.' }}</p>
+                                            <h6>{{ $feature['title'] ?? ''}}</h6>
+                                            <p>{{ $feature['description'] ?? '' }}</p>
                                         </div>
                                     </div>
                                 @endforeach
@@ -73,7 +73,7 @@
                                 @foreach ($characteristics as $characteristic)
                                     <div>
                                         <span class="sing-icon-span"><img src="{{ asset('assets-frontend/images/sing-icon-4.png')}}"></span>
-                                        <p>{{ $characteristic['title'] ?? 'Characteristic Title' }}</p>
+                                        <p>{{ $characteristic['title'] ?? '' }}</p>
                                     </div>
                                 @endforeach
                             @else
@@ -142,21 +142,16 @@
                 @foreach ($relatedProducts as $relatedProduct )
                     <div class="item">
                         <div class="inner-list-div">
-                            <img src="{{ asset('assets-frontend/images/inner-prod-1.png')}}">
+                            <img src="{{ $relatedProduct->product_image  }}">
                             <div class="innter-body-text">
-                                <h3>{{ $relatedProduct['product_name_' . app()->getLocale()] }}</h3>
+                                <h3>{{ $relatedProduct->name }}</h3>
 
-                                @foreach ($relatedProduct->children as $index => $child)
-                                    @break($index == 4)  {{-- Breaks the loop after 5 iterations --}}
-                                    <p>{{ $child->model_number }}</p>
-                                @endforeach
+                                @if(isset($record->children[0]->model_number))
+                                    <p>{{ $record->children[0]->model_number }}</p>
+                                @endif
 
                                 <div>
-                                    @php
-                                        $features = is_array($relatedProduct['feature_' . app()->getLocale()]) ? $relatedProduct['feature_' . app()->getLocale()] : json_decode($relatedProduct['feature_' . app()->getLocale()], true);
-                                    @endphp
-                                    @foreach ($features as $index => $feature)
-                                        @break($index == 4)  {{-- Breaks the loop after 5 iterations --}}
+                                    @foreach (array_slice($record->features,0,4) as $index => $feature)
                                          <span>{{ $feature['title'] }}</span>
                                     @endforeach
                                 </div>

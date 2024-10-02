@@ -77,7 +77,61 @@
                             </ul>
                             @endif
                         </li> --}}
+
                         <li class="nav-item megamenu">
+                            <a class="nav-link dropdown-toggle" href="{{ route('frontend.air-conditioner',['locale' => app()->getLocale()]) }}">
+                                {{ __('website.header_menu.air_conditioner') }}
+                            </a>
+                            <div class="megamenu-main-div">
+                                <div class="megamenu-body ">
+                                    <div class="row">
+                                        <div class="col-xl-5">
+                                            <img src="{{ asset('assets-frontend/images/air-drop-1.png') }}" width="100%" height="100%" alt="Mega Menu Banner">
+                                        </div>
+                                        <div class="col-xl-7">
+                                            <div class="row mb-4">
+
+                                                @foreach($headerAirConditionerArr as $ac)
+                                                <div class="col-md-4">
+                                                    <a href="{{ route('frontend.air-conditioner.parent',['locale' => app()->getLocale(),'parent'=>$ac->slug]) }}">
+                                                        <h5>{{ $ac->name }}</h5>
+                                                    </a>
+                                                    <div class="mega-a-list">
+                                                        @foreach($ac->children as $sac)
+                                                        <a href="{{ route('frontend.air-conditioner.child',['locale' => app()->getLocale(),'parent'=>$ac->slug,'child'=>$sac->slug]) }}">{{ $sac->name }}</a>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                                @endforeach
+                                                
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-md-4">
+                                                    <a href="{{ route('frontend.case-studies',['locale' => app()->getLocale()]) }}">
+                                                        <h5>Case Studies</h5>
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <a href="{{ route('frontend.commercial-support',['locale' => app()->getLocale()]) }}">html">
+                                                        <h5>Commercial Support</h5>
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <a href="{{ route('frontend.our-latest-projects',['locale' => app()->getLocale()]) }}">
+                                                        <h5>Our Latest Projects</h5>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <img src="{{ asset('assets-frontend/images/air-drop-2.png') }}" width="100%" alt="Mega Menu Banner">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        
+                        {{-- <li class="nav-item megamenu">
                             <a class="nav-link dropdown-toggle" href="{{ route('frontend.air-conditioner',['locale' => app()->getLocale()]) }}">
                                 {{ __('website.header_menu.air_conditioner') }}
                             </a>
@@ -134,8 +188,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </li>
-                        <li class="nav-item megamenu">
+                        </li> --}}
+
+                        {{-- <li class="nav-item megamenu">
                             <a class="nav-link dropdown-toggle" href="{{ route('frontend.home-appliances',['locale' => app()->getLocale()]) }}">
                             {{ __('website.header_menu.home_appliances') }}
                             </a>
@@ -189,6 +244,69 @@
                                     </div>
                                     <div class="mt-3">
                                         <img src="{{ asset('assets-frontend/images/mega-menu-img-2.png') }}" width="100%" alt="Mega Menu Banner">
+                                    </div>
+                                </div>
+                            </div>
+                        </li> --}}
+
+                        <li class="nav-item megamenu">
+                            <a class="nav-link dropdown-toggle" href="{{ route('frontend.home-appliances',['locale' => app()->getLocale()]) }}">
+                                {{ __('website.header_menu.home_appliances') }}
+                            </a>
+                            <div class="megamenu-main-div">
+                                <div class="megamenu-body ">
+                                    <div class="row">
+                                        <div class="col-xl-5">
+                                            <img src="{{ asset('assets-frontend/images/aplli-drop-1.png') }}" width="100%" height="100%" alt="Mega Menu Banner">
+                                        </div>
+                                        <div class="col-xl-7">
+                                            <div class="row mb-4">
+                                                <div class="col-md-4">
+                                                    <a href="appliances-main.html">
+                                                        <h5>Home Appliances</h5>
+                                                    </a>
+                                                    <div class="mega-a-list">
+                                                        @foreach($headerHomeAppliencesrArr->take(3) as $ac)
+                                                         <a href="{{ route('frontend.home-appliances.parent',['locale' => app()->getLocale(),'parent'=>$ac->slug]) }}">
+                                                            {{ $ac->name }}
+                                                        </a>
+                                                         @endforeach
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <h5 class="mb-4"></h5>
+                                                    <div class="mega-a-list">
+                                                        @foreach($headerHomeAppliencesrArr->slice(3,3) as $ac)
+                                                         <a href="{{ route('frontend.home-appliances.parent',['locale' => app()->getLocale(),'parent'=>$ac->slug]) }}">
+                                                            {{ $ac->name }}
+                                                        </a>
+                                                         @endforeach
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4"> </div>
+
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-md-4">
+                                                    <a href="{{ route('frontend.discover-and-learn',['locale' => app()->getLocale()]) }}">
+                                                        <h5>Discover and Learn</h5>
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <a href="{{ route('frontend.sales-and-support',['locale' => app()->getLocale()]) }}">
+                                                        <h5>Sales & Support </h5>
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <a href="{{ route('frontend.home-appliances.product-list-1',['locale' => app()->getLocale()]) }}">
+                                                        <h5>All Products </h5>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <img src="{{ asset('assets-frontend/images/aplli-drop-2.png') }}" width="100%" alt="Mega Menu Banner">
                                     </div>
                                 </div>
                             </div>

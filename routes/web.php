@@ -337,7 +337,7 @@ Route::group(['prefix' => '{locale}', 'where' => ['locale' => 'en|ar'],'middlewa
     Route::get('/home-appliances', [HomeAppliancesController::class,'index'])->name('frontend.home-appliances');
     Route::get('/home-appliances/{parent}', [HomeAppliancesController::class,'parent'])->name('frontend.home-appliances.parent');
     Route::get('/product-list-1', [HomeAppliancesController::class,'productList1'])->name('frontend.home-appliances.product-list-1');
-    Route::get('/product-list-2', [HomeAppliancesController::class,'productList2'])->name('frontend.home-appliances.product-list-1');
+    Route::get('/all-products', [HomeAppliancesController::class,'productList2'])->name('frontend.home-appliances.product-list-1');
 
 });
 

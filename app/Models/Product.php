@@ -93,4 +93,18 @@ class Product extends Model
         // Choose the right column based on locale
         return $this->{'product_description_' . $locale} ?? $this->product_description_en; // Fallback to English
     }
+    public function getCharacteristicsAttribute()
+    {
+        $locale = App::getLocale(); // Get the current locale
+
+        // Choose the right column based on locale
+        return $this->{'characteristics_' . $locale} ?? $this->characteristics_en; // Fallback to English
+    }
+    public function getFeaturesAttribute()
+    {
+        $locale = App::getLocale(); // Get the current locale
+
+        // Choose the right column based on locale
+        return $this->{'feature_' . $locale} ?? $this->feature_en; // Fallback to English
+    }
 }

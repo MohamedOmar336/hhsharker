@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -21,8 +22,15 @@ class HomeAppliancesController extends Controller
         if(!isset($parentCategoryArr->id)){
             abort(404);
         }
-        $homeApplianceChildArr = Category::where(['category_type'=>'HomeAppliance','parent_id' => $parentCategoryArr->id,'active'=>1])->get();
-        return view('frontend.pages.home_appliance.parent',compact('homeApplianceChildArr','parentCategoryArr'));
+        // $homeApplianceChildArr = Category::where(['category_type'=>'HomeAppliance','parent_id' => $parentCategoryArr->id,'active'=>1])->get();
+        
+        $where = [
+            'type' => 'HomeAppliance',
+            'category'=>$parentCategoryArr->name_ar
+        ];
+        $allProductArr = Product::where($where)->latest()->get();
+
+        return view('frontend.pages.home_appliance.parent',compact('parentCategoryArr','allProductArr'));
     }
 
     public function productList1(Request $request)

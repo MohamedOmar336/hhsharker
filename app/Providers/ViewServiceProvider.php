@@ -26,7 +26,9 @@ class ViewServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-        $airConditionerItems = Category::where(['category_type'=>'AirConditioner','parent_id'=>NULL,'active'=>1])->get();
+        $airConditionerItems = Category::with('children')->where(['category_type'=>'AirConditioner','parent_id'=>NULL,'active'=>1])->get();
+        $homeAppliencesItems = Category::with('children')->where(['category_type'=>'HomeAppliance','parent_id'=>NULL,'active'=>1])->get();
         View::share('headerAirConditionerArr', $airConditionerItems);
+        View::share('headerHomeAppliencesrArr', $homeAppliencesItems);
     }
 }

@@ -41,10 +41,27 @@ class AirConditionerController extends Controller
         }
         $airConditionerSubChildArr = Category::where(['category_type' => 'AirConditioner', 'parent_id' => $childCategoryArr->id, 'active' => 1])->get();
 
+        $airConditionProducts = Product::where([
+            'type' => 'AirConditioner'
+        ])->latest();
+
         if ($airConditionerSubChildArr->count() > 0) {
             return view('frontend.pages.air_conditioner.child1', compact('airConditionerSubChildArr', 'parentCategoryArr', 'childCategoryArr'));
         } else {
-            return view('frontend.pages.air_conditioner.child2', compact('parentCategoryArr', 'childCategoryArr'));
+
+            $where = [
+                'type' => 'AirConditioner',
+                'category'=>$childCategoryArr->name_ar
+            ];
+            $allProductArr = Product::where($where)->latest()->get();
+            $coolOnlyProductArr = Product::where($where)->whereHas('children',function ($query) {
+                $query->where('main_option','Cool Only'); 
+            })->get();
+
+            $heatCoolProductArr = Product::where($where)->whereHas('children',function ($query) {
+                $query->where('main_option','Heat & Cold'); 
+            })->get();
+            return view('frontend.pages.air_conditioner.child2', compact('parentCategoryArr', 'childCategoryArr','allProductArr','coolOnlyProductArr','heatCoolProductArr'));
         }
     }
     public function subChild(Request $request)
@@ -65,7 +82,29 @@ class AirConditionerController extends Controller
             abort(404);
         }
 
-        return view('frontend.pages.air_conditioner.subchild', compact('parentCategoryArr', 'childCategoryArr', 'subChildCategoryArr'));
+        $subSubChildCategoryArr = Category::where(['category_type' => 'AirConditioner', 'parent_id' => $subChildCategoryArr->id])->get();
+        $subSubChildCategoryNameArr = $subSubChildCategoryArr->pluck('name_en')->toArray() ?? [];
+
+        $where = [
+            'type' => 'AirConditioner'
+        ];
+        $allProductArr = Product::where($where)->whereIn('child',$subSubChildCategoryNameArr)->latest()->get();
+
+        $coolOnlyProductArr =  Product::where($where)
+        ->whereIn('child',$subSubChildCategoryNameArr)
+        ->whereHas('children',function ($query) {
+            $query->where('main_option','Cool Only'); 
+        })->get();        
+
+        
+        $heatCoolProductArr = Product::where($where)
+        ->whereIn('child',$subSubChildCategoryNameArr)
+        ->whereHas('children',function ($query) {
+            $query->where('main_option','Heat & Cold'); 
+        })->get();
+
+
+        return view('frontend.pages.air_conditioner.subchild', compact('parentCategoryArr', 'childCategoryArr', 'subChildCategoryArr','subSubChildCategoryArr','allProductArr','coolOnlyProductArr','heatCoolProductArr'));
     }
 
     public function productDetails()

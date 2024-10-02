@@ -147,7 +147,7 @@
                     <h4>{{ $product->name }}</h4>
                     <span>{{ __('website.homepage_product_section_2.title') }}</span>
                     <img src="{{ Storage::url($product->image) }}" alt="Product Image">
-                    <a href="{{ route('frontend.air-conditioner.product-details',['locale' => app()->getLocale()]) }}">{{ __('website.homepage_product_section_2.button') }}</a>
+                    <a href="{{ route('frontend.product.page',['locale' => app()->getLocale(),'id'=> $product->id]) }}">{{ __('website.homepage_product_section_2.button') }}</a>
                 </div>
             </div>
             @endforeach
@@ -203,7 +203,7 @@
                             <img src="{{ Storage::url($product->image) }}" alt="Commercial Devices Image">
                             <h4>{{ $product->name }}</h4>
                             <p>{{ trimString($product->description,90) }}</p>
-                            <a href="{{ route('frontend.air-conditioner.product-details',['locale' => app()->getLocale()]) }}">{{ __('website.homepage_product_section_3.button') }}</a>
+                            <a href="{{ route('frontend.product.page',['locale' => app()->getLocale(),'id'=> $product->id]) }}">{{ __('website.homepage_product_section_3.button') }}</a>
                         </div>
                         @endforeach
                     </div>
