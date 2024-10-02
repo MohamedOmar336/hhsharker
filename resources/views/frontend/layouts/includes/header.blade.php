@@ -112,7 +112,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <a href="{{ route('frontend.commercial-support',['locale' => app()->getLocale()]) }}">html">
+                                                    <a href="{{ route('frontend.commercial-support',['locale' => app()->getLocale()]) }}">
                                                         <h5>Commercial Support</h5>
                                                     </a>
                                                 </div>
