@@ -169,13 +169,13 @@
                                             </div>
                                             <div class="row mb-2">
                                                 <div class="col-md-4">
-                                                    <h5>Case Studies</h5>
+                                                    <a href="{{ route('frontend.case-studies',['locale' => app()->getLocale()]) }}"><h5>Case Studies</h5></a>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <h5>Commercial Support</h5>
+                                                    <a href="{{ route('frontend.commercial-support',['locale' => app()->getLocale()]) }}"><h5>Commercial Support</h5></a>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <h5>Our Latest Projects</h5>
+                                                    <a href="{{ route('frontend.our-latest-projects',['locale' => app()->getLocale()]) }}"><h5>Our Latest Projects</h5></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -228,13 +228,13 @@
                                             </div>
                                             <div class="row mb-2">
                                                 <div class="col-md-4">
-                                                    <h5>Case Studies</h5>
+                                                    <a href="{{ route('frontend.case-studies',['locale' => app()->getLocale()]) }}"><h5>Case Studies</h5></a>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <h5>Commercial Support</h5>
+                                                    <a href="{{ route('frontend.commercial-support',['locale' => app()->getLocale()]) }}"><h5>Commercial Support</h5></a>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <h5>Our Latest Projects</h5>
+                                                    <a href="{{ route('frontend.our-latest-projects',['locale' => app()->getLocale()]) }}"><h5>Our Latest Projects</h5></a>
                                                 </div>
                                             </div>
                                         </div>

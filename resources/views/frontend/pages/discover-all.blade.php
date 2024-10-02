@@ -110,19 +110,19 @@
 <section class="view-all-form-section wow fadeIn">
     <div class="container">
         <div class="section-heading wow fadeInLeft">
-            <h2>Subscribe to get the latest tips</h2>
+            <h2>{{ __('website.newsletter.title') }}</h2>
         </div>
         <form>
             <div class="view-all-sub-form wow fadeInUp">
                 <div class="contact-input">
-                    <label>Your Name <span>*</span></label>
-                    <input type="text" class="form-control" placeholder="Your Name">
+                    <label>{{ __('website.newsletter.your_name') }} <span>*</span></label>
+                    <input type="text" class="form-control" placeholder="{{ __('website.newsletter.your_name') }}">
                 </div>
                 <div class="contact-input">
-                    <label>Email Address <span>*</span></label>
-                    <input type="email" class="form-control" placeholder="Your email">
+                    <label>{{ __('website.newsletter.your_email') }} <span>*</span></label>
+                    <input type="email" class="form-control" placeholder="{{ __('website.newsletter.your_email') }}">
                 </div>
-                <button class="contact-form-btn" type="submit">Subscribe</button>
+                <button class="contact-form-btn" type="submit">{{ __('website.newsletter.btn') }}</button>
             </div>
         </form>
     </div>

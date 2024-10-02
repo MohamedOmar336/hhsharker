@@ -4,16 +4,16 @@
     <div class="container">
         <img class="letest-banner-img-1 wow fadeInLeft" data-wow-delay="1.4s" src="{{ asset('assets-frontend/images/indu-banner-1.png')}}">
         <div class="latest-pro-banner-text">
-            <div class="wow fadeInLeft" data-wow-delay="1.2s">Our</div>
-            <div class="wow fadeInRight" data-wow-delay="1.2s">latest</div>
-            <div class="wow fadeInUp" data-wow-delay="1.2s">projects</div>
+            <div class="wow fadeInLeft" data-wow-delay="1.2s">{{ __('website.our_latest_project.title_1') }}</div>
+            <div class="wow fadeInRight" data-wow-delay="1.2s">{{ __('website.our_latest_project.title_2') }}</div>
+            <div class="wow fadeInUp" data-wow-delay="1.2s">{{ __('website.our_latest_project.title_3') }}</div>
         </div>
         <div class="wow fadeInLeft" data-wow-delay="0.5s">
-            <a class="cutome-btn green-custome-btn" href="#">Learn More</a>
+            <a class="cutome-btn green-custome-btn" href="#">{{ __('website.our_latest_project.btn') }}</a>
         </div>
         <div class="letest-box-banner wow zoomIn" data-wow-delay="1.2s">
-            <div><span class="numberanimation">100</span>+</div>
-            <p>Projects Done</p>
+            <div><span class="numberanimation">{{ __('website.our_latest_project.project_done_desc') }}</span>+</div>
+            <p>{{ __('website.our_latest_project.project_done_title') }}</p>
         </div>
     </div>
 </section>
@@ -27,13 +27,13 @@
         <div class="row align-items-end">
             <div class="col-lg-5 wow fadeInLeft">
                 <div class="section-heading">
-                    <h5>Testimonials</h5>
-                    <h2>What they Say</h2>
+                    <h5>{{ __('website.our_latest_project.testimonial.tag') }}</h5>
+                    <h2>{{ __('website.our_latest_project.testimonial.title') }}</h2>
                 </div>
             </div>
             <div class="col-lg-6 offset-lg-1 wow fadeInRight">
                 <p class="p-grey-color">
-                    Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.
+                    {{ __('website.our_latest_project.testimonial.desc') }}
                 </p>
             </div>
         </div>
@@ -96,16 +96,16 @@
 
 <section class="tags-text-section wow fadeIn">
     <div class="container wow fadeInUp" data-wow-delay="0.3s">
-        <h2>hh shaker</h2>
+        <h2>{{ __('website.our_latest_project.section_2.title') }}</h2>
         <div class="tags-text-div">
             <div class="big-icon-tag wow rotateInDownLeft" data-wow-delay="0.6s">
-                <span><img src="{{ asset('assets-frontend/images/home-tred-icon.svg') }}"></span> Energy-saving
+                <span><img src="{{ asset('assets-frontend/images/home-tred-icon.svg') }}"></span>  {{ __('website.our_latest_project.section_2.title_2') }}
             </div>
             <div class="big-icon-tag wow fadeInDown" data-wow-delay="0.8s">
-                <span><img src="{{ asset('assets-frontend/images/home-tred-icon.svg') }}"></span> High-efficiency
+                <span><img src="{{ asset('assets-frontend/images/home-tred-icon.svg') }}"></span> {{ __('website.our_latest_project.section_2.title_1') }}
             </div>
             <div class="big-icon-tag wow rotateInDownRight" data-wow-delay="0.9s">
-                <span><img src="{{ asset('assets-frontend/images/home-tred-icon.svg') }}"></span> High-efficiency
+                <span><img src="{{ asset('assets-frontend/images/home-tred-icon.svg') }}"></span> {{ __('website.our_latest_project.section_2.title_3') }}
             </div>
         </div>
     </div>
@@ -114,7 +114,7 @@
 <section class="indu-topic-section wow fadeIn">
     <div class="container">
         <div class="section-heading text-center wow fadeInUp">
-            <h2>Highlighted topic</h2>
+            <h2>{{ __('website.our_latest_project.highlited_topics.title') }}</h2>
         </div>
         <div class="indu-topic-list">
             <div class="topic-div-1 wow fadeIn" data-wow-delay="0.2s">
@@ -139,7 +139,7 @@
             </div>
         </div>
         <div class="text-center wow fadeInUp">
-            <a class="cutome-btn green-custome-btn" href="#">Learn More</a>
+            <a class="cutome-btn green-custome-btn" href="#">{{ __('website.our_latest_project.highlited_topics.btn') }}</a>
         </div>
     </div>
 </section>
@@ -149,14 +149,14 @@
         <div class="row">
             <div class="col-lg-5 col-xl-3 wow fadeInLeftBig">
                 <div class="section-heading">
-                    <h5>Testimonials</h5>
-                    <h2>What they Say about us</h2>
+                    <h5>{{ __('website.our_latest_project.testimonials.title') }}</h5>
+                    <h2>{{ __('website.our_latest_project.testimonials.tagline') }}</h2>
                 </div>
             </div>
             <div class="col-lg-1 col-xl-3"></div>
             <div class="col-lg-6 col-xl-6 wow fadeInRightBig">
-                <p class="testim-h-p">Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.</p>
-                <a class="cutome-btn" href="{{ route('frontend.about',['locale' => app()->getLocale()]) }}">Learn More</a>
+                <p class="testim-h-p">{{ __('website.our_latest_project.testimonials.desc') }}</p>
+                <a class="cutome-btn" href="{{ route('frontend.about', ['locale' => app()->getLocale()]) }}">{{ __('website.our_latest_project.testimonials.button') }}</a>
             </div>
         </div>
 
@@ -164,46 +164,46 @@
             <div class="test-testi-h animate-this wow zoomInUp" data-wow-duration="3s">Testimonials</div>
             <div class="col-lg-4 wow fadeInLeftBig">
                 <div class="testi-box">
-                    <h4>Amazing Product!</h4>
-                    <p>“Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.”</p>
+                    <h4>{{ __('website.our_latest_project.testimonials.item_1.title') }}</h4>
+                        <p>“{{ __('website.our_latest_project.testimonials.item_1.desc') }}”</p>
                     <div>
-                        <img src="{{ asset('assets-frontend/images/testi-pro-1.png')}}" alt="Testimonial Profile Image"> John David
+                        <img src="{{ asset('assets-frontend/images/testi-pro-1.png')}}" alt="Testimonial Profile Image"> {{ __('website.our_latest_project.testimonials.item_1.author') }}
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 offset-lg-4 wow fadeInRightBig" data-wow-delay="0.4s">
                 <div class="testi-box">
-                    <h4>Amazing Product!</h4>
-                    <p>“Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.”</p>
+                    <h4>{{ __('website.our_latest_project.testimonials.item_2.title') }}</h4>
+                        <p>“{{ __('website.our_latest_project.testimonials.item_2.desc') }}”</p>
                     <div>
-                        <img src="{{ asset('assets-frontend/images/testi-pro-1.png')}}" alt="Testimonial Profile Image"> John David
+                        <img src="{{ asset('assets-frontend/images/testi-pro-1.png')}}" alt="Testimonial Profile Image"> {{ __('website.our_latest_project.testimonials.item_2.author') }}
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 wow fadeInLeftBig" data-wow-delay="0.2s">
                 <div class="testi-box">
-                    <h4>Amazing Product!</h4>
-                    <p>“Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.”</p>
+                    <h4>{{ __('website.our_latest_project.testimonials.item_3.title') }}</h4>
+                        <p>“{{ __('website.our_latest_project.testimonials.item_3.desc') }}”</p>
                     <div>
-                        <img src="{{ asset('assets-frontend/images/testi-pro-1.png')}}" alt="Testimonial Profile Image"> John David
+                        <img src="{{ asset('assets-frontend/images/testi-pro-1.png')}}" alt="Testimonial Profile Image"> {{ __('website.our_latest_project.testimonials.item_3.author') }}
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 wow fadeInUpBig" data-wow-delay="0.8s">
                 <div class="testi-box">
-                    <h4>Amazing Product!</h4>
-                    <p>“Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.”</p>
+                    <h4>{{ __('website.our_latest_project.testimonials.item_4.title') }}</h4>
+                        <p>“{{ __('website.our_latest_project.testimonials.item_4.desc') }}”</p>
                     <div>
-                        <img src="{{ asset('assets-frontend/images/testi-pro-1.png')}}" alt="Testimonial Profile Image"> John David
+                        <img src="{{ asset('assets-frontend/images/testi-pro-1.png')}}" alt="Testimonial Profile Image"> {{ __('website.our_latest_project.testimonials.item_4.author') }}
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 wow fadeInRightBig" data-wow-delay="0.6s">
                 <div class="testi-box">
-                    <h4>Amazing Product!</h4>
-                    <p>“Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.”</p>
+                    <h4>{{ __('website.our_latest_project.testimonials.item_5.title') }}</h4>
+                        <p>“{{ __('website.our_latest_project.testimonials.item_5.desc') }}”</p>
                     <div>
-                        <img src="{{ asset('assets-frontend/images/testi-pro-1.png')}}" alt="Testimonial Profile Image"> John David
+                        <img src="{{ asset('assets-frontend/images/testi-pro-1.png')}}" alt="Testimonial Profile Image"> {{ __('website.our_latest_project.testimonials.item_5.author') }}
                     </div>
                 </div>
             </div>
@@ -211,4 +211,5 @@
 
     </div>
 </section>
+
 @endsection

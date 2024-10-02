@@ -4,8 +4,8 @@
     <div class="container">
         <div class="row gx-lg-5 align-items-center">
             <div class="col-lg-5 wow fadeInLeft" data-wow-delay="1.2s">
-                <h1>Concealed <br> air conditioner</h1>
-                <a class="cutome-btn" href="about.html">Learn More</a>
+                <h1> {!! __('website.concealed.title') !!}</h1>
+                <a class="cutome-btn" href="about.html">{{ __('website.concealed.btn') }}</a>
             </div>
             <div class="col-lg-6 offset-lg-1 wow fadeInRight" data-wow-delay="1.2s">
                 <img class="list-banner-img" src="{{ asset('assets-frontend/images/pro-12.png')}}" alt="Banner Image">
@@ -17,19 +17,19 @@
                 <div class="grid-banner-list">
                     <div class="col-baaner-list">
                         <div class="icon-banner">
-                            <img src="{{ asset('assets-frontend/images/check-icon.svg')}}"> Easy Installation and Cleaning
+                            <img src="{{ asset('assets-frontend/images/check-icon.svg')}}">{{ __('website.concealed.title_1') }}
                         </div>
                         <img src="{{ asset('assets-frontend/images/gal-slider-1.png')}}">
                     </div>
                     <div class="col-baaner-list">
                         <div class="icon-banner">
-                            <img src="{{ asset('assets-frontend/images/check-icon.svg')}}"> Energy Saving
+                            <img src="{{ asset('assets-frontend/images/check-icon.svg')}}"> {{ __('website.concealed.title_2') }}
                         </div>
                         <img src="{{ asset('assets-frontend/images/gal-slider-1.png')}}">
                     </div>
                     <div class="col-baaner-list">
                         <div class="icon-banner">
-                            <img src="{{ asset('assets-frontend/images/check-icon.svg')}}"> Fresh Air
+                            <img src="{{ asset('assets-frontend/images/check-icon.svg')}}"> {{ __('website.concealed.title_3') }}
                         </div>
                         <img src="{{ asset('assets-frontend/images/gal-slider-1.png')}}">
                     </div>
@@ -53,7 +53,7 @@
         <div class="row">
             <div class="col-lg-6 wow fadeInLeft">
                 <div class="section-heading">
-                    <h2>All Products</h2>
+                    <h2> {{ __('website.concealed.all_product') }}</h2>
                 </div>
             </div>
             <div class="col-lg-6 wow fadeInRight">
@@ -62,7 +62,7 @@
                     <div class="serach-icon-div">
                         <img class="s-icon" src="{{ asset('assets-frontend/images/search-icon.svg')}}">
                         <form>
-                            <input class="form-control" type="text" placeholder="Search Product">
+                            <input class="form-control" type="text" placeholder="{{ __('website.concealed.search_product') }}">
                         </form>
                     </div>
                 </div>
@@ -71,9 +71,9 @@
 
         <div class="mt-4 wow fadeInUp">
             <ul class="nav nav-pills inner-tab-pill mt-5 mb-5" id="pills-tab-inner" role="tablist">
-                <button class="nav-link active" id="innter_list_1-tab" data-bs-toggle="pill" data-bs-target="#innter_list_1" type="button" role="tab" aria-controls="innter_list_1" aria-selected="true">All Products</button>
+                <button class="nav-link active" id="innter_list_1-tab" data-bs-toggle="pill" data-bs-target="#innter_list_1" type="button" role="tab" aria-controls="innter_list_1" aria-selected="true">{{ __('website.concealed.all_product') }}</button>
                 <button class="nav-link" id="innter_list_2-tab" data-bs-toggle="pill" data-bs-target="#innter_list_2" type="button" role="tab" aria-controls="innter_list_2" aria-selected="false">Duct 6A Type</button>
-                <button class="nav-link" id="innter_list_3-tab" data-bs-toggle="pill" data-bs-target="#innter_list_3" type="button" role="tab" aria-controls="innter_list_3" aria-selected="false">Duct 7A Type</button>
+                <button class="nav-link" id="innter_list_3-tab" data-bs-toggle="pill" data-bs-target="#innter_list_3" type="button" role="tab" aria-controls="innter_list_3" aria-selected="false">Duct 7A Type</button> 
             </ul>
             <div class="tab-content" id="pills-tabContent-inner">
                 <div class="tab-pane fade show active" id="innter_list_1" role="tabpanel" aria-labelledby="innter_list_1-tab" tabindex="0">
@@ -90,7 +90,7 @@
                                         <span>Anti-Corrosion Performance</span>
                                         <span>Built-in Pump</span>
                                     </div>
-                                    <a href="single-product.html">Learn More</a>
+                                    <a href="single-product.html">{{ __('website.concealed.btn') }}</a>
                                 </div>
                             </div>
                         </div>
@@ -106,7 +106,7 @@
                                         <span>Anti-Corrosion Performance</span>
                                         <span>Built-in Pump</span>
                                     </div>
-                                    <a href="single-product.html">Learn More</a>
+                                    <a href="single-product.html">{{ __('website.concealed.btn') }}</a>
                                 </div>
                             </div>
                         </div>
@@ -122,7 +122,7 @@
                                         <span>Anti-Corrosion Performance</span>
                                         <span>Built-in Pump</span>
                                     </div>
-                                    <a href="single-product.html">Learn More</a>
+                                    <a href="single-product.html">{{ __('website.concealed.btn') }}</a>
                                 </div>
                             </div>
                         </div>
@@ -138,7 +138,7 @@
                                         <span>Anti-Corrosion Performance</span>
                                         <span>Built-in Pump</span>
                                     </div>
-                                    <a href="single-product.html">Learn More</a>
+                                    <a href="single-product.html">{{ __('website.concealed.btn') }}</a>
                                 </div>
                             </div>
                         </div>
@@ -154,7 +154,7 @@
                                         <span>Anti-Corrosion Performance</span>
                                         <span>Built-in Pump</span>
                                     </div>
-                                    <a href="single-product.html">Learn More</a>
+                                    <a href="single-product.html">{{ __('website.concealed.btn') }}</a>
                                 </div>
                             </div>
                         </div>
@@ -170,7 +170,7 @@
                                         <span>Anti-Corrosion Performance</span>
                                         <span>Built-in Pump</span>
                                     </div>
-                                    <a href="single-product.html">Learn More</a>
+                                    <a href="single-product.html">{{ __('website.concealed.btn') }}</a>
                                 </div>
                             </div>
                         </div>
@@ -190,7 +190,7 @@
 
 <section class="gall-text-section wow fadeInUp">
     <div class="container">
-        <h3>hh shaker</h3>
+        <h3>{{ __('website.concealed.slider_title') }}</h3>
         <div class="single-gallery-image">
             <div class="owl-carousel owl-theme" id="single-gallery-image">
                 <div class="item">

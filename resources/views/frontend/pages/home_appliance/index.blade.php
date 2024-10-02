@@ -5,10 +5,10 @@
 <section class="banner-space appliances-banner">
     <div class="container">
         <div class="text-center">
-            <h1 class="wow fadeInLeft" data-wow-delay="1.2s">All your home appliances</h1>
+            <h1 class="wow fadeInLeft" data-wow-delay="1.2s">{{ __('website.home_appliances.section_1_title_1') }}</h1>
             <img class="wow fadeInRight" data-wow-delay="1.2s" src="{{ asset('assets-frontend/images/appliances-banner-img.png') }}">
-            <h2 class="wow fadeInLeft" data-wow-delay="1.2s">From Beko</h2>
-            <h5 class="wow fadeInRight" data-wow-delay="1.2s">Quality and Efficiency in One Place</h5>
+            <h2 class="wow fadeInLeft" data-wow-delay="1.2s">{{ __('website.home_appliances.section_1_title_2') }}</h2>
+            <h5 class="wow fadeInRight" data-wow-delay="1.2s">{{ __('website.home_appliances.section_1_title_3') }}</h5>
         </div>
     </div>
 </section>
@@ -24,24 +24,24 @@
                 <div class="appi-list-grid">
                     <div class="wow fadeInLeft">
                         <div class="section-heading section-p-heading">
-                            <h5>Quality State</h5>
-                            <h2>Why Beko?</h2>
+                            <h5>{{ __('website.home_appliances.why_beko_tag') }}</h5>
+                            <h2>{{ __('website.home_appliances.why_beko') }}</h2>
                             <p>
-                                Beko is a well-known brand around the world, found in over 120 countries. It offers the latest technology at affordable prices, making Beko a trusted choice for everyone.
+                                {{ __('website.home_appliances.why_beko_desc') }}
                             </p>
-                            <a class="cutome-btn" href="{{ route('frontend.about',['locale' => app()->getLocale()]) }}">Learn More</a>
+                            <a class="cutome-btn" href="{{ route('frontend.about',['locale' => app()->getLocale()]) }}">{{ __('website.home_appliances.btn') }}</a>
                         </div>
                     </div>
                     <div class="wow fadeInLeft">
                         <div class="tag-main-div">
                             <div class="small-icon-tag">
-                                <span><img src="{{ asset('assets-frontend/images/home-tred-icon.svg') }}"></span> Energy-saving
+                                <span><img src="{{ asset('assets-frontend/images/home-tred-icon.svg') }}"></span> {{ __('website.home_appliances.slider_title_1') }}
                             </div>
                             <div class="small-icon-tag">
-                                <span><img src="{{ asset('assets-frontend/images/home-tred-icon.svg') }}"></span> High-efficiency
+                                <span><img src="{{ asset('assets-frontend/images/home-tred-icon.svg') }}"></span> {!! __('website.home_appliances.slider_title_2') !!}
                             </div>
                             <div class="small-icon-tag">
-                                <span><img src="{{ asset('assets-frontend/images/home-tred-icon.svg') }}"></span> Unique features
+                                <span><img src="{{ asset('assets-frontend/images/home-tred-icon.svg') }}"></span>{{ __('website.home_appliances.slider_title_3') }}
                             </div>
                             <img class="tag-bg-img" src="{{ asset('assets-frontend/images/gal-slider-1.png') }}">
                         </div>

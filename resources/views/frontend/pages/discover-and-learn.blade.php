@@ -5,18 +5,19 @@
 
 <section class="banner-space discover-banner-section">
     <div class="container">
-        <img class="discover-banner-img wow fadeIn" data-wow-delay="1.5s" src="{{ asset('assets-frontend/images/indu-banner-1.png')}}">
+        <img class="discover-banner-img wow fadeIn" data-wow-delay="1.5s" src="{{ asset('assets-frontend/images/indu-banner-1.png') }}">
         <div class="discover-banner-text">
-            <div class="wow fadeInLeft" data-wow-delay="1.2s">HH shaker</div>
-            <div class="wow fadeInRight" data-wow-delay="1.2s">Ultimate Guide</div>
-            <div class="wow fadeInLeft" data-wow-delay="1.2s">for you</div>
+            <div class="wow fadeInLeft" data-wow-delay="1.2s">{{ __('website.discover_learn.title_1') }}</div>
+            <div class="wow fadeInRight" data-wow-delay="1.2s">{{ __('website.discover_learn.title_2') }}</div>
+            <div class="wow fadeInLeft" data-wow-delay="1.2s">{{ __('website.discover_learn.title_3') }}</div>
         </div>
         <div class="discover-banner-bottom-text wow fadeInLeft" data-wow-delay="1.2s">
-            <h3><span class="numberanimation">32</span>+</h3>
-            <p>Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna </p>
+            <h3><span class="numberanimation">{{ __('website.discover_learn.bottom_text.number') }}</span>+</h3>
+            <p>{{ __('website.discover_learn.bottom_text.description') }}</p>
         </div>
     </div>
 </section>
+
 
 
 <section class="disc-mainte-section">

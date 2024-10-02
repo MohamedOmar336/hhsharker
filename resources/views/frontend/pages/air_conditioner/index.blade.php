@@ -6,7 +6,7 @@
     <div class="container ">
         <img src="{{ asset('assets-frontend/images/product-main-banner.png') }}">
         <div class="text-center">
-            <a class="cutome-btn wow fadeInUp" data-wow-delay="0.5s" href="{{ route('frontend.about',['locale' => app()->getLocale()]) }}">Learn More</a>
+            <a class="cutome-btn wow fadeInUp" data-wow-delay="0.5s" href="{{ route('frontend.about',['locale' => app()->getLocale()]) }}">{{ __('website.air_conditioner.btn') }}</a>
         </div>
     </div>
 </section>
@@ -18,8 +18,8 @@
 <section class="pro-mainlist-section">
     <div class="container">
         <div class="section-heading text-center wow fadeInUp">
-            <h5>LCAC</h5>
-            <h2>Types of Air Conditioners</h2>
+            <h5>{{ __('website.air_conditioner.tab') }}</h5>
+            <h2>{{ __('website.air_conditioner.title') }}</h2>
         </div>
 
         @foreach($airConditionerArr as $cat)
@@ -28,7 +28,7 @@
                     <div class="col-lg-6 wow fadeInLeft" data-wow-delay="0.5s">
                         <h3>{{ $cat->name }}</h3>
                         <p>{{ $cat->description }}</p>
-                        <a class="cutome-btn" href="{{ route('frontend.air-conditioner.parent',['locale' => app()->getLocale(),'parent'=>$cat->slug]) }}">Learn More</a>
+                        <a class="cutome-btn" href="{{ route('frontend.air-conditioner.parent',['locale' => app()->getLocale(),'parent'=>$cat->slug]) }}">{{ __('website.air_conditioner.btn') }}</a>
                     </div>
                     <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.5s">
                         <img src="{{ asset('images/'.$cat->image) }}">
@@ -44,7 +44,7 @@
 
 <section class="gall-text-section wow fadeInUp">
     <div class="container">
-        <h3>hh shaker</h3>
+        <h3>{{ __('website.air_conditioner.slider_title') }}</h3>
         <div class="single-gallery-image">
             <div class="owl-carousel owl-theme" id="single-gallery-image">
                 <div class="item">

@@ -3,28 +3,28 @@
 <section class="banner-space com-vrf-ban-section">
     <div class="container">
         <h1 class="wow fadeInLeft" data-wow-delay="1.2s">
-            Exceptional Energy Efficiency and Cost Savings with VRF Systems
+            {{ __('website.air_conditioner.child_title_1') }}
         </h1>
         <div class="banner-main-vrf wow fadeInRight" data-wow-delay="1.2s">
             <div class="col-vrf hovered">
                 <img class="vrf-banner-img" src="{{ asset('assets-frontend/images/vrf-banner.png')}}">
                 <div class="vfr-banner-icon">
                     <span class="span-icon"><img src="{{ asset('assets-frontend/images/home-tred-icon.svg') }}"></span>
-                    <span class="span-text">Meta 2.0</span>
+                    <span class="span-text">{{ __('website.air_conditioner.child_slider_title_1') }}</span>
                 </div>
             </div>
             <div class="col-vrf">
                 <img class="vrf-banner-img" src="{{ asset('assets-frontend/images/vrf-banner.png')}}">
                 <div class="vfr-banner-icon">
                     <span class="span-icon"><img src="{{ asset('assets-frontend/images/home-tred-icon.svg') }}"></span>
-                    <span class="span-text">HyperLink</span>
+                    <span class="span-text">{{ __('website.air_conditioner.child_slider_title_2') }}</span>
                 </div>
             </div>
             <div class="col-vrf">
                 <img class="vrf-banner-img" src="{{ asset('assets-frontend/images/vrf-banner.png')}}">
                 <div class="vfr-banner-icon">
                     <span class="span-icon"><img src="{{ asset('assets-frontend/images/home-tred-icon.svg') }}"></span>
-                    <span class="span-text">Adaptive ESP</span>
+                    <span class="span-text">{{ __('website.air_conditioner.child_slider_title_3') }}</span>
                 </div>
             </div>
         </div>
@@ -40,12 +40,12 @@
         <div class="row gx-lg-5">
             <div class="col-lg-6 wow fadeInLeft">
                 <div class="section-heading section-p-heading">
-                    <h5>LCAC</h5>
-                    <h2>Types of <br> {{ $childCategoryArr->name  }}</h2>
+                    <h5>{{ __('website.air_conditioner.child_slider_tag') }}</h5>
+                    <h2>{{ __('website.air_conditioner.parent_title_2') }} <br> {{ $childCategoryArr->name  }}</h2>
                     <p>
-                        Choose the best type based on space capacity and required features.
+                        {{ __('website.air_conditioner.child_slider_description') }}
                     </p>
-                    <a class="cutome-btn" href="{{ route('frontend.about',['locale' => app()->getLocale()]) }}">Learn More</a>
+                    <a class="cutome-btn" href="{{ route('frontend.about',['locale' => app()->getLocale()]) }}">{{ __('website.air_conditioner.btn') }}</a>
                 </div>
             </div>
             <div class="col-lg-6"></div>
@@ -53,13 +53,13 @@
 
                 <div class="tag-main-div wow fadeInLeft">
                     <div class="small-icon-tag">
-                        <span><img src="{{ asset('assets-frontend/images/home-tred-icon.svg') }}"></span> Energy-saving
+                        <span><img src="{{ asset('assets-frontend/images/home-tred-icon.svg') }}"></span> {{ __('website.air_conditioner.tag_1') }}
                     </div>
                     <div class="small-icon-tag">
-                        <span><img src="{{ asset('assets-frontend/images/home-tred-icon.svg') }}"></span> High-efficiency
+                        <span><img src="{{ asset('assets-frontend/images/home-tred-icon.svg') }}"></span> {{ __('website.air_conditioner.tag_2') }}
                     </div>
                     <div class="small-icon-tag">
-                        <span><img src="{{ asset('assets-frontend/images/home-tred-icon.svg') }}"></span> Unique features
+                        <span><img src="{{ asset('assets-frontend/images/home-tred-icon.svg') }}"></span> {{ __('website.air_conditioner.tag_3') }}
                     </div>
                     <img class="tag-bg-img" src="{{ asset('assets-frontend/images/gal-slider-1.png')}}">
                 </div>
@@ -69,11 +69,11 @@
                 <div class="nub-residiv wow fadeInLeft">
                     <div>
                         <h4><span class="numberanimation">100</span>+</h4>
-                        <p>Products</p>
+                        <p>{{ __('website.air_conditioner.box_1') }}</p>
                     </div>
                     <div>
-                        <h4><span class="numberanimation">10</span> y</h4>
-                        <p>Warranty</p>
+                        <h4><span class="numberanimation">10</span> {{ __('website.air_conditioner.box_2') }}</h4>
+                        <p>{{ __('website.air_conditioner.box_3') }}</p>
                     </div>
                 </div>
             </div>
@@ -84,8 +84,8 @@
                     <img src="{{ asset('images/'.$cat->image) }}" width="100%" alt="Product Image">
                     <div>
                         <h3>{{ $cat->name }}</h3>
-                        <p>Includes various types: cassette, concealed, wall-mounted, and arch units.</p>
-                        <a href="{{ route('frontend.air-conditioner.subchild',['locale' => app()->getLocale(),'subchild'=>$cat->slug,'child'=>$childCategoryArr->slug,'parent'=>$parentCategoryArr->slug]) }}">Learn More</a>
+                        <p>{{ $cat->description }}</p>
+                        <a href="{{ route('frontend.air-conditioner.subchild',['locale' => app()->getLocale(),'subchild'=>$cat->slug,'child'=>$childCategoryArr->slug,'parent'=>$parentCategoryArr->slug]) }}">{{ __('website.air_conditioner.btn') }}</a>
                     </div>
                 </div>
                 @endforeach
@@ -99,7 +99,7 @@
 
 <section class="gall-text-section wow fadeInUp">
     <div class="container">
-        <h3>hh shaker</h3>
+        <h3>{{ __('website.air_conditioner.slider_title') }}</h3>
         <div class="single-gallery-image">
             <div class="owl-carousel owl-theme" id="single-gallery-image">
                 <div class="item">
