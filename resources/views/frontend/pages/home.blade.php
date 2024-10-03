@@ -201,7 +201,7 @@
                         @foreach($airConditionFeaturedProducts as $product)
                         <div class="comn-slider-list {{ numberToWord($loop->iteration) }}">
                             {{-- <img src="{{ Storage::url($product->image) }}" > --}}
-                            <img src="{{ isset($product->product_image) ?  Storage::url($product->product_image) : asset('assets-frontend/images/inner-prod-1.png')}}" alt="Commercial Devices Image">
+                            <img src="{{ isset($product->product_image) ?  Storage::url($product->product_image) : asset('assets-frontend/images/about-banner-1.png')}}" alt="Commercial Devices Image">
 
                             <h4>{{ $product->name }}</h4>
                             <p>{{ trimString($product->description,90) }}</p>
