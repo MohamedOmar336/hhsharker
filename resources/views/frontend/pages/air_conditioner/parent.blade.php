@@ -58,7 +58,7 @@
 
                 @foreach($airConditionerChildArr as $cat)
                 <div class="resi-prod-list wow fadeInRight">
-                    <img src="{{ asset('images/'.$cat->image) }}" width="100%" alt="Product Image">
+                    <img src="{{ iiset($cat->image) ?  asset('images/'.$cat->image) : asset('assets-frontend/images/inner-prod-1.png')}}" width="100%" alt="Product Image">
                     <div>
                         <h3>{{ $cat->name }} </h3>
                         <p>{{ $cat->description }}</p>
@@ -66,7 +66,7 @@
                     </div>
                 </div>
                 @endforeach
-                
+
             </div>
         </div>
     </div>

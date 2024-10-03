@@ -1,5 +1,5 @@
 @extends('frontend.layouts.app')
-@section('content')   
+@section('content')
     <section class="home-banner">
         <div class="container">
             <h1 class="banner-text-animation owl-carousel owl-theme wow fadeInLeft" data-wow-delay="4s" id="home-text-animation">
@@ -41,7 +41,7 @@
 
 
     </section>
-    
+
    @include('frontend.layouts.includes.common_slider_1')
 
     <section class="logo-list-section">
@@ -76,10 +76,10 @@
             <ul class="nav nav-pills home-tab-main mb-5 wow fadeInUpBig" id="pills-tab" role="tablist">
                 @if($airConditionerArr->count() > 0)
                     <button class="nav-link active" id="home_pro_tab_1-tab" data-bs-toggle="pill" data-bs-target="#home_pro_tab_1" type="button" role="tab" aria-controls="home_pro_tab_1" aria-selected="true">{{ __('website.homepage_product_section_1.category_1') }}</button>
-                @endif 
+                @endif
                     @if($homeApplianceArr->count() > 0)
                     <button class="nav-link {{ $airConditionerArr->count() == 0 ? 'active' : ''}}" id="home_pro_tab_2-tab" data-bs-toggle="pill" data-bs-target="#home_pro_tab_2" type="button" role="tab" aria-controls="home_pro_tab_2" aria-selected="false">{{ __('website.homepage_product_section_1.category_2') }}</button>
-                @endif            
+                @endif
             </ul>
             <div class="tab-content" id="pills-tabContent">
                 @if($airConditionerArr->count() > 0)
@@ -88,7 +88,7 @@
                         @foreach($airConditionerArr as $cat)
                             <div class="col-md-6 col-lg-4 wow fadeInUpBig">
                                 <div class="product-list-home">
-                                    <div class="product-img"><img src="{{ asset('images/'.$cat->image) }}" width="100%" alt="Product Image"></div>
+                                    <div class="product-img"><img src="{{ iiset($cat->image) ?  asset('images/'.$cat->image) : asset('assets-frontend/images/inner-prod-1.png')}}" width="100%" alt="Product Image"></div>
                                     <div class="product-body">
                                         <h3>{{ $cat->name }}</h3>
                                         <p>{{ trimString($cat->description,90) }}</p>
@@ -106,7 +106,7 @@
                         @foreach($homeApplianceArr as $cat)
                         <div class="col-md-6 col-lg-4">
                             <div class="product-list-home">
-                                <div class="product-img"><img src="{{ asset('images/'.$cat->image) }}" width="100%" alt="Product Image"></div>
+                                <div class="product-img"><img src="{{ iiset($cat->image) ?  asset('images/'.$cat->image) : asset('assets-frontend/images/inner-prod-1.png')}}" width="100%" alt="Product Image"></div>
                                 <div class="product-body">
                                     <h3>{{ $cat->name }}</h3>
                                     <p>{{ trimString($cat->description,90) }}</p>
@@ -118,7 +118,7 @@
                     </div>
                 </div>
                 @endif
-                
+
             </div>
         </div>
     </section>
@@ -274,16 +274,16 @@
                         <p>“{{ __('website.homepage_testimonials.item_1.desc') }}”</p>
                         <div>
                             <img src="{{ asset('assets-frontend/images/testi-pro-1.png') }}" alt="Testimonial Profile Image"> {{ __('website.homepage_testimonials.item_1.author') }}
-                        </div> 
+                        </div>
                     </div>
-                </div> 
+                </div>
                 <div class="col-lg-4 offset-lg-4 wow fadeInRightBig" data-wow-delay="0.4s">
                     <div class="testi-box">
                         <h4>{{ __('website.homepage_testimonials.item_2.title') }}</h4>
                         <p>“{{ __('website.homepage_testimonials.item_2.desc') }}”</p>
                         <div>
                             <img src="{{ asset('assets-frontend/images/testi-pro-1.png') }}" alt="Testimonial Profile Image"> {{ __('website.homepage_testimonials.item_2.author') }}
-                        </div> 
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4 wow fadeInLeftBig" data-wow-delay="0.2s">
@@ -292,7 +292,7 @@
                         <p>“{{ __('website.homepage_testimonials.item_3.desc') }}”</p>
                         <div>
                             <img src="{{ asset('assets-frontend/images/testi-pro-1.png') }}" alt="Testimonial Profile Image"> {{ __('website.homepage_testimonials.item_3.author') }}
-                        </div> 
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4 wow fadeInUpBig" data-wow-delay="0.8s">
@@ -301,7 +301,7 @@
                         <p>“{{ __('website.homepage_testimonials.item_4.desc') }}”</p>
                         <div>
                             <img src="{{ asset('assets-frontend/images/testi-pro-1.png') }}" alt="Testimonial Profile Image"> {{ __('website.homepage_testimonials.item_4.author') }}
-                        </div> 
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4 wow fadeInRightBig" data-wow-delay="0.6s">
@@ -310,7 +310,7 @@
                         <p>“{{ __('website.homepage_testimonials.item_5.desc') }}”</p>
                         <div>
                             <img src="{{ asset('assets-frontend/images/testi-pro-1.png') }}" alt="Testimonial Profile Image">{{ __('website.homepage_testimonials.item_5.author') }}
-                        </div> 
+                        </div>
                     </div>
                 </div>
             </div>
