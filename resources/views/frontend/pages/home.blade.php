@@ -198,16 +198,31 @@
                 <div class="col-lg-8 col-xl-6 pe-0 wow fadeInRightBig">
 
                     <div class="commercial-list-home ">
-                        @foreach($airConditionFeaturedProducts as $product)
-                        <div class="comn-slider-list {{ numberToWord($loop->iteration) }}">
+                        <div class="comn-slider-list {{ numberToWord(1) }}">
                             {{-- <img src="{{ Storage::url($product->image) }}" > --}}
-                            <img src="{{ isset($product->product_image) ?  Storage::url($product->product_image) : asset('assets-frontend/images/about-banner-1.png')}}" alt="Commercial Devices Image">
+                            <img src="{{ asset('assets-website/images/v1.jpeg')}}" alt="Commercial Devices Image">
 
-                            <h4>{{ $product->name }}</h4>
-                            <p>{{ trimString($product->description,90) }}</p>
-                            <a href="{{ route('frontend.product.page',['locale' => app()->getLocale(),'id'=> $product->id]) }}">{{ __('website.homepage_product_section_3.button') }}</a>
+                            <h4>Split</h4>
+                            {{-- <p>{{ trimString($product->description,90) }}</p> --}}
+                            <a href="{{ route('frontend.product.page',['locale' => app()->getLocale(),'id'=> 1]) }}">{{ __('website.homepage_product_section_3.button') }}</a>
                         </div>
-                        @endforeach
+
+                        <div class="comn-slider-list {{ numberToWord(2) }}">
+                            {{-- <img src="{{ Storage::url($product->image) }}" > --}}
+                            <img src="{{ asset('assets-website/images/v2.jpeg')}}" alt="Commercial Devices Image">
+
+                            <h4>V8</h4>
+                            {{-- <p>{{ trimString($product->description,90) }}</p> --}}
+                            <a href="{{ route('frontend.product.page',['locale' => app()->getLocale(),'id'=> 1]) }}">{{ __('website.homepage_product_section_3.button') }}</a>
+                        </div>
+                        <div class="comn-slider-list {{ numberToWord(3) }}">
+                            {{-- <img src="{{ Storage::url($product->image) }}" > --}}
+                            <img src="{{ asset('assets-website/images/v3.jpeg')}}" alt="Commercial Devices Image">
+
+                            <h4>Floorstanding</h4>
+                            {{-- <p>{{ trimString($product->description,90) }}</p> --}}
+                            <a href="{{ route('frontend.product.page',['locale' => app()->getLocale(),'id'=> 1]) }}">{{ __('website.homepage_product_section_3.button') }}</a>
+                        </div>
                     </div>
 
                     <!-- <div class="owl-carousel owl-theme" id="home-commercial-slider">

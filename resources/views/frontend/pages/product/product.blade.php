@@ -4,7 +4,9 @@
     <div class="container">
         <div class="row g-lg-5">
             <div class="col-lg-6 wow fadeInLeft" data-wow-delay="1.2s">
-                <img class="single-main-img" src="{{ Storage::url($record->product_image); }}">
+                {{-- <img class="single-main-img" src="{{ Storage::url($record->product_image); }}"> --}}
+                <img class="single-main-img" src="{{ isset($record->product_image) ?  Storage::url($record->product_image) : asset('assets-frontend/images/inner-prod-1.png')}}">
+
                 <div class="sing-btn-main">
                     <a class="sing-btn-1" href="#">Request a Quote</a>
                     <a class="sing-btn-2" href="#">Contact Sales</a>
