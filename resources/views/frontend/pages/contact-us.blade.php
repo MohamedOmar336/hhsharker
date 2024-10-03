@@ -11,7 +11,7 @@
                 <img class="cc-img-5 wow fadeInRight" data-wow-delay="1.7s" src="{{ asset('assets-frontend/images/contact-testi-6.png') }}" alt="Image">
                 <img class="cc-img-6 wow fadeInRight" data-wow-delay="1.9s" src="{{ asset('assets-frontend/images/contact-testi-4.png') }}" alt="Image">
                 <h1 class="wow fadeInUp" data-wow-delay="1.2s">{!! __('website.contact.title') !!}</h1>
-                <a class="cutome-btn green-custome-btn wow fadeInUp" data-wow-delay="1.2s" href="#">{{ __('website.contact.button') }}</a>
+                <a class="cutome-btn green-custome-btn wow fadeInUp" data-wow-delay="1.2s" href="#contact-section">{{ __('website.contact.button') }}</a>
             </div>
         </div>
     </section>
@@ -78,7 +78,7 @@
         </div>
     </section>
 
-    <section class="contact-form-section">
+    <section class="contact-form-section" id="contact-section">
         <div class="container">
             <div class="row">
                 <div class="col-xl-4 wow fadeInLeftBig">

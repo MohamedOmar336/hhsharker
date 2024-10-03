@@ -121,6 +121,18 @@ $(document).ready(function() {
     }
 });
 
+$(document).ready(function() {
+    let lastHoveredId = null;
+    $('.menu-imge-div').hover(function() {
+        const currentId = this.id;
+        if (lastHoveredId && lastHoveredId !== currentId) {
+            $(".menu-imge-div-" + lastHoveredId).removeClass("menuhovershow");
+        }
+        $(".menu-imge-div-" + currentId).addClass("menuhovershow");
+        lastHoveredId = currentId;
+    }, function() {});
+});
+
 
 // banner green line
 $(document).ready(function() {
@@ -796,13 +808,13 @@ $('#home-text-animation').owlCarousel({
 });
 
 // home banner text animation
-var words = document.getElementsByClassName('word');
-var wordArray = [];
-var currentWord = 0;
-words[currentWord].style.opacity = 1;
-for (var i = 0; i < words.length; i++) {
-    splitLetters(words[i]);
-}
+// var words = document.getElementsByClassName('word');
+// var wordArray = [];
+// var currentWord = 0;
+// words[currentWord].style.opacity = 1;
+// for (var i = 0; i < words.length; i++) {
+//     splitLetters(words[i]);
+// }
 
 function changeWord() {
     var cw = wordArray[currentWord];
@@ -843,5 +855,5 @@ function splitLetters(word) {
     }
     wordArray.push(letters);
 }
-changeWord();
-setInterval(changeWord, 4000);
+// changeWord();
+// setInterval(changeWord, 4000);
