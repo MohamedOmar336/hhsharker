@@ -122,8 +122,8 @@
                     @if(isset($blogs[0]))
                     <div class="indu-big-list-div">
                         <img src="{{ asset('images/'.$blogs[0]->image) }}" alt="Blog Image">
-                        <h3>{{ $blogs[0]->title_en }}</h3>
-                        <p>{{ strip_tags($blogs[0]->content_en ) }}</p>
+                        <h3>{{ $blogs[0]->title }}</h3>
+                        <p>{{ strip_tags($blogs[0]->content ) }}</p>
                         <span>{{ $blogs[0]->created_at->format('M d, Y') }}</span>
                         <a href="#">{{ __('website.industry_insight.blog_section.btn_2') }}</a>
                     </div>
@@ -133,7 +133,7 @@
                     @foreach($blogs->skip(1)->take(3) as $blog)
                     <div class="indu-small-list-div">
                         <img src="{{ asset('images/'.$blog->image) }}" alt="Blog Image">
-                        <h3>{{ $blog->title_en }}</h3>
+                        <h3>{{ $blog->title }}</h3>
                         <p>{{ $blog->created_at->format('M d, Y') }}</p>
                     </div>
                     @endforeach

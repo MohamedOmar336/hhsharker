@@ -1,8 +1,12 @@
 @extends('frontend.layouts.app')
 @section('content')
 
-
-<section class="banner-space appliances-banner">
+<section class="product-banner wow fadeIn" data-wow-delay="1.2s">
+    <div class="container">
+        <img src="{{ asset('assets-frontend/images/home-app-main-banner.png') }}">
+    </div>
+</section>
+{{-- <section class="banner-space appliances-banner">
     <div class="container">
         <div class="text-center">
             <h1 class="wow fadeInLeft" data-wow-delay="1.2s">{{ __('website.home_appliances.section_1_title_1') }}</h1>
@@ -11,7 +15,7 @@
             <h5 class="wow fadeInRight" data-wow-delay="1.2s">{{ __('website.home_appliances.section_1_title_3') }}</h5>
         </div>
     </div>
-</section>
+</section> --}}
 
 
 @include('frontend.layouts.includes.common_slider_1')

@@ -44,17 +44,17 @@
                             </div>
                             <div class="col-xl-4">
                                 <a href="{{ route('frontend.air-conditioner',['locale' => app()->getLocale()]) }}">Air Conditioners</a>
-                                <a class="small-af" href="#">Window AC</a>
-                                <a class="small-af" href="#">VRF</a>
-                                <a class="small-af" href="#">Concealed</a>
-                                <a class="small-af" href="#">Cassette</a>
+                                @foreach($headerAirConditionerArr as $ac)                                   
+                                    <a class="small-af" href="{{ route('frontend.air-conditioner.parent',['locale' => app()->getLocale(),'parent'=>$ac->slug]) }}">
+                                        {{ $ac->name }}
+                                    </a>
+                                @endforeach
                             </div>
                             <div class="col-xl-4">
                                 <a href="{{ route('frontend.home-appliances',['locale' => app()->getLocale()]) }}">Home Appliances </a>
-                                <a class="small-af" href="#">Refrigerator</a>
-                                <a class="small-af" href="#">Dishwashers </a>
-                                <a class="small-af" href="#">Washing machine </a>
-                                <a class="small-af" href="#">Coffee Machines </a>
+                                @foreach($headerHomeAppliencesrArr->take(4) as $ac)
+                                    <a class="small-af" href="{{ route('frontend.home-appliances.parent',['locale' => app()->getLocale(),'parent'=>$ac->slug]) }}">{{ $ac->name }}</a>
+                                @endforeach
                             </div>
                         </div>
                     </div>

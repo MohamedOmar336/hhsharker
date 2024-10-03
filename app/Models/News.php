@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\App;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class News extends Model
 {
@@ -52,4 +53,19 @@ class News extends Model
     }
 
     protected $dates = ['created_at', 'updated_at'];
+
+    public function getTitleAttribute()
+    {
+        $locale = App::getLocale(); // Get the current locale
+
+        // Choose the right column based on locale
+        return $this->{'title_' . $locale} ?? $this->title_en; // Fallback to English
+    }
+    public function getContentAttribute()
+    {
+        $locale = App::getLocale(); // Get the current locale
+
+        // Choose the right column based on locale
+        return $this->{'content_' . $locale} ?? $this->content_en; // Fallback to English
+    }
 }
