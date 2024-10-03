@@ -17,7 +17,7 @@
                     <p>{{ __('website.value_vision.section_1.desc') }}</p>
                 </div>
                 <div class="col-lg-12 mt-lg-5 mt-3 wow fadeInUpBig" data-wow-delay="1.2s">
-                    <img src="{{ asset('assets-frontend/images/values-banner-img.png') }}" alt="Values ​​and vision Banner">
+                    <img src="{{ asset('assets-frontend/images/values-banner-img-1.png') }}" alt="Values ​​and vision Banner">
                 </div>
             </div>
         </div>
@@ -46,7 +46,7 @@
             <div class="row">
                 <div class="col-md-6 col-xl-3 wow fadeInLeftBig">
                     <div class="value-img-box-1">
-                        <img src="{{ asset('assets-frontend/images/value-img-text-1.png') }}" alt="Value Image">
+                        <img src="{{ asset('assets-frontend/images/value-img-text-1-new.png') }}" alt="Value Image">
                         <div>
                             <h5>{{ __('website.value_vision.section_3.box_1_title_1') }}</h5>
                             <p>{{ __('website.value_vision.section_3.box_1_title_2') }}</p>
@@ -55,7 +55,7 @@
                 </div>
                 <div class="col-md-6 col-xl-3">
                     <div class="value-img-box-2">
-                        <img class="wow fadeInDownBig" data-wow-delay="0.3s" src="{{ asset('assets-frontend/images/value-img-text-2.png') }}" alt="Value Image">
+                        <img class="wow fadeInDownBig" data-wow-delay="0.3s" src="{{ asset('assets-frontend/images/value-img-text-2-new.png') }}" alt="Value Image">
                         <div class="wow fadeInUpBig" data-wow-delay="0.3s">
                             <h5>{{ __('website.value_vision.section_3.box_2_title_1') }}</h5>
                             <p>{{ __('website.value_vision.section_3.box_2_title_2') }}</p>
@@ -68,12 +68,12 @@
                             <h5>{{ __('website.value_vision.section_3.box_3_title_1') }}</h5>
                             <p>{{ __('website.value_vision.section_3.box_3_title_2') }}</p>
                         </div>
-                        <img class="wow fadeInUpBig" data-wow-delay="0.6s" src="{{ asset('assets-frontend/images/value-img-text-3.png') }}" alt="Value Image">
+                        <img class="wow fadeInUpBig" data-wow-delay="0.6s" src="{{ asset('assets-frontend/images/value-img-text-3-new.png') }}" alt="Value Image">
                     </div>
                 </div>
                 <div class="col-md-6 col-xl-3 wow fadeInRightBig" data-wow-delay="0.9s">
                     <div class="value-img-box-1">
-                        <img src="{{ asset('assets-frontend/images/value-img-text-4.png') }}" alt="Value Image">
+                        <img src="{{ asset('assets-frontend/images/value-img-text-4-new.png') }}" alt="Value Image">
                         <div>
                             <h5>{{ __('website.value_vision.section_3.box_4_title_1') }}</h5>
                             <p>{{ __('website.value_vision.section_3.box_4_title_2') }}</p>
@@ -107,15 +107,15 @@
                         <h2>{{ __('website.value_vision.section_5.title') }}</h2>
                     </div>
                 </div>
-                <div class="col-lg-7 offset-xl-2 col-xl-7 wow fadeInRightBig">
-                    <img class="vision-img-1" src="{{ asset('assets-frontend/images/vision-img-1.png') }}" alt="Vision Image">
+                <div class="col-lg-7 offset-xl-1 col-xl-8 wow fadeInRightBig">
+                    <img class="vision-img-1" src="{{ asset('assets-frontend/images/vision-img-1-new.png') }}" alt="Vision Image">
                 </div>
             </div>
             <div class="row gx-lg-5 g-4 pt-4">
-                <div class="col-lg-5 wow fadeInLeftBig">
+                {{-- <div class="col-lg-5 wow fadeInLeftBig">
                     <img class="vision-img-2" src="{{ asset('assets-frontend/images/vision-img-2.png') }}" alt="Vision Image">
-                </div>
-                <div class="col-lg-7 wow fadeInRightBig">
+                </div> --}}
+                <div class="col-lg-12 wow fadeInRightBig">
                     {!! __('website.value_vision.section_5.desc') !!}
                 </div>
             </div>

@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row gx-lg-5 align-items-center">
                 <div class="col-lg-6 wow fadeInLeftBig" data-wow-delay="1.2s">
-                    <img src="{{ asset('assets-frontend/images/about-banner.png') }}" alt="About Banner">
+                    <img src="{{ asset('assets-frontend/images/about-banner-1.png') }}" alt="About Banner">
                 </div>
                 <div class="col-lg-6">
                     <div class="section-heading wow fadeInRightBig" data-wow-delay="1.5s">
@@ -69,7 +69,7 @@
                     {!! __('website.about.last_section.desc') !!}
                 </div>
                 <div class="col-xl-6 wow fadeInRightBig">
-                    <img src="{{ asset('assets-frontend/images/about-lsat-banner.png') }}" alt="About Banner">
+                    <img src="{{ asset('assets-frontend/images/about-lsat-banner-1.png') }}" alt="About Banner">
                 </div>
             </div>
         </div>

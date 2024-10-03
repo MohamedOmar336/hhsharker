@@ -18,21 +18,21 @@
                 <div class="grid-banner-list">
                     <div class="col-baaner-list">
                         <div class="icon-banner">
-                            <img src="{{ asset('assets-frontend/images/check-icon.svg') }}"> Ultra-Quiet Operation
+                            <img src="{{ asset('assets-frontend/images/check-icon.svg') }}"> ProSmart Inverter Compressor
                         </div>
-                        <img src="{{ asset('assets-frontend/images/gal-slider-1.png') }}">
+                        <img src="{{ asset('assets-frontend/images/refrigerator-banner-small-1.png') }}">
                     </div>
                     <div class="col-baaner-list">
                         <div class="icon-banner">
-                            <img src="{{ asset('assets-frontend/images/check-icon.svg') }}"> Energy Saving<br> Inverter Tech
+                            <img src="{{ asset('assets-frontend/images/check-icon.svg') }}"> Harvest Fresh
                         </div>
-                        <img src="{{ asset('assets-frontend/images/gal-slider-1.png') }}">
+                        <img src="{{ asset('assets-frontend/images/refrigerator-banner-small-2.png') }}">
                     </div>
                     <div class="col-baaner-list">
                         <div class="icon-banner">
-                            <img src="{{ asset('assets-frontend/images/check-icon.svg') }}"> Smart Control
+                            <img src="{{ asset('assets-frontend/images/check-icon.svg') }}"> CoolRoom
                         </div>
-                        <img src="{{ asset('assets-frontend/images/gal-slider-1.png') }}">
+                        <img src="{{ asset('assets-frontend/images/refrigerator-banner-small-3.png') }}">
                     </div>
                 </div>
             </div>
@@ -104,9 +104,9 @@
         <div class="row">
             <div class="col-lg-8 wow fadeInLeft">
                 <div class="hpp-cust-div">
-                    <img src="{{ asset('assets-frontend/images/contact-testi-1.png') }}">
-                    <img src="{{ asset('assets-frontend/images/contact-testi-2.png') }}">
-                    <img src="{{ asset('assets-frontend/images/contact-testi-4.png') }}">
+                    <img src="{{ asset('assets-frontend/images/contact-testi-7.png') }}">
+                    <img src="{{ asset('assets-frontend/images/contact-testi-8.png') }}">
+                    <img src="{{ asset('assets-frontend/images/contact-testi-9.png') }}">
                 </div>
 
             </div>
