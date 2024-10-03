@@ -90,6 +90,8 @@
                         <td>{{ $record->category ? $record->category : __('general.uncategorized') }}</td>
                         <td>
                             <a href="{{ route('frontend.product.page', ['locale' => app()->getLocale(), 'id' => $record->id]) }}" target="_blank" class="mdi mdi-eye-circle-outline"> </a>
+                            <a href="{{ route('products.edit', $record->id) }}" class="action-icon"> <i data-feather="edit"></i></a>
+
                             {{-- <form style="display: inline;">
                             </form>
                             <form action="{{ route('products.destroy', $record->id) }}" method="POST" class="delete-form">

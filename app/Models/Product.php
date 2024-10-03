@@ -24,7 +24,7 @@ class Product extends Model
         'feature_ar',
         'status', // Assuming status is relevant, modify or remove if not needed
         'saso',  // If still relevant, otherwise remove or adjust
-        'product_image',
+        // 'product_image',
         'group',
         'category',
         'sub_category',
@@ -51,6 +51,7 @@ class Product extends Model
         'best_selling' => 'boolean',
         'featured' => 'boolean',
         'recommened' => 'boolean',
+        'product_image' => 'array', // Cast product_image as an array to handle multiple images
     ];
 
     public function category()
@@ -77,7 +78,7 @@ class Product extends Model
     {
         return $this->hasMany(Product::class, 'parent_id');
     }
-    
+
     public function getNameAttribute()
     {
         $locale = App::getLocale(); // Get the current locale
