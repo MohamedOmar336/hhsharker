@@ -200,7 +200,9 @@
                     <div class="commercial-list-home ">
                         @foreach($airConditionFeaturedProducts as $product)
                         <div class="comn-slider-list {{ numberToWord($loop->iteration) }}">
-                            <img src="{{ Storage::url($product->image) }}" alt="Commercial Devices Image">
+                            {{-- <img src="{{ Storage::url($product->image) }}" > --}}
+                            <img src="{{ isset($product->product_image) ?  Storage::url($product->product_image) : asset('assets-frontend/images/inner-prod-1.png')}}" alt="Commercial Devices Image">
+
                             <h4>{{ $product->name }}</h4>
                             <p>{{ trimString($product->description,90) }}</p>
                             <a href="{{ route('frontend.product.page',['locale' => app()->getLocale(),'id'=> $product->id]) }}">{{ __('website.homepage_product_section_3.button') }}</a>
