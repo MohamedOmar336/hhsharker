@@ -25,7 +25,7 @@
                         <span>{{ __('website.news.new') }}</span>
                         <img src="{{ asset('images/'.$newsItem->image) }}" alt="News Image">
                         <div>
-                            <h5>{{ $newsItem->title_en }}</h5>
+                            <h5>{{ $newsItem->title }}</h5>
                             <p>{{ $newsItem->created_at->format('M d, Y') }}</p>
                         </div>
                     </div>
@@ -95,8 +95,8 @@
                                             <div class="news-list-tab">
                                                 <img src="{{ asset('images/'.$newsItem->image) }}" alt="New Image">
                                                 <div>
-                                                    <h3>{{ $newsItem->title_en }}</h3>
-                                                    <p>{{ strip_tags($newsItem->content_en) }}</p>
+                                                    <h3>{{ $newsItem->title }}</h3>
+                                                    <p>{{ strip_tags($newsItem->content) }}</p>
                                                     <span>{{ $newsItem->created_at->format('M d, Y') }}</span>
                                                     <a class="btn-a" href="#">{{ __('website.news.news_section.btn') }}</a>
                                                 </div>
@@ -112,8 +112,8 @@
                                             <div class="news-list-tab">
                                                 <img src="{{ asset('images/'.$newsItem->image) }}" alt="New Image">
                                                 <div>
-                                                    <h3>{{ $newsItem->title_en }}</h3>
-                                                    <p>{{ strip_tags($newsItem->content_en) }}</p>
+                                                    <h3>{{ $newsItem->title }}</h3>
+                                                    <p>{{ strip_tags($newsItem->content) }}</p>
                                                     <span>{{ $newsItem->created_at->format('M d, Y') }}</span>
                                                     <a class="btn-a" href="#">Read Now</a>
                                                 </div>
@@ -129,8 +129,8 @@
                                             <div class="news-list-tab">
                                                 <img src="{{ asset('images/'.$newsItem->image) }}" alt="New Image">
                                                 <div>
-                                                    <h3>{{ $newsItem->title_en }}</h3>
-                                                    <p>{{ strip_tags($newsItem->content_en) }}</p>
+                                                    <h3>{{ $newsItem->title }}</h3>
+                                                    <p>{{ strip_tags($newsItem->content) }}</p>
                                                     <span>{{ $newsItem->created_at->format('M d, Y') }}</span>
                                                     <a class="btn-a" href="#">Read Now</a>
                                                 </div>

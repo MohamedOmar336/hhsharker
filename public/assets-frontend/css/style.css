@@ -5800,7 +5800,13 @@ a {
 
 
 /*window-list page css----------------------------------- */
+.menu-img-none {
+    display: none;
+}
 
+.menu-img-none.menuhovershow {
+    display: block;
+}
 .winlist-banner-section::before {
     width: 439px;
     height: 439px;

@@ -86,13 +86,15 @@
                                 <div class="megamenu-body ">
                                     <div class="row">
                                         <div class="col-xl-5">
-                                            <img src="{{ asset('assets-frontend/images/air-drop-1.png') }}" width="100%" height="100%" alt="Mega Menu Banner">
+                                            <img class="menu-img-none menu-imge-div-himg1 menuhovershow" src="{{ asset('assets-frontend/images/Residentials-AC.png') }}" width="100%" height="100%" alt="Mega Menu Banner">
+                                            <img class="menu-img-none menu-imge-div-himg2" src="{{ asset('assets-frontend/images/Commercial-AC.png') }}" width="100%" height="100%" alt="Mega Menu Banner">
+                                            <img class="menu-img-none menu-imge-div-himg3" src="{{ asset('assets-frontend/images/Light-Commercial-AC.png') }}" width="100%" height="100%" alt="Mega Menu Banner">
                                         </div>
                                         <div class="col-xl-7">
                                             <div class="row mb-4">
 
                                                 @foreach($headerAirConditionerArr as $ac)
-                                                <div class="col-md-4">
+                                                <div class="col-md-4 menu-imge-div" id="himg{{$loop->iteration}}">
                                                     <a href="{{ route('frontend.air-conditioner.parent',['locale' => app()->getLocale(),'parent'=>$ac->slug]) }}">
                                                         <h5>{{ $ac->name }}</h5>
                                                     </a>

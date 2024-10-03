@@ -39,11 +39,12 @@
         <ul class="nav nav-pills home-tab-main mb-4 mb-lg-5 wow fadeInUp" data-wow-delay="0.4s" id="pills-tab" role="tablist">
             <button class="nav-link active" id="commercial_form_1-tab" data-bs-toggle="pill" data-bs-target="#commercial_form_1" type="button" role="tab" aria-controls="commercial_form_1" aria-selected="true">{{ __('website.commercial_support.section_1.tab_1') }}</button>
             <button class="nav-link" id="commercial_form_1-tab" data-bs-toggle="pill" data-bs-target="#commercial_form_1" type="button" role="tab" aria-controls="commercial_form_1" aria-selected="false">{{ __('website.commercial_support.section_1.tab_2') }}</button>
-            <button class="nav-link" id="commercial_form_1-tab" data-bs-toggle="pill" data-bs-target="#commercial_form_1" type="button" role="tab" aria-controls="commercial_form_1" aria-selected="false">{{ __('website.commercial_support.section_1.tab_3') }}</button>
+            <button class="nav-link" id="commercial_form_3-tab" data-bs-toggle="pill" data-bs-target="#commercial_form_3" type="button" role="tab" aria-controls="commercial_form_3" aria-selected="false">{{ __('website.commercial_support.section_1.tab_3') }}</button>
         </ul>
         <div class="tab-content wow fadeInUp" id="pills-tabContent" data-wow-delay="0.6s">
             <div class="tab-pane fade show active" id="commercial_form_1" role="tabpanel" aria-labelledby="commercial_form_1-tab" tabindex="0">
                 <div class="contact-tab-body">
+        
                     <form id="contact-frm" method="post" action="{{ route('frontend.contact-us.store',['locale' => app()->getLocale()]) }}">
                         @csrf
                         <div class="row">
@@ -111,6 +112,13 @@
                             </div>
                         </div>
                     </form>
+                    
+                </div>
+            </div>
+            <div class="tab-pane fade" id="commercial_form_3" role="tabpanel" aria-labelledby="commercial_form_3-tab" tabindex="0">
+                <div class="contact-tab-body">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3711.5666520961117!2d39.2556875!3d21.524687500000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15c3d20c620ae16b%3A0x4521d5f3b23c9a57!2z2YXYs9iq2YjYr9i5INio2YjYsdiz2YTZitmG2Kcg2KfZhNi02LHZg9ipINin2YTYudix2KjZitipINmE2LXZhtin2LnYqSDYp9mE2K7YstmB!5e0!3m2!1sen!2sin!4v1727937180638!5m2!1sen!2sin" width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                   
                     
                 </div>
             </div>
