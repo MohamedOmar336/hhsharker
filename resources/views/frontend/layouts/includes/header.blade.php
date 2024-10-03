@@ -1,33 +1,3 @@
-
-<style>
-    .viewport {
-        overflow: hidden;
-        position: fixed;
-        height: 100%;
-        width: 100%;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-    }
-    
-    .scroll-container {
-        position: absolute;
-        overflow: hidden;
-        z-index: 10;
-        display: flex;
-        justify-content: center;
-        backface-visibility: hidden;
-        transform-style: preserve-3d;
-        width: 100%;
-    }
-    
-    .body-content {
-        width: 100%;
-    }
-</style>
-
-
 <div class="page-loader">
         <img src="{{ asset('assets-frontend/images/white-logo.png') }}" alt="Logo">
     </div>
@@ -63,21 +33,6 @@
                             </ul>
                             
                         </li>
-                        {{-- <li class="nav-item dropdown dropdown-div">
-                            <a class="nav-link dropdown-toggle" href="{{ route('frontend.air-conditioner',['locale' => app()->getLocale()]) }}" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ __('website.header_menu.air_conditioner') }}
-                            </a>
-                            @if($headerAirConditionerArr->count() > 0)
-                            <ul class="dropdown-menu">
-                                <div class="drop-innter-div">
-                                    @foreach($headerAirConditionerArr as $cat)
-                                    <li><a class="dropdown-item" href="{{ route('frontend.air-conditioner.parent',['locale' => app()->getLocale(),'parent'=>$cat->slug]) }}">{{ $cat->name }}</a></li>
-                                    @endforeach
-                                </div>
-                            </ul>
-                            @endif
-                        </li> --}}
-
                         <li class="nav-item megamenu">
                             <a class="nav-link dropdown-toggle" href="{{ route('frontend.air-conditioner',['locale' => app()->getLocale()]) }}">
                                 {{ __('website.header_menu.air_conditioner') }}
@@ -132,124 +87,6 @@
                                 </div>
                             </div>
                         </li>
-                        
-                        {{-- <li class="nav-item megamenu">
-                            <a class="nav-link dropdown-toggle" href="{{ route('frontend.air-conditioner',['locale' => app()->getLocale()]) }}">
-                                {{ __('website.header_menu.air_conditioner') }}
-                            </a>
-                            <div class="megamenu-main-div">
-                                <div class="megamenu-body ">
-                                    <div class="row">
-                                        <div class="col-xl-7">
-                                            <div class="row mb-4">
-                                                <div class="col-md-4">
-                                                    <h5>Residentials AC</h5>
-                                                    <div class="mega-a-list">
-                                                        <a href="#">Window</a>
-                                                        <a href="#">Inverter</a>
-                                                        <a href="#">On/Off</a>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <h5>Commercial AC</h5>
-                                                    <div class="mega-a-list">
-                                                        <a href="#">VRF</a>
-                                                        <a href="#">Indoor</a>
-                                                        <a href="#">Outdoor</a>
-                                                        <a href="#">Rooftop</a>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <h5>Light Commercial AC</h5>
-                                                    <div class="mega-a-list">
-                                                        <a href="#">Concealed</a>
-                                                        <a href="#">Cassette</a>
-                                                        <a href="#">Floor Standing</a>
-                                                        <a href="#">Portable</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-2">
-                                                <div class="col-md-4">
-                                                    <a href="{{ route('frontend.case-studies',['locale' => app()->getLocale()]) }}"><h5>Case Studies</h5></a>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <a href="{{ route('frontend.commercial-support',['locale' => app()->getLocale()]) }}"><h5>Commercial Support</h5></a>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <a href="{{ route('frontend.our-latest-projects',['locale' => app()->getLocale()]) }}"><h5>Our Latest Projects</h5></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-5">
-                                            <img src="{{ asset('assets-frontend/images/mega-menu-img.png') }}" width="100%" height="100%" alt="Mega Menu Banner">
-                                        </div>
-                                    </div>
-                                    <div class="mt-3">
-                                        <img src="{{ asset('assets-frontend/images/mega-menu-img-2.png') }}" width="100%" alt="Mega Menu Banner">
-                                    </div>
-                                </div>
-                            </div>
-                        </li> --}}
-
-                        {{-- <li class="nav-item megamenu">
-                            <a class="nav-link dropdown-toggle" href="{{ route('frontend.home-appliances',['locale' => app()->getLocale()]) }}">
-                            {{ __('website.header_menu.home_appliances') }}
-                            </a>
-                            <div class="megamenu-main-div">
-                                <div class="megamenu-body ">
-                                    <div class="row">
-                                        <div class="col-xl-7">
-                                            <div class="row mb-4">
-                                                <div class="col-md-4">
-                                                    <h5>Residentials AC</h5>
-                                                    <div class="mega-a-list">
-                                                        <a href="#">Window</a>
-                                                        <a href="#">Inverter</a>
-                                                        <a href="#">On/Off</a>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <h5>Commercial AC</h5>
-                                                    <div class="mega-a-list">
-                                                        <a href="#">VRF</a>
-                                                        <a href="#">Indoor</a>
-                                                        <a href="#">Outdoor</a>
-                                                        <a href="#">Rooftop</a>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <h5>Light Commercial AC</h5>
-                                                    <div class="mega-a-list">
-                                                        <a href="#">Concealed</a>
-                                                        <a href="#">Cassette</a>
-                                                        <a href="#">Floor Standing</a>
-                                                        <a href="#">Portable</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-2">
-                                                <div class="col-md-4">
-                                                    <a href="{{ route('frontend.case-studies',['locale' => app()->getLocale()]) }}"><h5>Case Studies</h5></a>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <a href="{{ route('frontend.commercial-support',['locale' => app()->getLocale()]) }}"><h5>Commercial Support</h5></a>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <a href="{{ route('frontend.our-latest-projects',['locale' => app()->getLocale()]) }}"><h5>Our Latest Projects</h5></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-5">
-                                            <img src="{{ asset('assets-frontend/images/mega-menu-img.png') }}" width="100%" height="100%" alt="Mega Menu Banner">
-                                        </div>
-                                    </div>
-                                    <div class="mt-3">
-                                        <img src="{{ asset('assets-frontend/images/mega-menu-img-2.png') }}" width="100%" alt="Mega Menu Banner">
-                                    </div>
-                                </div>
-                            </div>
-                        </li> --}}
 
                         <li class="nav-item megamenu">
                             <a class="nav-link dropdown-toggle" href="{{ route('frontend.home-appliances',['locale' => app()->getLocale()]) }}">
@@ -264,7 +101,7 @@
                                         <div class="col-xl-7">
                                             <div class="row mb-4">
                                                 <div class="col-md-4">
-                                                    <a href="appliances-main.html">
+                                                    <a href="{{ route('frontend.home-appliances',['locale' => app()->getLocale()]) }}">
                                                         <h5>Home Appliances</h5>
                                                     </a>
                                                     <div class="mega-a-list">

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Product;
 use Illuminate\Support\Facades\App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -77,5 +78,17 @@ class Category extends Model
        
        // Choose the right column based on locale
        return $this->{'description_' . $locale} ?? $this->description_en; // Fallback to English
+    }
+
+    public function getHomeApplienceProductByCateories($mainCat,$subCat){
+
+        $where = [
+            'type' => 'HomeAppliance',
+            'category'=>$mainCat
+        ];
+        if($subCat != 'all'){
+            $where['sub_category'] = $subCat;
+        }
+        return $allProductArr = Product::where($where)->latest()->get();
     }
 }

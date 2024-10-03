@@ -5836,7 +5836,7 @@ a {
     width: 100%;
     box-shadow: 0px 1px 1px rgb(20, 27, 49, 0.2);
     border-radius: 32px;
-    height: 500px;
+    min-height: 500px;
     object-fit: cover;
 }
 
@@ -7303,7 +7303,7 @@ a {
     width: 100%;
     background-color: rgba(126, 141, 201, 0.16);
     border-radius: 32px;
-    object-fit: cover;
+    object-fit: contain;
     height: 600px;
     box-shadow: 0px 1px 1px rgb(20, 27, 49, 0.2);
 }
@@ -8911,3 +8911,29 @@ h1.single-main-heading {
 
 
 /*end dark-mode css----------------------------------- */
+
+.viewport {
+    overflow: hidden;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.scroll-container {
+    position: absolute;
+    overflow: hidden;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    width: 100%;
+}
+
+.body-content {
+    width: 100%;
+}

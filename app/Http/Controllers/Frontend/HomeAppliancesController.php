@@ -39,7 +39,9 @@ class HomeAppliancesController extends Controller
     }
     public function productList2(Request $request)
     {
-        return view('frontend.pages.home_appliance.product-list-2');        
+
+        $homeApplianceArr = Category::where(['category_type' => 'HomeAppliance', 'parent_id' => NULL, 'active' => 1])->get();
+        return view('frontend.pages.home_appliance.product-list-2',compact('homeApplianceArr'));        
     }
    
 
