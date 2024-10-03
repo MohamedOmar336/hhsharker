@@ -88,7 +88,7 @@
                         @foreach($airConditionerArr as $cat)
                             <div class="col-md-6 col-lg-4 wow fadeInUpBig">
                                 <div class="product-list-home">
-                                    <div class="product-img"><img src="{{ iiset($cat->image) ?  asset('images/'.$cat->image) : asset('assets-frontend/images/inner-prod-1.png')}}" width="100%" alt="Product Image"></div>
+                                    <div class="product-img"><img src="{{ isset($cat->image) ?  asset('images/'.$cat->image) : asset('assets-frontend/images/inner-prod-1.png')}}" width="100%" alt="Product Image"></div>
                                     <div class="product-body">
                                         <h3>{{ $cat->name }}</h3>
                                         <p>{{ trimString($cat->description,90) }}</p>
@@ -106,7 +106,7 @@
                         @foreach($homeApplianceArr as $cat)
                         <div class="col-md-6 col-lg-4">
                             <div class="product-list-home">
-                                <div class="product-img"><img src="{{ iiset($cat->image) ?  asset('images/'.$cat->image) : asset('assets-frontend/images/inner-prod-1.png')}}" width="100%" alt="Product Image"></div>
+                                <div class="product-img"><img src="{{ isset($cat->image) ?  asset('images/'.$cat->image) : asset('assets-frontend/images/inner-prod-1.png')}}" width="100%" alt="Product Image"></div>
                                 <div class="product-body">
                                     <h3>{{ $cat->name }}</h3>
                                     <p>{{ trimString($cat->description,90) }}</p>
