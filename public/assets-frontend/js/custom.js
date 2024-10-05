@@ -74,7 +74,7 @@ function onResize() {
 
 
 // video stop on modal close
-$("#videomodal").on('hidden.bs.modal', function(e) {
+$("#videomodal").on('hidden.bs.modal', function(_e) {
     $("#videomodal iframe, #videomodal video").attr("src", $("#videomodal iframe, #videomodal video").attr("src"));
 });
 
@@ -136,6 +136,7 @@ $(document).ready(function() {
 
 // banner green line
 $(document).ready(function() {
+    var isRtl = $('body').hasClass('ar-lang');
     $('#banner-green-line').owlCarousel({
         autoWidth: true,
         loop: true,
@@ -150,6 +151,7 @@ $(document).ready(function() {
         autoplayTimeout: 4000,
         autoplayHoverPause: false,
         slideTransition: 'linear',
+        rtl: isRtl,
     });
 });
 
@@ -204,6 +206,7 @@ setTimeout(function() {
 
 
 jQuery(document).ready(function($) {
+    var isRtl = $('body').hasClass('ar-lang');
     var carousel = $("#home-product-slider");
     carousel.owlCarousel({
         loop: true,
@@ -216,6 +219,7 @@ jQuery(document).ready(function($) {
         autoplayHoverPause: false,
         mouseDrag: false,
         touchDrag: false,
+        rtl: isRtl,
         responsive: {
             0: {
                 items: 1
@@ -230,7 +234,7 @@ jQuery(document).ready(function($) {
     });
 
     checkClasses();
-    carousel.on('translated.owl.carousel', function(event) {
+    carousel.on('translated.owl.carousel', function(_event) {
         checkClasses();
     });
 
@@ -269,10 +273,18 @@ function setWindowWH() {
     $(document).ready(function() {
         width = $(window).width();
         if ($(window).width() > 1280) {
-            $('.home-commercial-section, .topic-slider-section, .sing-rec-pro-section, .disco-look-section').css('padding-left', (calculatePadding) + "px");
+            if ($("body").hasClass('ar-lang')) {
+                $('.home-commercial-section, .topic-slider-section, .sing-rec-pro-section, .disco-look-section').css('padding-right', (calculatePadding) + "px");
+            } else {
+                $('.home-commercial-section, .topic-slider-section, .sing-rec-pro-section, .disco-look-section').css('padding-left', (calculatePadding) + "px");
+            }
         }
         if (width <= 1280) {
-            $('.home-commercial-section, .topic-slider-section, .sing-rec-pro-section, .disco-look-section').css('padding-left', "0px");
+            if ($("body").hasClass('ar-lang')) {
+                $('.home-commercial-section, .topic-slider-section, .sing-rec-pro-section, .disco-look-section').css('padding-right', "0px");
+            } else {
+                $('.home-commercial-section, .topic-slider-section, .sing-rec-pro-section, .disco-look-section').css('padding-left', "0px");
+            }
         }
     });
 }
@@ -283,30 +295,34 @@ $(window).on("load resize", function() {
 
 
 // home-commercial-slider 
-$('#home-commercial-slider').owlCarousel({
-    loop: false,
-    margin: 20,
-    dots: false,
-    nav: false,
-    items: 1.5,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    smartSpeed: 5000,
-    autoplayHoverPause: true,
-    responsive: {
-        0: {
+jQuery(document).ready(function($) {
+    var isRtl = $('body').hasClass('ar-lang');
+    $('#home-commercial-slider').owlCarousel({
+        loop: false,
+        margin: 20,
+        dots: false,
+        nav: false,
+        items: 1.5,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        smartSpeed: 5000,
+        rtl: isRtl,
+        autoplayHoverPause: true,
+        responsive: {
+            0: {
 
-        },
-        480: {
+            },
+            480: {
 
-        },
-        769: {
-            items: 2.5,
-        },
-        992: {
-            items: 1.5,
+            },
+            769: {
+                items: 2.5,
+            },
+            992: {
+                items: 1.5,
+            }
         }
-    }
+    });
 });
 
 // $(document).ready(function() {
@@ -427,6 +443,7 @@ moveBackground();
 
 
 jQuery(document).ready(function($) {
+    var isRtl = $('body').hasClass('ar-lang');
     var carousel = $("#news-banner-slider");
     carousel.owlCarousel({
         loop: true,
@@ -437,6 +454,7 @@ jQuery(document).ready(function($) {
         autoplay: true,
         autoplayTimeout: 6000,
         autoplayHoverPause: true,
+        rtl: isRtl,
         responsive: {
             0: {
                 items: 1,
@@ -452,7 +470,7 @@ jQuery(document).ready(function($) {
     });
 
     checkClasses();
-    carousel.on('translated.owl.carousel', function(event) {
+    carousel.on('translated.owl.carousel', function(_event) {
         checkClasses();
     });
 
@@ -484,66 +502,80 @@ jQuery(document).ready(function($) {
 
 
 // industry-insights topics slider 
-$('#indu-topic-slider').owlCarousel({
-    loop: true,
-    margin: 20,
-    dots: false,
-    nav: false,
-    items: 1.5,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    autoplayHoverPause: true,
-    responsive: {
-        0: {
+jQuery(document).ready(function($) {
+    var isRtl = $('body').hasClass('ar-lang');
+    $('#indu-topic-slider').owlCarousel({
+        loop: true,
+        margin: 20,
+        dots: false,
+        nav: false,
+        items: 1.5,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        autoplayHoverPause: true,
+        rtl: isRtl,
+        responsive: {
+            0: {
 
-        },
-        480: {
+            },
+            480: {
 
-        },
-        768: {
-            items: 2.7,
-        },
-        992: {
-            items: 2.7,
+            },
+            768: {
+                items: 2.7,
+            },
+            992: {
+                items: 2.7,
+            }
         }
-    }
+    });
 });
 
 
 
 
 // product main page single-gallery-image slider 
-$('#single-gallery-image').owlCarousel({
-    loop: true,
-    margin: 0,
-    dots: false,
-    nav: true,
-    center: true,
-    items: 1,
-    navText: ["<i class='fa-regular fa-arrow-left-long'></i>", "<i class='fa-regular fa-arrow-right-long'></i>"]
+jQuery(document).ready(function($) {
+    var isRtl = $('body').hasClass('ar-lang');
+    $('#single-gallery-image').owlCarousel({
+        loop: true,
+        margin: 0,
+        dots: false,
+        nav: true,
+        center: true,
+        rtl: isRtl,
+        items: 1,
+        navText: ["<i class='fa-regular fa-arrow-left-long'></i>", "<i class='fa-regular fa-arrow-right-long'></i>"]
+    });
 });
 
 
 // product main page product type slider 
-$('#pro-type-slider').owlCarousel({
-    loop: false,
-    margin: 0,
-    dots: true,
-    nav: true,
-    center: true,
-    items: 1,
-    navText: ["<i class='fa-regular fa-arrow-left-long'></i>", "<i class='fa-regular fa-arrow-right-long'></i>"]
+jQuery(document).ready(function($) {
+    var isRtl = $('body').hasClass('ar-lang');
+    $('#pro-type-slider').owlCarousel({
+        loop: false,
+        margin: 0,
+        dots: true,
+        nav: true,
+        center: true,
+        rtl: isRtl,
+        items: 1,
+        navText: ["<i class='fa-regular fa-arrow-left-long'></i>", "<i class='fa-regular fa-arrow-right-long'></i>"]
+    });
 });
 
 
 // // industry-insights last section slider 
 $(document).ready(function() {
+    var isRtl = $('body').hasClass('ar-lang');
     $('#indu-last-slider-1').owlCarousel({
         autoWidth: true,
         loop: true,
         margin: 30,
         dots: false,
         nav: false,
+        rtl: isRtl,
         autoplay: true,
         touchDrag: false,
         mouseDrag: false,
@@ -556,6 +588,7 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
+    var isRtl = $('body').not('ar-lang');
     $('#indu-last-slider-2').owlCarousel({
         autoWidth: true,
         rtl: true,
@@ -563,6 +596,7 @@ $(document).ready(function() {
         margin: 30,
         dots: false,
         nav: false,
+        rtl: isRtl,
         autoplay: true,
         touchDrag: false,
         mouseDrag: false,
@@ -580,6 +614,7 @@ $(document).ready(function() {
 
 // residentials ac page last slider
 jQuery(document).ready(function($) {
+    var isRtl = $('body').hasClass('ar-lang');
     var carousel = $("#image-cross-slider");
     carousel.owlCarousel({
         loop: true,
@@ -588,6 +623,7 @@ jQuery(document).ready(function($) {
         nav: true,
         center: true,
         items: 5,
+        rtl: isRtl,
         navText: ["<i class='fa-regular fa-arrow-left-long'></i>", "<i class='fa-regular fa-arrow-right-long'></i>"],
         responsive: {
             0: {
@@ -603,7 +639,7 @@ jQuery(document).ready(function($) {
     });
 
     checkClasses();
-    carousel.on('translated.owl.carousel', function(event) {
+    carousel.on('translated.owl.carousel', function(_event) {
         checkClasses();
     });
 
@@ -639,6 +675,7 @@ jQuery(document).ready(function($) {
 
 // single-product page slider
 jQuery(document).ready(function($) {
+    var isRtl = $('body').hasClass('ar-lang');
     var carousel = $("#sign-cross-slider");
     carousel.owlCarousel({
         loop: true,
@@ -647,6 +684,7 @@ jQuery(document).ready(function($) {
         nav: false,
         center: true,
         items: 5,
+        rtl: isRtl,
         responsive: {
             0: {
                 items: 1
@@ -661,7 +699,7 @@ jQuery(document).ready(function($) {
     });
 
     checkClasses();
-    carousel.on('translated.owl.carousel', function(event) {
+    carousel.on('translated.owl.carousel', function(_event) {
         checkClasses();
     });
 
@@ -711,82 +749,95 @@ $(document).ready(function() {
 
 
 // Recommended Products slider 
-$('#recommend-product').owlCarousel({
-    loop: true,
-    margin: 20,
-    dots: true,
-    nav: true,
-    navText: ["<i class='fa-regular fa-arrow-left-long'></i>", "<i class='fa-regular fa-arrow-right-long'></i>"],
-    responsive: {
-        0: {
-            items: 1.2,
-        },
-        480: {
-            items: 1.2,
-        },
-        768: {
-            items: 2.2,
-        },
-        992: {
-            items: 3.2,
+jQuery(document).ready(function($) {
+    var isRtl = $('body').hasClass('ar-lang');
+    $('#recommend-product').owlCarousel({
+        loop: true,
+        margin: 20,
+        dots: true,
+        nav: true,
+        rtl: isRtl,
+        navText: ["<i class='fa-regular fa-arrow-left-long'></i>", "<i class='fa-regular fa-arrow-right-long'></i>"],
+        responsive: {
+            0: {
+                items: 1.2,
+            },
+            480: {
+                items: 1.2,
+            },
+            768: {
+                items: 2.2,
+            },
+            992: {
+                items: 3.2,
+            }
         }
-    }
+    });
 });
+
+// Recommended Products slider 
+
+
+jQuery(document).ready(function($) {
+    var isRtl = $('body').hasClass('ar-lang');
+    $('#look-future-sldier').owlCarousel({
+        loop: true,
+        margin: 20,
+        dots: false,
+        nav: false,
+        rtl: isRtl,
+        responsive: {
+            0: {
+                items: 1.15,
+            },
+            580: {
+                items: 2.15,
+            },
+            768: {
+                items: 2.15,
+            },
+            992: {
+                items: 3.15,
+            },
+            2200: {
+                items: 5.15,
+            }
+        }
+    });
+});
+
+
 
 
 // Recommended Products slider 
-$('#look-future-sldier').owlCarousel({
-    loop: true,
-    margin: 20,
-    dots: false,
-    nav: false,
-    responsive: {
-        0: {
-            items: 1.15,
-        },
-        580: {
-            items: 2.15,
-        },
-        768: {
-            items: 2.15,
-        },
-        992: {
-            items: 3.15,
-        },
-        2200: {
-            items: 5.15,
+jQuery(document).ready(function($) {
+    var isRtl = $('body').hasClass('ar-lang');
+    $('#view-all-slider').owlCarousel({
+        loop: true,
+        margin: 25,
+        dots: false,
+        nav: true,
+        rtl: isRtl,
+        navText: ["<i class='fa-regular fa-arrow-left-long'></i>", "<i class='fa-regular fa-arrow-right-long'></i>"],
+        responsive: {
+            0: {
+                items: 1,
+            },
+            480: {
+                items: 1,
+            },
+            768: {
+                items: 2,
+            },
+            992: {
+                items: 2,
+            },
+            1099: {
+                items: 3,
+            }
         }
-    }
+    });
 });
-
-
-
-// Recommended Products slider 
-$('#view-all-slider').owlCarousel({
-    loop: true,
-    margin: 25,
-    dots: false,
-    nav: true,
-    navText: ["<i class='fa-regular fa-arrow-left-long'></i>", "<i class='fa-regular fa-arrow-right-long'></i>"],
-    responsive: {
-        0: {
-            items: 1,
-        },
-        480: {
-            items: 1,
-        },
-        768: {
-            items: 2,
-        },
-        992: {
-            items: 2,
-        },
-        1099: {
-            items: 3,
-        }
-    }
-});
-
 
 
 
@@ -805,6 +856,7 @@ $('#home-text-animation').owlCarousel({
     autoplayTimeout: 4000,
     autoplayHoverPause: false,
     mouseDrag: false,
+    rtl: true,
 });
 
 // home banner text animation

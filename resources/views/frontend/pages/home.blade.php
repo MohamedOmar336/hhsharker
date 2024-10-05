@@ -294,7 +294,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 offset-lg-4 wow fadeInRightBig" data-wow-delay="0.4s">
+                <div class="col-lg-4 wow fadeInRightBig" data-wow-delay="0.4s"></div>
+                <div class="col-lg-4 wow fadeInRightBig" data-wow-delay="0.4s">
                     <div class="testi-box">
                         <h4>{{ __('website.homepage_testimonials.item_2.title') }}</h4>
                         <p>“{{ __('website.homepage_testimonials.item_2.desc') }}”</p>

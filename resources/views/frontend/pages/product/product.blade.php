@@ -8,8 +8,8 @@
                 <img class="single-main-img" src="{{ isset($record->product_image) ?  Storage::url($record->product_image) : asset('assets-frontend/images/inner-prod-1.png')}}">
 
                 <div class="sing-btn-main">
-                    <a class="sing-btn-1" href="#">Request a Quote</a>
-                    <a class="sing-btn-2" href="#">Contact Sales</a>
+                    <a class="sing-btn-1" href="#" data-bs-toggle="modal" data-bs-target="#requestaquotemodal">Request a Quote</a>
+                    <a class="sing-btn-2" href="#" data-bs-toggle="modal" data-bs-target="#contactselesmodal">Contact Sales</a>
                 </div>
                 <div class="sing-text-icon">
                     @if(isset($record->technical_specification) && $record->technical_specification)
@@ -27,9 +27,11 @@
                 </h1>
                 {{-- @dd($record , $record->children) --}}
                 <div class="sing-tag-main">
-                    @foreach ($record->children as $child )
-                        <h5>{{ $child->model_number }}</h5>
-                    @endforeach
+                    <div class="sing-green-div">
+                        @foreach ($record->children as $child )
+                            <h5>{{ $child->model_number }}</h5>
+                        @endforeach
+                    </div>
                     <div>
                         {{ isset($record->product_option_title) ? $record->product_option_title : ''  }}:
                         <select class="form-select">
@@ -167,3 +169,164 @@
     </div>
 </section>
 @endsection
+
+
+
+
+<!-- Request a Quote Modal -->
+<div class="modal fade sing-contat-modal" id="requestaquotemodal" tabindex="-1" aria-labelledby="requestaquotemodalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <a type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-regular fa-xmark"></i></a>
+                <h3>Request a Quote</h3> 
+                <form>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="contact-input">
+                                <label>Your Name <span>*</span></label>
+                                <input type="text" class="form-control" placeholder="Your Name">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="contact-input">
+                                <label>Your Company <span>*</span></label>
+                                <input type="text" class="form-control" placeholder="Company Name">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="contact-input">
+                                <label>Mobile Number <span>*</span></label>
+                                <input type="tel" class="form-control" placeholder="Your Number">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="contact-input">
+                                <label>Email Address <span>*</span></label>
+                                <input type="email" class="form-control" placeholder="Your email">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="contact-input">
+                                <label>City <span>*</span></label>
+                                <input type="email" class="form-control" placeholder="Your City">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="contact-input">
+                                <label>District <span>*</span></label>
+                                <input type="email" class="form-control" placeholder="Your District">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="contact-input">
+                                <label>Product Category <span>*</span></label>
+                                <select class="form-select form-control">
+                                    <option selected>Category</option>
+                                    <option value="1">Category 1</option>
+                                    <option value="2">Category 2</option>
+                                    <option value="3">Category 3</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="contact-input">
+                                <label>Subject <span>*</span></label>
+                                <input type="text" class="form-control" placeholder="Subject">
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="contact-input">
+                                <label>Message <span>*</span></label>
+                                <textarea class="form-control" placeholder="Type Something" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <button class="contact-form-btn" type="submit">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Contact Sales Modal -->
+<div class="modal fade sing-contat-modal" id="contactselesmodal" tabindex="-1" aria-labelledby="contactselesmodalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <a type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-regular fa-xmark"></i></a>
+                <h3>Contact Sales</h3> 
+                <form>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="contact-input">
+                                <label>Your Name <span>*</span></label>
+                                <input type="text" class="form-control" placeholder="Your Name">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="contact-input">
+                                <label>Your Company <span>*</span></label>
+                                <input type="text" class="form-control" placeholder="Company Name">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="contact-input">
+                                <label>Mobile Number <span>*</span></label>
+                                <input type="tel" class="form-control" placeholder="Your Number">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="contact-input">
+                                <label>Email Address <span>*</span></label>
+                                <input type="email" class="form-control" placeholder="Your email">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="contact-input">
+                                <label>City <span>*</span></label>
+                                <input type="email" class="form-control" placeholder="Your City">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="contact-input">
+                                <label>District <span>*</span></label>
+                                <input type="email" class="form-control" placeholder="Your District">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="contact-input">
+                                <label>Product Category <span>*</span></label>
+                                <select class="form-select form-control">
+                                    <option selected>Category</option>
+                                    <option value="1">Category 1</option>
+                                    <option value="2">Category 2</option>
+                                    <option value="3">Category 3</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="contact-input">
+                                <label>Subject <span>*</span></label>
+                                <input type="text" class="form-control" placeholder="Subject">
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="contact-input">
+                                <label>Message <span>*</span></label>
+                                <textarea class="form-control" placeholder="Type Something" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <button class="contact-form-btn" type="submit">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

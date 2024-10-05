@@ -7,7 +7,8 @@
                 <h1> {!! __('website.concealed.title') !!}</h1>
                 <a class="cutome-btn" href="about.html">{{ __('website.concealed.btn') }}</a>
             </div>
-            <div class="col-lg-6 offset-lg-1 wow fadeInRight" data-wow-delay="1.2s">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-6 wow fadeInRight" data-wow-delay="1.2s">
                 <img class="list-banner-img" src="{{ asset('assets-frontend/images/pro-12.png')}}" alt="Banner Image">
             </div>
         </div>

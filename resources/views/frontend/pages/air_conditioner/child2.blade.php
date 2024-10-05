@@ -7,7 +7,8 @@
                 <h1>{{ $childCategoryArr->name }} <br> {{ $parentCategoryArr->name }}</h1>
                 <a class="cutome-btn" href="{{ route('frontend.about',['locale' => app()->getLocale()]) }}">{{ __('website.air_conditioner.btn') }}</a>
             </div>
-            <div class="col-lg-6 offset-lg-1 wow fadeInRight" data-wow-delay="1.2s">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-6 wow fadeInRight" data-wow-delay="1.2s">
                 <img class="list-banner-img" src="{{ asset('images/'.$childCategoryArr->image) }}" alt="Banner Image">
             </div>
         </div>

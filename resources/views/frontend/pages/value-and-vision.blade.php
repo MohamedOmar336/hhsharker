@@ -34,7 +34,8 @@
                         <h2>{{ __('website.value_vision.section_2.title') }}</h2>
                     </div>
                 </div>
-                <div class="col-lg-6 offset-xl-3 offset-lg-2 wow fadeInRightBig">
+                <div class="col-xl-3 col-lg-2"></div>
+                <div class="col-lg-6 wow fadeInRightBig">
                     {!! __('website.value_vision.section_2.desc') !!}
                 </div>
             </div>
@@ -107,7 +108,8 @@
                         <h2>{{ __('website.value_vision.section_5.title') }}</h2>
                     </div>
                 </div>
-                <div class="col-lg-7 offset-xl-1 col-xl-8 wow fadeInRightBig">
+                <div class="col-xl-1"></div>
+                <div class="col-lg-7 col-xl-8 wow fadeInRightBig">
                     <img class="vision-img-1" src="{{ asset('assets-frontend/images/vision-img-1-new.png') }}" alt="Vision Image">
                 </div>
             </div>

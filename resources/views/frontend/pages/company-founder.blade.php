@@ -40,7 +40,8 @@
                         <h2> {!! __('website.company_founder.title') !!}</h2>
                     </div>
                 </div>
-                <div class="col-lg-8 offset-lg-1 wow fadeInRightBig">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-8 wow fadeInRightBig">
                     <div class="founders-p-div">
                         {!! __('website.company_founder.long_description') !!}
                     </div>

@@ -11,7 +11,7 @@
 
     </head>
 
-    <body>
+    <body class="{{ app()->getLocale() == 'ar' ? 'ar-lang' : ''}}">
     {{-- <body class="dark-mode"> --}}
 
         @include('frontend.layouts.includes.header')  

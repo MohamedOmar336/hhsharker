@@ -31,7 +31,8 @@
                     <h2>{{ __('website.our_latest_project.testimonial.title') }}</h2>
                 </div>
             </div>
-            <div class="col-lg-6 offset-lg-1 wow fadeInRight">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-6 wow fadeInRight">
                 <p class="p-grey-color">
                     {{ __('website.our_latest_project.testimonial.desc') }}
                 </p>
@@ -171,7 +172,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 offset-lg-4 wow fadeInRightBig" data-wow-delay="0.4s">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4 wow fadeInRightBig" data-wow-delay="0.4s">
                 <div class="testi-box">
                     <h4>{{ __('website.our_latest_project.testimonials.item_2.title') }}</h4>
                         <p>“{{ __('website.our_latest_project.testimonials.item_2.desc') }}”</p>

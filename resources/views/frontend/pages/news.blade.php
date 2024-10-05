@@ -53,9 +53,9 @@
                     </div>
                     <div class="col-xl-7 col-xxl-8">
                         <div class="news-image-upper">
-                            <img class="image-upp-1 wow fadeInLeft" data-wow-delay="0.2s" src="{{ asset('assets-frontend/images/upp-img-1.png') }}" alt="News Image">
-                            <img class="image-upp-2 wow fadeInDown" data-wow-delay="0.4s" src="{{ asset('assets-frontend/images/upp-img-2.png') }}" alt="News Image">
-                            <img class="image-upp-3 wow fadeInRight" data-wow-delay="0.8s" src="{{ asset('assets-frontend/images/upp-img-4.png') }}" alt="News Image">
+                            <img class="image-upp-1 wow fadeIn" data-wow-delay="0.2s" src="{{ asset('assets-frontend/images/upp-img-1.png') }}" alt="News Image">
+                            <img class="image-upp-2 wow fadeIn" data-wow-delay="0.4s" src="{{ asset('assets-frontend/images/upp-img-2.png') }}" alt="News Image">
+                            <img class="image-upp-3 wow fadeIn" data-wow-delay="0.8s" src="{{ asset('assets-frontend/images/upp-img-4.png') }}" alt="News Image">
                         </div>
                     </div>
                 </div>
