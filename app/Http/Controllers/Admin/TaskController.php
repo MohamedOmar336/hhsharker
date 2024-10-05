@@ -47,7 +47,7 @@ class TaskController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'assigned_to' => 'nullable|exists:users,id',
+            'assigned_to' => 'required|exists:users,id',
             'status' => 'required|in:pending,in_progress,completed,archived',
             'due_date' => 'nullable|date',
         ]);
@@ -92,7 +92,7 @@ class TaskController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'assigned_to' => 'nullable|exists:users,id',
+            'assigned_to' => 'required|exists:users,id',
             'status' => 'required|in:pending,in_progress,completed,archived',
             'due_date' => 'nullable|date',
         ]);
