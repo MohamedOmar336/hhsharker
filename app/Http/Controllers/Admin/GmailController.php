@@ -489,58 +489,86 @@ class GmailController extends Controller
     
     
     
-    
     public function getSupportEmails(Request $request)
     {
-        $filter = $request->input('filter', 'inbox'); // Default to inbox if no filter is provided
+        // Fetch filter from request or default to inbox
+     //   $filter = $request->input('filter', 'inbox'); 
+        
         $hostname = '{imap.gmail.com:993/imap/ssl/novalidate-cert}INBOX';
         $username = env('SUPPORT_IMAP_EMAIL');
         $password = env('SUPPORT_IMAP_PASSWORD');
+               // Get the current route name
+    $routeName = $request->route()->getName();
+
+    // Determine filter based on the route name
+    switch ($routeName) {
+        case 'emails.starred':
+            $filter = 'starred';
+            break;
+        case 'emails.important':
+            $filter = 'important';
+            break;
+        case 'emails.draft':
+            $filter = 'draft';
+            break;
+        case 'emails.sent':
+            $filter = 'sent';
+            break;
+        case 'emails.trash':
+            $filter = 'trash';
+            break;
+        case 'emails.unread':
+            $filter = 'unread';
+            break;
+        default:
+            $filter = 'inbox'; // Default filter
+            break;
+    }
+ 
     
+        // Open the IMAP connection
         $inbox = @imap_open($hostname, $username, $password);
         if (!$inbox) {
             return response()->json(['error' => 'Cannot connect to Gmail: ' . imap_last_error()], 500);
         }
     
-    // Apply filter for different email categories
-    switch ($filter) {
-        case 'starred':
-            $emails = imap_search($inbox, 'FLAGGED', SE_UID, 'UTF-8');
-            break;
-        // case 'unread':
-        //     // Fetch only unread emails
-        //     $emails = imap_search($inbox, 'UNSEEN', SE_UID, 'UTF-8');
-        //     break;
-        // case 'important':
-        //     $emails = imap_search($inbox, 'important', SE_UID, 'UTF-8');
-        //     break;
-        // case 'draft':
-        //     $emails = imap_search($inbox, 'DRAFT', SE_UID, 'UTF-8');
-        //     break;
-        // case 'sent':
-        //     imap_reopen($inbox, $hostname . 'Sent', CL_EXPUNGE);
-        //     $emails = imap_search($inbox, 'SENT', SE_UID, 'UTF-8');
-        //     break;
-        // case 'trash':
-        //     $emails = imap_search($inbox, 'DELETED', SE_UID, 'UTF-8');
-        //     break;
-        default:
-            $emails = imap_search($inbox, 'ALL', SE_UID, 'UTF-8');
-            break;
-    }
-
-        $limit = 25; // Number of emails to fetch per request
-     //   $emails = imap_search($inbox, $searchCriteria, SE_UID, 'UTF-8');
+        // Apply different email filters
+        switch ($filter) {
+            case 'starred':
+                $emails = imap_search($inbox, 'FLAGGED', SE_UID, 'UTF-8');
+                break;
+            case 'unread':
+                $emails = imap_search($inbox, 'UNSEEN', SE_UID, 'UTF-8'); // 'UNSEEN' fetches unread emails
+                break;
+            case 'important':
+                // Gmail "Important" emails use a specific label
+                $emails = imap_search($inbox, 'KEYWORD "Important"', SE_UID, 'UTF-8');
+                break;
+            case 'sent':
+                imap_reopen($inbox, $hostname . '[Gmail]/Sent Mail'); // Reopen connection to "Sent" folder
+                $emails = imap_search($inbox, 'ALL', SE_UID, 'UTF-8');
+                break;
+            case 'draft':
+                imap_reopen($inbox, $hostname . '[Gmail]/Drafts'); // Reopen connection to "Drafts" folder
+                $emails = imap_search($inbox, 'ALL', SE_UID, 'UTF-8');
+                break;
+            case 'trash':
+                imap_reopen($inbox, $hostname . '[Gmail]/Trash'); // Reopen connection to "Trash" folder
+                $emails = imap_search($inbox, 'ALL', SE_UID, 'UTF-8');
+                break;
+            default:
+                $emails = imap_search($inbox, 'ALL', SE_UID, 'UTF-8');
+                break;
+        }
+    
         if (!$emails) {
             imap_close($inbox);
             return view('admin.gmail.support-emails', ['messages' => []]);
         }
     
-        
-       // dd($emails);
-       
+        // Sort emails in reverse order (most recent first)
         rsort($emails);
-       
+        $limit = 25;
         $emails = array_slice($emails, 0, $limit);
     
         $messages = [];
@@ -554,18 +582,18 @@ class GmailController extends Controller
     
             // Fetch the email structure
             $structure = imap_fetchstructure($inbox, $email_number);
-            $partNumber = 1; // Default to part 1 (usually plain text)
-            $hasHtml = false; // Flag to check if HTML part is available
+            $partNumber = 1; // Default part (usually plain text)
+            $hasHtml = false;
     
-            // If the email has multiple parts, find the plain text or HTML part
+            // If email has multiple parts, find the plain text or HTML part
             if (isset($structure->parts) && count($structure->parts)) {
                 foreach ($structure->parts as $index => $part) {
                     if ($part->subtype == 'HTML') {
-                        $partNumber = $index + 1; // HTML part
+                        $partNumber = $index + 1;
                         $hasHtml = true;
                         break;
                     } elseif ($part->subtype == 'PLAIN') {
-                        $partNumber = $index + 1; // Plain text part
+                        $partNumber = $index + 1;
                     }
                 }
             }
@@ -573,32 +601,32 @@ class GmailController extends Controller
             // Fetch and decode the message body
             $message = imap_fetchbody($inbox, $email_number, $partNumber);
     
-            // Handle different encoding types
-            if ($structure->encoding == 3) { // Base64
-                $message = base64_decode($message);
-            } elseif ($structure->encoding == 4) { // Quoted-Printable
-                $message = quoted_printable_decode($message);
-            } elseif ($structure->encoding == 1) { // 8bit
-                $message = imap_utf8($message);
-            } elseif ($structure->encoding == 0) { // 7bit
-                $message = imap_qprint($message); // Optionally handle 7bit encoding
+            // Handle encoding types
+            switch ($structure->encoding) {
+                case 3: // Base64
+                    $message = base64_decode($message);
+                    break;
+                case 4: // Quoted-Printable
+                    $message = quoted_printable_decode($message);
+                    break;
+                case 1: // 8bit
+                    $message = imap_utf8($message);
+                    break;
+                case 0: // 7bit
+                    $message = imap_qprint($message);
+                    break;
             }
     
-            // Convert message to UTF-8 if necessary
-            $message = mb_convert_encoding($message, 'UTF-8', 'auto');
-        
-            // Add the message to the messages array with the email ID
+            // Store each email with relevant details
             $messages[] = [
-                'id' => $email_number, // Use $email_number as the unique ID
-               // 'uid' => $emails[$index],
-               // 'difference' => $email_number - $emails[$email_number]+$index, // Calculate the difference
-               'subject' => $subject,
-               'from' => $from,
-               'date' => $date,
-               'message' => $message,
+                'id' => $email_number,
+                'subject' => $subject,
+                'from' => $from,
+                'date' => $date,
+                'message' => $message,
             ];
         }
-  //  dd($messages,$emails);
+    
         imap_close($inbox);
     
         return view('admin.gmail.support-emails', [
@@ -606,26 +634,53 @@ class GmailController extends Controller
         ]);
     }
     
-
     public function getMoreSupportEmails(Request $request)
     {
-        $limit = 25; // Number of emails to fetch per request
+        // Fetch filter and pagination parameters
+      
+          // Get the current route name
+    $routeName = $request->route()->getName();
+
+    // Determine filter based on the route name
+    switch ($routeName) {
+        case 'emails.starred':
+            $filter = 'starred';
+            break;
+        case 'emails.important':
+            $filter = 'important';
+            break;
+        case 'emails.draft':
+            $filter = 'draft';
+            break;
+        case 'emails.sent':
+            $filter = 'sent';
+            break;
+        case 'emails.trash':
+            $filter = 'trash';
+            break;
+        case 'emails.unread':
+            $filter = 'unread';
+            break;
+        default:
+            $filter = 'inbox'; // Default filter
+            break;
+    }
+ 
+        $limit = 25;
         $offset = $request->input('offset', 0);
-        
-        // Fetch filter parameters from the request
-        $filter = $request->input('filter', 'all'); // Default to 'all' if not specified
     
         $hostname = '{imap.gmail.com:993/imap/ssl/novalidate-cert}INBOX';
         $username = env('SUPPORT_IMAP_EMAIL');
         $password = env('SUPPORT_IMAP_PASSWORD');
     
+        // Open the IMAP connection
         $inbox = @imap_open($hostname, $username, $password);
     
         if (!$inbox) {
             return response()->json(['error' => 'Cannot connect to Gmail: ' . imap_last_error()], 500);
         }
     
-        // Apply filter for different email categories
+        // Apply different email filters
         switch ($filter) {
             case 'starred':
                 $emails = imap_search($inbox, 'FLAGGED', SE_UID, 'UTF-8');
@@ -634,13 +689,16 @@ class GmailController extends Controller
                 $emails = imap_search($inbox, 'KEYWORD "Important"', SE_UID, 'UTF-8');
                 break;
             case 'draft':
-                $emails = imap_search($inbox, 'DRAFT', SE_UID, 'UTF-8');
+                imap_reopen($inbox, $hostname . '[Gmail]/Drafts');
+                $emails = imap_search($inbox, 'ALL', SE_UID, 'UTF-8');
                 break;
             case 'sent':
-                $emails = imap_search($inbox, 'SENT', SE_UID, 'UTF-8');
+                imap_reopen($inbox, $hostname . '[Gmail]/Sent Mail');
+                $emails = imap_search($inbox, 'ALL', SE_UID, 'UTF-8');
                 break;
             case 'trash':
-                $emails = imap_search($inbox, 'DELETED', SE_UID, 'UTF-8');
+                imap_reopen($inbox, $hostname . '[Gmail]/Trash');
+                $emails = imap_search($inbox, 'ALL', SE_UID, 'UTF-8');
                 break;
             default:
                 $emails = imap_search($inbox, 'ALL', SE_UID, 'UTF-8');
@@ -652,6 +710,7 @@ class GmailController extends Controller
             return response()->json(['emails' => [], 'nextOffset' => $offset]);
         }
     
+        // Sort and paginate emails
         rsort($emails);
         $emails = array_slice($emails, $offset, $limit);
     
@@ -660,46 +719,44 @@ class GmailController extends Controller
             $overview = imap_fetch_overview($inbox, $email_number, 0);
             if (!$overview) continue;
     
-            $subject = imap_utf8($overview[0]->subject);
-            $from = $overview[0]->from;
-            $date = $overview[0]->date;
+            $subject = isset($overview[0]->subject) ? imap_utf8($overview[0]->subject) : '(No Subject)';
+            $from = isset($overview[0]->from) ? $overview[0]->from : '(Unknown Sender)';
+            $date = isset($overview[0]->date) ? $overview[0]->date : '(Unknown Date)';
     
             // Fetch the email structure
             $structure = imap_fetchstructure($inbox, $email_number);
-            $partNumber = 1; // Default to part 1 (usually plain text)
-            $hasHtml = false; // Flag to check if HTML part is available
+            $partNumber = 1;
     
-            // If the email has multiple parts, find the plain text or HTML part
+            // Check for multiple parts (HTML, Plain text)
             if (isset($structure->parts) && count($structure->parts)) {
                 foreach ($structure->parts as $index => $part) {
                     if ($part->subtype == 'HTML') {
-                        $partNumber = $index + 1; // HTML part
-                        $hasHtml = true;
+                        $partNumber = $index + 1;
                         break;
                     } elseif ($part->subtype == 'PLAIN') {
-                        $partNumber = $index + 1; // Plain text part
+                        $partNumber = $index + 1;
                     }
                 }
             }
     
-            // Fetch and decode the message body
+            // Decode the message body
             $message = imap_fetchbody($inbox, $email_number, $partNumber);
     
-            // Handle different encoding types
-            if ($structure->encoding == 3) { // Base64
-                $message = base64_decode($message);
-            } elseif ($structure->encoding == 4) { // Quoted-Printable
-                $message = quoted_printable_decode($message);
-            } elseif ($structure->encoding == 1) { // 8bit
-                $message = imap_utf8($message);
-            } elseif ($structure->encoding == 0) { // 7bit
-                $message = imap_qprint($message); // Optionally handle 7bit encoding
+            switch ($structure->encoding) {
+                case 3:
+                    $message = base64_decode($message);
+                    break;
+                case 4:
+                    $message = quoted_printable_decode($message);
+                    break;
+                case 1:
+                    $message = imap_utf8($message);
+                    break;
+                case 0:
+                    $message = imap_qprint($message);
+                    break;
             }
     
-            // Convert message to UTF-8 if necessary
-            $message = mb_convert_encoding($message, 'UTF-8', 'auto');
-    
-            // Add the message to the messages array
             $messages[] = [
                 'subject' => $subject,
                 'from' => $from,

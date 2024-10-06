@@ -30,32 +30,31 @@
                             </a>
                             <div class="card-body">
                                 <div class="mail-list">
-                                    <a href="{{ route('emails.inbox') }}" class="{{ request()->is('support.gmail') ? 'active' : '' }} pt-0">
+                                    <a href="{{ route('emails.inbox') }}" class="{{ request()->is('emails/inbox') ? 'active' : '' }} pt-0">
                                         <i class="las la-inbox font-15 me-1"></i>{{ __('general.labels.inbox') }}
-                                       
                                     </a>
+                                    
                                     <a href="{{ route('emails.starred') }}" class="{{ request()->is('emails/starred') ? 'active' : '' }}">
                                         <i class="las la-star font-15 me-1"></i>{{ __('general.labels.starred') }}
-                                       
                                     </a>
-                                    {{-- <a href="{{ route('emails.important') }}" class="{{ request()->is('emails/important') ? 'active' : '' }}">
-                                        <i class="las la-tag font-15 me-1"></i>Important
-                                       
+                                    
+                                    <a href="{{ route('emails.unread') }}" class="{{ request()->is('emails/unread') ? 'active' : '' }}">
+                                        <i class="las la-tag font-15 me-1"></i>{{ __('general.labels.unread') }}
                                     </a>
+                                    
                                     <a href="{{ route('emails.draft') }}" class="{{ request()->is('emails/draft') ? 'active' : '' }}">
-                                        <i class="las la-pencil-alt font-15 me-1"></i>Draft
-                                       
+                                        <i class="las la-pencil-alt font-15 me-1"></i>{{ __('general.labels.draft') }}
                                     </a>
+                                    
                                     <a href="{{ route('emails.sent') }}" class="{{ request()->is('emails/sent') ? 'active' : '' }}">
-                                        <i class="las la-paper-plane font-15 me-1"></i>Sent
-                                      
+                                        <i class="las la-paper-plane font-15 me-1"></i>{{ __('general.labels.sent') }}
                                     </a>
+                                    
                                     <a href="{{ route('emails.trash') }}" class="{{ request()->is('emails/trash') ? 'active' : '' }}">
-                                        <i class="las la-trash-alt font-15 me-1"></i>Trash
+                                        <i class="las la-trash-alt font-15 me-1"></i>{{ __('general.labels.trash') }}
                                     </a>
-                                    <a href="{{ route('emails.trash') }}" class="{{ request()->is('/emails/unread') ? 'active' : '' }}">
-                                        <i class="las la-trash-alt font-15 me-1"></i>unread
-                                    </a> --}}
+                                    
+                                   
                                 </div>
                             </div>
                         </div>

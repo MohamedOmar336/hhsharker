@@ -94,22 +94,23 @@ class GroupController extends Controller
     }
 
     public function bulkDelete(Request $request)
-{
-    $request->validate([
-        'ids' => 'required|array', // Validate that 'ids' is an array
-        'ids.*' => 'exists:groups,id', // Ensure each ID exists in the groups table
-    ]);
-
-    // Delete each group by ID
-    foreach ($request->ids as $id) {
-        $group = Group::find($id);
-        if ($group) {
-            $group->members()->delete(); // Delete associated members if needed
+    {
+        $request->validate([
+            'ids' => 'required|array', // Validate that 'ids' is an array
+            'ids.*' => 'exists:groups,id', // Ensure each ID exists in the groups table
+        ]);
+    
+        // Retrieve all the groups that match the IDs
+        $groups = Group::whereIn('id', $request->ids)->get();
+    
+        foreach ($groups as $group) {
+            $group->users()->detach(); // Detach all associated users
+            $group->contacts()->detach(); // Detach all associated contacts
             $group->delete(); // Delete the group
         }
+    
+        return redirect()->route('groups.index')->with('success', __('messages.groups_bulk_deleted_successfully'));
     }
-
-    return redirect()->route('groups.index')->with('success', __('messages.groups_bulk_deleted_successfully'));
-}
+    
 
 }
