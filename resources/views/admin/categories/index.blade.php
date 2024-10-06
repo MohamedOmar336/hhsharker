@@ -72,7 +72,7 @@
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn delete-form action-button"
-                                    onclick="return confirm('Are you sure you want to delete this category?')" data-tooltip="delete"><i data-feather="trash"></i></button>
+                                onclick="confirmDelete(event)" data-tooltip="delete"><i data-feather="trash"></i></button>
                             </form>
                         </td>
                     </tr>
