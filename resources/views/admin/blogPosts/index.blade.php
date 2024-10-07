@@ -58,7 +58,7 @@
                             <form action="{{ route('blogposts.destroy', $record->id) }}" method="POST" style="display: inline;" class="delete-form">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn delete-form action-button" onclick="return confirm('{{ __('general.confirm.delete') }}')" data-tooltip="delete"><i data-feather="trash"></i></button>
+                                <button type="submit" class="btn delete-form action-button" onclick="confirmDelete(event)" data-tooltip="delete"><i data-feather="trash"></i></button>
                             </form>
                         </td>
                     </tr>

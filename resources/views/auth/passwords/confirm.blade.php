@@ -17,7 +17,7 @@
     <link href="{{ asset('assets-admin/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets-admin/css/app.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets-admin/css/style.css') }}" rel="stylesheet" type="text/css" />
-    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdzcfIpAAAAAHnIw33NCdfQeZTNGCyQx8htUzPN"></script>
+    {{-- <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdzcfIpAAAAAHnIw33NCdfQeZTNGCyQx8htUzPN"></script> --}}
 </head>
 
 <body id="body" class="auth-page" style="background-image: url('{{ asset('assets/images/p-1.png') }}'); background-size: cover; background-position: center center;">

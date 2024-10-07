@@ -31,7 +31,7 @@
                         <a class="cutome-btn" href="{{ route('frontend.air-conditioner.parent',['locale' => app()->getLocale(),'parent'=>$cat->slug]) }}">{{ __('website.air_conditioner.btn') }}</a>
                     </div>
                     <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.5s">
-                        <img src="{{ iiset($cat->image) ?  asset('images/'.$cat->image) : asset('assets-frontend/images/inner-prod-1.png')}}">
+                        <img src="{{ isset($cat->image) ?  asset('images/'.$cat->image) : asset('assets-frontend/images/inner-prod-1.png')}}">
                     </div>
                 </div>
             </div>

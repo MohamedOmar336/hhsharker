@@ -23,13 +23,13 @@ class TicketStatusController extends Controller
         $totalResults = $query->count();
 
     $records = $query->latest()->paginate($totalResults);
-        return view('admin.ticketstatus.index', compact('records'));
+        return view('admin.ticketStatus.index', compact('records'));
     }
 
     public function create()
     {
         // Return a view for creating a new TicketStatus
-        return view('admin.ticketstatus.create');
+        return view('admin.ticketStatus.create');
     }
 
     public function store(Request $request)
@@ -63,7 +63,7 @@ class TicketStatusController extends Controller
         // Retrieve a specific TicketStatus
         $status = TicketStatusSetting::findOrFail($id);
         // Return a view for editing the TicketStatus
-        return view('admin.ticketstatus.edit', compact('status'));
+        return view('admin.ticketStatus.edit', compact('status'));
     }
 
     public function update(Request $request, $id)
@@ -117,12 +117,12 @@ public function bulkDelete(Request $request)
         }
 
         return redirect()->route('ticket-statuses.index')
-        ->with('success', __('messages.ticket_statuses_deleted')); 
+        ->with('success', __('messages.ticket_statuses_deleted'));
     } catch (\Exception $e) {
         // If any exception occurs during deletion, catch it and return with error message
         return redirect()->route('ticket-statuses.index')->with('error', $e->getMessage());
     }
 }
 
-    
+
 }

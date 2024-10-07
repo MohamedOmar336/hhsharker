@@ -22,8 +22,8 @@ class TicketHistoryController extends Controller
         $ticket = Ticket::with('priority', 'status', 'assignedTo', 'createdBy')
                         ->findOrFail($ticketId);
         $histories = TicketHistory::where('TicketID', $ticketId)->with('changedBy')->get();
-        
-        return view('admin.ticketS.show', compact('ticket', 'histories'));
+
+        return view('admin.tickets.show', compact('ticket', 'histories'));
     }
 
     // Display form for creating a new ticket history (if needed)
