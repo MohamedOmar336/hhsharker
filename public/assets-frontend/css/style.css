@@ -547,6 +547,7 @@ a {
     }
     .header .navbar-expand-xl .navbar-nav .nav-link {
         padding: 5px 0px;
+        display: inline-block;
     }
     .navbar-expand-xl .navbar-collapse {
         display: block !important;
@@ -593,12 +594,15 @@ a {
         opacity: 1;
     }
     .megamenu-main-div {
-        display: none;
+        /* display: none; */
         z-index: 2;
         padding: 0px 20px;
     }
     .megamenu-active .megamenu-main-div {
-        display: block;
+        /* display: block; */
+    }
+    .megamenu-body img {
+        border-radius: 10px;
     }
     .megamenu-body {
         margin-top: 5px;
@@ -626,6 +630,19 @@ a {
     }
     .dark-ligh-btn {
         margin: 0px 0px 0px 0px;
+    }
+    .megamenu::after {
+        content: "\f107";
+        font-family: "Font Awesome 6 Pro";
+        color: #C0CBDF;
+        font-size: 14px;
+        transform: scale(0.8);
+        position: absolute;
+        margin-left: 9px;
+        margin-top: 6px;
+    }
+    .megamenu .dropdown-toggle::after {
+        display: none;
     }
 }
 

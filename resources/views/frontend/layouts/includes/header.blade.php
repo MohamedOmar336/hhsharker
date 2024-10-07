@@ -40,7 +40,7 @@
                             <div class="megamenu-main-div">
                                 <div class="megamenu-body ">
                                     <div class="row">
-                                        <div class="col-xl-5">
+                                        <div class="col-xl-5 mb-xl-0 mb-3">
                                             <img class="menu-img-none menu-imge-div-himg1 menuhovershow" src="{{ asset('assets-frontend/images/Residentials-AC.png') }}" width="100%" height="100%" alt="Mega Menu Banner">
                                             <img class="menu-img-none menu-imge-div-himg2" src="{{ asset('assets-frontend/images/Commercial-AC.png') }}" width="100%" height="100%" alt="Mega Menu Banner">
                                             <img class="menu-img-none menu-imge-div-himg3" src="{{ asset('assets-frontend/images/Light-Commercial-AC.png') }}" width="100%" height="100%" alt="Mega Menu Banner">
@@ -95,7 +95,7 @@
                             <div class="megamenu-main-div">
                                 <div class="megamenu-body ">
                                     <div class="row">
-                                        <div class="col-xl-5">
+                                        <div class="col-xl-5 mb-xl-0 mb-3">
                                             <img src="{{ asset('assets-frontend/images/aplli-drop-1.png') }}" width="100%" height="100%" alt="Mega Menu Banner">
                                         </div>
                                         <div class="col-xl-7">
