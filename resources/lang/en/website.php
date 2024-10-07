@@ -52,10 +52,10 @@ return [
     ],
     'homepage_brand_section' =>[
         'title' => 'OUR TRUSTED BRANDS',
-        'button' => 'Quick Access'
+        'button' => 'Our Categories'
     ],
     'homepage_product_section_1' => [
-        'title' => 'Quick Access',
+        'title' => 'Our Categories',
         'desc' => 'Find Your Perfect Solution <br> Explore Our Wide Range of Products.',
         'category_1' => 'Air Conditioner',
         'category_2' => 'Home Appliances',
@@ -195,20 +195,18 @@ return [
     'about' => [
         'title' => 'About Us',
         'tag_line' => 'who we are?',
-        'desc' => "<p>HH Shaker Company is one of the leading companies in the field of air conditioners and home appliances in the Kingdom of Saudi Arabia.</p><p>Shaker Group was established During the reign of Sheikh Ibrahim Shaker in 1950. It has built a solid reputation and strong market presence over the past more than half a century.</p>",
+        'desc' => "<p>Hussein & Al-Hassan G. Shaker Bros. for Modern Trading Co. LTD. embodies the Shaker family’s legacy of excellence.</p>
+        <p>Shaker Group of Companies, established in 1950 by the late Sheikh Ibrahim Shaker, has been a pioneer in the air conditioning and home appliances industry, building a strong reputation and a significant market presence over the past seven decades.</p>",
         'btn' => 'Contact Us',
         'middle_section' => [
-            'box_1_title' => 'Satisfied Customer',
-            'box_1_desc' => '100',
-            'box_2_title' => 'Warranty',
-            'box_2_desc' => '10',
-            'box_2_desc_2' => 'up to',
-            'box_2_desc_3' => 'Y',
-            'box_3_title' => 'Efficiency',
-            'box_3_desc' => 'No',
-            'box_3_desc_2' => '1',
-            'desc_1' => 'The journey was completed by the modern trading company, Hussein and Hassan Ghazi Shaker Ltd, representing the esteemed history of the Shaker Group.',
-            'desc_2' => 'Thanks to our commitment to quality and efficiency, we succeed in providing a diverse range of high-quality products to meet diverse customer needs.',
+            'box_1_title' => 'Years',
+            'box_1_desc' => '75',
+            'box_2_title' => 'Satisfied Customers',
+            'box_2_desc' => '100%',
+            'box_2_desc_2' => 'Global Brands',
+            'box_2_desc_3' => '3',
+            'desc_1' => 'As the exclusive importer and distributor of renowned international brands such as Midea Air Conditioning and Beko Home Appliances, HH-Shaker operates a robust network of branches, service-centers, and exclusive sales outlets, including modern retail partnerships.',
+            'desc_2' => 'We take pride in being a leading and innovative force in the home appliances and air conditioning solutions industry, dedicated to delivering the highest standards of quality and customer satisfaction.',
         ],
         'last_section' => [
             'title' => '100% Satisfied customer',
@@ -265,22 +263,19 @@ return [
         'section_1' => [
             'btn_1' => 'Values ​​and vision',
             'title' => 'Values ​​and vision',
-            'desc'  => 'Our priority is to provide the best services promptly, meeting the needs of our customers quickly and efficiently. We aim to ensure the highest levels of comfort and satisfaction for them.'
+            'desc'  => 'We strive to set the standard in the Saudi market as the premier provider of innovative Air conditioning solutions and Home Appliances. Our goal is to lead with excellence, enhancing comfort and convenience in every home.'
         ],
         'section_2' => [
-            'btn_1' => 'Value',
-            'title' => 'Hh Shaker Value',
-            'desc' => '<p>At the core of our company lies a deep commitment to prioritizing our customers, ensuring their needs and satisfaction are our primary focus.</p>
-                    <p>We believe that communication with customers should be simple and effective. Therefore, we strive to provide a comfortable, enjoyable, and smooth shopping experience for our customers, focusing on providing exceptional customer service
-                        and high-quality products. </p>
-                    <p>We are recognized as the premier option for consumers and the preferred partner for brands in the electronics and electrical appliances sector in the Kingdom of Saudi Arabia. </p>',
+            'btn_1' => 'Mission',
+            'title' => 'HH Shaker Mission',
+            'desc' => '<p>To elevate everyday living by delivering unparalleled quality in Air conditioning systems and Home Appliances. We aspire to be your go-to-partner, offering reliable solutions that enrich your home life, complemented by our commitment to exceptional after-sales service.</p>',
         ],
         'section_3' => [
             'box_1_title_1' => '100%',
             'box_1_title_2' => 'Satisfied Customer',
             'box_2_title_1' => 'Simple & Efficient',
             'box_2_title_2' => 'Communication with customers',
-            'box_3_title_1' => '10Y',
+            'box_3_title_1' => '75Y',
             'box_3_title_2' => 'Experiences',
             'box_4_title_1' => '100%',
             'box_4_title_2' => 'Satisfied Customer',
@@ -289,7 +284,7 @@ return [
             'title' => 'We are committed to help our customer'
         ],
         'section_5' => [
-            'btn_1' => 'Vision',
+            'btn_1' => 'Value',
             'title' => 'Hh Shaker Vision',
             'desc' => '<p>At the core of our company lies a deep commitment to prioritizing our customers, ensuring their needs and satisfaction are our primary focus.</p>
                     <p>We believe that communication with customers should be simple and effective. Therefore, we strive to provide a comfortable, enjoyable, and smooth shopping experience for our customers, focusing on providing exceptional customer service

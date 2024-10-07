@@ -6,7 +6,7 @@
         <div class="latest-pro-banner-text">
             <div class="wow fadeInLeft" data-wow-delay="1.2s">{{ __('website.our_latest_project.title_1') }}</div>
             <div class="wow fadeInRight" data-wow-delay="1.2s">{{ __('website.our_latest_project.title_2') }}</div>
-            <div class="wow fadeInUp" data-wow-delay="1.2s">{{ __('website.our_latest_project.title_3') }}</div>
+            {{  app()->getLocale() == 'en' ? <div class="wow fadeInUp" data-wow-delay="1.2s">{{ __('website.our_latest_project.title_3') }}</div> : ''}}
         </div>
         <div class="wow fadeInLeft" data-wow-delay="0.5s">
             <a class="cutome-btn green-custome-btn" href="#">{{ __('website.our_latest_project.btn') }}</a>

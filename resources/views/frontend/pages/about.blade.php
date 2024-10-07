@@ -43,10 +43,10 @@
                     <div class="ani-nub-banner"><span class="numberanimation-home-page">{{ __('website.about.middle_section.box_2_desc') }}</span>{{ __('website.about.middle_section.box_2_desc_3') }}<span class="ani-nub-small">{{ __('website.about.middle_section.box_2_desc_2') }}</span></div>
                     <p class="p-nub-banner">{{ __('website.about.middle_section.box_2_title') }}</p>
                 </div>
-                <div class="m-auto wow fadeInRightBig" data-wow-delay="0.8s">
+                {{-- <div class="m-auto wow fadeInRightBig" data-wow-delay="0.8s">
                     <div class="ani-nub-banner">{{ __('website.about.middle_section.box_3_desc') }}. <span class="numberanimation-home-page">{{ __('website.about.middle_section.box_3_desc_2') }}</span></div>
                     <p class="p-nub-banner">{{ __('website.about.middle_section.box_3_title') }}</p>
-                </div>
+                </div> --}}
             </div>
 
             <div class="row gx-lg-5 about-text-p-div">

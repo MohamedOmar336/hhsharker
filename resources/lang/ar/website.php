@@ -2,228 +2,227 @@
 
 return [
     'header_menu' => [
-        'home' => 'الرئيسية',
+        'home' => 'الصفحة الرئيسية',
         'company' => 'الشركة',
-        'air_conditioner' => 'مكيف الهواء',
+        'air_conditioner' => 'تكييفات الهواء',
         'home_appliances' => 'الأجهزة المنزلية',
-        'media_center' => 'مركز الوسائط',
+        'media_center' => 'المركز الاعلامي',
         'contact_us' => 'اتصل بنا',
-        'about' => 'حول',
+        'about' => 'عنا',
         'value_vision' => 'القيمة والرؤية',
-        'company_founder' => 'مؤسسو الشركة',
-        'news' => 'أخبار',
-        'industry_insight' => 'رؤية صناعية'
+        'company_founder' => 'مؤسسي الشركة',
+        'news' => 'اخبارنا',
+        'industry_insight' => 'رؤيتنا للسوق',
     ],
     'homepage_slider_1' => [
-        'title_1' => 'مكيفات هواء <br> تجارية',
-        'title_2' => 'بلمسة <br> واحدة',
-        'title_3' => 'أجهزة <br> منزلية',
-        'tag_line' => 'ابحث عن أفضل المنتجات التي تناسب احتياجاتك',
+        'title_1' => 'تكييفات منشأتك',
+        'title_2' => 'أجهزة بيتك',
+        'title_3' => 'بكبسة زر',
+        'tag_line' => 'ابحث عن أفضل منتج حسب احتياجاتك',
         'button' => 'تفاصيل إضافية',
-        'box_1_title' => 'عميل راضٍ',
+        'box_1_title' => 'إرضاء العملاء',
         'box_1_desc' => '100',
-        'box_2_title' => 'الضمان',
+        'box_2_title' => 'ضمان',
         'box_2_desc' => '10',
         'box_2_desc_2' => 'حتى',
-        'box_2_desc_3' => 'ي',
-        'box_3_title' => 'الكفاءة',
-        'box_3_desc' => 'لا',
+        'box_2_desc_3' => 'Y',
+        'box_3_title' => 'كفاءة',
+        'box_3_desc' => 'No',
         'box_3_desc_2' => '1',
     ],
     'common_slider_1' => [
-        'title_1' => 'مكيفات الهواء التجارية',
-        'title_2' => 'الأجهزة المنزلية',
-        'title_3' => 'بلمسة واحدة',
-        'title_4' => 'مكيفات الهواء التجارية',
-        'title_5' => 'الأجهزة المنزلية',
-        'title_6' => 'بلمسة واحدة',
-        'title_7' => 'مكيفات الهواء التجارية',
-        'title_8' => 'الأجهزة المنزلية',
-        'title_9' => 'بلمسة واحدة',
-        'title_10' => 'مكيفات الهواء التجارية',
-        'title_11' => 'الأجهزة المنزلية',
-        'title_12' => 'بلمسة واحدة',
-        'title_13' => 'مكيفات الهواء التجارية',
-        'title_14' => 'الأجهزة المنزلية',
-        'title_15' => 'بلمسة واحدة',
-        'title_17' => 'الأجهزة المنزلية',
-        'title_16' => 'مكيفات الهواء التجارية',
-        'title_18' => 'بلمسة واحدة',
+        'title_1' => 'تكييفات منشأتك',
+        'title_2' => 'أجهزة بيتك',
+        'title_3' => 'بكبسة زر',
+        'title_4' => 'تكييفات منشأتك',
+        'title_5' => 'أجهزة بيتك',
+        'title_6' => 'بكبسة زر',
+        'title_7' => 'تكييفات منشأتك',
+        'title_8' => 'أجهزة بيتك',
+        'title_9' => 'بكبسة زر',
+        'title_10' => 'تكييفات منشأتك',
+        'title_11' => 'أجهزة بيتك',
+        'title_12' => 'بكبسة زر',
+        'title_13' => 'تكييفات منشأتك',
+        'title_14' => 'أجهزة بيتك',
+        'title_15' => 'بكبسة زر',
+        'title_16' => 'تكييفات منشأتك',
+        'title_17' => 'أجهزة بيتك',
+        'title_18' => 'بكبسة زر',
     ],
     'homepage_brand_section' =>[
         'title' => 'علاماتنا التجارية الموثوقة',
-        'button' => 'وصول سريع',
+        'button' => 'فئاتنا', 
     ],
     'homepage_product_section_1' => [
-        'title' => 'الوصول السريع',
-        'desc' => 'ابحث عن الحل المثالي لك <br> استكشف مجموعتنا الواسعة من المنتجات.',
-        'category_1' => 'مكيف هواء',
+        'title' => 'فئاتنا', 
+        'desc' => 'اكتشف الحل المثالي لك <br> تصفح مجموعة منتجاتنا المتنوعة.',
+        'category_1' => 'تكييفات الهواء',
         'category_2' => 'الأجهزة المنزلية',
         'button' => 'عرض المزيد',
     ],
     'homepage_product_section_2' => [
-        'title' => 'أفضل المنتجات مبيعًا',
-        'desc' => 'أفضل البائعين في الأجهزة المنزلية',
-        'button' => 'تعرف على المزيد',
-        'dragbtn' => 'اسحب'
+        'title' => 'المنتجات الأكثر مبيعًا',
+        'desc' => 'الأكثر مبيعاً في الأجهزة المنزلية',
+        'button' => 'اعرف المزيد',
+        'dragbtn' => 'اسحب',
     ],
     'homepage_aboutus' => [
-        'title' => 'عنّا',
+        'title' => 'عنا',
         'tagline' => 'شريكك في الراحة والكفاءة',
-        'desc' => 'إحدى أكبر الشركات في قطاع تكييف الهواء والأجهزة المنزلية، والموزع الحصري لمكيفات MIDEA والأجهزة المنزلية BEKO في المملكة العربية السعودية.',
+        'desc' => 'واحدة من أكبر الشركات في قطاع التكييف والأجهزة الكهربائية، والموزّع الحصري لمكيفات مايديا والأجهزة المنزلية من بيكو في المملكة العربية السعودية.',
         'link' => 'شاهد الفيديو'
     ],
     'homepage_product_section_3' => [
-        'title' => 'أفضل المنتجات مبيعًا',
+        'title' => 'المنتجات الأكثر مبيعًا',
         'desc' => 'مكيفات الهواء المميزة',
-        'button' => 'تعرف على المزيد'
+        'button' => 'اعرف المزيد'
     ],
     'homepage_testimonials' => [
-        'title' => 'الشهادات',
-        'tagline' => 'ماذا يقولون عنا',
-        'desc' => 'نص تجريبي هنا. أورنار أيبسوم أركو سوسبنديسي أميت لاكوس. آت كومودو تمبوس فوسكي ديام أوديو ديغنيسيم. أورسي ديام سيد فيتاي ماجنا نون مي أورسي سيت سيد. كوام بريتيوم سيت ألترسييس توربيس سيد.',
-        'button' => 'تعرف على المزيد',
+        'title' => 'آراء العملاء',        
+        'tagline' => 'ماذا يقولون عنا',        
+        'desc' => 'Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.',        
+        'button' => 'اعرف المزيد',
         'item_1' => [
-            'title' => 'منتج رائع!',
-            'desc' => 'نص تجريبي هنا. أورنار أيبسوم أركو سوسبنديسي أميت لاكوس. آت كومودو تمبوس فوسكي ديام أوديو ديغنيسيم. أورسي ديام سيد فيتاي ماجنا نون مي أورسي سيت سيد. كوام بريتيوم سيت ألترسييس توربيس سيد.',
-            'author' => 'جون ديفيد'
+            'title' => 'Amazing Product!',
+            'desc' => 'Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.',
+            'author' => 'John David'
         ],
         'item_2' => [
-            'title' => 'منتج رائع!',
-            'desc' => 'نص تجريبي هنا. أورنار أيبسوم أركو سوسبنديسي أميت لاكوس. آت كومودو تمبوس فوسكي ديام أوديو ديغنيسيم. أورسي ديام سيد فيتاي ماجنا نون مي أورسي سيت سيد. كوام بريتيوم سيت ألترسييس توربيس سيد.',
-            'author' => 'جون ديفيد'
+            'title' => 'Amazing Product!',
+            'desc' => 'Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.',
+            'author' => 'John David'
         ],
         'item_3' => [
-            'title' => 'منتج رائع!',
-            'desc' => 'نص تجريبي هنا. أورنار أيبسوم أركو سوسبنديسي أميت لاكوس. آت كومودو تمبوس فوسكي ديام أوديو ديغنيسيم. أورسي ديام سيد فيتاي ماجنا نون مي أورسي سيت سيد. كوام بريتيوم سيت ألترسييس توربيس سيد.',
-            'author' => 'جون ديفيد'
+            'title' => 'Amazing Product!',
+            'desc' => 'Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.',
+            'author' => 'John David'
         ],
         'item_4' => [
-            'title' => 'منتج رائع!',
-            'desc' => 'نص تجريبي هنا. أورنار أيبسوم أركو سوسبنديسي أميت لاكوس. آت كومودو تمبوس فوسكي ديام أوديو ديغنيسيم. أورسي ديام سيد فيتاي ماجنا نون مي أورسي سيت سيد. كوام بريتيوم سيت ألترسييس توربيس سيد.',
-            'author' => 'جون ديفيد'
+            'title' => 'Amazing Product!',
+            'desc' => 'Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.',
+            'author' => 'John David'
         ],
         'item_5' => [
-            'title' => 'منتج رائع!',
-            'desc' => 'نص تجريبي هنا. أورنار أيبسوم أركو سوسبنديسي أميت لاكوس. آت كومودو تمبوس فوسكي ديام أوديو ديغنيسيم. أورسي ديام سيد فيتاي ماجنا نون مي أورسي سيت سيد. كوام بريتيوم سيت ألترسييس توربيس سيد.',
-            'author' => 'جون ديفيد'
+            'title' => 'Amazing Product!',
+            'desc' => 'Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.',
+            'author' => 'John David'
         ]
     ],
     'footer' => [
-        'title' => 'شركة رائدة في مجال مكيفات الهواء والأجهزة المنزلية في المملكة العربية السعودية.',
-        'get_in_touch' => 'تواصل مع إتش إتش شاكر',
-        'button' => 'اتصل بنا',
-        'copy_right' => '2024 إتش إتش شاكر للتجارة الحديثة ش.م.م. جميع الحقوق محفوظة',
-        'powered_by' => 'مدعوم بواسطة',
-        'powered_by_title' => 'استوديو بوب28',
+        'title' => 'شركة رائدة في مجال المكيفات والأجهزة المنزلية في المملكة العربية السعودية',
+        'get_in_touch' => 'تواصل مع شركة حسين والحسن شاكر',
+        'button' => 'تواصل معنا',
+        'copy_right' => '© 2024 شركة إخوان حسين والحسن غازي شاكر للتجارة الحديثة المحدودة. جميع الحقوق محفوظة.',
+        'powered_by' => 'مدعوم من',
+        'powered_by_title' => 'BOB28 Studio',
     ],
     'company_founder' => [
         'title' => 'المؤسسون',
-        'desc' => 'مؤسسو الشركة',
+        'desc' => 'مؤسسوا الشركة',
         'founder_1' => 'حسن شاكر',
-        'designation_1' => 'المدير التنفيذي لشركة إتش إتش شاكر',
+        'designation_1' => 'الرئيس التنفيذي',
         'founder_2' => 'حسين شاكر',
         'designation_2' => 'رئيس مجلس الإدارة',
-        'long_description' => "<p>تأسست شركة حسين وإبراهيم ش. شاكر للتجارة الحديثة ش.م.م. كتمثيل حقيقي لتاريخ طويل وسمعة متميزة تحتفظ بها عائلة شاكر. منذ تأسيسها في عام 1950 على يد الشيخ إبراهيم شاكر.</p>
-                        <p>تواصل شركة إتش إتش شاكر الريادة في صناعة تكييف الهواء والأجهزة المنزلية في المملكة العربية السعودية. كما أنها المورّد والموزع الحصري للعديد من العلامات التجارية الدولية الرائدة، بما في ذلك ميديا وبيكو.</p>
-                        <p>بفضل مؤسسيها، حافظت الشركة على مسارها المتنامي بوتيرة ثابتة وواضحة على مر السنين، حتى أصبحت علامة تجارية متميزة وعنواناً بارزاً في تسويق الأجهزة المنزلية ومكيفات الهواء. تشتهر بتقديم خدمات على أعلى مستويات الجودة والكفاءة في المملكة.</p>
-                        <p>بفضل نجاحها وتميزها، قامت مجموعة شاكر بإدراج أسهم الشركة في السوق السعودي لتحقيق مزيد من النمو والتوسع. تشمل مجموعة شاكر شبكة قوية من الفروع ومراكز الخدمة ونقاط البيع الحصرية، بما في ذلك البيع بالتجزئة الحديثة من خلال شركاء التجزئة المتخصصين.</p>
-                        <p>ومن ثم، تعتبر شركة حسين وإبراهيم ش. شاكر مجموعة رائدة ومبتكرة في سوق الأجهزة المنزلية وحلول تكييف الهواء، حريصة دائماً على خدمة العملاء بأعلى معايير الجودة والرضا.</p>"
-
+        'long_description' => '<p>تأسست شركة الأخوان حسين والحسن غازي شاكر للتجارة الحديثة المحدودة كتجسيد حقيقي لتاريخ عريق وسمعة مرموقة تحملها عائلة شاكر. منذ إنشائها في عام 1950 على يد الشيخ إبراهيم شاكر ( رحمه الله ).
+                        </p>
+                        <p>كانت وما زالت شركة الأخوان شاكر واحدة من روّاد صناعة التكييفات والأجهزة المنزلية في المملكة العربية السعودية. وكذلك المستورد والموزع الحصري للعديد من العلامات التجارية العالمية الرائدة مثل مايديا وبيكو.</p>
+                        <p>تحافظ الشركة "بفضل مؤسسيها" على مسيرتها المتنامية بخطى ثابتة واضحة على مر السنين، حتى أصبحت علامة تجارية متميزة وعنوانًا بارزًا في تسويق الأجهزة المنزلية والتكييفات. وتشتهر بتقديم الخدمات على أعلى مستويات الجودة والكفاءة في المملكة.</p>
+                        <p>بفضل نجاحها وتميزها، أدرجت مجموعة شاكر أسهم الشركة في السوق السعودية لتحقيق مزيد من النمو والتوسع. وتضم المجموعة شبكة قوية من الفروع والمراكز الخدمية ومنافذ البيع الحصرية، بما في ذلك البيع بالتجزئة الحديثة من خلال شركاء التجزئة المتخصصين.</p>
+                        <p>من هنا، تعتبر شركة الأخوان حسين والحسن غازي شاكر مجموعة رائدة ومبتكرة في سوق الأجهزة المنزلية وحلول التكييف، مع الحرص الدائم على خدمة المستهلكين بأعلى معايير الجودة والرضا.</p>',
     ],
     'contact' => [
-        'title' => 'قل <br> مرحباً بنا',
-        'button' => 'أرسل رسالة',
+        'title' => 'قل <br> لنا مرحباً',
+        'button' => 'أرسل لنا رسالة',
         'address_1' => [
             'city' => 'جدة',
-            'address' => 'شركة حسين & الحسن ج. شاكر Bros. للتجارة الحديثة المحدودة',
+            'address' => 'شركة إخوان حسين والحسن غازي شاكر للتجارة الحديثة المحدودة',
             'email' => 'info@hh-shaker.com.sa',
-            'btn' => 'حدد موقعنا'
+            'btn' => 'موقعنا'
         ],
         'address_2' => [
             'city' => 'الرياض',
-            'address' => 'شركة حسين & الحسن ج. شاكر Bros. للتجارة الحديثة المحدودة',
+            'address' => 'شركة إخوان حسين والحسن غازي شاكر للتجارة الحديثة المحدودة',
             'email' => 'info@hh-shaker.com.sa',
-            'btn' => 'حدد موقعنا'
+            'btn' => 'موقعنا'
         ],
         'address_3' => [
             'city' => 'الخبر',
-            'address' => 'شركة حسين & الحسن ج. شاكر Bros. للتجارة الحديثة المحدودة',
+            'address' => 'شركة إخوان حسين والحسن غازي شاكر للتجارة الحديثة المحدودة',
             'email' => 'info@hh-shaker.com.sa',
-            'btn' => 'حدد موقعنا'
+            'btn' => 'موقعنا'
         ],
         'address_4' => [
             'city' => 'القصيم',
-            'address' => 'شركة حسين & الحسن ج. شاكر Bros. للتجارة الحديثة المحدودة',
+            'address' => 'شركة إخوان حسين والحسن غازي شاكر للتجارة الحديثة المحدودة',
             'email' => 'info@hh-shaker.com.sa',
-            'btn' => 'حدد موقعنا'
+            'btn' => 'موقعنا'
         ],
         'tab_1' => 'اتصل بنا',
-        'tab_2' => 'رقم مجاني',
-        'form_side_title' => 'خدمة العملاء في HH شاكير جاهزة للمساعدة',
+        'tab_2' => 'الرقم المجاني',
+        'form_side_title' => 'خدمة عملاء شركة إخوان حسين والحسن غازي شاكر جاهزة لمساعدتك',
         'field_title_1' => 'اسمك',
         'field_title_2' => 'اسم شركتك',
-        'field_title_3' => 'رقم الهاتف المحمول',
-        'field_title_4' => 'عنوان البريد الإلكتروني',
+        'field_title_3' => 'رقم الجوال',
+        'field_title_4' => 'البريد الإلكتروني',
         'field_title_5' => 'الموضوع',
         'field_title_6' => 'الرسالة',
         'field_title_6_placeholder' => 'اكتب شيئًا',
         'field_title_7' => 'إرسال',
         'field_1_error_1' => 'يرجى إدخال اسمك',
-        'field_1_error_2' => 'يجب أن يكون اسمك بحد أقصى 255 حرفًا',
+        'field_1_error_2' => 'يجب ألا يزيد الاسم عن 255 حرفًا',
         'field_2_error_1' => 'يرجى إدخال اسم شركتك',
-        'field_2_error_2' => 'يجب أن يكون اسم الشركة بحد أقصى 255 حرفًا',
-        'field_3_error_1' => 'يرجى إدخال رقم هاتفك المحمول',
-        'field_3_error_2' => 'يجب أن يكون رقم الهاتف المحمول صالحًا',
-        'field_3_error_3' => 'يجب أن يتكون رقم الهاتف المحمول من 15 رقمًا كحد أقصى',
-        'field_4_error_1' => 'يرجى إدخال عنوان بريدك الإلكتروني',
+        'field_2_error_2' => 'يجب ألا يزيد اسم الشركة عن 255 حرفًا',
+        'field_3_error_1' => 'يرجى إدخال رقم جوالك',
+        'field_3_error_2' => 'يجب أن يكون رقم الجوال صالحًا',
+        'field_3_error_3' => 'يجب ألا يزيد رقم الجوال عن 15 رقمًا',
+        'field_4_error_1' => 'يرجى إدخال بريدك الإلكتروني',
         'field_4_error_2' => 'يرجى إدخال عنوان بريد إلكتروني صالح',
         'field_5_error_1' => 'يرجى إدخال الموضوع',
-        'field_5_error_2' => 'يجب أن يكون الموضوع مكونًا من حرفين على الأقل',
+        'field_5_error_2' => 'يجب ألا يقل الموضوع عن حرفين',
         'field_6_error_1' => 'يرجى إدخال رسالة',
-        'field_6_error_2' => 'يجب أن تتكون رسالتك من 10 أحرف على الأقل',
-        'tab_2_desc' => 'في جوهر شركتنا تكمن التزام عميق بترتيب أولويات عملائنا، مع ضمان أن تكون احتياجاتهم ورضاهم هي محور تركيزنا الأساسي.',
-        'tab_2_contact' => 'موحد',
+        'field_6_error_2' => 'يجب ألا تقل الرسالة عن 10 أحرف',
+        'tab_2_desc' => 'في جوهر شركتنا يكمن التزام عميق بإعطاء الأولوية لعملائنا، وضمان أن تكون احتياجاتهم ورضاهم محور اهتمامنا.',
+        'tab_2_contact' => 'الرقم الموحد',
         'tab_2_mobile' => '8002440247',
         'tab_2_email' => 'البريد الإلكتروني',
         'tab_2_address' => 'info@hh-shaker.com.sa',
     ],
     'about' => [
-        'title' => 'نبذة عنا',
+        'title' => 'عنا',
         'tag_line' => 'من نحن؟',
-        'desc' => "<p>شركة HH شاكير هي واحدة من الشركات الرائدة في مجال أجهزة التكييف والأجهزة المنزلية في المملكة العربية السعودية.</p><p>تأسست مجموعة شاكير في عهد الشيخ إبراهيم شاكير عام 1950. وقد بنت سمعة قوية وحضوراً مميزاً في السوق على مدار أكثر من نصف قرن.</p>",
+        'desc' => "<p>شركة إخوان حسين والحسن غازي شاكر للتجارة الحديثة المحدودة تجسد إرث عائلة شاكر في التميز.</p>
+        <p>مجموعة شركات شاكر، التي أسسها الشيخ إبراهيم شاكر - رحمه الله - في عام 1950، كانت رائدة في صناعة التكييف والأجهزة المنزلية، حيث بنت سمعة قوية وحضورًا كبيرًا في السوق على مدى السبعين عامًا الماضية.</p>
+        ",
         'btn' => 'اتصل بنا',
         'middle_section' => [
-            'box_1_title' => 'عملاء راضون',
-            'box_1_desc' => '100',
-            'box_2_title' => 'ضمان',
-            'box_2_desc' => '10',
-            'box_2_desc_2' => 'حتى',
-            'box_2_desc_3' => 'سنوات',
-            'box_3_title' => 'الكفاءة',
-            'box_3_desc' => 'لا',
-            'box_3_desc_2' => '1',
-            'desc_1' => 'اكتملت الرحلة من خلال شركة حسين وحسن غازي شاكير المحدودة، ممثلة التاريخ العريق لمجموعة شاكير.',
-            'desc_2' => 'بفضل التزامنا بالجودة والكفاءة، ننجح في تقديم مجموعة متنوعة من المنتجات عالية الجودة لتلبية احتياجات العملاء المتنوعة.',
+            'box_1_title' => 'عامًا',// Change english version to "Years"
+            'box_1_desc' => '75',// Changed
+            'box_2_title' => 'رضا العملاء',// Changed english version to "Satisfied Customers"
+            'box_2_desc' => '100%',// Changed
+            'box_2_desc_2' => 'العلامات العالمية',// Changed english verstion to "Global Brands"
+            'box_2_desc_3' => '2',// Changed
+            'desc_1' => 'بصفتها المستورد والموزع الحصري لعلامات تجارية عالمية شهيرة مثل ميديا للتكييف وأجهزة بيكو المنزلية، تدير شركة إتش إتش شاكر شبكة قوية من الفروع ومراكز الخدمة ونقاط البيع الحصرية، بما في ذلك شراكات مع متاجر التجزئة الحديثة.',
+            'desc_2' => 'نحن نفخر بكوننا قوة رائدة ومبتكرة في صناعة حلول الأجهزة المنزلية والتكييف، ملتزمين بتقديم أعلى معايير الجودة ورضا العملاء.',
         ],
         'last_section' => [
-            'title' => '100% عملاء راضون',
-            'desc' => '<p>نقدم مجموعة واسعة من الأجهزة المنزلية، بما في ذلك أجهزة التكييف، والثلاجات، وغسالات الملابس، والتلفزيونات، وغيرها. بالإضافة إلى خدمات التوصيل والتركيب والصيانة.</p>
-                    <p>كما نولي الأولوية للمسؤولية الاجتماعية والاقتصادية، ونسعى لتقديم خدمات فريدة تقدم حلولًا تعزز جودة حياة عملائنا.</p>'
+            'title' => '100% رضا العملاء',
+            'desc' => '<p>حيث أننا نقدّم تشكيلة واسعة من الأجهزة المنزلية بما في ذلك التكييفات، والثلاجات، والغسالات، والتلفزيونات، وغيرها. بالإضافة إلى خدمات التوصيل والتركيب والصيانة.</p>
+                    <p>كما أننا نتميّز بالمسؤولية الاجتماعية والاقتصادية، حيث أننا نسعى جاهدين لتقديم خدمات فريدة من نوعها لتوفير حلول تساهم في تسهيل حياة عملائنا بشكل أفضل.</p>'
         ]
     ],
     'industry_insight' => [
-        'title_1' => 'الصناعة',
-        'title_2' => 'رؤى',
+        'title_1' => 'للسوق',
+        'title_2' => 'رؤيتنا',
         'title_3' => '100',
-        'title_4' => 'مقال',
-        'desc' => 'لوريم إيبسوم دولور سيت أميت كونسكتتور. أورناري إيبسوم أركو سوسبينديس أميت لاكوس. أتو كومودو تيمبوس فوسكي ديام أوديو ديجنيسيم. أوركي ديام سيد فيت ماجنا',
-        'search_btn' => 'بحث',
-        'search_placeholder' => 'ابحث هنا...',
-        'topic_1_title' => 'موضوع بارز',
+        'title_4' => 'المقالات',
+        'desc' => 'Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna ',
+        'search_btn' => 'ابحث',
+        'search_placeholder' => 'ابحث هنا…',
+        'topic_1_title' => 'الموضوع المميز',
         'topic_1_btn' => 'اعرف المزيد',
-        'topic_2_title' => 'مواضيع',
-        'topic_2_desc' => 'لوريم إيبسوم دولور سيت أميت كونسكتتور. أورناري إيبسوم أركو سوسبينديس أميت لاكوس. أتو كومودو تيمبوس فوسكي ديام أوديو ديجنيسيم. أوركي ديام سيد فيت ماجنا',
+        'topic_2_title' => 'المواضيع',
+        'topic_2_desc' => 'Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna',
         'topic_2_btn' => 'اقرأ الآن',
         'blog_section' => [
             'title' => 'جميع المدونات',
@@ -231,22 +230,21 @@ return [
             'btn_2' => 'اقرأ الآن',
         ],
         'last_section' => [
-            'title_1' => 'الصناعة',
-            'title_2' => 'رؤية',
+            'title_1' => 'للسوق',
+            'title_2' => 'رؤيتنا',
         ]
     ],
     'news' => [
-        'title' => 'تحديثات الأخبار لدينا',
-        'placeholder' => 'ابحث هنا...',
-        'btn' => 'بحث',
+        'title' => 'تحديثات أخبارنا',
+        'placeholder' => 'ابحث هنا…',
+        'btn' => 'ابحث',
         'new' => 'جديد',
         'middle_section' =>[
-            'title' => 'لوريم إيبسوم',
-            'description' => 'لوريم إيبسوم دولور سيت أميت كونسيكتيتور.
-<span class="span-t-1">كويزك بيليتسكي بيلينتاس تورتور فليت نيسل كويزك بيليتسكي فاسيليس. أوري كويز أركو فيليس فوسيبوس نون روتريم. مي أميت إينيم فليت إيغستاس كراس فاريترا إيغستاس إيرات.</span>
-<span class="span-t-2">أوت فاسيلوس أركو إيست سولليكتودين مالسيدات مربي سيت.</span>
-',
-            'btn' => 'استمر في القراءة'
+            'title' => 'Lorem ipsum',
+            'description' => 'Lorem ipsum dolor sit amet consectetur.
+                            <span class="span-t-1">Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat. </span>
+                            <span class="span-t-2">Ut phasellus arcu est sollicitudin malesuada morbi sit.</span>',
+            'btn' => 'تابع القراءة'
         ],
         'news_section' => [
             'title' => 'الأخبار',
@@ -254,135 +252,135 @@ return [
             'popular' => 'الأكثر شعبية',
             'new' => 'جديد',
             'btn' => 'اقرأ الآن',
-            'desc' => 'لوريم إيبسوم دولور سيت أميت كونسيكتيتور. كويزك بيليتسكي بيلينتاس تورتور فليت نيسل كويزك بيليتسكي فاسيليس. أوري كويز أركو فيليس فوسيبوس نون روتريم. مي أميت إينيم فليت إيغستاس كراس فاريترا إيغستاس إيرات. أوت فاسيلوس أركو إيست سولليكتودين مالسيدات مربي سيت.',
-            'btn2' => 'تحميل المزيد'
+            'desc' => 'Lorem ipsum dolor sit amet consectetur. Quisque pellentesque tortor velit nisl quisque pellentesque facilisis. Orci quis arcu felis faucibus non rutrum. Mi amet enim velit egestas cras pharetra egestas erat. Ut phasellus arcu est sollicitudin malesuada morbi sit.',
+            'btn2' => 'المزيد'
         ]        
     ],
     'value_vision' => [
         'section_1' => [
             'btn_1' => 'القيم والرؤية',
             'title' => 'القيم والرؤية',
-            'desc'  => 'أولويتنا هي تقديم أفضل الخدمات في الوقت المناسب، لتلبية احتياجات عملائنا بسرعة وكفاءة. نهدف إلى ضمان أعلى مستويات الراحة والرضا لهم.'
+            'desc'  => 'نسعى جاهدين لوضع معايير جديدة في السوق السعودي كمزود رائد لحلول التكييف المبتكرة والأجهزة المنزلية. هدفنا هو القيادة بالتميز، وتعزيز الراحة والرفاهية في كل منزل.'
         ],
         'section_2' => [
-            'btn_1' => 'القيمة',
-            'title' => 'قيمة مجموعة HH شايكر',
-            'desc' => '<p>في قلب شركتنا يكمن التزام عميق تحديد الأولويات احتياجات عملائنا، وضمان أن تكون رضاهم هي أولويتنا الأساسية.</p>
-                    <p>نعتقد أن التواصل مع العملاء يجب أن يكون بسيطاً وفعالاً. لذلك، نسعى لتوفير تجربة تسوق مريحة وممتعة وسلسة لعملائنا، مع التركيز على تقديم خدمة عملاء استثنائية ومنتجات عالية الجودة.</p>
-                    <p>نحن معترف بنا كخيار أول للمستهلكين والشريك المفضل للعلامات التجارية في قطاع الإلكترونيات والأجهزة الكهربائية في المملكة العربية السعودية.</p>',
+            'btn_1' => 'مهمتنا',//Change the english version to "Mission"
+            'title' => 'مهمة شركة إخوان حسين والحسن شاكر',// Change the english version to "HH Shaker Mission"
+            'desc' => '<p>الارتقاء بأسلوب الحياة اليومي من خلال تقديم جودة لا مثيل لها في أنظمة التكييف والأجهزة المنزلية. نطمح لأن نكون شريكك الأول، بتقديم حلول موثوقة تعزز حياتك المنزلية، مدعومة بالتزامنا بتقديم خدمة ما بعد البيع المتميزة.</p>',
         ],
         'section_3' => [
             'box_1_title_1' => '100%',
-            'box_1_title_2' => 'عملاء راضون',
-            'box_2_title_1' => 'بسيط وفعال',
+            'box_1_title_2' => 'رضا العملاء',
+            'box_2_title_1' => 'بسيط وفعّال',
             'box_2_title_2' => 'التواصل مع العملاء',
-            'box_3_title_1' => '10 سنوات',
-            'box_3_title_2' => 'من الخبرات',
+            'box_3_title_1' => '75Y',//changed from "10" to "75"
+            'box_3_title_2' => 'خبرة',
             'box_4_title_1' => '100%',
-            'box_4_title_2' => 'عملاء راضون',
+            'box_4_title_2' => 'رضا العملاء',
         ],
         'section_4' => [
             'title' => 'نحن ملتزمون بمساعدة عملائنا'
         ],
         'section_5' => [
-            'btn_1' => 'الرؤية',
-            'title' => 'رؤية مجموعة HH شايكر',
-            'desc' => '<p>في قلب شركتنا يكمن التزام عميق تحديد الأولويات احتياجات عملائنا، وضمان أن تكون رضاهم هي أولويتنا الأساسية.</p>
-                    <p>نعتقد أن التواصل مع العملاء يجب أن يكون بسيطاً وفعالاً. لذلك، نسعى لتوفير تجربة تسوق مريحة وممتعة وسلسة لعملائنا، مع التركيز على تقديم خدمة عملاء استثنائية ومنتجات عالية الجودة.</p>
-                    <p>نحن معترف بنا كخيار أول للمستهلكين والشريك المفضل للعلامات التجارية في قطاع الإلكترونيات والأجهزة الكهربائية في المملكة العربية السعودية.</p>'
+            'btn_1' => 'القيم',//Change english version to "Value"
+            'title' => 'قيم شركة إخوان حسين والحسن شاكر',
+            'desc' => '<p>في جوهر شركتنا يكمن التزام عميق بإعطاء الأولوية لعملائنا، وضمان أن تكون احتياجاتهم ورضاهم محور اهتمامنا.</p>
+                    <p>نحن نؤمن بأن التواصل مع العملاء يجب أن يكون بسيطًا وفعالًا. لذلك نسعى جاهدين لتوفير تجربة تسوّق مريحة وممتعة وسلسة لعملائنا، مع التركيز على تقديم خدمة عملاء استثنائية ومنتجات عالية الجودة.</p>
+                    <p>تعتبر شركة الأخوان شاكر الخيار الأمثل للمستهلك والشريك المثالي للعلامات التجارية في قطاع الإلكترونيات والأجهزة الكهربائية في المملكة العربية السعودية وذلك لتاريخها الممتد منذ عام ١٩٥٠ م في مجال أجهزة التكييف و الأجهزة المنزلية. </p>'
         ],
+
     ],
     'case_study' => [
         'title' => 'دراسات الحالة',
-        'description' => 'لوريم إيبسوم دولور سيت أميت كونسيكتيتور. أورنار إيبسوم أركو سوسبنديسي أميت لاكوس. آت كومودو تيمبوس فوسكي ديام أوديو ديغنسيم. أورسي ديام سيد فيتاي ماجنا',
-        'highlited_case_title' => 'الحالات المميزة',
-        'highlited_topic_title' => 'الموضوع المميز',
+        'description' => 'Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna',
+        'highlited_case_title' => 'Highlighted cases',
+        'highlited_topic_title' => 'Highlighted topic',
     ],
     'commercial_support' => [
-        'title_1' => 'عميل HH شاكر',
-        'title_2' => 'الخدمة جاهزة',
-        'title_3' => 'للمساعدة',
-        'description' => 'لوريم إيبسوم دولور سيت أميت كونسيكتيتور. تيمبور بيلينتيسك فيفيرا ماليسوادا تيمبور سوليسيتودين. أورسي إيجستاس آت فيغيات كوام بريتيوم فاوبيس إلينتوم. فيناتيس ماغنيس بريتيوم دونك إنتردوم. مي ماغنا فيتاي كونسيكتيتور ليكتوس ليو.',
-        'btn' => 'إرسال رسالة',
+        'title_1' => 'خدمة عملاء شركة إخوان حسين والحسن شاكر',
+        'title_2' => 'جاهزة',
+        'title_3' => 'لمساعدتك',
+        'description' => 'Lorem ipsum dolor sit amet consectetur. Tempor pellentesque viverra malesuada tempor sollicitudin. Orci egestas at feugiat quam pretium faucibus elementum. Venenatis magnis pretium donec interdum. Mi magna vitae consectetur lectus
+                    leo.',
+        'btn' => 'أرسل رسالة',
         'section_1' => [
-            'btn' => 'CAC',
-            'title' => 'هل تحتاج مساعدة بخصوص شراء منتجك الأخير، أو قطع الغيار، أو التركيب؟',
-            'desc' => 'فريق خدمة العملاء لدينا هنا من أجلك! لا تتردد في التواصل معنا إذا كان لديك أي أسئلة أو استفسارات.',
+            'btn' => 'مكيفات الهواء التجارية',
+            'title' => 'هل تحتاج إلى مساعدة بشأن منتجك الذي اشتريته مؤخرًا أو قطع الغيار أو التركيب؟',
+            'desc' => 'فريق خدمة العملاء لدينا هنا لمساعدتك! لا تتردد في التواصل معنا لأي استفسارات أو مخاوف قد تكون لديك.',
             'tab_1' => 'واتساب',
             'tab_2' => 'المبيعات',
-            'tab_3' => 'العثور على مركز الخدمة',
+            'tab_3' => 'ابحث عن مركز الخدمة',
         ]
     ],
     'our_latest_project' => [
-        'title_1' => 'مشاريعنا',
-        'title_2' => 'الأحدث',
-        'title_3' => 'المشاريع',
+        'title_1' => 'أحدث',
+        'title_2' => 'مشاريعنا',
+        'title_3' => 'projects',//this string will be removed in the arabic version because the arabic translation is shorter
         'btn' => 'اعرف المزيد',
         'project_done_title' => 'المشاريع المنجزة',
         'project_done_desc' => '100',
-        'testimonial' => [
-            'tag' => 'الشهادات',
-            'title' => 'ماذا يقولون',
-            'desc' => 'لوريم إيبسوم دولور سيت أميت كونسيكتتور. أورناري إيبسوم أركو سوسبنديسس أميت لاكوس. أتم كومودو تيمبوس فوسكي ديام أوديو ديغنيسيم. أورسي ديام سيد فيت ماجنا نون مي أورسي سيت سيد. كوام بريتيوم سيت أولتريسيز ترابيس سيد.'
+        'testimonial' =>[
+            'tag' => 'آراء العملاء',
+            'title' => 'ماذا يقولون عنا',
+            'desc' => 'Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.'
         ],
         'section_2' => [
-            'title_1' => 'عالية الكفاءة',
-            'title_2' => 'موفر للطاقة',
-            'title_3' => 'عالية الكفاءة',
-            'title' => 'إتش إتش شيكر',
+            'title_1' => 'High-efficiency',
+            'title_2' => 'Energy-saving',
+            'title_3' => 'High-efficiency',
+            'title' => 'hh shaker',
         ],
         'highlited_topics' => [
-            'title' => 'موضوع مميز',
+            'title' => 'المواضيع المميزة',
             'btn' => 'اعرف المزيد'
         ],
         'testimonials' => [
-            'title' => 'الشهادات',
-            'tagline' => 'ماذا يقولون عنا',
-            'desc' => 'لوريم إيبسوم دولور سيت أميت كونسيكتتور. أورناري إيبسوم أركو سوسبنديسس أميت لاكوس. أتم كومودو تيمبوس فوسكي ديام أوديو ديغنيسيم. أورسي ديام سيد فيت ماجنا نون مي أورسي سيت سيد. كوام بريتيوم سيت أولتريسيز ترابيس سيد.',
-            'button' => 'اعرف المزيد',
+            'title' => 'Testimonials',        
+            'tagline' => 'What they Say about us',        
+            'desc' => 'Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.',        
+            'button' => 'Learn More',
             'item_1' => [
-                'title' => 'منتج مذهل!',
-                'desc' => 'لوريم إيبسوم دولور سيت أميت كونسيكتتور. أورناري إيبسوم أركو سوسبنديسس أميت لاكوس. أتم كومودو تيمبوس فوسكي ديام أوديو ديغنيسيم. أورسي ديام سيد فيت ماجنا نون مي أورسي سيت سيد. كوام بريتيوم سيت أولتريسيز ترابيس سيد.',
-                'author' => 'جون ديفيد'
+                'title' => 'Amazing Product!',
+                'desc' => 'Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.',
+                'author' => 'John David'
             ],
             'item_2' => [
-                'title' => 'منتج مذهل!',
-                'desc' => 'لوريم إيبسوم دولور سيت أميت كونسيكتتور. أورناري إيبسوم أركو سوسبنديسس أميت لاكوس. أتم كومودو تيمبوس فوسكي ديام أوديو ديغنيسيم. أورسي ديام سيد فيت ماجنا نون مي أورسي سيت سيد. كوام بريتيوم سيت أولتريسيز ترابيس سيد.',
-                'author' => 'جون ديفيد'
+                'title' => 'Amazing Product!',
+                'desc' => 'Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.',
+                'author' => 'John David'
             ],
             'item_3' => [
-                'title' => 'منتج مذهل!',
-                'desc' => 'لوريم إيبسوم دولور سيت أميت كونسيكتتور. أورناري إيبسوم أركو سوسبنديسس أميت لاكوس. أتم كومودو تيمبوس فوسكي ديام أوديو ديغنيسيم. أورسي ديام سيد فيت ماجنا نون مي أورسي سيت سيد. كوام بريتيوم سيت أولتريسيز ترابيس سيد.',
-                'author' => 'جون ديفيد'
+                'title' => 'Amazing Product!',
+                'desc' => 'Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.',
+                'author' => 'John David'
             ],
             'item_4' => [
-                'title' => 'منتج مذهل!',
-                'desc' => 'لوريم إيبسوم دولور سيت أميت كونسيكتتور. أورناري إيبسوم أركو سوسبنديسس أميت لاكوس. أتم كومودو تيمبوس فوسكي ديام أوديو ديغنيسيم. أورسي ديام سيد فيت ماجنا نون مي أورسي سيت سيد. كوام بريتيوم سيت أولتريسيز ترابيس سيد.',
-                'author' => 'جون ديفيد'
+                'title' => 'Amazing Product!',
+                'desc' => 'Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.',
+                'author' => 'John David'
             ],
             'item_5' => [
-                'title' => 'منتج مذهل!',
-                'desc' => 'لوريم إيبسوم دولور سيت أميت كونسيكتتور. أورناري إيبسوم أركو سوسبنديسس أميت لاكوس. أتم كومودو تيمبوس فوسكي ديام أوديو ديغنيسيم. أورسي ديام سيد فيت ماجنا نون مي أورسي سيت سيد. كوام بريتيوم سيت أولتريسيز ترابيس سيد.',
-                'author' => 'جون ديفيد'
+                'title' => 'Amazing Product!',
+                'desc' => 'Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna non mi orci sit sed. Quam pretium sit ultricies turpis sed.',
+                'author' => 'John David'
             ]
         ]
     ],
     'sale_and_support' => [
-        'banner_title_1' => 'عميل إتش إتش شيكر',
-        'banner_title_2' => 'الخدمة جاهزة',
-        'banner_title_3' => 'للمساعدة',
-        'description' => 'لوريم إيبسوم دولور سيت أميت كونسيكتتور. تيمبور بيلينتيسك فيفيررا ماليسويد tempor sollicitudin. أورسي إيجاستس آت فيغيات كوام بريتيوم فاوبيس إليمينتوم. فينيناتيس ماغنيس بريتيوم دونيك إنتيردوم. مي ماغنا فيت كونسيكتتور ليكتوس ليو.',
-        'btn_send_message' => 'إرسال رسالة',
+        'banner_title_1' => 'خدمة عملاء شركة إخوان حسين والحسن شاكر',
+        'banner_title_2' => 'جاهزة',
+        'banner_title_3' => 'لمساعدتك',
+        'description' => 'Lorem ipsum dolor sit amet consectetur. Tempor pellentesque viverra malesuada tempor sollicitudin. Orci egestas at feugiat quam pretium faucibus elementum. Venenatis magnis pretium donec interdum. Mi magna vitae consectetur lectus leo.',
+        'btn_send_message' => 'أرسل رسالة',
         'tab' => [
-            'direct_contact' => 'الاتصال المباشر',
-            'contact_us' => 'تواصل معنا',
-            'find_service_center' => 'البحث عن مركز الخدمة',
+            'direct_contact' => 'اتصال مباشر',
+            'contact_us' => 'اتصل بنا',
+            'find_service_center' => 'ابحث عن مركز الخدمة',
         ],
         'form' => [
             'your_name' => 'اسمك',
-            'your_company' => 'شركتك',
+            'your_company' => 'اسم شركتك',
             'mobile_number' => 'رقم الجوال',
-            'email_address' => 'عنوان البريد الإلكتروني',
+            'email_address' => 'البريد الإلكتروني',
             'city' => 'المدينة',
             'district' => 'الحي',
             'product_category' => 'فئة المنتج',
@@ -396,87 +394,84 @@ return [
         ],
     ],
     'discover_learn' => [
-        'title_1' => 'HH شايكر',
-        'title_2' => 'الدليل الشامل',
-        'title_3' => 'لك',
+        'title_1' => 'إتش إتش شاكر',
+        'title_2' => 'الدليل النهائي',
+        'title_3' => 'من أجلك',
         'bottom_text' => [
             'number' => '32',
-            'description' => 'لوريم إيبسوم دولور سيت أميت كونسيكتتور. أورناري إيبسوم أركو سوسبنديسي أميت لاكوس. آت كومودو تمبوس فوسكي ديام أوديو ديغنيسيم. أورشي ديام سيد فيتاي ماجنا',
+            'description' => 'Lorem ipsum dolor sit amet consectetur. Ornare ipsum arcu suspendisse amet lacus. At commodo tempus fusce diam odio dignissim. Orci diam sed vitae magna',
         ],
     ],
     'newsletter' => [
         'title' => 'اشترك للحصول على أحدث النصائح',
         'your_name' => 'اسمك',
-        'your_email' => 'عنوان البريد الإلكتروني',
-        'btn' => 'اشترك'
+        'your_email' => 'البريد الإلكتروني',
+        'btn' => 'اشترك',
     ],
     'air_conditioner' => [
         'title' => 'أنواع مكيفات الهواء',
-        'btn' => 'تعلم المزيد',
+        'btn' => 'اعرف المزيد',
         'tab' => 'LCAC',
-        'slider_title' => 'hh شايكر',
+        'slider_title' => 'hh shaker',
         'parent_title_1' => 'RAC',
         'parent_title_2' => 'أنواع',
-        'parent_desc_1' => 'اختر النوع الذي يناسب احتياجاتك: وحدات مفرغة ذات كفاءة عالية، أو وحدات قياسية تعمل/تتوقف، أو وحدات نافذة هادئة للغاية.',
+        'parent_desc_1' => 'اختر النوع الذي يناسب احتياجاتك: وحدات الانفيرتر الموفرة للطاقة، أو الوحدات القياسية التشغيل/الإيقاف، أو الوحدات النافذة الهادئة جدًا.',
         'tag_1' => 'توفير الطاقة',
         'tag_2' => 'كفاءة عالية',
         'tag_3' => 'ميزات فريدة',
-        'box_1' => 'منتجات',
-        'box_2' => 'ضمان',
-        'box_3' => 'y',
-        'happy_customer' => 'عملاء سعداء',
-        'happy_customer_desc' => 'لوريم إيبسوم دولور سيت أميت كونسيكتيتور. فيرمينتوم بيبندوم إيد تيلوس ماتيس إيجيت أت كوام آك كوام. إيد سيت فيستيبولوم سوداليس بوسوير إيرات آت.',
+        'box_1' => 'المنتجات',
+        'box_2' => 'y',
+        'box_3' => 'الضمان',
+        'happy_customer' => 'العملاء السعداء',
+        'happy_customer_desc' => 'Lorem ipsum dolor sit amet consectetur. Fermentum bibendum id tellus mattis eget at quam ac quam. Id sit vestibulum sodales posuere erat at.',
         'galleries' => 'المعارض',
         'child_title_1' => 'كفاءة طاقة استثنائية وتوفير التكاليف مع أنظمة VRF',
         'child_slider_title_1' => 'ميتا 2.0',
-        'child_slider_title_2' => 'رابط هايبر',
+        'child_slider_title_2' => 'هايبرلينك',
         'child_slider_title_3' => 'ESP التكيفية',
         'child_slider_tag' => 'LCAC',
-'child_slider_description' => 'اختر أفضل نوع بناءً على سعة المساحة والميزات المطلوبة.',
+        'child_slider_description' => 'اختر النوع الأنسب بناءً على سعة المساحة والميزات المطلوبة.',
         'sub_child_title_1' => 'تشغيل هادئ للغاية',
-        'sub_child_title_2' => 'تكنولوجيا العاكس<br> الموفر للطاقة',
+        'sub_child_title_2' => 'توفير الطاقة<br>بتقنية الانفيرتر',
         'sub_child_title_3' => 'تحكم ذكي',
-        'happy_customer_desc_1' => 'صور التقطت من عملائنا',
-'happy_customer_desc_2' => 'لوريم إيبسوم دولور سيت أميت كونسيكتتور. فيرمنتوم بيبندوم إيد تيلوس ماتيست إيجت أت كوام آك كوام. إيد سيت فيستيبلوم سودايلس بوسوير إيرت آت.',
-        'view_other_product' => 'عرض منتجات أخرى',
-        'vop_title_1' => 'أنظمة التكييف المخفية',
-        'vop_title_2' => 'استمتع بتوزيع الهواء في جميع الاتجاهات وتغطية بزاوية 360°.',
-        'vop_desc_1' => 'أنظمة التكييف القائمة على الأرض',
-        'vop_desc_2' => 'استمتع بتوزيع الهواء في جميع الاتجاهات وتغطية بزاوية 360°.',
+        'happy_customer_desc_1' => 'صور ملتقطة من عملائنا',
+        'happy_customer_desc_2' => 'Lorem ipsum dolor sit amet consectetur. Fermentum bibendum id tellus mattis eget at quam ac quam. Id sit vestibulum sodales posuere erat at.',
+        'view_other_product' => 'عرض المنتجات الأخرى',
+        'vop_title_1' => 'سبليت مخفي',
+        'vop_title_2' => 'استمتع بتوزيع الهواء في جميع الاتجاهات وتغطية 360°.',
+        'vop_desc_1' => 'مكيف سبليت دولابي',
+        'vop_desc_1' => 'استمتع بتوزيع الهواء في جميع الاتجاهات وتغطية 360°.',
         'all_product' => 'جميع المنتجات',
-        'search_product' => 'ابحث عن المنتجات'   
+        'search_product' => 'بحث عن المنتجات',
     ],
     'concealed' => [
-        'title' => 'مكيف هواء مخفي',
-        'btn' => 'تعرف على المزيد',
+        'title' => 'مكيف <br> هواء مخفي',
+        'btn' => 'اعرف المزيد',
         'title_1' => 'سهولة التركيب والتنظيف',
         'title_2' => 'توفير الطاقة',
         'title_3' => 'هواء نقي',
         'all_product' => 'جميع المنتجات',
-        'search_product' => 'ابحث عن المنتجات',
-        'slider_title' => 'hh شايكر',
+        'search_product' => 'بحث عن المنتجات',
+        'slider_title' => 'hh shaker',
     ],
     'home_appliances' => [
-        'happy_customer' => 'عملاء سعداء',
-        'happy_customer_desc' => 'لوريم إيبسوم دولور سيت أميت كونسيكتتور. فيرمنتوم بيبندوم إيد تيلوس ماتيست إيجيت آت كوام آك كوام. إيد سيت فيستيبولوم سوداليس بوسوير إيرات آت.',
+        'happy_customer' => 'العملاء السعداء',
+        'happy_customer_desc' => 'Lorem ipsum dolor sit amet consectetur. Fermentum bibendum id tellus mattis eget at quam ac quam. Id sit vestibulum sodales posuere erat at.',
         'galleries' => 'المعارض',
-        'slider_title_1' => 'تشغيل صامت للغاية',
-        'slider_title_2' => 'توفير الطاقة<br> تقنية العاكس',
-        'slider_title_3' => 'تحكم ذكي',
-        'slider_title' => 'hh شايكر',
+        'child_slider_description' => 'اختر النوع الأنسب بناءً على سعة المساحة والميزات المطلوبة.',
+        'sub_child_title_1' => 'تشغيل هادئ للغاية',
+        'sub_child_title_2' => 'توفير الطاقة<br>بتقنية الانفيرتر',
+        'sub_child_title_3' => 'تحكم ذكي',
+        'slider_title' => 'hh shaker',
         'box_1' => 'المنتجات',
-        'box_2' => 'ي',
-        'box_3' => 'ضمان',
+        'box_2' => 'y',
+        'box_3' => 'الضمان',
         'btn' => 'اعرف المزيد',
-        'section_1_title_1' => 'كل أجهزة المنزل الخاصة بك',
+        'section_1_title_1' => 'جميع أجهزتك المنزلية',
         'section_1_title_2' => 'من بيكو',
         'section_1_title_3' => 'الجودة والكفاءة في مكان واحد',
-        'why_beko_tag' => 'حالة الجودة',
+        'why_beko_tag' => 'علامة الجودة',
         'why_beko' => 'لماذا بيكو؟',
-        'why_beko_desc' => 'بيكو هي علامة تجارية معروفة في جميع أنحاء العالم، متواجدة في أكثر من 120 دولة. تقدم أحدث التقنيات بأسعار معقولة، مما يجعل بيكو خيارًا موثوقًا للجميع.',
+        'why_beko_desc' => 'تعد بيكو علامة تجارية معروفة في جميع أنحاء العالم، متوفرة في أكثر من 120 دولة. تقدم أحدث التقنيات بأسعار معقولة، مما يجعل بيكو الخيار الموثوق للجميع.',
     ]
-
-
-
-
 ];
