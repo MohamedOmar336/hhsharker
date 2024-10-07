@@ -34,7 +34,7 @@ class AirConditionerController extends Controller
         if (!isset($parentCategoryArr->id)) {
             abort(404);
         }
-
+        
         $childCategoryArr = Category::where(['category_type' => 'AirConditioner', 'slug' => $request->child, 'parent_id' => $parentCategoryArr->id])->first();
         if (!isset($childCategoryArr->id)) {
             abort(404);
@@ -48,10 +48,10 @@ class AirConditionerController extends Controller
         if ($airConditionerSubChildArr->count() > 0) {
             return view('frontend.pages.air_conditioner.child1', compact('airConditionerSubChildArr', 'parentCategoryArr', 'childCategoryArr'));
         } else {
-
+            
             $where = [
                 'type' => 'AirConditioner',
-                'category'=>$childCategoryArr->name_ar
+                'category'=>$childCategoryArr->name_en
             ];
             $allProductArr = Product::where($where)->latest()->get();
             $coolOnlyProductArr = Product::where($where)->whereHas('children',function ($query) {
@@ -84,27 +84,50 @@ class AirConditionerController extends Controller
 
         $subSubChildCategoryArr = Category::where(['category_type' => 'AirConditioner', 'parent_id' => $subChildCategoryArr->id])->get();
         $subSubChildCategoryNameArr = $subSubChildCategoryArr->pluck('name_en')->toArray() ?? [];
-
+        
         $where = [
             'type' => 'AirConditioner'
         ];
-        $allProductArr = Product::where($where)->whereIn('child',$subSubChildCategoryNameArr)->latest()->get();
 
-        $coolOnlyProductArr =  Product::where($where)
-        ->whereIn('child',$subSubChildCategoryNameArr)
-        ->whereHas('children',function ($query) {
-            $query->where('main_option','Cool Only'); 
-        })->get();        
+        if(!empty($subSubChildCategoryNameArr)){
+            $allProductArr = Product::where($where)->whereIn('child',$subSubChildCategoryNameArr)->latest()->get();
+
+            $coolOnlyProductArr =  Product::where($where)
+            ->whereIn('child',$subSubChildCategoryNameArr)
+            ->whereHas('children',function ($query) {
+                $query->where('main_option','Cool Only'); 
+            })->get();        
+
+            
+            $heatCoolProductArr = Product::where($where)
+            ->whereIn('child',$subSubChildCategoryNameArr)
+            ->whereHas('children',function ($query) {
+                $query->where('main_option','Heat & Cold'); 
+            })->get();
+
+            return view('frontend.pages.air_conditioner.subchild', compact('parentCategoryArr', 'childCategoryArr', 'subChildCategoryArr','subSubChildCategoryArr','allProductArr','coolOnlyProductArr','heatCoolProductArr'));
+        }else{
+            $allProductArr = Product::where($where)->where('sub_category',$subChildCategoryArr->name_en)->latest()->get();
+            
+            $coolOnlyProductArr =  Product::where($where)
+            ->where('sub_category',$subChildCategoryArr->name_en)
+            ->whereHas('children',function ($query) {
+                $query->where('main_option','Cool Only'); 
+            })->get();        
+
+            
+            $heatCoolProductArr = Product::where($where)
+            ->where('sub_category',$subChildCategoryArr->name_en)
+            ->whereHas('children',function ($query) {
+                $query->where('main_option','Heat & Cold'); 
+            })->get();
+
+            return view('frontend.pages.air_conditioner.child2', compact('parentCategoryArr', 'childCategoryArr','allProductArr','coolOnlyProductArr','heatCoolProductArr'));
+        }
+        
+
 
         
-        $heatCoolProductArr = Product::where($where)
-        ->whereIn('child',$subSubChildCategoryNameArr)
-        ->whereHas('children',function ($query) {
-            $query->where('main_option','Heat & Cold'); 
-        })->get();
-
-
-        return view('frontend.pages.air_conditioner.subchild', compact('parentCategoryArr', 'childCategoryArr', 'subChildCategoryArr','subSubChildCategoryArr','allProductArr','coolOnlyProductArr','heatCoolProductArr'));
     }
 
     public function productDetails()
