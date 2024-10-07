@@ -66,19 +66,6 @@ use Illuminate\Support\Facades\Session;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/admin', function () {
-    return view('auth.login');
-})->name('admin.login');
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-
-Auth::routes(['verify' => false]);
-
-Route::group(['prefix' => 'admin'], function () {
-
-    Route::group(['middleware' => ['auth', 'Localization', 'check.permissions']], function () {
-
-      // Language switch route
 Route::get('/change-lang/{lang}', function ($lang) {
     // Validate that the language is supported
     $supportedLanguages = ['en', 'ar']; // Add other supported languages as needed
@@ -91,6 +78,19 @@ Route::get('/change-lang/{lang}', function ($lang) {
 
     return redirect()->back();
 })->name('change.lang');
+Route::get('/admin', function () {
+    return view('auth.login');
+})->name('admin.login');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Auth::routes(['verify' => false]);
+
+Route::group(['prefix' => 'admin'], function () {
+
+    Route::group(['middleware' => ['auth', 'Localization', 'check.permissions']], function () {
+
+      // Language switch route
+
         Route::get('/home', [HomeController::class, 'index'])->name('home');
 
         Route::get('/analytics', [HomeController::class, 'analytics'])->name('analytics');

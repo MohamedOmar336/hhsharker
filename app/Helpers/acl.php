@@ -10,12 +10,12 @@ return [
     | All ACLs related to products will be placed here.
     |
     */
-    [
-        'key' => 'manage language',
-        'name' => 'app.acl.manage_language', // Translation key for the permission name
-        'route' => 'change.lang', // The route associated with the permission
-        'sort' => 1, // Sorting order for permissions
-    ],
+    // [
+    //     'key' => 'manage language',
+    //     'name' => 'app.acl.manage_language', // Translation key for the permission name
+    //     'route' => 'change.lang', // The route associated with the permission
+    //     'sort' => 1, // Sorting order for permissions
+    // ],
     [
         'key'   => 'products',
         'name'  => 'app.acl.products',
