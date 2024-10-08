@@ -73,7 +73,10 @@
                                 <div class="mb-3">
                                     <label for="AssignedTo"
                                         class="form-label">{{ __('general.attributes.assigned_to') }}</label>
+                                       
                                     <select class="form-control" id="AssignedTo" name="AssignedTo" required>
+                                        <option value="">No Assignment</option>
+                                    
                                         @foreach ($users as $user)
                                             <option value="{{ $user->id }}">{{ $user->user_name }}</option>
                                         @endforeach

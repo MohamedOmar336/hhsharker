@@ -128,12 +128,14 @@
                                 @csrf
                                 @method('PUT')
                                 <select class="form-control" name="assigned_to" onchange="this.form.submit()">
+                                    <option value="" {{ is_null($record->assignedTo) ? 'selected' : '' }}>No Assignment</option>
                                     @foreach ($users as $user)
                                         <option value="{{ $user->id }}"
-                                            {{ $record->assignedTo->id == $user->id ? 'selected' : '' }}>
+                                            @if ($record->assignedTo && $record->assignedTo->id == $user->id) selected @endif>
                                             {{ $user->user_name }}
                                         </option>
                                     @endforeach
+                                    
                                 </select>
                             </form>
                         </td>

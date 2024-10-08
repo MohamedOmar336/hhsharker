@@ -61,7 +61,11 @@
                                 </div><!--end col-->
                                 <div class="col-md-3 d-print-flex mb-3">
                                     <h6 class="m-0">
-                                        <b>{{ __('general.attributes.assigned_to') }}:</b>{{ $ticket->assignedTo->user_name }}
+                                        <b>{{ __('general.attributes.assigned_to') }}:</b>@if($ticket->assignedTo)
+                                        {{ $ticket->assignedTo->user_name }}
+                                    @else
+                                    No Assignment
+                                    @endif
                                     </h6>
                                     <h6 class="mb-0"><b>{{ __('general.attributes.created_by') }}:</b>
                                         {{ $ticket->createdBy->user_name }}</h6>
@@ -90,7 +94,11 @@
                                                         </td>
                                                         <td>{{  e(strip_tags($history->ChangeDescription)) }}
                                                         </td>
-                                                        <td>{{ $history->assignedTo->user_name  }}
+                                                        <td>@if($history->assignedTo)
+                                                            {{ $history->assignedTo->user_name }}
+                                                        @else
+                                                        No Assignment
+                                                        @endif
                                                         </td>
                                                         <td>{{ $history->ChangedAt }}</td>
                                                     </tr>

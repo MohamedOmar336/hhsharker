@@ -167,7 +167,7 @@ class UserController extends Controller
         $user->delete();
 
         // Redirect back to the index page with a success message
-        return redirect()->route('users.index')->with('success', __('messages.deleted_successfully'));
+        return redirect()->route('users.index')->with('success', __('messages.user_deleted'));
     }
 
     /**
