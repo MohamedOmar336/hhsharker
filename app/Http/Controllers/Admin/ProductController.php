@@ -24,9 +24,9 @@ class ProductController extends Controller
 
         // Apply filter for 'name' if not empty
         if ($request->has('name') && $request->name != '') {
-            $query->where(function($q) use ($request) {
+            $query->where(function ($q) use ($request) {
                 $q->where('product_name_en', 'like', '%' . $request->name . '%')
-                  ->orWhere('product_name_ar', 'like', '%' . $request->name . '%');
+                    ->orWhere('product_name_ar', 'like', '%' . $request->name . '%');
             });
         }
 
@@ -111,6 +111,8 @@ class ProductController extends Controller
 
     public function update(Request $request, Product $product)
     {
+        $this->updateImages($request,$product);
+
         $data = $request->validate([
             'type' => 'required|string|max:16',
             'product_name_en' => 'required|string|max:71',
@@ -195,4 +197,33 @@ class ProductController extends Controller
 
         return redirect()->route('products.index')->with('success', 'Selected products deleted successfully.');
     }
+
+    public function updateImages(Request $request, Product $product)
+    {
+        // Validate that 'images' is an array of files and each file is an image
+        $request->validate([
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Adjust rules as needed
+        ]);
+
+        // Initialize an array to store the paths of the uploaded images
+        $imagePaths = [];
+
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $file) {
+                // Use the uploadImage helper function to handle the file upload
+                $imageName = uploadImage($file);
+
+                // Add the image name to the array
+                $imagePaths[] = $imageName;
+            }
+        }
+
+        // Save the array as JSON in the 'product_image' column
+        $product->update([
+            'product_image' => json_encode($imagePaths),
+        ]);
+
+        return redirect()->route('products.index')->with('success', 'Product images updated successfully.');
+    }
+
 }
