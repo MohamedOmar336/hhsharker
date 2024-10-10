@@ -12,7 +12,7 @@
                                     <a href="{{ url('/home') }}">{{ __('general.home') }}</a>
                                 </li>
                                 <li class="breadcrumb-item active">
-                                    {{ __('general.side.statuses') }}
+                                    {{ __('general.statuses') }}
                                 </li>
                                 <li class="breadcrumb-item active">{{ __('general.list') }}</li>
                             </ol>

@@ -303,7 +303,7 @@ class TicketController extends Controller
                     'AssignedTo' => $ticket->AssignedTo,
                     'ChangedAt' => now()
                 ]);
-                if ($request->AssignedTo) {
+                if ( $ticket->AssignedTo) {
                 Notification::create([
                     'type' => 'App\Models\Ticket',
                     'data' => ['message' => 'Ticket assigned to you.', 'link' => route('ticket_histories.show_by_ticket', $ticket->id)],

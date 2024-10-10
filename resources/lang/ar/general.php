@@ -63,6 +63,7 @@ return [
         'saso_certificate' => 'شهادة SASO',
         'created_by' => 'أنشأ من قبل',
         "add_ticket_category"=> "إضافة فئة تذكرة",
+        "edit_ticket_category"=> "تحرير فئة تذكرة",
         "ticket_categories"=> "فئات التذكرة",
         "changed_by"=> "تم التغيير بواسطة",
         "change_description"=> "وصف التغيير",

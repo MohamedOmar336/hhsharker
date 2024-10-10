@@ -23,7 +23,7 @@
                                     <i data-feather="arrow-left-circle"></i> <!-- Default locale -->
                                 @endif
                             </a>
-                            <h4 class="page-title">{{ __('general.attributes.edit') }} - {{ __('general.attributes.ticket_categories') }}</h4>
+                            <h4 class="page-title">{{ __('general.attributes.edit_ticket_category') }}</h4>
                         </div>
                     </div><!--end page-title-box-->
                 </div><!--end col-->

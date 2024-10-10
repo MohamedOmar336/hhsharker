@@ -97,16 +97,16 @@
                                     <label for="status" class="form-label">{{ __('general.attributes.status') }}</label>
                                     <select id="status" class="form-control @error('status') is-invalid @enderror" name="status" required>
                                         <option value="pending" {{ old('status', $appointment->status) == 'pending' ? 'selected' : '' }}>
-                                            {{ __('general.statuses.pending') }}
+                                            {{ __('general.attributes.pending') }}
                                         </option>
                                         <option value="confirmed" {{ old('status', $appointment->status) == 'confirmed' ? 'selected' : '' }}>
-                                            {{ __('general.statuses.confirmed') }}
+                                            {{ __('general.attributes.confirmed') }}
                                         </option>
                                         <option value="completed" {{ old('status', $appointment->status) == 'completed' ? 'selected' : '' }}>
-                                            {{ __('general.statuses.completed') }}
+                                            {{ __('general.attributes.completed') }}
                                         </option>
                                         <option value="cancelled" {{ old('status', $appointment->status) == 'cancelled' ? 'selected' : '' }}>
-                                            {{ __('general.statuses.cancelled') }}
+                                            {{ __('general.attributes.cancelled') }}
                                         </option>
                                     </select>
                                     @error('status')

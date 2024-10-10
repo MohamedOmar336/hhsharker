@@ -55,7 +55,7 @@
                                     @endforeach
                                 
                             @else
-                                {{ __('No children categories') }}
+                                {{ __('No child categories') }}
                             @endif
                         </td>
                         <td>
