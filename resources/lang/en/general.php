@@ -62,6 +62,7 @@ return [
         'saso_certificate' => 'SASO Certificate',
         'created_by' => 'Created by',
         "add_ticket_category" => "Add Ticket Category",
+        "edit_ticket_category" => "Edit Ticket Category",
         "ticket_category" => "Ticket Category",
         "changed_by" => "Changed By",
         "change_description" => "Change Description",

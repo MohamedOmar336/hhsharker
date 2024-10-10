@@ -99,10 +99,10 @@ class TicketController extends Controller
         $request->validate([
             'Title' => 'required|string|max:255',
             'Description' => 'nullable|string',
-            'note' => 'nullable|string', // Validation for note
+            'Note' => 'nullable|string', // Validation for note
             'priority' => 'required|exists:ticket_priority_settings,id',
             'status' => 'required|exists:ticket_status_settings,id',
-            'AssignedTo' => 'required|exists:users,id',
+            'AssignedTo' => 'nullable|exists:users,id',
             'categories' => 'array', // Validation for categories
             'categories.*' => 'exists:ticket_categories,id',
         ]); 
@@ -114,7 +114,7 @@ class TicketController extends Controller
             'TicketID' => $ticketID, // Custom ticket ID
             'Title' => $request->Title,
             'Description' => $request->Description,
-            'note' => $request->note, // Storing the note
+            'Note' => $request->Note, // Storing the note
             'PriorityID' => $request->priority,
             'StatusID' => $request->status,
             'AssignedTo' => $request->AssignedTo,
@@ -130,14 +130,14 @@ class TicketController extends Controller
             'AssignedTo' => $ticket->AssignedTo,
             'ChangedAt' => now()
         ]);
-
+        if ($request->AssignedTo) {
         Notification::create([
             'type' => 'App\Models\Ticket',
             'data' => ['message' => 'new ticket has been created', 'link' => route('ticket_histories.show_by_ticket', $ticket->id)],
             'notifiable_id' => $request->AssignedTo,
             'notifiable_type' => 'App\Models\User',
         ]);
-
+    }
         
     return redirect()->route('tickets.index')->with('success', __('messages.ticket_created_successfully'));
 }
@@ -170,10 +170,10 @@ class TicketController extends Controller
         $request->validate([
             'Title' => 'required|string|max:255',
             'Description' => 'nullable|string',
-            'note' => 'nullable|string', // Validation for note
+            'Note' => 'nullable|string', // Validation for note
             'priority' => 'required|exists:ticket_priority_settings,id',
             'status' => 'required|exists:ticket_status_settings,id',
-            'AssignedTo' => 'required|exists:users,id',
+            'AssignedTo' => 'nullable|exists:users,id',
             'categories' => 'array', // Validation for categories
             'categories.*' => 'exists:ticket_categories,id',
         ]);
@@ -181,7 +181,7 @@ class TicketController extends Controller
         $ticket->update([
             'Title' => $request->Title,
             'Description' => $request->Description,
-            'note' => $request->note, // Updating the note
+            'Note' => $request->Note, // Updating the note
             'PriorityID' => $request->priority,
             'StatusID' => $request->status,
             'AssignedTo' => $request->AssignedTo,
@@ -191,19 +191,19 @@ class TicketController extends Controller
 
         TicketHistory::create([
             'TicketID' => $ticket->id,
-            'ChangedBy' =>auth()->id(),
+            'ChangedBy' =>auth()->id(), 
             'ChangeDescription' => $ticket->Description,
             'AssignedTo' => $ticket->AssignedTo,
             'ChangedAt' => now()
         ]);
-
+        if ($request->AssignedTo) {
         Notification::create([
             'type' => 'App\Models\Ticket',
             'data' => ['message' => 'Ticket assigned to you.', 'link' => route('ticket_histories.show_by_ticket', $ticket->id)],
             'notifiable_id' => $request->AssignedTo,
             'notifiable_type' => 'App\Models\User',
         ]);
-
+    }
        
     return redirect()->route('tickets.index')->with('success', __('messages.ticket_updated_successfully'));
 }
@@ -298,18 +298,18 @@ class TicketController extends Controller
                 $ticket->AssignedTo = $request->input('assigned_to');
                 TicketHistory::create([
                     'TicketID' => $ticket->id,
-                    'ChangedBy' => auth()->id(),
+                    'ChangedBy' => auth()->id(), 
                     'ChangeDescription' =>  'Ticket updated',
                     'AssignedTo' => $ticket->AssignedTo,
                     'ChangedAt' => now()
                 ]);
-
+                if ( $ticket->AssignedTo) {
                 Notification::create([
                     'type' => 'App\Models\Ticket',
                     'data' => ['message' => 'Ticket assigned to you.', 'link' => route('ticket_histories.show_by_ticket', $ticket->id)],
                     'notifiable_id' => $ticket->AssignedTo,
                     'notifiable_type' => 'App\Models\User',
-                ]);
+                ]);}
                 break;
             default:
                 return redirect()->back()->with('error', 'Invalid field');

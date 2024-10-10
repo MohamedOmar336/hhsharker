@@ -13,7 +13,7 @@
                 </li>
                 <li class="breadcrumb-item">
                   <a href="{{ route('ticket-statuses.index') }}">
-                    {{ __('general.side.statuses') }}
+                    {{ __('general.statuses') }}
                   </a>
                 </li>
                 <li class="breadcrumb-item active">

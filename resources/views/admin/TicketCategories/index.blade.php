@@ -9,9 +9,7 @@
                         <div class="float-end">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('general.home') }}</a></li>
-                                <li class="breadcrumb-item"><a
-                                        href="{{ route('ticket_categories.index') }}">{{ __('general.side.ticket_categories') }}</a>
-                                </li>
+                                <li class="breadcrumb-item"><a href="{{ route('ticket_categories.index') }}">{{ __('general.side.ticket_categories') }}</a></li>
                                 <li class="breadcrumb-item active">{{ __('general.list') }}</li>
                             </ol>
                         </div>
@@ -45,23 +43,24 @@
                     <tr class="table-body">
                         <td><input type="checkbox" name="ids[]" value="{{ $ticketCategory->id }}"></td>
                         <td>
-                            <img src="{{ $ticketCategory->image ? asset('images/' . $ticketCategory->image) : asset('assets-admin/images/no_image.png') }}"
-                                alt="{{ $ticketCategory->name }}" width="50">
+                            <img src="{{ $ticketCategory->image ? asset('images/' . $ticketCategory->image) : asset('assets-admin/images/no_image.png') }}" alt="{{ $ticketCategory->name }}" width="50">
                         </td>
                         <td>{{ $ticketCategory->name_ar }}</td>
                         <td>{{ $ticketCategory->name_en }}</td>
                         <td>
                             @if ($ticketCategory->children->isNotEmpty())
-                                @foreach ($ticketCategory->children as $child)
+                               
+                                    @foreach ($ticketCategory->children as $child)
                                     <span class="badge bg-primary">{{ $child->name_en }}</span>
-                                @endforeach
+                                    @endforeach
+                                
                             @else
-                                {{ __('No children categories') }}
+                                {{ __('No child categories') }}
                             @endif
                         </td>
                         <td>
                         <form style="display: inline;">
-
+                               
                                </form>
                             <a href="{{ route('ticket_categories.edit', $ticketCategory->id) }}"><i data-feather="edit"></i></a>
                         <form action="{{ route('ticket_categories.destroy', $ticketCategory->id) }}" method="POST" style="display:inline-block;" class="delete-form" >
@@ -72,7 +71,7 @@
                         </td>
                     </tr>
                 @endforeach
-
+                
                 <x-slot name="createButton"   action="{{ route('ticket_categories.bulkDelete') }}">
                     <a href="{{ route('ticket_categories.create') }}" class="btn btn-outline-light btn-sm px-4">+ {{ __('general.actions.new') }}</a>
                 </x-slot>

@@ -128,12 +128,14 @@
                                 @csrf
                                 @method('PUT')
                                 <select class="form-control" name="assigned_to" onchange="this.form.submit()">
+                                    <option value="" {{ is_null($record->assignedTo) ? 'selected' : '' }}>No Assignment</option>
                                     @foreach ($users as $user)
                                         <option value="{{ $user->id }}"
-                                            {{ $record->assignedTo->id == $user->id ? 'selected' : '' }}>
+                                            @if ($record->assignedTo && $record->assignedTo->id == $user->id) selected @endif>
                                             {{ $user->user_name }}
                                         </option>
                                     @endforeach
+                                    
                                 </select>
                             </form>
                         </td>
@@ -144,9 +146,7 @@
                                 style="display:inline-block; margin: -2px;" class="delete-form">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn action-button delete-form" data-tooltip="Delete" onclick="confirmDelete(event)">
-                                    <i data-feather="trash"></i>
-                                </button>
+                                <button type="submit" class="btn delete-form" onclick="confirmDelete(event)"><i data-feather="trash"></i></button>
                             </form>
                         </td>
                     </tr>
@@ -164,5 +164,4 @@
         </div>
     </div>
 @endsection
-
 
