@@ -146,7 +146,7 @@
                                                                         {{ $category->name_en }}</option>
                                                                     @foreach ($categories as $subcategory)
                                                                         @if ($subcategory->parent_id === $category->id)
-                                                                            <option value="{{ $subcategory->id }}" 
+                                                                            <option value="{{ $subcategory->id }}"
                                                                                 {{ old('subcategory_id') == $subcategory->id ? 'selected' : '' }}>
                                                                                 {{ $subcategory->name_en }}</option>
                                                                         @endif
@@ -160,7 +160,7 @@
                                                             </div>
                                                         @enderror
                                                     </div>
-                                                    
+
                                                     <div class="mb-3">
                                                         <label for="model_number" class="form-label">{{ __('general.attributes.model_number') }}:</label>
                                                         <input id="model_number" type="text"
@@ -199,15 +199,18 @@
                                                         @enderror
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="image"
-                                                            class="form-label">{{ __('general.attributes.image') }}</label><br>
-                                                        <img src="{{ $product->image ? asset('images/' . $product->image) : asset('assets-admin/images/no_image.png') }}"
-                                                            alt="{{ $product->product_name_ar }}" width="100"><br>
-                                                        <label for="image" class="form-label mt-2">Update
-                                                            Image:</label>
-                                                        <input type="file" class="form-control" id="image"
-                                                            name="image">
-                                                        @error('image')
+                                                        <label for="images" class="form-label">{{ __('general.attributes.images') }}</label><br>
+                                                        @if(!empty($product->product_image))
+                                                            @foreach(json_decode($product->product_image) as $image)
+                                                                <img src="{{ asset('images/' . $image) }}" alt="{{ $product->product_name_ar }}" width="100">
+                                                            @endforeach
+                                                        @else
+                                                            <img src="{{ asset('assets-admin/images/no_image.png') }}" alt="{{ $product->product_name_ar }}" width="100">
+                                                        @endif
+                                                        <br>
+                                                        <label for="images" class="form-label mt-2">Update Images:</label>
+                                                        <input type="file" class="form-control" id="images" name="images[]" multiple>
+                                                        @error('images')
                                                             <div class="invalid-feedback">{{ $message }}</div>
                                                         @enderror
                                                     </div>
@@ -243,7 +246,7 @@
                                                             </div>
                                                         @enderror
                                                     </div>
-                                                   
+
                                                     <div class="mb-3 HomeAppliances">
                                                         <label for="characteristics" class="form-label">{{ __('general.attributes.characteristics') }}:</label>
                                                         <div id="dynamic-fields">
@@ -275,7 +278,7 @@
                                                         <button type="button" class="btn btn-success add-field btn btn-sm btn-de-primary">Add Characteristic</button>
                                                         <hr>
                                                     </div>
-                                                    
+
                                                     <div class="mb-3 HomeAppliances">
                                                         <label for="optional_features_ar" class="form-label"> {{ __('general.attributes.optional_features_ar') }}:</label>
                                                         <input id="optional_features_ar" type="text"
@@ -527,7 +530,7 @@
         // Hide a field and save values
         $(document).on('click', '.hide-field', function() {
             var row = $(this).closest('.form-group');
-            
+
             // Save current values in data attributes
             row.data('name-en', row.find('input[name$="[Characteristic_name_en]"]').val());
             row.data('name-ar', row.find('input[name$="[Characteristic_name_ar]"]').val());

@@ -81,8 +81,13 @@
                 @foreach ($records as $record)
                     <tr class="table-body">
                         <td><input type="checkbox" name="ids[]" value="{{ $record->id }}"></td>
-                        <td><img src="{{ $record->product_image ? asset('storage/' . $record->product_image) : asset('assets-admin/images/no_image.png') }}"
-                            alt="{{ $record->product_name_ar }}" width="50"></td>
+                        <td>
+                            @php
+                                $images = json_decode($record->product_image, true); // Decode the JSON to an array
+                                $firstImage = $images[0] ?? 'assets-admin/images/no_image.png'; // Get the first image or use a placeholder
+                            @endphp
+                            <img src="{{ asset('images/' . $firstImage) }}" alt="{{ $record->product_name_ar }}" width="50">
+                        </td>
                         <td>{{ $record->product_name_ar }}</td>
                         <td>{{ $record->product_name_en }}</td>
                         <td>{{ $record->type }}</td>
@@ -90,6 +95,7 @@
                         <td>{{ $record->category ? $record->category : __('general.uncategorized') }}</td>
                         <td>
                             <a href="{{ route('frontend.product.page', ['locale' => app()->getLocale(), 'id' => $record->id]) }}" target="_blank" class="mdi mdi-eye-circle-outline"> </a>
+                            <a href="{{ route('products.edit', $record->id) }}" class="action-icon"> <i data-feather="edit"></i></a>
                             {{-- <form style="display: inline;">
                             </form>
                             <form action="{{ route('products.destroy', $record->id) }}" method="POST" class="delete-form">
