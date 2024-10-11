@@ -28,7 +28,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'role_id',
         'active',
         'gender',
-        'last_activity', 
+        'last_activity',
     ];
 
     /**
@@ -128,13 +128,14 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public function getIsOnlineAttribute()
-{
-    // Assuming you have a `last_activity` column and a threshold for online status
-    $threshold = now()->subMinutes(5); // User considered online if active in the last 5 minutes
-    return $this->last_activity > $threshold;
+    {
+        // Assuming you have a `last_activity` column and a threshold for online status
+        $threshold = now()->subMinutes(5); // User considered online if active in the last 5 minutes
+        return $this->last_activity > $threshold;
+    }
+
+    public function createdTickets()
+    {
+        return $this->morphMany(Ticket::class, 'creator');
+    }
 }
-
-}
-
-
-

@@ -16,26 +16,24 @@ class Ticket extends Model
     const PREFIX = 'TK-';
 
     protected $fillable = [
-        'id',
-        'TicketID', 
+        'TicketID',
         'Title',
         'Description',
         'PriorityID',
         'StatusID',
         'AssignedTo',
-        'CreatedBy',
         'note',
     ];
 
-      // Function to generate the unique TicketID
-      public static function generateTicketID()
-      {
-          $year = date('Y'); // Get the current year
-          $latestTicket = self::latest()->first(); // Get the latest ticket
-  
-          $id_num = $latestTicket ? $latestTicket->id + 1 : 1; // Increment ID number or start at 1
-          return self::PREFIX . str_pad($id_num, 5, '0', STR_PAD_LEFT) . '-' . $year;
-      }
+    // Function to generate the unique TicketID
+    public static function generateTicketID()
+    {
+        $year = date('Y'); // Get the current year
+        $latestTicket = self::latest()->first(); // Get the latest ticket
+
+        $id_num = $latestTicket ? $latestTicket->id + 1 : 1; // Increment ID number or start at 1
+        return self::PREFIX . str_pad($id_num, 5, '0', STR_PAD_LEFT) . '-' . $year;
+    }
 
     public function priority()
     {
@@ -54,9 +52,8 @@ class Ticket extends Model
 
     public function createdBy()
     {
-        return $this->belongsTo(User::class, 'CreatedBy');
+        return $this->morphTo('createdBy', 'creator_type', 'creator_id');
     }
-
 
    /* protected static function booted()
     {

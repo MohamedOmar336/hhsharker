@@ -339,6 +339,8 @@ Route::group(['prefix' => '{locale}', 'where' => ['locale' => 'en|ar'],'middlewa
     Route::get('/product-list-1', [HomeAppliancesController::class,'productList1'])->name('frontend.home-appliances.product-list-1');
     Route::get('/all-products', [HomeAppliancesController::class,'productList2'])->name('frontend.home-appliances.product-list-1');
 
+    Route::post('/post-ticket/{product_id}', [TicketController::class , 'createTicketFromWebsite'])->name('frontend.post-ticket');
+
 });
 
 Route::get('/', function () {

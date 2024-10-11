@@ -86,7 +86,7 @@
                                             {{ $user->user_name }}
                                         </option>
                                     @endforeach
-                                    
+
                                     </select>
                                 </div>
 
@@ -111,9 +111,9 @@
 
 
                                 <div class="mb-3">
-                                    <label for="Note" class="form-label">{{ __('general.attributes.notes') }}</label>
-                                    <textarea class="form-control @error('Note') is-invalid @enderror" id="Note" name="Note" rows="4">{{ old('Note', $ticket->Note) }}</textarea>
-                                    @error('Note')
+                                    <label for="note" class="form-label">{{ __('general.attributes.notes') }}</label>
+                                    <textarea class="form-control @error('Note') is-invalid @enderror" id="note" name="note" rows="4">{{ old('Note', $ticket->note) }}</textarea>
+                                    @error('note')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>

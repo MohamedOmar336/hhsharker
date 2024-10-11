@@ -8,13 +8,13 @@ use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
-   
+
     public function index()
-    {   
+    {
         $airConditionProducts = Product::where([
             'type' => 'AirConditioner'
         ])->latest()->limit(6)->get();
-        
+
         $airConditionFeaturedProducts = Product::where([
             'type' => 'AirConditioner',
             'featured' => 1

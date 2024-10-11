@@ -179,50 +179,51 @@
         <div class="modal-content">
             <div class="modal-body">
                 <a type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-regular fa-xmark"></i></a>
-                <h3>Request a Quote</h3> 
-                <form>
+                <h3>Request a Quote</h3>
+                <form action="{{ route('frontend.post-ticket', ['locale' => app()->getLocale() , 'product_id'=>$record->id] ) }}" method="POST">
+                    @csrf
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="contact-input">
                                 <label>Your Name <span>*</span></label>
-                                <input type="text" class="form-control" placeholder="Your Name">
+                                <input type="text" name="name" class="form-control" placeholder="Your Name">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="contact-input">
                                 <label>Your Company <span>*</span></label>
-                                <input type="text" class="form-control" placeholder="Company Name">
+                                <input type="text" name="company" class="form-control" placeholder="Company Name">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="contact-input">
                                 <label>Mobile Number <span>*</span></label>
-                                <input type="tel" class="form-control" placeholder="Your Number">
+                                <input type="tel" name="mobile" class="form-control" placeholder="Your Number">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="contact-input">
                                 <label>Email Address <span>*</span></label>
-                                <input type="email" class="form-control" placeholder="Your email">
+                                <input type="email" name="email" class="form-control" placeholder="Your email">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="contact-input">
                                 <label>City <span>*</span></label>
-                                <input type="email" class="form-control" placeholder="Your City">
+                                <input type="text" name="city" class="form-control" placeholder="Your City">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="contact-input">
                                 <label>District <span>*</span></label>
-                                <input type="email" class="form-control" placeholder="Your District">
+                                <input type="text" name="district" class="form-control" placeholder="Your District">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="contact-input">
                                 <label>Product Category <span>*</span></label>
-                                <select class="form-select form-control">
-                                    <option selected>Category</option>
+                                <select name="category" class="form-select form-control">
+                                    <option selected>Choose a Category</option>
                                     <option value="1">Category 1</option>
                                     <option value="2">Category 2</option>
                                     <option value="3">Category 3</option>
@@ -232,13 +233,13 @@
                         <div class="col-lg-6">
                             <div class="contact-input">
                                 <label>Subject <span>*</span></label>
-                                <input type="text" class="form-control" placeholder="Subject">
+                                <input type="text" name="subject" class="form-control" placeholder="Subject">
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="contact-input">
                                 <label>Message <span>*</span></label>
-                                <textarea class="form-control" placeholder="Type Something" rows="5"></textarea>
+                                <textarea name="message" class="form-control" placeholder="Type Something" rows="5"></textarea>
                             </div>
                         </div>
                         <div class="col-lg-12">
@@ -246,6 +247,7 @@
                         </div>
                     </div>
                 </form>
+
             </div>
         </div>
     </div>
@@ -259,7 +261,7 @@
         <div class="modal-content">
             <div class="modal-body">
                 <a type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-regular fa-xmark"></i></a>
-                <h3>Contact Sales</h3> 
+                <h3>Contact Sales</h3>
                 <form>
                     <div class="row">
                         <div class="col-lg-6">

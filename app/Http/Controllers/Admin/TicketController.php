@@ -13,9 +13,13 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Notification;
+use App\Models\Contact;
+use App\Models\Product;
 
 class TicketController extends Controller
 {
+
+    const PREFIX = 'TK-WEB-';
 
     /**
      * Display a listing of all tickets with optional search.
@@ -23,53 +27,53 @@ class TicketController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\View\View
      */
- public function index(Request $request)
-{
-    $query = Ticket::with('priority', 'status', 'assignedTo', 'createdBy');
+    public function index(Request $request)
+    {
+        $query = Ticket::with('priority', 'status', 'assignedTo', 'createdBy');
 
-    if ($request->has('search')) {
-        $search = $request->input('search');
-        $query->where('title', 'LIKE', "%{$search}%")
-            ->orWhere('description', 'LIKE', "%{$search}%")
-            ->orWhereHas('priority', function($q) use ($search) {
-                $q->where('name', 'LIKE', "%{$search}%");
-            })
-            ->orWhereHas('status', function($q) use ($search) {
-                $q->where('name', 'LIKE', "%{$search}%");
-            })
-            ->orWhereHas('assignedTo', function($q) use ($search) {
-                $q->where('name', 'LIKE', "%{$search}%");
-            })
-            ->orWhereHas('createdBy', function($q) use ($search) {
-                $q->where('name', 'LIKE', "%{$search}%");
-            });
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('title', 'LIKE', "%{$search}%")
+                ->orWhere('description', 'LIKE', "%{$search}%")
+                ->orWhereHas('priority', function ($q) use ($search) {
+                    $q->where('name', 'LIKE', "%{$search}%");
+                })
+                ->orWhereHas('status', function ($q) use ($search) {
+                    $q->where('name', 'LIKE', "%{$search}%");
+                })
+                ->orWhereHas('assignedTo', function ($q) use ($search) {
+                    $q->where('name', 'LIKE', "%{$search}%");
+                })
+                ->orWhereHas('createdBy', function ($q) use ($search) {
+                    $q->where('name', 'LIKE', "%{$search}%");
+                });
+        }
+
+        // Apply filters
+        if ($request->has('status_id') && !empty($request->status_id)) {
+            $query->where('StatusID', $request->status_id);
+        }
+
+        if ($request->has('priority_id') && !empty($request->priority_id)) {
+            $query->where('PriorityID', $request->priority_id);
+        }
+
+        if ($request->has('assigned_to') && !empty($request->assigned_to)) {
+            $query->where('AssignedTo', $request->assigned_to);
+        }
+        $totalResults = $query->count();
+
+        $records = $query->latest()->paginate(500);
+        if ($request->ajax()) {
+            return view('admin.tickets.partials.records', compact('records'))->render();
+        }
+
+        $priorities = TicketPrioritySetting::all();
+        $statuses = TicketStatusSetting::all();
+        $users = User::all();
+
+        return view('admin.tickets.index', compact('records', 'priorities', 'statuses', 'users'));
     }
-
-    // Apply filters
-    if ($request->has('status_id') && !empty($request->status_id)) {
-        $query->where('StatusID', $request->status_id);
-    }
-
-    if ($request->has('priority_id') && !empty($request->priority_id)) {
-        $query->where('PriorityID', $request->priority_id);
-    }
-
-    if ($request->has('assigned_to') && !empty($request->assigned_to)) {
-        $query->where('AssignedTo', $request->assigned_to);
-    }
-  $totalResults = $query->count();
-
-  $records = $query->latest()->paginate(500);
-    if ($request->ajax()) {
-        return view('admin.tickets.partials.records', compact('records'))->render();
-    }
-
-    $priorities = TicketPrioritySetting::all();
-    $statuses = TicketStatusSetting::all();
-    $users = User::all();
-
-    return view('admin.tickets.index', compact('records', 'priorities', 'statuses', 'users'));
-}
 
 
 
@@ -99,48 +103,58 @@ class TicketController extends Controller
         $request->validate([
             'Title' => 'required|string|max:255',
             'Description' => 'nullable|string',
-            'Note' => 'nullable|string', // Validation for note
+            'note' => 'nullable|string', // Validation for note
             'priority' => 'required|exists:ticket_priority_settings,id',
             'status' => 'required|exists:ticket_status_settings,id',
             'AssignedTo' => 'nullable|exists:users,id',
             'categories' => 'array', // Validation for categories
             'categories.*' => 'exists:ticket_categories,id',
-        ]); 
-         // Generate the custom Ticket ID
-         $ticketID = Ticket::generateTicketID(); 
-    
+        ]);
+
+        // Generate the custom Ticket ID
+        $ticketID = Ticket::generateTicketID();
+
         // Store the ticket with the generated Ticket ID
-        $ticket = Ticket::create([
+        $ticket = new Ticket([
             'TicketID' => $ticketID, // Custom ticket ID
             'Title' => $request->Title,
             'Description' => $request->Description,
-            'Note' => $request->Note, // Storing the note
+            'note' => $request->note, // Storing the note
             'PriorityID' => $request->priority,
             'StatusID' => $request->status,
             'AssignedTo' => $request->AssignedTo,
-            'CreatedBy' => auth()->user()->id,
         ]);
 
-        $ticket->categories()->attach($request->categories); // Associating categories
+        // Link the creator to the ticket, assuming the creator is the authenticated user
+        $ticket->createdBy()->associate(auth()->user());
+        $ticket->save();
 
+        // Associating categories if provided
+        if ($request->has('categories')) {
+            $ticket->categories()->attach($request->categories);
+        }
+
+        // Create a history record for the ticket creation
         TicketHistory::create([
             'TicketID' => $ticket->id,
-            'ChangedBy' => $ticket->CreatedBy,
+            'ChangedBy' => auth()->user()->id,
             'ChangeDescription' => 'Ticket created',
             'AssignedTo' => $ticket->AssignedTo,
             'ChangedAt' => now()
         ]);
+
+        // Create a notification if the ticket is assigned
         if ($request->AssignedTo) {
-        Notification::create([
-            'type' => 'App\Models\Ticket',
-            'data' => ['message' => 'new ticket has been created', 'link' => route('ticket_histories.show_by_ticket', $ticket->id)],
-            'notifiable_id' => $request->AssignedTo,
-            'notifiable_type' => 'App\Models\User',
-        ]);
+            Notification::create([
+                'type' => 'App\Models\Ticket',
+                'data' => ['message' => 'new ticket has been created', 'link' => route('ticket_histories.show_by_ticket', $ticket->id)],
+                'notifiable_id' => $request->AssignedTo,
+                'notifiable_type' => 'App\Models\User',
+            ]);
+        }
+
+        return redirect()->route('tickets.index')->with('success', __('messages.ticket_created_successfully'));
     }
-        
-    return redirect()->route('tickets.index')->with('success', __('messages.ticket_created_successfully'));
-}
 
     /**
      * Show the form for editing the specified ticket.
@@ -170,7 +184,7 @@ class TicketController extends Controller
         $request->validate([
             'Title' => 'required|string|max:255',
             'Description' => 'nullable|string',
-            'Note' => 'nullable|string', // Validation for note
+            'note' => 'nullable|string', // Validation for note
             'priority' => 'required|exists:ticket_priority_settings,id',
             'status' => 'required|exists:ticket_status_settings,id',
             'AssignedTo' => 'nullable|exists:users,id',
@@ -181,7 +195,7 @@ class TicketController extends Controller
         $ticket->update([
             'Title' => $request->Title,
             'Description' => $request->Description,
-            'Note' => $request->Note, // Updating the note
+            'note' => $request->note, // Updating the note
             'PriorityID' => $request->priority,
             'StatusID' => $request->status,
             'AssignedTo' => $request->AssignedTo,
@@ -191,22 +205,22 @@ class TicketController extends Controller
 
         TicketHistory::create([
             'TicketID' => $ticket->id,
-            'ChangedBy' =>auth()->id(), 
+            'ChangedBy' => auth()->id(),
             'ChangeDescription' => $ticket->Description,
             'AssignedTo' => $ticket->AssignedTo,
             'ChangedAt' => now()
         ]);
         if ($request->AssignedTo) {
-        Notification::create([
-            'type' => 'App\Models\Ticket',
-            'data' => ['message' => 'Ticket assigned to you.', 'link' => route('ticket_histories.show_by_ticket', $ticket->id)],
-            'notifiable_id' => $request->AssignedTo,
-            'notifiable_type' => 'App\Models\User',
-        ]);
+            Notification::create([
+                'type' => 'App\Models\Ticket',
+                'data' => ['message' => 'Ticket assigned to you.', 'link' => route('ticket_histories.show_by_ticket', $ticket->id)],
+                'notifiable_id' => $request->AssignedTo,
+                'notifiable_type' => 'App\Models\User',
+            ]);
+        }
+
+        return redirect()->route('tickets.index')->with('success', __('messages.ticket_updated_successfully'));
     }
-       
-    return redirect()->route('tickets.index')->with('success', __('messages.ticket_updated_successfully'));
-}
 
     /**
      * Display a specific ticket along with its history.
@@ -233,9 +247,8 @@ class TicketController extends Controller
         $ticket->delete();
 
         // Redirect to the index view with a success message
-      
-    return redirect()->route('tickets.index')->with('success', __('messages.ticket_deleted_successfully'));
 
+        return redirect()->route('tickets.index')->with('success', __('messages.ticket_deleted_successfully'));
     }
 
 
@@ -283,7 +296,7 @@ class TicketController extends Controller
 
         switch ($field) {
             case 'tiketid':
-               // $ticket->Title = $request->input('title');
+                // $ticket->Title = $request->input('title');
                 break;
             case 'title':
                 $ticket->Title = $request->input('title');
@@ -298,18 +311,19 @@ class TicketController extends Controller
                 $ticket->AssignedTo = $request->input('assigned_to');
                 TicketHistory::create([
                     'TicketID' => $ticket->id,
-                    'ChangedBy' => auth()->id(), 
+                    'ChangedBy' => auth()->id(),
                     'ChangeDescription' =>  'Ticket updated',
                     'AssignedTo' => $ticket->AssignedTo,
                     'ChangedAt' => now()
                 ]);
-                if ( $ticket->AssignedTo) {
-                Notification::create([
-                    'type' => 'App\Models\Ticket',
-                    'data' => ['message' => 'Ticket assigned to you.', 'link' => route('ticket_histories.show_by_ticket', $ticket->id)],
-                    'notifiable_id' => $ticket->AssignedTo,
-                    'notifiable_type' => 'App\Models\User',
-                ]);}
+                if ($ticket->AssignedTo) {
+                    Notification::create([
+                        'type' => 'App\Models\Ticket',
+                        'data' => ['message' => 'Ticket assigned to you.', 'link' => route('ticket_histories.show_by_ticket', $ticket->id)],
+                        'notifiable_id' => $ticket->AssignedTo,
+                        'notifiable_type' => 'App\Models\User',
+                    ]);
+                }
                 break;
             default:
                 return redirect()->back()->with('error', 'Invalid field');
@@ -321,29 +335,91 @@ class TicketController extends Controller
     }
 
     /**
-     * Mass Delete the products.
+     * Mass Delete the tickets.
      *
      * @return \Illuminate\Http\Response
      **/
     public function massDestroy(Request $request)
-{
-    // Validate the request
-    $request->validate([
-        'ids' => 'required|array',
-        'ids.*' => 'exists:tickets,id', // Ensure the IDs exist in the 'tickets' table
-    ]);
+    {
+        // Validate the request
+        $request->validate([
+            'ids' => 'required|array',
+            'ids.*' => 'exists:tickets,id', // Ensure the IDs exist in the 'tickets' table
+        ]);
 
-    // Retrieve IDs from the request
-    $recordIds = $request->input('ids');
+        // Retrieve IDs from the request
+        $recordIds = $request->input('ids');
 
-    // Perform the deletion
-    Ticket::whereIn('id', $recordIds)->delete();
+        // Perform the deletion
+        Ticket::whereIn('id', $recordIds)->delete();
 
-    // Redirect with a success message
- 
-    return redirect()->route('tickets.index')->with('success', __('messages.ticket_bulk_deleted_successfully'));
-}
+        // Redirect with a success message
+
+        return redirect()->route('tickets.index')->with('success', __('messages.ticket_bulk_deleted_successfully'));
+    }
 
 
 
+    /**
+     * Handle the creation of a ticket from a web form submission.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function createTicketFromWebsite(Request $request , $locale , $product_id)
+    {
+        // First, check if a contact with the provided mobile number exists
+        $contact = Contact::firstOrCreate(
+            ['phone' => $request->mobile],
+            [
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->mobile,
+                'address' => $request->address ?? '', // Assuming there is an address input
+                'segment' => $request->segment ?? '',  // Example for other possible fields
+                'last_interaction' => now() // Set the last interaction to now
+                ]
+            );
+
+        // Find the first admin to assign the ticket to
+        $firstAdmin = User::first(); // Adjust this based on your admin identification logic
+
+        // Generate a unique TicketID for a ticket created via the website
+        $ticketID = $this->generateTicketID();
+
+        $product = Product::whereId($product_id)->first();
+
+        // Create a new ticket associated with this contact
+        $ticket = new Ticket([
+            'TicketID' => $ticketID,
+            'Title' => 'New ticket from the website created by ' . $contact->name . 'about product -> ' . $product->product_name_en,
+            'Description' => $request->message . 'about product -> ' . $product->product_name_en , // Assuming description is sent via request
+            'PriorityID' => 1, // You might want to handle this more dynamically
+            'StatusID' => 1, // You might want to handle this more dynamically
+            'AssignedTo' => $firstAdmin->id,
+        ]);
+
+        // Setting the creator as the contact
+        $ticket->createdBy()->associate($contact);
+        $ticket->save();
+
+        // Optionally attach categories if needed
+        // $ticket->categories()->attach($request->categories);
+
+        return redirect()->back()->with('success', 'Ticket created successfully from the website.');
+    }
+
+    /**
+     * Generates a unique Ticket ID based on the latest ticket's ID.
+     *
+     * @return string
+     */
+    protected function generateTicketID()
+    {
+        $year = date('Y'); // Get the current year
+        $latestTicket = Ticket::latest('id')->first(); // Get the latest ticket by 'id' column
+
+        $id_num = $latestTicket ? $latestTicket->id + 1 : 1; // Increment ID number or start at 1
+        return self::PREFIX . str_pad($id_num, 5, '0', STR_PAD_LEFT) . '-' . $year;
+    }
 }

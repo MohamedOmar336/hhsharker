@@ -27,6 +27,11 @@ class Contact extends Model
     {
         return $this->belongsToMany(Group::class, 'group_contacts', 'contact_id', 'group_id')->withTimestamps();
     }
+    
+    public function createdTickets()
+    {
+        return $this->morphMany(Ticket::class, 'creator');
+    }
 }
 
 
