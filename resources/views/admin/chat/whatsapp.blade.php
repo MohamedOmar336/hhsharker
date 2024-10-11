@@ -797,7 +797,7 @@
                 function sendwhatsapp(messageText) {
                     console.log('sendwhatsapp called'); // Check how many times this gets logged
                     $.ajax({
-                        url: '{{ route('send-whatsapp-message') }}',
+                        url: '{{ route('send-whatsapp-message' , 1) }}',
                         method: 'POST',
                         data: {
                             phone: phoneNumber,

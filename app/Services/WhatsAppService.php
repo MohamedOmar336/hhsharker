@@ -165,8 +165,20 @@ class WhatsAppService
         return $results;
     }
 
-    public function sendTemplateMessageDynamic($phone, $templateName, $components) {
+    public function sendTemplateMessageDynamic($phone, $templateName) {
         try {
+            $components = [
+                [
+                    'type' => 'body',
+                    'parameters' => [
+                        [
+                            'type' => 'text',
+                            'text' => 'Hello, this is a static test message!'
+                        ]
+                    ]
+                ]
+            ];
+
             $response = $this->client->post($this->url, [
                 'headers' => [
                     'Authorization' => 'Bearer ' . env('WHATSAPP_TOKEN'),
@@ -185,9 +197,10 @@ class WhatsAppService
                     ]
                 ]
             ]);
-
+            dd($response);
             return ['success' => true, 'data' => json_decode($response->getBody()->getContents(), true)];
         } catch (\Exception $e) {
+            dd($e->getMessage());
             return ['success' => false, 'error' => $e->getMessage()];
         }
     }

@@ -144,15 +144,18 @@ class WhatsAppTemplateController extends Controller
      * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function sendTemplate($id) {
+    public function sendTemplate(Request $request) {
 
-        $template = WhatsAppTemplate::findOrFail($id);
+        $template = WhatsAppTemplate::findOrFail(1);
 
-        $response = $this->whatsAppService->sendTemplateMessageDynamic(
-            '201111848065',
-            $template->name,
-            json_decode($template->components, true) // Assuming components are stored as JSON
-        );
+        $phone = '201111848065'; // recipient's phone number
+        $templateName = 'my_template'; // make sure this template name is registered on WhatsApp
+        $result = $this->whatsAppService->sendTemplateMessageDynamic($phone, $templateName);
+        // $response = $this->whatsAppService->sendTemplateMessageDynamic(
+        //     '201111848065',
+        //     $template->name,
+        //     json_decode($template->components, true) // Assuming components are stored as JSON
+        // );
 
         return response()->json($response);
     }
