@@ -12,7 +12,7 @@
                                     <a href="{{ url('/home') }}">{{ __('general.home') }}</a>
                                 </li>
                                 <li class="breadcrumb-item active">
-                                    {{ __('general.side.statuses') }}
+                                    {{ __('general.statuses') }}
                                 </li>
                                 <li class="breadcrumb-item active">{{ __('general.list') }}</li>
                             </ol>
@@ -53,7 +53,7 @@
                         <td>{{ $record->Description_ar }}</td>
                         <td>{{ $record->Description_en }}</td>
                         <td>
-                            <a href="{{ route('ticket-statuses.edit', $record->id) }}" class="action-button" data-tooltip="edit">
+                            <a href="{{ route('ticket-statuses.edit', $record->id) }}">
                                 <i data-feather="edit"></i>
                             </a>
                             <form style="display: inline;">

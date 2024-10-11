@@ -133,8 +133,8 @@
                             </div><!--end card-body-->
                         </div><!--end card-->
                     </div> <!--end col-->
-
-
+              
+                
                     @push('scripts')
                     <script>
                         document.addEventListener('DOMContentLoaded', function () {
@@ -178,15 +178,15 @@
                                         },
                                     },
                                 };
-
+                    
                                 var chart = new ApexCharts(document.querySelector("#Tickets_Status1"), options);
                                 chart.render();
                             }
                         });
                     </script>
                     @endpush
-
-
+                    
+                   
 
                     <div class="col-lg-4">
                         <div class="card">
@@ -341,7 +341,8 @@
                                                     </td>
                                                     <td>{{ app()->isLocale('ar') ? $ticket->status->Name_ar : $ticket->status->Name_en }}
                                                     </td>
-                                                    <td>{{ $ticket->assignedTo->user_name }}</td>
+                                                    <td>{{ $ticket->assignedTo ? $ticket->assignedTo->user_name : 'No Assignment' }}</td>
+
                                                 </tr><!--end tr-->
                                                 @endforeach
                                         </tbody>
@@ -405,7 +406,7 @@
                                         <li class="list-group-item align-items-center d-flex">
                                             <div class="media">
                                                
-                                                <img src="{{ $appointment->user->image ? asset('assets/images/users/' . $appointment->user->image) : asset('assets-admin/images/user.png') }}" 
+                                                <img src="{{ $appointment->user->image ? asset('images/' . $appointment->user->image) : asset('assets-admin/images/user.png') }}" 
 
                                                     class="me-3 thumb-sm align-self-center rounded-circle" alt="...">
                                                 <div class="media-body align-self-center">
@@ -443,4 +444,3 @@
         </div><!--end page-content-tab-->
     </div><!--end page-wrapper-->
 @endsection
-

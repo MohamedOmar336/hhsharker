@@ -79,12 +79,14 @@
                                     <label for="AssignedTo"
                                         class="form-label">{{ __('general.attributes.assigned_to') }}</label>
                                     <select class="form-control" id="AssignedTo" name="AssignedTo" required>
-                                        @foreach ($users as $user)
-                                            <option value="{{ $user->id }}"
-                                                {{ $ticket->assignedTo->id == $user->id ? 'selected' : '' }}>
-                                                {{ $user->user_name }}
-                                            </option>
-                                        @endforeach
+                                        <option value="" {{ is_null( $ticket->assignedTo) ? 'selected' : '' }}>No Assignment</option>
+                                    @foreach ($users as $user)
+                                        <option value="{{ $user->id }}"
+                                            @if ( $ticket->assignedTo &&  $ticket->assignedTo->id == $user->id) selected @endif>
+                                            {{ $user->user_name }}
+                                        </option>
+                                    @endforeach
+                                    
                                     </select>
                                 </div>
 
@@ -109,9 +111,9 @@
 
 
                                 <div class="mb-3">
-                                    <label for="note" class="form-label">{{ __('general.attributes.notes') }}</label>
-                                    <textarea class="form-control @error('note') is-invalid @enderror" id="note" name="note" rows="4">{{ old('note', $ticket->note) }}</textarea>
-                                    @error('note')
+                                    <label for="Note" class="form-label">{{ __('general.attributes.notes') }}</label>
+                                    <textarea class="form-control @error('Note') is-invalid @enderror" id="Note" name="Note" rows="4">{{ old('Note', $ticket->Note) }}</textarea>
+                                    @error('Note')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
