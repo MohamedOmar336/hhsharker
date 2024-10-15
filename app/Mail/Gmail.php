@@ -33,7 +33,7 @@ class Gmail extends Mailable
      */
     public function build()
     {
-        return $this->view('admin.gmail.sendview') // The view to be used for the email body
+        return $this->view('admin.mails.sendview') // The view to be used for the email body
                     ->subject($this->subject)
                     ->with([
                         'body' => $this->body

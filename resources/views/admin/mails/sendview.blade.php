@@ -68,10 +68,10 @@ margin-bottom: .5rem;
                         </a>
                     </div>
                     <div class="col-12">
-                        <h4 class="site-name">HH-shaker</h4>
+                        <h4 class="site-name"><pre></br></pre></br></h4>
                     </div>
                     <div class="col-12">
-                        <div class="mail-subject">{{ $subject }}</div>
+                        <div class="mail-subject"><h4 class="site-name">HH-shaker</h4></div>
                     </div>
                
             </div>

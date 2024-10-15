@@ -170,23 +170,62 @@ class GmailController extends Controller
 //         return response()->json(['emails' => $messages, 'nextOffset' => $offset + $limit]);
 //     }
 
-//     public function compose()
-//     {
-//         return view('admin.gmail.compose');
-//     }
+    public function compose()
+    {
+        return view('admin.gmail.compose');
+    }
 
-//     public function send(Request $request)
-//     {
-//         $validatedData = $request->validate([
-//             'recipient_email' => 'required|string|email',
-//             'subject' => 'required|string|max:255',
-//             'body' => 'required|string',
-//         ]);
+    public function send(Request $request)
+    {
+        $validatedData = $request->validate([
+            'recipient_email' => 'required|string|email',
+            'subject' => 'required|string|max:255',
+            'body' => 'required|string',
+        ]);
 
-//         Mail::to($request->recipient_email)->send(new Gmail($request->subject, $request->body));
+        Mail::to($request->recipient_email)->send(new Gmail($request->subject, $request->body));
 
-//         return redirect()->route('gmail')->with('success', 'Mail sent successfully!');
-//     }
+        return redirect()->route('support.gmail')->with('success', 'Mail sent successfully!');
+    }
+    public function reply(Request $request)
+{
+   // dd($request->all()); 
+    $to = $request->input('to');
+    $subject = $request->input('subject');
+    
+    return view('admin.mails.reply', compact('to', 'subject'));
+}
+
+public function sendReply(Request $request)
+{
+    $validated = $request->validate([
+        'to' => 'required|string', // Allow the format 'Name <email>'
+        'subject' => 'required|string|max:255',
+        'body' => 'required|string', // You can keep this as 'string' to allow HTML
+    ]);
+   // dd($request->all());
+    // If validation passes, send the email
+    try {
+        // You can extract the email address from the formatted string if needed
+        $email = filter_var(trim(explode('<', $validated['to'])[1], '>'), FILTER_SANITIZE_EMAIL);
+      
+        Mail::to($email)->send(new Gmail($validated['subject'], $validated['body']));
+
+        return redirect()->route('support.gmail')->with('success', __('general.reply_sent'));
+    } catch (\Exception $e) {
+        return back()->withErrors(['send' => __('general.error.sending_failed')])->withInput();
+    }
+}
+// public function show(Request $request)
+// {
+//    // dd($request->all()); 
+//     $to = $request->input('to');
+//     $subject = $request->input('subject');
+//     $date = $request->input('date');
+//     $body = $request->input('body');
+    
+//     return view('admin.gmail.email-details', compact('to', 'subject','body','date'));
+// }
 //  /**
 //      * Fetch and display sales emails.
 //      */
@@ -779,82 +818,62 @@ public function getSupportEmails(Request $request)
 public function getMoreSupportEmails(Request $request)
 {
     $limit = 25; // Number of emails to fetch per request
-        $offset = $request->input('offset', 0);
+    $offset = $request->input('offset', 0);
 
-        $hostname = '{imap.gmail.com:993/imap/ssl/novalidate-cert}INBOX';
-        $username = env('SUPPORT_IMAP_EMAIL');
-        $password = env('SUPPORT_IMAP_PASSWORD');
-        $inbox = @imap_open($hostname, $username, $password);
+    $hostname = '{imap.gmail.com:993/imap/ssl/novalidate-cert}INBOX';
+    $username = env('SUPPORT_IMAP_EMAIL');
+    $password = env('SUPPORT_IMAP_PASSWORD');
 
-        if (!$inbox) {
-            return response()->json(['error' => 'Cannot connect to Gmail: ' . imap_last_error()], 500);
-        }
+    // Open the IMAP connection
+    $inbox = @imap_open($hostname, $username, $password);
+    if (!$inbox) {
+        return response()->json(['error' => 'Cannot connect to Gmail: ' . imap_last_error()], 500);
+    }
 
-        $emails = imap_search($inbox, 'ALL', SE_UID, 'UTF-8');
-        if (!$emails) {
-            imap_close($inbox);
-            return response()->json(['emails' => [], 'nextOffset' => $offset]);
-        }
+    // Determine the filter based on the route name
+    $filter = $this->determineFilter($request->route()->getName());
 
-        rsort($emails);
-        $emails = array_slice($emails, $offset, $limit);
-
-        $messages = [];
-        foreach ($emails as $email_number) {
-            $overview = imap_fetch_overview($inbox, $email_number, 0);
-            if (!$overview) continue;
-
-            $subject = imap_utf8($overview[0]->subject);
-            $from = $overview[0]->from;
-            $date = $overview[0]->date;
-
-            // Fetch the email structure
-            $structure = imap_fetchstructure($inbox, $email_number);
-            $partNumber = 1; // Default to part 1 (usually plain text)
-            $hasHtml = false; // Flag to check if HTML part is available
-
-            // If the email has multiple parts, find the plain text or HTML part
-            if (isset($structure->parts) && count($structure->parts)) {
-                foreach ($structure->parts as $index => $part) {
-                    if ($part->subtype == 'HTML') {
-                        $partNumber = $index + 1; // HTML part
-                        $hasHtml = true;
-                        break;
-                    } elseif ($part->subtype == 'PLAIN') {
-                        $partNumber = $index + 1; // Plain text part
-                    }
-                }
-            }
-
-            // Fetch and decode the message body
-            $message = imap_fetchbody($inbox, $email_number, $partNumber);
-
-            // Handle different encoding types
-            if ($structure->encoding == 3) { // Base64
-                $message = base64_decode($message);
-            } elseif ($structure->encoding == 4) { // Quoted-Printable
-                $message = quoted_printable_decode($message);
-            } elseif ($structure->encoding == 1) { // 8bit
-                $message = imap_utf8($message);
-            } elseif ($structure->encoding == 0) { // 7bit
-                $message = imap_qprint($message); // Optionally handle 7bit encoding
-            }
-
-            // Convert message to UTF-8 if necessary
-            $message = mb_convert_encoding($message, 'UTF-8', 'auto');
-
-            // Add the message to the messages array
-            $messages[] = [
-                'subject' => $subject,
-                'from' => $from,
-                'date' => $date,
-                'message' => $message,
-            ];
-        }
-
+    // Fetch emails based on the filter
+    $emails = imap_search($inbox, $filter, SE_UID, 'UTF-8');
+    if (!$emails) {
         imap_close($inbox);
+        return response()->json(['emails' => [], 'nextOffset' => $offset]);
+    }
 
-        return response()->json(['emails' => $messages, 'nextOffset' => $offset + $limit]);
+    // Sort and limit emails
+    rsort($emails); // Sort emails by most recent
+    $emails = array_slice($emails, $offset, $limit);
+
+    // Process each email and prepare data
+    $messages = [];
+    foreach ($emails as $email_number) {
+        $overview = imap_fetch_overview($inbox, $email_number, 0);
+        if (!$overview) continue;
+
+        $subject = isset($overview[0]->subject) ? imap_utf8($overview[0]->subject) : '(No Subject)';
+        $from = isset($overview[0]->from) ? $overview[0]->from : '(Unknown Sender)';
+        $date = isset($overview[0]->date) ? $overview[0]->date : '(Unknown Date)';
+
+        // Fetch the email structure
+        $structure = imap_fetchstructure($inbox, $email_number);
+        $message = $this->fetchMessageBody($inbox, $email_number, $structure);
+
+        // Add the message to the messages array
+        $messages[] = [
+            'subject' => $subject,
+            'from' => $from,
+            'date' => $date,
+            'message' => $message,
+        ];
+    }
+
+    imap_close($inbox);
+
+    // Return the emails and the new offset
+    return response()->json([
+        'emails' => $messages,
+        'nextOffset' => $offset + $limit,
+    ]);
 }
 
 // Helper method to determine email filter based on route name

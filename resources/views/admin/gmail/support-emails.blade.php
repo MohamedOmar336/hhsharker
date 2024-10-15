@@ -117,129 +117,145 @@
                 <div id="emailBody"></div>
             </div>
             <div class="modal-footer">
+              {{-- <a href="#" id="showEmailBtn" class="btn btn-sm btn-de-primary">{{ __('general.show') }}</a> --}}
+                <a href="#" id="replyEmailBtn" class="btn btn-sm btn-de-primary">{{ __('general.reply') }}</a>
                 <button type="button" class="btn btn-sm btn-de-primary" data-bs-dismiss="modal">{{ __('general.close') }}</button>
+                
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const emailModal = document.getElementById('emailModal');
+   document.addEventListener('DOMContentLoaded', function() {
+    const emailModal = document.getElementById('emailModal');
+    const replyEmailBtn = document.getElementById('replyEmailBtn');
 
-        // Modal show event to populate the email details
-        emailModal.addEventListener('show.bs.modal', function(event) {
-            const button = event.relatedTarget; // Button that triggered the modal
+    // Modal show event to populate the email details
+    emailModal.addEventListener('show.bs.modal', function(event) {
+        const button = event.relatedTarget; // Button that triggered the modal
 
-            // Extract info from data-* attributes
-            const from = button.getAttribute('data-from');
-            const subject = button.getAttribute('data-subject');
-            const date = button.getAttribute('data-date');
-            const body = button.getAttribute('data-body');
+        // Extract info from data-* attributes
+        const from = button.getAttribute('data-from');
+        const subject = button.getAttribute('data-subject');
+        const date = button.getAttribute('data-date');
+        const body = button.getAttribute('data-body');
 
-            // Update the modal's content
-            document.getElementById('emailFrom').innerText = `From: ${from}`;
-            document.getElementById('emailSubject').innerText = `Subject: ${subject}`;
-            document.getElementById('emailDate').innerText = date;
-            document.getElementById('emailBody').innerHTML = body; // Ensure it's sanitized
-        });
+        // Update the modal's content
+        document.getElementById('emailFrom').innerText = `From: ${from}`;
+        document.getElementById('emailSubject').innerText = `Subject: ${subject}`;
+        document.getElementById('emailDate').innerText = date;
+        document.getElementById('emailBody').innerHTML = body; // Ensure it's sanitized
 
-        let offset = 25; // Start after the first 25 emails
-
-        // Load more emails function
-        function loadMoreEmails() {
-            $('#loading').show();
-
-            fetch('{{ route('support.emails.get-more') }}?offset=' + offset)
-                .then(response => response.json())
-                .then(data => {
-                    $('#loading').hide();
-
-                    if (data.emails.length === 0) {
-                        $('#load-more-btn').hide(); // Hide button if no more emails
-                    } else {
-                        offset = data.nextOffset; // Update the offset for the next load
-                        data.emails.forEach(function(email) {
-                            const emailDate = new Date(email.date);
-                            const formattedDate = emailDate.toLocaleDateString('en-US', {
-                                weekday: 'short'
-                                , day: '2-digit'
-                                , month: 'short'
-                            });
-                            let username = email.from;
-                            let emailAddress = '';
-
-                            if (email.from.includes('<') && email.from.includes('>')) {
-                                const nameEmailRegex = /^(.*)<(.*)>$/;
-                                const match = email.from.match(nameEmailRegex);
-
-                                if (match) {
-                                    username = match[1].trim(); // Extract name
-                                    emailAddress = match[2].trim(); // Extract email address
-                                }
-                            } else {
-                                // If it's just an email, extract the part before the @ as the username
-                                const fromParts = email.from.split('@');
-                                username = fromParts[0];
-                                emailAddress = email.from;
-                            }
-                            const emailItem = `
-                            <li class="email-item">
-                                <div class="col-mail col-mail-1">
-                                    <a href="#" class="subject" data-bs-toggle="modal" data-bs-target="#emailModal"
-                                    data-from="${email.from.replace(/"/g, '&quot;')}" 
-                                       data-subject="${email.subject.replace(/"/g, '&quot;')}" 
-                                       data-date="${email.date.replace(/"/g, '&quot;')}"
-                                       data-body="${email.message.replace(/"/g, '&quot;')}"> <!-- Sanitize -->
-                                        <p class="title">${username} (${emailAddress})</p>
-                                    </a>
-                                </div>
-                                <div class="col-mail col-mail-2">
-                                    <a href="#" class="subject" data-bs-toggle="modal" data-bs-target="#emailModal"
-                                    data-from="${email.from.replace(/"/g, '&quot;')}" 
-                                       data-subject="${email.subject.replace(/"/g, '&quot;')}" 
-                                       data-date="${email.date.replace(/"/g, '&quot;')}"
-                                       data-body="${email.message.replace(/"/g, '&quot;')}"> <!-- Sanitize -->
-                                        ${email.subject}
-                                    </a>
-                                    <div class="date">${formattedDate}</div>
-                                </div>
-                            </li>`;
-                            $('#email-list').append(emailItem);
-                        });
-
-                        // Re-apply click listeners to new email items
-                        addEmailClickListeners();
-                    }
-                })
-                .catch(error => {
-                    console.error('Error loading emails:', error);
-                    $('#loading').hide();
-                });
-        }
-
-        // Load more button click event
-        $('#load-more-btn').click(loadMoreEmails);
-
-        // Function to add click event listeners to email subjects
-        function addEmailClickListeners() {
-            $(document).on('click', '.subject', function(event) {
-                const from = $(this).data('from');
-                const subject = $(this).data('subject');
-                const date = $(this).data('date');
-                const body = $(this).data('body');
-
-                // Update modal content
-                $('#emailFrom').text(`From: ${from}`);
-                $('#emailSubject').text(`Subject: ${subject}`);
-                $('#emailDate').text(date);
-                $('#emailBody').html(body); // Ensure it's sanitized
-            });
-        }
-
-        // Initial load more
-        loadMoreEmails();
+        // Set the reply button link dynamically, including the 'to' and 'subject' query parameters
+        replyEmailBtn.href = `{{ route('gmail.reply') }}?to=${encodeURIComponent(from)}&subject=${encodeURIComponent(subject)}`;
+     //   showEmailBtn.href = `{{ route('gmail.show') }}?to=${encodeURIComponent(from)}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}&date=${encodeURIComponent(date)}`;
     });
 
+
+
+        let offset =25; // Start with an initial offset of 0
+
+// Load more emails function
+function loadMoreEmails() {
+    $('#loading').show(); // Show loading spinner
+
+    // Fetch emails using the current offset
+    fetch(`{{ route('support.emails.get-more') }}?offset=${offset}`)
+        .then(response => response.json())
+        .then(data => {
+            $('#loading').hide(); // Hide loading spinner
+
+            if (data.emails.length === 0) {
+                $('#load-more-btn').hide(); // Hide button if no more emails
+            } else {
+                // Increment the offset by the number of emails fetched (e.g., 25)
+                offset +=25; 
+
+                // Loop through the emails and display them
+                data.emails.forEach(function(email) {
+                    const emailDate = new Date(email.date);
+                    const formattedDate = emailDate.toLocaleDateString('en-US', {
+                        weekday: 'short',
+                        day: '2-digit',
+                        month: 'short'
+                    });
+
+                    let username = email.from;
+                    let emailAddress = '';
+
+                    if (email.from.includes('<') && email.from.includes('>')) {
+                        const nameEmailRegex = /^(.*)<(.*)>$/;
+                        const match = email.from.match(nameEmailRegex);
+
+                        if (match) {
+                            username = match[1].trim(); // Extract name
+                            emailAddress = match[2].trim(); // Extract email address
+                        }
+                    } else {
+                        const fromParts = email.from.split('@');
+                        username = fromParts[0];
+                        emailAddress = email.from;
+                    }
+
+                    const emailItem = `
+                        <li class="email-item">
+                            <div class="col-mail col-mail-1">
+                                <a href="#" class="subject" data-bs-toggle="modal" data-bs-target="#emailModal"
+                                    data-from="${email.from.replace(/"/g, '&quot;')}" 
+                                    data-subject="${email.subject.replace(/"/g, '&quot;')}" 
+                                    data-date="${email.date.replace(/"/g, '&quot;')}"
+                                    data-body="${email.message.replace(/"/g, '&quot;')}"> <!-- Sanitize -->
+                                    <p class="title">${username} (${emailAddress})</p>
+                                </a>
+                            </div>
+                            <div class="col-mail col-mail-2">
+                                <a href="#" class="subject" data-bs-toggle="modal" data-bs-target="#emailModal"
+                                    data-from="${email.from.replace(/"/g, '&quot;')}" 
+                                    data-subject="${email.subject.replace(/"/g, '&quot;')}" 
+                                    data-date="${email.date.replace(/"/g, '&quot;')}"
+                                    data-body="${email.message.replace(/"/g, '&quot;')}"> <!-- Sanitize -->
+                                    ${email.subject}
+                                </a>
+                                <div class="date">${formattedDate}</div>
+                            </div>
+                        </li>`;
+                    $('#email-list').append(emailItem);
+                });
+
+                // Re-apply click listeners to new email items
+                addEmailClickListeners();
+            }
+        })
+        .catch(error => {
+            console.error('Error loading emails:', error);
+            $('#loading').hide();
+        });
+}
+
+// Load more button click event
+$('#load-more-btn').on('click', function() {
+    loadMoreEmails(); // Load emails when button is clicked
+});
+
+// Function to add click event listeners to email subjects
+function addEmailClickListeners() {
+    $(document).on('click', '.subject', function(event) {
+        const from = $(this).data('from');
+        const subject = $(this).data('subject');
+        const date = $(this).data('date');
+        const body = $(this).data('body');
+
+        // Update modal content
+        $('#emailFrom').text(`From: ${from}`);
+        $('#emailSubject').text(`Subject: ${subject}`);
+        $('#emailDate').text(date);
+        $('#emailBody').html(body); // Ensure it's sanitized
+    });
+}
+
+// Initial load more on page load
+loadMoreEmails();
+});
 </script>
 @endsection

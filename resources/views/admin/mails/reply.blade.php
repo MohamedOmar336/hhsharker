@@ -1,5 +1,3 @@
-<!-- resources/views/admin/mails/reply.blade.php -->
-
 @extends('admin.layouts.app')
 
 @section('content')
@@ -25,7 +23,7 @@
                             @else
                                 <i data-feather="arrow-left-circle"></i> <!-- Default locale -->
                             @endif
-                        </a>
+                            </a>
                             <h4 class="page-title">{{ __('general.actions.reply') }}</h4>
                         </div>
                     </div><!--end page-title-box-->
@@ -36,16 +34,16 @@
                 <div class="col-12 col-lg-12 mx-auto">
                     <div class="card">
                         <div class="card-body content-area">
-                            <form action="{{ route('mails.sendReply', $mail->id) }}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+                            <form action="{{ route('gmail.sendReply') }}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
 
                                 @csrf
                                 <div class="mb-3">
-                                    <label for="recipient_id" class="form-label">{{ __('general.attributes.recipient') }}</label>
-                                    <input type="text" id="recipient_id" class="form-control" value="{{ $mail->sender->email }}" readonly>
+                                    <label for="to" class="form-label">{{ __('general.attributes.recipient') }}</label>
+                                    <input type="email" name="to" id="to" class="form-control" value="{{ $to }}" readonly>
                                 </div>
                                 <div class="mb-3">
                                     <label for="subject" class="form-label">{{ __('general.attributes.subject') }}</label>
-                                    <input id="subject" type="text" class="form-control" value="{{ __('general.subject_prefix.reply') }} {{ $mail->subject }}" readonly>
+                                    <input id="subject" type="text" class="form-control" name="subject" value="{{ __('general.subject_prefix.reply') }} {{ $subject }}" readonly>
                                 </div>
                                 <div class="mb-3">
                                     <label for="body" class="form-label">{{ __('general.attributes.body') }}</label>

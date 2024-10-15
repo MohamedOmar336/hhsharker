@@ -28,13 +28,13 @@
                     <div class="email-rightbar">
                         <div class="card my-3">
                             <!-- Email Details -->
-                            <p><strong>{{ __('general.from') }}:</strong> <span id="email-from">{{ $email['from'] }}</span></p>
-                            <p><strong>{{ __('general.date') }}:</strong> <span id="email-date">{{ $email['date'] }}</span></p>
-                            <h5><strong>{{ __('general.subject') }}:</strong> <span id="email-subject">{{ $email['subject'] }}</span></h5>
+                            <p><strong>{{ __('general.from') }}:</strong> <span id="email-from">{{ $to }}</span></p>
+                            <p><strong>{{ __('general.date') }}:</strong> <span id="email-date">{{ $date }}</span></p>
+                            <h5><strong>{{ __('general.subject') }}:</strong> <span id="email-subject">{{ $subject }}</span></h5>
                             
                             <!-- Display email body in iframe -->
                             <div class="email-body">
-                                <iframe id="email-iframe" width="100%" height="500" style="border: none;" srcdoc="{{ $email['message'] }}"></iframe>
+                                <iframe id="email-iframe" width="100%" height="500" style="border: none;" srcdoc="{{ $body }}"></iframe>
                             </div>
                         </div>
                     </div>

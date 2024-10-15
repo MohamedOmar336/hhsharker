@@ -234,7 +234,10 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/support/emails/more', [GmailController::class, 'getMoreSupportEmails'])->name('support.emails.get-more');
         Route::get('/support/gmail', [GmailController::class, 'getSupportEmails'])->name('support.gmail');
         Route::resource('tasks', TaskController::class);
-
+        Route::get('/emails/reply', [GmailController::class, 'reply'])->name('gmail.reply');
+      //  Route::get('/emails/show', [GmailController::class, 'show'])->name('gmail.show');
+        Route::post('/emails/sendReply', [GmailController::class, 'sendReply'])->name('gmail.sendReply');
+        
 
      
       Route::post('/ticket-categories/bulk-delete', [TicketCategoryController::class, 'bulkDelete'])->name('ticket_categories.bulkDelete');
